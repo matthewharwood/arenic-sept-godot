@@ -54,6 +54,14 @@ independent pause/offset, a two-voice crossfade, request coalescing and left/rig
 listener balance. Broad tolerances allow real browser mixer scheduling; these
 are correctness checks, not a 60 fps benchmark or sample-perfect seam test.
 
+Software WebGL runners get a 300-second per-game-test budget; rendered scene
+readiness is bounded at 60 seconds and the mixer report at 240 seconds. The
+audio-only test uses a 640×360 viewport to limit unrelated GPU work. Separate
+1280×720, DPR2, letterbox and resize tests retain their full framebuffer checks.
+Loop checks observe playing audio wrapping near zero within 2.5 advancing game
+seconds, with an independent 20-second wall cap; game clocks intentionally follow
+Godot's clamped frame delta. PCM and loop assertions are unchanged by these waits.
+
 Upload `playwright-report/` and `test-results/` on failure. They contain console
 JSON, screenshots, video/trace on failure, and mixer results. Browser runtime
 errors, Godot script/shader errors and failed resource requests fail the tests.
