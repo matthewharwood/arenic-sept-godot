@@ -49,6 +49,14 @@ navigation, zoom, resizing, letterboxing and DPR 1/2 framebuffer coverage.
 The clean production test uses a passive browser audio tap and never bypasses
 autoplay. Gallery tests exercise every hero ability and boss appearance.
 
+Software-rendered CI is a correctness lane, not a frame-rate benchmark. Game
+tests have a five-minute bound, including full-density screenshot and browser
+cleanup work. The audio-only probe runs at 640 × 360 to avoid unrelated pixel
+work; the separate input and framebuffer cases still exercise 1280 × 720,
+Retina density and resizing. Loop waits observe advancing game time and retain
+a real-time deadline. CI stops on its first failure and uploads diagnostics;
+every test must pass in a green release.
+
 `tests/web/probe.gd` is added only to a disposable project copy. Its autoload,
 test shortcuts and readback are absent from production. The export also removes
 the editor MCP bridge and audits the PCK for development resource paths.

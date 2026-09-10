@@ -163,18 +163,25 @@ func _audio_suite() -> void:
 		row["arena"] = id
 		row["middle_clock"] = music.clocks[id].get_position()
 		music.seek_arena(id, music.clocks[id].duration_seconds - 0.3)
-		# The browser mixer and game frame clocks are asynchronous. Observe the
-		# actual wrap within a bounded window instead of assuming one 0.8s sample
-		# lands after it under a contended software renderer.
+		# Production clocks follow game delta, which Godot clamps on very slow
+		# software-rendered frames. Observe actual playback wrap for up to 2.5
+		# advancing game seconds, with an independent 20s real-time failure cap.
 		var loop_started: int = Time.get_ticks_msec()
+		var clock: ArenicArenaMusicClock = music.clocks[id]
+		var previous_phase: float = clock.get_position()
+		var advanced_seconds: float = 0.0
 		row["loop_passed"] = false
-		while Time.get_ticks_msec() - loop_started < 2500 and not row.loop_passed:
+		while advanced_seconds < 2.5 and Time.get_ticks_msec() - loop_started < 20000 and not row.loop_passed:
 			await _wait(0.1)
+			var phase: float = clock.get_position()
+			advanced_seconds += fposmod(phase - previous_phase, clock.duration_seconds)
+			previous_phase = phase
 			for voice: Dictionary in music.snapshot().voices:
 				if voice.arena_id == id:
 					row["loop_position"] = voice.position
 					row["loop_passed"] = voice.playing and voice.position >= 0.0 and voice.position < 2.5
 		row["loop_wait_ms"] = Time.get_ticks_msec() - loop_started
+		row["loop_game_seconds"] = advanced_seconds
 		report.tracks.append(row)
 		report.passed = report.passed and row.passed and row.loop_passed
 		_emit("audio_progress", row)

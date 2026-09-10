@@ -1,6 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { watch, installAudioMeter, loadGame, renderedPixels, clickLogical, enterProbeWorld, attachResults, GAME, PROBE, CLASSES, ARENAS } from './helpers.mjs';
 
+// Software WebGL in CI can take seconds per frame. These are bounded correctness
+// checks; native-density rendering remains covered independently of mixer timing.
+test.describe.configure({ timeout: 300_000 });
+
 test('clean production: real pointer flow and browser output samples', async ({ page }, testInfo) => {
   const log = watch(page);
   await installAudioMeter(page);
@@ -11,7 +15,7 @@ test('clean production: real pointer flow and browser output samples', async ({ 
     const marginPoints = [[0.995, 0.1], [0.995, 0.9]];
     await expect.poll(async () => (await renderedPixels(page, marginPoints))
       .every(pixel => pixel.slice(0, 3).every(channel => channel >= 215 && channel <= 250)),
-    { message: 'Rendered title paper is ready' }).toBe(true);
+    { message: 'Rendered title paper is ready', timeout: 60_000 }).toBe(true);
     await page.screenshot({ path: testInfo.outputPath('clean-title.png') });
     // Shipping title has a 1440x1024 EXPAND reference and centered Start offsets.
     let box = await page.locator('#canvas').boundingBox();
@@ -21,7 +25,7 @@ test('clean production: real pointer flow and browser output samples', async ({ 
     // instead of assuming a fixed delay is enough for loading and layout.
     await expect.poll(async () => (await renderedPixels(page, marginPoints))
       .every(pixel => pixel.slice(0, 3).every(channel => channel >= 253)),
-    { message: 'Rendered class selection is ready' }).toBe(true);
+    { message: 'Rendered class selection is ready', timeout: 60_000 }).toBe(true);
     await page.screenshot({ path: testInfo.outputPath('clean-classes.png') });
     box = await page.locator('#canvas').boundingBox();
     scale = Math.min(box.width / 1280, box.height / 768);
@@ -34,7 +38,7 @@ test('clean production: real pointer flow and browser output samples', async ({ 
     // readiness. Wait for the dark, nonblack HUD bands before sending game keys.
     await expect.poll(async () => (await renderedPixels(page, [[0.48, 0.02], [0.78, 0.02], [0.78, 0.99]]))
       .every(pixel => pixel.slice(0, 3).every(channel => channel > 5 && channel < 100)),
-    { message: 'Rendered world HUD is ready' }).toBe(true);
+    { message: 'Rendered world HUD is ready', timeout: 60_000 }).toBe(true);
     await expect.poll(() => page.evaluate(() => window.__arenicAudioReadback().some(row => row.state === 'running' && row.samples > 0)), { timeout: 30_000 }).toBe(true);
     await page.keyboard.press('p');
     await page.keyboard.press('l');
@@ -133,12 +137,15 @@ for (const dimensions of [{ width: 1280, height: 720, dpr: 1 }, { width: 1280, h
 }
 
 test('browser mixer: nine PCM tracks, loops, independent clocks, crossfades, panning and hum', async ({ page }, testInfo) => {
+  // Audio correctness does not need a Retina framebuffer. Keep the real game,
+  // normal input and engine mixer while bounding unrelated software GPU cost.
+  await page.setViewportSize({ width: 640, height: 360 });
   const log = watch(page);
   await installAudioMeter(page);
   try {
     await enterProbeWorld(page, log);
     await page.keyboard.press('F8');
-    const result = (await log.event('audio', 0, 90_000)).data;
+    const result = (await log.event('audio', 0, 240_000)).data;
     expect(result.tracks).toHaveLength(9);
     expect(result.tracks.map(row => row.arena)).toEqual(ARENAS.map(row => row[1]));
     for (const track of result.tracks) {
