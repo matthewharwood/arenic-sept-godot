@@ -327,5 +327,8 @@ func _cleanup(code: int, message: String) -> void:
 		_watchdog.free()
 	# Stopped audio is retired by the mixer, then released on the main thread.
 	await create_timer(0.10).timeout
+	# Complete main-loop cleanup even if one slow frame consumed the timer.
+	await process_frame
+	await process_frame
 	print(message)
 	quit(code)

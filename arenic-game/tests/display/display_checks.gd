@@ -255,5 +255,8 @@ func _cleanup(code: int, message: String) -> void:
 	if is_instance_valid(_watchdog):
 		_watchdog.free()
 	await create_timer(0.1).timeout
+	# A slow render frame can exhaust the timer before main-thread audio cleanup.
+	await process_frame
+	await process_frame
 	print(message)
 	quit(code)

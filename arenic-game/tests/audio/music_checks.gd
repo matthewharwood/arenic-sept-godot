@@ -381,6 +381,9 @@ func _cleanup(code: int, message: String) -> void:
 		_watchdog.free()
 	# Let the mixer retire stopped voices while this test remains muted.
 	await create_timer(0.10).timeout
+	# Complete main-loop cleanup even if one slow frame consumed the timer.
+	await process_frame
+	await process_frame
 	if _master_changed:
 		AudioServer.set_bus_mute(0, _master_was_muted)
 	print(message)
