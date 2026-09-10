@@ -157,5 +157,20 @@ func _finish(code: int, message: String) -> void:
 	_done = true
 	if is_instance_valid(_watchdog):
 		_watchdog.stop()
+	_cleanup.call_deferred(code, message)
+
+
+func _cleanup(code: int, message: String) -> void:
+	if is_instance_valid(_fixture):
+		_fixture.free()
+	_panels.clear()
+	if is_instance_valid(_shell):
+		_shell.free()
+	if is_instance_valid(_watchdog):
+		_watchdog.free()
+	# Retire stopped mixer voices and finish main-thread cleanup before exit.
+	await create_timer(0.10).timeout
+	await process_frame
+	await process_frame
 	print("TRANSITION_RENDER_CHECKS " + JSON.stringify({"passed": code == 0, "checks": _checks, "message": message, "cases": _cases}))
 	quit(code)
