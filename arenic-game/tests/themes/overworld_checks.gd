@@ -349,10 +349,18 @@ func _finish(code: int, message: String) -> void:
 	if _done:
 		return
 	_done = true
+	if is_instance_valid(_watchdog):
+		_watchdog.stop()
+	_cleanup.call_deferred(code, message)
+
+
+func _cleanup(code: int, message: String) -> void:
 	if is_instance_valid(_shell):
 		_shell.free()
 	if is_instance_valid(_watchdog):
-		_watchdog.stop()
-		_watchdog.queue_free()
+		_watchdog.free()
+	if not await preload("res://tests/support/audio_retirement.gd").wait_for_mixer(self):
+		code = 1
+		message = "Audio mixer retirement failed after overworld checks."
 	print(message)
 	quit(code)

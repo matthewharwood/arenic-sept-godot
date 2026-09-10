@@ -168,9 +168,8 @@ func _cleanup(code: int, message: String) -> void:
 		_shell.free()
 	if is_instance_valid(_watchdog):
 		_watchdog.free()
-	# Retire stopped mixer voices and finish main-thread cleanup before exit.
-	await create_timer(0.10).timeout
-	await process_frame
-	await process_frame
+	if not await preload("res://tests/support/audio_retirement.gd").wait_for_mixer(self):
+		code = 1
+		message = "Audio mixer retirement failed after transition rendering checks."
 	print("TRANSITION_RENDER_CHECKS " + JSON.stringify({"passed": code == 0, "checks": _checks, "message": message, "cases": _cases}))
 	quit(code)
