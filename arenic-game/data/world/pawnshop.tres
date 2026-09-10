@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="ArenicArenaDefinition" format=3 uid="uid://c04balio3v5lq"]
 
 [ext_resource type="Script" uid="uid://dcg8c0soqx1cu" path="res://scripts/world/arena_definition.gd" id="1_rc22k"]
-[ext_resource type="Resource" path="res://data/bosses/thief.tres" id="1_u7iuf"]
+[ext_resource type="Resource" uid="uid://dda5wey4t5e0d" path="res://data/bosses/thief.tres" id="1_u7iuf"]
+[ext_resource type="Resource" path="res://data/music/pawnshop_v3.tres" id="2_50ji8"]
+[ext_resource type="Resource" path="res://data/themes/pawnshop.tres" id="3_af7sy"]
 
 [resource]
 script = ExtResource("1_rc22k")
@@ -11,4 +13,6 @@ class_id = "thief"
 class_label = "The Thief"
 hotkey = "T"
 grid_slot = Vector2i(2, 1)
+visual_theme = ExtResource("3_af7sy")
+music = ExtResource("2_50ji8")
 boss = ExtResource("1_u7iuf")

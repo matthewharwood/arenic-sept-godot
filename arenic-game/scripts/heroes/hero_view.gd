@@ -37,16 +37,18 @@ func sync(arena: ArenicArenaDefinition, show_selection: bool) -> void:
 		if sprite.animation != animation_name or not sprite.is_playing():
 			sprite.play(animation_name)
 	_selection.visible = show_selection and state.selected
+	if arena.visual_theme != null:
+		_selection.modulate = arena.visual_theme.color("primary")
 
 func _selection_texture() -> ImageTexture:
 	var pixels := Image.create(23, 23, false, Image.FORMAT_RGBA8)
 	pixels.fill(Color(0, 0, 0, 0))
-	var blue := Color(0.15, 0.39, 0.77, 1)
+	var mask := Color(1, 1, 1, 1)
 	# Corner brackets stay outside the native 19px sprite canvas.
 	for offset in range(6):
 		for edge in [0, 22]:
-			pixels.set_pixel(offset, edge, blue)
-			pixels.set_pixel(22 - offset, edge, blue)
-			pixels.set_pixel(edge, offset, blue)
-			pixels.set_pixel(edge, 22 - offset, blue)
+			pixels.set_pixel(offset, edge, mask)
+			pixels.set_pixel(22 - offset, edge, mask)
+			pixels.set_pixel(edge, offset, mask)
+			pixels.set_pixel(edge, 22 - offset, mask)
 	return ImageTexture.create_from_image(pixels)

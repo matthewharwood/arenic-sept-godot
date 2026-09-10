@@ -10,14 +10,14 @@ var sequence_active: bool = false
 var _sequence: ArenicWorldSequence
 var hero: ArenicHeroState
 var _hero_input := ArenicHeroInput.new()
+var music: ArenicArenaMusicDirector
 @onready var hud: ArenicWorldHUD = $HUD/HUDOutline
 
 func _ready() -> void:
-	var window := get_window()
-	window.content_scale_size = Vector2i(1280, 720)
-	window.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
-	window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
-	window.content_scale_stretch = Window.CONTENT_SCALE_STRETCH_INTEGER
+	ArenicDisplayPolicy.apply_game_layout(get_window())
+	music = ArenicArenaMusicDirector.new()
+	music.name = "ArenaMusic"
+	add_child(music)
 	hud.world_rect_changed.connect(_update_view_rect)
 	hud.toggle_requested.connect(toggle_view)
 	replace_stage(stage_scene)
@@ -48,7 +48,10 @@ func replace_stage(packed: PackedScene) -> void:
 		$ContentSlot.remove_child(stage)
 		stage.queue_free()
 	stage = candidate
+	stage.overview_changed.connect(hud.set_overview_mix)
 	$ContentSlot.add_child(stage)
+	hud.set_overview_mix(stage.overview_mix)
+	music.configure(stage)
 	_hero_input.clear()
 	hero = run_hero
 	stage.mount_hero(hero)
@@ -89,6 +92,7 @@ func _update_view_rect() -> void:
 		stage.set_view_rect(hud.get_world_rect())
 
 func _update_hud() -> void:
+	music.set_focus(StringName(stage.world.arenas[selected_index].arena_id), zoomed)
 	var definition := hero.definition
 	hud.set_context(stage.world.arenas[selected_index], definition.character_name, definition.display_name, zoomed)
 	hud.set_hero_control(_hero_in_focused_arena(), hero.selected)

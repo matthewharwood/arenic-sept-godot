@@ -1,0 +1,367 @@
+{
+  "verified_on": "2026-09-10",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "tests": {
+    "clock_assertions": 54,
+    "music_integration_assertions": 289,
+    "scene_flow_assertions": 98,
+    "hero_flow_assertions": 112,
+    "display_assertions": 78,
+    "lsp_scripts_without_errors": 54
+  },
+  "native": {
+    "host": "Apple M4 Max, macOS",
+    "renderer": "Metal Forward+",
+    "requested_window_pixels": [
+      3436,
+      1932
+    ],
+    "scope": "Director CPU timings; not full-frame timings or a universal 60fps guarantee",
+    "burst_mix": {
+      "frames": 44544,
+      "left_rms": 0.0184514499923381,
+      "peak": 0.0719989240169525,
+      "right_rms": 0.020220625729972,
+      "rms": 0.0193562614124133
+    },
+    "burst_peak": 0.0614024810492992,
+    "burst_starts": 0,
+    "director_cpu_ms": {
+      "frames": 2929,
+      "max": 0.513,
+      "p95": 0.075,
+      "p99": 0.103
+    },
+    "driver": "CoreAudio",
+    "final": {
+      "clocks": {
+        "bastion": 9.8219556666668,
+        "casino": 4.84313966666682,
+        "crucible": 6.50270933333343,
+        "gala": 3.1828476666667,
+        "guild_house": 14.802226,
+        "labyrinth": 16.4687179999999,
+        "mountain": 11.4853760000004,
+        "pawnshop": 8.16149533333344,
+        "sanctum": 13.1437743333334
+      },
+      "desired": "bastion",
+      "hum_weight": 0.0,
+      "pending_seconds": 0.0,
+      "sync_corrections": 0,
+      "voices": [
+        {
+          "arena_id": "bastion",
+          "playing": true,
+          "position": 9.79531288146973,
+          "source": "(24.625, 0.0, 4.0)",
+          "weight": 1.0
+        },
+        {
+          "arena_id": "",
+          "playing": false,
+          "position": 0.0,
+          "source": "(41.125, 0.0, 11.75)",
+          "weight": 0.0
+        }
+      ],
+      "voices_started": 11
+    },
+    "guild_house": {
+      "frames": 44032,
+      "left_rms": 0.0106232372027988,
+      "peak": 0.0459490865468979,
+      "right_rms": 0.0103242693031928,
+      "rms": 0.0104748199342943
+    },
+    "hum": {
+      "frames": 44032,
+      "left_rms": 0.0102798597940449,
+      "peak": 0.0278643630445004,
+      "right_rms": 0.0134752799989228,
+      "rms": 0.0119845460580405
+    },
+    "max_burst_voices": 1,
+    "native_loops": [
+      {
+        "arena": "labyrinth",
+        "passed": true,
+        "wrapped_position": 0.433333337306976
+      },
+      {
+        "arena": "guild_house",
+        "passed": true,
+        "wrapped_position": 0.433312505483627
+      },
+      {
+        "arena": "sanctum",
+        "passed": true,
+        "wrapped_position": 0.443979173898697
+      },
+      {
+        "arena": "mountain",
+        "passed": true,
+        "wrapped_position": 0.454666674137115
+      },
+      {
+        "arena": "bastion",
+        "passed": true,
+        "wrapped_position": 0.433333337306976
+      },
+      {
+        "arena": "pawnshop",
+        "passed": true,
+        "wrapped_position": 0.433333337306976
+      },
+      {
+        "arena": "crucible",
+        "passed": true,
+        "wrapped_position": 0.433312505483627
+      },
+      {
+        "arena": "casino",
+        "passed": true,
+        "wrapped_position": 0.444000005722046
+      },
+      {
+        "arena": "gala",
+        "passed": true,
+        "wrapped_position": 0.454666674137115
+      }
+    ],
+    "overview_return": {
+      "clocks": {
+        "bastion": 11.6802146666669,
+        "casino": 6.7013986666669,
+        "crucible": 8.36096833333351,
+        "gala": 5.04110666666674,
+        "guild_house": 16.660485,
+        "labyrinth": 18.3269769999999,
+        "mountain": 13.3436350000005,
+        "pawnshop": 10.0197543333335,
+        "sanctum": 15.0020333333335
+      },
+      "desired": "",
+      "hum_weight": 1.0,
+      "pending_seconds": 0.0,
+      "sync_corrections": 0,
+      "voices": [
+        {
+          "arena_id": "",
+          "playing": false,
+          "position": 0.0,
+          "source": "(24.625, 0.0, 4.0)",
+          "weight": 0.0
+        },
+        {
+          "arena_id": "",
+          "playing": false,
+          "position": 0.0,
+          "source": "(41.125, 0.0, 11.75)",
+          "weight": 0.0
+        }
+      ],
+      "voices_started": 11
+    },
+    "pan_-1": {
+      "frames": 27648,
+      "left_rms": 0.0151565121474201,
+      "peak": 0.111372627317905,
+      "right_rms": 0.0205772672082516,
+      "rms": 0.0180713002608374
+    },
+    "pan_1": {
+      "frames": 27648,
+      "left_rms": 0.0215638661332626,
+      "peak": 0.120120897889137,
+      "right_rms": 0.0144187328626245,
+      "rms": 0.0183425758820428
+    },
+    "passed": true
+  },
+  "web": {
+    "browser": "Chrome",
+    "renderer": "Compatibility WebGL2",
+    "threaded": false,
+    "audio_context": {
+      "state_before_gesture": "suspended",
+      "state_after_gesture": "running",
+      "sample_rate": 44100,
+      "output_channels": 2,
+      "callback_buffer_size": 256,
+      "current_time_observed": 130.1768707482993
+    },
+    "observed_flow": [
+      "Pointer title Start",
+      "Pointer class selection Start (Hunter)",
+      "Overworld Guild House",
+      "P focus Guild House",
+      "L focus Labyrinth",
+      "Rapid B,W,A ends Crucible",
+      "G returns Guild House at current music time",
+      "P returns overview"
+    ],
+    "navigation": {
+      "samples": 61,
+      "first_timestamp_utc": "2026-09-10T20:06:00.365Z",
+      "last_timestamp_utc": "2026-09-10T20:08:00.618Z",
+      "max_sync_corrections": 0,
+      "max_active_music_voices": 2,
+      "voices_started": 4,
+      "max_raw_clock_to_player_difference_seconds": 0.10623243815199856,
+      "observed_focus": [
+        "guild_house",
+        "labyrinth",
+        "crucible"
+      ],
+      "final_hum_weight": 1,
+      "final_active_music_voices": 0,
+      "all_nine_virtual_clocks_advanced_and_wrapped_at_their_own_lengths": true
+    },
+    "pcm_and_loop_tests": [
+      {
+        "frames": 9216,
+        "hum_weight": 1.0,
+        "kind": "hum",
+        "pcm_pass": true,
+        "peak": 0.0261769685894251,
+        "rms_l": 0.0100574009120464,
+        "rms_r": 0.013170930556953
+      },
+      {
+        "arena_id": "labyrinth",
+        "frames": 9216,
+        "loop_clock": 0.508205333333219,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.444000005722046,
+        "middle_clock": 20.4666666666666,
+        "pcm_pass": true,
+        "peak": 0.0695240125060081,
+        "rms_l": 0.0155975371599197,
+        "rms_r": 0.0138643477112055,
+        "sync_corrections": 0
+      },
+      {
+        "arena_id": "guild_house",
+        "frames": 9216,
+        "loop_clock": 0.508300333333206,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.454645842313766,
+        "middle_clock": 20.4666666666666,
+        "pcm_pass": true,
+        "peak": 0.0720914602279663,
+        "rms_l": 0.01659613288939,
+        "rms_r": 0.0157468691468239,
+        "sync_corrections": 0
+      },
+      {
+        "arena_id": "sanctum",
+        "frames": 9216,
+        "loop_clock": 0.507766999999865,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.467979162931442,
+        "middle_clock": 20.4666666666666,
+        "pcm_pass": true,
+        "peak": 0.0986161604523659,
+        "rms_l": 0.0258296057581902,
+        "rms_r": 0.0223269127309322,
+        "sync_corrections": 0
+      },
+      {
+        "arena_id": "mountain",
+        "frames": 9216,
+        "loop_clock": 0.502621666666774,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.467999994754791,
+        "middle_clock": 20.4666666666666,
+        "pcm_pass": true,
+        "peak": 0.0604338608682156,
+        "rms_l": 0.0138292424380779,
+        "rms_r": 0.0171828046441078,
+        "sync_corrections": 0
+      },
+      {
+        "arena_id": "bastion",
+        "frames": 9216,
+        "loop_clock": 0.507374666666656,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.454666674137115,
+        "middle_clock": 20.4592253333333,
+        "pcm_pass": true,
+        "peak": 0.0852982103824615,
+        "rms_l": 0.0188665315508842,
+        "rms_r": 0.0234141945838928,
+        "sync_corrections": 0
+      },
+      {
+        "arena_id": "pawnshop",
+        "frames": 9216,
+        "loop_clock": 0.500333666666533,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.454666674137115,
+        "middle_clock": 20.4666666666666,
+        "pcm_pass": true,
+        "peak": 0.103572852909565,
+        "rms_l": 0.0335064940154552,
+        "rms_r": 0.0362694077193737,
+        "sync_corrections": 0
+      },
+      {
+        "arena_id": "crucible",
+        "frames": 9216,
+        "loop_clock": 0.500400666666523,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.467979162931442,
+        "middle_clock": 20.4666666666666,
+        "pcm_pass": true,
+        "peak": 0.0574193522334099,
+        "rms_l": 0.0177211929112673,
+        "rms_r": 0.0182095505297184,
+        "sync_corrections": 0
+      },
+      {
+        "arena_id": "casino",
+        "frames": 9216,
+        "loop_clock": 0.507460999999832,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.467999994754791,
+        "middle_clock": 20.4591723333333,
+        "pcm_pass": true,
+        "peak": 0.0770012587308884,
+        "rms_l": 0.0184931047260761,
+        "rms_r": 0.0220740400254726,
+        "sync_corrections": 0
+      },
+      {
+        "arena_id": "gala",
+        "frames": 9216,
+        "loop_clock": 0.50018833333345,
+        "loop_pass": true,
+        "loop_playing": true,
+        "loop_position": 0.454666674137115,
+        "middle_clock": 20.4666666666666,
+        "pcm_pass": true,
+        "peak": 0.0583282858133316,
+        "rms_l": 0.0165213700383902,
+        "rms_r": 0.016777103766799,
+        "sync_corrections": 0
+      }
+    ],
+    "passed": true,
+    "errors": []
+  },
+  "limitations": [
+    "No subjective headphone/speaker listening verdict.",
+    "Source MP3 quiet tails were preserved; loop playback does not imply a seamless musical join.",
+    "Browser explicit per-arena pause was not separately tested; native integration covers it.",
+    "Timing measurements are local director CPU samples and exclude first-use synthesis/asset load."
+  ]
+}

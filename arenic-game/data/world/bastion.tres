@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="ArenicArenaDefinition" format=3 uid="uid://byjksstxnn366"]
 
-[ext_resource type="Resource" path="res://data/bosses/warrior.tres" id="1_kcb4a"]
+[ext_resource type="Resource" uid="uid://x2v7ghpw34en" path="res://data/bosses/warrior.tres" id="1_kcb4a"]
 [ext_resource type="Script" uid="uid://dcg8c0soqx1cu" path="res://scripts/world/arena_definition.gd" id="1_os6qy"]
+[ext_resource type="Resource" path="res://data/music/bastion_v3.tres" id="2_tog4o"]
+[ext_resource type="Resource" path="res://data/themes/bastion.tres" id="3_aimjb"]
 
 [resource]
 script = ExtResource("1_os6qy")
@@ -11,4 +13,6 @@ class_id = "warrior"
 class_label = "The Warrior"
 hotkey = "W"
 grid_slot = Vector2i(1, 1)
+visual_theme = ExtResource("3_aimjb")
+music = ExtResource("2_tog4o")
 boss = ExtResource("1_kcb4a")

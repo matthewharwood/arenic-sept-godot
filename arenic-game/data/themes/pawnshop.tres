@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="ArenicArenaTheme" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/themes/arena_theme.gd" id="1_theme"]
+
+[resource]
+script = ExtResource("1_theme")
+theme_id = "ayu_dark"
+arena_id = "pawnshop"
+atmosphere_id = 5
+subtitle = "Quiet bands and passing light"
+palette = {
+"base_100": Vector3(0.162, 0.014, 258.4),
+"base_200": Vector3(0.173, 0.015, 266.7),
+"base_300": Vector3(0.143, 0.015, 255.2),
+"base_content": Vector3(0.798, 0.01, 93.6),
+"primary": Vector3(0.739, 0.125, 225.7),
+"primary_content": Vector3(0.16, 0.05, 225.7),
+"secondary": Vector3(0.824, 0.141, 70.2),
+"secondary_content": Vector3(0.16, 0.056, 70.2),
+"accent": Vector3(0.758, 0.163, 52.4),
+"accent_content": Vector3(0.16, 0.065, 52.4),
+"neutral": Vector3(0.247, 0.02, 264.1),
+"neutral_content": Vector3(0.95, 0.01, 93.6),
+"info": Vector3(0.739, 0.125, 225.7),
+"info_content": Vector3(0.16, 0.05, 225.7),
+"success": Vector3(0.825, 0.175, 125.8),
+"success_content": Vector3(0.16, 0.07, 125.8),
+"warning": Vector3(0.824, 0.141, 70.2),
+"warning_content": Vector3(0.16, 0.056, 70.2),
+"error": Vector3(0.701, 0.157, 18.6),
+"error_content": Vector3(0.16, 0.063, 18.6)
+}
+border = 1.0
+depth = 1.0
+radius_selector = 8.0
+radius_field = 8.0
+radius_box = 16.0
+backdrop_style = 0
+backdrop_scale = 2.5
+backdrop_drift = Vector2(0.000, 0.025)
+backdrop_coverage = 0.50
+backdrop_vignette = 0.45
+backdrop_speed = 0.40
+foreground_style = 5
+foreground_scale = 2.5
+foreground_drift = Vector2(0.030, 0.000)
+foreground_coverage = 0.50
+foreground_vignette = 0.0
+foreground_speed = 0.50
+source_repository = "https://github.com/matthewharwood/arenic"
+source_revision = "60da21575de191461a12f2b2f68a7efd1b254bcd"
+source_palette_path = "crates/arenic_game/src/theme/palettes.rs"
+source_identity_path = "crates/arenic_game/src/arena.rs"
+source_css_path = ""

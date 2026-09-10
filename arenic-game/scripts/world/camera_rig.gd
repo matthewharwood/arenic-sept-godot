@@ -5,6 +5,18 @@ extends Node3D
 ## after acquire_sequence(). Do not animate the Camera3D child or rig position.
 
 signal settled
+signal motion_started(duration: float)
+signal motion_cancelled
+signal motion_advanced(progress: float)
+
+var motion_progress: float = 1.0:
+	set(value):
+		motion_progress = value
+		motion_advanced.emit(value)
+
+var motion_active: bool:
+	get:
+		return _motion != null and _motion.is_valid()
 
 @export var focus_world: Vector3 = Vector3.ZERO:
 	set(value):
@@ -30,7 +42,7 @@ var _camera: Camera3D
 var _sequence_owned: bool = false
 var _motion: Tween
 var _motion_generation: int = 0
-var _projection_queued: bool = false
+var _projection_queued: bool = true
 var _projection_basis: Basis = Basis.IDENTITY
 var _view_insets: Vector4 = Vector4.ZERO # Left, top, right, bottom.
 
@@ -53,6 +65,7 @@ func _ready() -> void:
 	_camera.make_current()
 	set_notify_transform(true)
 	get_viewport().size_changed.connect(_queue_projection)
+	_projection_queued = true
 	_apply_projection()
 
 
@@ -95,24 +108,30 @@ func frame_bounds(bounds: Rect2, animated: bool = true, duration: float = 0.55) 
 	cancel_motion()
 	var center: Vector2 = bounds.get_center()
 	var target: Vector3 = Vector3(center.x, 0.0, center.y)
-	if not animated or duration <= 0.0 or not is_node_ready():
+	if not animated or duration <= 0.0 or not is_node_ready() \
+			or (focus_world.is_equal_approx(target) and view_span.is_equal_approx(bounds.size)):
 		focus_world = target
 		view_span = bounds.size
 		_apply_projection()
 		settled.emit()
 		return
+	motion_progress = 0.0
 	_motion = create_tween().set_parallel(true)
 	_motion.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	_motion.tween_property(self, "focus_world", target, duration)
 	_motion.tween_property(self, "view_span", bounds.size, duration)
+	_motion.tween_property(self, "motion_progress", 1.0, duration).set_trans(Tween.TRANS_LINEAR)
 	_motion.finished.connect(_finish_motion.bind(_motion_generation))
+	motion_started.emit(duration)
 
 
 func cancel_motion() -> void:
 	_motion_generation += 1
 	if _motion != null and _motion.is_valid():
 		_motion.kill()
+		motion_cancelled.emit()
 	_motion = null
+	motion_progress = 1.0
 
 
 func acquire_sequence() -> bool:
@@ -172,9 +191,12 @@ func _queue_projection() -> void:
 
 
 func _apply_projection() -> void:
-	_projection_queued = false
 	if not is_inside_tree() or _camera == null:
 		return
+	# A caller may rotate the rig and query before the transform notification.
+	if not _projection_queued and global_basis.is_equal_approx(_projection_basis):
+		return
+	_projection_queued = false
 	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
 	var rect: Rect2 = Rect2(
 		Vector2(_view_insets.x, _view_insets.y),

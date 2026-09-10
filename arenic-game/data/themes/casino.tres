@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="ArenicArenaTheme" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/themes/arena_theme.gd" id="1_theme"]
+
+[resource]
+script = ExtResource("1_theme")
+theme_id = "rose_pine"
+arena_id = "casino"
+atmosphere_id = 7
+subtitle = "Rose spirals and oblique streaks"
+palette = {
+"base_100": Vector3(0.213, 0.025, 291.1),
+"base_200": Vector3(0.241, 0.032, 289.1),
+"base_300": Vector3(0.271, 0.042, 289.2),
+"base_content": Vector3(0.909, 0.03, 290.0),
+"primary": Vector3(0.843, 0.11, 74.6),
+"primary_content": Vector3(0.16, 0.044, 74.6),
+"secondary": Vector3(0.776, 0.095, 305.0),
+"secondary_content": Vector3(0.16, 0.038, 305.0),
+"accent": Vector3(0.822, 0.054, 209.6),
+"accent_content": Vector3(0.16, 0.022, 209.6),
+"neutral": Vector3(0.271, 0.042, 289.2),
+"neutral_content": Vector3(0.95, 0.01, 290.0),
+"info": Vector3(0.822, 0.054, 209.6),
+"info_content": Vector3(0.16, 0.022, 209.6),
+"success": Vector3(0.528, 0.079, 227.7),
+"success_content": Vector3(0.98, 0.012, 227.7),
+"warning": Vector3(0.843, 0.11, 74.6),
+"warning_content": Vector3(0.16, 0.044, 74.6),
+"error": Vector3(0.698, 0.156, 4.2),
+"error_content": Vector3(0.16, 0.062, 4.2)
+}
+border = 1.0
+depth = 1.0
+radius_selector = 8.0
+radius_field = 8.0
+radius_box = 16.0
+backdrop_style = 3
+backdrop_scale = 2.2
+backdrop_drift = Vector2(0.000, 0.000)
+backdrop_coverage = 0.54
+backdrop_vignette = 0.45
+backdrop_speed = 0.70
+foreground_style = 9
+foreground_scale = 5.0
+foreground_drift = Vector2(0.040, -0.030)
+foreground_coverage = 0.50
+foreground_vignette = 0.0
+foreground_speed = 0.90
+source_repository = "https://github.com/matthewharwood/arenic"
+source_revision = "60da21575de191461a12f2b2f68a7efd1b254bcd"
+source_palette_path = "crates/arenic_game/src/theme/palettes.rs"
+source_identity_path = "crates/arenic_game/src/arena.rs"
+source_css_path = ""

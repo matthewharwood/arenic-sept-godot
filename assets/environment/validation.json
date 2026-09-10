@@ -1,0 +1,353 @@
+{
+  "validated_at_utc": "2026-09-10T15:32:44.128869+00:00",
+  "checks": [
+    "9 saved masters reopened by native Aseprite",
+    "36 native layers, 108 cels, 27 tags",
+    "27 RGBA 76x76 frames; exact fixed atlas regions and pivot 38,38",
+    "At least 3-pixel transparent border; alpha is only 0,90,255",
+    "Native 1x and enlarged contact sheets visually reviewed",
+    "Export-only run preserves all 9 master SHA-256 hashes and reproduces byte-identical PNG and JSON"
+  ],
+  "frames": [
+    {
+      "id": "labyrinth/sakura",
+      "alpha_bbox": [
+        9,
+        7,
+        70,
+        68
+      ],
+      "rgba_colors": 10,
+      "opaque_pixels": 2191,
+      "shadow_pixels": 163
+    },
+    {
+      "id": "labyrinth/torii",
+      "alpha_bbox": [
+        7,
+        19,
+        70,
+        60
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 1835,
+      "shadow_pixels": 155
+    },
+    {
+      "id": "labyrinth/stone_lantern",
+      "alpha_bbox": [
+        9,
+        8,
+        69,
+        69
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 2103,
+      "shadow_pixels": 132
+    },
+    {
+      "id": "guild_house/coffee_rug",
+      "alpha_bbox": [
+        11,
+        10,
+        65,
+        68
+      ],
+      "rgba_colors": 12,
+      "opaque_pixels": 2681,
+      "shadow_pixels": 189
+    },
+    {
+      "id": "guild_house/books",
+      "alpha_bbox": [
+        12,
+        14,
+        67,
+        69
+      ],
+      "rgba_colors": 14,
+      "opaque_pixels": 2363,
+      "shadow_pixels": 155
+    },
+    {
+      "id": "guild_house/hearth",
+      "alpha_bbox": [
+        11,
+        15,
+        67,
+        66
+      ],
+      "rgba_colors": 13,
+      "opaque_pixels": 2539,
+      "shadow_pixels": 140
+    },
+    {
+      "id": "sanctum/reliquary",
+      "alpha_bbox": [
+        14,
+        10,
+        64,
+        69
+      ],
+      "rgba_colors": 9,
+      "opaque_pixels": 2287,
+      "shadow_pixels": 145
+    },
+    {
+      "id": "sanctum/candles",
+      "alpha_bbox": [
+        11,
+        18,
+        67,
+        61
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 1861,
+      "shadow_pixels": 125
+    },
+    {
+      "id": "sanctum/tracery",
+      "alpha_bbox": [
+        8,
+        8,
+        70,
+        71
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 2821,
+      "shadow_pixels": 135
+    },
+    {
+      "id": "mountain/fern",
+      "alpha_bbox": [
+        8,
+        7,
+        69,
+        67
+      ],
+      "rgba_colors": 7,
+      "opaque_pixels": 1842,
+      "shadow_pixels": 264
+    },
+    {
+      "id": "mountain/pine",
+      "alpha_bbox": [
+        8,
+        7,
+        70,
+        72
+      ],
+      "rgba_colors": 8,
+      "opaque_pixels": 1984,
+      "shadow_pixels": 168
+    },
+    {
+      "id": "mountain/mushrooms",
+      "alpha_bbox": [
+        11,
+        14,
+        65,
+        67
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 2121,
+      "shadow_pixels": 136
+    },
+    {
+      "id": "bastion/forge",
+      "alpha_bbox": [
+        10,
+        16,
+        71,
+        66
+      ],
+      "rgba_colors": 13,
+      "opaque_pixels": 2485,
+      "shadow_pixels": 170
+    },
+    {
+      "id": "bastion/anvil",
+      "alpha_bbox": [
+        9,
+        13,
+        67,
+        68
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 2165,
+      "shadow_pixels": 137
+    },
+    {
+      "id": "bastion/shield_rack",
+      "alpha_bbox": [
+        10,
+        16,
+        66,
+        63
+      ],
+      "rgba_colors": 14,
+      "opaque_pixels": 2475,
+      "shadow_pixels": 153
+    },
+    {
+      "id": "pawnshop/crates",
+      "alpha_bbox": [
+        12,
+        15,
+        66,
+        68
+      ],
+      "rgba_colors": 10,
+      "opaque_pixels": 2153,
+      "shadow_pixels": 151
+    },
+    {
+      "id": "pawnshop/lamp",
+      "alpha_bbox": [
+        14,
+        7,
+        63,
+        64
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 1906,
+      "shadow_pixels": 159
+    },
+    {
+      "id": "pawnshop/coins",
+      "alpha_bbox": [
+        12,
+        12,
+        70,
+        69
+      ],
+      "rgba_colors": 10,
+      "opaque_pixels": 1848,
+      "shadow_pixels": 154
+    },
+    {
+      "id": "crucible/crystals",
+      "alpha_bbox": [
+        10,
+        10,
+        67,
+        68
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 2363,
+      "shadow_pixels": 140
+    },
+    {
+      "id": "crucible/alembic",
+      "alpha_bbox": [
+        10,
+        14,
+        68,
+        66
+      ],
+      "rgba_colors": 16,
+      "opaque_pixels": 2850,
+      "shadow_pixels": 162
+    },
+    {
+      "id": "crucible/rune_circle",
+      "alpha_bbox": [
+        9,
+        9,
+        69,
+        70
+      ],
+      "rgba_colors": 11,
+      "opaque_pixels": 2629,
+      "shadow_pixels": 129
+    },
+    {
+      "id": "casino/rose_planter",
+      "alpha_bbox": [
+        11,
+        19,
+        68,
+        64
+      ],
+      "rgba_colors": 14,
+      "opaque_pixels": 2252,
+      "shadow_pixels": 136
+    },
+    {
+      "id": "casino/card_table",
+      "alpha_bbox": [
+        10,
+        14,
+        67,
+        66
+      ],
+      "rgba_colors": 13,
+      "opaque_pixels": 2570,
+      "shadow_pixels": 140
+    },
+    {
+      "id": "casino/chips",
+      "alpha_bbox": [
+        12,
+        10,
+        70,
+        73
+      ],
+      "rgba_colors": 9,
+      "opaque_pixels": 2246,
+      "shadow_pixels": 182
+    },
+    {
+      "id": "gala/music_crystal",
+      "alpha_bbox": [
+        11,
+        9,
+        68,
+        68
+      ],
+      "rgba_colors": 10,
+      "opaque_pixels": 2433,
+      "shadow_pixels": 150
+    },
+    {
+      "id": "gala/turntable",
+      "alpha_bbox": [
+        8,
+        16,
+        70,
+        64
+      ],
+      "rgba_colors": 14,
+      "opaque_pixels": 2806,
+      "shadow_pixels": 166
+    },
+    {
+      "id": "gala/stage_lights",
+      "alpha_bbox": [
+        7,
+        16,
+        71,
+        67
+      ],
+      "rgba_colors": 12,
+      "opaque_pixels": 1921,
+      "shadow_pixels": 300
+    }
+  ],
+  "sha256": {
+    "assets/environment/labyrinth/labyrinth_decorations.aseprite": "95260d317b9aa0d9a5026fe38595417c1afaa95628ce5467524a9910c1426e56",
+    "assets/environment/guild_house/guild_house_decorations.aseprite": "e6d10855a731abb823fce7063200ec43aac5ab8cb57ef859a498d02a78b099f6",
+    "assets/environment/sanctum/sanctum_decorations.aseprite": "322849937b821bb02be23886cef1ec0b7c02d6695e64f04d2ad32b78ec90830d",
+    "assets/environment/mountain/mountain_decorations.aseprite": "d07b057961a6c84dfd4c781150a96eb9d6906c5e7e674909ad184f54eb4ce1eb",
+    "assets/environment/bastion/bastion_decorations.aseprite": "cc45409e526437dc05760eb624beaefba1fd70485e5737d3baea154c06e48e1c",
+    "assets/environment/pawnshop/pawnshop_decorations.aseprite": "5e22dc4bd291db5640570cb39ed1941d18635dcdf14270c5c83c0f67fe8b3f79",
+    "assets/environment/crucible/crucible_decorations.aseprite": "c446d152613efa0d4a52ad41c0c827dd3aa194a9bb3b2160ae071e9a6b920dbd",
+    "assets/environment/casino/casino_decorations.aseprite": "b961d10dcc0a0d9c803de10d66d3fb21c131c1fcbfefc5893c708261617cf218",
+    "assets/environment/gala/gala_decorations.aseprite": "97edd8f15455c323273455611d77bd8adba08f0737f979add2d306211b9d3b6e",
+    "arenic-game/assets/environment/arena_decorations.png": "95b761e68e7a80e44fdbaef09da409e7f0584bf1b1816afd0b6debbe03674790",
+    "arenic-game/assets/environment/arena_decorations.json": "0e3e996ddc8a7c3111f7406bd631b815b2ce8321df4ffa19aa8a2183e168a77f",
+    "assets/environment/palette.oklch.json": "bf6b1217bc22271f7386e1e3a9c72669bfae9b195e5764423d30855b8dde9cb4",
+    "assets/pipeline/build-arena-decorations.lua": "9ee2367b8358b0a74a0b24cf95e7eb962dc16e7815847ce6683fdc4e08a5d5fb"
+  },
+  "runtime_review": "Parent owns Godot import and rendered placement; not performed by asset worker."
+}

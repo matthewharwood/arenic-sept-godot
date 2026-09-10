@@ -1,0 +1,218 @@
+{
+  "date": "2026-09-10",
+  "engine": "Godot 4.7.2 stable",
+  "host_renderer": "macOS / Apple M4 Max / Metal 3.2 / Forward+",
+  "suites": [
+    {
+      "test": "world/grid_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 0.24
+    },
+    {
+      "test": "world/camera_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 0.24
+    },
+    {
+      "test": "world/flow_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 0.62
+    },
+    {
+      "test": "heroes/hero_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 0.64
+    },
+    {
+      "test": "heroes/hero_flow_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 1.13
+    },
+    {
+      "test": "bosses/catalog_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 0.55
+    },
+    {
+      "test": "themes/theme_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 0.43
+    },
+    {
+      "test": "world/arena_tiles_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 0.84
+    },
+    {
+      "test": "themes/presentation_checks",
+      "passed": true,
+      "exit": 0,
+      "seconds": 0.95
+    },
+    {
+      "test": "world/transition_checks",
+      "passed": true,
+      "exit": 0,
+      "assertions": 418
+    }
+  ],
+  "rendered_pixels": {
+    "labyrinth": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "guild_house": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "sanctum": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "mountain": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "bastion": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "pawnshop": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "crucible": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "casino": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "gala": {
+      "native_size": [
+        1280,
+        720
+      ],
+      "isolated_single_pixel_centers": 4
+    },
+    "hero": {
+      "source_frame": "idle_e",
+      "opaque_pixels": 159,
+      "byte_exact_matches": 159,
+      "movement_confirmed_cell": [
+        31,
+        15
+      ]
+    },
+    "motion": {
+      "guild_house_changed_pixels": 311669,
+      "hero_raster_unchanged": true
+    }
+  },
+  "native_ui_flow": "Godot Play \u2192 title Start click \u2192 character selection Start click \u2192 Guild House focus with Tab \u2192 one right-arrow move; hero cell31,15 idle_e",
+  "sampled_performance": {
+    "method": "Two-second samples after warmup at native1280x720, presentation+MCP enabled; local host observation, not a cross-platform budget",
+    "overview": {
+      "fps": 120,
+      "p50_frame_ms": 8.38,
+      "p95_frame_ms": 9.42,
+      "draw_calls": 231
+    },
+    "focused": {
+      "fps": 120,
+      "p50_frame_ms": 8.39,
+      "p95_frame_ms": 8.87,
+      "draw_calls": 41
+    }
+  },
+  "transition_validation": {
+    "title_ink": "Per-arena primary, softened with base_content and secondary; Casino warm Rose Pine gold",
+    "rendered_capture": "images/arena-themes/transition-midpoint.png",
+    "performance_record": "arena-transition-benchmark.json",
+    "effect_intervals": {
+      "copy_enabled_samples": 633,
+      "draw_calls_max": 232,
+      "draw_calls_sum_across_samples": 47228,
+      "engine_fps_last": 120.0,
+      "engine_fps_max": 120.0,
+      "engine_fps_min": 118.0,
+      "frames": 642,
+      "frames_over_16_67_ms": 1,
+      "frames_over_20_ms": 0,
+      "frames_over_33_34_ms": 0,
+      "max_ms": 16.726,
+      "mean_ms": 8.3598691588785,
+      "motion_active_samples": 633,
+      "observed_seconds": 5.367036,
+      "p50_ms": 8.366,
+      "p95_ms": 9.975,
+      "p99_ms": 11.256,
+      "percent_over_16_67_ms": 0.155763239875389,
+      "veil_visible_samples": 633
+    },
+    "first_animated_effect_use": {
+      "cache_coldness_guaranteed": false,
+      "first_8_frame_intervals_ms": [
+        8.445,
+        7.91,
+        9.69,
+        7.615,
+        8.189,
+        7.796,
+        8.827,
+        8.817
+      ],
+      "first_frame_ms": 8.445,
+      "pipeline_after": {
+        "canvas": 5,
+        "draw": 0,
+        "surface": 4
+      },
+      "pipeline_before": {
+        "canvas": 5,
+        "draw": 0,
+        "surface": 4
+      },
+      "pipeline_delta": {
+        "canvas": 0,
+        "draw": 0,
+        "surface": 0
+      },
+      "shader_cache_deleted": false
+    },
+    "scope": "Short local M4 Max / Metal Forward+ pacing sample at 1280x720; VSync, debug build, no cross-platform guarantee."
+  }
+}
