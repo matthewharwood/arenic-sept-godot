@@ -12,6 +12,7 @@
 - Connected regional blending, the rounded coast, glass HUD, seekable cloud clock, and the native-pixel transition copy are documented in [docs/overworld-atmosphere.md](docs/overworld-atmosphere.md). Keep overview presentation derived from actual camera scale, restore exact focused endpoints, and verify rendered coverage when changing screen-copy coordinates or the engine version.
 - Keep UI corners square with zero border radius. HUD strips extend to the viewport edges without outer framing or shadows; retain only their inner separators.
 - Arena music contracts are documented in [docs/arena-music.md](docs/arena-music.md). Keep clocks independent of playback, preserve the two-music-voice pool plus hum, and replace tracks through versioned arena `music` resources.
+- Browser releases and CI gates are documented in [docs/github-pages.md](docs/github-pages.md). Preserve the single-threaded Web preset, test real pointer/keyboard and decoded audio behavior, and keep the private browser probe and editor MCP out of production artifacts. Deploy only the clean site after native and browser checks pass.
 
 ## Tool selection: control of the result comes first
 
