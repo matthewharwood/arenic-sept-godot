@@ -1,0 +1,94 @@
+{ "frames": [
+   {
+    "filename": "feed 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "sourceSize": { "w": 38, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "feed 1.aseprite",
+    "frame": { "x": 38, "y": 0, "w": 38, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "sourceSize": { "w": 38, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "feed 2.aseprite",
+    "frame": { "x": 76, "y": 0, "w": 38, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "sourceSize": { "w": 38, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "feed 3.aseprite",
+    "frame": { "x": 114, "y": 0, "w": 38, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "sourceSize": { "w": 38, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "feed 4.aseprite",
+    "frame": { "x": 152, "y": 0, "w": 38, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "sourceSize": { "w": 38, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "feed 5.aseprite",
+    "frame": { "x": 190, "y": 0, "w": 38, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "sourceSize": { "w": 38, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "feed 6.aseprite",
+    "frame": { "x": 228, "y": 0, "w": 38, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "sourceSize": { "w": 38, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "feed 7.aseprite",
+    "frame": { "x": 266, "y": 0, "w": 38, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 38, "h": 19 },
+    "sourceSize": { "w": 38, "h": 19 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.5-arm64",
+  "image": "abilities__mushroom__fx__feed.png",
+  "format": "RGBA8888",
+  "size": { "w": 304, "h": 19 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "feed", "from": 0, "to": 7, "direction": "forward", "color": "#d4ab48ff" }
+  ],
+  "layers": [
+   { "name": "01 Form and motion", "opacity": 255, "blendMode": "normal" },
+   { "name": "02 Material and motif", "opacity": 255, "blendMode": "normal" },
+   { "name": "03 Light and particles", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "frame", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 38, "h": 19 }, "pivot": {"x": 19, "y": 9 } }] }
+  ]
+ }
+}

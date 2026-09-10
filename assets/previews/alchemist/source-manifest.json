@@ -1,0 +1,5207 @@
+{
+  "abilities/acid_flask/alchemist_acid_flask": {
+    "source": "abilities/acid_flask/alchemist_acid_flask.aseprite",
+    "frames": [
+      {
+        "filename": "alchemist_acid_flask 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_acid_flask 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "alchemist_acid_flask 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_acid_flask 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_acid_flask 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "alchemist_acid_flask 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_acid_flask 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "alchemist_acid_flask 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_acid_flask 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_acid_flask 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "alchemist_acid_flask 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_acid_flask 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "alchemist_acid_flask 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_acid_flask 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_acid_flask 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "alchemist_acid_flask 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_acid_flask 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "alchemist_acid_flask 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_acid_flask 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_acid_flask 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_acid_flask 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      }
+    ],
+    "tags": [
+      {
+        "name": "acid_flask_n",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_draw",
+        "from": 0,
+        "to": 2,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_release",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_recover",
+        "from": 4,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "acid_flask_e",
+        "from": 8,
+        "to": 15,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_draw",
+        "from": 8,
+        "to": 10,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_release",
+        "from": 11,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_recover",
+        "from": 12,
+        "to": 15,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "acid_flask_s",
+        "from": 16,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_draw",
+        "from": 16,
+        "to": 18,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_release",
+        "from": 19,
+        "to": 19,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_recover",
+        "from": 20,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "acid_flask_w",
+        "from": 24,
+        "to": 31,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_draw",
+        "from": 24,
+        "to": 26,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_release",
+        "from": 27,
+        "to": 27,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_recover",
+        "from": 28,
+        "to": 31,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/acid_flask/fx/acid_pool": {
+    "source": "abilities/acid_flask/fx/acid_pool.aseprite",
+    "frames": [
+      {
+        "filename": "acid_pool 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 160
+      },
+      {
+        "filename": "acid_pool 1.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 170
+      },
+      {
+        "filename": "acid_pool 2.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 170
+      },
+      {
+        "filename": "acid_pool 3.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 160
+      },
+      {
+        "filename": "acid_pool 4.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 170
+      },
+      {
+        "filename": "acid_pool 5.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 170
+      }
+    ],
+    "tags": [
+      {
+        "name": "bubble",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      19,
+      19
+    ]
+  },
+  "abilities/acid_flask/fx/flask": {
+    "source": "abilities/acid_flask/fx/flask.aseprite",
+    "frames": [
+      {
+        "filename": "flask 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "flask 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "flask 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "flask 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "flask 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "flask 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "flask 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "flask 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      }
+    ],
+    "tags": [
+      {
+        "name": "flight",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/acid_flask/fx/shatter": {
+    "source": "abilities/acid_flask/fx/shatter.aseprite",
+    "frames": [
+      {
+        "filename": "shatter 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 50
+      },
+      {
+        "filename": "shatter 1.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 70
+      },
+      {
+        "filename": "shatter 2.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 90
+      },
+      {
+        "filename": "shatter 3.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 110
+      },
+      {
+        "filename": "shatter 4.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 130
+      },
+      {
+        "filename": "shatter 5.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 150
+      }
+    ],
+    "tags": [
+      {
+        "name": "shatter",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      19,
+      19
+    ]
+  },
+  "abilities/ironskin_draft/alchemist_ironskin_draft": {
+    "source": "abilities/ironskin_draft/alchemist_ironskin_draft.aseprite",
+    "frames": [
+      {
+        "filename": "alchemist_ironskin_draft 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_ironskin_draft 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_ironskin_draft 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_ironskin_draft 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_ironskin_draft 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_ironskin_draft 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_ironskin_draft 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_ironskin_draft 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_ironskin_draft 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_ironskin_draft 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_ironskin_draft 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_ironskin_draft 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_ironskin_draft 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_ironskin_draft 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_ironskin_draft 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_ironskin_draft 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_ironskin_draft 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_ironskin_draft 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_ironskin_draft 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_ironskin_draft 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "alchemist_ironskin_draft 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_ironskin_draft 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_ironskin_draft 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_ironskin_draft 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      }
+    ],
+    "tags": [
+      {
+        "name": "ironskin_draft_n",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_drink",
+        "from": 0,
+        "to": 3,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_apply",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_recover",
+        "from": 4,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "ironskin_draft_e",
+        "from": 6,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_drink",
+        "from": 6,
+        "to": 9,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_apply",
+        "from": 6,
+        "to": 6,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_recover",
+        "from": 10,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "ironskin_draft_s",
+        "from": 12,
+        "to": 17,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_drink",
+        "from": 12,
+        "to": 15,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_apply",
+        "from": 12,
+        "to": 12,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_recover",
+        "from": 16,
+        "to": 17,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "ironskin_draft_w",
+        "from": 18,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_drink",
+        "from": 18,
+        "to": 21,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_apply",
+        "from": 18,
+        "to": 18,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_recover",
+        "from": 22,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/ironskin_draft/fx/hardening": {
+    "source": "abilities/ironskin_draft/fx/hardening.aseprite",
+    "frames": [
+      {
+        "filename": "hardening 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "hardening 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "hardening 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "hardening 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "hardening 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "hardening 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      }
+    ],
+    "tags": [
+      {
+        "name": "harden",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/ironskin_draft/fx/iron_aura": {
+    "source": "abilities/ironskin_draft/fx/iron_aura.aseprite",
+    "frames": [
+      {
+        "filename": "iron_aura 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "iron_aura 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "iron_aura 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "iron_aura 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "iron_aura 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "iron_aura 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      }
+    ],
+    "tags": [
+      {
+        "name": "protected",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/siphon/alchemist_siphon": {
+    "source": "abilities/siphon/alchemist_siphon.aseprite",
+    "frames": [
+      {
+        "filename": "alchemist_siphon 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_siphon 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "alchemist_siphon 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_siphon 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "alchemist_siphon 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_siphon 32.aseprite",
+        "frame": {
+          "x": 608,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "alchemist_siphon 33.aseprite",
+        "frame": {
+          "x": 627,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 34.aseprite",
+        "frame": {
+          "x": 646,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 35.aseprite",
+        "frame": {
+          "x": 665,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 36.aseprite",
+        "frame": {
+          "x": 684,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 37.aseprite",
+        "frame": {
+          "x": 703,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_siphon 38.aseprite",
+        "frame": {
+          "x": 722,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 39.aseprite",
+        "frame": {
+          "x": 741,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 40.aseprite",
+        "frame": {
+          "x": 760,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 41.aseprite",
+        "frame": {
+          "x": 779,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_siphon 42.aseprite",
+        "frame": {
+          "x": 798,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "alchemist_siphon 43.aseprite",
+        "frame": {
+          "x": 817,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      }
+    ],
+    "tags": [
+      {
+        "name": "siphon_n",
+        "from": 0,
+        "to": 10,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_establish",
+        "from": 0,
+        "to": 4,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_channel",
+        "from": 5,
+        "to": 8,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_release",
+        "from": 9,
+        "to": 10,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "siphon_e",
+        "from": 11,
+        "to": 21,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_establish",
+        "from": 11,
+        "to": 15,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_channel",
+        "from": 16,
+        "to": 19,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_release",
+        "from": 20,
+        "to": 21,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "siphon_s",
+        "from": 22,
+        "to": 32,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_establish",
+        "from": 22,
+        "to": 26,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_channel",
+        "from": 27,
+        "to": 30,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_release",
+        "from": 31,
+        "to": 32,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "siphon_w",
+        "from": 33,
+        "to": 43,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_establish",
+        "from": 33,
+        "to": 37,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_channel",
+        "from": 38,
+        "to": 41,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_release",
+        "from": 42,
+        "to": 43,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/siphon/fx/drain_contact": {
+    "source": "abilities/siphon/fx/drain_contact.aseprite",
+    "frames": [
+      {
+        "filename": "drain_contact 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "drain_contact 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "drain_contact 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "drain_contact 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "drain_contact 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      }
+    ],
+    "tags": [
+      {
+        "name": "contact",
+        "from": 0,
+        "to": 4,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/siphon/fx/gain_aura": {
+    "source": "abilities/siphon/fx/gain_aura.aseprite",
+    "frames": [
+      {
+        "filename": "gain_aura 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "gain_aura 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "gain_aura 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "gain_aura 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      }
+    ],
+    "tags": [
+      {
+        "name": "gain",
+        "from": 0,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/siphon/fx/life_link": {
+    "source": "abilities/siphon/fx/life_link.aseprite",
+    "frames": [
+      {
+        "filename": "life_link 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "life_link 1.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "life_link 2.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "life_link 3.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "life_link 4.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "life_link 5.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "life_link 6.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 130
+      },
+      {
+        "filename": "life_link 7.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 150
+      }
+    ],
+    "tags": [
+      {
+        "name": "drain",
+        "from": 0,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dissipate",
+        "from": 4,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      1,
+      9
+    ]
+  },
+  "abilities/transmute/alchemist_transmute": {
+    "source": "abilities/transmute/alchemist_transmute.aseprite",
+    "frames": [
+      {
+        "filename": "alchemist_transmute 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "alchemist_transmute 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_transmute 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      },
+      {
+        "filename": "alchemist_transmute 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_transmute 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "alchemist_transmute 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_transmute 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      },
+      {
+        "filename": "alchemist_transmute 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_transmute 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "alchemist_transmute 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_transmute 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      },
+      {
+        "filename": "alchemist_transmute 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist_transmute 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 32.aseprite",
+        "frame": {
+          "x": 608,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 33.aseprite",
+        "frame": {
+          "x": 627,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 34.aseprite",
+        "frame": {
+          "x": 646,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 35.aseprite",
+        "frame": {
+          "x": 665,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "alchemist_transmute 36.aseprite",
+        "frame": {
+          "x": 684,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "alchemist_transmute 37.aseprite",
+        "frame": {
+          "x": 703,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "alchemist_transmute 38.aseprite",
+        "frame": {
+          "x": 722,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      },
+      {
+        "filename": "alchemist_transmute 39.aseprite",
+        "frame": {
+          "x": 741,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      }
+    ],
+    "tags": [
+      {
+        "name": "transmute_n",
+        "from": 0,
+        "to": 9,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_channel",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_resolve",
+        "from": 6,
+        "to": 6,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_recover",
+        "from": 7,
+        "to": 9,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "transmute_e",
+        "from": 10,
+        "to": 19,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_channel",
+        "from": 10,
+        "to": 15,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_resolve",
+        "from": 16,
+        "to": 16,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_recover",
+        "from": 17,
+        "to": 19,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "transmute_s",
+        "from": 20,
+        "to": 29,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_channel",
+        "from": 20,
+        "to": 25,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_resolve",
+        "from": 26,
+        "to": 26,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_recover",
+        "from": 27,
+        "to": 29,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "transmute_w",
+        "from": 30,
+        "to": 39,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_channel",
+        "from": 30,
+        "to": 35,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_resolve",
+        "from": 36,
+        "to": 36,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_recover",
+        "from": 37,
+        "to": 39,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/transmute/fx/gold_link": {
+    "source": "abilities/transmute/fx/gold_link.aseprite",
+    "frames": [
+      {
+        "filename": "gold_link 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "gold_link 1.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "gold_link 2.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 250
+      }
+    ],
+    "tags": [
+      {
+        "name": "channel",
+        "from": 0,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      1,
+      9
+    ]
+  },
+  "abilities/transmute/fx/transmutation": {
+    "source": "abilities/transmute/fx/transmutation.aseprite",
+    "frames": [
+      {
+        "filename": "transmutation 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "transmutation 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "transmutation 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "transmutation 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "transmutation 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      }
+    ],
+    "tags": [
+      {
+        "name": "resolve",
+        "from": 0,
+        "to": 4,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "alchemist": {
+    "source": "alchemist.aseprite",
+    "frames": [
+      {
+        "filename": "alchemist 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "alchemist 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      }
+    ],
+    "tags": [
+      {
+        "name": "idle_n",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "idle_e",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "idle_s",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "idle_w",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://c6s53833mvcxq"]
+
+[ext_resource type="Texture2D" uid="uid://caa1wei0i7qnk" path="res://assets/portraits/alchemist.png" id="1_tg5kp"]
+
+[resource]
+atlas = ExtResource("1_tg5kp")
+region = Rect2(62, 12, 901, 1503)
+filter_clip = true

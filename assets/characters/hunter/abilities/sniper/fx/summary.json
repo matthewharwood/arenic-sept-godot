@@ -1,0 +1,268 @@
+{
+  "final_game_exports": false,
+  "preview_only": true,
+  "schema": "arenic.hunter.fx.source.v2",
+  "sources": [
+    {
+      "ability": "sniper",
+      "canvas": [
+        19,
+        9
+      ],
+      "contact_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/projectile-contact-4x.png",
+      "frame_durations_ms": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "frame_stats": [
+        {
+          "edge_pixels": 0,
+          "frame": 1,
+          "opaque_pixels": 33
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 2,
+          "opaque_pixels": 31
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 3,
+          "opaque_pixels": 31
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 4,
+          "opaque_pixels": 30
+        }
+      ],
+      "gif_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/projectile.gif",
+      "layers": [
+        "Velocity trail",
+        "Precision arrow",
+        "Head glint"
+      ],
+      "name": "projectile",
+      "palette_extra_colors": false,
+      "palette_source": "assets/palettes/hunter.oklch.json",
+      "path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/projectile.aseprite",
+      "pivot": [
+        17,
+        4
+      ],
+      "pivot_slice": "frame",
+      "preview_frames": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/frames/projectile/",
+      "tags": [
+        {
+          "duration_ms": 200,
+          "from": 1,
+          "loop": true,
+          "name": "flight_e",
+          "to": 4
+        }
+      ],
+      "tile_size_px": 19,
+      "use": "Straight-down single precision arrow. East/right; fixed tip(17,4). Gameplay sets motion/travel time; base shot only.",
+      "verified": {
+        "binary_alpha": true,
+        "clear_canvas_edges": true,
+        "fixed_pivot": true,
+        "mcp_gif_frame_timing": true,
+        "saved_readback": true,
+        "source_palette_only": true
+      },
+      "view": "straight_down_orthographic"
+    },
+    {
+      "ability": "sniper",
+      "canvas": [
+        19,
+        19
+      ],
+      "contact_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/impact-contact-4x.png",
+      "frame_durations_ms": [
+        40,
+        60,
+        80,
+        100,
+        120,
+        100
+      ],
+      "frame_stats": [
+        {
+          "edge_pixels": 0,
+          "frame": 1,
+          "opaque_pixels": 17
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 2,
+          "opaque_pixels": 53
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 3,
+          "opaque_pixels": 26
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 4,
+          "opaque_pixels": 14
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 5,
+          "opaque_pixels": 4
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 6,
+          "opaque_pixels": 0
+        }
+      ],
+      "gif_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/impact.gif",
+      "layers": [
+        "Radial gold shards",
+        "Precision flash",
+        "Outward sparks"
+      ],
+      "name": "impact",
+      "palette_extra_colors": false,
+      "palette_source": "assets/palettes/hunter.oklch.json",
+      "path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/impact.aseprite",
+      "pivot": [
+        9,
+        9
+      ],
+      "pivot_slice": "frame",
+      "preview_frames": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/frames/impact/",
+      "tags": [
+        {
+          "duration_ms": 500,
+          "from": 1,
+          "loop": false,
+          "name": "impact",
+          "to": 6
+        }
+      ],
+      "tile_size_px": 19,
+      "use": "Straight-down cream/gold precision radial burst centered at tile hit. 500ms once; last frame clear. No critical or chaining extras.",
+      "verified": {
+        "binary_alpha": true,
+        "clear_canvas_edges": true,
+        "fixed_pivot": true,
+        "mcp_gif_frame_timing": true,
+        "saved_readback": true,
+        "source_palette_only": true
+      },
+      "view": "straight_down_orthographic"
+    },
+    {
+      "ability": "sniper",
+      "canvas": [
+        19,
+        19
+      ],
+      "contact_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/reticle-contact-4x.png",
+      "frame_durations_ms": [
+        80,
+        80,
+        80,
+        80,
+        80,
+        100,
+        160,
+        160
+      ],
+      "frame_stats": [
+        {
+          "edge_pixels": 0,
+          "frame": 1,
+          "opaque_pixels": 12
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 2,
+          "opaque_pixels": 12
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 3,
+          "opaque_pixels": 16
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 4,
+          "opaque_pixels": 16
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 5,
+          "opaque_pixels": 16
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 6,
+          "opaque_pixels": 21
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 7,
+          "opaque_pixels": 21
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 8,
+          "opaque_pixels": 17
+        }
+      ],
+      "gif_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/reticle.gif",
+      "layers": [
+        "Reticle brackets",
+        "Focus ticks",
+        "Lock glint"
+      ],
+      "name": "reticle",
+      "palette_extra_colors": false,
+      "palette_source": "assets/palettes/hunter.oklch.json",
+      "path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/reticle.aseprite",
+      "pivot": [
+        9,
+        9
+      ],
+      "pivot_slice": "frame",
+      "preview_frames": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/sniper/fx/previews/frames/reticle/",
+      "tags": [
+        {
+          "duration_ms": 500,
+          "from": 1,
+          "loop": false,
+          "name": "lock_on",
+          "to": 6
+        },
+        {
+          "duration_ms": 320,
+          "from": 7,
+          "loop": true,
+          "name": "locked_hold",
+          "to": 8
+        }
+      ],
+      "tile_size_px": 19,
+      "use": "Straight-down target-tile reticle centered(9,9). Closes in500ms aim. Optionalhold does not extend aim; remove on release/cancel.",
+      "verified": {
+        "binary_alpha": true,
+        "clear_canvas_edges": true,
+        "fixed_pivot": true,
+        "mcp_gif_frame_timing": true,
+        "saved_readback": true,
+        "source_palette_only": true
+      },
+      "view": "straight_down_orthographic"
+    }
+  ],
+  "tile_size_px": 19,
+  "view": "straight_down_orthographic"
+}

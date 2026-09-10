@@ -1,0 +1,5202 @@
+{
+  "abilities/barrier/cardinal_barrier": {
+    "source": "abilities/barrier/cardinal_barrier.aseprite",
+    "frames": [
+      {
+        "filename": "cardinal_barrier 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_barrier 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_barrier 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_barrier 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_barrier 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_barrier 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_barrier 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_barrier 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_barrier 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_barrier 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_barrier 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_barrier 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_barrier 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_barrier 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_barrier 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_barrier 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_barrier 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_barrier 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_barrier 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_barrier 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_barrier 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_barrier 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_barrier 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_barrier 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      }
+    ],
+    "tags": [
+      {
+        "name": "barrier_n",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_apply",
+        "from": 0,
+        "to": 2,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_recover",
+        "from": 3,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "barrier_e",
+        "from": 6,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_apply",
+        "from": 6,
+        "to": 8,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_recover",
+        "from": 9,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "barrier_s",
+        "from": 12,
+        "to": 17,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_apply",
+        "from": 12,
+        "to": 14,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_recover",
+        "from": 15,
+        "to": 17,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "barrier_w",
+        "from": 18,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_apply",
+        "from": 18,
+        "to": 20,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_recover",
+        "from": 21,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/barrier/fx/barrier_shell": {
+    "source": "abilities/barrier/fx/barrier_shell.aseprite",
+    "frames": [
+      {
+        "filename": "barrier_shell 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "barrier_shell 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "barrier_shell 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "barrier_shell 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "barrier_shell 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "barrier_shell 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      }
+    ],
+    "tags": [
+      {
+        "name": "protected",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/barrier/fx/blessing": {
+    "source": "abilities/barrier/fx/blessing.aseprite",
+    "frames": [
+      {
+        "filename": "blessing 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "blessing 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "blessing 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "blessing 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "blessing 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "blessing 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      }
+    ],
+    "tags": [
+      {
+        "name": "apply",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/beam/cardinal_beam": {
+    "source": "abilities/beam/cardinal_beam.aseprite",
+    "frames": [
+      {
+        "filename": "cardinal_beam 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "cardinal_beam 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_beam 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_beam 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_beam 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "cardinal_beam 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_beam 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_beam 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_beam 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "cardinal_beam 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_beam 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_beam 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_beam 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_beam 32.aseprite",
+        "frame": {
+          "x": 608,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "cardinal_beam 33.aseprite",
+        "frame": {
+          "x": 627,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_beam 34.aseprite",
+        "frame": {
+          "x": 646,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_beam 35.aseprite",
+        "frame": {
+          "x": 665,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      }
+    ],
+    "tags": [
+      {
+        "name": "beam_n",
+        "from": 0,
+        "to": 8,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_channel",
+        "from": 0,
+        "to": 4,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_release",
+        "from": 5,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_recover",
+        "from": 6,
+        "to": 8,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "beam_e",
+        "from": 9,
+        "to": 17,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_channel",
+        "from": 9,
+        "to": 13,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_release",
+        "from": 14,
+        "to": 14,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_recover",
+        "from": 15,
+        "to": 17,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "beam_s",
+        "from": 18,
+        "to": 26,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_channel",
+        "from": 18,
+        "to": 22,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_release",
+        "from": 23,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_recover",
+        "from": 24,
+        "to": 26,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "beam_w",
+        "from": 27,
+        "to": 35,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_channel",
+        "from": 27,
+        "to": 31,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_release",
+        "from": 32,
+        "to": 32,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_recover",
+        "from": 33,
+        "to": 35,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/beam/fx/radiant_beam": {
+    "source": "abilities/beam/fx/radiant_beam.aseprite",
+    "frames": [
+      {
+        "filename": "radiant_beam 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 152,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "radiant_beam 1.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 152,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "radiant_beam 2.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 152,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "radiant_beam 3.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 152,
+          "h": 19
+        },
+        "duration": 260
+      },
+      {
+        "filename": "radiant_beam 4.aseprite",
+        "frame": {
+          "x": 608,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 152,
+          "h": 19
+        },
+        "duration": 400
+      },
+      {
+        "filename": "radiant_beam 5.aseprite",
+        "frame": {
+          "x": 760,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 152,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 152,
+          "h": 19
+        },
+        "duration": 500
+      }
+    ],
+    "tags": [
+      {
+        "name": "fire",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      1,
+      9
+    ]
+  },
+  "abilities/beam/fx/radiant_hit": {
+    "source": "abilities/beam/fx/radiant_hit.aseprite",
+    "frames": [
+      {
+        "filename": "radiant_hit 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "radiant_hit 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "radiant_hit 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "radiant_hit 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "radiant_hit 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      }
+    ],
+    "tags": [
+      {
+        "name": "contact",
+        "from": 0,
+        "to": 4,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/heal/cardinal_heal": {
+    "source": "abilities/heal/cardinal_heal.aseprite",
+    "frames": [
+      {
+        "filename": "cardinal_heal 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_heal 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_heal 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_heal 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_heal 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_heal 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_heal 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_heal 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "cardinal_heal 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 32.aseprite",
+        "frame": {
+          "x": 608,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 33.aseprite",
+        "frame": {
+          "x": 627,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal_heal 34.aseprite",
+        "frame": {
+          "x": 646,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_heal 35.aseprite",
+        "frame": {
+          "x": 665,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      }
+    ],
+    "tags": [
+      {
+        "name": "heal_n",
+        "from": 0,
+        "to": 8,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_connect",
+        "from": 0,
+        "to": 2,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_channel",
+        "from": 3,
+        "to": 6,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_release",
+        "from": 7,
+        "to": 8,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "heal_e",
+        "from": 9,
+        "to": 17,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_connect",
+        "from": 9,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_channel",
+        "from": 12,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_release",
+        "from": 16,
+        "to": 17,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "heal_s",
+        "from": 18,
+        "to": 26,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_connect",
+        "from": 18,
+        "to": 20,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_channel",
+        "from": 21,
+        "to": 24,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_release",
+        "from": 25,
+        "to": 26,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "heal_w",
+        "from": 27,
+        "to": 35,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_connect",
+        "from": 27,
+        "to": 29,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_channel",
+        "from": 30,
+        "to": 33,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_release",
+        "from": 34,
+        "to": 35,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/heal/fx/healing_aura": {
+    "source": "abilities/heal/fx/healing_aura.aseprite",
+    "frames": [
+      {
+        "filename": "healing_aura 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "healing_aura 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "healing_aura 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "healing_aura 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "healing_aura 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "healing_aura 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      }
+    ],
+    "tags": [
+      {
+        "name": "restore",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/heal/fx/life_stream": {
+    "source": "abilities/heal/fx/life_stream.aseprite",
+    "frames": [
+      {
+        "filename": "life_stream 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "life_stream 1.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "life_stream 2.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "life_stream 3.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "life_stream 4.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "life_stream 5.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "life_stream 6.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 130
+      },
+      {
+        "filename": "life_stream 7.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 76,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 76,
+          "h": 19
+        },
+        "duration": 150
+      }
+    ],
+    "tags": [
+      {
+        "name": "transfer",
+        "from": 0,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dissipate",
+        "from": 4,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      1,
+      9
+    ]
+  },
+  "abilities/heal/fx/receiving_glow": {
+    "source": "abilities/heal/fx/receiving_glow.aseprite",
+    "frames": [
+      {
+        "filename": "receiving_glow 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 60
+      },
+      {
+        "filename": "receiving_glow 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "receiving_glow 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "receiving_glow 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "receiving_glow 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      }
+    ],
+    "tags": [
+      {
+        "name": "receive",
+        "from": 0,
+        "to": 4,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/resurrect/cardinal_resurrect": {
+    "source": "abilities/resurrect/cardinal_resurrect.aseprite",
+    "frames": [
+      {
+        "filename": "cardinal_resurrect 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_resurrect 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_resurrect 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      },
+      {
+        "filename": "cardinal_resurrect 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "cardinal_resurrect 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_resurrect 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_resurrect 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      },
+      {
+        "filename": "cardinal_resurrect 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "cardinal_resurrect 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 32.aseprite",
+        "frame": {
+          "x": 608,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_resurrect 33.aseprite",
+        "frame": {
+          "x": 627,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_resurrect 34.aseprite",
+        "frame": {
+          "x": 646,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      },
+      {
+        "filename": "cardinal_resurrect 35.aseprite",
+        "frame": {
+          "x": 665,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      },
+      {
+        "filename": "cardinal_resurrect 36.aseprite",
+        "frame": {
+          "x": 684,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 37.aseprite",
+        "frame": {
+          "x": 703,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 38.aseprite",
+        "frame": {
+          "x": 722,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 39.aseprite",
+        "frame": {
+          "x": 741,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 40.aseprite",
+        "frame": {
+          "x": 760,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 41.aseprite",
+        "frame": {
+          "x": 779,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 42.aseprite",
+        "frame": {
+          "x": 798,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 43.aseprite",
+        "frame": {
+          "x": 817,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 250
+      },
+      {
+        "filename": "cardinal_resurrect 44.aseprite",
+        "frame": {
+          "x": 836,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "cardinal_resurrect 45.aseprite",
+        "frame": {
+          "x": 855,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "cardinal_resurrect 46.aseprite",
+        "frame": {
+          "x": 874,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 140
+      },
+      {
+        "filename": "cardinal_resurrect 47.aseprite",
+        "frame": {
+          "x": 893,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 180
+      }
+    ],
+    "tags": [
+      {
+        "name": "resurrect_n",
+        "from": 0,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_channel",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_revive",
+        "from": 8,
+        "to": 8,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "n_recover",
+        "from": 9,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "resurrect_e",
+        "from": 12,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_channel",
+        "from": 12,
+        "to": 19,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_revive",
+        "from": 20,
+        "to": 20,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "e_recover",
+        "from": 21,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "resurrect_s",
+        "from": 24,
+        "to": 35,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_channel",
+        "from": 24,
+        "to": 31,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_revive",
+        "from": 32,
+        "to": 32,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "s_recover",
+        "from": 33,
+        "to": 35,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "resurrect_w",
+        "from": 36,
+        "to": 47,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_channel",
+        "from": 36,
+        "to": 43,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_revive",
+        "from": 44,
+        "to": 44,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      },
+      {
+        "name": "w_recover",
+        "from": 45,
+        "to": 47,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/resurrect/fx/revival_wave": {
+    "source": "abilities/resurrect/fx/revival_wave.aseprite",
+    "frames": [
+      {
+        "filename": "revival_wave 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 60
+      },
+      {
+        "filename": "revival_wave 1.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 80
+      },
+      {
+        "filename": "revival_wave 2.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      },
+      {
+        "filename": "revival_wave 3.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 120
+      },
+      {
+        "filename": "revival_wave 4.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 160
+      },
+      {
+        "filename": "revival_wave 5.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 200
+      },
+      {
+        "filename": "revival_wave 6.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 280
+      }
+    ],
+    "tags": [
+      {
+        "name": "revive",
+        "from": 0,
+        "to": 6,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      19,
+      19
+    ]
+  },
+  "abilities/resurrect/fx/vision_aura": {
+    "source": "abilities/resurrect/fx/vision_aura.aseprite",
+    "frames": [
+      {
+        "filename": "vision_aura 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "vision_aura 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "vision_aura 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "vision_aura 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "vision_aura 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      },
+      {
+        "filename": "vision_aura 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 170
+      }
+    ],
+    "tags": [
+      {
+        "name": "vision",
+        "from": 0,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "cardinal": {
+    "source": "cardinal.aseprite",
+    "frames": [
+      {
+        "filename": "cardinal 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "cardinal 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      }
+    ],
+    "tags": [
+      {
+        "name": "idle_n",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "idle_e",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "idle_s",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "idle_w",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  }
+}

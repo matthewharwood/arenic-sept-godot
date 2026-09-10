@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArenicClassAbility" format=3 uid="uid://dkvgiox6ssa62"]
+
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_xk4a4"]
+
+[resource]
+script = ExtResource("1_xk4a4")
+title = "Acid Flask"
+description = "Throw a bottle of acid onto a target tile, dealing damage over time to enemies passing through."

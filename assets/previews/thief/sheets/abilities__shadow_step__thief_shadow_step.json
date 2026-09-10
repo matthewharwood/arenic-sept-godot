@@ -1,0 +1,329 @@
+{ "frames": [
+   {
+    "filename": "thief_shadow_step 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 1.aseprite",
+    "frame": { "x": 19, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 2.aseprite",
+    "frame": { "x": 38, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 3.aseprite",
+    "frame": { "x": 57, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 4.aseprite",
+    "frame": { "x": 76, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "thief_shadow_step 5.aseprite",
+    "frame": { "x": 95, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "thief_shadow_step 6.aseprite",
+    "frame": { "x": 114, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "thief_shadow_step 7.aseprite",
+    "frame": { "x": 133, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "thief_shadow_step 8.aseprite",
+    "frame": { "x": 152, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 9.aseprite",
+    "frame": { "x": 171, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 10.aseprite",
+    "frame": { "x": 190, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 11.aseprite",
+    "frame": { "x": 209, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 12.aseprite",
+    "frame": { "x": 228, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "thief_shadow_step 13.aseprite",
+    "frame": { "x": 247, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "thief_shadow_step 14.aseprite",
+    "frame": { "x": 266, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "thief_shadow_step 15.aseprite",
+    "frame": { "x": 285, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "thief_shadow_step 16.aseprite",
+    "frame": { "x": 304, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 17.aseprite",
+    "frame": { "x": 323, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 18.aseprite",
+    "frame": { "x": 342, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 19.aseprite",
+    "frame": { "x": 361, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 20.aseprite",
+    "frame": { "x": 380, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "thief_shadow_step 21.aseprite",
+    "frame": { "x": 399, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "thief_shadow_step 22.aseprite",
+    "frame": { "x": 418, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "thief_shadow_step 23.aseprite",
+    "frame": { "x": 437, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "thief_shadow_step 24.aseprite",
+    "frame": { "x": 456, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 25.aseprite",
+    "frame": { "x": 475, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 26.aseprite",
+    "frame": { "x": 494, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 27.aseprite",
+    "frame": { "x": 513, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 50
+   },
+   {
+    "filename": "thief_shadow_step 28.aseprite",
+    "frame": { "x": 532, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "thief_shadow_step 29.aseprite",
+    "frame": { "x": 551, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "thief_shadow_step 30.aseprite",
+    "frame": { "x": 570, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "thief_shadow_step 31.aseprite",
+    "frame": { "x": 589, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.5-arm64",
+  "image": "abilities__shadow_step__thief_shadow_step.png",
+  "format": "RGBA8888",
+  "size": { "w": 608, "h": 19 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "shadow_step_n", "from": 0, "to": 7, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "n_depart", "from": 0, "to": 1, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "n_travel", "from": 2, "to": 3, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "n_arrive", "from": 4, "to": 7, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "shadow_step_e", "from": 8, "to": 15, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "e_depart", "from": 8, "to": 9, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "e_travel", "from": 10, "to": 11, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "e_arrive", "from": 12, "to": 15, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "shadow_step_s", "from": 16, "to": 23, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "s_depart", "from": 16, "to": 17, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "s_travel", "from": 18, "to": 19, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "s_arrive", "from": 20, "to": 23, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "shadow_step_w", "from": 24, "to": 31, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "w_depart", "from": 24, "to": 25, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "w_travel", "from": 26, "to": 27, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "w_arrive", "from": 28, "to": 31, "direction": "forward", "repeat": "1", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "01 Feline tail and stance", "opacity": 255, "blendMode": "normal" },
+   { "name": "02 Linen and gold shoulders", "opacity": 255, "blendMode": "normal" },
+   { "name": "03 Arms and hands", "opacity": 255, "blendMode": "normal" },
+   { "name": "04 Auburn ponytail", "opacity": 255, "blendMode": "normal" },
+   { "name": "05 Cat crown and ears", "opacity": 255, "blendMode": "normal" },
+   { "name": "06 Paired daggers", "opacity": 255, "blendMode": "normal" },
+   { "name": "07 Ability accents", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "frame", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 19, "h": 19 }, "pivot": {"x": 9, "y": 9 } }] }
+  ]
+ }
+}

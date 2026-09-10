@@ -1,0 +1,168 @@
+{
+  "color_space": "oklch",
+  "alpha": 1,
+  "reference": "assets/bosses/portraits/warrior.png",
+  "notes": "Authored palette values; conversion to RGBA happens only at the Aseprite boundary. Transparent palette entry zero is the file-format boundary.",
+  "colors": [
+    {
+      "id": "ink",
+      "oklch": [
+        0.13,
+        0.022,
+        295
+      ]
+    },
+    {
+      "id": "dark",
+      "oklch": [
+        0.21,
+        0.035,
+        290
+      ]
+    },
+    {
+      "id": "plumDeep",
+      "oklch": [
+        0.28,
+        0.043,
+        310
+      ]
+    },
+    {
+      "id": "plum",
+      "oklch": [
+        0.37,
+        0.052,
+        315
+      ]
+    },
+    {
+      "id": "plumLight",
+      "oklch": [
+        0.47,
+        0.05,
+        319
+      ]
+    },
+    {
+      "id": "plumHot",
+      "oklch": [
+        0.6,
+        0.042,
+        324
+      ]
+    },
+    {
+      "id": "goldDeep",
+      "oklch": [
+        0.31,
+        0.062,
+        65
+      ]
+    },
+    {
+      "id": "goldShadow",
+      "oklch": [
+        0.46,
+        0.095,
+        72
+      ]
+    },
+    {
+      "id": "gold",
+      "oklch": [
+        0.64,
+        0.13,
+        80
+      ]
+    },
+    {
+      "id": "goldLight",
+      "oklch": [
+        0.79,
+        0.125,
+        87
+      ]
+    },
+    {
+      "id": "goldHot",
+      "oklch": [
+        0.91,
+        0.075,
+        92
+      ]
+    },
+    {
+      "id": "redDark",
+      "oklch": [
+        0.24,
+        0.075,
+        25
+      ]
+    },
+    {
+      "id": "red",
+      "oklch": [
+        0.39,
+        0.143,
+        27
+      ]
+    },
+    {
+      "id": "redLight",
+      "oklch": [
+        0.52,
+        0.175,
+        28
+      ]
+    },
+    {
+      "id": "redHot",
+      "oklch": [
+        0.65,
+        0.162,
+        30
+      ]
+    },
+    {
+      "id": "steelDark",
+      "oklch": [
+        0.36,
+        0.025,
+        265
+      ]
+    },
+    {
+      "id": "steel",
+      "oklch": [
+        0.59,
+        0.026,
+        250
+      ]
+    },
+    {
+      "id": "steelLight",
+      "oklch": [
+        0.79,
+        0.021,
+        242
+      ]
+    },
+    {
+      "id": "ivory",
+      "oklch": [
+        0.94,
+        0.018,
+        95
+      ]
+    },
+    {
+      "id": "leather",
+      "oklch": [
+        0.29,
+        0.039,
+        54
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Fresh reference-guided candidates for comparison",
+  "assets": [
+    {
+      "class_id": "forager",
+      "character_name": "Daisy",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "prompt": "Use case: stylized-concept.\nAsset type: a newly generated version-two full-body hero illustration for Arenic, for visual comparison with the previous version.\nInput image role: the supplied Forager Daisy image is an identity, costume, palette, and illustration-style reference, not a pixel-preservation edit target. Draw a fresh finished illustration with refined anatomy, expressive hands, purposeful cloth folds, and confident etched linework while preserving who the character is. Keep the recognizable front three-quarter pose and overall silhouette for a fair comparison.\nSubject: Daisy, a serene adult human woman herbalist with warm ochre skin, long windblown nearly black hair with dark green accents, an emerald and gold circlet, long earrings and large emerald necklace. Flowing burgundy floor-length robe with broad deep emerald cuffs, neckline and waist sash, fine aged gold edging. She delicately holds a mandrake root with green leaves aloft in one hand and a short curved sickle pointed down in her other hand. Keep her calm dignified face, graceful draped silhouette and all signature jewelry. Two naturally articulated hands; entire lower robe and both shoes visible.\nStyle: expressive medieval fantasy ink and woodcut/comic illustration, bold near-black outer contours, sharply designed dark shadow masses, delicate etched hatching inside textured flat colors. Restrained forest green, burgundy, ochre gold and warm skin. Maintain a strong readable game-character silhouette. No photographic or 3D rendering; avoid airbrushed gloss.\nComposition: portrait 1024 by 1536 pixels. One centered complete character, all hair, leaves, root tips, sickle and shoes fully within canvas with at least 3 percent clear margin. Fill most of the height without cropping anything.\nBackground: flat opaque PURE WHITE. No checkerboard or transparency pattern, paper texture, gray gradient, ground, cast shadow, scenery, sunburst or halo. The comparison sunburst will be a separate display layer, so absolutely no background decoration in this image.\nNo text, signature, watermark, interface, border, labels or additional characters.",
+      "reference": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/forager.png",
+      "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-6ced-72a0-8718-a41211dd7b62/exec-0c2f1563-4de0-4e17-9093-e1834a7a47e8.png",
+      "destination": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/forager-v2.png",
+      "observations": "Narrower face and neck, higher lifted mandrake, more directional robe hatching, altered sickle grip; identity and signature costume preserved.",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "bit_depth": 8,
+      "sha256": "98b970204ebb4c784cb70353c6dd36c8037f9cb1110e4a2e4fe6f5dd008d732d",
+      "source_byte_identical": true,
+      "verified_at_utc": "2026-09-10T02:12:09.272105+00:00",
+      "reference_sha256": "8c41ba0b38d80e9b43d744347d8a1cfb7f08b70b06e2b770a56a1986073cbdb1"
+    },
+    {
+      "class_id": "thief",
+      "character_name": "Ginger",
+      "tool": "image_gen.imagegen",
+      "model": "not exposed by built-in tool",
+      "prompt": "Use case: stylized-concept.\nAsset type: a newly generated version-two full-body hero illustration for Arenic, for visual comparison with the previous version.\nInput image role: the supplied Thief Ginger image is an identity, costume, palette, and illustration-style reference, not a pixel-preservation edit target. Draw a fresh finished illustration with refined anatomy, expressive hands, convincing weight distribution and confident etched linework while preserving her recognizable identity and front three-quarter silhouette.\nSubject: Ginger, an adult athletic feline humanoid woman thief. Deep purple skin/fur, pointed cat ears, sharp golden cat eyes, a long curling dark purple tail, flowing high auburn ponytail, small golden crown between ears. Ornate aged gold jewelry and lightweight gold-and-olive cloth armor, golden bracers, decorated shin guards, tasteful non-explicit costume as shown. A short dagger in each hand pointed downward. Preserve her confident alert expression and distinctive crown, sweeping ponytail, tail, agile full-body silhouette and signature two daggers. Make the dagger grips, fingers and wrists physically clear and readable. Both feet and full blade tips visible, no doubled fingers or extra limbs.\nStyle: expressive medieval fantasy ink and woodcut/comic illustration, bold near-black outer contours, strongly designed dark shadow masses, delicate etched hatching inside textured flat colors. Restrained plum purple, auburn, olive and ochre gold palette. Strong readable game-character silhouette. No photographic, 3D-rendered or airbrushed style.\nComposition: portrait 1024 by 1536 pixels. One centered complete character, all hair, crown tips, ears, tail, both daggers and feet fully inside canvas with at least 3 percent clear margin. Fill most of the height without cropping anything.\nBackground: flat opaque PURE WHITE. No checkerboard, transparency pattern, paper texture, gray gradient, ground, cast shadow, scenery, sunburst or halo. The comparison sunburst will be a separate display layer, so no background decoration.\nNo text, signature, watermark, interface, border, labels or additional characters.",
+      "reference": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/thief.png",
+      "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-6ced-72a0-8718-a41211dd7b62/exec-1acd2ed5-3643-49e5-a294-b029b1270f29.png",
+      "destination": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/thief-v2.png",
+      "observations": "More compact facial features, more articulated dagger grips, sharper fold and hair engraving; the crown, paired daggers, curled tail and gold/olive costume remain.",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "bit_depth": 8,
+      "sha256": "eafbb2b7692b62b46b287cb2ca0cd27a5780cc7d7878c1d2853a72da8acd5b6f",
+      "source_byte_identical": true,
+      "verified_at_utc": "2026-09-10T02:12:09.274224+00:00",
+      "reference_sha256": "c60528e22a789fff8f2482f728401ddbf83d8b55f03137705fecaed046218f28"
+    }
+  ]
+}

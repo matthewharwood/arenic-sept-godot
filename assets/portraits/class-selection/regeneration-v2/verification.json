@@ -1,0 +1,106 @@
+{
+  "generator": "current built-in image_gen; model identifier not exposed",
+  "portraits": [
+    {
+      "class_id": "hunter",
+      "path": "assets/portraits/class-selection/regeneration-v2/hunter-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "b3c6b64de0f355577a45d2dbb70624ad55268a3562104f2a219e2390568a46cc",
+      "original_unchanged": true
+    },
+    {
+      "class_id": "bard",
+      "path": "assets/portraits/class-selection/regeneration-v2/bard-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "5039098f45d11615386820eed44c43ee4a9b1c6001201b798796bdf536ba332a",
+      "original_unchanged": true
+    },
+    {
+      "class_id": "merchant",
+      "path": "assets/portraits/class-selection/regeneration-v2/merchant-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "b592f73ec1c67ebf2b5dc56eb26ecdac95734329b6d2df095b762ac7cab0fd65",
+      "original_unchanged": true
+    },
+    {
+      "class_id": "warrior",
+      "path": "assets/portraits/class-selection/regeneration-v2/warrior-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "95bbf8cc8fac7458adc91c3a10a9b3d49bfb84cee444d5da3c723b1f72e55772",
+      "original_unchanged": true
+    },
+    {
+      "class_id": "cardinal",
+      "path": "assets/portraits/class-selection/regeneration-v2/cardinal-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "4364e191a579de18a83c622efc1d6b8a497daa0e17cc154c366e7ae834688037",
+      "original_unchanged": true
+    },
+    {
+      "class_id": "alchemist",
+      "path": "assets/portraits/class-selection/regeneration-v2/alchemist-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "3b067bf621e5a55a46394e5d9ccd218397b7645411b1e38173550a3ad47ac145",
+      "original_unchanged": true
+    },
+    {
+      "class_id": "forager",
+      "path": "assets/portraits/class-selection/regeneration-v2/forager-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "98b970204ebb4c784cb70353c6dd36c8037f9cb1110e4a2e4fe6f5dd008d732d",
+      "original_unchanged": true
+    },
+    {
+      "class_id": "thief",
+      "path": "assets/portraits/class-selection/regeneration-v2/thief-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "eafbb2b7692b62b46b287cb2ca0cd27a5780cc7d7878c1d2853a72da8acd5b6f",
+      "original_unchanged": true
+    }
+  ],
+  "current_runtime_portraits_unchanged": true,
+  "comparison_document_links_valid": true,
+  "browser_review": {
+    "all_8_pairs_loaded": true,
+    "all_16_images_1024x1536": true,
+    "home_and_arrow_key_selection": true,
+    "sunburst_toggle_visually_verified": true,
+    "desktop_review_width": 1024,
+    "narrow_review_width": 390,
+    "narrow_layout_horizontal_overflow": false,
+    "console_errors_or_warnings": 0,
+    "viewport_override_reset": true
+  }
+}

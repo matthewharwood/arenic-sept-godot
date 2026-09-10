@@ -1,0 +1,34 @@
+[
+  {
+    "id": "hunter",
+    "name": "Hunter"
+  },
+  {
+    "id": "warrior",
+    "name": "Warrior"
+  },
+  {
+    "id": "thief",
+    "name": "Thief"
+  },
+  {
+    "id": "alchemist",
+    "name": "Alchemist"
+  },
+  {
+    "id": "cardinal",
+    "name": "Cardinal"
+  },
+  {
+    "id": "bard",
+    "name": "Bard"
+  },
+  {
+    "id": "forager",
+    "name": "Forager"
+  },
+  {
+    "id": "merchant",
+    "name": "Merchant"
+  }
+]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArenicClassAbility" format=3 uid="uid://ch8te7opdqd3y"]
+
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_7shmb"]
+
+[resource]
+script = ExtResource("1_7shmb")
+title = "Auto Shot"
+description = "A shot that pushes the hero back one square and deals damage over time."

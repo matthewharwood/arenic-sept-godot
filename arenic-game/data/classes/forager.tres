@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArenicClassDefinition" format=3 uid="uid://dkdwwbkyxhb7p"]
+
+[ext_resource type="Script" uid="uid://cb0vid0x8md50" path="res://scripts/character_creation/class_definition.gd" id="1_bfukv"]
+[ext_resource type="Texture2D" uid="uid://bomgesgu168em" path="res://assets/icons/classes/forager.svg" id="1_d7aob"]
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="2_d7aob"]
+[ext_resource type="Texture2D" uid="uid://hubsldxjk8n1" path="res://assets/portraits/forager_atlas.tres" id="2_dc7g7"]
+[ext_resource type="Resource" uid="uid://cbxsorgw0lvfb" path="res://data/classes/forager_primary.tres" id="3_uvpxc"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/forager/forager_frames.tres" id="6_1qkbe"]
+
+[resource]
+script = ExtResource("1_bfukv")
+class_id = "forager"
+display_name = "Forager"
+character_name = "Daisy"
+icon = ExtResource("1_d7aob")
+portrait = ExtResource("2_dc7g7")
+world_sprite_frames = ExtResource("6_1qkbe")
+skills = Array[ExtResource("2_d7aob")]([ExtResource("3_uvpxc")])
+portrait_height = 0.965

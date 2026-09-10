@@ -1,0 +1,64 @@
+{
+  "id": "hunter",
+  "name": "Hunter",
+  "kind": "boss",
+  "description": "One pine-cloaked archer creature slowly folds between five emotional mask forms.",
+  "canvas": [
+    114,
+    114
+  ],
+  "pivot": [
+    57,
+    57
+  ],
+  "source": "assets/bosses/hunter/hunter.aseprite",
+  "portrait": "arenic-game/assets/portraits/bosses/hunter.png",
+  "default_state": "cycle",
+  "visual_states": [
+    {
+      "id": "cycle",
+      "name": "Five-form cycle",
+      "tag": "cycle",
+      "description": "Slow mantle fold through all five forms."
+    },
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "tag": "quiet",
+      "description": "Gathered hood and restrained pale mask."
+    },
+    {
+      "id": "sorrow",
+      "name": "Sorrow",
+      "tag": "sorrow",
+      "description": "Drooping mantle and long mournful mask."
+    },
+    {
+      "id": "startled",
+      "name": "Startled",
+      "tag": "startled",
+      "description": "Flared mantle with wide hollow mask apertures."
+    },
+    {
+      "id": "wrath",
+      "name": "Wrath",
+      "tag": "wrath",
+      "description": "Angular folds and a pinched furious mask."
+    },
+    {
+      "id": "elation",
+      "name": "Elation",
+      "tag": "elation",
+      "description": "Sweeping curled mantle and laughing mask."
+    }
+  ],
+  "notes": [
+    "Strict overhead orthographic source art, six 19-pixel cells per side.",
+    "Idle presentation states only; no attack mechanics are encoded.",
+    "Four cardinal tags use exact full-canvas 90-degree rotations and a common (57, 57) pivot.",
+    "Native layered source remains outside the game directory.",
+    "Common canvas bounds describe the presentation footprint; gameplay collision is not authored here.",
+    "Expressive masks are horizontal folding canopy plates; the exposed hood crown establishes the overhead view."
+  ],
+  "epithet": "The Folded Archer"
+}

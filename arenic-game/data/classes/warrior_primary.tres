@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArenicClassAbility" format=3 uid="uid://djbgn28jwkyf2"]
+
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_xw32w"]
+
+[resource]
+script = ExtResource("1_xw32w")
+title = "Bash"
+description = "Raise a spiked shield, then thrust it at an enemy with your next attack."

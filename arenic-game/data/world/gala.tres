@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ArenicArenaDefinition" format=3 uid="uid://cl3d5v0fxsree"]
+
+[ext_resource type="Script" uid="uid://dcg8c0soqx1cu" path="res://scripts/world/arena_definition.gd" id="1_6wo8s"]
+[ext_resource type="Resource" path="res://data/bosses/bard.tres" id="1_44xf7"]
+
+[resource]
+script = ExtResource("1_6wo8s")
+arena_id = "gala"
+display_name = "Gala"
+class_id = "bard"
+class_label = "The Bard"
+hotkey = "B"
+grid_slot = Vector2i(2, 2)
+boss = ExtResource("1_44xf7")

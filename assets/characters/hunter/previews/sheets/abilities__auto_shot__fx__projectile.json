@@ -1,0 +1,58 @@
+{ "frames": [
+   {
+    "filename": "projectile 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 9 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 9 },
+    "sourceSize": { "w": 19, "h": 9 },
+    "duration": 80
+   },
+   {
+    "filename": "projectile 1.aseprite",
+    "frame": { "x": 19, "y": 0, "w": 19, "h": 9 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 9 },
+    "sourceSize": { "w": 19, "h": 9 },
+    "duration": 80
+   },
+   {
+    "filename": "projectile 2.aseprite",
+    "frame": { "x": 38, "y": 0, "w": 19, "h": 9 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 9 },
+    "sourceSize": { "w": 19, "h": 9 },
+    "duration": 80
+   },
+   {
+    "filename": "projectile 3.aseprite",
+    "frame": { "x": 57, "y": 0, "w": 19, "h": 9 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 9 },
+    "sourceSize": { "w": 19, "h": 9 },
+    "duration": 80
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.5-arm64",
+  "image": "abilities__auto_shot__fx__projectile.png",
+  "format": "RGBA8888",
+  "size": { "w": 76, "h": 9 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "flight_e", "from": 0, "to": 3, "direction": "forward", "color": "#bd8f49ff" }
+  ],
+  "layers": [
+   { "name": "Arrow shaft", "opacity": 255, "blendMode": "normal" },
+   { "name": "Feather and steel head", "opacity": 255, "blendMode": "normal" },
+   { "name": "Air marks", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "frame", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 19, "h": 9 }, "pivot": {"x": 17, "y": 4 } }] }
+  ]
+ }
+}

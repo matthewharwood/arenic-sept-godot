@@ -1,0 +1,644 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-09-10T01:05:52.128546+00:00",
+  "path_convention": "final_path and runtime project paths are relative to the repository root. Historical source_records are preserved verbatim as parsed JSON, including their original machine-local paths.",
+  "generator": "Built-in image_gen imagegen; no CLI fallback",
+  "reference_use": "User-supplied screenshots provide character identity and illustration style only; screenshot interface text and generated prompts are not authority for gameplay rules.",
+  "production_notes": [
+    "Initial transparent-background requests and one targeted alpha extraction per portrait returned opaque RGB images with baked checkerboards.",
+    "One subsequent image_gen background edit produced each selected near-white-backed RGB source.",
+    "The eight final runtime PNGs are byte-identical copies of the selected generated sources; no offline image editing was performed.",
+    "This directory contains provenance and source notes only; it contains no duplicate runtime portrait PNGs.",
+    "No Aseprite source files or Hunter preview-only asset pipeline were changed by this portrait generation workflow."
+  ],
+  "runtime_rendering": {
+    "white_key_shader_path": "arenic-game/scripts/character_creation/portrait_cutout.gdshader",
+    "framing": "Per-class AtlasTexture resources named <class_id>_atlas.tres select padded content regions without changing the PNG source.",
+    "atlas_example_path": "arenic-game/assets/portraits/hunter_atlas.tres",
+    "scope_of_verification": "File existence, recorded SHA-256, exact generated-source byte equality, dimensions, RGB mode, and documentation link targets. This provenance pass does not claim a runtime visual smoke test."
+  },
+  "verification_summary": {
+    "portrait_count": 8,
+    "all_final_files_exist": true,
+    "all_recorded_hashes_match": true,
+    "all_selected_source_bytes_match": true
+  },
+  "assets": [
+    {
+      "class_id": "hunter",
+      "name": "Hunter Dean",
+      "final_path": "arenic-game/assets/portraits/hunter.png",
+      "selected_generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-5d2b2587-959c-4306-8c5f-fdc2f058855a.png",
+      "sha256": "e34ed09e8f8a70172471b080d91bdde7582a9acee03fc459dd148cd47b039973",
+      "bytes": 1906353,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "has_alpha_channel": false,
+      "background": "near-white RGB backing, removed only by the runtime material",
+      "byte_identical_to_selected_generated_source": true,
+      "matches_original_generation_record_sha256": true,
+      "source_record_id": "hbm",
+      "source_record_json_pointer": "/assets/0"
+    },
+    {
+      "class_id": "bard",
+      "name": "Bard Marcus",
+      "final_path": "arenic-game/assets/portraits/bard.png",
+      "selected_generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-d1aab470-61f9-472b-aee1-3d5c6c804380.png",
+      "sha256": "42e3beeed370aa8e443d60cb24e4443908ee07acb49313a8f96004ce523efe8b",
+      "bytes": 2284655,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "has_alpha_channel": false,
+      "background": "near-white RGB backing, removed only by the runtime material",
+      "byte_identical_to_selected_generated_source": true,
+      "matches_original_generation_record_sha256": true,
+      "source_record_id": "hbm",
+      "source_record_json_pointer": "/assets/1"
+    },
+    {
+      "class_id": "merchant",
+      "name": "Merchant Calvin",
+      "final_path": "arenic-game/assets/portraits/merchant.png",
+      "selected_generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-0ddbbf73-ec62-498e-ab0c-164192878b01.png",
+      "sha256": "58eb14ecfcab33fc9e41e2c0b6863c25e62e296cbcab40cf2af14e87eb2ea0aa",
+      "bytes": 1827558,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "has_alpha_channel": false,
+      "background": "near-white RGB backing, removed only by the runtime material",
+      "byte_identical_to_selected_generated_source": true,
+      "matches_original_generation_record_sha256": true,
+      "source_record_id": "hbm",
+      "source_record_json_pointer": "/assets/2"
+    },
+    {
+      "class_id": "warrior",
+      "name": "Warrior King",
+      "final_path": "arenic-game/assets/portraits/warrior.png",
+      "selected_generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-74f73598-0789-4889-ab49-573c1b3e3e2d.png",
+      "sha256": "2f18d6fd9fdc5e77cb1049e364839ba6cb772d865ede0bb74249ffeceb565b0e",
+      "bytes": 2282329,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "has_alpha_channel": false,
+      "background": "near-white RGB backing, removed only by the runtime material",
+      "byte_identical_to_selected_generated_source": true,
+      "matches_original_generation_record_sha256": true,
+      "source_record_id": "wca",
+      "source_record_json_pointer": "/portraits/0"
+    },
+    {
+      "class_id": "cardinal",
+      "name": "Cardinal Pius",
+      "final_path": "arenic-game/assets/portraits/cardinal.png",
+      "selected_generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-2a06c7bf-293e-485b-a9de-a28bd783e592.png",
+      "sha256": "d9fb1d8457805e86420c8b9784a3f930f3a3209a887b001947e19c14b751b49b",
+      "bytes": 1891753,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "has_alpha_channel": false,
+      "background": "near-white RGB backing, removed only by the runtime material",
+      "byte_identical_to_selected_generated_source": true,
+      "matches_original_generation_record_sha256": true,
+      "source_record_id": "wca",
+      "source_record_json_pointer": "/portraits/1"
+    },
+    {
+      "class_id": "alchemist",
+      "name": "Alchemist Giuseppe",
+      "final_path": "arenic-game/assets/portraits/alchemist.png",
+      "selected_generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-56f31d6e-fb0b-41df-827f-8901d944941e.png",
+      "sha256": "aae1009bbe2ee69431aa3e55ac088e43374408323e832d3a137c5daea78eef22",
+      "bytes": 1709148,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "has_alpha_channel": false,
+      "background": "near-white RGB backing, removed only by the runtime material",
+      "byte_identical_to_selected_generated_source": true,
+      "matches_original_generation_record_sha256": true,
+      "source_record_id": "wca",
+      "source_record_json_pointer": "/portraits/2"
+    },
+    {
+      "class_id": "forager",
+      "name": "Daisy",
+      "final_path": "arenic-game/assets/portraits/forager.png",
+      "selected_generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-44676b1c-e1be-4674-8236-4b3e537038ac.png",
+      "sha256": "8c41ba0b38d80e9b43d744347d8a1cfb7f08b70b06e2b770a56a1986073cbdb1",
+      "bytes": 1585638,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "has_alpha_channel": false,
+      "background": "near-white RGB backing, removed only by the runtime material",
+      "byte_identical_to_selected_generated_source": true,
+      "matches_original_generation_record_sha256": true,
+      "source_record_id": "ft",
+      "source_record_json_pointer": "/assets/0"
+    },
+    {
+      "class_id": "thief",
+      "name": "Ginger",
+      "final_path": "arenic-game/assets/portraits/thief.png",
+      "selected_generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-5cab8dae-72ab-4a0e-b4a8-5c9f50262843.png",
+      "sha256": "c60528e22a789fff8f2482f728401ddbf83d8b55f03137705fecaed046218f28",
+      "bytes": 1719981,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "has_alpha_channel": false,
+      "background": "near-white RGB backing, removed only by the runtime material",
+      "byte_identical_to_selected_generated_source": true,
+      "matches_original_generation_record_sha256": true,
+      "source_record_id": "ft",
+      "source_record_json_pointer": "/assets/1"
+    }
+  ],
+  "source_records": [
+    {
+      "id": "hbm",
+      "original_record_path": "/tmp/arenic-classes-portraits-hbm.json",
+      "original_record_sha256": "28d4b2250ea264d02b81e80fc2b767959796ee8e24c692fdc7a14ace018d622e",
+      "record": {
+        "created_at_utc": "2026-09-10T01:03:43.113Z",
+        "generator": "Built-in image_gen imagegen",
+        "repository": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot",
+        "status": "Final RGB near-white-background PNGs for parent-authorized native Godot white-key material. Actual alpha failed after initial generation and one targeted extraction. No offline image editing.",
+        "assets": [
+          {
+            "key": "hunter",
+            "name": "Hunter Dean",
+            "target_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/hunter.png",
+            "stages": [
+              {
+                "mode": "reference-guided-generation",
+                "reference_path": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-d3e3f1bf-f530-4f6b-a179-2acd1826f646.png",
+                "prompt": "Use case: stylized-concept.\nAsset type: final transparent full-body character illustration for a medieval fantasy game's class-selection screen, portrait 1024x1536 PNG.\nInput image role: the attached screenshot is ONLY a character identity and illustration style reference. Generate a new isolated illustration of the central hunter Dean; omit every UI element and all lettering.\nSubject: an athletic human male hunter in his late twenties, warm tan skin, angular intense clean-shaven face, tousled short black hair, dark forest-green windblown cloak and scarf, layered dark green tunic and brown leather armor, distinctive ochre-gold skull shoulder pauldron, leather bracers, rope belt and brown pouches, reinforced knee and leather boots. He carries a compact wooden crossbow pointed downward and holds a jagged violet spectral spell orb in the other hand. Confident full-body advancing stance, entire figure and all gear fully visible.\nStyle: closely match the reference's dramatic medieval fantasy hand-inked woodcut/comic illustration: thick confident near-black outer contours, expressive angular anatomy, crisp graphic shadow masses, fine etched crosshatching inside textured flat color, handcrafted printed appearance, no smooth digital painting or 3D rendering. Muted deep green, burgundy leather accents, warm ochre-gold, near-black shadows, with restrained vivid violet spell light.\nComposition: one character centered, portrait orientation, figure fills 80–90% of height, small safe transparent margins around hair, cloak, weapon, spell and boots. Dynamic cloak silhouette; no cropping.\nBackground: TRUE alpha transparency everywhere outside the character and spell, including internal holes between limbs/cloak/gear. No white/cream/black backdrop, no checkerboard painted into image, no ground, no ground shadow, no scenery, no platform, no framing or UI, no text, no watermark. Preserve fine clean anti-aliased cutout edges and partial alpha on magical glow.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-945e8bb4-1fca-48cd-8be4-5e9ac00e117a.png",
+                "result_mode": "RGB",
+                "result_note": "Painted checkerboard, no alpha"
+              },
+              {
+                "mode": "targeted-transparency-extraction-edit",
+                "reference_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-945e8bb4-1fca-48cd-8be4-5e9ac00e117a.png",
+                "prompt": "Use case: background extraction. Edit this existing illustration; change ONLY its background and preserve the character, clothing, weapon/instrument/gear, colors, proportions, pose, linework, hatching, image size and composition exactly. The image currently has an incorrectly painted gray checkerboard background. Remove the entire painted checkerboard and any gray background haze from outside the character and through all negative-space holes between limbs, clothing and gear. Output a real transparent PNG using its ALPHA CHANNEL: pixels outside the illustration must have alpha 0, not visible gray checks, white, black, cream or any painted representation of transparency. Keep all black ink contours and interior character colors fully opaque. Keep antialiased edges and partially transparent magical glow. No new background, no ground, no shadow, no border, no lettering. This is an actual cutout extraction with actual RGBA transparency, not a visual simulation of a transparency grid.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-7d466aa3-4648-4383-9cd9-9160e361cddd.png",
+                "result_mode": "RGB",
+                "result_note": "Painted checkerboard remained, no alpha"
+              },
+              {
+                "mode": "pure-white-background-edit",
+                "reference_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-945e8bb4-1fca-48cd-8be4-5e9ac00e117a.png",
+                "prompt": "Use case: background replacement, strictly preserve illustration. Edit the attached character image. Replace the entire gray checkerboard outside the character and through all negative-space holes with perfectly uniform, solid, pure white RGB(255,255,255), #FFFFFF. The output is an opaque RGB image on a flat pure-white background. Every background pixel must be white, with no checkerboard pattern anywhere, no gray, no beige, no texture, no vignette, no cast shadow, no ground or pedestal. Preserve the entire existing character and every gear item exactly: face, pose, silhouette, colors, thick black ink contours, fine internal hatching, clothing, props, magic, boots, proportions, image size and framing. Do not add anything. Retain clear black outlined cutout edges against the pure white. No text. Background must be completely flat pure white, including inside all holes between limbs, clothing, instruments, weapons and magical spirals.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-5d2b2587-959c-4306-8c5f-fdc2f058855a.png",
+                "result_mode": "RGB",
+                "result_note": "Clean near-white background; final copied byte-preserving"
+              }
+            ],
+            "validation": {
+              "dimensions": [
+                1024,
+                1536
+              ],
+              "mode": "RGB",
+              "has_alpha": false,
+              "bytes": 1906353,
+              "sha256": "e34ed09e8f8a70172471b080d91bdde7582a9acee03fc459dd148cd47b039973",
+              "byte_identical_to_generated_source": true,
+              "nonwhite_content_bbox_threshold": "min(R,G,B)<245",
+              "nonwhite_content_bbox": [
+                14,
+                17,
+                1010,
+                1518
+              ],
+              "bbox_convention": "left,top,right_exclusive,bottom_exclusive",
+              "visually_inspected": true,
+              "visual_notes": "Full figure and gear visible. White background and internal holes clean. No checkerboard visible. Art is highly detailed black-ink fantasy illustration matching reference identity."
+            }
+          },
+          {
+            "key": "bard",
+            "name": "Bard Marcus",
+            "target_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/bard.png",
+            "stages": [
+              {
+                "mode": "reference-guided-generation",
+                "reference_path": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-f1012ce0-ea4d-460d-ae43-9e6223ca1e2b.png",
+                "prompt": "Use case: stylized-concept.\nAsset type: final transparent full-body character illustration for a medieval fantasy game's class-selection screen, portrait 1024x1536 PNG.\nInput image role: the attached screenshot is ONLY a character identity and illustration style reference. Generate a new isolated illustration of the central bard Marcus; omit every UI element and all lettering.\nSubject: a dark-skinned adult male elf bard, muscular forearms, long pointed ears, dark dreadlocks pulled into a high topknot, short textured beard and mustache, expressive confident face. Layered plum and dusky indigo traveling robes with worn ochre-gold trim and cuffs, dark draped trousers, sturdy leather boots, gold belt details. He holds and plays a large ornate warm wooden lute with a carved rosette, one hand naturally on the neck and the other plucking strings. Curling teal musical magic winds around his silhouette in elegant graphic spirals. Full-body balanced standing pose; entire figure, pointed ears, hair, lute neck and boots visible.\nStyle: closely match the reference's dramatic medieval fantasy hand-inked woodcut/comic illustration: thick confident near-black outer contours, expressive angular anatomy, crisp graphic shadow masses, fine etched crosshatching inside textured flat color, handcrafted printed appearance, no smooth digital painting or 3D rendering. Muted plum/indigo cloth, warm ochre-gold trim and lute wood, deep brown skin, near-black shadows, restrained teal magical swirls.\nComposition: one character centered, portrait orientation, figure fills 80–90% of height, small safe transparent margins around hair, lute, boots and magic. Strong readable full-body silhouette, no cropping.\nBackground: TRUE alpha transparency everywhere outside the character, instrument and teal magic, including internal holes between limbs/robe/lute/magic spirals. No white/cream/black backdrop, no checkerboard painted into image, no ground, no ground shadow, no scenery, no platform, no framing or UI, no text, no watermark. Preserve fine clean anti-aliased cutout edges and partial alpha on magical glow.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-21f23ef5-3872-4e0b-9df4-08f0b685eb5f.png",
+                "result_mode": "RGB",
+                "result_note": "Painted checkerboard, no alpha"
+              },
+              {
+                "mode": "targeted-transparency-extraction-edit",
+                "reference_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-21f23ef5-3872-4e0b-9df4-08f0b685eb5f.png",
+                "prompt": "Use case: background extraction. Edit this existing illustration; change ONLY its background and preserve the character, clothing, weapon/instrument/gear, colors, proportions, pose, linework, hatching, image size and composition exactly. The image currently has an incorrectly painted gray checkerboard background. Remove the entire painted checkerboard and any gray background haze from outside the character and through all negative-space holes between limbs, clothing and gear. Output a real transparent PNG using its ALPHA CHANNEL: pixels outside the illustration must have alpha 0, not visible gray checks, white, black, cream or any painted representation of transparency. Keep all black ink contours and interior character colors fully opaque. Keep antialiased edges and partially transparent magical glow. No new background, no ground, no shadow, no border, no lettering. This is an actual cutout extraction with actual RGBA transparency, not a visual simulation of a transparency grid.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-51d275ca-7697-438d-b653-38e440e2180a.png",
+                "result_mode": "RGB",
+                "result_note": "Painted checkerboard remained, no alpha"
+              },
+              {
+                "mode": "pure-white-background-edit",
+                "reference_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-21f23ef5-3872-4e0b-9df4-08f0b685eb5f.png",
+                "prompt": "Use case: background replacement, strictly preserve illustration. Edit the attached character image. Replace the entire gray checkerboard outside the character and through all negative-space holes with perfectly uniform, solid, pure white RGB(255,255,255), #FFFFFF. The output is an opaque RGB image on a flat pure-white background. Every background pixel must be white, with no checkerboard pattern anywhere, no gray, no beige, no texture, no vignette, no cast shadow, no ground or pedestal. Preserve the entire existing character and every gear item exactly: face, pose, silhouette, colors, thick black ink contours, fine internal hatching, clothing, props, magic, boots, proportions, image size and framing. Do not add anything. Retain clear black outlined cutout edges against the pure white. No text. Background must be completely flat pure white, including inside all holes between limbs, clothing, instruments, weapons and magical spirals.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-d1aab470-61f9-472b-aee1-3d5c6c804380.png",
+                "result_mode": "RGB",
+                "result_note": "Clean near-white background; final copied byte-preserving"
+              }
+            ],
+            "validation": {
+              "dimensions": [
+                1024,
+                1536
+              ],
+              "mode": "RGB",
+              "has_alpha": false,
+              "bytes": 2284655,
+              "sha256": "42e3beeed370aa8e443d60cb24e4443908ee07acb49313a8f96004ce523efe8b",
+              "byte_identical_to_generated_source": true,
+              "nonwhite_content_bbox_threshold": "min(R,G,B)<245",
+              "nonwhite_content_bbox": [
+                52,
+                10,
+                1006,
+                1527
+              ],
+              "bbox_convention": "left,top,right_exclusive,bottom_exclusive",
+              "visually_inspected": true,
+              "visual_notes": "Full figure and gear visible. White background and internal holes clean. No checkerboard visible. Art is highly detailed black-ink fantasy illustration matching reference identity."
+            }
+          },
+          {
+            "key": "merchant",
+            "name": "Merchant Calvin",
+            "target_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/merchant.png",
+            "stages": [
+              {
+                "mode": "reference-guided-generation",
+                "reference_path": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-1bab5ea0-cf29-4d75-a048-ee9719094272.png",
+                "prompt": "Use case: stylized-concept.\nAsset type: final transparent full-body character illustration for a medieval fantasy game's class-selection screen, portrait 1024x1536 PNG.\nInput image role: the attached screenshot is ONLY a character identity and illustration style reference. Generate a new isolated illustration of the central merchant Calvin; omit every UI element and all lettering.\nSubject: a charming adult human male merchant, warm tan skin, swept medium-length dark hair, clean-shaven angular face with a knowing smile. Ornate deep plum longcoat and fitted trousers, aged ochre-gold scrolling trim, teal scarf with long flowing ends, patterned tall boots, a broad leather belt and hanging embossed coin pouch. One hand displays a small fan of illustrated playing cards, the other gestures beneath two floating teal dice with pale pips. Relaxed charismatic full-body stance, entire figure, coat tails, scarf ends, cards, dice and boots visible.\nStyle: closely match the reference's dramatic medieval fantasy hand-inked woodcut/comic illustration: thick confident near-black outer contours, expressive angular anatomy, crisp graphic shadow masses, fine etched crosshatching inside textured flat color, handcrafted printed appearance, no smooth digital painting or 3D rendering. Muted deep plum and burgundy clothing, worn ochre-gold detailing, teal scarf/dice, near-black shadows, warm tan skin.\nComposition: one character centered, portrait orientation, figure fills 80–90% of height, small safe transparent margins around hair, cards, floating dice, scarf and boots. Strong full-body silhouette, no cropping.\nBackground: TRUE alpha transparency everywhere outside the character and held/floating gear, including internal holes between arms/coat/scarf/cards/dice. No white/cream/black backdrop, no checkerboard painted into image, no ground, no ground shadow, no scenery, no platform, no framing or UI, no text, no watermark. Preserve fine clean anti-aliased cutout edges.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-30c876d2-4bc1-4558-8c7d-569c3a5af9ee.png",
+                "result_mode": "RGB",
+                "result_note": "Painted checkerboard, no alpha"
+              },
+              {
+                "mode": "targeted-transparency-extraction-edit",
+                "reference_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-30c876d2-4bc1-4558-8c7d-569c3a5af9ee.png",
+                "prompt": "Use case: background extraction. Edit this existing illustration; change ONLY its background and preserve the character, clothing, weapon/instrument/gear, colors, proportions, pose, linework, hatching, image size and composition exactly. The image currently has an incorrectly painted gray checkerboard background. Remove the entire painted checkerboard and any gray background haze from outside the character and through all negative-space holes between limbs, clothing and gear. Output a real transparent PNG using its ALPHA CHANNEL: pixels outside the illustration must have alpha 0, not visible gray checks, white, black, cream or any painted representation of transparency. Keep all black ink contours and interior character colors fully opaque. Keep antialiased edges and partially transparent magical glow. No new background, no ground, no shadow, no border, no lettering. This is an actual cutout extraction with actual RGBA transparency, not a visual simulation of a transparency grid.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-ccfd8416-a808-43c4-91fa-0917ad4d7668.png",
+                "result_mode": "RGB",
+                "result_note": "Painted checkerboard remained, no alpha"
+              },
+              {
+                "mode": "pure-white-background-edit",
+                "reference_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-30c876d2-4bc1-4558-8c7d-569c3a5af9ee.png",
+                "prompt": "Use case: background replacement, strictly preserve illustration. Edit the attached character image. Replace the entire gray checkerboard outside the character and through all negative-space holes with perfectly uniform, solid, pure white RGB(255,255,255), #FFFFFF. The output is an opaque RGB image on a flat pure-white background. Every background pixel must be white, with no checkerboard pattern anywhere, no gray, no beige, no texture, no vignette, no cast shadow, no ground or pedestal. Preserve the entire existing character and every gear item exactly: face, pose, silhouette, colors, thick black ink contours, fine internal hatching, clothing, props, magic, boots, proportions, image size and framing. Do not add anything. Retain clear black outlined cutout edges against the pure white. No text. Background must be completely flat pure white, including inside all holes between limbs, clothing, instruments, weapons and magical spirals.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-0ddbbf73-ec62-498e-ab0c-164192878b01.png",
+                "result_mode": "RGB",
+                "result_note": "Clean near-white background; final copied byte-preserving"
+              }
+            ],
+            "validation": {
+              "dimensions": [
+                1024,
+                1536
+              ],
+              "mode": "RGB",
+              "has_alpha": false,
+              "bytes": 1827558,
+              "sha256": "58eb14ecfcab33fc9e41e2c0b6863c25e62e296cbcab40cf2af14e87eb2ea0aa",
+              "byte_identical_to_generated_source": true,
+              "nonwhite_content_bbox_threshold": "min(R,G,B)<245",
+              "nonwhite_content_bbox": [
+                90,
+                11,
+                933,
+                1524
+              ],
+              "bbox_convention": "left,top,right_exclusive,bottom_exclusive",
+              "visually_inspected": true,
+              "visual_notes": "Full figure and gear visible. White background and internal holes clean. No checkerboard visible. Art is highly detailed black-ink fantasy illustration matching reference identity."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "wca",
+      "original_record_path": "/tmp/arenic-classes-portraits-wca.json",
+      "original_record_sha256": "877dbf4874dbfff898368b315a6eb73de936b3c4d6b698d21abe82f4c5b6e38e",
+      "record": {
+        "batch": "warrior_cardinal_alchemist",
+        "transparency_note": "Initial generation and one targeted extraction edit both returned RGB painted checkerboards. Parent authorized one flat-white background edit and exact-byte copying as RGB sources for a native Godot white-key material. No offline image editing performed.",
+        "portraits": [
+          {
+            "id": "warrior",
+            "name": "Warrior King",
+            "description": "An imposing anthropomorphic BROWN BEAR warrior king standing confidently in a full-body three-quarter view. Clearly a bear: broad brown-furred muzzle, round bear ears, powerful stocky build and full broad bear feet. Heavy dark PLUM armor with aged GOLD EDGES over the body, burgundy waistcloth, richly hand-inked wear and etched details. His defining large piece of gear is a GIANT JAGGED SHIELD engraved with a bold GOLDEN SKULL; show the full irregular shield silhouette and engraving. Give him the gravitas and readable proportions of an illustrated medieval warrior monarch, not a human in an animal mask. Keep both the bear and his shield complete and uncropped.",
+            "prompt": "Use case: stylized-concept. Asset type: final production character-selection portrait for the medieval fantasy game Arenic, one isolated FULL-BODY character. Create a portrait approximately 1024 by 1536 pixels. Style: intricate hand-inked medieval fantasy woodcut/comic illustration: thick near-black outer contours, fine etched hatching, organic imperfect strokes, restrained textured color fills, readable expressive silhouette. Palette: muted deep green, burgundy, dark plum, ochre-gold with near-black ink; colorful but restrained, flat illustrated shading rather than photorealistic or glossy 3D rendering. The finished figure and all its gear must fit completely inside the canvas at approximately 85% of image height, with small safe margins on all sides. Entire feet visible, no cropped tips or edges. Scene/backdrop: TRUE TRANSPARENT RGBA background, including all empty areas and holes between limbs, weapons, book, fumes and clothing. NO opaque background, paper backdrop, checkerboard pixels, floor, ground shadow, environment, oval backing, halo panel, frame, UI or text. Fine texture belongs ONLY inside the illustrated character and equipment. No lettering, captions, watermark or label. This is finished expressive character art, not a placeholder.\nSubject: An imposing anthropomorphic BROWN BEAR warrior king standing confidently in a full-body three-quarter view. Clearly a bear: broad brown-furred muzzle, round bear ears, powerful stocky build and full broad bear feet. Heavy dark PLUM armor with aged GOLD EDGES over the body, burgundy waistcloth, richly hand-inked wear and etched details. His defining large piece of gear is a GIANT JAGGED SHIELD engraved with a bold GOLDEN SKULL; show the full irregular shield silhouette and engraving. Give him the gravitas and readable proportions of an illustrated medieval warrior monarch, not a human in an animal mask. Keep both the bear and his shield complete and uncropped.\nInput image: the supplied screenshot is a STYLE AND CHARACTER IDENTITY REFERENCE ONLY. Re-create ONLY its central Warrior King illustration as a new complete isolated full-body portrait. Match the reference character's silhouette, face, distinctive costume/equipment, and hand-inked illustration style closely. Ignore and REMOVE every UI element, button, label, heading, skills text, white background and name plate. Reconstruct any body or feet obscured by the UI in the reference. Retain true alpha transparency throughout all background and negative spaces.",
+            "reference_path": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-43539933-4702-473b-b650-c43933194dad.png",
+            "generated_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-40ec6bc2-2624-49c7-88b4-a45bc86e705e.png",
+            "extraction_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-39d113e9-3fab-4c6d-b237-db36a8ffd016.png",
+            "extraction_prompt": "Use case: background-extraction. Edit target: the supplied finished Warrior King illustration. Change ONLY the background: remove the entire gray-and-white checkered pattern and paper-like creases. Deliver a PNG with a REAL ALPHA CHANNEL: alpha=0 in all background pixels, including enclosed negative spaces between limbs, gear and drawn smoke. Do not paint a transparency grid or any white/gray background into RGB. Preserve the character illustration exactly: pose, anatomy, face, hatching, colors, outline thickness, armor/clothing, equipment, flame or fumes, full feet and original 1024x1536 framing. Do not redraw or crop the character, do not add any floor, shadow, text, UI, border or extra objects. This is a precise background extraction to actual transparency, not a visual simulation of transparency.",
+            "final_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-74f73598-0789-4889-ab49-573c1b3e3e2d.png",
+            "white_background_prompt": "Use case: precise-object-edit. Edit target: the supplied finished Warrior King character portrait. Preserve ALL character artwork exactly: the full-body pose and anatomy, original fine etched hatching, near-black ink contours, face, colors, clothing/armor, skull gear, every full foot, staff flame or alchemical fumes, and the exact framing. Change ONLY THE BACKGROUND. Replace every gray-and-white checkered background pixel and every paper-like wrinkle behind the character with a completely flat, uniform PURE WHITE background, RGB(255,255,255), #FFFFFF. White must also fill every negative space and hole between limbs, equipment, book and smoke curls. This is an OPAQUE WHITE-BACKGROUND PNG for a production game shader. Absolutely no checkerboard, transparency grid, paper texture, gradients, gray pixels across the background, ground, floor or cast shadow. Every background area must be one identical flat white color. No text, labels, frame or UI. Do not simplify, recolor, smooth out or crop the actual character illustration.",
+            "destination_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/warrior.png",
+            "generation_mode": "built-in image_gen",
+            "status": "copied_exact_generated_RGB_white_background_source",
+            "verification": {
+              "dimensions": [
+                1024,
+                1536
+              ],
+              "mode": "RGB",
+              "has_alpha_channel": false,
+              "content_bbox_min_rgb_lt_245": [
+                32,
+                104,
+                1015,
+                1470
+              ],
+              "bbox_right_bottom_exclusive": true,
+              "corner_rgb": [
+                [
+                  254,
+                  253,
+                  253
+                ],
+                [
+                  254,
+                  255,
+                  255
+                ],
+                [
+                  253,
+                  253,
+                  253
+                ],
+                [
+                  253,
+                  253,
+                  253
+                ]
+              ],
+              "pure_white_pixel_fraction": 0.04849688212076823,
+              "sha256": "2f18d6fd9fdc5e77cb1049e364839ba6cb772d865ede0bb74249ffeceb565b0e"
+            }
+          },
+          {
+            "id": "cardinal",
+            "name": "Cardinal Pius",
+            "description": "A sage male anthropomorphic GREEN LIZARD / REPTILIAN CARDINAL in a full-body three-quarter view, with a long expressive reptilian face, textured green scales, thoughtful old eyes and visible reptilian feet. He wears red-orange priestly robes with ornate but readable aged GOLDEN TRIM and a small GOLDEN CIRCLET. He holds a TALL STAFF capped by a warm ORANGE FLAME, and a broad WOODEN SHIELD with a bold GOLDEN SKULL. Keep the whole staff, flame, shield, clothing and feet within the canvas. His silhouette is solemn, learned and distinctive; clearly reptilian rather than a human priest. Show robe folds with dense fine ink hatching, and flame as illustrated orange shapes with clean transparent space around it.",
+            "prompt": "Use case: stylized-concept. Asset type: final production character-selection portrait for the medieval fantasy game Arenic, one isolated FULL-BODY character. Create a portrait approximately 1024 by 1536 pixels. Style: intricate hand-inked medieval fantasy woodcut/comic illustration: thick near-black outer contours, fine etched hatching, organic imperfect strokes, restrained textured color fills, readable expressive silhouette. Palette: muted deep green, burgundy, dark plum, ochre-gold with near-black ink; colorful but restrained, flat illustrated shading rather than photorealistic or glossy 3D rendering. The finished figure and all its gear must fit completely inside the canvas at approximately 85% of image height, with small safe margins on all sides. Entire feet visible, no cropped tips or edges. Scene/backdrop: TRUE TRANSPARENT RGBA background, including all empty areas and holes between limbs, weapons, book, fumes and clothing. NO opaque background, paper backdrop, checkerboard pixels, floor, ground shadow, environment, oval backing, halo panel, frame, UI or text. Fine texture belongs ONLY inside the illustrated character and equipment. No lettering, captions, watermark or label. This is finished expressive character art, not a placeholder.\nSubject: A sage male anthropomorphic GREEN LIZARD / REPTILIAN CARDINAL in a full-body three-quarter view, with a long expressive reptilian face, textured green scales, thoughtful old eyes and visible reptilian feet. He wears red-orange priestly robes with ornate but readable aged GOLDEN TRIM and a small GOLDEN CIRCLET. He holds a TALL STAFF capped by a warm ORANGE FLAME, and a broad WOODEN SHIELD with a bold GOLDEN SKULL. Keep the whole staff, flame, shield, clothing and feet within the canvas. His silhouette is solemn, learned and distinctive; clearly reptilian rather than a human priest. Show robe folds with dense fine ink hatching, and flame as illustrated orange shapes with clean transparent space around it.\nInput image: the supplied screenshot is a STYLE AND CHARACTER IDENTITY REFERENCE ONLY. Re-create ONLY its central Cardinal Pius illustration as a new complete isolated full-body portrait. Match the reference character's silhouette, face, distinctive costume/equipment, and hand-inked illustration style closely. Ignore and REMOVE every UI element, button, label, heading, skills text, white background and name plate. Reconstruct any body or feet obscured by the UI in the reference. Retain true alpha transparency throughout all background and negative spaces.",
+            "reference_path": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-ae528ba0-d54f-4f68-a3d5-0ca3b450b190.png",
+            "generated_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-14ed707a-c9eb-4620-8a30-3ec58d14a7ed.png",
+            "extraction_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-773c00eb-124b-4ea6-a3a7-3fbcc6e29a4d.png",
+            "extraction_prompt": "Use case: background-extraction. Edit target: the supplied finished Cardinal Pius illustration. Change ONLY the background: remove the entire gray-and-white checkered pattern and paper-like creases. Deliver a PNG with a REAL ALPHA CHANNEL: alpha=0 in all background pixels, including enclosed negative spaces between limbs, gear and drawn smoke. Do not paint a transparency grid or any white/gray background into RGB. Preserve the character illustration exactly: pose, anatomy, face, hatching, colors, outline thickness, armor/clothing, equipment, flame or fumes, full feet and original 1024x1536 framing. Do not redraw or crop the character, do not add any floor, shadow, text, UI, border or extra objects. This is a precise background extraction to actual transparency, not a visual simulation of transparency.",
+            "final_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-2a06c7bf-293e-485b-a9de-a28bd783e592.png",
+            "white_background_prompt": "Use case: precise-object-edit. Edit target: the supplied finished Cardinal Pius character portrait. Preserve ALL character artwork exactly: the full-body pose and anatomy, original fine etched hatching, near-black ink contours, face, colors, clothing/armor, skull gear, every full foot, staff flame or alchemical fumes, and the exact framing. Change ONLY THE BACKGROUND. Replace every gray-and-white checkered background pixel and every paper-like wrinkle behind the character with a completely flat, uniform PURE WHITE background, RGB(255,255,255), #FFFFFF. White must also fill every negative space and hole between limbs, equipment, book and smoke curls. This is an OPAQUE WHITE-BACKGROUND PNG for a production game shader. Absolutely no checkerboard, transparency grid, paper texture, gradients, gray pixels across the background, ground, floor or cast shadow. Every background area must be one identical flat white color. No text, labels, frame or UI. Do not simplify, recolor, smooth out or crop the actual character illustration.",
+            "destination_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/cardinal.png",
+            "generation_mode": "built-in image_gen",
+            "status": "copied_exact_generated_RGB_white_background_source",
+            "verification": {
+              "dimensions": [
+                1024,
+                1536
+              ],
+              "mode": "RGB",
+              "has_alpha_channel": false,
+              "content_bbox_min_rgb_lt_245": [
+                104,
+                17,
+                916,
+                1514
+              ],
+              "bbox_right_bottom_exclusive": true,
+              "corner_rgb": [
+                [
+                  254,
+                  253,
+                  253
+                ],
+                [
+                  254,
+                  255,
+                  255
+                ],
+                [
+                  254,
+                  253,
+                  253
+                ],
+                [
+                  253,
+                  253,
+                  253
+                ]
+              ],
+              "pure_white_pixel_fraction": 0.060871124267578125,
+              "sha256": "d9fb1d8457805e86420c8b9784a3f930f3a3209a887b001947e19c14b751b49b"
+            }
+          },
+          {
+            "id": "alchemist",
+            "name": "Alchemist Giuseppe",
+            "description": "A mysterious SKELETAL HOODED ALCHEMIST in a full-body three-quarter view. Skull face visible in the hood with glowing GREEN EYES; dark PLUM robe edged with aged GOLDEN TRIM; articulated bony hands and clearly visible BONY FEET. He holds an OPEN SPELLBOOK with marks that look like abstract ink scratches, not readable text. Include distinctive PURPLE GLASS ACID FLASKS and curling GREEN FUMES as part of his carried alchemical equipment. Every flask, the open book, robe, bony feet and every curl of green fumes must be entirely visible inside the frame. The fumes are deliberately drawn thin curving ink-and-color wisps, with TRUE TRANSPARENT gaps between them, never a solid green cloud background. Expressive eerie scholar silhouette, medieval rather than modern.",
+            "prompt": "Use case: stylized-concept. Asset type: final production character-selection portrait for the medieval fantasy game Arenic, one isolated FULL-BODY character. Create a portrait approximately 1024 by 1536 pixels. Style: intricate hand-inked medieval fantasy woodcut/comic illustration: thick near-black outer contours, fine etched hatching, organic imperfect strokes, restrained textured color fills, readable expressive silhouette. Palette: muted deep green, burgundy, dark plum, ochre-gold with near-black ink; colorful but restrained, flat illustrated shading rather than photorealistic or glossy 3D rendering. The finished figure and all its gear must fit completely inside the canvas at approximately 85% of image height, with small safe margins on all sides. Entire feet visible, no cropped tips or edges. Scene/backdrop: TRUE TRANSPARENT RGBA background, including all empty areas and holes between limbs, weapons, book, fumes and clothing. NO opaque background, paper backdrop, checkerboard pixels, floor, ground shadow, environment, oval backing, halo panel, frame, UI or text. Fine texture belongs ONLY inside the illustrated character and equipment. No lettering, captions, watermark or label. This is finished expressive character art, not a placeholder.\nSubject: A mysterious SKELETAL HOODED ALCHEMIST in a full-body three-quarter view. Skull face visible in the hood with glowing GREEN EYES; dark PLUM robe edged with aged GOLDEN TRIM; articulated bony hands and clearly visible BONY FEET. He holds an OPEN SPELLBOOK with marks that look like abstract ink scratches, not readable text. Include distinctive PURPLE GLASS ACID FLASKS and curling GREEN FUMES as part of his carried alchemical equipment. Every flask, the open book, robe, bony feet and every curl of green fumes must be entirely visible inside the frame. The fumes are deliberately drawn thin curving ink-and-color wisps, with TRUE TRANSPARENT gaps between them, never a solid green cloud background. Expressive eerie scholar silhouette, medieval rather than modern.\nInput image: the supplied screenshot is a STYLE AND CHARACTER IDENTITY REFERENCE ONLY. Re-create ONLY its central Alchemist Giuseppe illustration as a new complete isolated full-body portrait. Match the reference character's silhouette, face, distinctive costume/equipment, and hand-inked illustration style closely. Ignore and REMOVE every UI element, button, label, heading, skills text, white background and name plate. Reconstruct any body or feet obscured by the UI in the reference. Retain true alpha transparency throughout all background and negative spaces.",
+            "reference_path": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-08c2411f-f226-4cb4-976a-645800eadf4b.png",
+            "generated_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-a8dd56ce-8846-46b2-a522-acee158e5b06.png",
+            "extraction_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-74496dbb-f3f8-4bd0-b095-1c8e1d7c3fb2.png",
+            "extraction_prompt": "Use case: background-extraction. Edit target: the supplied finished Alchemist Giuseppe illustration. Change ONLY the background: remove the entire gray-and-white checkered pattern and paper-like creases. Deliver a PNG with a REAL ALPHA CHANNEL: alpha=0 in all background pixels, including enclosed negative spaces between limbs, gear and drawn smoke. Do not paint a transparency grid or any white/gray background into RGB. Preserve the character illustration exactly: pose, anatomy, face, hatching, colors, outline thickness, armor/clothing, equipment, flame or fumes, full feet and original 1024x1536 framing. Do not redraw or crop the character, do not add any floor, shadow, text, UI, border or extra objects. This is a precise background extraction to actual transparency, not a visual simulation of transparency.",
+            "final_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-56f31d6e-fb0b-41df-827f-8901d944941e.png",
+            "white_background_prompt": "Use case: precise-object-edit. Edit target: the supplied finished Alchemist Giuseppe character portrait. Preserve ALL character artwork exactly: the full-body pose and anatomy, original fine etched hatching, near-black ink contours, face, colors, clothing/armor, skull gear, every full foot, staff flame or alchemical fumes, and the exact framing. Change ONLY THE BACKGROUND. Replace every gray-and-white checkered background pixel and every paper-like wrinkle behind the character with a completely flat, uniform PURE WHITE background, RGB(255,255,255), #FFFFFF. White must also fill every negative space and hole between limbs, equipment, book and smoke curls. This is an OPAQUE WHITE-BACKGROUND PNG for a production game shader. Absolutely no checkerboard, transparency grid, paper texture, gradients, gray pixels across the background, ground, floor or cast shadow. Every background area must be one identical flat white color. No text, labels, frame or UI. Do not simplify, recolor, smooth out or crop the actual character illustration.",
+            "destination_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/alchemist.png",
+            "generation_mode": "built-in image_gen",
+            "status": "copied_exact_generated_RGB_white_background_source",
+            "verification": {
+              "dimensions": [
+                1024,
+                1536
+              ],
+              "mode": "RGB",
+              "has_alpha_channel": false,
+              "content_bbox_min_rgb_lt_245": [
+                119,
+                13,
+                920,
+                1521
+              ],
+              "bbox_right_bottom_exclusive": true,
+              "corner_rgb": [
+                [
+                  253,
+                  253,
+                  253
+                ],
+                [
+                  255,
+                  255,
+                  255
+                ],
+                [
+                  254,
+                  253,
+                  253
+                ],
+                [
+                  253,
+                  253,
+                  253
+                ]
+              ],
+              "pure_white_pixel_fraction": 0.06361961364746094,
+              "sha256": "aae1009bbe2ee69431aa3e55ac088e43374408323e832d3a137c5daea78eef22"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ft",
+      "original_record_path": "/tmp/arenic-classes-portraits-ft.json",
+      "original_record_sha256": "c58a6fbaf9552f4b0396820419ee51a86f1dfb4dbddd2e452e41f3f0d6f0138c",
+      "record": {
+        "task": "Forager Daisy and Thief Ginger class-selection portraits",
+        "date": "2026-09-09",
+        "mode": "built-in image_gen",
+        "status": "Final selected files use a clean near-white backdrop and require Godot material white-key transparency. Native alpha generation and one targeted extraction edit each returned opaque baked checkerboards.",
+        "image_edits_outside_imagegen": false,
+        "assets": [
+          {
+            "id": "forager",
+            "name": "Daisy",
+            "reference_image": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-8682c3b7-a761-4fed-90ae-4e23cc4cdf8e.png",
+            "requested_size": [
+              1024,
+              1536
+            ],
+            "destination": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/forager.png",
+            "attempts": [
+              {
+                "purpose": "Reference-guided full-body generation with requested transparent background",
+                "prompt": "Use case: stylized-concept\nAsset type: final transparent full-body character portrait for a Godot class-selection screen.\nStyle/medium: hand-inked medieval fantasy woodcut/comic illustration, thick near-black outer contours, expressive linework and fine etched hatching, restrained textured deep green, burgundy, plum, and ochre-gold palette. Match the supplied reference's character design and illustrative language.\nComposition/framing: portrait canvas exactly 1024×1536. One full-body character centered, whole figure and all gear fully visible at 80–90% of canvas height, small safe transparent margins on every side, no cropped feet, hair, tail, or weapons.\nBackground: actual transparent PNG alpha. Every area outside the figure and every open hole between limbs, hair, gear, and tail is transparent. No opaque white or paper backing, no painted checkerboard, no floor, cast shadow, backdrop, scenery, frame, title, nameplate, text, UI, or watermark. The reference is a character-design source only; remove all screenshot interface elements.\nSubject: Daisy, serene adult human woman forager, long flowing near-black hair, emerald-and-gold circlet and jewelry, a long burgundy robe with deep green sash and cuffs. Hold up a mandrake root with fresh leaves in one hand and a small curved sickle in the other lowered hand. Preserve her calm dignified expression, richly draped robe and distinct herbalist silhouette from the reference. Complete the obscured lower robe and feet naturally so the entire character is visible. No additional props or characters.",
+                "source_path": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-8682c3b7-a761-4fed-90ae-4e23cc4cdf8e.png",
+                "output_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-9f5f9734-1ef8-45ae-8b97-fa71b65eddc0.png",
+                "outcome": "RGB PNG with baked checkerboard; rejected"
+              },
+              {
+                "purpose": "Targeted transparent background extraction",
+                "prompt": "Use case: background-extraction.\nEdit this image into an actual transparent PNG cutout for direct use as a game portrait. Its gray-and-white checkerboard is currently BAKED INTO RGB PIXELS. Completely REMOVE that grid and replace it with zero-alpha TRANSPARENT pixels, including all negative spaces and holes between limbs, hair strands, robe, tail, and weapons. Do not draw another transparency checkerboard, no white or colored background.\nPreserve the character exactly: same face, pose, costume, silhouette, fine etched ink lines, painted colors, and all existing body parts and gear. Do not repaint or restyle the character. Keep the full body.\nCanvas exactly 1024×1536. Uniformly reduce the complete figure to 88% of canvas height and center it with equal safe top/bottom margins. The output file MUST have an actual alpha channel with alpha=0 outside the character. No floor, cast shadow, scenery, text, UI or frame.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-9f5f9734-1ef8-45ae-8b97-fa71b65eddc0.png",
+                "output_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-99ad9faf-5974-4317-8548-14cb3d1de715.png",
+                "outcome": "RGB PNG with baked checkerboard; rejected"
+              },
+              {
+                "purpose": "Near-white backdrop for native Godot runtime white-key material",
+                "prompt": "Edit this finished character illustration. Change the background only to a perfectly flat solid pure white (#FFFFFF). Remove every gray checkerboard square and every background pattern. All spaces outside the character, and every open gap between hair, limbs, tail, garment, and weapons must be pure white. No shadows, gradients, floor, scenery, texture, or border outside the character.\nKeep the character design, pose, expression, costume, colors, thick black outline, fine etched hatching, and every piece of gear faithful to the input. Keep the full body and all feet, hair, weapons, and tail visible.\nOutput exactly1024×1536. Uniformly fit the whole character inside safe bounds x64–960 and y96–1440, centered, leaving at least96pixels purewhite above and below. No text or UI. This is a clean white-background illustration, not a checkerboard transparency preview.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-9f5f9734-1ef8-45ae-8b97-fa71b65eddc0.png",
+                "output_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-44676b1c-e1be-4674-8236-4b3e537038ac.png",
+                "outcome": "Selected, byte-preserving copy to destination"
+              }
+            ],
+            "validation": {
+              "dimensions": [
+                1024,
+                1536
+              ],
+              "mode": "RGB",
+              "has_alpha": false,
+              "visually_inspected": true,
+              "full_body_and_equipment_visible": true,
+              "background": "near-white, slight253–255 variation",
+              "content_bbox_at_luma_below_220": [
+                184,
+                83,
+                887,
+                1460
+              ],
+              "content_height_fraction": 0.896,
+              "sha256": "8c41ba0b38d80e9b43d744347d8a1cfb7f08b70b06e2b770a56a1986073cbdb1",
+              "byte_identical_to_generation": true
+            }
+          },
+          {
+            "id": "thief",
+            "name": "Ginger",
+            "reference_image": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-e8a38474-9589-455b-b76c-c825dedcf51e.png",
+            "requested_size": [
+              1024,
+              1536
+            ],
+            "destination": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/thief.png",
+            "attempts": [
+              {
+                "purpose": "Reference-guided full-body generation with requested transparent background",
+                "prompt": "Use case: stylized-concept\nAsset type: final transparent full-body character portrait for a Godot class-selection screen.\nStyle/medium: hand-inked medieval fantasy woodcut/comic illustration, thick near-black outer contours, expressive linework and fine etched hatching, restrained textured deep green, burgundy, plum, and ochre-gold palette. Match the supplied reference's character design and illustrative language.\nComposition/framing: portrait canvas exactly 1024×1536. One full-body character centered, whole figure and all gear fully visible at 80–90% of canvas height, small safe transparent margins on every side, no cropped feet, hair, tail, or weapons.\nBackground: actual transparent PNG alpha. Every area outside the figure and every open hole between limbs, hair, gear, and tail is transparent. No opaque white or paper backing, no painted checkerboard, no floor, cast shadow, backdrop, scenery, frame, title, nameplate, text, UI, or watermark. The reference is a character-design source only; remove all screenshot interface elements.\nSubject: Ginger, athletic adult female feline humanoid thief with purple skin/fur, pointed cat ears, a long curling tail, flowing auburn high ponytail, and a small gold crown. Ornate gold-and-olive cloth/light armor, tasteful and non-explicit. Hold two short daggers, one in each hand. Preserve the reference's confident alert expression, readable agile stance, curved tail, and distinctive crown/ponytail silhouette. Complete the obscured legs and feet naturally so the entire character is visible. No additional props or characters.",
+                "source_path": "/var/folders/z5/0lkpy80j4t3ds1tk761n7nw00000gn/T/codex-clipboard-e8a38474-9589-455b-b76c-c825dedcf51e.png",
+                "output_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-860aacae-3ff7-473c-be5c-cfbb29e030f0.png",
+                "outcome": "RGB PNG with baked checkerboard; rejected"
+              },
+              {
+                "purpose": "Targeted transparent background extraction",
+                "prompt": "Use case: background-extraction.\nEdit this image into an actual transparent PNG cutout for direct use as a game portrait. Its gray-and-white checkerboard is currently BAKED INTO RGB PIXELS. Completely REMOVE that grid and replace it with zero-alpha TRANSPARENT pixels, including all negative spaces and holes between limbs, hair strands, robe, tail, and weapons. Do not draw another transparency checkerboard, no white or colored background.\nPreserve the character exactly: same face, pose, costume, silhouette, fine etched ink lines, painted colors, and all existing body parts and gear. Do not repaint or restyle the character. Keep the full body.\nCanvas exactly 1024×1536. Uniformly reduce the complete figure to 88% of canvas height and center it with equal safe top/bottom margins. The output file MUST have an actual alpha channel with alpha=0 outside the character. No floor, cast shadow, scenery, text, UI or frame.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-860aacae-3ff7-473c-be5c-cfbb29e030f0.png",
+                "output_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-da784b67-db6f-40b7-991f-37c4f49c1f23.png",
+                "outcome": "RGB PNG with baked checkerboard; rejected"
+              },
+              {
+                "purpose": "Near-white backdrop for native Godot runtime white-key material",
+                "prompt": "Edit this finished character illustration. Change the background only to a perfectly flat solid pure white (#FFFFFF). Remove every gray checkerboard square and every background pattern. All spaces outside the character, and every open gap between hair, limbs, tail, garment, and weapons must be pure white. No shadows, gradients, floor, scenery, texture, or border outside the character.\nKeep the character design, pose, expression, costume, colors, thick black outline, fine etched hatching, and every piece of gear faithful to the input. Keep the full body and all feet, hair, weapons, and tail visible.\nOutput exactly1024×1536. Uniformly fit the whole character inside safe bounds x64–960 and y96–1440, centered, leaving at least96pixels purewhite above and below. No text or UI. This is a clean white-background illustration, not a checkerboard transparency preview.",
+                "source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-860aacae-3ff7-473c-be5c-cfbb29e030f0.png",
+                "output_path": "/Users/matthewharwood/.codex/generated_images/01a08893-ced7-73b1-87c9-6bea227588d7/exec-5cab8dae-72ab-4a0e-b4a8-5c9f50262843.png",
+                "outcome": "Selected, byte-preserving copy to destination"
+              }
+            ],
+            "validation": {
+              "dimensions": [
+                1024,
+                1536
+              ],
+              "mode": "RGB",
+              "has_alpha": false,
+              "visually_inspected": true,
+              "full_body_and_equipment_visible": true,
+              "background": "near-white, slight253–255 variation",
+              "content_bbox_at_luma_below_220": [
+                62,
+                22,
+                976,
+                1494
+              ],
+              "content_height_fraction": 0.958,
+              "sha256": "c60528e22a789fff8f2482f728401ddbf83d8b55f03137705fecaed046218f28",
+              "byte_identical_to_generation": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

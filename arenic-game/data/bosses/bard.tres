@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ArenicBossDefinition" format=3 uid="uid://dfwvy2b8buxe"]
+
+[ext_resource type="Script" uid="uid://2k1q4624yepy" path="res://scripts/bosses/boss_definition.gd" id="1_definition"]
+[ext_resource type="Script" uid="uid://cc7j570rlvc0e" path="res://scripts/bosses/boss_visual_state.gd" id="2_state"]
+[ext_resource type="Texture2D" uid="uid://7cf0stp70j1l" path="res://assets/portraits/bosses/bard.png" id="3_portrait"]
+[ext_resource type="SpriteFrames" uid="uid://dv71fjxpc3vuw" path="res://assets/bosses/bard/bard_frames.tres" id="4_frames"]
+
+[sub_resource type="Resource" id="State_idle"]
+script = ExtResource("2_state")
+state_id = "idle"
+tag_prefix = "idle"
+
+[resource]
+script = ExtResource("1_definition")
+boss_id = "bard"
+display_name = "Bard"
+portrait = ExtResource("3_portrait")
+source_sprite_path = "assets/bosses/bard/bard.aseprite"
+sprite_frames = ExtResource("4_frames")
+sprite_metadata_path = "res://assets/bosses/bard/bard.json"
+default_state_id = "idle"
+visual_states = Array[ExtResource("2_state")]([SubResource("State_idle")])

@@ -1,0 +1,7 @@
+# Read-only reference checkouts used during development.
+.tmp/
+
+# Local OS and Python caches.
+.DS_Store
+__pycache__/
+*.py[cod]

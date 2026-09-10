@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArenicClassDefinition" format=3 uid="uid://d05xsg4a1xdyh"]
+
+[ext_resource type="Script" uid="uid://cb0vid0x8md50" path="res://scripts/character_creation/class_definition.gd" id="1_27dnl"]
+[ext_resource type="Texture2D" uid="uid://vdovjwthvwp4" path="res://assets/icons/classes/hunter.svg" id="1_pmn80"]
+[ext_resource type="Texture2D" uid="uid://33s1hteqrlw0" path="res://assets/portraits/hunter_atlas.tres" id="2_63q6x"]
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="2_pmn80"]
+[ext_resource type="Resource" uid="uid://ch8te7opdqd3y" path="res://data/classes/hunter_primary.tres" id="3_go561"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/hunter/hunter_frames.tres" id="6_i0f0v"]
+
+[resource]
+script = ExtResource("1_27dnl")
+class_id = "hunter"
+display_name = "Hunter"
+character_name = "Dean"
+icon = ExtResource("1_pmn80")
+portrait = ExtResource("2_63q6x")
+world_sprite_frames = ExtResource("6_i0f0v")
+skills = Array[ExtResource("2_pmn80")]([ExtResource("3_go561")])
+portrait_height = 0.96

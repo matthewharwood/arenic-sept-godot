@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArenicClassDefinition" format=3 uid="uid://byr2u0qnaj8yh"]
+
+[ext_resource type="Script" uid="uid://cb0vid0x8md50" path="res://scripts/character_creation/class_definition.gd" id="1_agnmr"]
+[ext_resource type="Texture2D" uid="uid://4pgw18qxhdko" path="res://assets/icons/classes/warrior.svg" id="1_rqqb5"]
+[ext_resource type="Texture2D" uid="uid://cfy83onpnw37p" path="res://assets/portraits/warrior_atlas.tres" id="2_8y3rw"]
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="2_rqqb5"]
+[ext_resource type="Resource" uid="uid://djbgn28jwkyf2" path="res://data/classes/warrior_primary.tres" id="3_kv6er"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/warrior/warrior_frames.tres" id="6_i8kcp"]
+
+[resource]
+script = ExtResource("1_agnmr")
+class_id = "warrior"
+display_name = "Warrior"
+character_name = "King"
+icon = ExtResource("1_rqqb5")
+portrait = ExtResource("2_8y3rw")
+world_sprite_frames = ExtResource("6_i8kcp")
+skills = Array[ExtResource("2_rqqb5")]([ExtResource("3_kv6er")])
+portrait_height = 0.8

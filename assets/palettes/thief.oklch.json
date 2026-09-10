@@ -1,0 +1,231 @@
+{
+  "colors": [
+    {
+      "name": "ink",
+      "oklch": [
+        0.205,
+        0.025,
+        265
+      ],
+      "symbol": "o"
+    },
+    {
+      "name": "void",
+      "oklch": [
+        0.255,
+        0.043,
+        296
+      ],
+      "symbol": "v"
+    },
+    {
+      "name": "plum shadow",
+      "oklch": [
+        0.32,
+        0.05,
+        316
+      ],
+      "symbol": "p"
+    },
+    {
+      "name": "plum armor",
+      "oklch": [
+        0.445,
+        0.069,
+        316
+      ],
+      "symbol": "P"
+    },
+    {
+      "name": "plum gleam",
+      "oklch": [
+        0.605,
+        0.069,
+        319
+      ],
+      "symbol": "U"
+    },
+    {
+      "name": "fur shadow",
+      "oklch": [
+        0.295,
+        0.047,
+        46
+      ],
+      "symbol": "b"
+    },
+    {
+      "name": "chestnut",
+      "oklch": [
+        0.423,
+        0.087,
+        47
+      ],
+      "symbol": "r"
+    },
+    {
+      "name": "copper fur",
+      "oklch": [
+        0.56,
+        0.113,
+        51
+      ],
+      "symbol": "R"
+    },
+    {
+      "name": "bronze",
+      "oklch": [
+        0.65,
+        0.115,
+        74
+      ],
+      "symbol": "a"
+    },
+    {
+      "name": "gold",
+      "oklch": [
+        0.805,
+        0.13,
+        84
+      ],
+      "symbol": "A"
+    },
+    {
+      "name": "gold glint",
+      "oklch": [
+        0.915,
+        0.066,
+        90
+      ],
+      "symbol": "H"
+    },
+    {
+      "name": "warm muzzle",
+      "oklch": [
+        0.655,
+        0.094,
+        63
+      ],
+      "symbol": "s"
+    },
+    {
+      "name": "fur glint",
+      "oklch": [
+        0.75,
+        0.075,
+        65
+      ],
+      "symbol": "S"
+    },
+    {
+      "name": "steel shadow",
+      "oklch": [
+        0.32,
+        0.024,
+        261
+      ],
+      "symbol": "n"
+    },
+    {
+      "name": "steel",
+      "oklch": [
+        0.635,
+        0.034,
+        240
+      ],
+      "symbol": "N"
+    },
+    {
+      "name": "steel edge",
+      "oklch": [
+        0.86,
+        0.033,
+        90
+      ],
+      "symbol": "T"
+    },
+    {
+      "name": "crimson shadow",
+      "oklch": [
+        0.295,
+        0.085,
+        23
+      ],
+      "symbol": "d"
+    },
+    {
+      "name": "crimson",
+      "oklch": [
+        0.465,
+        0.15,
+        26
+      ],
+      "symbol": "D"
+    },
+    {
+      "name": "scarlet",
+      "oklch": [
+        0.64,
+        0.173,
+        28
+      ],
+      "symbol": "E"
+    },
+    {
+      "name": "shadow violet",
+      "oklch": [
+        0.535,
+        0.183,
+        302
+      ],
+      "symbol": "V"
+    },
+    {
+      "name": "violet glint",
+      "oklch": [
+        0.76,
+        0.125,
+        300
+      ],
+      "symbol": "W"
+    },
+    {
+      "name": "cream flash",
+      "oklch": [
+        0.955,
+        0.04,
+        92
+      ],
+      "symbol": "C"
+    },
+    {
+      "name": "linen shadow",
+      "oklch": [
+        0.425,
+        0.057,
+        78
+      ],
+      "symbol": "g"
+    },
+    {
+      "name": "linen",
+      "oklch": [
+        0.66,
+        0.082,
+        83
+      ],
+      "symbol": "G"
+    },
+    {
+      "name": "linen glint",
+      "oklch": [
+        0.85,
+        0.056,
+        88
+      ],
+      "symbol": "L"
+    }
+  ],
+  "note": "Shared martial palette; class silhouettes and material usage distinguish bear Warrior from feline Thief. Converted only at Aseprite pixel boundary.",
+  "space": "oklch"
+}

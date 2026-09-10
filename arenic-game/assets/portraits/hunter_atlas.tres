@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://33s1hteqrlw0"]
+
+[ext_resource type="Texture2D" uid="uid://osdc2yjb4u3i" path="res://assets/portraits/hunter.png" id="1_rd8ev"]
+
+[resource]
+atlas = ExtResource("1_rd8ev")
+region = Rect2(10, 15, 1002, 1504)
+filter_clip = true

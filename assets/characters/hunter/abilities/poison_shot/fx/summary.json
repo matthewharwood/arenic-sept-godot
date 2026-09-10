@@ -1,0 +1,273 @@
+{
+  "final_game_exports": false,
+  "preview_only": true,
+  "schema": "arenic.hunter.fx.source.v2",
+  "sources": [
+    {
+      "ability": "poison_shot",
+      "canvas": [
+        19,
+        9
+      ],
+      "contact_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/projectile-contact-4x.png",
+      "frame_durations_ms": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "frame_stats": [
+        {
+          "edge_pixels": 0,
+          "frame": 1,
+          "opaque_pixels": 33
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 2,
+          "opaque_pixels": 33
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 3,
+          "opaque_pixels": 32
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 4,
+          "opaque_pixels": 33
+        }
+      ],
+      "gif_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/projectile.gif",
+      "layers": [
+        "Toxic wake",
+        "Arrow shaft and feather",
+        "Poison payload",
+        "Glints"
+      ],
+      "name": "projectile",
+      "palette_extra_colors": false,
+      "palette_source": "assets/palettes/hunter.oklch.json",
+      "path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/projectile.aseprite",
+      "pivot": [
+        17,
+        4
+      ],
+      "pivot_slice": "frame",
+      "preview_frames": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/frames/projectile/",
+      "tags": [
+        {
+          "duration_ms": 320,
+          "from": 1,
+          "loop": true,
+          "name": "flight_e",
+          "to": 4
+        }
+      ],
+      "tile_size_px": 19,
+      "use": "Straight-down orthographic east arrow. Tip (17,4) stays fixed; gameplay owns direction, movement, and flight lifetime.",
+      "verified": {
+        "binary_alpha": true,
+        "clear_canvas_edges": true,
+        "fixed_pivot": true,
+        "mcp_gif_frame_timing": true,
+        "saved_readback": true,
+        "source_palette_only": true
+      },
+      "view": "straight_down_orthographic"
+    },
+    {
+      "ability": "poison_shot",
+      "canvas": [
+        19,
+        19
+      ],
+      "contact_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/impact-contact-4x.png",
+      "frame_durations_ms": [
+        50,
+        70,
+        90,
+        110,
+        120,
+        120,
+        120,
+        120,
+        100,
+        100
+      ],
+      "frame_stats": [
+        {
+          "edge_pixels": 0,
+          "frame": 1,
+          "opaque_pixels": 13
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 2,
+          "opaque_pixels": 40
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 3,
+          "opaque_pixels": 82
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 4,
+          "opaque_pixels": 98
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 5,
+          "opaque_pixels": 64
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 6,
+          "opaque_pixels": 13
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 7,
+          "opaque_pixels": 8
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 8,
+          "opaque_pixels": 6
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 9,
+          "opaque_pixels": 3
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 10,
+          "opaque_pixels": 0
+        }
+      ],
+      "gif_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/impact.gif",
+      "layers": [
+        "Splatter shadow",
+        "Toxic splatter",
+        "Outward droplets"
+      ],
+      "name": "impact",
+      "palette_extra_colors": false,
+      "palette_source": "assets/palettes/hunter.oklch.json",
+      "path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/impact.aseprite",
+      "pivot": [
+        9,
+        9
+      ],
+      "pivot_slice": "frame",
+      "preview_frames": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/frames/impact/",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "loop": false,
+          "name": "impact",
+          "to": 10
+        }
+      ],
+      "tile_size_px": 19,
+      "use": "Straight-down localized green splatter. Exactly 1000ms once, clear final frame. Visual spread adds no area-damage upgrade.",
+      "verified": {
+        "binary_alpha": true,
+        "clear_canvas_edges": true,
+        "fixed_pivot": true,
+        "mcp_gif_frame_timing": true,
+        "saved_readback": true,
+        "source_palette_only": true
+      },
+      "view": "straight_down_orthographic"
+    },
+    {
+      "ability": "poison_shot",
+      "canvas": [
+        19,
+        19
+      ],
+      "contact_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/affliction-contact-4x.png",
+      "frame_durations_ms": [
+        160,
+        170,
+        170,
+        160,
+        170,
+        170
+      ],
+      "frame_stats": [
+        {
+          "edge_pixels": 0,
+          "frame": 1,
+          "opaque_pixels": 18
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 2,
+          "opaque_pixels": 17
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 3,
+          "opaque_pixels": 17
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 4,
+          "opaque_pixels": 17
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 5,
+          "opaque_pixels": 17
+        },
+        {
+          "edge_pixels": 0,
+          "frame": 6,
+          "opaque_pixels": 17
+        }
+      ],
+      "gif_preview": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/affliction.gif",
+      "layers": [
+        "Peripheral wisps",
+        "Orbiting motes"
+      ],
+      "name": "affliction",
+      "palette_extra_colors": false,
+      "palette_source": "assets/palettes/hunter.oklch.json",
+      "path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/affliction.aseprite",
+      "pivot": [
+        9,
+        9
+      ],
+      "pivot_slice": "frame",
+      "preview_frames": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/hunter/abilities/poison_shot/fx/previews/frames/affliction/",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "loop": true,
+          "name": "afflicted_loop",
+          "to": 6
+        }
+      ],
+      "tile_size_px": 19,
+      "use": "Straight-down peripheral poison status. Center on target tile (9,9). Loop only while gameplay poison is active (base20s); center stays clear.",
+      "verified": {
+        "binary_alpha": true,
+        "clear_canvas_edges": true,
+        "fixed_pivot": true,
+        "mcp_gif_frame_timing": true,
+        "saved_readback": true,
+        "source_palette_only": true
+      },
+      "view": "straight_down_orthographic"
+    }
+  ],
+  "tile_size_px": 19,
+  "view": "straight_down_orthographic"
+}

@@ -1,0 +1,362 @@
+{
+  "id": "merchant",
+  "name": "Merchant",
+  "portrait": "arenic-game/assets/portraits/merchant.png",
+  "frame": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "directions": [
+    "n",
+    "e",
+    "s",
+    "w"
+  ],
+  "abilities": [
+    {
+      "id": "coin_toss",
+      "name": "Coin Toss",
+      "slot": 1,
+      "description": "Invest 25 gold and hold up to 5 seconds to charge an aimed coin; successful hits may return investment plus profit.",
+      "source_doc": "../arenic_bevy/_docs/abilities/merchant/coin_toss.md",
+      "actor": "abilities/coin_toss/merchant_coin_toss.aseprite",
+      "frames_per_direction": 14,
+      "durations_ms": [
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        500,
+        60,
+        80,
+        100,
+        160
+      ],
+      "release_ms": 5000,
+      "preview": {
+        "type": "projectile",
+        "target": "boss",
+        "impact_ms": 5500,
+        "duration_ms": 6500
+      },
+      "fx": [
+        {
+          "source": "abilities/coin_toss/fx/coin.aseprite",
+          "role": "projectile",
+          "tag": "flight_e",
+          "loop": true,
+          "duration_ms": 400,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/coin_toss/fx/payout.aseprite",
+          "role": "impact",
+          "tag": "payout",
+          "loop": false,
+          "duration_ms": 800,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A gold coin flicked hard from a thumb, a clean metallic zing and short enchanted whistle. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.6,
+          "loop": false
+        },
+        "impact": {
+          "description": "A golden coin strikes and rings, followed by a small satisfying shower of coins and magical success chime. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.9,
+          "loop": false
+        },
+        "charge": {
+          "description": "Five-second rising magical coin resonance, increasing pitch and brilliance with small metallic tremolo, ending cleanly. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 5,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Preview uses the maximum 5 second hold. Runtime can release earlier; charge frames can be sampled or held to match input.",
+        "80% return chance on hit,50% profit when returned; preview payout is a staged success, never a guarantee. No upgraded ricochet."
+      ]
+    },
+    {
+      "id": "dice",
+      "name": "Dice",
+      "slot": 2,
+      "description": "Instantly add one 1% critical chance stack, up to 50, persisting until a critical consumes the stacks.",
+      "source_doc": "../arenic_bevy/_docs/abilities/merchant/dice.md",
+      "actor": "abilities/dice/merchant_dice.aseprite",
+      "frames_per_direction": 6,
+      "durations_ms": [
+        60,
+        60,
+        80,
+        100,
+        100,
+        100
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "self",
+        "target": "self",
+        "impact_ms": 0,
+        "duration_ms": 2000
+      },
+      "fx": [
+        {
+          "source": "abilities/dice/fx/dice.aseprite",
+          "role": "aura",
+          "tag": "roll",
+          "loop": false,
+          "duration_ms": 500,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/dice/fx/dice.aseprite",
+          "role": "aura",
+          "tag": "orbit_loop",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/dice/fx/lucky.aseprite",
+          "role": "impact",
+          "tag": "lucky",
+          "loop": false,
+          "duration_ms": 500,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Two small ivory dice rattle in a hand and clack across wood, bright and tactile. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.6,
+          "loop": false
+        },
+        "impact": {
+          "description": "Dice settle with a tiny enchanted luck ping, a precise golden note. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.5,
+          "loop": false
+        }
+      },
+      "notes": [
+        "This is a self-buff, not a projectile or immediate damaging attack.",
+        "Preview shows one successful stack addition; gameplay owns stack count, consumption and 500 ms cooldown."
+      ]
+    },
+    {
+      "id": "fortune",
+      "name": "Fortune",
+      "slot": 3,
+      "description": "Grant nearby allies a 20-second luck aura improving gold and loot outcomes within two tiles.",
+      "source_doc": "../arenic_bevy/_docs/abilities/merchant/fortune.md",
+      "actor": "abilities/fortune/merchant_fortune.aseprite",
+      "frames_per_direction": 6,
+      "durations_ms": [
+        80,
+        80,
+        100,
+        100,
+        120,
+        120
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "self",
+        "target": "ally",
+        "impact_ms": 0,
+        "duration_ms": 3200
+      },
+      "fx": [
+        {
+          "source": "abilities/fortune/fx/fortune.aseprite",
+          "role": "aura",
+          "tag": "fortune_loop",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        },
+        {
+          "source": "abilities/fortune/fx/prosperity.aseprite",
+          "role": "impact",
+          "tag": "prosperity",
+          "loop": false,
+          "duration_ms": 700,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A purse opens with a rich handful of coins and a warm enchanted prosperity chord. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "impact": {
+          "description": "A delicate treasure discovery sparkle, gem chinks and a soft lucky chime. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Seamless restrained golden aura hum with occasional coin chimes, warm prosperous ambience, no cash-register rhythm. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 2,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Aura is economic support, not damage, healing or guaranteed loot.",
+        "38×38 accent does not define gameplay radius; range 2 tiles, duration 20 seconds, cooldown 45 seconds remain gameplay-owned."
+      ]
+    },
+    {
+      "id": "vault",
+      "name": "Vault",
+      "slot": 4,
+      "description": "Instantly place a 4×4 zone up to three tiles away, doubling critical-hit damage for occupants for 10 seconds.",
+      "source_doc": "../arenic_bevy/_docs/abilities/merchant/vault.md",
+      "actor": "abilities/vault/merchant_vault.aseprite",
+      "frames_per_direction": 6,
+      "durations_ms": [
+        70,
+        80,
+        100,
+        100,
+        120,
+        130
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "ground",
+        "target": "ground",
+        "impact_ms": 0,
+        "duration_ms": 3400
+      },
+      "fx": [
+        {
+          "source": "abilities/vault/fx/vault.aseprite",
+          "role": "field",
+          "tag": "open",
+          "loop": false,
+          "duration_ms": 700,
+          "canvas": [
+            76,
+            76
+          ],
+          "pivot": [
+            38,
+            38
+          ]
+        },
+        {
+          "source": "abilities/vault/fx/vault.aseprite",
+          "role": "field",
+          "tag": "vault_loop",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            76,
+            76
+          ],
+          "pivot": [
+            38,
+            38
+          ]
+        },
+        {
+          "source": "abilities/vault/fx/critical.aseprite",
+          "role": "impact",
+          "tag": "critical",
+          "loop": false,
+          "duration_ms": 600,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A heavy magical vault latch turns and opens with polished metal clicks and a golden resonant bloom. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.9,
+          "loop": false
+        },
+        "impact": {
+          "description": "A clear gilded critical strike accent, bright metal ring with a compact treasure chime. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Seamless quiet enchanted vault resonance, low warm shimmer with sparse delicate metallic chimes. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 2,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Buff zone activates immediately. Opening animation adds no gameplay delay.",
+        "76×76 canvas shows exact 4×4 cells. Base 10-second zone,cooldown 30 seconds; no fortress or defensive bonuses."
+      ]
+    }
+  ]
+}

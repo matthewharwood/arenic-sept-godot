@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Arenic — Hero comparison</title>
+  <style>
+    @font-face {
+      font-family: "PP Migra";
+      src: url("../../../../arenic-game/assets/fonts/PPMigra-Extrabold.ttf") format("truetype");
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root {
+      --paper: #f4f1ee;
+      --ink: #1c1c1c;
+      --muted: #625d57;
+      --line: #d5cfc7;
+      --blue: #2563c5;
+      --serif: "PP Migra", Georgia, "Times New Roman", serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+    button, input { font: inherit; }
+    button { color: inherit; cursor: pointer; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
+    .page { max-width: 1328px; margin: 0 auto; padding: 20px 32px 24px; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+    .wordmark { font: 800 32px/1 var(--serif); letter-spacing: -1px; }
+    .edition, .eyebrow { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; }
+    .edition { border: 1px solid var(--ink); border-radius: 30px; padding: 9px 12px; white-space: nowrap; }
+    .intro { padding: 16px 0; }
+    h1 { margin: 0 0 6px; font: 800 32px/1.07 var(--serif); letter-spacing: -.025em; }
+    .intro p { margin: 0; max-width: 650px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .class-picker { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .class-button { min-height: 58px; padding: 9px 10px; display: grid; grid-template-columns: 1fr auto; gap: 6px 8px; text-align: left; background: transparent; border: 1px solid #aaa29a; border-radius: 5px; }
+    .class-button:hover { background: #fff9; border-color: var(--ink); }
+    .class-button[aria-pressed="true"] { background: #edf3fc; border: 2px solid var(--blue); padding: 8px 9px; color: var(--blue); }
+    .class-name { font: 800 20px/1.05 var(--serif); }
+    .character-name { grid-column: 1; font-size: 12px; line-height: 1.2; }
+    .class-number { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: 11px; font-variant-numeric: tabular-nums; opacity: .65; }
+    .keyboard-hint { margin: 12px 0 0; font-size: 11px; color: var(--muted); }
+    .review-header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin: 18px 0 12px; }
+    .eyebrow { margin: 0 0 7px; color: var(--muted); }
+    h2 { margin: 0; font: 800 32px/1.08 var(--serif); letter-spacing: -.03em; }
+    .backdrop-control { max-width: 355px; }
+    .toggle-label { display: flex; align-items: center; gap: 10px; width: fit-content; min-height: 32px; font-size: 14px; font-weight: 700; cursor: pointer; }
+    .toggle-label input { width: 19px; height: 19px; margin: 0; accent-color: var(--blue); cursor: pointer; }
+    .backdrop-note { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .comparison { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    figure { min-width: 0; margin: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; }
+    figcaption { padding: 10px 16px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); background: #faf8f5; }
+    .figure-title { font: 800 25px/1.1 var(--serif); }
+    .figure-note { color: var(--muted); font-size: 11px; text-align: right; }
+    .art-stage { position: relative; width: 100%; height: min(650px, calc(100vh - 405px)); min-height: 300px; background: #fff; isolation: isolate; }
+    .portrait { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; mix-blend-mode: normal; }
+    .image-state { position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; padding: 30px; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .sunburst .art-stage { background: repeating-conic-gradient(from -9deg at 50% 45%, #ead69b 0deg 15deg, #faf0d9 15deg 30deg); }
+    .sunburst .portrait { mix-blend-mode: multiply; }
+    .review-note { margin: 17px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.6; }
+    footer p { margin: 0; max-width: 650px; }
+    footer a { color: inherit; text-underline-offset: 3px; white-space: nowrap; }
+    @media (min-width: 1000px) {
+      .class-picker { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; }
+      .class-number { display: none; }
+    }
+    @media (max-width: 700px) {
+      .page { padding: 22px 18px 28px; }
+      .masthead { padding-bottom: 20px; gap: 12px; }
+      .wordmark { font-size: 36px; }
+      .edition { font-size: 9px; padding: 8px 10px; }
+      .intro { padding: 25px 0 20px; }
+      .class-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .class-button { padding: 13px; min-height: 76px; }
+      .class-button[aria-pressed="true"] { padding: 12px; }
+      .class-name { font-size: 22px; }
+      .review-header { align-items: start; flex-direction: column; gap: 19px; margin-top: 27px; }
+      .backdrop-control { max-width: 100%; }
+      .comparison { grid-template-columns: 1fr; gap: 19px; }
+      .art-stage { height: auto; min-height: 0; aspect-ratio: 2 / 3; }
+      figcaption { padding: 14px 16px; }
+      footer { flex-direction: column; gap: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" id="review">
+    <header class="masthead">
+      <span class="wordmark">Arenic</span>
+      <span class="edition">Portrait studies · 02</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">Hero comparison</h1>
+      <p>Choose a hero to compare the archived originals with the approved v2 portraits now selected for the game.</p>
+    </section>
+
+    <nav class="class-picker" id="class-picker" aria-label="Choose a class" aria-describedby="keyboard-hint">
+      <button class="class-button" type="button" data-class="hunter" aria-pressed="true" tabindex="0"><span class="class-name">Hunter</span><span class="character-name">Dean</span><span class="class-number" aria-hidden="true">01</span></button>
+      <button class="class-button" type="button" data-class="bard" aria-pressed="false" tabindex="-1"><span class="class-name">Bard</span><span class="character-name">Marcus</span><span class="class-number" aria-hidden="true">02</span></button>
+      <button class="class-button" type="button" data-class="merchant" aria-pressed="false" tabindex="-1"><span class="class-name">Merchant</span><span class="character-name">Calvin</span><span class="class-number" aria-hidden="true">03</span></button>
+      <button class="class-button" type="button" data-class="warrior" aria-pressed="false" tabindex="-1"><span class="class-name">Warrior</span><span class="character-name">King</span><span class="class-number" aria-hidden="true">04</span></button>
+      <button class="class-button" type="button" data-class="cardinal" aria-pressed="false" tabindex="-1"><span class="class-name">Cardinal</span><span class="character-name">Pius</span><span class="class-number" aria-hidden="true">05</span></button>
+      <button class="class-button" type="button" data-class="alchemist" aria-pressed="false" tabindex="-1"><span class="class-name">Alchemist</span><span class="character-name">Giuseppe</span><span class="class-number" aria-hidden="true">06</span></button>
+      <button class="class-button" type="button" data-class="forager" aria-pressed="false" tabindex="-1"><span class="class-name">Forager</span><span class="character-name">Daisy</span><span class="class-number" aria-hidden="true">07</span></button>
+      <button class="class-button" type="button" data-class="thief" aria-pressed="false" tabindex="-1"><span class="class-name">Thief</span><span class="character-name">Ginger</span><span class="class-number" aria-hidden="true">08</span></button>
+    </nav>
+    <p class="keyboard-hint" id="keyboard-hint">Keyboard: Tab to the class picker, then use the arrow keys. Home and End jump to the first and last hero.</p>
+
+    <section aria-label="Portrait comparison">
+      <div class="review-header">
+        <div aria-live="polite" aria-atomic="true">
+          <p class="eyebrow" id="selected-class">Hunter</p>
+          <h2 id="selected-character">Dean</h2>
+        </div>
+        <div class="backdrop-control">
+          <label class="toggle-label"><input id="sunburst-toggle" type="checkbox" aria-describedby="backdrop-note"> Sunburst backdrop</label>
+          <p class="backdrop-note" id="backdrop-note">This backdrop preview can tint light details. Leave it off to see original colors against white.</p>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <figure>
+          <figcaption><span class="figure-title">Previous</span><span class="figure-note">Archived v1</span></figcaption>
+          <div class="art-stage" id="previous-stage"><img class="portrait" src="before/hunter.png" alt="Dean, Hunter — previous v1 portrait"></div>
+        </figure>
+        <figure>
+          <figcaption><span class="figure-title">Current</span><span class="figure-note">Active v2</span></figcaption>
+          <div class="art-stage" id="current-stage"><img class="portrait" src="hunter-v2.png" alt="Dean, Hunter — current v2 portrait"></div>
+        </figure>
+      </div>
+      <p class="review-note">Both portraits are shown uncropped at the same scale. Sunburst is a comparison-only display effect; it is not part of the game artwork or baked into either image.</p>
+    </section>
+
+    <footer>
+      <p>Generated with the current built-in image tool. Its model identifier is not exposed, so this regeneration does not establish a model upgrade.</p>
+      <a href="COMPARISON.md">Open the eight-hero comparison index</a>
+    </footer>
+    <noscript><p>Enable JavaScript to change heroes or preview the Sunburst backdrop. The Hunter pair remains available above.</p></noscript>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+      const heroes = [
+        { id: "hunter", name: "Dean", className: "Hunter" },
+        { id: "bard", name: "Marcus", className: "Bard" },
+        { id: "merchant", name: "Calvin", className: "Merchant" },
+        { id: "warrior", name: "King", className: "Warrior" },
+        { id: "cardinal", name: "Pius", className: "Cardinal" },
+        { id: "alchemist", name: "Giuseppe", className: "Alchemist" },
+        { id: "forager", name: "Daisy", className: "Forager" },
+        { id: "thief", name: "Ginger", className: "Thief" }
+      ];
+      const picker = document.getElementById("class-picker");
+      const buttons = Array.from(picker.querySelectorAll("button"));
+      const previousStage = document.getElementById("previous-stage");
+      const currentStage = document.getElementById("current-stage");
+      const toggle = document.getElementById("sunburst-toggle");
+      let selectedIndex = -1;
+
+      function showPortrait(stage, source, description, isCurrent) {
+        const image = document.createElement("img");
+        image.className = "portrait";
+        image.alt = description;
+        image.decoding = "async";
+        image.hidden = true;
+        const message = document.createElement("div");
+        message.className = "image-state";
+        message.setAttribute("role", "status");
+        message.textContent = "Loading portrait…";
+        image.addEventListener("load", () => {
+          message.hidden = true;
+          image.hidden = false;
+        }, { once: true });
+        image.addEventListener("error", () => {
+          message.textContent = isCurrent
+            ? "The current v2 portrait could not be found at its local path."
+            : "The archived previous portrait could not be found at its local path.";
+        }, { once: true });
+        stage.replaceChildren(image, message);
+        image.src = source;
+      }
+
+      function selectHero(index, moveFocus = false) {
+        if (moveFocus) buttons[index].focus();
+        if (selectedIndex === index) return;
+        selectedIndex = index;
+        const hero = heroes[index];
+        buttons.forEach((button, buttonIndex) => {
+          const selected = buttonIndex === index;
+          button.setAttribute("aria-pressed", String(selected));
+          button.tabIndex = selected ? 0 : -1;
+        });
+        document.getElementById("selected-class").textContent = hero.className;
+        document.getElementById("selected-character").textContent = hero.name;
+        showPortrait(previousStage, `before/${hero.id}.png`, `${hero.name}, ${hero.className} — previous v1 portrait`, false);
+        showPortrait(currentStage, `${hero.id}-v2.png`, `${hero.name}, ${hero.className} — current v2 portrait`, true);
+      }
+
+      buttons.forEach((button, index) => {
+        button.addEventListener("click", () => selectHero(index));
+        button.addEventListener("keydown", event => {
+          const columns = getComputedStyle(picker).gridTemplateColumns.split(" ").length;
+          let next;
+          switch (event.key) {
+            case "ArrowRight": next = index + 1; break;
+            case "ArrowLeft": next = index - 1; break;
+            case "ArrowDown": next = index + columns; break;
+            case "ArrowUp": next = index - columns; break;
+            case "Home": next = 0; break;
+            case "End": next = heroes.length - 1; break;
+            default: return;
+          }
+          event.preventDefault();
+          selectHero((next + heroes.length) % heroes.length, true);
+        });
+      });
+      toggle.checked = false;
+      toggle.addEventListener("change", () => {
+        document.getElementById("review").classList.toggle("sunburst", toggle.checked);
+      });
+      selectHero(0);
+    })();
+  </script>
+</body>
+</html>

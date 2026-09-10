@@ -1,0 +1,32 @@
+'use strict';
+const {boss,sprite,hero,roster}=PAGE,$=id=>document.getElementById(id);
+const directions={n:'North',e:'East',s:'South',w:'West'};
+let running=true,now=0,last=performance.now(),ready=false;
+const arena=$('arena'),ctx=arena.getContext('2d'),cards=[];
+document.title=boss.name+' · Boss study';$('title').textContent=boss.name+' boss';
+$('description').textContent=boss.description;$('portrait').src=boss.portrait_image;
+$('portrait').alt=boss.name+' boss portrait';$('portrait-link').href='portrait.png';
+$('source').textContent='Source: '+boss.source;
+for(const id of roster){const a=document.createElement('a');a.href='../'+id+'/attacks.html';a.textContent=id[0].toUpperCase()+id.slice(1);if(id===boss.id)a.setAttribute('aria-current','page');$('roster').append(a);}
+for(const state of boss.visual_states){const o=document.createElement('option');o.value=state.id;o.textContent=state.name;$('state').append(o);}
+$('state').value=boss.default_state;
+function selected(){return boss.visual_states.find(s=>s.id===$('state').value);}
+function tagFor(s,name){const tag=s.tags.find(t=>t.name===name);if(!tag)throw Error('Missing animation '+name);return tag;}
+function duration(s,name){const tag=tagFor(s,name);return s.frames.slice(tag.from,tag.to+1).reduce((sum,f)=>sum+f.duration,0);}
+function frameAt(s,name,time){const tag=tagFor(s,name);time=((time%duration(s,name))+duration(s,name))%duration(s,name);for(let i=tag.from;i<=tag.to;i++){if(time<s.frames[i].duration)return i;time-=s.frames[i].duration;}return tag.to;}
+function draw(c,s,name,time,x,y){const r=s.frames[frameAt(s,name,time)].frame;c.drawImage(s.img,r.x,r.y,r.w,r.h,Math.round(x)-s.pivot[0],Math.round(y)-s.pivot[1],r.w,r.h);}
+function grid(c,w,h,ox=0,oy=0,cols=Math.floor(w/19),rows=Math.floor(h/19)){c.fillStyle='oklch(.97 .009 95)';c.fillRect(0,0,w,h);c.fillStyle='oklch(.67 .024 150)';for(let r=0;r<=rows;r++)for(let n=0;n<=cols;n++)c.fillRect(ox+n*19,oy+r*19,1,1);}
+function guide(c,x,y){if(!$('bounds').checked)return;c.save();c.strokeStyle='oklch(.62 .07 150)';c.lineWidth=1;c.setLineDash([3,3]);c.beginPath();c.arc(x,y,57,0,Math.PI*2);c.stroke();c.setLineDash([]);c.fillStyle='oklch(.57 .11 150)';c.fillRect(x-2,y,5,1);c.fillRect(x,y-2,1,5);c.restore();}
+function bossAt(c,dir,x,y){guide(c,x,y);draw(c,sprite,selected().tag+'_'+dir,now,x,y);}
+function arenaScene(){grid(ctx,1280,720,13,35,66,31);ctx.fillStyle='oklch(.94 .015 95)';ctx.fillRect(0,0,1280,29);ctx.fillRect(0,638,1280,82);ctx.strokeStyle='oklch(.64 .028 145)';ctx.lineWidth=2;
+ for(const[a,b,c,d]of[[4,4,4,30],[9,0,9,26],[19,0,19,30],[25,4,25,30],[25,4,36,4],[40,0,40,25],[30,26,40,26],[46,3,46,30],[56,0,56,25],[61,0,61,26]]){ctx.beginPath();ctx.moveTo(13+a*19+.5,35+b*19+.5);ctx.lineTo(13+c*19+.5,35+d*19+.5);ctx.stroke();}
+ bossAt(ctx,$('direction').value,649,329);draw(ctx,hero,'idle_e',now,516,329);
+ ctx.fillStyle='oklch(.28 .04 150)';ctx.font='12px system-ui';ctx.fillText(boss.name.toUpperCase()+' / BOSS APPEARANCE STUDY',22,20);ctx.fillText('OVERHEAD · 19 PX / TILE · SOURCE PREVIEW',940,20);ctx.fillText('Hero · 19 × 19',472,363);ctx.fillText('Boss · 114 × 114',603,405);ctx.font='14px system-ui';ctx.fillText(selected().name+' · '+directions[$('direction').value],24,668);ctx.font='11px system-ui';ctx.fillText('One shared six-tile footprint. Idle and form changes only; attacks are not authored yet.',24,691);
+}
+for(const[dir,name]of Object.entries(directions)){const article=document.createElement('article');article.className='panel';article.innerHTML='<div class="bar"><h2></h2><span class="badge">114 × 114</span></div><div class="stage"><canvas width="209" height="209"></canvas></div><div class="caption phase"></div>';article.querySelector('h2').textContent=name;const canvas=article.querySelector('canvas');canvas.setAttribute('aria-label',name+' boss animation');const c=canvas.getContext('2d');cards.push({dir,canvas,c,caption:article.querySelector('.phase')});$('cards').append(article);}
+function resize(){const size=$('mode').value==='actor'?114:209,scale=Number($('scale').value);for(const{canvas,c}of cards){canvas.width=canvas.height=size;canvas.style.width=canvas.style.height=size*scale+'px';c.imageSmoothingEnabled=false;const parent=canvas.parentElement;parent.scrollLeft=Math.max(0,(size*scale-parent.clientWidth)/2);parent.scrollTop=Math.max(0,(size*scale-parent.clientHeight)/2);}}
+function arenaResize(){const scale=$('arena-scale').value;arena.style.width=scale==='fit'?'100%':1280*Number(scale)+'px';arena.style.height=scale==='fit'?'auto':720*Number(scale)+'px';}
+function render(){if(!ready)return;const state=selected(),name=state.tag+'_'+$('direction').value,total=duration(sprite,name),solo=$('mode').value==='actor';arenaScene();for(const{dir,canvas,c,caption}of cards){grid(c,canvas.width,canvas.height);const center=solo?57:104;if(solo){c.fillStyle='oklch(.97 .009 95)';c.fillRect(0,0,114,114);}bossAt(c,dir,center,center);if(!solo)draw(c,hero,'idle_e',now,19,104);const tag=tagFor(sprite,state.tag+'_'+dir);caption.textContent=state.name+' · frame '+(frameAt(sprite,tag.name,now)-tag.from+1)+' / '+(tag.to-tag.from+1);}$('time').max=total-1;$('time').value=now%total;$('clock').textContent=Math.floor(now%total)+' / '+total+' ms';$('state-description').textContent=state.description||boss.description;}
+$('play').onclick=()=>{running=!running;$('play').textContent=running?'Pause':'Play';};$('restart').onclick=()=>{now=0;render();};$('time').oninput=()=>{running=false;$('play').textContent='Play';now=Number($('time').value);render();};$('state').onchange=()=>{now=0;render();};$('direction').onchange=render;$('bounds').onchange=render;$('scale').onchange=$('mode').onchange=()=>{resize();render();};$('arena-scale').onchange=arenaResize;
+document.addEventListener('visibilitychange',()=>{if(document.hidden){running=false;$('play').textContent='Play';}});
+Promise.all([sprite,hero].map(s=>new Promise((resolve,reject)=>{s.img=new Image();s.img.onload=resolve;s.img.onerror=()=>reject(Error('Could not load sprite sheet'));s.img.src=s.image;}))).then(()=>{ready=true;ctx.imageSmoothingEnabled=false;resize();arenaResize();function tick(time){try{if(running)now+=Math.min(time-last,100)*Number($('speed').value);last=time;render();requestAnimationFrame(tick);}catch(error){$('load-error').textContent='Preview error: '+error.message;}}requestAnimationFrame(tick);}).catch(error=>{$('load-error').textContent=error.message;});

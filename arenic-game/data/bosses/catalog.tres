@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ArenicBossCatalog" format=3]
+
+[ext_resource type="Script" path="res://scripts/bosses/boss_catalog.gd" id="1_catalog"]
+[ext_resource type="Script" path="res://scripts/bosses/boss_definition.gd" id="2_definition"]
+[ext_resource type="Resource" path="res://data/bosses/hunter.tres" id="Boss_hunter"]
+[ext_resource type="Resource" path="res://data/bosses/warrior.tres" id="Boss_warrior"]
+[ext_resource type="Resource" path="res://data/bosses/thief.tres" id="Boss_thief"]
+[ext_resource type="Resource" path="res://data/bosses/alchemist.tres" id="Boss_alchemist"]
+[ext_resource type="Resource" path="res://data/bosses/cardinal.tres" id="Boss_cardinal"]
+[ext_resource type="Resource" path="res://data/bosses/bard.tres" id="Boss_bard"]
+[ext_resource type="Resource" path="res://data/bosses/forager.tres" id="Boss_forager"]
+[ext_resource type="Resource" path="res://data/bosses/merchant.tres" id="Boss_merchant"]
+
+[resource]
+script = ExtResource("1_catalog")
+bosses = Array[ExtResource("2_definition")]([ExtResource("Boss_hunter"), ExtResource("Boss_warrior"), ExtResource("Boss_thief"), ExtResource("Boss_alchemist"), ExtResource("Boss_cardinal"), ExtResource("Boss_bard"), ExtResource("Boss_forager"), ExtResource("Boss_merchant")])

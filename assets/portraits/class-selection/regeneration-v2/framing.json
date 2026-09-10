@@ -1,0 +1,274 @@
+{
+  "inspected_at_utc": "2026-09-10T02:19:05.047531+00:00",
+  "source_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2",
+  "threshold": "min(R,G,B)<245",
+  "bbox_convention": "[left,top,right_exclusive,bottom_exclusive]",
+  "recommended_padding_px": 4,
+  "recommendation": "Use each recommended_bbox (tight threshold bounds plus 4 px, clamped to source). All 8 were independently viewed. No class needs full canvas or additional padding. Near-white paper texture is excluded; any residual outliers beyond recommended bounds are at most 5 very light pixels at values 248\u2013249.",
+  "classes": {
+    "hunter": {
+      "source_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/hunter-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "sha256": "b3c6b64de0f355577a45d2dbb70624ad55268a3562104f2a219e2390568a46cc",
+      "bbox": [
+        14,
+        19,
+        1008,
+        1515
+      ],
+      "padding_px": 4,
+      "recommended_bbox": [
+        10,
+        15,
+        1012,
+        1519
+      ],
+      "atlas_region_xywh": [
+        10,
+        15,
+        1002,
+        1504
+      ],
+      "needs_looser_crop": false,
+      "use_full_canvas": false,
+      "outside_recommended_bbox_min_rgb": 251,
+      "outside_recommended_bbox_pixels_below250": 0,
+      "visual_notes": "Full crossbow, cloak tips and violet spell shards retained. Four-pixel padding covers visible antialiasing."
+    },
+    "bard": {
+      "source_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/bard-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "sha256": "5039098f45d11615386820eed44c43ee4a9b1c6001201b798796bdf536ba332a",
+      "bbox": [
+        34,
+        11,
+        997,
+        1518
+      ],
+      "padding_px": 4,
+      "recommended_bbox": [
+        30,
+        7,
+        1001,
+        1522
+      ],
+      "atlas_region_xywh": [
+        30,
+        7,
+        971,
+        1515
+      ],
+      "needs_looser_crop": false,
+      "use_full_canvas": false,
+      "outside_recommended_bbox_min_rgb": 248,
+      "outside_recommended_bbox_pixels_below250": 5,
+      "visual_notes": "Full lute headstock, hair and teal magic curls retained. Five isolated near-white pixels (minimum 248) sit one row above the padded top; this is negligible light fringe, not a smoke plume. No larger crop needed."
+    },
+    "merchant": {
+      "source_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/merchant-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "sha256": "b592f73ec1c67ebf2b5dc56eb26ecdac95734329b6d2df095b762ac7cab0fd65",
+      "bbox": [
+        72,
+        10,
+        960,
+        1521
+      ],
+      "padding_px": 4,
+      "recommended_bbox": [
+        68,
+        6,
+        964,
+        1525
+      ],
+      "atlas_region_xywh": [
+        68,
+        6,
+        896,
+        1519
+      ],
+      "needs_looser_crop": false,
+      "use_full_canvas": false,
+      "outside_recommended_bbox_min_rgb": 249,
+      "outside_recommended_bbox_pixels_below250": 1,
+      "visual_notes": "Full hair, cards, dice, scarf and boots retained. One near-white pixel at 249 sits one row above the padded top; no visible content loss and no larger crop needed."
+    },
+    "warrior": {
+      "source_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/warrior-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "sha256": "95bbf8cc8fac7458adc91c3a10a9b3d49bfb84cee444d5da3c723b1f72e55772",
+      "bbox": [
+        19,
+        105,
+        1011,
+        1478
+      ],
+      "padding_px": 4,
+      "recommended_bbox": [
+        15,
+        101,
+        1015,
+        1482
+      ],
+      "atlas_region_xywh": [
+        15,
+        101,
+        1000,
+        1381
+      ],
+      "needs_looser_crop": false,
+      "use_full_canvas": false,
+      "outside_recommended_bbox_min_rgb": 252,
+      "outside_recommended_bbox_pixels_below250": 0,
+      "visual_notes": "Entire shield, fur tips, armor spikes, paws and claws retained. Safe to remove the comparatively large blank top and bottom margins."
+    },
+    "cardinal": {
+      "source_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/cardinal-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "sha256": "4364e191a579de18a83c622efc1d6b8a497daa0e17cc154c366e7ae834688037",
+      "bbox": [
+        118,
+        15,
+        971,
+        1510
+      ],
+      "padding_px": 4,
+      "recommended_bbox": [
+        114,
+        11,
+        975,
+        1514
+      ],
+      "atlas_region_xywh": [
+        114,
+        11,
+        861,
+        1503
+      ],
+      "needs_looser_crop": false,
+      "use_full_canvas": false,
+      "outside_recommended_bbox_min_rgb": 251,
+      "outside_recommended_bbox_pixels_below250": 0,
+      "visual_notes": "Flame tip, detached sparks, staff tip and claws retained. Flame has colored contours and does not need a looser crop."
+    },
+    "alchemist": {
+      "source_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/alchemist-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "sha256": "3b067bf621e5a55a46394e5d9ccd218397b7645411b1e38173550a3ad47ac145",
+      "bbox": [
+        66,
+        16,
+        959,
+        1511
+      ],
+      "padding_px": 4,
+      "recommended_bbox": [
+        62,
+        12,
+        963,
+        1515
+      ],
+      "atlas_region_xywh": [
+        62,
+        12,
+        901,
+        1503
+      ],
+      "needs_looser_crop": false,
+      "use_full_canvas": false,
+      "outside_recommended_bbox_min_rgb": 252,
+      "outside_recommended_bbox_pixels_below250": 0,
+      "visual_notes": "Entire green smoke plume and detached droplets retained, including pale edges. No diffuse smoke beyond four-pixel padding; full canvas unnecessary."
+    },
+    "forager": {
+      "source_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/forager-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "sha256": "98b970204ebb4c784cb70353c6dd36c8037f9cb1110e4a2e4fe6f5dd008d732d",
+      "bbox": [
+        120,
+        23,
+        930,
+        1512
+      ],
+      "padding_px": 4,
+      "recommended_bbox": [
+        116,
+        19,
+        934,
+        1516
+      ],
+      "atlas_region_xywh": [
+        116,
+        19,
+        818,
+        1497
+      ],
+      "needs_looser_crop": false,
+      "use_full_canvas": false,
+      "outside_recommended_bbox_min_rgb": 249,
+      "outside_recommended_bbox_pixels_below250": 1,
+      "visual_notes": "Full hair, leaves, root tips, sickle and skirt/feet retained. One near-white pixel at 249 sits one row above the padded top; no visible content loss and no larger crop needed."
+    },
+    "thief": {
+      "source_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/thief-v2.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "sha256": "eafbb2b7692b62b46b287cb2ca0cd27a5780cc7d7878c1d2853a72da8acd5b6f",
+      "bbox": [
+        54,
+        17,
+        978,
+        1506
+      ],
+      "padding_px": 4,
+      "recommended_bbox": [
+        50,
+        13,
+        982,
+        1510
+      ],
+      "atlas_region_xywh": [
+        50,
+        13,
+        932,
+        1497
+      ],
+      "needs_looser_crop": false,
+      "use_full_canvas": false,
+      "outside_recommended_bbox_min_rgb": 252,
+      "outside_recommended_bbox_pixels_below250": 0,
+      "visual_notes": "Full crown, ears, ponytail, tail curl, both dagger tips and heels retained. Four-pixel padding is sufficient."
+    }
+  }
+}

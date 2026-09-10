@@ -1,0 +1,459 @@
+{ "frames": [
+   {
+    "filename": "cardinal 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 1.aseprite",
+    "frame": { "x": 114, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 2.aseprite",
+    "frame": { "x": 228, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 3.aseprite",
+    "frame": { "x": 342, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 4.aseprite",
+    "frame": { "x": 456, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 5.aseprite",
+    "frame": { "x": 570, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 6.aseprite",
+    "frame": { "x": 684, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 7.aseprite",
+    "frame": { "x": 798, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 8.aseprite",
+    "frame": { "x": 912, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 9.aseprite",
+    "frame": { "x": 1026, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 10.aseprite",
+    "frame": { "x": 1140, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 11.aseprite",
+    "frame": { "x": 1254, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 12.aseprite",
+    "frame": { "x": 1368, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 13.aseprite",
+    "frame": { "x": 1482, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 14.aseprite",
+    "frame": { "x": 1596, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 15.aseprite",
+    "frame": { "x": 1710, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 16.aseprite",
+    "frame": { "x": 0, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 17.aseprite",
+    "frame": { "x": 114, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 18.aseprite",
+    "frame": { "x": 228, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 19.aseprite",
+    "frame": { "x": 342, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 20.aseprite",
+    "frame": { "x": 456, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 21.aseprite",
+    "frame": { "x": 570, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 22.aseprite",
+    "frame": { "x": 684, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 23.aseprite",
+    "frame": { "x": 798, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 24.aseprite",
+    "frame": { "x": 912, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 25.aseprite",
+    "frame": { "x": 1026, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 26.aseprite",
+    "frame": { "x": 1140, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 27.aseprite",
+    "frame": { "x": 1254, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 28.aseprite",
+    "frame": { "x": 1368, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 29.aseprite",
+    "frame": { "x": 1482, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 30.aseprite",
+    "frame": { "x": 1596, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 31.aseprite",
+    "frame": { "x": 1710, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 32.aseprite",
+    "frame": { "x": 0, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 33.aseprite",
+    "frame": { "x": 114, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 34.aseprite",
+    "frame": { "x": 228, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 35.aseprite",
+    "frame": { "x": 342, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 36.aseprite",
+    "frame": { "x": 456, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 37.aseprite",
+    "frame": { "x": 570, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 38.aseprite",
+    "frame": { "x": 684, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 39.aseprite",
+    "frame": { "x": 798, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 40.aseprite",
+    "frame": { "x": 912, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 41.aseprite",
+    "frame": { "x": 1026, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 42.aseprite",
+    "frame": { "x": 1140, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 43.aseprite",
+    "frame": { "x": 1254, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 44.aseprite",
+    "frame": { "x": 1368, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 45.aseprite",
+    "frame": { "x": 1482, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 46.aseprite",
+    "frame": { "x": 1596, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   },
+   {
+    "filename": "cardinal 47.aseprite",
+    "frame": { "x": 1710, "y": 228, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 180
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.5-arm64",
+  "image": "cardinal.png",
+  "format": "RGBA8888",
+  "size": { "w": 1824, "h": 342 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle_n", "from": 0, "to": 11, "direction": "forward", "color": "#17182dff" },
+   { "name": "idle_e", "from": 12, "to": 23, "direction": "forward", "color": "#17182dff" },
+   { "name": "idle_s", "from": 24, "to": 35, "direction": "forward", "color": "#17182dff" },
+   { "name": "idle_w", "from": 36, "to": 47, "direction": "forward", "color": "#17182dff" }
+  ],
+  "layers": [
+   { "name": "01 Curled funnel beneath", "opacity": 255, "blendMode": "normal" },
+   { "name": "02 Rolling cloud silhouette", "opacity": 255, "blendMode": "normal" },
+   { "name": "03 Silver cloud crowns", "opacity": 255, "blendMode": "normal" },
+   { "name": "04 Top vortex", "opacity": 255, "blendMode": "normal" },
+   { "name": "05 Contained gold lightning", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "frame", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 114, "h": 114 }, "pivot": {"x": 57, "y": 57 } }] }
+  ]
+ }
+}

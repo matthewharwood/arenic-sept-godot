@@ -1,0 +1,38 @@
+[
+  {
+    "frames": 42,
+    "duration_ms": 10200,
+    "size": [
+      228,
+      228
+    ],
+    "direction": "n"
+  },
+  {
+    "frames": 42,
+    "duration_ms": 10200,
+    "size": [
+      228,
+      228
+    ],
+    "direction": "e"
+  },
+  {
+    "frames": 42,
+    "duration_ms": 10200,
+    "size": [
+      228,
+      228
+    ],
+    "direction": "s"
+  },
+  {
+    "frames": 42,
+    "duration_ms": 10200,
+    "size": [
+      228,
+      228
+    ],
+    "direction": "w"
+  }
+]

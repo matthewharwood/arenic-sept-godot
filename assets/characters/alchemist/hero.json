@@ -1,0 +1,283 @@
+{
+  "id": "alchemist",
+  "name": "Alchemist",
+  "portrait": "arenic-game/assets/portraits/alchemist.png",
+  "abilities": [
+    {
+      "id": "acid_flask",
+      "name": "Acid Flask",
+      "slot": 1,
+      "description": "Throw a glass acid flask onto a ground tile; shatter into a persistent corrosive pool.",
+      "source_doc": "../arenic_bevy/_docs/abilities/alchemist/acid_flask.md",
+      "actor": "abilities/acid_flask/alchemist_acid_flask.aseprite",
+      "frames_per_direction": 8,
+      "durations_ms": [
+        80,
+        80,
+        100,
+        60,
+        80,
+        100,
+        120,
+        180
+      ],
+      "release_ms": 260,
+      "preview": {
+        "type": "projectile",
+        "target": "ground",
+        "impact_ms": 1060,
+        "duration_ms": 2600
+      },
+      "fx": [
+        {
+          "source": "abilities/acid_flask/fx/flask.aseprite",
+          "role": "projectile",
+          "tag": "flight",
+          "loop": true,
+          "duration_ms": 800
+        },
+        {
+          "source": "abilities/acid_flask/fx/shatter.aseprite",
+          "role": "impact",
+          "tag": "shatter",
+          "loop": false,
+          "duration_ms": 600
+        },
+        {
+          "source": "abilities/acid_flask/fx/acid_pool.aseprite",
+          "role": "field",
+          "tag": "bubble",
+          "loop": true,
+          "duration_ms": 1000
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Small glass flask toss, liquid slosh and a quick airy whistle, alchemical fantasy.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "Crisp small glass shatter with a wet acid splash and sizzling tail.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Quiet seamless corrosive puddle bubbling with sparse small bubble pops and chemical hiss.",
+          "duration_seconds": 2.0,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Spec flight is 800 ms after release; hold-targeting adds no throw power.",
+        "Game owns 6-tile range,1.5-tile pool radius,15 s lifetime and 8 s cooldown.",
+        "38 px field is a compact presentation motif; gameplay radius remains explicit, not inferred from its canvas."
+      ]
+    },
+    {
+      "id": "ironskin_draft",
+      "name": "Ironskin Draft",
+      "slot": 2,
+      "description": "Instant self-protection: drink a draft and flash into metallic skin with a restrained golden shimmer.",
+      "source_doc": "../arenic_bevy/_docs/abilities/alchemist/ironskin_draft.md",
+      "actor": "abilities/ironskin_draft/alchemist_ironskin_draft.aseprite",
+      "frames_per_direction": 6,
+      "durations_ms": [
+        80,
+        80,
+        100,
+        100,
+        120,
+        120
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "self",
+        "target": "self",
+        "impact_ms": 0,
+        "duration_ms": 1800
+      },
+      "fx": [
+        {
+          "source": "abilities/ironskin_draft/fx/hardening.aseprite",
+          "role": "impact",
+          "tag": "harden",
+          "loop": false,
+          "duration_ms": 600
+        },
+        {
+          "source": "abilities/ironskin_draft/fx/iron_aura.aseprite",
+          "role": "aura",
+          "tag": "protected",
+          "loop": true,
+          "duration_ms": 1000
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Potion cork click and brief sip blended into an immediate metallic alchemy chime.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "Crystalline hardening chime, layered soft steel resonance, protective and compact.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Very quiet seamless metallic shimmer with occasional tiny golden chimes.",
+          "duration_seconds": 2.0,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Instant activation: cosmetic 600 ms actor gesture must not delay protection.",
+        "Self only;8 s protection,40 percent damage reduction,12 s cooldown."
+      ]
+    },
+    {
+      "id": "siphon",
+      "name": "Siphon",
+      "slot": 3,
+      "description": "Draw dark red life motes from a nearby consenting ally into the Alchemist during a breakable channel.",
+      "source_doc": "../arenic_bevy/_docs/abilities/alchemist/siphon.md",
+      "actor": "abilities/siphon/alchemist_siphon.aseprite",
+      "frames_per_direction": 11,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        200,
+        200,
+        200,
+        200,
+        120,
+        180
+      ],
+      "release_ms": 500,
+      "preview": {
+        "type": "beam",
+        "target": "ally",
+        "impact_ms": 500,
+        "duration_ms": 2600
+      },
+      "fx": [
+        {
+          "source": "abilities/siphon/fx/life_link.aseprite",
+          "role": "beam",
+          "tag": "drain",
+          "loop": true,
+          "duration_ms": 800
+        },
+        {
+          "source": "abilities/siphon/fx/drain_contact.aseprite",
+          "role": "impact",
+          "tag": "contact",
+          "loop": false,
+          "duration_ms": 500
+        },
+        {
+          "source": "abilities/siphon/fx/gain_aura.aseprite",
+          "role": "aura",
+          "tag": "gain",
+          "loop": true,
+          "duration_ms": 800
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Dark red energy connection snapping softly into place, low resonant pulse.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "Soft vital pulse at ally drain contact, restrained organic magical thrum.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "charge": {
+          "description": "Subtle dark energy gathers into a low harmonic hum over half a second.",
+          "duration_seconds": 0.5,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Seamless deep harmonic siphon hum with measured inward energy pulses.",
+          "duration_seconds": 2.0,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Life travels FROM ally TO Alchemist; ally is not an enemy target.",
+        "500 ms setup; channel up to 8 s; game owns consent/range/interruption and health thresholds.",
+        "Actor channel tag loops independently; full preview includes illustrative release."
+      ]
+    },
+    {
+      "id": "transmute",
+      "name": "Transmute",
+      "slot": 4,
+      "description": "Channel a gold alchemical connection into a ground item, then resolve a brief material-conversion flash.",
+      "source_doc": "../arenic_bevy/_docs/abilities/alchemist/transmute.md",
+      "actor": "abilities/transmute/alchemist_transmute.aseprite",
+      "frames_per_direction": 10,
+      "durations_ms": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        60,
+        100,
+        140,
+        200
+      ],
+      "release_ms": 1500,
+      "preview": {
+        "type": "ground",
+        "target": "ground",
+        "impact_ms": 1500,
+        "duration_ms": 2400
+      },
+      "fx": [
+        {
+          "source": "abilities/transmute/fx/gold_link.aseprite",
+          "role": "beam",
+          "tag": "channel",
+          "loop": true,
+          "duration_ms": 750
+        },
+        {
+          "source": "abilities/transmute/fx/transmutation.aseprite",
+          "role": "impact",
+          "tag": "resolve",
+          "loop": false,
+          "duration_ms": 500
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Bright alchemical release, small bronze seal click and brief gilded shimmer.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "A precise golden material-conversion sparkle with granular crystal settling.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "charge": {
+          "description": "Measured alchemical harmonic rise with fine metallic grains assembling over one and a half seconds.",
+          "duration_seconds": 1.5,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Game owns 2-tile range,1.5 s cast,6 s cooldown and uncertain outcome.",
+        "Resolution flash is neutral; does not promise a rare item or include batch/guaranteed-upgrade effects."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArenicClassDefinition" format=3 uid="uid://8rg3jjv7iias"]
+
+[ext_resource type="Script" uid="uid://cb0vid0x8md50" path="res://scripts/character_creation/class_definition.gd" id="1_8qis7"]
+[ext_resource type="Texture2D" uid="uid://cpmx3bh5h1v4r" path="res://assets/icons/classes/merchant.svg" id="1_gmbce"]
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="2_gmbce"]
+[ext_resource type="Texture2D" uid="uid://b232um2krh4vb" path="res://assets/portraits/merchant_atlas.tres" id="2_il4q8"]
+[ext_resource type="Resource" uid="uid://cpwm3upnlgdr2" path="res://data/classes/merchant_primary.tres" id="3_wwfju"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/merchant/merchant_frames.tres" id="6_t5na0"]
+
+[resource]
+script = ExtResource("1_8qis7")
+class_id = "merchant"
+display_name = "Merchant"
+character_name = "Calvin"
+icon = ExtResource("1_gmbce")
+portrait = ExtResource("2_il4q8")
+world_sprite_frames = ExtResource("6_t5na0")
+skills = Array[ExtResource("2_gmbce")]([ExtResource("3_wwfju")])
+portrait_height = 0.96

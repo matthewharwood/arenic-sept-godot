@@ -1,0 +1,6222 @@
+{
+  "abilities/bolder/forager_bolder": {
+    "source": "abilities/bolder/forager_bolder.aseprite",
+    "frames": [
+      {
+        "filename": "forager_bolder 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_bolder 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_bolder 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "forager_bolder 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "forager_bolder 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_bolder 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_bolder 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "forager_bolder 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "forager_bolder 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_bolder 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_bolder 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "forager_bolder 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      },
+      {
+        "filename": "forager_bolder 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_bolder 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "forager_bolder 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_bolder 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 120
+      },
+      {
+        "filename": "forager_bolder 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 160
+      }
+    ],
+    "tags": [
+      {
+        "name": "bolder_n",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "bolder_e",
+        "from": 8,
+        "to": 15,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "bolder_s",
+        "from": 16,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "bolder_w",
+        "from": 24,
+        "to": 31,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/bolder/fx/boulder": {
+    "source": "abilities/bolder/fx/boulder.aseprite",
+    "frames": [
+      {
+        "filename": "boulder 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      },
+      {
+        "filename": "boulder 1.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      },
+      {
+        "filename": "boulder 2.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      },
+      {
+        "filename": "boulder 3.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      },
+      {
+        "filename": "boulder 4.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      },
+      {
+        "filename": "boulder 5.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      },
+      {
+        "filename": "boulder 6.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      },
+      {
+        "filename": "boulder 7.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 100
+      }
+    ],
+    "tags": [
+      {
+        "name": "roll_e",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      19,
+      19
+    ]
+  },
+  "abilities/bolder/fx/crumble": {
+    "source": "abilities/bolder/fx/crumble.aseprite",
+    "frames": [
+      {
+        "filename": "crumble 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 250
+      },
+      {
+        "filename": "crumble 1.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 250
+      },
+      {
+        "filename": "crumble 2.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 250
+      },
+      {
+        "filename": "crumble 3.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 250
+      },
+      {
+        "filename": "crumble 4.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 250
+      },
+      {
+        "filename": "crumble 5.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 250
+      },
+      {
+        "filename": "crumble 6.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 250
+      },
+      {
+        "filename": "crumble 7.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 250
+      }
+    ],
+    "tags": [
+      {
+        "name": "crumble",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      19,
+      19
+    ]
+  },
+  "abilities/border/forager_border": {
+    "source": "abilities/border/forager_border.aseprite",
+    "frames": [
+      {
+        "filename": "forager_border 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_border 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_border 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_border 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_border 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 32.aseprite",
+        "frame": {
+          "x": 608,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 33.aseprite",
+        "frame": {
+          "x": 627,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 34.aseprite",
+        "frame": {
+          "x": 646,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_border 35.aseprite",
+        "frame": {
+          "x": 665,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_border 36.aseprite",
+        "frame": {
+          "x": 684,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 37.aseprite",
+        "frame": {
+          "x": 703,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 38.aseprite",
+        "frame": {
+          "x": 722,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 39.aseprite",
+        "frame": {
+          "x": 741,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 40.aseprite",
+        "frame": {
+          "x": 760,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 41.aseprite",
+        "frame": {
+          "x": 779,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 42.aseprite",
+        "frame": {
+          "x": 798,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 43.aseprite",
+        "frame": {
+          "x": 817,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 44.aseprite",
+        "frame": {
+          "x": 836,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 45.aseprite",
+        "frame": {
+          "x": 855,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 150
+      },
+      {
+        "filename": "forager_border 46.aseprite",
+        "frame": {
+          "x": 874,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_border 47.aseprite",
+        "frame": {
+          "x": 893,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      }
+    ],
+    "tags": [
+      {
+        "name": "border_n",
+        "from": 0,
+        "to": 11,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "border_e",
+        "from": 12,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "border_s",
+        "from": 24,
+        "to": 35,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "border_w",
+        "from": 36,
+        "to": 47,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/border/fx/barrier": {
+    "source": "abilities/border/fx/barrier.aseprite",
+    "frames": [
+      {
+        "filename": "barrier 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "barrier 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "barrier 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "barrier 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "barrier 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "barrier 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "barrier 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "barrier 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "barrier 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      }
+    ],
+    "tags": [
+      {
+        "name": "grow",
+        "from": 0,
+        "to": 14,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "barrier_loop",
+        "from": 15,
+        "to": 22,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/border/fx/deflect": {
+    "source": "abilities/border/fx/deflect.aseprite",
+    "frames": [
+      {
+        "filename": "deflect 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "deflect 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "deflect 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "deflect 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      },
+      {
+        "filename": "deflect 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 80
+      }
+    ],
+    "tags": [
+      {
+        "name": "deflect",
+        "from": 0,
+        "to": 4,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/dig/forager_dig": {
+    "source": "abilities/dig/forager_dig.aseprite",
+    "frames": [
+      {
+        "filename": "forager_dig 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_dig 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      }
+    ],
+    "tags": [
+      {
+        "name": "dig_n",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "dig_e",
+        "from": 8,
+        "to": 15,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "dig_s",
+        "from": 16,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "dig_w",
+        "from": 24,
+        "to": 31,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/dig/fx/dug_ground": {
+    "source": "abilities/dig/fx/dug_ground.aseprite",
+    "frames": [
+      {
+        "filename": "dug_ground 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "dug_ground 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "dug_ground 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "dug_ground 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "dug_ground 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "dug_ground 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "dug_ground 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "dug_ground 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      }
+    ],
+    "tags": [
+      {
+        "name": "dug",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/dig/fx/excavate": {
+    "source": "abilities/dig/fx/excavate.aseprite",
+    "frames": [
+      {
+        "filename": "excavate 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "excavate 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "excavate 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "excavate 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "excavate 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "excavate 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "excavate 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "excavate 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      }
+    ],
+    "tags": [
+      {
+        "name": "excavate",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/mushroom/forager_mushroom": {
+    "source": "abilities/mushroom/forager_mushroom.aseprite",
+    "frames": [
+      {
+        "filename": "forager_mushroom 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "forager_mushroom 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 100
+      }
+    ],
+    "tags": [
+      {
+        "name": "mushroom_n",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "mushroom_e",
+        "from": 8,
+        "to": 15,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "mushroom_s",
+        "from": 16,
+        "to": 23,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "mushroom_w",
+        "from": 24,
+        "to": 31,
+        "direction": "forward",
+        "repeat": "1",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "abilities/mushroom/fx/feed": {
+    "source": "abilities/mushroom/fx/feed.aseprite",
+    "frames": [
+      {
+        "filename": "feed 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "feed 1.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "feed 2.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "feed 3.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "feed 4.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "feed 5.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "feed 6.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 100
+      },
+      {
+        "filename": "feed 7.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 19
+        },
+        "duration": 100
+      }
+    ],
+    "tags": [
+      {
+        "name": "feed",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      19,
+      9
+    ]
+  },
+  "abilities/mushroom/fx/heal": {
+    "source": "abilities/mushroom/fx/heal.aseprite",
+    "frames": [
+      {
+        "filename": "heal 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 125
+      },
+      {
+        "filename": "heal 1.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 125
+      },
+      {
+        "filename": "heal 2.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 125
+      },
+      {
+        "filename": "heal 3.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 125
+      },
+      {
+        "filename": "heal 4.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 125
+      },
+      {
+        "filename": "heal 5.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 125
+      },
+      {
+        "filename": "heal 6.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 125
+      },
+      {
+        "filename": "heal 7.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 38
+        },
+        "sourceSize": {
+          "w": 38,
+          "h": 38
+        },
+        "duration": 125
+      }
+    ],
+    "tags": [
+      {
+        "name": "heal_loop",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      19,
+      19
+    ]
+  },
+  "abilities/mushroom/fx/node": {
+    "source": "abilities/mushroom/fx/node.aseprite",
+    "frames": [
+      {
+        "filename": "node 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 4.aseprite",
+        "frame": {
+          "x": 76,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 5.aseprite",
+        "frame": {
+          "x": 95,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 6.aseprite",
+        "frame": {
+          "x": 114,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 7.aseprite",
+        "frame": {
+          "x": 133,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 8.aseprite",
+        "frame": {
+          "x": 152,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 9.aseprite",
+        "frame": {
+          "x": 171,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 10.aseprite",
+        "frame": {
+          "x": 190,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 11.aseprite",
+        "frame": {
+          "x": 209,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 12.aseprite",
+        "frame": {
+          "x": 228,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 13.aseprite",
+        "frame": {
+          "x": 247,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 14.aseprite",
+        "frame": {
+          "x": 266,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 15.aseprite",
+        "frame": {
+          "x": 285,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 16.aseprite",
+        "frame": {
+          "x": 304,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 17.aseprite",
+        "frame": {
+          "x": 323,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 18.aseprite",
+        "frame": {
+          "x": 342,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 19.aseprite",
+        "frame": {
+          "x": 361,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 20.aseprite",
+        "frame": {
+          "x": 380,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 21.aseprite",
+        "frame": {
+          "x": 399,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 22.aseprite",
+        "frame": {
+          "x": 418,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 23.aseprite",
+        "frame": {
+          "x": 437,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 24.aseprite",
+        "frame": {
+          "x": 456,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 25.aseprite",
+        "frame": {
+          "x": 475,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 26.aseprite",
+        "frame": {
+          "x": 494,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 27.aseprite",
+        "frame": {
+          "x": 513,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 28.aseprite",
+        "frame": {
+          "x": 532,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 29.aseprite",
+        "frame": {
+          "x": 551,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 30.aseprite",
+        "frame": {
+          "x": 570,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 31.aseprite",
+        "frame": {
+          "x": 589,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 32.aseprite",
+        "frame": {
+          "x": 608,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 33.aseprite",
+        "frame": {
+          "x": 627,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 34.aseprite",
+        "frame": {
+          "x": 646,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 35.aseprite",
+        "frame": {
+          "x": 665,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 36.aseprite",
+        "frame": {
+          "x": 684,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 37.aseprite",
+        "frame": {
+          "x": 703,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 38.aseprite",
+        "frame": {
+          "x": 722,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      },
+      {
+        "filename": "node 39.aseprite",
+        "frame": {
+          "x": 741,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 125
+      }
+    ],
+    "tags": [
+      {
+        "name": "seed",
+        "from": 0,
+        "to": 7,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "sprout",
+        "from": 8,
+        "to": 15,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "young",
+        "from": 16,
+        "to": 23,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "mature",
+        "from": 24,
+        "to": 31,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "ancient",
+        "from": 32,
+        "to": 39,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  },
+  "forager": {
+    "source": "forager.aseprite",
+    "frames": [
+      {
+        "filename": "forager 0.aseprite",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "forager 1.aseprite",
+        "frame": {
+          "x": 19,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "forager 2.aseprite",
+        "frame": {
+          "x": 38,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      },
+      {
+        "filename": "forager 3.aseprite",
+        "frame": {
+          "x": 57,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {
+          "x": 0,
+          "y": 0,
+          "w": 19,
+          "h": 19
+        },
+        "sourceSize": {
+          "w": 19,
+          "h": 19
+        },
+        "duration": 200
+      }
+    ],
+    "tags": [
+      {
+        "name": "idle_n",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "idle_e",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "idle_s",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      },
+      {
+        "name": "idle_w",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#d4ab48ff"
+      }
+    ],
+    "pivot": [
+      9,
+      9
+    ]
+  }
+}

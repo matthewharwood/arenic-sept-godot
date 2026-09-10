@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://5ghpyfusokro"]
+
+[sub_resource type="SystemFont" id="SystemFont_wy2q1"]
+font_names = PackedStringArray("Arial", "Helvetica")
+
+[resource]
+default_font = SubResource("SystemFont_wy2q1")
+default_font_size = 32
+Button/colors/font_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+Button/colors/font_focus_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+Button/colors/font_hover_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+Button/colors/font_pressed_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+Label/colors/font_color = Color(0.10980392, 0.10980392, 0.10980392, 1)

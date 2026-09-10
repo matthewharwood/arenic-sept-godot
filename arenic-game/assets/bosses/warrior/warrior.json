@@ -1,0 +1,317 @@
+{ "frames": [
+   {
+    "filename": "warrior 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 1.aseprite",
+    "frame": { "x": 114, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 2.aseprite",
+    "frame": { "x": 228, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 3.aseprite",
+    "frame": { "x": 342, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 4.aseprite",
+    "frame": { "x": 456, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 5.aseprite",
+    "frame": { "x": 570, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 6.aseprite",
+    "frame": { "x": 684, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 7.aseprite",
+    "frame": { "x": 798, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 8.aseprite",
+    "frame": { "x": 912, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 9.aseprite",
+    "frame": { "x": 1026, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 10.aseprite",
+    "frame": { "x": 1140, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 11.aseprite",
+    "frame": { "x": 1254, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 12.aseprite",
+    "frame": { "x": 1368, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 13.aseprite",
+    "frame": { "x": 1482, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 14.aseprite",
+    "frame": { "x": 1596, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 15.aseprite",
+    "frame": { "x": 1710, "y": 0, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 16.aseprite",
+    "frame": { "x": 0, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 17.aseprite",
+    "frame": { "x": 114, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 18.aseprite",
+    "frame": { "x": 228, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 19.aseprite",
+    "frame": { "x": 342, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 20.aseprite",
+    "frame": { "x": 456, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 21.aseprite",
+    "frame": { "x": 570, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 22.aseprite",
+    "frame": { "x": 684, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 23.aseprite",
+    "frame": { "x": 798, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 24.aseprite",
+    "frame": { "x": 912, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 25.aseprite",
+    "frame": { "x": 1026, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 26.aseprite",
+    "frame": { "x": 1140, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 27.aseprite",
+    "frame": { "x": 1254, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 28.aseprite",
+    "frame": { "x": 1368, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 29.aseprite",
+    "frame": { "x": 1482, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 30.aseprite",
+    "frame": { "x": 1596, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   },
+   {
+    "filename": "warrior 31.aseprite",
+    "frame": { "x": 1710, "y": 114, "w": 114, "h": 114 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 114, "h": 114 },
+    "sourceSize": { "w": 114, "h": 114 },
+    "duration": 200
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.5-arm64",
+  "image": "warrior.png",
+  "format": "RGBA8888",
+  "size": { "w": 1824, "h": 228 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle_n", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" },
+   { "name": "idle_e", "from": 8, "to": 15, "direction": "forward", "color": "#000000ff" },
+   { "name": "idle_s", "from": 16, "to": 23, "direction": "forward", "color": "#000000ff" },
+   { "name": "idle_w", "from": 24, "to": 31, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "01 Trailing crimson cape", "opacity": 255, "blendMode": "normal" },
+   { "name": "02 Clockwork backplate", "opacity": 255, "blendMode": "normal" },
+   { "name": "03 Pauldrons and articulated arms", "opacity": 255, "blendMode": "normal" },
+   { "name": "04 Helmet roof and crown crest", "opacity": 255, "blendMode": "normal" },
+   { "name": "05 Straight sword", "opacity": 255, "blendMode": "normal" },
+   { "name": "06 Crescent boomerang", "opacity": 255, "blendMode": "normal" },
+   { "name": "07 Collar hands and edge accents", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "frame", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 114, "h": 114 }, "pivot": {"x": 57, "y": 57 } }] }
+  ]
+ }
+}

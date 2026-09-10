@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://chc6okw0222vk"]
+
+[ext_resource type="Texture2D" uid="uid://bpkq6bdip6uqm" path="res://assets/portraits/thief.png" id="1_xu7ub"]
+
+[resource]
+atlas = ExtResource("1_xu7ub")
+region = Rect2(50, 13, 932, 1497)
+filter_clip = true

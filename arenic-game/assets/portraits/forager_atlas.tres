@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://hubsldxjk8n1"]
+
+[ext_resource type="Texture2D" uid="uid://bob5fs0sqlf0c" path="res://assets/portraits/forager.png" id="1_cgaq1"]
+
+[resource]
+atlas = ExtResource("1_cgaq1")
+region = Rect2(116, 19, 818, 1497)
+filter_clip = true

@@ -1,0 +1,15 @@
+{
+  "requested_model": "GPT-Image-2.5 Sunburst",
+  "tool": "built-in image_gen",
+  "model_verified": false,
+  "images": {
+    "warrior": "/Users/matthewharwood/.codex/generated_images/01a088ae-1181-76b2-9373-aef38efcb9a1/exec-5be621a2-adb5-4333-a4d1-20aecf56af6a.png",
+    "forager": "/Users/matthewharwood/.codex/generated_images/01a088ae-1181-76b2-9373-aef38efcb9a1/exec-0b72fed0-f4b7-4719-bebf-67c1db0537f6.png",
+    "hunter": "/Users/matthewharwood/.codex/generated_images/01a088ae-1181-76b2-9373-aef38efcb9a1/exec-f0068098-ee2f-436e-9e87-d37b2aac8fe0.png",
+    "alchemist": "/Users/matthewharwood/.codex/generated_images/01a088ae-1181-76b2-9373-aef38efcb9a1/exec-5ebb9cd5-d657-40ac-ae87-4780fbde698b.png",
+    "cardinal": "/Users/matthewharwood/.codex/generated_images/01a088ae-1181-76b2-9373-aef38efcb9a1/exec-474ecf80-5027-475d-9092-6457bd2056f0.png",
+    "bard": "/Users/matthewharwood/.codex/generated_images/01a088ae-1181-76b2-9373-aef38efcb9a1/exec-4d4516cb-09b1-43d9-9103-7a76b744b7ba.png",
+    "merchant": "/Users/matthewharwood/.codex/generated_images/01a088ae-1181-76b2-9373-aef38efcb9a1/exec-7a89c99d-441c-44b8-ab21-efaa5eaf52cc.png",
+    "thief": "/Users/matthewharwood/.codex/generated_images/01a088ae-1181-76b2-9373-aef38efcb9a1/exec-be98cc34-c72b-4b64-beea-c5f9de6fa78a.png"
+  }
+}

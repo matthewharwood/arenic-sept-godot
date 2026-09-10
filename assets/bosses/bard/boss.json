@@ -1,0 +1,33 @@
+{
+  "id": "bard",
+  "name": "Bard",
+  "kind": "boss",
+  "description": "A frightening mastiff with pendulous ears and a plum-and-gold resonator collar.",
+  "canvas": [
+    114,
+    114
+  ],
+  "pivot": [
+    57,
+    57
+  ],
+  "source": "assets/bosses/bard/bard.aseprite",
+  "portrait": "arenic-game/assets/portraits/bosses/bard.png",
+  "default_state": "idle",
+  "visual_states": [
+    {
+      "id": "idle",
+      "name": "Mastiff idle",
+      "tag": "idle",
+      "description": "Steady breathing, ear shifts, tail movement, and gently swinging collar fittings."
+    }
+  ],
+  "notes": [
+    "Strict overhead orthographic source art, six 19-pixel cells per side.",
+    "Idle presentation states only; no attack mechanics are encoded.",
+    "Four cardinal tags use exact full-canvas 90-degree rotations and a common (57, 57) pivot.",
+    "Native layered source remains outside the game directory.",
+    "Common canvas bounds describe the presentation footprint; gameplay collision is not authored here."
+  ],
+  "epithet": "The Resonant Mastiff"
+}

@@ -1,0 +1,208 @@
+{
+  "color_space": "oklch",
+  "alpha": 1,
+  "reference": "assets/bosses/portraits/merchant.png",
+  "notes": "Authored colors in OKLCH. Aseprite RGBA conversion is confined to the native file boundary.",
+  "colors": [
+    {
+      "id": "ink",
+      "oklch": [
+        0.13,
+        0.022,
+        294
+      ]
+    },
+    {
+      "id": "dark",
+      "oklch": [
+        0.22,
+        0.03,
+        285
+      ]
+    },
+    {
+      "id": "plumDeep",
+      "oklch": [
+        0.27,
+        0.067,
+        309
+      ]
+    },
+    {
+      "id": "plum",
+      "oklch": [
+        0.39,
+        0.101,
+        311
+      ]
+    },
+    {
+      "id": "plumLight",
+      "oklch": [
+        0.51,
+        0.107,
+        314
+      ]
+    },
+    {
+      "id": "plumHot",
+      "oklch": [
+        0.65,
+        0.087,
+        319
+      ]
+    },
+    {
+      "id": "goldDeep",
+      "oklch": [
+        0.29,
+        0.061,
+        63
+      ]
+    },
+    {
+      "id": "goldShadow",
+      "oklch": [
+        0.44,
+        0.096,
+        70
+      ]
+    },
+    {
+      "id": "gold",
+      "oklch": [
+        0.64,
+        0.131,
+        79
+      ]
+    },
+    {
+      "id": "goldLight",
+      "oklch": [
+        0.8,
+        0.119,
+        86
+      ]
+    },
+    {
+      "id": "goldHot",
+      "oklch": [
+        0.92,
+        0.071,
+        93
+      ]
+    },
+    {
+      "id": "tealDeep",
+      "oklch": [
+        0.25,
+        0.047,
+        182
+      ]
+    },
+    {
+      "id": "tealDark",
+      "oklch": [
+        0.37,
+        0.071,
+        181
+      ]
+    },
+    {
+      "id": "teal",
+      "oklch": [
+        0.55,
+        0.11,
+        179
+      ]
+    },
+    {
+      "id": "tealLight",
+      "oklch": [
+        0.73,
+        0.125,
+        177
+      ]
+    },
+    {
+      "id": "tealHot",
+      "oklch": [
+        0.91,
+        0.061,
+        174
+      ]
+    },
+    {
+      "id": "glass",
+      "oklch": [
+        0.62,
+        0.071,
+        152
+      ]
+    },
+    {
+      "id": "glassLight",
+      "oklch": [
+        0.75,
+        0.08,
+        145
+      ]
+    },
+    {
+      "id": "glassHot",
+      "oklch": [
+        0.89,
+        0.064,
+        136
+      ]
+    },
+    {
+      "id": "steelDark",
+      "oklch": [
+        0.34,
+        0.02,
+        250
+      ]
+    },
+    {
+      "id": "steel",
+      "oklch": [
+        0.56,
+        0.022,
+        245
+      ]
+    },
+    {
+      "id": "steelLight",
+      "oklch": [
+        0.77,
+        0.018,
+        240
+      ]
+    },
+    {
+      "id": "ivory",
+      "oklch": [
+        0.94,
+        0.025,
+        95
+      ]
+    },
+    {
+      "id": "leather",
+      "oklch": [
+        0.31,
+        0.055,
+        50
+      ]
+    },
+    {
+      "id": "red",
+      "oklch": [
+        0.4,
+        0.115,
+        20
+      ]
+    }
+  ]
+}

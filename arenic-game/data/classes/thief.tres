@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArenicClassDefinition" format=3 uid="uid://bg68wxdcbkmgs"]
+
+[ext_resource type="Texture2D" uid="uid://crxp05pgiejty" path="res://assets/icons/classes/thief.svg" id="1_lib2x"]
+[ext_resource type="Script" uid="uid://cb0vid0x8md50" path="res://scripts/character_creation/class_definition.gd" id="1_vcqsi"]
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="2_lib2x"]
+[ext_resource type="Texture2D" uid="uid://chc6okw0222vk" path="res://assets/portraits/thief_atlas.tres" id="2_sk85x"]
+[ext_resource type="Resource" uid="uid://dbem2h8ajhpo2" path="res://data/classes/thief_primary.tres" id="3_5bdvd"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/thief/thief_frames.tres" id="6_1wlho"]
+
+[resource]
+script = ExtResource("1_vcqsi")
+class_id = "thief"
+display_name = "Thief"
+character_name = "Ginger"
+icon = ExtResource("1_lib2x")
+portrait = ExtResource("2_sk85x")
+world_sprite_frames = ExtResource("6_1wlho")
+skills = Array[ExtResource("2_lib2x")]([ExtResource("3_5bdvd")])
+portrait_height = 0.97

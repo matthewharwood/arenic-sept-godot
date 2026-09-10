@@ -1,0 +1,3709 @@
+{
+  "hero": "warrior",
+  "pixels_per_tile": 19,
+  "projection": "strict straight-down orthographic",
+  "runtime_exports": false,
+  "source_count": 13,
+  "source_only": true,
+  "sources": [
+    {
+      "actor": false,
+      "frames": [
+        {
+          "bounds": [
+            6,
+            6,
+            7,
+            7
+          ],
+          "duration_ms": 40,
+          "frame": 1,
+          "opaque_pixels": 22
+        },
+        {
+          "bounds": [
+            5,
+            5,
+            9,
+            9
+          ],
+          "duration_ms": 50,
+          "frame": 2,
+          "opaque_pixels": 33
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "duration_ms": 60,
+          "frame": 3,
+          "opaque_pixels": 41
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 70,
+          "frame": 4,
+          "opaque_pixels": 8
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            17,
+            17
+          ],
+          "duration_ms": 80,
+          "frame": 5,
+          "opaque_pixels": 8
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            17,
+            17
+          ],
+          "duration_ms": 100,
+          "frame": 6,
+          "opaque_pixels": 8
+        }
+      ],
+      "height": 19,
+      "layers": [
+        "01 Shield impact ring",
+        "02 Contact flash",
+        "03 Forged metal sparks"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/bash/fx/impact.aseprite",
+      "tags": [
+        {
+          "duration_ms": 400,
+          "from": 1,
+          "name": "impact",
+          "repeats": 1,
+          "to": 6
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": false,
+      "frames": [
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 250,
+          "frame": 1,
+          "opaque_pixels": 44
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 250,
+          "frame": 2,
+          "opaque_pixels": 44
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 250,
+          "frame": 3,
+          "opaque_pixels": 44
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 250,
+          "frame": 4,
+          "opaque_pixels": 44
+        }
+      ],
+      "height": 19,
+      "layers": [
+        "01 Weakness brackets",
+        "02 Cracked shield rune",
+        "03 Amber motes"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/bash/fx/weakened.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "name": "weakened",
+          "repeats": 0,
+          "to": 4
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": true,
+      "direction_rotation_verified": true,
+      "frames": [
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            15
+          ],
+          "duration_ms": 50,
+          "frame": 1,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            15
+          ],
+          "duration_ms": 50,
+          "frame": 2,
+          "opaque_pixels": 154
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 70,
+          "frame": 3,
+          "opaque_pixels": 152
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 90,
+          "frame": 4,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 110,
+          "frame": 5,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 130,
+          "frame": 6,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 50,
+          "frame": 7,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 50,
+          "frame": 8,
+          "opaque_pixels": 154
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 70,
+          "frame": 9,
+          "opaque_pixels": 152
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 90,
+          "frame": 10,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 110,
+          "frame": 11,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 130,
+          "frame": 12,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            15
+          ],
+          "duration_ms": 50,
+          "frame": 13,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            15
+          ],
+          "duration_ms": 50,
+          "frame": 14,
+          "opaque_pixels": 154
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 70,
+          "frame": 15,
+          "opaque_pixels": 152
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 90,
+          "frame": 16,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 110,
+          "frame": 17,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 130,
+          "frame": 18,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 50,
+          "frame": 19,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 50,
+          "frame": 20,
+          "opaque_pixels": 154
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 70,
+          "frame": 21,
+          "opaque_pixels": 152
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 90,
+          "frame": 22,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 110,
+          "frame": 23,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 130,
+          "frame": 24,
+          "opaque_pixels": 143
+        }
+      ],
+      "frames_per_direction": 6,
+      "height": 19,
+      "layers": [
+        "01 Red cloth and stance",
+        "02 Plum armor and gold shoulders",
+        "03 Arms and gauntlets",
+        "04 Bear crown and round ears",
+        "05 Shield and sword",
+        "06 Ability glints"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/bash/warrior_bash.aseprite",
+      "tags": [
+        {
+          "duration_ms": 500,
+          "from": 1,
+          "name": "bash_n",
+          "repeats": 1,
+          "to": 6
+        },
+        {
+          "duration_ms": 100,
+          "from": 1,
+          "name": "n_strike",
+          "repeats": 1,
+          "to": 2
+        },
+        {
+          "duration_ms": 400,
+          "from": 3,
+          "name": "n_recover",
+          "repeats": 1,
+          "to": 6
+        },
+        {
+          "duration_ms": 500,
+          "from": 7,
+          "name": "bash_e",
+          "repeats": 1,
+          "to": 12
+        },
+        {
+          "duration_ms": 100,
+          "from": 7,
+          "name": "e_strike",
+          "repeats": 1,
+          "to": 8
+        },
+        {
+          "duration_ms": 400,
+          "from": 9,
+          "name": "e_recover",
+          "repeats": 1,
+          "to": 12
+        },
+        {
+          "duration_ms": 500,
+          "from": 13,
+          "name": "bash_s",
+          "repeats": 1,
+          "to": 18
+        },
+        {
+          "duration_ms": 100,
+          "from": 13,
+          "name": "s_strike",
+          "repeats": 1,
+          "to": 14
+        },
+        {
+          "duration_ms": 400,
+          "from": 15,
+          "name": "s_recover",
+          "repeats": 1,
+          "to": 18
+        },
+        {
+          "duration_ms": 500,
+          "from": 19,
+          "name": "bash_w",
+          "repeats": 1,
+          "to": 24
+        },
+        {
+          "duration_ms": 100,
+          "from": 19,
+          "name": "w_strike",
+          "repeats": 1,
+          "to": 20
+        },
+        {
+          "duration_ms": 400,
+          "from": 21,
+          "name": "w_recover",
+          "repeats": 1,
+          "to": 24
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": false,
+      "frames": [
+        {
+          "bounds": [
+            3,
+            5,
+            10,
+            7
+          ],
+          "duration_ms": 50,
+          "frame": 1,
+          "opaque_pixels": 26
+        },
+        {
+          "bounds": [
+            2,
+            4,
+            12,
+            7
+          ],
+          "duration_ms": 60,
+          "frame": 2,
+          "opaque_pixels": 27
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            14,
+            7
+          ],
+          "duration_ms": 80,
+          "frame": 3,
+          "opaque_pixels": 27
+        },
+        {
+          "bounds": [
+            7,
+            2,
+            9,
+            7
+          ],
+          "duration_ms": 100,
+          "frame": 4,
+          "opaque_pixels": 4
+        },
+        {
+          "bounds": [
+            8,
+            1,
+            9,
+            7
+          ],
+          "duration_ms": 110,
+          "frame": 5,
+          "opaque_pixels": 4
+        }
+      ],
+      "height": 19,
+      "layers": [
+        "01 Deflection pressure",
+        "02 Metal spark",
+        "03 Outgoing ricochet trace"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/block/fx/deflect.aseprite",
+      "tags": [
+        {
+          "duration_ms": 400,
+          "from": 1,
+          "name": "deflect",
+          "repeats": 1,
+          "to": 5
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": false,
+      "frames": [
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            5
+          ],
+          "duration_ms": 200,
+          "frame": 1,
+          "opaque_pixels": 32
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            5
+          ],
+          "duration_ms": 200,
+          "frame": 2,
+          "opaque_pixels": 35
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            5
+          ],
+          "duration_ms": 200,
+          "frame": 3,
+          "opaque_pixels": 32
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            5
+          ],
+          "duration_ms": 200,
+          "frame": 4,
+          "opaque_pixels": 35
+        },
+        {
+          "bounds": [
+            12,
+            2,
+            5,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 5,
+          "opaque_pixels": 32
+        },
+        {
+          "bounds": [
+            12,
+            2,
+            5,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 6,
+          "opaque_pixels": 35
+        },
+        {
+          "bounds": [
+            12,
+            2,
+            5,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 7,
+          "opaque_pixels": 32
+        },
+        {
+          "bounds": [
+            12,
+            2,
+            5,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 8,
+          "opaque_pixels": 35
+        },
+        {
+          "bounds": [
+            2,
+            12,
+            15,
+            5
+          ],
+          "duration_ms": 200,
+          "frame": 9,
+          "opaque_pixels": 32
+        },
+        {
+          "bounds": [
+            2,
+            12,
+            15,
+            5
+          ],
+          "duration_ms": 200,
+          "frame": 10,
+          "opaque_pixels": 35
+        },
+        {
+          "bounds": [
+            2,
+            12,
+            15,
+            5
+          ],
+          "duration_ms": 200,
+          "frame": 11,
+          "opaque_pixels": 32
+        },
+        {
+          "bounds": [
+            2,
+            12,
+            15,
+            5
+          ],
+          "duration_ms": 200,
+          "frame": 12,
+          "opaque_pixels": 35
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            5,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 13,
+          "opaque_pixels": 32
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            5,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 14,
+          "opaque_pixels": 35
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            5,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 15,
+          "opaque_pixels": 32
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            5,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 16,
+          "opaque_pixels": 35
+        }
+      ],
+      "height": 19,
+      "layers": [
+        "01 Ninety degree guard arc",
+        "02 Shield energy",
+        "03 Guard glints"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/block/fx/guard.aseprite",
+      "tags": [
+        {
+          "duration_ms": 800,
+          "from": 1,
+          "name": "guard_n",
+          "repeats": 0,
+          "to": 4
+        },
+        {
+          "duration_ms": 800,
+          "from": 5,
+          "name": "guard_e",
+          "repeats": 0,
+          "to": 8
+        },
+        {
+          "duration_ms": 800,
+          "from": 9,
+          "name": "guard_s",
+          "repeats": 0,
+          "to": 12
+        },
+        {
+          "duration_ms": 800,
+          "from": 13,
+          "name": "guard_w",
+          "repeats": 0,
+          "to": 16
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": true,
+      "direction_rotation_verified": true,
+      "frames": [
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 80,
+          "frame": 1,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 2,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 140,
+          "frame": 3,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 4,
+          "opaque_pixels": 151
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 5,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 6,
+          "opaque_pixels": 151
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 7,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 80,
+          "frame": 8,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 80,
+          "frame": 9,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 10,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 140,
+          "frame": 11,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 12,
+          "opaque_pixels": 151
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 13,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 14,
+          "opaque_pixels": 151
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 15,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 80,
+          "frame": 16,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 80,
+          "frame": 17,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 18,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 140,
+          "frame": 19,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 20,
+          "opaque_pixels": 151
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 21,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 22,
+          "opaque_pixels": 151
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 23,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 80,
+          "frame": 24,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 80,
+          "frame": 25,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 26,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 140,
+          "frame": 27,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 28,
+          "opaque_pixels": 151
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 29,
+          "opaque_pixels": 150
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 30,
+          "opaque_pixels": 151
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 31,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 80,
+          "frame": 32,
+          "opaque_pixels": 143
+        }
+      ],
+      "frames_per_direction": 8,
+      "height": 19,
+      "layers": [
+        "01 Red cloth and stance",
+        "02 Plum armor and gold shoulders",
+        "03 Arms and gauntlets",
+        "04 Bear crown and round ears",
+        "05 Shield and sword",
+        "06 Ability glints"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/block/warrior_block.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "name": "block_n",
+          "repeats": 1,
+          "to": 8
+        },
+        {
+          "duration_ms": 160,
+          "from": 1,
+          "name": "n_raise",
+          "repeats": 1,
+          "to": 2
+        },
+        {
+          "duration_ms": 680,
+          "from": 3,
+          "name": "n_hold",
+          "repeats": 0,
+          "to": 6
+        },
+        {
+          "duration_ms": 160,
+          "from": 7,
+          "name": "n_lower",
+          "repeats": 1,
+          "to": 8
+        },
+        {
+          "duration_ms": 1000,
+          "from": 9,
+          "name": "block_e",
+          "repeats": 1,
+          "to": 16
+        },
+        {
+          "duration_ms": 160,
+          "from": 9,
+          "name": "e_raise",
+          "repeats": 1,
+          "to": 10
+        },
+        {
+          "duration_ms": 680,
+          "from": 11,
+          "name": "e_hold",
+          "repeats": 0,
+          "to": 14
+        },
+        {
+          "duration_ms": 160,
+          "from": 15,
+          "name": "e_lower",
+          "repeats": 1,
+          "to": 16
+        },
+        {
+          "duration_ms": 1000,
+          "from": 17,
+          "name": "block_s",
+          "repeats": 1,
+          "to": 24
+        },
+        {
+          "duration_ms": 160,
+          "from": 17,
+          "name": "s_raise",
+          "repeats": 1,
+          "to": 18
+        },
+        {
+          "duration_ms": 680,
+          "from": 19,
+          "name": "s_hold",
+          "repeats": 0,
+          "to": 22
+        },
+        {
+          "duration_ms": 160,
+          "from": 23,
+          "name": "s_lower",
+          "repeats": 1,
+          "to": 24
+        },
+        {
+          "duration_ms": 1000,
+          "from": 25,
+          "name": "block_w",
+          "repeats": 1,
+          "to": 32
+        },
+        {
+          "duration_ms": 160,
+          "from": 25,
+          "name": "w_raise",
+          "repeats": 1,
+          "to": 26
+        },
+        {
+          "duration_ms": 680,
+          "from": 27,
+          "name": "w_hold",
+          "repeats": 0,
+          "to": 30
+        },
+        {
+          "duration_ms": 160,
+          "from": 31,
+          "name": "w_lower",
+          "repeats": 1,
+          "to": 32
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": false,
+      "frames": [
+        {
+          "bounds": [
+            1,
+            1,
+            17,
+            17
+          ],
+          "duration_ms": 100,
+          "frame": 1,
+          "opaque_pixels": 81
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 100,
+          "frame": 2,
+          "opaque_pixels": 74
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 58
+        },
+        {
+          "bounds": [
+            4,
+            4,
+            11,
+            11
+          ],
+          "duration_ms": 100,
+          "frame": 4,
+          "opaque_pixels": 56
+        },
+        {
+          "bounds": [
+            5,
+            5,
+            9,
+            9
+          ],
+          "duration_ms": 100,
+          "frame": 5,
+          "opaque_pixels": 46
+        }
+      ],
+      "height": 19,
+      "layers": [
+        "01 Inward absorption ring",
+        "02 Golden compression",
+        "03 Captured energy"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/bulwark/fx/absorb.aseprite",
+      "tags": [
+        {
+          "duration_ms": 500,
+          "from": 1,
+          "name": "absorb",
+          "repeats": 1,
+          "to": 5
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": false,
+      "frames": [
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 1,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 2,
+          "opaque_pixels": 734
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 3,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 4,
+          "opaque_pixels": 734
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 5,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 6,
+          "opaque_pixels": 731
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 7,
+          "opaque_pixels": 731
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 8,
+          "opaque_pixels": 730
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 100,
+          "frame": 9,
+          "opaque_pixels": 598
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 100,
+          "frame": 10,
+          "opaque_pixels": 551
+        },
+        {
+          "bounds": [
+            2,
+            9,
+            53,
+            38
+          ],
+          "duration_ms": 100,
+          "frame": 11,
+          "opaque_pixels": 113
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            37
+          ],
+          "duration_ms": 100,
+          "frame": 12,
+          "opaque_pixels": 69
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            37
+          ],
+          "duration_ms": 100,
+          "frame": 13,
+          "opaque_pixels": 62
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 14,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 15,
+          "opaque_pixels": 734
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 16,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 17,
+          "opaque_pixels": 734
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 18,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 19,
+          "opaque_pixels": 731
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 20,
+          "opaque_pixels": 731
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 21,
+          "opaque_pixels": 730
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 22,
+          "opaque_pixels": 598
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 23,
+          "opaque_pixels": 551
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 24,
+          "opaque_pixels": 113
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            37,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 25,
+          "opaque_pixels": 69
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            37,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 26,
+          "opaque_pixels": 62
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 27,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 28,
+          "opaque_pixels": 734
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 29,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 30,
+          "opaque_pixels": 734
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 31,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 32,
+          "opaque_pixels": 731
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 33,
+          "opaque_pixels": 731
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 125,
+          "frame": 34,
+          "opaque_pixels": 730
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 100,
+          "frame": 35,
+          "opaque_pixels": 598
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 100,
+          "frame": 36,
+          "opaque_pixels": 551
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            38
+          ],
+          "duration_ms": 100,
+          "frame": 37,
+          "opaque_pixels": 113
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            37
+          ],
+          "duration_ms": 100,
+          "frame": 38,
+          "opaque_pixels": 69
+        },
+        {
+          "bounds": [
+            2,
+            10,
+            53,
+            37
+          ],
+          "duration_ms": 100,
+          "frame": 39,
+          "opaque_pixels": 62
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 40,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 41,
+          "opaque_pixels": 734
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 42,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 43,
+          "opaque_pixels": 734
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 44,
+          "opaque_pixels": 728
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 45,
+          "opaque_pixels": 731
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 46,
+          "opaque_pixels": 731
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 125,
+          "frame": 47,
+          "opaque_pixels": 730
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 48,
+          "opaque_pixels": 598
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 49,
+          "opaque_pixels": 551
+        },
+        {
+          "bounds": [
+            9,
+            2,
+            38,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 50,
+          "opaque_pixels": 113
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            37,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 51,
+          "opaque_pixels": 69
+        },
+        {
+          "bounds": [
+            10,
+            2,
+            37,
+            53
+          ],
+          "duration_ms": 100,
+          "frame": 52,
+          "opaque_pixels": 62
+        }
+      ],
+      "height": 57,
+      "layers": [
+        "01 Three by two overhead barrier lattice",
+        "02 Gold frontal crest",
+        "03 Traveling ward runes"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            57,
+            57
+          ],
+          "name": "frame",
+          "pivot": [
+            28,
+            28
+          ]
+        }
+      ],
+      "source": "abilities/bulwark/fx/barrier.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "name": "barrier_n",
+          "repeats": 0,
+          "to": 8
+        },
+        {
+          "duration_ms": 500,
+          "from": 9,
+          "name": "n_dissipate",
+          "repeats": 1,
+          "to": 13
+        },
+        {
+          "duration_ms": 1000,
+          "from": 14,
+          "name": "barrier_e",
+          "repeats": 0,
+          "to": 21
+        },
+        {
+          "duration_ms": 500,
+          "from": 22,
+          "name": "e_dissipate",
+          "repeats": 1,
+          "to": 26
+        },
+        {
+          "duration_ms": 1000,
+          "from": 27,
+          "name": "barrier_s",
+          "repeats": 0,
+          "to": 34
+        },
+        {
+          "duration_ms": 500,
+          "from": 35,
+          "name": "s_dissipate",
+          "repeats": 1,
+          "to": 39
+        },
+        {
+          "duration_ms": 1000,
+          "from": 40,
+          "name": "barrier_w",
+          "repeats": 0,
+          "to": 47
+        },
+        {
+          "duration_ms": 500,
+          "from": 48,
+          "name": "w_dissipate",
+          "repeats": 1,
+          "to": 52
+        }
+      ],
+      "width": 57
+    },
+    {
+      "actor": true,
+      "direction_rotation_verified": true,
+      "frames": [
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            15
+          ],
+          "duration_ms": 60,
+          "frame": 1,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 80,
+          "frame": 2,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 140,
+          "frame": 3,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 4,
+          "opaque_pixels": 144
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 5,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            14
+          ],
+          "duration_ms": 160,
+          "frame": 6,
+          "opaque_pixels": 144
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            15
+          ],
+          "duration_ms": 100,
+          "frame": 7,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 100,
+          "frame": 8,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 60,
+          "frame": 9,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 10,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 140,
+          "frame": 11,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 12,
+          "opaque_pixels": 144
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 13,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 160,
+          "frame": 14,
+          "opaque_pixels": 144
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 100,
+          "frame": 15,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 100,
+          "frame": 16,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            15
+          ],
+          "duration_ms": 60,
+          "frame": 17,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 80,
+          "frame": 18,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 140,
+          "frame": 19,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 20,
+          "opaque_pixels": 144
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 180,
+          "frame": 21,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            14
+          ],
+          "duration_ms": 160,
+          "frame": 22,
+          "opaque_pixels": 144
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            15
+          ],
+          "duration_ms": 100,
+          "frame": 23,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 100,
+          "frame": 24,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 60,
+          "frame": 25,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 26,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 140,
+          "frame": 27,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 28,
+          "opaque_pixels": 144
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 180,
+          "frame": 29,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            15
+          ],
+          "duration_ms": 160,
+          "frame": 30,
+          "opaque_pixels": 144
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 100,
+          "frame": 31,
+          "opaque_pixels": 153
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 100,
+          "frame": 32,
+          "opaque_pixels": 143
+        }
+      ],
+      "frames_per_direction": 8,
+      "height": 19,
+      "layers": [
+        "01 Red cloth and stance",
+        "02 Plum armor and gold shoulders",
+        "03 Arms and gauntlets",
+        "04 Bear crown and round ears",
+        "05 Shield and sword",
+        "06 Ability glints"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/bulwark/warrior_bulwark.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "name": "bulwark_n",
+          "repeats": 1,
+          "to": 8
+        },
+        {
+          "duration_ms": 140,
+          "from": 1,
+          "name": "n_deploy",
+          "repeats": 1,
+          "to": 2
+        },
+        {
+          "duration_ms": 660,
+          "from": 3,
+          "name": "n_hold",
+          "repeats": 0,
+          "to": 6
+        },
+        {
+          "duration_ms": 200,
+          "from": 7,
+          "name": "n_lower",
+          "repeats": 1,
+          "to": 8
+        },
+        {
+          "duration_ms": 1000,
+          "from": 9,
+          "name": "bulwark_e",
+          "repeats": 1,
+          "to": 16
+        },
+        {
+          "duration_ms": 140,
+          "from": 9,
+          "name": "e_deploy",
+          "repeats": 1,
+          "to": 10
+        },
+        {
+          "duration_ms": 660,
+          "from": 11,
+          "name": "e_hold",
+          "repeats": 0,
+          "to": 14
+        },
+        {
+          "duration_ms": 200,
+          "from": 15,
+          "name": "e_lower",
+          "repeats": 1,
+          "to": 16
+        },
+        {
+          "duration_ms": 1000,
+          "from": 17,
+          "name": "bulwark_s",
+          "repeats": 1,
+          "to": 24
+        },
+        {
+          "duration_ms": 140,
+          "from": 17,
+          "name": "s_deploy",
+          "repeats": 1,
+          "to": 18
+        },
+        {
+          "duration_ms": 660,
+          "from": 19,
+          "name": "s_hold",
+          "repeats": 0,
+          "to": 22
+        },
+        {
+          "duration_ms": 200,
+          "from": 23,
+          "name": "s_lower",
+          "repeats": 1,
+          "to": 24
+        },
+        {
+          "duration_ms": 1000,
+          "from": 25,
+          "name": "bulwark_w",
+          "repeats": 1,
+          "to": 32
+        },
+        {
+          "duration_ms": 140,
+          "from": 25,
+          "name": "w_deploy",
+          "repeats": 1,
+          "to": 26
+        },
+        {
+          "duration_ms": 660,
+          "from": 27,
+          "name": "w_hold",
+          "repeats": 0,
+          "to": 30
+        },
+        {
+          "duration_ms": 200,
+          "from": 31,
+          "name": "w_lower",
+          "repeats": 1,
+          "to": 32
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": false,
+      "frames": [
+        {
+          "bounds": [
+            2,
+            2,
+            34,
+            34
+          ],
+          "duration_ms": 100,
+          "frame": 1,
+          "opaque_pixels": 100
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            34,
+            34
+          ],
+          "duration_ms": 100,
+          "frame": 2,
+          "opaque_pixels": 116
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            34,
+            34
+          ],
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 120
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            34,
+            34
+          ],
+          "duration_ms": 100,
+          "frame": 4,
+          "opaque_pixels": 132
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            34,
+            34
+          ],
+          "duration_ms": 100,
+          "frame": 5,
+          "opaque_pixels": 156
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            34,
+            34
+          ],
+          "duration_ms": 100,
+          "frame": 6,
+          "opaque_pixels": 180
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            34,
+            34
+          ],
+          "duration_ms": 100,
+          "frame": 7,
+          "opaque_pixels": 180
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            34,
+            34
+          ],
+          "duration_ms": 100,
+          "frame": 8,
+          "opaque_pixels": 180
+        }
+      ],
+      "height": 38,
+      "layers": [
+        "01 Two by two target brackets",
+        "02 Challenge pressure pulse",
+        "03 Inward threat marks"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            38,
+            38
+          ],
+          "name": "frame",
+          "pivot": [
+            19,
+            19
+          ]
+        }
+      ],
+      "source": "abilities/taunt/fx/challenge.aseprite",
+      "tags": [
+        {
+          "duration_ms": 800,
+          "from": 1,
+          "name": "challenge",
+          "repeats": 1,
+          "to": 8
+        }
+      ],
+      "width": 38
+    },
+    {
+      "actor": false,
+      "frames": [
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 250,
+          "frame": 1,
+          "opaque_pixels": 36
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 250,
+          "frame": 2,
+          "opaque_pixels": 36
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 250,
+          "frame": 3,
+          "opaque_pixels": 36
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 250,
+          "frame": 4,
+          "opaque_pixels": 36
+        }
+      ],
+      "height": 19,
+      "layers": [
+        "01 Threat status brackets",
+        "02 Challenge sigil",
+        "03 Threat motes"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/taunt/fx/marked.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "name": "marked",
+          "repeats": 0,
+          "to": 4
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": true,
+      "direction_rotation_verified": true,
+      "frames": [
+        {
+          "bounds": [
+            1,
+            2,
+            16,
+            14
+          ],
+          "duration_ms": 200,
+          "frame": 1,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            16,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 2,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            16,
+            14
+          ],
+          "duration_ms": 200,
+          "frame": 3,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            16,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 4,
+          "opaque_pixels": 149
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 5,
+          "opaque_pixels": 156
+        },
+        {
+          "bounds": [
+            2,
+            1,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 6,
+          "opaque_pixels": 154
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 100,
+          "frame": 7,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 100,
+          "frame": 8,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 120,
+          "frame": 9,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 120,
+          "frame": 10,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            14,
+            16
+          ],
+          "duration_ms": 200,
+          "frame": 11,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 200,
+          "frame": 12,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            14,
+            16
+          ],
+          "duration_ms": 200,
+          "frame": 13,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            15,
+            16
+          ],
+          "duration_ms": 200,
+          "frame": 14,
+          "opaque_pixels": 149
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 15,
+          "opaque_pixels": 156
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 16,
+          "opaque_pixels": 154
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 100,
+          "frame": 17,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 100,
+          "frame": 18,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 120,
+          "frame": 19,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 120,
+          "frame": 20,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            14
+          ],
+          "duration_ms": 200,
+          "frame": 21,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 22,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            14
+          ],
+          "duration_ms": 200,
+          "frame": 23,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            15
+          ],
+          "duration_ms": 200,
+          "frame": 24,
+          "opaque_pixels": 149
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 25,
+          "opaque_pixels": 156
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 26,
+          "opaque_pixels": 154
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 100,
+          "frame": 27,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 100,
+          "frame": 28,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 120,
+          "frame": 29,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 120,
+          "frame": 30,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            16
+          ],
+          "duration_ms": 200,
+          "frame": 31,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "duration_ms": 200,
+          "frame": 32,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            14,
+            16
+          ],
+          "duration_ms": 200,
+          "frame": 33,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            16
+          ],
+          "duration_ms": 200,
+          "frame": 34,
+          "opaque_pixels": 149
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 35,
+          "opaque_pixels": 156
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            15,
+            15
+          ],
+          "duration_ms": 80,
+          "frame": 36,
+          "opaque_pixels": 154
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 100,
+          "frame": 37,
+          "opaque_pixels": 145
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 100,
+          "frame": 38,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 120,
+          "frame": 39,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 120,
+          "frame": 40,
+          "opaque_pixels": 143
+        }
+      ],
+      "frames_per_direction": 10,
+      "height": 19,
+      "layers": [
+        "01 Red cloth and stance",
+        "02 Plum armor and gold shoulders",
+        "03 Arms and gauntlets",
+        "04 Bear crown and round ears",
+        "05 Shield and sword",
+        "06 Ability glints"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "abilities/taunt/warrior_taunt.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1400,
+          "from": 1,
+          "name": "taunt_n",
+          "repeats": 1,
+          "to": 10
+        },
+        {
+          "duration_ms": 800,
+          "from": 1,
+          "name": "n_channel",
+          "repeats": 1,
+          "to": 4
+        },
+        {
+          "duration_ms": 160,
+          "from": 5,
+          "name": "n_challenge",
+          "repeats": 1,
+          "to": 6
+        },
+        {
+          "duration_ms": 440,
+          "from": 7,
+          "name": "n_recover",
+          "repeats": 1,
+          "to": 10
+        },
+        {
+          "duration_ms": 1400,
+          "from": 11,
+          "name": "taunt_e",
+          "repeats": 1,
+          "to": 20
+        },
+        {
+          "duration_ms": 800,
+          "from": 11,
+          "name": "e_channel",
+          "repeats": 1,
+          "to": 14
+        },
+        {
+          "duration_ms": 160,
+          "from": 15,
+          "name": "e_challenge",
+          "repeats": 1,
+          "to": 16
+        },
+        {
+          "duration_ms": 440,
+          "from": 17,
+          "name": "e_recover",
+          "repeats": 1,
+          "to": 20
+        },
+        {
+          "duration_ms": 1400,
+          "from": 21,
+          "name": "taunt_s",
+          "repeats": 1,
+          "to": 30
+        },
+        {
+          "duration_ms": 800,
+          "from": 21,
+          "name": "s_channel",
+          "repeats": 1,
+          "to": 24
+        },
+        {
+          "duration_ms": 160,
+          "from": 25,
+          "name": "s_challenge",
+          "repeats": 1,
+          "to": 26
+        },
+        {
+          "duration_ms": 440,
+          "from": 27,
+          "name": "s_recover",
+          "repeats": 1,
+          "to": 30
+        },
+        {
+          "duration_ms": 1400,
+          "from": 31,
+          "name": "taunt_w",
+          "repeats": 1,
+          "to": 40
+        },
+        {
+          "duration_ms": 800,
+          "from": 31,
+          "name": "w_channel",
+          "repeats": 1,
+          "to": 34
+        },
+        {
+          "duration_ms": 160,
+          "from": 35,
+          "name": "w_challenge",
+          "repeats": 1,
+          "to": 36
+        },
+        {
+          "duration_ms": 440,
+          "from": 37,
+          "name": "w_recover",
+          "repeats": 1,
+          "to": 40
+        }
+      ],
+      "width": 19
+    },
+    {
+      "actor": true,
+      "direction_rotation_verified": true,
+      "frames": [
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 240,
+          "frame": 1,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 260,
+          "frame": 2,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 240,
+          "frame": 3,
+          "opaque_pixels": 141
+        },
+        {
+          "bounds": [
+            1,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 260,
+          "frame": 4,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 240,
+          "frame": 5,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 260,
+          "frame": 6,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 240,
+          "frame": 7,
+          "opaque_pixels": 141
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            13,
+            16
+          ],
+          "duration_ms": 260,
+          "frame": 8,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 240,
+          "frame": 9,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 260,
+          "frame": 10,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 240,
+          "frame": 11,
+          "opaque_pixels": 141
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            16,
+            13
+          ],
+          "duration_ms": 260,
+          "frame": 12,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 240,
+          "frame": 13,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 260,
+          "frame": 14,
+          "opaque_pixels": 143
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 240,
+          "frame": 15,
+          "opaque_pixels": 141
+        },
+        {
+          "bounds": [
+            3,
+            2,
+            13,
+            16
+          ],
+          "duration_ms": 260,
+          "frame": 16,
+          "opaque_pixels": 143
+        }
+      ],
+      "frames_per_direction": 4,
+      "height": 19,
+      "layers": [
+        "01 Red cloth and stance",
+        "02 Plum armor and gold shoulders",
+        "03 Arms and gauntlets",
+        "04 Bear crown and round ears",
+        "05 Shield and sword",
+        "06 Ability glints"
+      ],
+      "opaque_edge_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "source": "warrior.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "name": "idle_n",
+          "repeats": 0,
+          "to": 4
+        },
+        {
+          "duration_ms": 1000,
+          "from": 5,
+          "name": "idle_e",
+          "repeats": 0,
+          "to": 8
+        },
+        {
+          "duration_ms": 1000,
+          "from": 9,
+          "name": "idle_s",
+          "repeats": 0,
+          "to": 12
+        },
+        {
+          "duration_ms": 1000,
+          "from": 13,
+          "name": "idle_w",
+          "repeats": 0,
+          "to": 16
+        }
+      ],
+      "width": 19
+    }
+  ]
+}

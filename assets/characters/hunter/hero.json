@@ -1,0 +1,299 @@
+{
+  "id": "hunter",
+  "name": "Hunter",
+  "portrait": "arenic-game/assets/portraits/hunter.png",
+  "projection": "strict straight-down orthographic",
+  "canvas": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "directions": [
+    "n",
+    "e",
+    "s",
+    "w"
+  ],
+  "abilities": [
+    {
+      "id": "auto_shot",
+      "name": "Auto Shot",
+      "slot": 1,
+      "description": "Quick bow draw, ordinary arrow and small contact burst. Basic shot cadence is 2.5 seconds.",
+      "source_doc": "../arenic_bevy/_docs/abilities/hunter/auto_shot.md",
+      "actor": "abilities/auto_shot/hunter_auto_shot.aseprite",
+      "frames_per_direction": 8,
+      "durations_ms": [
+        80,
+        80,
+        100,
+        60,
+        60,
+        80,
+        100,
+        140
+      ],
+      "release_ms": 260,
+      "preview": {
+        "type": "projectile",
+        "target": "boss",
+        "impact_ms": 740,
+        "duration_ms": 1600
+      },
+      "fx": [
+        {
+          "source": "abilities/auto_shot/fx/projectile.aseprite",
+          "role": "projectile",
+          "tag": "flight_e",
+          "loop": true,
+          "duration_ms": 320
+        },
+        {
+          "source": "abilities/auto_shot/fx/impact.aseprite",
+          "role": "impact",
+          "tag": "impact",
+          "loop": false,
+          "duration_ms": 300
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "One taut wooden recurve bowstring twang with a light arrow whisk away.",
+          "duration_seconds": 0.5,
+          "loop": false
+        },
+        "impact": {
+          "description": "Small arrow tip striking a padded wooden target, compact dry tick and dull body.",
+          "duration_seconds": 0.5,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Art timing is a presentation contract; damage, cooldowns and status expiry are gameplay-owned.",
+        "User explicitly chose rulebook Auto Shot basic bow attack; auto_shot.md describes Mark Target and is overridden for this ability."
+      ]
+    },
+    {
+      "id": "poison_shot",
+      "name": "Poison Shot",
+      "slot": 2,
+      "description": "Green preparation, one-tile recoil, venom arrow and radial affliction.",
+      "source_doc": "../arenic_bevy/_docs/abilities/hunter/poison_shot.md",
+      "actor": "abilities/poison_shot/hunter_poison_shot.aseprite",
+      "frames_per_direction": 12,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        60,
+        80,
+        60,
+        100,
+        100,
+        120,
+        140
+      ],
+      "release_ms": 500,
+      "preview": {
+        "type": "projectile",
+        "target": "boss",
+        "impact_ms": 980,
+        "duration_ms": 2500
+      },
+      "fx": [
+        {
+          "source": "abilities/poison_shot/fx/projectile.aseprite",
+          "role": "projectile",
+          "tag": "flight_e",
+          "loop": true,
+          "duration_ms": 320
+        },
+        {
+          "source": "abilities/poison_shot/fx/impact.aseprite",
+          "role": "impact",
+          "tag": "impact",
+          "loop": false,
+          "duration_ms": 1000
+        },
+        {
+          "source": "abilities/poison_shot/fx/affliction.aseprite",
+          "role": "aura",
+          "tag": "afflicted_loop",
+          "loop": true,
+          "duration_ms": 1000
+        }
+      ],
+      "audio": {
+        "charge": {
+          "description": "Small glass vial swirling venom, soft bubbling rising into a tight green magical charge.",
+          "duration_seconds": 0.5,
+          "loop": false
+        },
+        "cast": {
+          "description": "Recurve bow release with a short wet venom hiss and tactile string snap.",
+          "duration_seconds": 0.6,
+          "loop": false
+        },
+        "impact": {
+          "description": "Poison arrow contact, small wet splatter and restrained acidic fizz.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Very quiet seamless venom bubbling and thin acidic sizzle.",
+          "duration_seconds": 1.5,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Art timing is a presentation contract; damage, cooldowns and status expiry are gameplay-owned."
+      ]
+    },
+    {
+      "id": "sniper",
+      "name": "Sniper",
+      "slot": 3,
+      "description": "Half-second steady aim, tightening reticle, one precise boss-only arrow.",
+      "source_doc": "../arenic_bevy/_docs/abilities/hunter/sniper.md",
+      "actor": "abilities/sniper/hunter_sniper.aseprite",
+      "frames_per_direction": 10,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        50,
+        70,
+        90,
+        110,
+        140
+      ],
+      "release_ms": 500,
+      "preview": {
+        "type": "projectile",
+        "target": "boss",
+        "impact_ms": 740,
+        "duration_ms": 1800
+      },
+      "fx": [
+        {
+          "source": "abilities/sniper/fx/projectile.aseprite",
+          "role": "projectile",
+          "tag": "flight_e",
+          "loop": true,
+          "duration_ms": 200
+        },
+        {
+          "source": "abilities/sniper/fx/impact.aseprite",
+          "role": "impact",
+          "tag": "impact",
+          "loop": false,
+          "duration_ms": 500
+        },
+        {
+          "source": "abilities/sniper/fx/reticle.aseprite",
+          "role": "aura",
+          "tag": "lock_on",
+          "loop": false,
+          "duration_ms": 500
+        }
+      ],
+      "audio": {
+        "charge": {
+          "description": "Bow tension drawing tight with a delicate rising precision shimmer, no gun mechanism.",
+          "duration_seconds": 0.5,
+          "loop": false
+        },
+        "cast": {
+          "description": "Strong clean recurve bow release, crisp taut string snap and narrow fast arrow whistle.",
+          "duration_seconds": 0.5,
+          "loop": false
+        },
+        "impact": {
+          "description": "Precise heavy arrow strike, sharp tip crack and compact low impact.",
+          "duration_seconds": 0.6,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Art timing is a presentation contract; damage, cooldowns and status expiry are gameplay-owned."
+      ]
+    },
+    {
+      "id": "trap",
+      "name": "Trap",
+      "slot": 4,
+      "description": "Instant flat pressure plate. A staged enemy triggers the radial explosion after the Hunter steps aside.",
+      "source_doc": "../arenic_bevy/_docs/abilities/hunter/trap.md",
+      "actor": "abilities/trap/hunter_trap.aseprite",
+      "frames_per_direction": 6,
+      "durations_ms": [
+        70,
+        80,
+        100,
+        100,
+        80,
+        70
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "ground",
+        "target": "self",
+        "impact_ms": 1200,
+        "duration_ms": 2500
+      },
+      "fx": [
+        {
+          "source": "abilities/trap/fx/trap.aseprite",
+          "role": "field",
+          "tag": "place",
+          "loop": false,
+          "duration_ms": 500
+        },
+        {
+          "source": "abilities/trap/fx/trap.aseprite",
+          "role": "field",
+          "tag": "armed",
+          "loop": true,
+          "duration_ms": 1000
+        },
+        {
+          "source": "abilities/trap/fx/trap.aseprite",
+          "role": "field",
+          "tag": "trigger",
+          "loop": false,
+          "duration_ms": 100
+        },
+        {
+          "source": "abilities/trap/fx/explosion.aseprite",
+          "role": "impact",
+          "tag": "explode",
+          "loop": false,
+          "duration_ms": 1000
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Small metal pressure plate set on stone, spring tension and latch click.",
+          "duration_seconds": 0.5,
+          "loop": false
+        },
+        "impact": {
+          "description": "Pressure plate clicks then a compact radial fantasy explosion, low thump and short debris scatter.",
+          "duration_seconds": 1.0,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Art timing is a presentation contract; damage, cooldowns and status expiry are gameplay-owned.",
+        "Instant activation; demonstration trigger at 1200 ms is a staged collision, not a cast windup. Damage is immediate at trigger. 2×2 explosion footprint."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"all_frames_nonempty": true, "alpha_binary": true, "canvas": [114, 114], "frame_count": 48, "id": "bard", "layer_count": 6, "opaque_bounds": [6, 6, 107, 107], "pivot": [57, 57], "states": [{"distinct_north_frames": 12, "duration_ms": 2160, "exact_cardinal_rotations": true, "frames_per_direction": 12, "state": "idle"}]}

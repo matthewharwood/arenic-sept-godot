@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArenicClassAbility" format=3 uid="uid://cpwm3upnlgdr2"]
+
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_w8mha"]
+
+[resource]
+script = ExtResource("1_w8mha")
+title = "Coin Toss"
+description = "Spend coins to fire a skill shot. Land the hit to deal heavy damage and win your money back."

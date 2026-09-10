@@ -1,0 +1,53 @@
+{
+  "kind": "preview execution and native tag coverage",
+  "reports": [
+    {
+      "hero": "hunter",
+      "abilities": 4,
+      "samples": 1120,
+      "frame_draws": 4960
+    },
+    {
+      "hero": "warrior",
+      "abilities": 4,
+      "samples": 1036,
+      "frame_draws": 4808
+    },
+    {
+      "hero": "thief",
+      "abilities": 4,
+      "samples": 1036,
+      "frame_draws": 5061
+    },
+    {
+      "hero": "alchemist",
+      "abilities": 4,
+      "samples": 1132,
+      "frame_draws": 5829
+    },
+    {
+      "hero": "cardinal",
+      "abilities": 4,
+      "samples": 1224,
+      "frame_draws": 6302
+    },
+    {
+      "hero": "bard",
+      "abilities": 4,
+      "samples": 1408,
+      "frame_draws": 6947
+    },
+    {
+      "hero": "forager",
+      "abilities": 4,
+      "samples": 1372,
+      "frame_draws": 7174
+    },
+    {
+      "hero": "merchant",
+      "abilities": 4,
+      "samples": 1552,
+      "frame_draws": 6930
+    }
+  ]
+}

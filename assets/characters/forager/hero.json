@@ -1,0 +1,432 @@
+{
+  "id": "forager",
+  "name": "Forager",
+  "portrait": "arenic-game/assets/portraits/forager.png",
+  "frame": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "directions": [
+    "n",
+    "e",
+    "s",
+    "w"
+  ],
+  "abilities": [
+    {
+      "id": "dig",
+      "name": "Dig",
+      "slot": 1,
+      "description": "Excavate up to two selected tiles, 800 ms each, gaining one rock per tile and preparing the ground.",
+      "source_doc": "../arenic_bevy/_docs/abilities/forager/dig.md",
+      "actor": "abilities/dig/forager_dig.aseprite",
+      "frames_per_direction": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "release_ms": 800,
+      "preview": {
+        "type": "ground",
+        "target": "ground",
+        "impact_ms": 800,
+        "duration_ms": 2100
+      },
+      "fx": [
+        {
+          "source": "abilities/dig/fx/excavate.aseprite",
+          "role": "impact",
+          "tag": "excavate",
+          "loop": false,
+          "duration_ms": 800,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/dig/fx/dug_ground.aseprite",
+          "role": "field",
+          "tag": "dug",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A shovel blade biting soil, two short earthy scrapes with tiny stone clicks. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "impact": {
+          "description": "Loose earth settling and a small discovered rock tumbling into a pouch, gentle resource chime. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.7,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Actor tag is one 800 ms excavation. Repeat it for a second selected tile; do not replace the two-tile cap with area digging.",
+        "Loot chance is 70%; rock gain is guaranteed per successful tile. Persistent dug ground is terrain state."
+      ]
+    },
+    {
+      "id": "bolder",
+      "name": "Boulder",
+      "slot": 2,
+      "description": "Spend two rocks to launch a 2×2 rolling boulder at four tiles per second until a solid obstruction.",
+      "source_doc": "../arenic_bevy/_docs/abilities/forager/bolder.md",
+      "actor": "abilities/bolder/forager_bolder.aseprite",
+      "frames_per_direction": 8,
+      "durations_ms": [
+        80,
+        80,
+        100,
+        80,
+        80,
+        100,
+        120,
+        160
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "projectile",
+        "target": "boss",
+        "impact_ms": 700,
+        "duration_ms": 3100
+      },
+      "fx": [
+        {
+          "source": "abilities/bolder/fx/boulder.aseprite",
+          "role": "projectile",
+          "tag": "roll_e",
+          "loop": true,
+          "duration_ms": 800,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        },
+        {
+          "source": "abilities/bolder/fx/crumble.aseprite",
+          "role": "impact",
+          "tag": "crumble",
+          "loop": false,
+          "duration_ms": 2000,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Heavy earth splitting and a large stone mass forming with a compact magical rumble. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "impact": {
+          "description": "A weighty stone collision, crunchy rock fracture and debris settling into earth. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 1.8,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Seamless heavy boulder rolling over gritty soil, rhythmic coarse stone rumble with small debris, no impacts. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 2,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Canonical filename remains bolder; display name is Boulder.",
+        "Base boulder deals 200 damage once per enemy and gathers destructible resources. No spread, homing or child boulders."
+      ]
+    },
+    {
+      "id": "border",
+      "name": "Border",
+      "slot": 3,
+      "description": "Spend one rock on dug ground to grow a one-cell projectile-deflecting barrier after a 1500 ms cast.",
+      "source_doc": "../arenic_bevy/_docs/abilities/forager/border.md",
+      "actor": "abilities/border/forager_border.aseprite",
+      "frames_per_direction": 12,
+      "durations_ms": [
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        100,
+        100
+      ],
+      "release_ms": 1500,
+      "preview": {
+        "type": "ground",
+        "target": "ground",
+        "impact_ms": 1500,
+        "duration_ms": 4000
+      },
+      "fx": [
+        {
+          "source": "abilities/border/fx/barrier.aseprite",
+          "role": "field",
+          "tag": "grow",
+          "loop": false,
+          "duration_ms": 1500,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/border/fx/barrier.aseprite",
+          "role": "field",
+          "tag": "barrier_loop",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/border/fx/deflect.aseprite",
+          "role": "impact",
+          "tag": "deflect",
+          "loop": false,
+          "duration_ms": 400,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Thorny vines twisting up through pebbles, organic growth creaks and low earthy magic. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 1.2,
+          "loop": false
+        },
+        "impact": {
+          "description": "A sharp projectile deflection ping mixed with a woody thorn crack and a short magical ricochet. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.5,
+          "loop": false
+        },
+        "charge": {
+          "description": "Low earthen rumble rises for one and a half seconds as roots gather beneath prepared soil. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 1.5,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Seamless very quiet vine and leaf rustle with faint earthen resonance, a living defensive barrier. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 2,
+          "loop": true
+        }
+      },
+      "notes": [
+        "One-cell barrier persists 60 seconds and deflects friendly and hostile projectiles.",
+        "Preview must require/stage dug ground; no upgraded 2×2 barrier or melee-health bonus."
+      ]
+    },
+    {
+      "id": "mushroom",
+      "name": "Symbiosis",
+      "slot": 4,
+      "description": "Plant a seed node and feed resources to grow its healing strength and coverage.",
+      "source_doc": "../arenic_bevy/_docs/abilities/forager/mushroom.md",
+      "actor": "abilities/mushroom/forager_mushroom.aseprite",
+      "frames_per_direction": 8,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "release_ms": 300,
+      "preview": {
+        "type": "ground",
+        "target": "ground",
+        "impact_ms": 300,
+        "duration_ms": 3800
+      },
+      "fx": [
+        {
+          "source": "abilities/mushroom/fx/node.aseprite",
+          "role": "field",
+          "tag": "seed",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/mushroom/fx/node.aseprite",
+          "role": "field",
+          "tag": "sprout",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/mushroom/fx/node.aseprite",
+          "role": "field",
+          "tag": "young",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/mushroom/fx/node.aseprite",
+          "role": "field",
+          "tag": "mature",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/mushroom/fx/node.aseprite",
+          "role": "field",
+          "tag": "ancient",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/mushroom/fx/feed.aseprite",
+          "role": "trail",
+          "tag": "feed",
+          "loop": true,
+          "duration_ms": 800,
+          "canvas": [
+            38,
+            19
+          ],
+          "pivot": [
+            19,
+            9
+          ]
+        },
+        {
+          "source": "abilities/mushroom/fx/heal.aseprite",
+          "role": "aura",
+          "tag": "heal_loop",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A seed tucked into soft earth with a tiny organic sprout pop. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "A bioluminescent mushroom opening with a gentle natural healing chime and leafy creak. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 1,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Seamless soft resource absorption hum with slow watery healing chimes and subtle organic growth. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 2,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Canonical filename remains mushroom; source document display title is Symbiosis.",
+        "Seed does not heal. Further growth/healing requires resource investment, not elapsed animation time alone. Preview labels staged feeding.",
+        "No network or World Tree upgrades; five tags are base growth states. Gold semantics vary within the brief; art shows resource feeding without asserting the conflicting formula."
+      ]
+    }
+  ]
+}

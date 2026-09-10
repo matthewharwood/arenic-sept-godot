@@ -1,0 +1,152 @@
+{
+  "color_space": "oklch",
+  "alpha": 1,
+  "reference": "assets/bosses/portraits/forager.png",
+  "notes": "Authored palette values; conversion to RGBA happens only at the Aseprite boundary. Transparent palette entry zero is the file-format boundary.",
+  "colors": [
+    {
+      "id": "ink",
+      "oklch": [
+        0.12,
+        0.019,
+        140
+      ]
+    },
+    {
+      "id": "dark",
+      "oklch": [
+        0.2,
+        0.027,
+        151
+      ]
+    },
+    {
+      "id": "greenDeep",
+      "oklch": [
+        0.25,
+        0.039,
+        151
+      ]
+    },
+    {
+      "id": "green",
+      "oklch": [
+        0.34,
+        0.053,
+        153
+      ]
+    },
+    {
+      "id": "greenLight",
+      "oklch": [
+        0.44,
+        0.06,
+        157
+      ]
+    },
+    {
+      "id": "greenHot",
+      "oklch": [
+        0.55,
+        0.056,
+        158
+      ]
+    },
+    {
+      "id": "goldDeep",
+      "oklch": [
+        0.28,
+        0.061,
+        62
+      ]
+    },
+    {
+      "id": "goldShadow",
+      "oklch": [
+        0.42,
+        0.1,
+        67
+      ]
+    },
+    {
+      "id": "gold",
+      "oklch": [
+        0.61,
+        0.131,
+        76
+      ]
+    },
+    {
+      "id": "goldLight",
+      "oklch": [
+        0.76,
+        0.12,
+        82
+      ]
+    },
+    {
+      "id": "goldHot",
+      "oklch": [
+        0.88,
+        0.081,
+        87
+      ]
+    },
+    {
+      "id": "jawDark",
+      "oklch": [
+        0.24,
+        0.042,
+        51
+      ]
+    },
+    {
+      "id": "jaw",
+      "oklch": [
+        0.36,
+        0.064,
+        53
+      ]
+    },
+    {
+      "id": "jawLight",
+      "oklch": [
+        0.51,
+        0.089,
+        60
+      ]
+    },
+    {
+      "id": "eye",
+      "oklch": [
+        0.08,
+        0.011,
+        180
+      ]
+    },
+    {
+      "id": "eyeGlint",
+      "oklch": [
+        0.93,
+        0.037,
+        110
+      ]
+    },
+    {
+      "id": "venom",
+      "oklch": [
+        0.68,
+        0.139,
+        116
+      ]
+    },
+    {
+      "id": "venomHot",
+      "oklch": [
+        0.84,
+        0.138,
+        115
+      ]
+    }
+  ]
+}

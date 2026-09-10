@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ArenicBossDefinition" format=3 uid="uid://dkm7iy8pqsxlg"]
+
+[ext_resource type="Script" uid="uid://2k1q4624yepy" path="res://scripts/bosses/boss_definition.gd" id="1_definition"]
+[ext_resource type="Script" uid="uid://cc7j570rlvc0e" path="res://scripts/bosses/boss_visual_state.gd" id="2_state"]
+[ext_resource type="Texture2D" uid="uid://cknx21hkx5ir2" path="res://assets/portraits/bosses/alchemist.png" id="3_portrait"]
+[ext_resource type="SpriteFrames" uid="uid://dm7ig6btwlc0i" path="res://assets/bosses/alchemist/alchemist_frames.tres" id="4_frames"]
+
+[sub_resource type="Resource" id="State_cycle"]
+script = ExtResource("2_state")
+state_id = "cycle"
+tag_prefix = "cycle"
+
+[sub_resource type="Resource" id="State_bomb"]
+script = ExtResource("2_state")
+state_id = "bomb"
+tag_prefix = "bomb"
+
+[sub_resource type="Resource" id="State_skull"]
+script = ExtResource("2_state")
+state_id = "skull"
+tag_prefix = "skull"
+
+[sub_resource type="Resource" id="State_potion"]
+script = ExtResource("2_state")
+state_id = "potion"
+tag_prefix = "potion"
+
+[resource]
+script = ExtResource("1_definition")
+boss_id = "alchemist"
+display_name = "Alchemist"
+portrait = ExtResource("3_portrait")
+source_sprite_path = "assets/bosses/alchemist/alchemist.aseprite"
+sprite_frames = ExtResource("4_frames")
+sprite_metadata_path = "res://assets/bosses/alchemist/alchemist.json"
+default_state_id = "cycle"
+visual_states = Array[ExtResource("2_state")]([SubResource("State_cycle"), SubResource("State_bomb"), SubResource("State_skull"), SubResource("State_potion")])

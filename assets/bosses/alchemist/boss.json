@@ -1,0 +1,51 @@
+{
+  "id": "alchemist",
+  "name": "Alchemist",
+  "kind": "boss",
+  "description": "One alchemical gel creature morphs between bomb, skull, and potion silhouettes.",
+  "canvas": [
+    114,
+    114
+  ],
+  "pivot": [
+    57,
+    57
+  ],
+  "source": "assets/bosses/alchemist/alchemist.aseprite",
+  "portrait": "arenic-game/assets/portraits/bosses/alchemist.png",
+  "default_state": "cycle",
+  "visual_states": [
+    {
+      "id": "cycle",
+      "name": "Gel morph cycle",
+      "tag": "cycle",
+      "description": "Slow connected bomb, skull and flask transitions."
+    },
+    {
+      "id": "bomb",
+      "name": "Bomb",
+      "tag": "bomb",
+      "description": "Round gel bomb with a curled dormant fuse."
+    },
+    {
+      "id": "skull",
+      "name": "Skull",
+      "tag": "skull",
+      "description": "Bone core and jaw emerge through the shifting gel."
+    },
+    {
+      "id": "potion",
+      "name": "Potion",
+      "tag": "potion",
+      "description": "Gel stretches into flask shoulders and a cork-like crown."
+    }
+  ],
+  "notes": [
+    "Strict overhead orthographic source art, six 19-pixel cells per side.",
+    "Idle presentation states only; no attack mechanics are encoded.",
+    "Four cardinal tags use exact full-canvas 90-degree rotations and a common (57, 57) pivot.",
+    "Native layered source remains outside the game directory.",
+    "Common canvas bounds describe the presentation footprint; gameplay collision is not authored here."
+  ],
+  "epithet": "The Crucible Gel"
+}

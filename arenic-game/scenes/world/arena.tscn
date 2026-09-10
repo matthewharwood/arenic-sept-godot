@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dxlrfssj5ggeg"]
+
+[ext_resource type="Script" uid="uid://c6u5j7iawkn11" path="res://scripts/world/arena_view.gd" id="1_pbd5s"]
+[ext_resource type="Script" uid="uid://bsg0l6ameq35c" path="res://scripts/world/arena_tiles.gd" id="2_ldtp4"]
+
+[node name="Arena" type="Node3D" unique_id=2045479190]
+script = ExtResource("1_pbd5s")
+
+[node name="ContentSlot" type="Node3D" parent="." unique_id=208454505]
+
+[node name="Tiles" type="MultiMeshInstance3D" parent="." unique_id=332002955]
+script = ExtResource("2_ldtp4")

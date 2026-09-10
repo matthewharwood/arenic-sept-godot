@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dpfrhkj7icwc2"]
+
+[ext_resource type="Script" uid="uid://kaggsx5oi6lx" path="res://scripts/world/game_shell.gd" id="1_yohmk"]
+[ext_resource type="PackedScene" uid="uid://crk22d5quqtfj" path="res://scenes/world/overworld_stage.tscn" id="2_kmhep"]
+[ext_resource type="PackedScene" uid="uid://7ne6i17313gl" path="res://scenes/game/world_hud.tscn" id="3_mql68"]
+
+[node name="GameShell" type="Node" unique_id=1528138076]
+script = ExtResource("1_yohmk")
+stage_scene = ExtResource("2_kmhep")
+
+[node name="ContentSlot" type="Node" parent="." unique_id=1116601808]
+
+[node name="HUD" parent="." unique_id=1112211323 instance=ExtResource("3_mql68")]

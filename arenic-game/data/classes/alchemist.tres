@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArenicClassDefinition" format=3 uid="uid://2xdoamm0uafh"]
+
+[ext_resource type="Script" uid="uid://cb0vid0x8md50" path="res://scripts/character_creation/class_definition.gd" id="1_0ty2t"]
+[ext_resource type="Texture2D" uid="uid://bvs0ivu67wi3g" path="res://assets/icons/classes/alchemist.svg" id="1_df8gf"]
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="2_df8gf"]
+[ext_resource type="Texture2D" uid="uid://c6s53833mvcxq" path="res://assets/portraits/alchemist_atlas.tres" id="2_eqiae"]
+[ext_resource type="Resource" uid="uid://dkvgiox6ssa62" path="res://data/classes/alchemist_primary.tres" id="3_xyo7f"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/alchemist/alchemist_frames.tres" id="6_tx43o"]
+
+[resource]
+script = ExtResource("1_0ty2t")
+class_id = "alchemist"
+display_name = "Alchemist"
+character_name = "Giuseppe"
+icon = ExtResource("1_df8gf")
+portrait = ExtResource("2_eqiae")
+world_sprite_frames = ExtResource("6_tx43o")
+skills = Array[ExtResource("2_df8gf")]([ExtResource("3_xyo7f")])
+portrait_height = 0.96

@@ -1,0 +1,1865 @@
+{
+  "camera": "straight_down_orthographic",
+  "final_game_exports": false,
+  "sources": [
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 200,
+          "frame": 1,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 200,
+          "frame": 2,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 200,
+          "frame": 3,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 200,
+          "frame": 4,
+          "opaque_pixels": 138
+        }
+      ],
+      "layers": 7,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/alchemist.aseprite",
+      "tags": [
+        {
+          "duration_ms": 200,
+          "from": 1,
+          "loop": true,
+          "name": "idle_n",
+          "to": 1
+        },
+        {
+          "duration_ms": 200,
+          "from": 2,
+          "loop": true,
+          "name": "idle_e",
+          "to": 2
+        },
+        {
+          "duration_ms": 200,
+          "from": 3,
+          "loop": true,
+          "name": "idle_s",
+          "to": 3
+        },
+        {
+          "duration_ms": 200,
+          "from": 4,
+          "loop": true,
+          "name": "idle_w",
+          "to": 4
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": true,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 80,
+          "frame": 1,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 80,
+          "frame": 2,
+          "opaque_pixels": 143
+        },
+        {
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 155
+        },
+        {
+          "duration_ms": 60,
+          "frame": 4,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 80,
+          "frame": 5,
+          "opaque_pixels": 137
+        },
+        {
+          "duration_ms": 100,
+          "frame": 6,
+          "opaque_pixels": 137
+        },
+        {
+          "duration_ms": 120,
+          "frame": 7,
+          "opaque_pixels": 136
+        },
+        {
+          "duration_ms": 180,
+          "frame": 8,
+          "opaque_pixels": 136
+        },
+        {
+          "duration_ms": 80,
+          "frame": 9,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 80,
+          "frame": 10,
+          "opaque_pixels": 143
+        },
+        {
+          "duration_ms": 100,
+          "frame": 11,
+          "opaque_pixels": 155
+        },
+        {
+          "duration_ms": 60,
+          "frame": 12,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 80,
+          "frame": 13,
+          "opaque_pixels": 137
+        },
+        {
+          "duration_ms": 100,
+          "frame": 14,
+          "opaque_pixels": 137
+        },
+        {
+          "duration_ms": 120,
+          "frame": 15,
+          "opaque_pixels": 136
+        },
+        {
+          "duration_ms": 180,
+          "frame": 16,
+          "opaque_pixels": 136
+        },
+        {
+          "duration_ms": 80,
+          "frame": 17,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 80,
+          "frame": 18,
+          "opaque_pixels": 143
+        },
+        {
+          "duration_ms": 100,
+          "frame": 19,
+          "opaque_pixels": 155
+        },
+        {
+          "duration_ms": 60,
+          "frame": 20,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 80,
+          "frame": 21,
+          "opaque_pixels": 137
+        },
+        {
+          "duration_ms": 100,
+          "frame": 22,
+          "opaque_pixels": 137
+        },
+        {
+          "duration_ms": 120,
+          "frame": 23,
+          "opaque_pixels": 136
+        },
+        {
+          "duration_ms": 180,
+          "frame": 24,
+          "opaque_pixels": 136
+        },
+        {
+          "duration_ms": 80,
+          "frame": 25,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 80,
+          "frame": 26,
+          "opaque_pixels": 143
+        },
+        {
+          "duration_ms": 100,
+          "frame": 27,
+          "opaque_pixels": 155
+        },
+        {
+          "duration_ms": 60,
+          "frame": 28,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 80,
+          "frame": 29,
+          "opaque_pixels": 137
+        },
+        {
+          "duration_ms": 100,
+          "frame": 30,
+          "opaque_pixels": 137
+        },
+        {
+          "duration_ms": 120,
+          "frame": 31,
+          "opaque_pixels": 136
+        },
+        {
+          "duration_ms": 180,
+          "frame": 32,
+          "opaque_pixels": 136
+        }
+      ],
+      "layers": 7,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/acid_flask/alchemist_acid_flask.aseprite",
+      "tags": [
+        {
+          "duration_ms": 800,
+          "from": 1,
+          "loop": false,
+          "name": "acid_flask_n",
+          "to": 8
+        },
+        {
+          "duration_ms": 260,
+          "from": 1,
+          "loop": false,
+          "name": "n_draw",
+          "to": 3
+        },
+        {
+          "duration_ms": 60,
+          "from": 4,
+          "loop": false,
+          "name": "n_release",
+          "to": 4
+        },
+        {
+          "duration_ms": 480,
+          "from": 5,
+          "loop": false,
+          "name": "n_recover",
+          "to": 8
+        },
+        {
+          "duration_ms": 800,
+          "from": 9,
+          "loop": false,
+          "name": "acid_flask_e",
+          "to": 16
+        },
+        {
+          "duration_ms": 260,
+          "from": 9,
+          "loop": false,
+          "name": "e_draw",
+          "to": 11
+        },
+        {
+          "duration_ms": 60,
+          "from": 12,
+          "loop": false,
+          "name": "e_release",
+          "to": 12
+        },
+        {
+          "duration_ms": 480,
+          "from": 13,
+          "loop": false,
+          "name": "e_recover",
+          "to": 16
+        },
+        {
+          "duration_ms": 800,
+          "from": 17,
+          "loop": false,
+          "name": "acid_flask_s",
+          "to": 24
+        },
+        {
+          "duration_ms": 260,
+          "from": 17,
+          "loop": false,
+          "name": "s_draw",
+          "to": 19
+        },
+        {
+          "duration_ms": 60,
+          "from": 20,
+          "loop": false,
+          "name": "s_release",
+          "to": 20
+        },
+        {
+          "duration_ms": 480,
+          "from": 21,
+          "loop": false,
+          "name": "s_recover",
+          "to": 24
+        },
+        {
+          "duration_ms": 800,
+          "from": 25,
+          "loop": false,
+          "name": "acid_flask_w",
+          "to": 32
+        },
+        {
+          "duration_ms": 260,
+          "from": 25,
+          "loop": false,
+          "name": "w_draw",
+          "to": 27
+        },
+        {
+          "duration_ms": 60,
+          "from": 28,
+          "loop": false,
+          "name": "w_release",
+          "to": 28
+        },
+        {
+          "duration_ms": 480,
+          "from": 29,
+          "loop": false,
+          "name": "w_recover",
+          "to": 32
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": true,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 80,
+          "frame": 1,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 80,
+          "frame": 2,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 143
+        },
+        {
+          "duration_ms": 100,
+          "frame": 4,
+          "opaque_pixels": 139
+        },
+        {
+          "duration_ms": 120,
+          "frame": 5,
+          "opaque_pixels": 139
+        },
+        {
+          "duration_ms": 120,
+          "frame": 6,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 80,
+          "frame": 7,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 80,
+          "frame": 8,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 9,
+          "opaque_pixels": 143
+        },
+        {
+          "duration_ms": 100,
+          "frame": 10,
+          "opaque_pixels": 139
+        },
+        {
+          "duration_ms": 120,
+          "frame": 11,
+          "opaque_pixels": 139
+        },
+        {
+          "duration_ms": 120,
+          "frame": 12,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 80,
+          "frame": 13,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 80,
+          "frame": 14,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 15,
+          "opaque_pixels": 143
+        },
+        {
+          "duration_ms": 100,
+          "frame": 16,
+          "opaque_pixels": 139
+        },
+        {
+          "duration_ms": 120,
+          "frame": 17,
+          "opaque_pixels": 139
+        },
+        {
+          "duration_ms": 120,
+          "frame": 18,
+          "opaque_pixels": 138
+        },
+        {
+          "duration_ms": 80,
+          "frame": 19,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 80,
+          "frame": 20,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 21,
+          "opaque_pixels": 143
+        },
+        {
+          "duration_ms": 100,
+          "frame": 22,
+          "opaque_pixels": 139
+        },
+        {
+          "duration_ms": 120,
+          "frame": 23,
+          "opaque_pixels": 139
+        },
+        {
+          "duration_ms": 120,
+          "frame": 24,
+          "opaque_pixels": 138
+        }
+      ],
+      "layers": 7,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/ironskin_draft/alchemist_ironskin_draft.aseprite",
+      "tags": [
+        {
+          "duration_ms": 600,
+          "from": 1,
+          "loop": false,
+          "name": "ironskin_draft_n",
+          "to": 6
+        },
+        {
+          "duration_ms": 360,
+          "from": 1,
+          "loop": false,
+          "name": "n_drink",
+          "to": 4
+        },
+        {
+          "duration_ms": 80,
+          "from": 1,
+          "loop": false,
+          "name": "n_apply",
+          "to": 1
+        },
+        {
+          "duration_ms": 240,
+          "from": 5,
+          "loop": false,
+          "name": "n_recover",
+          "to": 6
+        },
+        {
+          "duration_ms": 600,
+          "from": 7,
+          "loop": false,
+          "name": "ironskin_draft_e",
+          "to": 12
+        },
+        {
+          "duration_ms": 360,
+          "from": 7,
+          "loop": false,
+          "name": "e_drink",
+          "to": 10
+        },
+        {
+          "duration_ms": 80,
+          "from": 7,
+          "loop": false,
+          "name": "e_apply",
+          "to": 7
+        },
+        {
+          "duration_ms": 240,
+          "from": 11,
+          "loop": false,
+          "name": "e_recover",
+          "to": 12
+        },
+        {
+          "duration_ms": 600,
+          "from": 13,
+          "loop": false,
+          "name": "ironskin_draft_s",
+          "to": 18
+        },
+        {
+          "duration_ms": 360,
+          "from": 13,
+          "loop": false,
+          "name": "s_drink",
+          "to": 16
+        },
+        {
+          "duration_ms": 80,
+          "from": 13,
+          "loop": false,
+          "name": "s_apply",
+          "to": 13
+        },
+        {
+          "duration_ms": 240,
+          "from": 17,
+          "loop": false,
+          "name": "s_recover",
+          "to": 18
+        },
+        {
+          "duration_ms": 600,
+          "from": 19,
+          "loop": false,
+          "name": "ironskin_draft_w",
+          "to": 24
+        },
+        {
+          "duration_ms": 360,
+          "from": 19,
+          "loop": false,
+          "name": "w_drink",
+          "to": 22
+        },
+        {
+          "duration_ms": 80,
+          "from": 19,
+          "loop": false,
+          "name": "w_apply",
+          "to": 19
+        },
+        {
+          "duration_ms": 240,
+          "from": 23,
+          "loop": false,
+          "name": "w_recover",
+          "to": 24
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": true,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 100,
+          "frame": 1,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 2,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 100,
+          "frame": 4,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 100,
+          "frame": 5,
+          "opaque_pixels": 147
+        },
+        {
+          "duration_ms": 200,
+          "frame": 6,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 200,
+          "frame": 7,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 200,
+          "frame": 8,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 200,
+          "frame": 9,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 120,
+          "frame": 10,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 180,
+          "frame": 11,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 100,
+          "frame": 12,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 13,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 14,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 100,
+          "frame": 15,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 100,
+          "frame": 16,
+          "opaque_pixels": 147
+        },
+        {
+          "duration_ms": 200,
+          "frame": 17,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 200,
+          "frame": 18,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 200,
+          "frame": 19,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 200,
+          "frame": 20,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 120,
+          "frame": 21,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 180,
+          "frame": 22,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 100,
+          "frame": 23,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 24,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 25,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 100,
+          "frame": 26,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 100,
+          "frame": 27,
+          "opaque_pixels": 147
+        },
+        {
+          "duration_ms": 200,
+          "frame": 28,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 200,
+          "frame": 29,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 200,
+          "frame": 30,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 200,
+          "frame": 31,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 120,
+          "frame": 32,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 180,
+          "frame": 33,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 100,
+          "frame": 34,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 35,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 100,
+          "frame": 36,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 100,
+          "frame": 37,
+          "opaque_pixels": 144
+        },
+        {
+          "duration_ms": 100,
+          "frame": 38,
+          "opaque_pixels": 147
+        },
+        {
+          "duration_ms": 200,
+          "frame": 39,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 200,
+          "frame": 40,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 200,
+          "frame": 41,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 200,
+          "frame": 42,
+          "opaque_pixels": 141
+        },
+        {
+          "duration_ms": 120,
+          "frame": 43,
+          "opaque_pixels": 142
+        },
+        {
+          "duration_ms": 180,
+          "frame": 44,
+          "opaque_pixels": 141
+        }
+      ],
+      "layers": 7,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/siphon/alchemist_siphon.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1600,
+          "from": 1,
+          "loop": false,
+          "name": "siphon_n",
+          "to": 11
+        },
+        {
+          "duration_ms": 500,
+          "from": 1,
+          "loop": false,
+          "name": "n_establish",
+          "to": 5
+        },
+        {
+          "duration_ms": 800,
+          "from": 6,
+          "loop": true,
+          "name": "n_channel",
+          "to": 9
+        },
+        {
+          "duration_ms": 300,
+          "from": 10,
+          "loop": false,
+          "name": "n_release",
+          "to": 11
+        },
+        {
+          "duration_ms": 1600,
+          "from": 12,
+          "loop": false,
+          "name": "siphon_e",
+          "to": 22
+        },
+        {
+          "duration_ms": 500,
+          "from": 12,
+          "loop": false,
+          "name": "e_establish",
+          "to": 16
+        },
+        {
+          "duration_ms": 800,
+          "from": 17,
+          "loop": true,
+          "name": "e_channel",
+          "to": 20
+        },
+        {
+          "duration_ms": 300,
+          "from": 21,
+          "loop": false,
+          "name": "e_release",
+          "to": 22
+        },
+        {
+          "duration_ms": 1600,
+          "from": 23,
+          "loop": false,
+          "name": "siphon_s",
+          "to": 33
+        },
+        {
+          "duration_ms": 500,
+          "from": 23,
+          "loop": false,
+          "name": "s_establish",
+          "to": 27
+        },
+        {
+          "duration_ms": 800,
+          "from": 28,
+          "loop": true,
+          "name": "s_channel",
+          "to": 31
+        },
+        {
+          "duration_ms": 300,
+          "from": 32,
+          "loop": false,
+          "name": "s_release",
+          "to": 33
+        },
+        {
+          "duration_ms": 1600,
+          "from": 34,
+          "loop": false,
+          "name": "siphon_w",
+          "to": 44
+        },
+        {
+          "duration_ms": 500,
+          "from": 34,
+          "loop": false,
+          "name": "w_establish",
+          "to": 38
+        },
+        {
+          "duration_ms": 800,
+          "from": 39,
+          "loop": true,
+          "name": "w_channel",
+          "to": 42
+        },
+        {
+          "duration_ms": 300,
+          "from": 43,
+          "loop": false,
+          "name": "w_release",
+          "to": 44
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": true,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 250,
+          "frame": 1,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 250,
+          "frame": 2,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 250,
+          "frame": 3,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 250,
+          "frame": 4,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 250,
+          "frame": 5,
+          "opaque_pixels": 153
+        },
+        {
+          "duration_ms": 250,
+          "frame": 6,
+          "opaque_pixels": 153
+        },
+        {
+          "duration_ms": 60,
+          "frame": 7,
+          "opaque_pixels": 152
+        },
+        {
+          "duration_ms": 100,
+          "frame": 8,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 140,
+          "frame": 9,
+          "opaque_pixels": 148
+        },
+        {
+          "duration_ms": 200,
+          "frame": 10,
+          "opaque_pixels": 148
+        },
+        {
+          "duration_ms": 250,
+          "frame": 11,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 250,
+          "frame": 12,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 250,
+          "frame": 13,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 250,
+          "frame": 14,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 250,
+          "frame": 15,
+          "opaque_pixels": 153
+        },
+        {
+          "duration_ms": 250,
+          "frame": 16,
+          "opaque_pixels": 153
+        },
+        {
+          "duration_ms": 60,
+          "frame": 17,
+          "opaque_pixels": 152
+        },
+        {
+          "duration_ms": 100,
+          "frame": 18,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 140,
+          "frame": 19,
+          "opaque_pixels": 148
+        },
+        {
+          "duration_ms": 200,
+          "frame": 20,
+          "opaque_pixels": 148
+        },
+        {
+          "duration_ms": 250,
+          "frame": 21,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 250,
+          "frame": 22,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 250,
+          "frame": 23,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 250,
+          "frame": 24,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 250,
+          "frame": 25,
+          "opaque_pixels": 153
+        },
+        {
+          "duration_ms": 250,
+          "frame": 26,
+          "opaque_pixels": 153
+        },
+        {
+          "duration_ms": 60,
+          "frame": 27,
+          "opaque_pixels": 152
+        },
+        {
+          "duration_ms": 100,
+          "frame": 28,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 140,
+          "frame": 29,
+          "opaque_pixels": 148
+        },
+        {
+          "duration_ms": 200,
+          "frame": 30,
+          "opaque_pixels": 148
+        },
+        {
+          "duration_ms": 250,
+          "frame": 31,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 250,
+          "frame": 32,
+          "opaque_pixels": 149
+        },
+        {
+          "duration_ms": 250,
+          "frame": 33,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 250,
+          "frame": 34,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 250,
+          "frame": 35,
+          "opaque_pixels": 153
+        },
+        {
+          "duration_ms": 250,
+          "frame": 36,
+          "opaque_pixels": 153
+        },
+        {
+          "duration_ms": 60,
+          "frame": 37,
+          "opaque_pixels": 152
+        },
+        {
+          "duration_ms": 100,
+          "frame": 38,
+          "opaque_pixels": 150
+        },
+        {
+          "duration_ms": 140,
+          "frame": 39,
+          "opaque_pixels": 148
+        },
+        {
+          "duration_ms": 200,
+          "frame": 40,
+          "opaque_pixels": 148
+        }
+      ],
+      "layers": 7,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/transmute/alchemist_transmute.aseprite",
+      "tags": [
+        {
+          "duration_ms": 2000,
+          "from": 1,
+          "loop": false,
+          "name": "transmute_n",
+          "to": 10
+        },
+        {
+          "duration_ms": 1500,
+          "from": 1,
+          "loop": false,
+          "name": "n_channel",
+          "to": 6
+        },
+        {
+          "duration_ms": 60,
+          "from": 7,
+          "loop": false,
+          "name": "n_resolve",
+          "to": 7
+        },
+        {
+          "duration_ms": 440,
+          "from": 8,
+          "loop": false,
+          "name": "n_recover",
+          "to": 10
+        },
+        {
+          "duration_ms": 2000,
+          "from": 11,
+          "loop": false,
+          "name": "transmute_e",
+          "to": 20
+        },
+        {
+          "duration_ms": 1500,
+          "from": 11,
+          "loop": false,
+          "name": "e_channel",
+          "to": 16
+        },
+        {
+          "duration_ms": 60,
+          "from": 17,
+          "loop": false,
+          "name": "e_resolve",
+          "to": 17
+        },
+        {
+          "duration_ms": 440,
+          "from": 18,
+          "loop": false,
+          "name": "e_recover",
+          "to": 20
+        },
+        {
+          "duration_ms": 2000,
+          "from": 21,
+          "loop": false,
+          "name": "transmute_s",
+          "to": 30
+        },
+        {
+          "duration_ms": 1500,
+          "from": 21,
+          "loop": false,
+          "name": "s_channel",
+          "to": 26
+        },
+        {
+          "duration_ms": 60,
+          "from": 27,
+          "loop": false,
+          "name": "s_resolve",
+          "to": 27
+        },
+        {
+          "duration_ms": 440,
+          "from": 28,
+          "loop": false,
+          "name": "s_recover",
+          "to": 30
+        },
+        {
+          "duration_ms": 2000,
+          "from": 31,
+          "loop": false,
+          "name": "transmute_w",
+          "to": 40
+        },
+        {
+          "duration_ms": 1500,
+          "from": 31,
+          "loop": false,
+          "name": "w_channel",
+          "to": 36
+        },
+        {
+          "duration_ms": 60,
+          "from": 37,
+          "loop": false,
+          "name": "w_resolve",
+          "to": 37
+        },
+        {
+          "duration_ms": 440,
+          "from": 38,
+          "loop": false,
+          "name": "w_recover",
+          "to": 40
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": true,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 100,
+          "frame": 1,
+          "opaque_pixels": 28
+        },
+        {
+          "duration_ms": 100,
+          "frame": 2,
+          "opaque_pixels": 28
+        },
+        {
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 28
+        },
+        {
+          "duration_ms": 100,
+          "frame": 4,
+          "opaque_pixels": 28
+        },
+        {
+          "duration_ms": 100,
+          "frame": 5,
+          "opaque_pixels": 28
+        },
+        {
+          "duration_ms": 100,
+          "frame": 6,
+          "opaque_pixels": 28
+        },
+        {
+          "duration_ms": 100,
+          "frame": 7,
+          "opaque_pixels": 28
+        },
+        {
+          "duration_ms": 100,
+          "frame": 8,
+          "opaque_pixels": 28
+        }
+      ],
+      "layers": 3,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/acid_flask/fx/flask.aseprite",
+      "tags": [
+        {
+          "duration_ms": 800,
+          "from": 1,
+          "loop": true,
+          "name": "flight",
+          "to": 8
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        38,
+        38
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 50,
+          "frame": 1,
+          "opaque_pixels": 42
+        },
+        {
+          "duration_ms": 70,
+          "frame": 2,
+          "opaque_pixels": 73
+        },
+        {
+          "duration_ms": 90,
+          "frame": 3,
+          "opaque_pixels": 50
+        },
+        {
+          "duration_ms": 110,
+          "frame": 4,
+          "opaque_pixels": 44
+        },
+        {
+          "duration_ms": 130,
+          "frame": 5,
+          "opaque_pixels": 14
+        },
+        {
+          "duration_ms": 150,
+          "frame": 6,
+          "opaque_pixels": 0
+        }
+      ],
+      "layers": 3,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/acid_flask/fx/shatter.aseprite",
+      "tags": [
+        {
+          "duration_ms": 600,
+          "from": 1,
+          "loop": false,
+          "name": "shatter",
+          "to": 6
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        38,
+        38
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 160,
+          "frame": 1,
+          "opaque_pixels": 520
+        },
+        {
+          "duration_ms": 170,
+          "frame": 2,
+          "opaque_pixels": 520
+        },
+        {
+          "duration_ms": 170,
+          "frame": 3,
+          "opaque_pixels": 520
+        },
+        {
+          "duration_ms": 160,
+          "frame": 4,
+          "opaque_pixels": 520
+        },
+        {
+          "duration_ms": 170,
+          "frame": 5,
+          "opaque_pixels": 520
+        },
+        {
+          "duration_ms": 170,
+          "frame": 6,
+          "opaque_pixels": 520
+        }
+      ],
+      "layers": 3,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/acid_flask/fx/acid_pool.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "loop": true,
+          "name": "bubble",
+          "to": 6
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 80,
+          "frame": 1,
+          "opaque_pixels": 20
+        },
+        {
+          "duration_ms": 80,
+          "frame": 2,
+          "opaque_pixels": 38
+        },
+        {
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 38
+        },
+        {
+          "duration_ms": 100,
+          "frame": 4,
+          "opaque_pixels": 26
+        },
+        {
+          "duration_ms": 120,
+          "frame": 5,
+          "opaque_pixels": 26
+        },
+        {
+          "duration_ms": 120,
+          "frame": 6,
+          "opaque_pixels": 0
+        }
+      ],
+      "layers": 3,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/ironskin_draft/fx/hardening.aseprite",
+      "tags": [
+        {
+          "duration_ms": 600,
+          "from": 1,
+          "loop": false,
+          "name": "harden",
+          "to": 6
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 160,
+          "frame": 1,
+          "opaque_pixels": 18
+        },
+        {
+          "duration_ms": 170,
+          "frame": 2,
+          "opaque_pixels": 18
+        },
+        {
+          "duration_ms": 170,
+          "frame": 3,
+          "opaque_pixels": 18
+        },
+        {
+          "duration_ms": 160,
+          "frame": 4,
+          "opaque_pixels": 18
+        },
+        {
+          "duration_ms": 170,
+          "frame": 5,
+          "opaque_pixels": 18
+        },
+        {
+          "duration_ms": 170,
+          "frame": 6,
+          "opaque_pixels": 18
+        }
+      ],
+      "layers": 2,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/ironskin_draft/fx/iron_aura.aseprite",
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "loop": true,
+          "name": "protected",
+          "to": 6
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        76,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 200,
+          "frame": 1,
+          "opaque_pixels": 75
+        },
+        {
+          "duration_ms": 200,
+          "frame": 2,
+          "opaque_pixels": 76
+        },
+        {
+          "duration_ms": 200,
+          "frame": 3,
+          "opaque_pixels": 79
+        },
+        {
+          "duration_ms": 200,
+          "frame": 4,
+          "opaque_pixels": 80
+        },
+        {
+          "duration_ms": 100,
+          "frame": 5,
+          "opaque_pixels": 6
+        },
+        {
+          "duration_ms": 120,
+          "frame": 6,
+          "opaque_pixels": 6
+        },
+        {
+          "duration_ms": 130,
+          "frame": 7,
+          "opaque_pixels": 6
+        },
+        {
+          "duration_ms": 150,
+          "frame": 8,
+          "opaque_pixels": 6
+        }
+      ],
+      "layers": 3,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/siphon/fx/life_link.aseprite",
+      "tags": [
+        {
+          "duration_ms": 800,
+          "from": 1,
+          "loop": true,
+          "name": "drain",
+          "to": 4
+        },
+        {
+          "duration_ms": 500,
+          "from": 5,
+          "loop": false,
+          "name": "dissipate",
+          "to": 8
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 60,
+          "frame": 1,
+          "opaque_pixels": 21
+        },
+        {
+          "duration_ms": 80,
+          "frame": 2,
+          "opaque_pixels": 21
+        },
+        {
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 13
+        },
+        {
+          "duration_ms": 120,
+          "frame": 4,
+          "opaque_pixels": 13
+        },
+        {
+          "duration_ms": 140,
+          "frame": 5,
+          "opaque_pixels": 0
+        }
+      ],
+      "layers": 3,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/siphon/fx/drain_contact.aseprite",
+      "tags": [
+        {
+          "duration_ms": 500,
+          "from": 1,
+          "loop": false,
+          "name": "contact",
+          "to": 5
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 200,
+          "frame": 1,
+          "opaque_pixels": 14
+        },
+        {
+          "duration_ms": 200,
+          "frame": 2,
+          "opaque_pixels": 13
+        },
+        {
+          "duration_ms": 200,
+          "frame": 3,
+          "opaque_pixels": 13
+        },
+        {
+          "duration_ms": 200,
+          "frame": 4,
+          "opaque_pixels": 13
+        }
+      ],
+      "layers": 2,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/siphon/fx/gain_aura.aseprite",
+      "tags": [
+        {
+          "duration_ms": 800,
+          "from": 1,
+          "loop": true,
+          "name": "gain",
+          "to": 4
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        38,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 250,
+          "frame": 1,
+          "opaque_pixels": 36
+        },
+        {
+          "duration_ms": 250,
+          "frame": 2,
+          "opaque_pixels": 40
+        },
+        {
+          "duration_ms": 250,
+          "frame": 3,
+          "opaque_pixels": 39
+        }
+      ],
+      "layers": 3,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/transmute/fx/gold_link.aseprite",
+      "tags": [
+        {
+          "duration_ms": 750,
+          "from": 1,
+          "loop": true,
+          "name": "channel",
+          "to": 3
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    },
+    {
+      "canvas": [
+        19,
+        19
+      ],
+      "extra": null,
+      "frames": [
+        {
+          "duration_ms": 60,
+          "frame": 1,
+          "opaque_pixels": 23
+        },
+        {
+          "duration_ms": 80,
+          "frame": 2,
+          "opaque_pixels": 32
+        },
+        {
+          "duration_ms": 100,
+          "frame": 3,
+          "opaque_pixels": 27
+        },
+        {
+          "duration_ms": 120,
+          "frame": 4,
+          "opaque_pixels": 27
+        },
+        {
+          "duration_ms": 140,
+          "frame": 5,
+          "opaque_pixels": 0
+        }
+      ],
+      "layers": 3,
+      "pivot": null,
+      "source": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/characters/alchemist/abilities/transmute/fx/transmutation.aseprite",
+      "tags": [
+        {
+          "duration_ms": 500,
+          "from": 1,
+          "loop": false,
+          "name": "resolve",
+          "to": 5
+        }
+      ],
+      "verified": {
+        "cardinal_rotations": false,
+        "clear_edges": true,
+        "hard_alpha": true,
+        "own_palette_only": true
+      }
+    }
+  ],
+  "tile_size_px": 19
+}

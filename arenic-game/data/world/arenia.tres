@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ArenicWorldDefinition" format=3 uid="uid://bbhbej0q0bxmv"]
+
+[ext_resource type="Resource" uid="uid://cxt82k8bf7yug" path="res://data/world/labyrinth.tres" id="1_twggt"]
+[ext_resource type="Script" uid="uid://b7mmqud8xdegk" path="res://scripts/world/world_definition.gd" id="2_n0x0j"]
+[ext_resource type="Resource" uid="uid://c63bkd03a85c7" path="res://data/world/guild_house.tres" id="2_xl762"]
+[ext_resource type="Resource" uid="uid://bgo6prthennya" path="res://data/world/sanctum.tres" id="3_j8760"]
+[ext_resource type="Resource" uid="uid://boy6x63tqcorj" path="res://data/world/mountain.tres" id="4_vljte"]
+[ext_resource type="Resource" uid="uid://byjksstxnn366" path="res://data/world/bastion.tres" id="5_s37yj"]
+[ext_resource type="Resource" uid="uid://c04balio3v5lq" path="res://data/world/pawnshop.tres" id="6_xo03j"]
+[ext_resource type="Resource" uid="uid://cb6uui42lcghs" path="res://data/world/crucible.tres" id="7_qtnw5"]
+[ext_resource type="Resource" uid="uid://qsqngj0ctic6" path="res://data/world/casino.tres" id="8_vgnws"]
+[ext_resource type="Resource" uid="uid://cl3d5v0fxsree" path="res://data/world/gala.tres" id="9_yn5dw"]
+
+[resource]
+script = ExtResource("2_n0x0j")
+arenas = [ExtResource("1_twggt"), ExtResource("2_xl762"), ExtResource("3_j8760"), ExtResource("4_vljte"), ExtResource("5_s37yj"), ExtResource("6_xo03j"), ExtResource("7_qtnw5"), ExtResource("8_vgnws"), ExtResource("9_yn5dw")]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArenicClassAbility" format=3 uid="uid://db0u3i6qhrnag"]
+
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_6dvcp"]
+
+[resource]
+script = ExtResource("1_6dvcp")
+title = "Beam"
+description = "Fire a straight beam across eight grid squares to hurt foes. Remain still while casting."

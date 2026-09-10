@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ArenicClassCatalog" format=3 uid="uid://b0c0eiwrupa4k"]
+
+[ext_resource type="Resource" uid="uid://d05xsg4a1xdyh" path="res://data/classes/hunter.tres" id="1_p6dgd"]
+[ext_resource type="Resource" uid="uid://cm0vv7l3qj7vj" path="res://data/classes/bard.tres" id="2_7ur31"]
+[ext_resource type="Script" uid="uid://ckk15l3cbeung" path="res://scripts/character_creation/class_catalog.gd" id="2_j60q8"]
+[ext_resource type="Resource" uid="uid://8rg3jjv7iias" path="res://data/classes/merchant.tres" id="3_03yoi"]
+[ext_resource type="Resource" uid="uid://byr2u0qnaj8yh" path="res://data/classes/warrior.tres" id="4_lakbw"]
+[ext_resource type="Resource" uid="uid://nwlm4p30cixm" path="res://data/classes/cardinal.tres" id="5_7i1af"]
+[ext_resource type="Resource" uid="uid://2xdoamm0uafh" path="res://data/classes/alchemist.tres" id="6_pblq5"]
+[ext_resource type="Resource" uid="uid://dkdwwbkyxhb7p" path="res://data/classes/forager.tres" id="7_hu0mr"]
+[ext_resource type="Resource" uid="uid://bg68wxdcbkmgs" path="res://data/classes/thief.tres" id="8_0r678"]
+
+[resource]
+script = ExtResource("2_j60q8")
+classes = [ExtResource("1_p6dgd"), ExtResource("2_7ur31"), ExtResource("3_03yoi"), ExtResource("4_lakbw"), ExtResource("5_7i1af"), ExtResource("6_pblq5"), ExtResource("7_hu0mr"), ExtResource("8_0r678")]

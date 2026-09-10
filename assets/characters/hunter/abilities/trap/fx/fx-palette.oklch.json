@@ -1,0 +1,71 @@
+{
+  "base_palette": "../../../../../palettes/hunter.oklch.json",
+  "colors": [
+    {
+      "name": "ember shadow",
+      "oklch": [
+        0.39,
+        0.105,
+        30
+      ]
+    },
+    {
+      "name": "ember red",
+      "oklch": [
+        0.53,
+        0.17,
+        31
+      ]
+    },
+    {
+      "name": "flame orange",
+      "oklch": [
+        0.68,
+        0.167,
+        46
+      ]
+    },
+    {
+      "name": "flame gold",
+      "oklch": [
+        0.82,
+        0.141,
+        76
+      ]
+    },
+    {
+      "name": "hot cream",
+      "oklch": [
+        0.955,
+        0.04,
+        91
+      ]
+    },
+    {
+      "name": "smoke umber",
+      "oklch": [
+        0.35,
+        0.035,
+        44
+      ]
+    },
+    {
+      "name": "smoke warm",
+      "oklch": [
+        0.48,
+        0.036,
+        54
+      ]
+    },
+    {
+      "name": "smoke ash",
+      "oklch": [
+        0.6,
+        0.026,
+        71
+      ]
+    }
+  ],
+  "note": "Base swatches copied from hunter.aseprite. New swatches authored in OKLCH, converted only for native pixel storage.",
+  "space": "oklch"
+}

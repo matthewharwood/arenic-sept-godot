@@ -1,0 +1,165 @@
+{
+  "space": "oklch",
+  "colors": [
+    {
+      "name": "ink",
+      "oklch": [
+        0.18,
+        0.025,
+        300
+      ]
+    },
+    {
+      "name": "cloth shadow",
+      "oklch": [
+        0.25,
+        0.09,
+        26
+      ]
+    },
+    {
+      "name": "cloth",
+      "oklch": [
+        0.45,
+        0.18,
+        29
+      ]
+    },
+    {
+      "name": "cloth light",
+      "oklch": [
+        0.61,
+        0.205,
+        33
+      ]
+    },
+    {
+      "name": "gold shadow",
+      "oklch": [
+        0.4,
+        0.075,
+        65
+      ]
+    },
+    {
+      "name": "gold",
+      "oklch": [
+        0.66,
+        0.13,
+        78
+      ]
+    },
+    {
+      "name": "gold glint",
+      "oklch": [
+        0.82,
+        0.13,
+        89
+      ]
+    },
+    {
+      "name": "bone shadow",
+      "oklch": [
+        0.55,
+        0.07,
+        85
+      ]
+    },
+    {
+      "name": "bone",
+      "oklch": [
+        0.79,
+        0.075,
+        92
+      ]
+    },
+    {
+      "name": "parchment",
+      "oklch": [
+        0.9,
+        0.045,
+        96
+      ]
+    },
+    {
+      "name": "green shadow",
+      "oklch": [
+        0.29,
+        0.05,
+        134
+      ]
+    },
+    {
+      "name": "green",
+      "oklch": [
+        0.49,
+        0.083,
+        133
+      ]
+    },
+    {
+      "name": "green glint",
+      "oklch": [
+        0.67,
+        0.088,
+        127
+      ]
+    },
+    {
+      "name": "violet shadow",
+      "oklch": [
+        0.34,
+        0.1,
+        16
+      ]
+    },
+    {
+      "name": "violet",
+      "oklch": [
+        0.69,
+        0.17,
+        24
+      ]
+    },
+    {
+      "name": "crimson shadow",
+      "oklch": [
+        0.31,
+        0.1,
+        23
+      ]
+    },
+    {
+      "name": "crimson",
+      "oklch": [
+        0.59,
+        0.2,
+        24
+      ]
+    },
+    {
+      "name": "steel shadow",
+      "oklch": [
+        0.38,
+        0.035,
+        246
+      ]
+    },
+    {
+      "name": "steel",
+      "oklch": [
+        0.65,
+        0.045,
+        234
+      ]
+    },
+    {
+      "name": "light",
+      "oklch": [
+        0.96,
+        0.023,
+        96
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1447 @@
+{
+  "version": 1,
+  "provider": "ElevenLabs",
+  "format": "mp3_44100_128",
+  "preview_timing": {
+    "clock": "milliseconds from the start of one illustrative gallery cycle",
+    "interval": "start_ms inclusive; end_ms exclusive",
+    "playback": "Automatic previews trigger at start_ms and stop at end_ms; conditions require the matching control value.",
+    "scope": "Preview excerpts only, not runtime ability durations or cooldowns."
+  },
+  "events": {
+    "hunter.auto_shot": {
+      "slot": 1,
+      "name": "Auto Shot",
+      "phases": {
+        "cast": {
+          "event": "hunter.auto_shot.cast",
+          "file": "abilities/hunter/auto_shot/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 260,
+            "end_ms": 760
+          }
+        },
+        "impact": {
+          "event": "hunter.auto_shot.impact",
+          "file": "abilities/hunter/auto_shot/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 740,
+            "end_ms": 1240
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1600,
+        "notes": []
+      }
+    },
+    "hunter.poison_shot": {
+      "slot": 2,
+      "name": "Poison Shot",
+      "phases": {
+        "charge": {
+          "event": "hunter.poison_shot.charge",
+          "file": "abilities/hunter/poison_shot/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        },
+        "cast": {
+          "event": "hunter.poison_shot.cast",
+          "file": "abilities/hunter/poison_shot/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1100
+          }
+        },
+        "impact": {
+          "event": "hunter.poison_shot.impact",
+          "file": "abilities/hunter/poison_shot/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 980,
+            "end_ms": 1780
+          }
+        },
+        "sustain": {
+          "event": "hunter.poison_shot.sustain",
+          "file": "abilities/hunter/poison_shot/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 980,
+            "end_ms": 2500
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2500,
+        "notes": [
+          "Venom status after the arrow hits; shortened preview of the game-owned status."
+        ]
+      }
+    },
+    "hunter.sniper": {
+      "slot": 3,
+      "name": "Sniper",
+      "phases": {
+        "charge": {
+          "event": "hunter.sniper.charge",
+          "file": "abilities/hunter/sniper/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        },
+        "cast": {
+          "event": "hunter.sniper.cast",
+          "file": "abilities/hunter/sniper/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1000
+          }
+        },
+        "impact": {
+          "event": "hunter.sniper.impact",
+          "file": "abilities/hunter/sniper/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 740,
+            "end_ms": 1340
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1800,
+        "notes": []
+      }
+    },
+    "hunter.trap": {
+      "slot": 4,
+      "name": "Trap",
+      "phases": {
+        "cast": {
+          "event": "hunter.trap.cast",
+          "file": "abilities/hunter/trap/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        },
+        "impact": {
+          "event": "hunter.trap.impact",
+          "file": "abilities/hunter/trap/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1200,
+            "end_ms": 2200
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2500,
+        "notes": []
+      }
+    },
+    "warrior.bash": {
+      "slot": 1,
+      "name": "Bash",
+      "phases": {
+        "cast": {
+          "event": "warrior.bash.cast",
+          "file": "abilities/warrior/bash/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        },
+        "impact": {
+          "event": "warrior.bash.impact",
+          "file": "abilities/warrior/bash/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 500,
+        "notes": []
+      }
+    },
+    "warrior.block": {
+      "slot": 2,
+      "name": "Block",
+      "phases": {
+        "cast": {
+          "event": "warrior.block.cast",
+          "file": "abilities/warrior/block/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "impact": {
+          "event": "warrior.block.impact",
+          "file": "abilities/warrior/block/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 300,
+            "end_ms": 1200
+          }
+        },
+        "sustain": {
+          "event": "warrior.block.sustain",
+          "file": "abilities/warrior/block/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 1240
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1400,
+        "notes": [
+          "Shield holding from activation until the lowering gesture starts."
+        ]
+      }
+    },
+    "warrior.taunt": {
+      "slot": 3,
+      "name": "Taunt",
+      "phases": {
+        "cast": {
+          "event": "warrior.taunt.cast",
+          "file": "abilities/warrior/taunt/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 800,
+            "end_ms": 1500
+          }
+        },
+        "impact": {
+          "event": "warrior.taunt.impact",
+          "file": "abilities/warrior/taunt/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 800,
+            "end_ms": 1600
+          }
+        },
+        "charge": {
+          "event": "warrior.taunt.charge",
+          "file": "abilities/warrior/taunt/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1600,
+        "notes": []
+      }
+    },
+    "warrior.bulwark": {
+      "slot": 4,
+      "name": "Bulwark",
+      "phases": {
+        "cast": {
+          "event": "warrior.bulwark.cast",
+          "file": "abilities/warrior/bulwark/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "impact": {
+          "event": "warrior.bulwark.impact",
+          "file": "abilities/warrior/bulwark/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1400
+          }
+        },
+        "sustain": {
+          "event": "warrior.bulwark.sustain",
+          "file": "abilities/warrior/bulwark/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 1800
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1800,
+        "notes": [
+          "Protective wall resonance from immediate activation, including the staged absorbed hit.",
+          "Cue starts follow the staged action represented by each sound, not phase names alone."
+        ]
+      }
+    },
+    "thief.backstab": {
+      "slot": 1,
+      "name": "Backstab",
+      "phases": {
+        "cast": {
+          "event": "thief.backstab.cast",
+          "file": "abilities/thief/backstab/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 600
+          }
+        },
+        "impact": {
+          "event": "thief.backstab.impact",
+          "file": "abilities/thief/backstab/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 600
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 600,
+        "notes": []
+      }
+    },
+    "thief.shadow_step": {
+      "slot": 2,
+      "name": "Shadow Step",
+      "phases": {
+        "cast": {
+          "event": "thief.shadow_step.cast",
+          "file": "abilities/thief/shadow_step/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "impact": {
+          "event": "thief.shadow_step.impact",
+          "file": "abilities/thief/shadow_step/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 200,
+            "end_ms": 1100
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1200,
+        "notes": []
+      }
+    },
+    "thief.smoke_screen": {
+      "slot": 3,
+      "name": "Misdirection",
+      "phases": {
+        "cast": {
+          "event": "thief.smoke_screen.cast",
+          "file": "abilities/thief/smoke_screen/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "impact": {
+          "event": "thief.smoke_screen.impact",
+          "file": "abilities/thief/smoke_screen/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 700,
+            "end_ms": 1600
+          }
+        },
+        "sustain": {
+          "event": "thief.smoke_screen.sustain",
+          "file": "abilities/thief/smoke_screen/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 1800
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1800,
+        "notes": [
+          "Active redirection vortex; the separate reversal sound marks a staged interaction.",
+          "Cue starts follow the staged action represented by each sound, not phase names alone."
+        ]
+      }
+    },
+    "thief.pickpocket": {
+      "slot": 4,
+      "name": "Pickpocket",
+      "phases": {
+        "cast": {
+          "event": "thief.pickpocket.cast",
+          "file": "abilities/thief/pickpocket/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1000
+          }
+        },
+        "impact": {
+          "event": "thief.pickpocket.impact",
+          "file": "abilities/thief/pickpocket/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1000
+          }
+        },
+        "charge": {
+          "event": "thief.pickpocket.charge",
+          "file": "abilities/thief/pickpocket/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1000,
+        "notes": []
+      }
+    },
+    "alchemist.acid_flask": {
+      "slot": 1,
+      "name": "Acid Flask",
+      "phases": {
+        "cast": {
+          "event": "alchemist.acid_flask.cast",
+          "file": "abilities/alchemist/acid_flask/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 260,
+            "end_ms": 960
+          }
+        },
+        "impact": {
+          "event": "alchemist.acid_flask.impact",
+          "file": "abilities/alchemist/acid_flask/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1060,
+            "end_ms": 1860
+          }
+        },
+        "sustain": {
+          "event": "alchemist.acid_flask.sustain",
+          "file": "abilities/alchemist/acid_flask/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1060,
+            "end_ms": 2600
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2600,
+        "notes": [
+          "Bubbling acid pool after the flask lands, not the flying glass flask."
+        ]
+      }
+    },
+    "alchemist.ironskin_draft": {
+      "slot": 2,
+      "name": "Ironskin Draft",
+      "phases": {
+        "cast": {
+          "event": "alchemist.ironskin_draft.cast",
+          "file": "abilities/alchemist/ironskin_draft/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "impact": {
+          "event": "alchemist.ironskin_draft.impact",
+          "file": "abilities/alchemist/ironskin_draft/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        },
+        "sustain": {
+          "event": "alchemist.ironskin_draft.sustain",
+          "file": "abilities/alchemist/ironskin_draft/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 1800
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1800,
+        "notes": [
+          "Instant self-protection shimmer; drinking art adds no activation delay."
+        ]
+      }
+    },
+    "alchemist.siphon": {
+      "slot": 3,
+      "name": "Siphon",
+      "phases": {
+        "cast": {
+          "event": "alchemist.siphon.cast",
+          "file": "abilities/alchemist/siphon/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1200
+          }
+        },
+        "impact": {
+          "event": "alchemist.siphon.impact",
+          "file": "abilities/alchemist/siphon/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1300
+          }
+        },
+        "charge": {
+          "event": "alchemist.siphon.charge",
+          "file": "abilities/alchemist/siphon/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        },
+        "sustain": {
+          "event": "alchemist.siphon.sustain",
+          "file": "abilities/alchemist/siphon/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 2300
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2600,
+        "notes": [
+          "Ally-to-Alchemist life drain after setup, ending when the held channel releases."
+        ]
+      }
+    },
+    "alchemist.transmute": {
+      "slot": 4,
+      "name": "Transmute",
+      "phases": {
+        "cast": {
+          "event": "alchemist.transmute.cast",
+          "file": "abilities/alchemist/transmute/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1500,
+            "end_ms": 2200
+          }
+        },
+        "impact": {
+          "event": "alchemist.transmute.impact",
+          "file": "abilities/alchemist/transmute/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1500,
+            "end_ms": 2300
+          }
+        },
+        "charge": {
+          "event": "alchemist.transmute.charge",
+          "file": "abilities/alchemist/transmute/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 1500
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2400,
+        "notes": []
+      }
+    },
+    "cardinal.heal": {
+      "slot": 1,
+      "name": "Sacrifice",
+      "phases": {
+        "cast": {
+          "event": "cardinal.heal.cast",
+          "file": "abilities/cardinal/heal/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "impact": {
+          "event": "cardinal.heal.impact",
+          "file": "abilities/cardinal/heal/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        },
+        "sustain": {
+          "event": "cardinal.heal.sustain",
+          "file": "abilities/cardinal/heal/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 2000
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2200,
+        "notes": [
+          "Cardinal-to-ally life transfer from activation until channel release."
+        ]
+      }
+    },
+    "cardinal.barrier": {
+      "slot": 2,
+      "name": "Barrier",
+      "phases": {
+        "cast": {
+          "event": "cardinal.barrier.cast",
+          "file": "abilities/cardinal/barrier/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "impact": {
+          "event": "cardinal.barrier.impact",
+          "file": "abilities/cardinal/barrier/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        },
+        "sustain": {
+          "event": "cardinal.barrier.sustain",
+          "file": "abilities/cardinal/barrier/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 2000
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2000,
+        "notes": [
+          "One selected ally's protective shell from instant application."
+        ]
+      }
+    },
+    "cardinal.beam": {
+      "slot": 3,
+      "name": "Beam",
+      "phases": {
+        "cast": {
+          "event": "cardinal.beam.cast",
+          "file": "abilities/cardinal/beam/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1000,
+            "end_ms": 1700
+          }
+        },
+        "impact": {
+          "event": "cardinal.beam.impact",
+          "file": "abilities/cardinal/beam/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1000,
+            "end_ms": 1800
+          }
+        },
+        "charge": {
+          "event": "cardinal.beam.charge",
+          "file": "abilities/cardinal/beam/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 1000
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2900,
+        "notes": []
+      }
+    },
+    "cardinal.resurrect": {
+      "slot": 4,
+      "name": "Resurrect",
+      "phases": {
+        "cast": {
+          "event": "cardinal.resurrect.cast",
+          "file": "abilities/cardinal/resurrect/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 2000,
+            "end_ms": 2700
+          }
+        },
+        "impact": {
+          "event": "cardinal.resurrect.impact",
+          "file": "abilities/cardinal/resurrect/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 2000,
+            "end_ms": 2800
+          }
+        },
+        "charge": {
+          "event": "cardinal.resurrect.charge",
+          "file": "abilities/cardinal/resurrect/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 2000
+          }
+        },
+        "sustain": {
+          "event": "cardinal.resurrect.sustain",
+          "file": "abilities/cardinal/resurrect/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 2000,
+            "end_ms": 3600
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 3600,
+        "notes": [
+          "Enhanced-vision harmony after revival resolves, not the two-second charge."
+        ]
+      }
+    },
+    "bard.mimic": {
+      "slot": 1,
+      "name": "Mimic",
+      "phases": {
+        "cast": {
+          "event": "bard.mimic.cast",
+          "file": "abilities/bard/mimic/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1200
+          }
+        },
+        "impact": {
+          "event": "bard.mimic.impact",
+          "file": "abilities/bard/mimic/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 900,
+            "end_ms": 1500
+          }
+        },
+        "charge": {
+          "event": "bard.mimic.charge",
+          "file": "abilities/bard/mimic/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 1900,
+        "notes": [
+          "The first 500 ms demonstrates passive copy latency after an ally action, not a player cast wind-up."
+        ]
+      }
+    },
+    "bard.dance": {
+      "slot": 2,
+      "name": "Dance",
+      "phases": {
+        "cast": {
+          "event": "bard.dance.cast",
+          "file": "abilities/bard/dance/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 500
+          }
+        },
+        "impact": {
+          "event": "bard.dance.impact",
+          "file": "abilities/bard/dance/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 4000,
+            "end_ms": 5000
+          }
+        },
+        "sustain": {
+          "event": "bard.dance.sustain",
+          "file": "abilities/bard/dance/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 4000
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 5300,
+        "notes": [
+          "The successful eight-beat performance itself, ending before the finale.",
+          "Cue starts follow the staged action represented by each sound, not phase names alone."
+        ]
+      }
+    },
+    "bard.cleanse": {
+      "slot": 3,
+      "name": "Cleanse",
+      "phases": {
+        "cast": {
+          "event": "bard.cleanse.cast",
+          "file": "abilities/bard/cleanse/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "impact": {
+          "event": "bard.cleanse.impact",
+          "file": "abilities/bard/cleanse/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 1100
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2300,
+        "notes": []
+      }
+    },
+    "bard.helix": {
+      "slot": 4,
+      "name": "Helix",
+      "phases": {
+        "cast": {
+          "event": "bard.helix.cast",
+          "file": "abilities/bard/helix/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        },
+        "impact": {
+          "event": "bard.helix.impact",
+          "file": "abilities/bard/helix/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        },
+        "sustain": {
+          "event": "bard.helix.sustain",
+          "file": "abilities/bard/helix/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 3200,
+            "condition": {
+              "control": "helix-state",
+              "values": [
+                "regeneration"
+              ]
+            }
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 3200,
+        "notes": [
+          "This watery regeneration brief belongs only to regeneration mode, not haste."
+        ]
+      }
+    },
+    "forager.dig": {
+      "slot": 1,
+      "name": "Dig",
+      "phases": {
+        "cast": {
+          "event": "forager.dig.cast",
+          "file": "abilities/forager/dig/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        },
+        "impact": {
+          "event": "forager.dig.impact",
+          "file": "abilities/forager/dig/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 800,
+            "end_ms": 1500
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2100,
+        "notes": [
+          "Cue starts follow the staged action represented by each sound, not phase names alone."
+        ]
+      }
+    },
+    "forager.bolder": {
+      "slot": 2,
+      "name": "Boulder",
+      "phases": {
+        "cast": {
+          "event": "forager.bolder.cast",
+          "file": "abilities/forager/bolder/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        },
+        "impact": {
+          "event": "forager.bolder.impact",
+          "file": "abilities/forager/bolder/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 700,
+            "end_ms": 2500
+          }
+        },
+        "sustain": {
+          "event": "forager.bolder.sustain",
+          "file": "abilities/forager/bolder/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 700
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 3100,
+        "notes": [
+          "Rolling stone travel; stop at collision before the impact/debris tail."
+        ]
+      }
+    },
+    "forager.border": {
+      "slot": 3,
+      "name": "Border",
+      "phases": {
+        "cast": {
+          "event": "forager.border.cast",
+          "file": "abilities/forager/border/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1500,
+            "end_ms": 2700
+          }
+        },
+        "impact": {
+          "event": "forager.border.impact",
+          "file": "abilities/forager/border/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 2500,
+            "end_ms": 3000
+          }
+        },
+        "charge": {
+          "event": "forager.border.charge",
+          "file": "abilities/forager/border/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 1500
+          }
+        },
+        "sustain": {
+          "event": "forager.border.sustain",
+          "file": "abilities/forager/border/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1500,
+            "end_ms": 4000
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 4000,
+        "notes": [
+          "The living barrier after its cast completes, including a later staged deflection.",
+          "Cue starts follow the staged action represented by each sound, not phase names alone."
+        ]
+      }
+    },
+    "forager.mushroom": {
+      "slot": 4,
+      "name": "Symbiosis",
+      "phases": {
+        "cast": {
+          "event": "forager.mushroom.cast",
+          "file": "abilities/forager/mushroom/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 300,
+            "end_ms": 1000
+          }
+        },
+        "impact": {
+          "event": "forager.mushroom.impact",
+          "file": "abilities/forager/mushroom/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 300,
+            "end_ms": 1300,
+            "condition": {
+              "control": "growth",
+              "values": [
+                "sprout",
+                "young",
+                "mature",
+                "ancient"
+              ]
+            }
+          }
+        },
+        "sustain": {
+          "event": "forager.mushroom.sustain",
+          "file": "abilities/forager/mushroom/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 300,
+            "end_ms": 1300,
+            "condition": {
+              "control": "growth",
+              "values": [
+                "sprout",
+                "young",
+                "mature",
+                "ancient"
+              ]
+            }
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 3800,
+        "notes": [
+          "Combined resource-absorption/healing sound during staged feeding of a grown node only.",
+          "Seed mode plays only planting; growth/healing requires resource investment."
+        ]
+      }
+    },
+    "merchant.coin_toss": {
+      "slot": 1,
+      "name": "Coin Toss",
+      "phases": {
+        "cast": {
+          "event": "merchant.coin_toss.cast",
+          "file": "abilities/merchant/coin_toss/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 5000,
+            "end_ms": 5600
+          }
+        },
+        "impact": {
+          "event": "merchant.coin_toss.impact",
+          "file": "abilities/merchant/coin_toss/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 5500,
+            "end_ms": 6400
+          }
+        },
+        "charge": {
+          "event": "merchant.coin_toss.charge",
+          "file": "abilities/merchant/coin_toss/charge_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 5000
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 6500,
+        "notes": []
+      }
+    },
+    "merchant.dice": {
+      "slot": 2,
+      "name": "Dice",
+      "phases": {
+        "cast": {
+          "event": "merchant.dice.cast",
+          "file": "abilities/merchant/dice/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 600
+          }
+        },
+        "impact": {
+          "event": "merchant.dice.impact",
+          "file": "abilities/merchant/dice/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 500,
+            "end_ms": 1000
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 2000,
+        "notes": [
+          "Cue starts follow the staged action represented by each sound, not phase names alone."
+        ]
+      }
+    },
+    "merchant.fortune": {
+      "slot": 3,
+      "name": "Fortune",
+      "phases": {
+        "cast": {
+          "event": "merchant.fortune.cast",
+          "file": "abilities/merchant/fortune/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        },
+        "impact": {
+          "event": "merchant.fortune.impact",
+          "file": "abilities/merchant/fortune/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 800
+          }
+        },
+        "sustain": {
+          "event": "merchant.fortune.sustain",
+          "file": "abilities/merchant/fortune/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 3200
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 3200,
+        "notes": [
+          "Active prosperity aura; the separate treasure chime is an illustrative proc."
+        ]
+      }
+    },
+    "merchant.vault": {
+      "slot": 4,
+      "name": "Vault",
+      "phases": {
+        "cast": {
+          "event": "merchant.vault.cast",
+          "file": "abilities/merchant/vault/cast_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 900
+          }
+        },
+        "impact": {
+          "event": "merchant.vault.impact",
+          "file": "abilities/merchant/vault/impact_01.mp3",
+          "status": "pending",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 1200,
+            "end_ms": 1900
+          }
+        },
+        "sustain": {
+          "event": "merchant.vault.sustain",
+          "file": "abilities/merchant/vault/sustain_01.mp3",
+          "status": "pending",
+          "loop": true,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 3400
+          }
+        }
+      },
+      "preview": {
+        "illustrative": true,
+        "duration_ms": 3400,
+        "notes": [
+          "Vault-zone resonance from immediate activation; opening art adds no buff delay.",
+          "Cue starts follow the staged action represented by each sound, not phase names alone."
+        ]
+      }
+    }
+  }
+}

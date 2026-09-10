@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://crk22d5quqtfj"]
+
+[ext_resource type="Script" uid="uid://ct52jmj227bn1" path="res://scripts/world/overworld_stage.gd" id="1_6ks7r"]
+[ext_resource type="Resource" uid="uid://bbhbej0q0bxmv" path="res://data/world/arenia.tres" id="2_u67n3"]
+[ext_resource type="PackedScene" uid="uid://dxlrfssj5ggeg" path="res://scenes/world/arena.tscn" id="3_dma4a"]
+[ext_resource type="Script" uid="uid://c6u5j7iawkn11" path="res://scripts/world/arena_view.gd" id="4_jhqny"]
+[ext_resource type="Resource" uid="uid://cxt82k8bf7yug" path="res://data/world/labyrinth.tres" id="5_its60"]
+[ext_resource type="Resource" uid="uid://c63bkd03a85c7" path="res://data/world/guild_house.tres" id="6_d160i"]
+[ext_resource type="Resource" uid="uid://bgo6prthennya" path="res://data/world/sanctum.tres" id="7_ntvnc"]
+[ext_resource type="Resource" uid="uid://boy6x63tqcorj" path="res://data/world/mountain.tres" id="8_a2k0l"]
+[ext_resource type="Resource" uid="uid://byjksstxnn366" path="res://data/world/bastion.tres" id="9_q2k0r"]
+[ext_resource type="Resource" uid="uid://c04balio3v5lq" path="res://data/world/pawnshop.tres" id="10_aics7"]
+[ext_resource type="Resource" uid="uid://cb6uui42lcghs" path="res://data/world/crucible.tres" id="11_ce3ff"]
+[ext_resource type="Resource" uid="uid://qsqngj0ctic6" path="res://data/world/casino.tres" id="12_0pbjx"]
+[ext_resource type="Resource" uid="uid://cl3d5v0fxsree" path="res://data/world/gala.tres" id="13_po7fs"]
+[ext_resource type="PackedScene" uid="uid://d4fa46oeu48r2" path="res://scenes/world/camera_rig.tscn" id="14_piy70"]
+[ext_resource type="Script" uid="uid://je86j5l3sc4g" path="res://scripts/world/camera_rig.gd" id="15_o7ap1"]
+[ext_resource type="Script" uid="uid://71nbbkksq2xj" path="res://scripts/world/world_labels.gd" id="16_0a1ok"]
+
+[sub_resource type="Environment" id="Environment_d7dly"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+
+[node name="OverworldStage" type="Node3D" unique_id=2002900355]
+script = ExtResource("1_6ks7r")
+world = ExtResource("2_u67n3")
+
+[node name="Arenas" type="Node3D" parent="." unique_id=765232628]
+
+[node name="Arena00" type="Node3D" parent="Arenas" unique_id=2045479190 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("5_its60")
+
+[node name="Arena10" type="Node3D" parent="Arenas" unique_id=1112086761 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("6_d160i")
+
+[node name="Arena20" type="Node3D" parent="Arenas" unique_id=983957288 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("7_ntvnc")
+
+[node name="Arena01" type="Node3D" parent="Arenas" unique_id=811349248 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("8_a2k0l")
+
+[node name="Arena11" type="Node3D" parent="Arenas" unique_id=1314385722 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("9_q2k0r")
+
+[node name="Arena21" type="Node3D" parent="Arenas" unique_id=97946276 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("10_aics7")
+
+[node name="Arena02" type="Node3D" parent="Arenas" unique_id=2075882848 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("11_ce3ff")
+
+[node name="Arena12" type="Node3D" parent="Arenas" unique_id=424058906 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("12_0pbjx")
+
+[node name="Arena22" type="Node3D" parent="Arenas" unique_id=1984390160 instance=ExtResource("3_dma4a")]
+script = ExtResource("4_jhqny")
+definition = ExtResource("13_po7fs")
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=899199848 instance=ExtResource("14_piy70")]
+script = ExtResource("15_o7ap1")
+
+[node name="Labels" type="CanvasLayer" parent="." unique_id=1899149677]
+layer = 5
+
+[node name="WorldLabels" type="Control" parent="Labels" unique_id=1070520567]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("16_0a1ok")
+
+[node name="SequenceSlot" type="Node" parent="." unique_id=767501395]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=267079905]
+environment = SubResource("Environment_d7dly")

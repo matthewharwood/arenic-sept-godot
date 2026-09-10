@@ -1,0 +1,9 @@
+{
+  "provider": "ElevenLabs",
+  "status": "blocked_authentication",
+  "generated_clips": 0,
+  "attempted_event": "hunter.auto_shot.cast",
+  "error_code": "api_key_id_used_as_api_key",
+  "message": "Configured MCP credential is an API-key ID, not a valid API key. User has been asked to update connector settings. No audio was generated.",
+  "resume": "After credential correction, generate pending entries in generation-queue.json through ElevenLabs MCP, save returned audio and per-clip provenance, then rerun prepare-ability-audio.py and build-character-previews.py."
+}

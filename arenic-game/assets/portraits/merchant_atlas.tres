@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b232um2krh4vb"]
+
+[ext_resource type="Texture2D" uid="uid://dinvr0i3ov3cp" path="res://assets/portraits/merchant.png" id="1_asac5"]
+
+[resource]
+atlas = ExtResource("1_asac5")
+region = Rect2(68, 6, 896, 1519)
+filter_clip = true

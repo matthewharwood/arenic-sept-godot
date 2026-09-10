@@ -1,0 +1,404 @@
+{
+  "art_scale": "1x source; nearest-neighbor display",
+  "assets": [
+    {
+      "file": "trap.aseprite",
+      "frames": [
+        {
+          "bounds": [
+            2,
+            2,
+            15,
+            15
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 60,
+          "frame": 1,
+          "opaque_pixels": 162
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            17,
+            17
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 70,
+          "frame": 2,
+          "opaque_pixels": 166
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            17,
+            17
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 80,
+          "frame": 3,
+          "opaque_pixels": 163
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            17,
+            17
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 90,
+          "frame": 4,
+          "opaque_pixels": 161
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            17,
+            17
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 100,
+          "frame": 5,
+          "opaque_pixels": 161
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 100,
+          "frame": 6,
+          "opaque_pixels": 157
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 200,
+          "frame": 7,
+          "opaque_pixels": 157
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 300,
+          "frame": 8,
+          "opaque_pixels": 157
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 200,
+          "frame": 9,
+          "opaque_pixels": 157
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 300,
+          "frame": 10,
+          "opaque_pixels": 157
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 30,
+          "frame": 11,
+          "opaque_pixels": 157
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 30,
+          "frame": 12,
+          "opaque_pixels": 157
+        },
+        {
+          "bounds": [
+            1,
+            2,
+            17,
+            16
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 40,
+          "frame": 13,
+          "opaque_pixels": 171
+        }
+      ],
+      "height": 19,
+      "layers": [
+        "Overhead mounting ring",
+        "Metal pressure plate",
+        "Rune \u2022 ally indicator",
+        "Placement dust",
+        "Radial trigger flash"
+      ],
+      "opaque_pixels_on_canvas_edge": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            19,
+            19
+          ],
+          "name": "frame",
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "duration_ms": 500,
+          "from": 1,
+          "name": "place",
+          "notes": "500ms cosmetic radial dust. Trap is instantly present and armed; no artificial delay.",
+          "repeats": 1,
+          "to": 6
+        },
+        {
+          "duration_ms": 1000,
+          "from": 7,
+          "name": "armed",
+          "notes": "1000ms ally indicator loop. Concealment and 60s lifetime are controlled by gameplay.",
+          "repeats": 0,
+          "to": 10
+        },
+        {
+          "duration_ms": 100,
+          "from": 11,
+          "name": "trigger",
+          "notes": "100ms concurrent radial overlay. Start explosion and apply damage immediately, not after this tag.",
+          "repeats": 1,
+          "to": 13
+        }
+      ],
+      "width": 19
+    },
+    {
+      "file": "explosion.aseprite",
+      "frames": [
+        {
+          "bounds": [
+            16,
+            16,
+            7,
+            7
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 30,
+          "frame": 1,
+          "opaque_pixels": 33
+        },
+        {
+          "bounds": [
+            9,
+            9,
+            21,
+            21
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 40,
+          "frame": 2,
+          "opaque_pixels": 161
+        },
+        {
+          "bounds": [
+            5,
+            5,
+            29,
+            29
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 50,
+          "frame": 3,
+          "opaque_pixels": 407
+        },
+        {
+          "bounds": [
+            2,
+            2,
+            35,
+            35
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 60,
+          "frame": 4,
+          "opaque_pixels": 687
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            36,
+            36
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 70,
+          "frame": 5,
+          "opaque_pixels": 581
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            36,
+            36
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 80,
+          "frame": 6,
+          "opaque_pixels": 437
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            35,
+            35
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 90,
+          "frame": 7,
+          "opaque_pixels": 303
+        },
+        {
+          "bounds": [
+            1,
+            1,
+            35,
+            35
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 100,
+          "frame": 8,
+          "opaque_pixels": 235
+        },
+        {
+          "bounds": [
+            3,
+            1,
+            33,
+            35
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 140,
+          "frame": 9,
+          "opaque_pixels": 130
+        },
+        {
+          "bounds": [
+            2,
+            3,
+            34,
+            31
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 160,
+          "frame": 10,
+          "opaque_pixels": 20
+        },
+        {
+          "bounds": [
+            3,
+            3,
+            31,
+            31
+          ],
+          "distinct_from_previous": true,
+          "duration_ms": 180,
+          "frame": 11,
+          "opaque_pixels": 4
+        }
+      ],
+      "height": 38,
+      "layers": [
+        "Concentric smoke fragments",
+        "Radial fire shell",
+        "Flash and inner ring",
+        "Radial embers"
+      ],
+      "opaque_pixels_on_canvas_edge": 0,
+      "partial_alpha_pixels": 0,
+      "slices": [
+        {
+          "bounds": [
+            0,
+            0,
+            38,
+            38
+          ],
+          "name": "frame",
+          "pivot": [
+            19,
+            19
+          ]
+        }
+      ],
+      "tags": [
+        {
+          "duration_ms": 1000,
+          "from": 1,
+          "name": "explode",
+          "notes": "1000ms overhead radial blast once. Immediate hit; 2x2 gameplay tiles independent of visible irregular cloud.",
+          "repeats": 1,
+          "to": 11
+        }
+      ],
+      "width": 38
+    }
+  ],
+  "cell_size_px": 19,
+  "final_runtime_exports": false,
+  "projection": "strict straight-down orthographic",
+  "source_only": true,
+  "usage": [
+    "Trap is present and armed immediately at the current tile. The 500ms placement animation is cosmetic.",
+    "At enemy-step trigger, apply damage immediately and begin explosion. The 100ms trap trigger overlay may run concurrently; it must not delay damage or explosion.",
+    "Armed loop is an ally-visible visual. Gameplay controls concealment and 60s lifetime.",
+    "Explosion is 1000ms once. Attach trap (9,9) and explosion (19,19) to the same world location.",
+    "2x2 damage area is gameplay data and is independent of visible irregular pixels on the 38x38 art canvas, which spans two 19px cells on each axis.",
+    "Only base-form abilities: no upgrade charges, chains, radius upgrade, or lingering status.",
+    "Trap is a flat square pressure plate viewed from directly above. Explosion expands radially with concentric smoke; neither asset has an upright silhouette or visible front face.",
+    "Saved sources were authored/refined through native Aseprite Lua and inspected through native renders and MCP metadata. Parent should view playback in Aseprite before delivery."
+  ]
+}

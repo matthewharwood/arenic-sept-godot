@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArenicClassAbility" format=3 uid="uid://cbxsorgw0lvfb"]
+
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_y0wlr"]
+
+[resource]
+script = ExtResource("1_y0wlr")
+title = "Dig"
+description = "Dig up to twice on a grid square to gain loot and one rock."

@@ -1,0 +1,142 @@
+{
+  "batch_id": "regeneration-v2-hbm",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "model": "not exposed by built-in tool",
+  "generation_started_at_utc": "2026-09-10T02:10:01.986Z",
+  "purpose": "Fresh comparison variants. Existing runtime art remains unchanged. Sunburst, if used, is separate from portraits.",
+  "assets": [
+    {
+      "id": "hunter",
+      "name": "Dean",
+      "prompt": "Use case: stylized-concept.\nAsset type: fresh version-two full-body fantasy hero illustration for comparison in an established game's class-selection UI; portrait PNG 1024x1536.\nInput image: identity, costume, palette and illustration-style reference ONLY. Create a fresh drawing of this same hero, not a background-only edit or a copy with a filter. Natural refinements to pose, anatomy and intricate linework are encouraged; this is not a character redesign.\nSubject: Dean, the same athletic tan human male hunter with angular clean-shaven face, intense eyes and tousled short black hair. Preserve the forest-green layered tunic and sweeping cloak with burgundy lining, brown leather bracers and reinforced boots, rope belt and pouches, unmistakable ochre-gold skull shoulder armor, compact wooden crossbow in one hand, and jagged violet spectral magic held in the other. Keep his dynamic advancing stance and readable silhouette, but freshly resolve his anatomy, cloak folds and crossbow construction.\nStyle/medium: bold near-black ink outer contours, dramatic dark graphic shadow masses, fine hand-etched hatching and woodcut/comic illustration texture, carefully drawn expressive anatomy. Keep the established muted deep green/plum/burgundy/ochre-gold palette and the hero's existing magic colors. No photorealism, 3D rendering or soft airbrush treatment.\nComposition: one entire full-body hero with all hair, limbs, boots, costume tails, held props and floating effects visible. Center a strong portrait silhouette and leave at least 3% clear white margin on every side around the outermost feature. Pose may naturally refine the reference while keeping the same character and iconic gear.\nBackdrop: plain opaque pure white RGB(255,255,255) across every background pixel, including gaps between limbs and props. This deliberately uses an opaque white background. No checkerboard, no gray texture, no ground, no cast shadow, no gradient, no scenery, no sunburst, no rays, no frame, no UI, no text or watermark.",
+      "reference_paths": [
+        "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/hunter.png"
+      ],
+      "generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-0a16cac7-fcfd-48d8-bcfb-8ee89cc507a1.png",
+      "output_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/hunter-v2.png",
+      "generation_completed_at_utc": "2026-09-10T02:11:33.206Z",
+      "actual_tool_metadata": {
+        "output_hint": "Generated images are saved to /Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722 as /Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-0a16cac7-fcfd-48d8-bcfb-8ee89cc507a1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_inspection": {
+        "complete_figure": true,
+        "complete_props": true,
+        "wrong_identity": false,
+        "background": "Opaque near-white; no checkerboard or sunburst",
+        "comparison_to_previous": "Fresh drawing keeps the same advancing pose and identity. Skull shoulder armor has clearer teeth and mounting rivets, straps/pouches and boots have revised construction, and cloak folds are sharper. Full body and props visible; margins remain tighter than requested.",
+        "refinement_needed": false
+      },
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "sha256": "b3c6b64de0f355577a45d2dbb70624ad55268a3562104f2a219e2390568a46cc",
+      "file_size_bytes": 2043005,
+      "byte_identical_to_generated_source": true,
+      "nonwhite_content_bbox": [
+        14,
+        19,
+        1008,
+        1515
+      ],
+      "nonwhite_content_bbox_convention": "[left,top,right_exclusive,bottom_exclusive], threshold min(R,G,B)<245",
+      "reference_dimensions": [
+        1024,
+        1536
+      ],
+      "reference_color_mode": "RGB",
+      "reference_sha256": "e34ed09e8f8a70172471b080d91bdde7582a9acee03fc459dd148cd47b039973"
+    },
+    {
+      "id": "bard",
+      "name": "Marcus",
+      "prompt": "Use case: stylized-concept.\nAsset type: fresh version-two full-body fantasy hero illustration for comparison in an established game's class-selection UI; portrait PNG 1024x1536.\nInput image: identity, costume, palette and illustration-style reference ONLY. Create a fresh drawing of this same hero, not a background-only edit or a copy with a filter. Natural refinements to pose, anatomy and intricate linework are encouraged; this is not a character redesign.\nSubject: Marcus, the same dark-skinned male elf bard with long pointed ears, dreadlocks in a high topknot, close curly beard, confident expressive face and powerful forearms. Preserve plum and dusky-indigo layered traveling robes with ochre-gold edging, burgundy sash, gold earrings and bangles, dark loose trousers and brown strapped boots. Keep a large ornate warm wooden lute with carved rosette, a credible playing grip and plucking fingers, and energetic curling teal musical magic around him. Freshly refine his balanced full-body stance, hand anatomy, fabric folds, instrument construction and fine etched drawing while retaining his identity.\nStyle/medium: bold near-black ink outer contours, dramatic dark graphic shadow masses, fine hand-etched hatching and woodcut/comic illustration texture, carefully drawn expressive anatomy. Keep the established muted deep green/plum/burgundy/ochre-gold palette and the hero's existing magic colors. No photorealism, 3D rendering or soft airbrush treatment.\nComposition: one entire full-body hero with all hair, limbs, boots, costume tails, held props and floating effects visible. Center a strong portrait silhouette and leave at least 3% clear white margin on every side around the outermost feature. Pose may naturally refine the reference while keeping the same character and iconic gear.\nBackdrop: plain opaque pure white RGB(255,255,255) across every background pixel, including gaps between limbs and props. This deliberately uses an opaque white background. No checkerboard, no gray texture, no ground, no cast shadow, no gradient, no scenery, no sunburst, no rays, no frame, no UI, no text or watermark.",
+      "reference_paths": [
+        "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/bard.png"
+      ],
+      "generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-2c960334-7cc3-483d-b342-38f461d93bfe.png",
+      "output_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/bard-v2.png",
+      "generation_completed_at_utc": "2026-09-10T02:12:23.976Z",
+      "actual_tool_metadata": {
+        "output_hint": "Generated images are saved to /Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722 as /Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-2c960334-7cc3-483d-b342-38f461d93bfe.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_inspection": {
+        "complete_figure": true,
+        "complete_props": true,
+        "wrong_identity": false,
+        "background": "Opaque near-white; no checkerboard or sunburst",
+        "comparison_to_previous": "Face turns more toward the viewer with a more expressive smile. Lute neck, rosette, string path and hand grip are redrawn; robe hem, gold trim and teal magic are more elaborate. Stance is broader. Full body and lute visible; top margin remains tight.",
+        "refinement_needed": false
+      },
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "sha256": "5039098f45d11615386820eed44c43ee4a9b1c6001201b798796bdf536ba332a",
+      "file_size_bytes": 2394786,
+      "byte_identical_to_generated_source": true,
+      "nonwhite_content_bbox": [
+        34,
+        11,
+        997,
+        1518
+      ],
+      "nonwhite_content_bbox_convention": "[left,top,right_exclusive,bottom_exclusive], threshold min(R,G,B)<245",
+      "reference_dimensions": [
+        1024,
+        1536
+      ],
+      "reference_color_mode": "RGB",
+      "reference_sha256": "42e3beeed370aa8e443d60cb24e4443908ee07acb49313a8f96004ce523efe8b"
+    },
+    {
+      "id": "merchant",
+      "name": "Calvin",
+      "prompt": "Use case: stylized-concept.\nAsset type: fresh version-two full-body fantasy hero illustration for comparison in an established game's class-selection UI; portrait PNG 1024x1536.\nInput image: identity, costume, palette and illustration-style reference ONLY. Create a fresh drawing of this same hero, not a background-only edit or a copy with a filter. Natural refinements to pose, anatomy and intricate linework are encouraged; this is not a character redesign.\nSubject: Calvin, the same charming tan human male merchant with swept medium-length black hair, angular clean-shaven face and knowing smile. Preserve the ornate deep-plum longcoat with ochre-gold scrolling trim, burgundy waistcoat, fitted plum trousers, teal flowing scarf, patterned tall boots, broad leather belt and embossed coin pouch. One hand displays a small fan of illustrated playing cards; the other gestures beneath two floating teal dice. Freshly refine his relaxed charismatic stance, expressive face and hands, flowing coat/scarf and intricate gold decoration while retaining the reference identity and costume.\nStyle/medium: bold near-black ink outer contours, dramatic dark graphic shadow masses, fine hand-etched hatching and woodcut/comic illustration texture, carefully drawn expressive anatomy. Keep the established muted deep green/plum/burgundy/ochre-gold palette and the hero's existing magic colors. No photorealism, 3D rendering or soft airbrush treatment.\nComposition: one entire full-body hero with all hair, limbs, boots, costume tails, held props and floating effects visible. Center a strong portrait silhouette and leave at least 3% clear white margin on every side around the outermost feature. Pose may naturally refine the reference while keeping the same character and iconic gear.\nBackdrop: plain opaque pure white RGB(255,255,255) across every background pixel, including gaps between limbs and props. This deliberately uses an opaque white background. No checkerboard, no gray texture, no ground, no cast shadow, no gradient, no scenery, no sunburst, no rays, no frame, no UI, no text or watermark.",
+      "reference_paths": [
+        "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/merchant.png"
+      ],
+      "generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-936a29f3-1821-4eda-93ab-3e7c24f650e7.png",
+      "output_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/merchant-v2.png",
+      "generation_completed_at_utc": "2026-09-10T02:10:43.800Z",
+      "actual_tool_metadata": {
+        "output_hint": "Generated images are saved to /Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722 as /Users/matthewharwood/.codex/generated_images/01a08891-b0cf-7b02-9130-7b7b6ede2722/exec-936a29f3-1821-4eda-93ab-3e7c24f650e7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "visual_inspection": {
+        "complete_figure": true,
+        "complete_props": true,
+        "wrong_identity": false,
+        "background": "Opaque near-white; no checkerboard or sunburst",
+        "comparison_to_previous": "Expression is more playful, the dice hand is more open, and scarf/coat tails spread wider. Waistcoat embroidery, belt and boot details are redrawn while preserving cards, dice, pouch and costume. Full body and props visible; top/bottom margins remain tight.",
+        "refinement_needed": false
+      },
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "color_mode": "RGB",
+      "has_alpha": false,
+      "sha256": "b592f73ec1c67ebf2b5dc56eb26ecdac95734329b6d2df095b762ac7cab0fd65",
+      "file_size_bytes": 1864168,
+      "byte_identical_to_generated_source": true,
+      "nonwhite_content_bbox": [
+        72,
+        10,
+        960,
+        1521
+      ],
+      "nonwhite_content_bbox_convention": "[left,top,right_exclusive,bottom_exclusive], threshold min(R,G,B)<245",
+      "reference_dimensions": [
+        1024,
+        1536
+      ],
+      "reference_color_mode": "RGB",
+      "reference_sha256": "58eb14ecfcab33fc9e41e2c0b6863c25e62e296cbcab40cf2af14e87eb2ea0aa"
+    }
+  ]
+}

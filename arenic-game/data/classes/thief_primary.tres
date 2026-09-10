@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ArenicClassAbility" format=3 uid="uid://dbem2h8ajhpo2"]
+
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_rf2t0"]
+
+[resource]
+script = ExtResource("1_rf2t0")
+title = "Backstab"
+description = "Strike from behind to gain a positional advantage."

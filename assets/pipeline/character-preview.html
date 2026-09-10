@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arenic · Hero abilities</title>
+<style>
+:root{color-scheme:dark;font:14px/1.5 system-ui;background:oklch(.15 .018 150);color:oklch(.93 .016 110)}*{box-sizing:border-box}body{max-width:1440px;margin:auto;padding:28px}
+h1{font-size:29px;letter-spacing:-.03em;margin:3px 0;font-weight:650}h2{font-size:18px;margin:0}p{margin:4px 0;color:oklch(.72 .025 150)}.eyebrow{color:oklch(.78 .095 135);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+header{margin-bottom:20px}.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 0;border-block:1px solid oklch(.30 .025 150);margin-bottom:18px}
+button,select{font:inherit;background:oklch(.24 .025 150);border:1px solid oklch(.38 .025 150);color:inherit;padding:7px 10px;border-radius:6px;cursor:pointer}button:hover{background:oklch(.32 .035 150)}label{display:flex;gap:6px;align-items:center;font-size:12px}input[type=range]{flex:1;min-width:130px;accent-color:oklch(.77 .11 135)}output{font-variant-numeric:tabular-nums;min-width:65px}
+.panel{border:1px solid oklch(.30 .025 150);border-radius:9px;overflow:hidden;background:oklch(.19 .018 150)}.bar{padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.badge{border:1px solid oklch(.35 .025 150);border-radius:20px;font-size:11px;padding:3px 9px;color:oklch(.77 .024 145)}
+.arena-scroll{overflow:auto;background:oklch(.97 .009 95)}canvas{image-rendering:pixelated;display:block}#arena{width:100%;height:auto}.caption{padding:12px 16px;color:oklch(.72 .025 150);font-size:12px}.section-label{margin:26px 0 12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+main{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stage{overflow:auto;display:flex;align-items:center;justify-content:safe center;min-height:115px;padding:10px;background:oklch(.97 .009 95)}.phase{color:oklch(.85 .07 125);font-variant-numeric:tabular-nums;min-height:18px}footer{font-size:12px;color:oklch(.67 .021 145);margin-top:18px;max-width:1040px}
+@media(max-width:1100px){main{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){body{padding:16px}main{grid-template-columns:1fr}h1{font-size:25px}}
+
+.hero-heading{display:flex;gap:18px;align-items:center}.portrait{width:90px;height:100px;object-fit:contain}.heroes{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}.heroes a{font-size:12px;text-decoration:none;color:inherit;padding:6px 10px;border:1px solid oklch(.34 .025 150);border-radius:20px}.heroes a[aria-current]{background:oklch(.36 .06 150)}.stage{min-height:267px;max-height:450px;align-items:safe center}.caption details{margin-top:8px}summary{cursor:pointer}.notes{font-size:11px;line-height:1.5;margin:5px 0 0;padding-left:15px}.cue-buttons{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.cue-buttons button{font-size:11px;padding:4px 7px}.cue-buttons button:disabled{opacity:.45;cursor:default}#sound-status{font-size:12px;color:oklch(.72 .035 145)}.readme{font-size:11px;color:oklch(.72 .035 145)}#variant-controls{display:flex;gap:10px;flex-wrap:wrap}#load-error{color:oklch(.8 .15 35)}
+</style>
+<body data-prefix=".."><nav class="heroes" id="character-types" aria-label="Character type"></nav><nav class="heroes" id="heroes" aria-label="Heroes"></nav>
+<header class="hero-heading"><img class="portrait" id="portrait" alt=""><div><div class="eyebrow">Arenic / Top-down orthographic / Base abilities</div><h1 id="title"></h1><p>One 19-pixel tile. Four cardinal directions. Layered Aseprite sources.</p></div></header>
+<div class="controls"><button id="play">Pause</button><button id="restart">Restart</button>
+<label>Ability <select id="ability"></select></label>
+<label>Facing <select id="direction"><option value="n">North</option><option value="e" selected>East</option><option value="s">South</option><option value="w">West</option></select></label>
+<label>Speed <select id="speed"><option value="1">1×</option><option value="0.5">½×</option></select></label>
+<input id="time" aria-label="Animation position" type="range" min="0" max="2499" step="10" value="0"><output id="clock">0 ms</output>
+</div>
+<div class="controls"><button id="sound">Enable sound</button><label>Volume <input id="volume" type="range" min="0" max="1" step="0.05" value="0.45"></label><span id="sound-status"></span><div id="variant-controls"></div></div>
+<p id="load-error" role="alert"></p>
+<section class="panel"><div class="bar"><h2>Whole arena</h2><label>Boss <select id="boss-choice"><option value="">Original size reference</option></select></label><label>Display <select id="arena-scale"><option value="fit">Fit · overview</option><option value="1">1× · actual 720p pixels</option><option value="2">2× · 1440p</option></select></label><span class="badge">1280 × 720 · 66 × 31 cells</span></div>
+<div class="arena-scroll"><canvas id="arena" width="1280" height="720" aria-label="Top-down arena demonstration"></canvas></div>
+<div class="caption">19 × 19 character at native 720p. Fit view reduces the whole screen; use 1× to judge actual pixels. Sound follows only the selected arena ability.</div></section>
+<div class="section-label"><h2>Four ability closeups</h2><div class="controls" style="border:0;padding:0;margin:0"><label>Scale <select id="scale"><option value="1" selected>1× · 19px at 720p</option><option value="2">2×</option><option value="4">4×</option><option value="8">8× · pixel review</option></select></label><label>View <select id="mode"><option value="scene">Attack + effects</option><option value="actor">Character only</option></select></label></div></div>
+<main id="cards"></main>
+<footer>Source-side animation studies. All movement advances in 19-pixel cells. Ally targets, collisions, successful passive triggers and resource feeding are staged examples; gameplay owns damage, targeting, cooldowns and persistent status. Charge and hold durations are stated per ability. Effects retain their own native canvases and center or muzzle pivots. Hero sources remain preview-only; boss appearance assets are exported separately.</footer>
+<script>const PAGE=__PAGE_DATA__;</script><script>__PREVIEW_JS__</script></body></html>

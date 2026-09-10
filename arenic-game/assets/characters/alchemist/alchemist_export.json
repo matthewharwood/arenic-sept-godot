@@ -1,0 +1,46 @@
+{
+  "source": "assets/characters/alchemist/alchemist.aseprite",
+  "source_sha256": "548aaf44f508699345f0af72ba8ebecadf4a7ac3f081efaf4a6b4cbe27048838",
+  "generator": "assets/pipeline/export-base-heroes.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "canvas": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "saved_layer_visibility": true,
+  "sprite_frames": "res://assets/characters/alchemist/alchemist_frames.tres",
+  "required_sprite_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "sha256": {
+    "png": "3484d14ef8ef81b4d04a0314b6e3badd8ba6577354629bdc1c79d66f5a0cf9c3",
+    "json": "4346500202acfe067f07815b710858dd8e6aaaf59b3d9aee6e92b21dbbcf7a08",
+    "sprite_frames": "0d29021852a227fb5deb9220da3f35b114c66fe75b49c591ed7a439e1cfe99c6"
+  },
+  "idle_durations_ms": {
+    "idle_n": [
+      200
+    ],
+    "idle_e": [
+      200
+    ],
+    "idle_s": [
+      200
+    ],
+    "idle_w": [
+      200
+    ]
+  },
+  "sprite_frames_export_sha256": "47a05e942b981de0f1185834fdc94f2f01eeb62c186f88f747d7fd5dcb07eab7",
+  "sprite_frames_serialization_note": "Godot 4.7.2 added UIDs and canonical serialization after export. Exact atlas regions, texture path, tags, frame order, durations, speed, filtering and linear loops were verified unchanged. sha256.sprite_frames hashes the current saved resource; sprite_frames_export_sha256 retains the original exporter output hash."
+}

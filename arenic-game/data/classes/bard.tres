@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArenicClassDefinition" format=3 uid="uid://cm0vv7l3qj7vj"]
+
+[ext_resource type="Texture2D" uid="uid://brnjwjsjngs03" path="res://assets/icons/classes/bard.svg" id="1_5mp56"]
+[ext_resource type="Script" uid="uid://cb0vid0x8md50" path="res://scripts/character_creation/class_definition.gd" id="1_oamwm"]
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="2_5mp56"]
+[ext_resource type="Texture2D" uid="uid://dugs56tvtd8u0" path="res://assets/portraits/bard_atlas.tres" id="2_l7aba"]
+[ext_resource type="Resource" uid="uid://xk6fvf2t72lm" path="res://data/classes/bard_primary.tres" id="3_akekj"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/bard/bard_frames.tres" id="6_v1041"]
+
+[resource]
+script = ExtResource("1_oamwm")
+class_id = "bard"
+display_name = "Bard"
+character_name = "Marcus"
+icon = ExtResource("1_5mp56")
+portrait = ExtResource("2_l7aba")
+world_sprite_frames = ExtResource("6_v1041")
+skills = Array[ExtResource("2_5mp56")]([ExtResource("3_akekj")])
+portrait_height = 0.98

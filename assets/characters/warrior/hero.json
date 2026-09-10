@@ -1,0 +1,273 @@
+{
+  "id": "warrior",
+  "name": "Warrior",
+  "portrait": "arenic-game/assets/portraits/warrior.png",
+  "projection": "strict straight-down orthographic",
+  "canvas": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "directions": [
+    "n",
+    "e",
+    "s",
+    "w"
+  ],
+  "abilities": [
+    {
+      "id": "bash",
+      "name": "Bash",
+      "slot": 1,
+      "description": "Instant shield strike deals 150 damage and weakens the target’s next attack by 30%, consumed on attack or after 8 seconds.",
+      "source_doc": "../arenic_bevy/_docs/abilities/warrior/bash.md",
+      "actor": "abilities/bash/warrior_bash.aseprite",
+      "frames_per_direction": 6,
+      "durations_ms": [
+        50,
+        50,
+        70,
+        90,
+        110,
+        130
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "melee",
+        "target": "boss",
+        "impact_ms": 0,
+        "duration_ms": 500
+      },
+      "fx": [
+        {
+          "source": "abilities/bash/fx/impact.aseprite",
+          "role": "impact",
+          "tag": "impact",
+          "loop": false,
+          "duration_ms": 400
+        },
+        {
+          "source": "abilities/bash/fx/weakened.aseprite",
+          "role": "aura",
+          "tag": "weakened",
+          "loop": true,
+          "duration_ms": 1000
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "Heavy shield thrust with leather strap and a quick armored air rush. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "Close resonant iron shield impact, low wooden body and a few bright metal fragments. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.9,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Damage and weakened status apply immediately; visual recovery adds no windup.",
+        "No stun, slow, area damage, upgraded damage or timing disruption.",
+        "Use weakened loop only until next enemy attack or 8-second expiry; next-attack prose takes precedence over older continuous-reduction code."
+      ]
+    },
+    {
+      "id": "block",
+      "name": "Block",
+      "slot": 2,
+      "description": "Raise a shield facing north; subsequent taps rotate clockwise. Deflect projectiles in a 90-degree arc until cancelled; movement reduced to 50%.",
+      "source_doc": "../arenic_bevy/_docs/abilities/warrior/block.md",
+      "actor": "abilities/block/warrior_block.aseprite",
+      "frames_per_direction": 8,
+      "durations_ms": [
+        80,
+        80,
+        140,
+        180,
+        180,
+        180,
+        80,
+        80
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "self",
+        "target": "self",
+        "impact_ms": 300,
+        "duration_ms": 1400
+      },
+      "fx": [
+        {
+          "source": "abilities/block/fx/guard.aseprite",
+          "role": "aura",
+          "tag": "guard_n",
+          "loop": true,
+          "duration_ms": 800
+        },
+        {
+          "source": "abilities/block/fx/deflect.aseprite",
+          "role": "impact",
+          "tag": "deflect",
+          "loop": false,
+          "duration_ms": 400
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A broad metal shield lifted and braced, creaking leather and armor. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "A sharp projectile ricochet off a shield, metallic ping with a quick sideways zip. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.9,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Low restrained steel shield resonance and gentle leather strain, seamless defensive holding ambience. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 2.0,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Actor n/e/s/w hold tags loop until cancellation; lower tags are separate.",
+        "Initial facing north; each tap rotates N→E→S→W with 200 ms rotation cooldown.",
+        "Gallery impact is a demonstration projectile deflection, not an automatic attack."
+      ]
+    },
+    {
+      "id": "taunt",
+      "name": "Taunt",
+      "slot": 3,
+      "description": "Channel for 800 ms, then force enemies in a 2×2 area up to 3 tiles away to target the Warrior for 6 seconds.",
+      "source_doc": "../arenic_bevy/_docs/abilities/warrior/taunt.md",
+      "actor": "abilities/taunt/warrior_taunt.aseprite",
+      "frames_per_direction": 10,
+      "durations_ms": [
+        200,
+        200,
+        200,
+        200,
+        80,
+        80,
+        100,
+        100,
+        120,
+        120
+      ],
+      "release_ms": 800,
+      "preview": {
+        "type": "ground",
+        "target": "boss",
+        "impact_ms": 800,
+        "duration_ms": 1600
+      },
+      "fx": [
+        {
+          "source": "abilities/taunt/fx/challenge.aseprite",
+          "role": "field",
+          "tag": "challenge",
+          "loop": false,
+          "duration_ms": 800
+        },
+        {
+          "source": "abilities/taunt/fx/marked.aseprite",
+          "role": "aura",
+          "tag": "marked",
+          "loop": true,
+          "duration_ms": 1000
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A forceful bear-like armored battle bark without words, with shield resonance. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "A low red magical challenge pulse locking attention, muted brass impact and short resonant tail. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.9,
+          "loop": false
+        },
+        "charge": {
+          "description": "A restrained bear growl building in the chest with tightening armor straps, tension rising without words. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.8,
+          "loop": false
+        }
+      },
+      "notes": [
+        "The real 800 ms channel must complete; Warrior remains stationary while channeling.",
+        "Targeting changes only; enemy movement and attack schedules remain unchanged.",
+        "Marked loop is a presentation hook for the 6-second status, not extra damage."
+      ]
+    },
+    {
+      "id": "bulwark",
+      "name": "Bulwark",
+      "slot": 4,
+      "description": "Instantly deploy a frontal 3×2 tile barrier for 4 seconds, absorbing projectiles and cone attacks from the front.",
+      "source_doc": "../arenic_bevy/_docs/abilities/warrior/bulwark.md",
+      "actor": "abilities/bulwark/warrior_bulwark.aseprite",
+      "frames_per_direction": 8,
+      "durations_ms": [
+        60,
+        80,
+        140,
+        180,
+        180,
+        160,
+        100,
+        100
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "ground",
+        "target": "self",
+        "impact_ms": 0,
+        "duration_ms": 1800
+      },
+      "fx": [
+        {
+          "source": "abilities/bulwark/fx/barrier.aseprite",
+          "role": "field",
+          "tag": "barrier_n",
+          "loop": true,
+          "duration_ms": 1000
+        },
+        {
+          "source": "abilities/bulwark/fx/absorb.aseprite",
+          "role": "impact",
+          "tag": "absorb",
+          "loop": false,
+          "duration_ms": 500
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A massive defensive wall unfurling from a shield, stone weight and ringing forged metal. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "A spell or projectile absorbed into a golden shield wall, deep muted thump and dissolving metallic shimmer. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 0.9,
+          "loop": false
+        },
+        "sustain": {
+          "description": "A steady low fortified magical wall hum with slow restrained gold-metal resonance, seamless loop. Isolated game sound effect, no music, no speech, clean short tail.",
+          "duration_seconds": 2.0,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Barrier is instant, locked to facing at activation, lasts 4 s; 15 s cooldown is gameplay-owned.",
+        "Native barrier uses 57×57 to rotate a 57×38 three-by-two-cell footprint without clipping; frame metadata describes forward extent.",
+        "Barrier dissipate tags depict the final 500 ms; no protection from sides or rear."
+      ]
+    }
+  ]
+}

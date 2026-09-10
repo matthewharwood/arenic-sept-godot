@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://4mji2b7eow2n"]
+
+[ext_resource type="Script" path="res://tests/bosses/boss_review.gd" id="1_review"]
+
+[node name="BossReview" type="Control" unique_id=1272554473]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_review")

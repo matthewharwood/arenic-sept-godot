@@ -1,0 +1,58 @@
+{
+  "source": "assets/characters/thief/thief.aseprite",
+  "source_sha256": "cf2844066423d65529f7fb33777f0981a3330f3f289a57d2868b756ed4070bf3",
+  "generator": "assets/pipeline/export-base-heroes.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "canvas": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "saved_layer_visibility": true,
+  "sprite_frames": "res://assets/characters/thief/thief_frames.tres",
+  "required_sprite_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "sha256": {
+    "png": "d3b5fd2f0ea062f68cab52badfe89cb6bc112c3927f8eff04dd7f8351c537e1b",
+    "json": "2b9e12d3d8d5ff12727ad65ed3b4a256eecd96b559ff7411895759e1e3b9905b",
+    "sprite_frames": "6048c5eb0f74a659fc64e672e51d58eb6d675d6c6b2cc79605754d1e3dbb55e3"
+  },
+  "idle_durations_ms": {
+    "idle_n": [
+      240,
+      260,
+      240,
+      260
+    ],
+    "idle_e": [
+      240,
+      260,
+      240,
+      260
+    ],
+    "idle_s": [
+      240,
+      260,
+      240,
+      260
+    ],
+    "idle_w": [
+      240,
+      260,
+      240,
+      260
+    ]
+  },
+  "sprite_frames_export_sha256": "5d7c8e26453a58e46cf3fff54fbd5a380d93fd5bfa6a4d8d9915d18b4ae03ab4",
+  "sprite_frames_serialization_note": "Godot 4.7.2 added UIDs and canonical serialization after export. Exact atlas regions, texture path, tags, frame order, durations, speed, filtering and linear loops were verified unchanged. sha256.sprite_frames hashes the current saved resource; sprite_frames_export_sha256 retains the original exporter output hash."
+}

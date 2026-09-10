@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "batch": "warrior_cardinal_alchemist_v2",
+  "purpose": "Fresh source-side comparison candidates; existing runtime portraits are references and remain unchanged.",
+  "generation_route": "current built-in image_gen tool; one call per hero; no CLI/API fallback",
+  "model": "not exposed by built-in tool",
+  "model_upgrade_claimed": false,
+  "raster_background": "Plain opaque white requested intentionally; sunburst belongs only to a separate comparison backdrop.",
+  "offline_image_editing": false,
+  "assets": [
+    {
+      "id": "warrior",
+      "name": "Warrior King",
+      "prompt": "Use case: stylized-concept. Asset type: fresh V2 full-body hero illustration candidate for a fair before/after comparison in the game Arenic. Use the supplied existing portrait as a CHARACTER IDENTITY AND ART-STYLE REFERENCE. Make a genuinely fresh rendering with refined pose, anatomical clarity and expressive detail; do not merely replace its background or return a near-pixel-identical copy. Preserve species, recognisable face, signature costume, gear and established colors. Style: hand-inked medieval fantasy etched woodcut/comic art, thick near-black outer contour, intricate fine ink hatching, bold readable shadows and restrained textured color fills. Maintain the source's deep plum, burgundy, deep forest green, ochre-gold and brown palette where applicable. Do not switch to glossy digital painting, photorealism, anime or 3D rendering. Canvas: 1024x1536 portrait. Show exactly ONE complete figure, every foot and every piece of gear or flame/fume fully within the image, at least 3% safe white margin on EVERY side. Keep a compelling readable full-body silhouette. Background must be intentional PLAIN OPAQUE PURE WHITE (#FFFFFF), including every negative-space hole. No transparent checkerboard, no gradients, backdrop decoration, ground, floor or cast shadow, no text/UI/frame. Absolutely NO sunburst, radiating rays or halo baked into this portrait; the comparison backdrop is separate.\nSubject: King, the imposing anthropomorphic brown BEAR WARRIOR. Preserve his broad bear muzzle, round ears, brown fur, powerful stocky bear proportions and broad fully visible clawed bear feet. Heavy angular dark-plum plate armor with aged ochre-gold raised edges and spikes, burgundy waistcloth, armored legs and forearm. His defining equipment is the massive jagged pointed dark-plum shield with gold edge and a large engraved GOLDEN SKULL. Show the entire shield. For this new take, refine the planted stance and weight distribution, turn the shield slightly into a clearer guard position, sharpen the proud wary face, and improve etched fur/plate detail while keeping the same character and recognisable equipment.",
+      "reference_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/warrior.png",
+      "request_started_utc": "2026-09-10 02:10:23 UTC",
+      "model": "not exposed by built-in tool",
+      "generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-49c05052-2cd5-4385-bd03-c22b7fa75f67.png",
+      "output_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/warrior-v2.png",
+      "output_path_project_relative": "assets/portraits/class-selection/regeneration-v2/warrior-v2.png",
+      "generation_completed_utc": "2026-09-10 02:13:00 UTC",
+      "tool": "built-in image_gen.imagegen",
+      "tool_output_hint": "Generated images are saved to /Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b as /Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-49c05052-2cd5-4385-bd03-c22b7fa75f67.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "comparison_notes": [
+        "Wider, more planted stance with more separated bear feet.",
+        "Larger, more upright shield and more angular beveling and etched marks on the plum armor.",
+        "Sharper fur definition around the muzzle; the brown bear identity, burgundy cloth and golden skull shield are retained."
+      ],
+      "visual_review": {
+        "full_body_visible": true,
+        "signature_gear_visible": true,
+        "identity_preserved": true,
+        "background": "opaque near-white",
+        "sunburst_baked_into_portrait": false,
+        "text_ui_or_checkerboard_visible": false,
+        "refinement_required": false
+      },
+      "verification": {
+        "verified_at_utc": "2026-09-10T02:14:23.909679+00:00",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGB",
+        "has_alpha_channel": false,
+        "bytes": 2428161,
+        "sha256": "95bbf8cc8fac7458adc91c3a10a9b3d49bfb84cee444d5da3c723b1f72e55772",
+        "reference_sha256": "2f18d6fd9fdc5e77cb1049e364839ba6cb772d865ede0bb74249ffeceb565b0e",
+        "runtime_reference_matches_original_manifest": true,
+        "byte_identical_to_generated_source": true,
+        "content_bbox_min_rgb_lt_245": [
+          19,
+          105,
+          1011,
+          1478
+        ],
+        "bbox_convention": "left, top, right_exclusive, bottom_exclusive",
+        "content_margins_pixels_left_top_right_bottom": [
+          19,
+          105,
+          13,
+          58
+        ],
+        "requested_margin_fraction": 0.03,
+        "achieved_min_margin_fraction": 0.0126953125,
+        "corner_rgb": [
+          [
+            254,
+            253,
+            253
+          ],
+          [
+            254,
+            254,
+            254
+          ],
+          [
+            253,
+            253,
+            253
+          ],
+          [
+            253,
+            253,
+            253
+          ]
+        ],
+        "framing_note": "Full figure and props visible. Some margins are narrower than the requested three percent; no material cropping or wrong identity was observed, so no refinement call was made."
+      }
+    },
+    {
+      "id": "cardinal",
+      "name": "Cardinal Pius",
+      "prompt": "Use case: stylized-concept. Asset type: fresh V2 full-body hero illustration candidate for a fair before/after comparison in the game Arenic. Use the supplied existing portrait as a CHARACTER IDENTITY AND ART-STYLE REFERENCE. Make a genuinely fresh rendering with refined pose, anatomical clarity and expressive detail; do not merely replace its background or return a near-pixel-identical copy. Preserve species, recognisable face, signature costume, gear and established colors. Style: hand-inked medieval fantasy etched woodcut/comic art, thick near-black outer contour, intricate fine ink hatching, bold readable shadows and restrained textured color fills. Maintain the source's deep plum, burgundy, deep forest green, ochre-gold and brown palette where applicable. Do not switch to glossy digital painting, photorealism, anime or 3D rendering. Canvas: 1024x1536 portrait. Show exactly ONE complete figure, every foot and every piece of gear or flame/fume fully within the image, at least 3% safe white margin on EVERY side. Keep a compelling readable full-body silhouette. Background must be intentional PLAIN OPAQUE PURE WHITE (#FFFFFF), including every negative-space hole. No transparent checkerboard, no gradients, backdrop decoration, ground, floor or cast shadow, no text/UI/frame. Absolutely NO sunburst, radiating rays or halo baked into this portrait; the comparison backdrop is separate.\nSubject: Pius, the sage male anthropomorphic GREEN LIZARD / REPTILIAN CARDINAL. Preserve his hooked reptilian muzzle, green scaly face, thoughtful amber eye, small gold circlet, richly folded red-orange and burgundy priestly robes with broad ochre-gold trim and skull ornaments, and full clawed reptilian feet. Preserve the tall staff topped by a warm orange-yellow flame and the broad wooden/rust-red pointed shield with a large golden skull. For this new take, refine the upright dignified pose, expressive profile and scale hatching, create more intentional flowing robe folds, and articulate the staff grip and shield-bearing arm clearly. Keep the WHOLE flame and staff tip within the safe margins. Same character and equipment, no redesign.",
+      "reference_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/cardinal.png",
+      "request_started_utc": "2026-09-10 02:10:23 UTC",
+      "model": "not exposed by built-in tool",
+      "generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-8290078b-ff77-4775-a827-e8c360ab7b63.png",
+      "output_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/cardinal-v2.png",
+      "output_path_project_relative": "assets/portraits/class-selection/regeneration-v2/cardinal-v2.png",
+      "generation_completed_utc": "2026-09-10 02:13:00 UTC",
+      "tool": "built-in image_gen.imagegen",
+      "tool_output_hint": "Generated images are saved to /Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b as /Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-8290078b-ff77-4775-a827-e8c360ab7b63.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "comparison_notes": [
+        "Head turns more toward the viewer, exposing more of the muzzle and eye region.",
+        "Robe hem fans outward more broadly with more clearly separated fold layers.",
+        "The staff has a more irregular carved-wood shaft; the wooden skull shield and orange flame remain prominent."
+      ],
+      "visual_review": {
+        "full_body_visible": true,
+        "signature_gear_visible": true,
+        "identity_preserved": true,
+        "background": "opaque near-white",
+        "sunburst_baked_into_portrait": false,
+        "text_ui_or_checkerboard_visible": false,
+        "refinement_required": false
+      },
+      "verification": {
+        "verified_at_utc": "2026-09-10T02:14:23.952889+00:00",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGB",
+        "has_alpha_channel": false,
+        "bytes": 2132451,
+        "sha256": "4364e191a579de18a83c622efc1d6b8a497daa0e17cc154c366e7ae834688037",
+        "reference_sha256": "d9fb1d8457805e86420c8b9784a3f930f3a3209a887b001947e19c14b751b49b",
+        "runtime_reference_matches_original_manifest": true,
+        "byte_identical_to_generated_source": true,
+        "content_bbox_min_rgb_lt_245": [
+          118,
+          15,
+          971,
+          1510
+        ],
+        "bbox_convention": "left, top, right_exclusive, bottom_exclusive",
+        "content_margins_pixels_left_top_right_bottom": [
+          118,
+          15,
+          53,
+          26
+        ],
+        "requested_margin_fraction": 0.03,
+        "achieved_min_margin_fraction": 0.009765625,
+        "corner_rgb": [
+          [
+            253,
+            253,
+            253
+          ],
+          [
+            255,
+            255,
+            255
+          ],
+          [
+            253,
+            253,
+            253
+          ],
+          [
+            253,
+            253,
+            253
+          ]
+        ],
+        "framing_note": "Full figure and props visible. Some margins are narrower than the requested three percent; no material cropping or wrong identity was observed, so no refinement call was made."
+      }
+    },
+    {
+      "id": "alchemist",
+      "name": "Alchemist Giuseppe",
+      "prompt": "Use case: stylized-concept. Asset type: fresh V2 full-body hero illustration candidate for a fair before/after comparison in the game Arenic. Use the supplied existing portrait as a CHARACTER IDENTITY AND ART-STYLE REFERENCE. Make a genuinely fresh rendering with refined pose, anatomical clarity and expressive detail; do not merely replace its background or return a near-pixel-identical copy. Preserve species, recognisable face, signature costume, gear and established colors. Style: hand-inked medieval fantasy etched woodcut/comic art, thick near-black outer contour, intricate fine ink hatching, bold readable shadows and restrained textured color fills. Maintain the source's deep plum, burgundy, deep forest green, ochre-gold and brown palette where applicable. Do not switch to glossy digital painting, photorealism, anime or 3D rendering. Canvas: 1024x1536 portrait. Show exactly ONE complete figure, every foot and every piece of gear or flame/fume fully within the image, at least 3% safe white margin on EVERY side. Keep a compelling readable full-body silhouette. Background must be intentional PLAIN OPAQUE PURE WHITE (#FFFFFF), including every negative-space hole. No transparent checkerboard, no gradients, backdrop decoration, ground, floor or cast shadow, no text/UI/frame. Absolutely NO sunburst, radiating rays or halo baked into this portrait; the comparison backdrop is separate.\nSubject: Giuseppe, the skeletal HOODED ALCHEMIST. Preserve his skull face with glowing GREEN eyes, dark-plum hood and flowing torn-hem robe with aged GOLD trim, dark green skull shoulder ornament, rope/burgundy belt and pouches. Include his OPEN SPELLBOOK, both characteristic purple acid flasks in green glass, and curling green fumes rising from the raised flask, with every curl safely inside the frame. Preserve clearly articulated skeletal hands, long bony shins and entire bony feet. For this new take refine the scholar's expressive forward pose, joint anatomy, natural robe tension, detailed book spine/pages and etched linework. Clarify how the book and flasks are held or supported while maintaining the same set of gear and recognisable composition. No readable writing in the book, only abstract drawn marks.",
+      "reference_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/arenic-game/assets/portraits/alchemist.png",
+      "request_started_utc": "2026-09-10 02:10:23 UTC",
+      "model": "not exposed by built-in tool",
+      "generated_source_path": "/Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-4828e193-617d-488a-9a90-f4b7bd6edf16.png",
+      "output_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/portraits/class-selection/regeneration-v2/alchemist-v2.png",
+      "output_path_project_relative": "assets/portraits/class-selection/regeneration-v2/alchemist-v2.png",
+      "generation_completed_utc": "2026-09-10 02:13:00 UTC",
+      "tool": "built-in image_gen.imagegen",
+      "tool_output_hint": "Generated images are saved to /Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b as /Users/matthewharwood/.codex/generated_images/01a08893-b80f-7173-a448-0c50ebd71c0b/exec-4828e193-617d-488a-9a90-f4b7bd6edf16.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "comparison_notes": [
+        "The raised acid flask sits higher and the open book is visibly supported by the opposite hand.",
+        "The second flask hangs at the belt instead of occupying the book-supporting hand.",
+        "Wider robe flow and a more asymmetric spread of the bony legs; skull face, green eyes, plum robe and green fumes remain recognizable."
+      ],
+      "visual_review": {
+        "full_body_visible": true,
+        "signature_gear_visible": true,
+        "identity_preserved": true,
+        "background": "opaque near-white",
+        "sunburst_baked_into_portrait": false,
+        "text_ui_or_checkerboard_visible": false,
+        "refinement_required": false
+      },
+      "verification": {
+        "verified_at_utc": "2026-09-10T02:14:23.994672+00:00",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGB",
+        "has_alpha_channel": false,
+        "bytes": 2029248,
+        "sha256": "3b067bf621e5a55a46394e5d9ccd218397b7645411b1e38173550a3ad47ac145",
+        "reference_sha256": "aae1009bbe2ee69431aa3e55ac088e43374408323e832d3a137c5daea78eef22",
+        "runtime_reference_matches_original_manifest": true,
+        "byte_identical_to_generated_source": true,
+        "content_bbox_min_rgb_lt_245": [
+          66,
+          16,
+          959,
+          1511
+        ],
+        "bbox_convention": "left, top, right_exclusive, bottom_exclusive",
+        "content_margins_pixels_left_top_right_bottom": [
+          66,
+          16,
+          65,
+          25
+        ],
+        "requested_margin_fraction": 0.03,
+        "achieved_min_margin_fraction": 0.010416666666666666,
+        "corner_rgb": [
+          [
+            253,
+            253,
+            255
+          ],
+          [
+            255,
+            255,
+            255
+          ],
+          [
+            253,
+            253,
+            253
+          ],
+          [
+            253,
+            253,
+            253
+          ]
+        ],
+        "framing_note": "Full figure and props visible. Some margins are narrower than the requested three percent; no material cropping or wrong identity was observed, so no refinement call was made."
+      }
+    }
+  ]
+}

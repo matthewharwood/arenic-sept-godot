@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ArenicClassDefinition" format=3 uid="uid://nwlm4p30cixm"]
+
+[ext_resource type="Texture2D" uid="uid://jrk4fx5d83et" path="res://assets/icons/classes/cardinal.svg" id="1_5tyge"]
+[ext_resource type="Script" uid="uid://cb0vid0x8md50" path="res://scripts/character_creation/class_definition.gd" id="1_f23y6"]
+[ext_resource type="Texture2D" uid="uid://cowi1u46wh8py" path="res://assets/portraits/cardinal_atlas.tres" id="2_1u5xa"]
+[ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="2_5tyge"]
+[ext_resource type="Resource" uid="uid://db0u3i6qhrnag" path="res://data/classes/cardinal_primary.tres" id="3_eff4x"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/cardinal/cardinal_frames.tres" id="6_ul5c0"]
+
+[resource]
+script = ExtResource("1_f23y6")
+class_id = "cardinal"
+display_name = "Cardinal"
+character_name = "Pius"
+icon = ExtResource("1_5tyge")
+portrait = ExtResource("2_1u5xa")
+world_sprite_frames = ExtResource("6_ul5c0")
+skills = Array[ExtResource("2_5tyge")]([ExtResource("3_eff4x")])
+portrait_height = 0.93

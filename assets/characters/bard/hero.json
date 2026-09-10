@@ -1,0 +1,356 @@
+{
+  "id": "bard",
+  "name": "Bard",
+  "portrait": "arenic-game/assets/portraits/bard.png",
+  "frame": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "directions": [
+    "n",
+    "e",
+    "s",
+    "w"
+  ],
+  "abilities": [
+    {
+      "id": "mimic",
+      "name": "Mimic",
+      "slot": 1,
+      "description": "Passive: 10% chance to echo an adjacent ally’s offensive ability after 500 ms at 80% power.",
+      "source_doc": "../arenic_bevy/_docs/abilities/bard/mimic.md",
+      "actor": "abilities/mimic/bard_mimic.aseprite",
+      "frames_per_direction": 9,
+      "durations_ms": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        70,
+        80,
+        100,
+        150
+      ],
+      "release_ms": 500,
+      "preview": {
+        "type": "ally",
+        "target": "ally",
+        "impact_ms": 900,
+        "duration_ms": 1900
+      },
+      "fx": [
+        {
+          "source": "abilities/mimic/fx/echo.aseprite",
+          "role": "aura",
+          "tag": "echo",
+          "loop": false,
+          "duration_ms": 800,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        },
+        {
+          "source": "abilities/mimic/fx/resonance.aseprite",
+          "role": "impact",
+          "tag": "resonance",
+          "loop": false,
+          "duration_ms": 600,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A quick lute flourish announcing an echoed ally spell, bright plucked strings and soft magical doubling. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "An airy harmonic echo accent that layers over the copied offensive hit, soft golden chimes. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.6,
+          "loop": false
+        },
+        "charge": {
+          "description": "Brief delicate reverse lute resonance gathering for half a second before an ally ability is copied. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.5,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Reactive proc, not a manually aimed missile. Preview stages a successful proc; probability and copied ability are gameplay-owned.",
+        "Echo/resonance are musical overlays. Runtime must replay the original ally ability effect and sound; these overlays do not define the copied attack."
+      ]
+    },
+    {
+      "id": "dance",
+      "name": "Dance",
+      "slot": 2,
+      "description": "Perform eight rhythm inputs at 120 BPM; timing quality controls the offensive finale.",
+      "source_doc": "../arenic_bevy/_docs/abilities/bard/dance.md",
+      "actor": "abilities/dance/bard_dance.aseprite",
+      "frames_per_direction": 18,
+      "durations_ms": [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        100,
+        100
+      ],
+      "release_ms": 4000,
+      "preview": {
+        "type": "self",
+        "target": "boss",
+        "impact_ms": 4000,
+        "duration_ms": 5300
+      },
+      "fx": [
+        {
+          "source": "abilities/dance/fx/rhythm.aseprite",
+          "role": "aura",
+          "tag": "beat_loop",
+          "loop": true,
+          "duration_ms": 500,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        },
+        {
+          "source": "abilities/dance/fx/finale.aseprite",
+          "role": "impact",
+          "tag": "finale",
+          "loop": false,
+          "duration_ms": 1000,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A crisp single lute downbeat with a soft heel tap beginning a rhythmic combat dance. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.5,
+          "loop": false
+        },
+        "impact": {
+          "description": "A joyful decisive lute strum and hand percussion finish, a magical musical burst without vocals. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 1,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Seamless 120 BPM combat rhythm, two beats of woody lute plucks and light hand percussion, no melody quotation. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 1,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Preview illustrates one successful eight-beat performance, not automatic success.",
+        "No upgraded ally buff, extended sequence, or persistent damage aura. Actor sequence lasts 4200 ms including 200 ms recovery."
+      ]
+    },
+    {
+      "id": "cleanse",
+      "name": "Cleanse",
+      "slot": 3,
+      "description": "Instantly remove debuffs from allies in a 4×4 area; a golden purification wave lasts 2 seconds.",
+      "source_doc": "../arenic_bevy/_docs/abilities/bard/cleanse.md",
+      "actor": "abilities/cleanse/bard_cleanse.aseprite",
+      "frames_per_direction": 6,
+      "durations_ms": [
+        80,
+        80,
+        100,
+        100,
+        120,
+        120
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "self",
+        "target": "ally",
+        "impact_ms": 0,
+        "duration_ms": 2300
+      },
+      "fx": [
+        {
+          "source": "abilities/cleanse/fx/wave.aseprite",
+          "role": "field",
+          "tag": "purify",
+          "loop": false,
+          "duration_ms": 2000,
+          "canvas": [
+            76,
+            76
+          ],
+          "pivot": [
+            38,
+            38
+          ]
+        },
+        {
+          "source": "abilities/cleanse/fx/cleansed.aseprite",
+          "role": "aura",
+          "tag": "cleansed",
+          "loop": false,
+          "duration_ms": 800,
+          "canvas": [
+            19,
+            19
+          ],
+          "pivot": [
+            9,
+            9
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A pure brilliant lute chord releasing an instant cleansing harmony. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "impact": {
+          "description": "Dark magical grit dissolves into clear golden crystalline chimes, gentle cleansing completion. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 1.1,
+          "loop": false
+        }
+      },
+      "notes": [
+        "Base cleanse removes debuffs only: no healing or three-second immunity upgrades.",
+        "76×76 wave corresponds to the documented 4×4 area; target highlights are separate."
+      ]
+    },
+    {
+      "id": "helix",
+      "name": "Helix",
+      "slot": 4,
+      "description": "Toggle a three-tile support aura between blue-green regeneration and golden haste.",
+      "source_doc": "../arenic_bevy/_docs/abilities/bard/helix.md",
+      "actor": "abilities/helix/bard_helix.aseprite",
+      "frames_per_direction": 8,
+      "durations_ms": [
+        80,
+        80,
+        100,
+        100,
+        100,
+        100,
+        120,
+        120
+      ],
+      "release_ms": 0,
+      "preview": {
+        "type": "self",
+        "target": "ally",
+        "impact_ms": 0,
+        "duration_ms": 3200
+      },
+      "fx": [
+        {
+          "source": "abilities/helix/fx/regeneration.aseprite",
+          "role": "aura",
+          "tag": "regen_loop",
+          "loop": true,
+          "duration_ms": 1000,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        },
+        {
+          "source": "abilities/helix/fx/haste.aseprite",
+          "role": "aura",
+          "tag": "haste_loop",
+          "loop": true,
+          "duration_ms": 800,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        },
+        {
+          "source": "abilities/helix/fx/transition.aseprite",
+          "role": "aura",
+          "tag": "toggle",
+          "loop": false,
+          "duration_ms": 600,
+          "canvas": [
+            38,
+            38
+          ],
+          "pivot": [
+            19,
+            19
+          ]
+        }
+      ],
+      "audio": {
+        "cast": {
+          "description": "A short rising lute bridge phrase signaling a change of support mode. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.8,
+          "loop": false
+        },
+        "impact": {
+          "description": "Soft healing chimes answer the chord, followed by a light brisk golden shimmer. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 0.7,
+          "loop": false
+        },
+        "sustain": {
+          "description": "Seamless tranquil lute overtone and watery blue-green harmonic pulse for a regeneration aura, restrained and gentle. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "duration_seconds": 2,
+          "loop": true
+        }
+      },
+      "notes": [
+        "Distinct regen and haste FX are selectable states, never simultaneous base bonuses.",
+        "38×38 aura is a local visual accent; gameplay owns the 3-tile range, 2-second toggle lockout, mana drain and up to 30-second uptime."
+      ]
+    }
+  ]
+}

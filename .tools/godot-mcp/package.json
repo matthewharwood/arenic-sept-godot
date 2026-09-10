@@ -1,0 +1,11 @@
+{
+  "name": "arenic-godot-mcp",
+  "private": true,
+  "description": "Pinned NPGameDev MCP server for the Arenic Godot editor.",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@npgamedev/godot-mcp-server": "1.0.0"
+  }
+}

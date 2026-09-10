@@ -1,0 +1,58 @@
+{
+  "source": "assets/characters/warrior/warrior.aseprite",
+  "source_sha256": "cc60a2d091c956698411add7cf3e455a892bb9d4011f78ed2b8bdd3469c60fb8",
+  "generator": "assets/pipeline/export-base-heroes.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "canvas": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "saved_layer_visibility": true,
+  "sprite_frames": "res://assets/characters/warrior/warrior_frames.tres",
+  "required_sprite_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "sha256": {
+    "png": "d5ddd83f04e6c6deaee9835a29e487ac35bc5035e4b3c588b56292ca0a3e9834",
+    "json": "a4f43b2095fe833379541ba86060577674272c98e1c5fbd5c46bb14864cd2906",
+    "sprite_frames": "52b829cf6690eaf82267ec289cd01ed1cf8f351d4c505ed65a02a18a897d0ceb"
+  },
+  "idle_durations_ms": {
+    "idle_n": [
+      240,
+      260,
+      240,
+      260
+    ],
+    "idle_e": [
+      240,
+      260,
+      240,
+      260
+    ],
+    "idle_s": [
+      240,
+      260,
+      240,
+      260
+    ],
+    "idle_w": [
+      240,
+      260,
+      240,
+      260
+    ]
+  },
+  "sprite_frames_export_sha256": "fea033e1e6857adf6d34d3731a5755d37432330a3932f05b0ef735d2f7fd4586",
+  "sprite_frames_serialization_note": "Godot 4.7.2 added UIDs and canonical serialization after export. Exact atlas regions, texture path, tags, frame order, durations, speed, filtering and linear loops were verified unchanged. sha256.sprite_frames hashes the current saved resource; sprite_frames_export_sha256 retains the original exporter output hash."
+}
