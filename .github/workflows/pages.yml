@@ -1,0 +1,160 @@
+name: Pages build, browser QA and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  validate:
+    name: Godot validation
+    uses: ./.github/workflows/validate.yml
+    permissions:
+      contents: read
+
+  build:
+    name: Build and test production site
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Cache verified editor and Web template download
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/arenic/godot/4.7.2
+          key: godot-linux-x86_64-web-4.7.2-${{ hashFiles('scripts/ci/install-godot.py') }}
+
+      - name: Install pinned official Godot and Web templates
+        id: godot
+        run: |
+          mkdir -p .tmp/pages-logs
+          python3 scripts/ci/install-godot.py --templates | tee .tmp/pages-logs/install-godot.log
+
+      - name: Install browser test dependencies
+        run: |
+          npm ci 2>&1 | tee .tmp/pages-logs/npm-ci.log
+          npx playwright install --with-deps chromium 2>&1 | tee .tmp/pages-logs/playwright-install.log
+
+      - name: Export clean production game and separate test probe
+        env:
+          GODOT_BIN: ${{ steps.godot.outputs.godot_path }}
+        run: |
+          python3 scripts/build-web.py --godot "$GODOT_BIN" --output .tmp/web-production 2>&1 | tee .tmp/pages-logs/export-production.log
+          python3 scripts/build-web.py --godot "$GODOT_BIN" --output .tmp/web-probe --probe tests/web/prepare-probe.mjs 2>&1 | tee .tmp/pages-logs/export-probe.log
+
+      - name: Assemble production site and disposable QA copy
+        run: |
+          python3 scripts/build-site.py --game .tmp/web-production --output .tmp/site 2>&1 | tee .tmp/pages-logs/build-site.log
+          cp -a .tmp/site .tmp/site-qa
+          cp -a .tmp/web-probe .tmp/site-qa/__probe__
+          test ! -e .tmp/site/__probe__
+
+      - name: Test the site and game in Chromium
+        env:
+          ARENIC_WEB_ROOT: .tmp/site-qa
+          ARENIC_WEB_BASE_PATH: ${{ github.event.repository.name }}
+        run: npm run test:web 2>&1 | tee .tmp/pages-logs/browser-tests.log
+
+      # The QA directory contains privileged test instrumentation and is never
+      # uploaded as a Pages artifact. Deployment receives only the clean site.
+      - name: Upload production site for main deployment
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: .tmp/site
+          include-hidden-files: true
+
+      - name: Upload failure logs and browser traces
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: pages-build-browser-failure-${{ github.run_attempt }}
+          path: |
+            .tmp/pages-logs/
+            .tmp/web-export-logs/
+            .tmp/ci-logs/
+            .tmp/gallery-report.json
+            playwright-report/
+            test-results/
+          if-no-files-found: warn
+          retention-days: 14
+
+  deploy:
+    name: Deploy GitHub Pages
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [validate, build]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy tested production artifact
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+  verify-live:
+    name: Verify published game and galleries
+    needs: deploy
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Wait for the deployed revision
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: python3 scripts/ci/verify-pages.py --url "$PAGE_URL" --commit "$EXPECTED_COMMIT"
+      - name: Test public pointer flow, sound and catalog links
+        env:
+          ARENIC_WEB_BASE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          npm run test:web -- --grep 'clean production|landing, complete catalog'
+      - name: Upload public verification failure traces
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: pages-live-failure-${{ github.run_attempt }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14

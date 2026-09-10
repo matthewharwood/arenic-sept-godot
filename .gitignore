@@ -5,3 +5,8 @@
 .DS_Store
 __pycache__/
 *.py[cod]
+
+# Browser regression tooling and reports.
+node_modules/
+playwright-report/
+test-results/

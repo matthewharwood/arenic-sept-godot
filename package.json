@@ -1,0 +1,8 @@
+{
+  "name": "arenic-web-validation",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": { "test:web": "playwright test", "prepare:web-probe": "node tests/web/prepare-probe.mjs" },
+  "devDependencies": { "@playwright/test": "1.63.0" }
+}
