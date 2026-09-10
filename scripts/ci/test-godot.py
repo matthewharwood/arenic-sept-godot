@@ -122,7 +122,7 @@ def main() -> int:
             if not version.startswith("4.7.2.stable."):
                 raise RuntimeError(f"Expected Godot 4.7.2 stable; got {version}")
             summary["engine_version"] = version
-            base = [str(engine), "--path", str(project), "--audio-driver", "Dummy", "--disable-file-logging"]
+            base = [str(engine), "--path", str(project), "--audio-driver", "Dummy", "--disable-file-logging", "--verbose"]
             results.append(run(base + ["--headless", "--editor", "--import", "--quit", "--rendering-method", "gl_compatibility"],
                                "import", logs, environment, 180))
             if results[-1]["passed"]:
