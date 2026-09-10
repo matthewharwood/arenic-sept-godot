@@ -1,0 +1,86 @@
+[
+  {
+    "test": "world/grid_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.34
+  },
+  {
+    "test": "world/camera_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.34
+  },
+  {
+    "test": "world/flow_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.73
+  },
+  {
+    "test": "heroes/hero_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.63
+  },
+  {
+    "test": "heroes/hero_flow_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.22
+  },
+  {
+    "test": "bosses/catalog_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.64
+  },
+  {
+    "test": "themes/theme_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.54
+  },
+  {
+    "test": "world/arena_tiles_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.9
+  },
+  {
+    "test": "themes/presentation_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.04
+  },
+  {
+    "test": "world/transition_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.63
+  },
+  {
+    "test": "display/display_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.17
+  },
+  {
+    "test": "world/transition_render_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.43
+  },
+  {
+    "test": "themes/region_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 0.52
+  },
+  {
+    "test": "themes/overworld_checks",
+    "passed": true,
+    "exit": 0,
+    "seconds": 1.09
+  }
+]

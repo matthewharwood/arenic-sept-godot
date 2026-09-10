@@ -96,6 +96,13 @@ func _check_tiles(arena: ArenicArenaView) -> bool:
 		if not point.is_equal_approx(ArenicGridMath.tile_to_world(slot, cell)) or not transform.basis.is_equal_approx(Basis.IDENTITY):
 			problem = "instance %d is displaced, rotated, or scaled from cell %s" % [index, cell]
 			break
+		var metadata: Color = multimesh.get_instance_custom_data(index)
+		if metadata != Color(float(cell.x) / 128.0, float(30 - cell.y) / 32.0, 0.0, 0.0):
+			problem = "instance %d loses exact bounded GPU motif metadata for cell %s" % [index, cell]
+			break
+		if Vector2i(roundi(metadata.r * 128.0), roundi(metadata.g * 32.0)) != Vector2i(cell.x, 30 - cell.y):
+			problem = "instance %d decodes a different GPU motif cell or north/south orientation" % index
+			break
 		seen_cells[cell] = true
 		minimum = minimum.min(Vector2(point.x, point.z))
 		maximum = maximum.max(Vector2(point.x, point.z))

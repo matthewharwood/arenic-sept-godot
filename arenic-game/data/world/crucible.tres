@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="ArenicArenaDefinition" format=3 uid="uid://cb6uui42lcghs"]
 
-[ext_resource type="Resource" path="res://data/bosses/alchemist.tres" id="1_787r3"]
+[ext_resource type="Resource" uid="uid://dkm7iy8pqsxlg" path="res://data/bosses/alchemist.tres" id="1_787r3"]
 [ext_resource type="Script" uid="uid://dcg8c0soqx1cu" path="res://scripts/world/arena_definition.gd" id="1_ny3d5"]
+[ext_resource type="Resource" path="res://data/music/crucible_v3.tres" id="2_b3qsx"]
+[ext_resource type="Resource" path="res://data/themes/crucible.tres" id="3_hp4vj"]
 
 [resource]
 script = ExtResource("1_ny3d5")
@@ -11,4 +13,6 @@ class_id = "alchemist"
 class_label = "The Alchemist"
 hotkey = "A"
 grid_slot = Vector2i(0, 2)
+visual_theme = ExtResource("3_hp4vj")
+music = ExtResource("2_b3qsx")
 boss = ExtResource("1_787r3")

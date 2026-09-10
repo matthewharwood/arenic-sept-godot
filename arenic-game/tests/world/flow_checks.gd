@@ -239,5 +239,11 @@ func _cleanup(code: int, message: String) -> void:
 		_run_setup.set("selected_class", _saved_class)
 	if is_instance_valid(_watchdog):
 		_watchdog.free()
+	# AudioServer retires stopped looping playbacks on the audio thread.
+	# Give it a mixer tick before terminating this short scene-flow test.
+	await create_timer(0.10).timeout
+	# Complete main-loop cleanup even if one slow frame consumed the timer.
+	await process_frame
+	await process_frame
 	print(message)
 	quit(code)

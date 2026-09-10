@@ -1,5 +1,7 @@
 # Overworld
 
+The connected biome presentation, rounded coast, cloud clock and glass HUD are documented in [overworld-atmosphere.md](overworld-atmosphere.md).
+
 The overworld follows class selection and presents nine arenas in a continuous 3 × 3 grid. A native orthographic `Camera3D` switches between the complete world and a selected arena. Arena contents, the camera, screen labels, sequences, and the persistent HUD have separate owners so later gameplay or cinematics can extend the scene without replacing its foundations.
 
 **Implemented:** Class selection opens the overworld with Guild House highlighted. The chosen hero spawns there, using its native 19 × 19 sprite, and can be selected and moved in a focused arena. Nine arenas each render a complete 66 × 31 tile lattice. Eight arenas display their matching boss; Guild House has no boss. Orthographic navigation, projected labels, and a persistent HUD are integrated. Bosses are presentation only: combat, recordings, a multi-hero roster, and cutscene content remain future work.
@@ -55,7 +57,7 @@ Adjacent arena footprints meet exactly. There is no gap between slots, and no ex
 | 7 | `(1, 2)` | Casino | Merchant | M | `(24.625, 11.75)` |
 | 8 | `(2, 2)` | Gala | Bard | B | `(41.125, 11.75)` |
 
-Each arena resource exposes `arena_id`, `display_name`, `class_id`, `class_label`, `hotkey`, `grid_slot`, `boss: ArenicBossDefinition`, `boss_origin_cell`, `boss_facing`, and optional `content_scene`. Eight definitions explicitly reference their matching resource in `arenic-game/data/bosses/`; Guild House leaves `boss` null. `boss_origin_cell` defaults to `(30, 22)`, the lower-left tile of the six-by-six-cell art canvas, and `boss_facing` defaults to `"n"`.
+Each arena resource exposes `arena_id`, `display_name`, `class_id`, `class_label`, `hotkey`, `grid_slot`, `visual_theme: ArenicArenaTheme`, `boss: ArenicBossDefinition`, `boss_origin_cell`, `boss_facing`, and optional `content_scene`. Eight definitions explicitly reference their matching resource in `arenic-game/data/bosses/`; Guild House leaves `boss` null. `boss_origin_cell` defaults to `(30, 22)`, the lower-left tile of the six-by-six-cell art canvas, and `boss_facing` defaults to `"n"`.
 
 The content scene is the extension point for arena-specific gameplay. It is mounted under the arena’s `ContentSlot`, whose origin is the arena center. Subtract `arena_center(slot)` from `tile_to_world(slot, cell)` to place a tile in these local coordinates.
 
@@ -63,9 +65,13 @@ World validation requires exactly nine non-null entries, unique non-empty IDs an
 
 ## Tile and boss presentation
 
-Each arena's `Tiles` node is an `ArenicArenaTiles` / `MultiMeshInstance3D` with **2,046 real PlaneMesh instances** on XZ. Each plane measures 0.25 × 0.25 units. A shared 19 × 19 opaque white texture contains one gray pixel at `(9, 9)`; nearest filtering, no mipmaps, and an unshaded material preserve the source at close-view scale. Arenas own separate instance transforms and share the immutable mesh, material, and texture. There are no grid lines or randomly placed markers. `tile_center(cell)` returns the local center matching the grid conversion above.
+Each arena's `Tiles` node is an `ArenicArenaTiles` / `MultiMeshInstance3D` with **2,046 real PlaneMesh instances** on XZ. Each plane measures 0.25 × 0.25 units. Arenas own separate instance transforms and theme material overrides while sharing the immutable mesh and fallback texture. The themed floor shader preserves the 19 × 19 pixel cell raster and one center dot at `(9, 9)`; its seams and ornaments are decorative. The fallback is a white 19 × 19 texture with one gray center pixel. `tile_center(cell)` returns the local center matching the grid conversion above.
 
 `ArenicArenaView` mounts the assigned boss as an unshaded, nearest-filtered `AnimatedSprite3D` playing `idle_n` by default. Its 114 × 114 frame uses `pixel_size = 0.25 / 19` and the centered `(57, 57)` pivot, so the art canvas covers exactly six cells in each direction. It sits 0.01 units above the tiles; its center is 2.5 tile steps toward +X/−Z from `boss_origin_cell`. The full canvas must fit inside the arena. This footprint positions artwork; it does not define collision, health, or combat rules. See the [boss source and export contract](../assets/bosses/README.md).
+
+## Arena themes
+
+All nine arena definitions reference their source-matched palette. Flat backdrop/floor/foreground layers, 119 bounded under-floor motes, and 108 fixed native pixel-art props add visual identity; actors retain their source colors and movement/camera ownership remains unchanged. The [arena theme guide](arena-themes.md) documents the exact mappings, OKLCH conversion, source/runtime assets, layer ordering, completed themed validation, and current screenshots. Screenshots and pixel checks below describe earlier presentation passes.
 
 ## Scene ownership
 
@@ -82,6 +88,9 @@ GameShell (Node)
 │       │   └── Camera3D
 │       ├── Labels (CanvasLayer)
 │       │   └── WorldLabels
+│       ├── Transition (CanvasLayer)
+│       │   ├── WorldCopy (BackBufferCopy)
+│       │   └── FogDissolve (ColorRect)
 │       └── SequenceSlot (Node)
 └── HUD (CanvasLayer)
     └── HUDOutline
@@ -91,11 +100,13 @@ GameShell (Node)
 
 The HUD shows the selected hero, class, arena, navigation hints, and an active overview/zoom button. Progress and boss-health outlines are explicitly marked as placeholders; roster, loot, auction, and craft buttons are disabled future actions. These controls carry no combat or inventory state.
 
+Navigation emits `motion_started(duration)`, `motion_advanced(progress)`, `motion_cancelled`, and `settled` from the existing camera tween. The stage keeps the crossed world visible until motion settles. `Transition` uses those signals for a clipped theme-colored fog blur, preserving density and cloud position on rapid retargets. It adds no camera owner or separate tween; both its copy and draw are disabled at rest after one startup identity pass warms the shader pipeline. The HUD remains sharp. See [title ink and navigation dissolve](arena-themes.md#title-ink-and-navigation-dissolve) for the rendering budget, coverage fix, and measured performance.
+
 ## Orthographic camera and viewport fit
 
 The native `Camera3D` sits above the XZ board, looks down −Y, and uses −Z as screen-up. It uses orthographic projection with uniform scale, so lifting an object above the board does not enlarge it through perspective. `CameraRig` exports `focus_world` and `view_span` as the camera's authorable target and framing controls.
 
-`GameShell` sets the window to a fixed **1280 × 720 logical viewport**, with `CONTENT_SCALE_MODE_VIEWPORT`, `CONTENT_SCALE_ASPECT_KEEP`, and `CONTENT_SCALE_STRETCH_INTEGER`. Larger windows show whole-number enlargements with letterboxing; they do not expand the playable rectangle. The project default window is also 1280 × 720. Title and class-selection scenes retain their own responsive canvas reference layouts. The rig's general viewport-fit math remains available for isolated views and future cinematic composition.
+`GameShell` keeps a **1280 × 720 logical layout**, with `CONTENT_SCALE_MODE_CANVAS_ITEMS`, `CONTENT_SCALE_ASPECT_KEEP`, and fractional stretch. The world, effects, and text render at the actual window resolution; the layout is no longer a 720p framebuffer cap. Larger windows do not expand the playable rectangle. `DisplayPolicy` chooses a comfortable initial desktop window from display density and usable screen bounds: on this Retina Mac, 2560 × 1440 output for a 1280 × 720-point window. Title and class-selection scenes retain their own responsive canvas reference layouts. See [display density and native rendering](display-rendering.md) for platform boundaries, preview settings, and validation.
 
 The [reference camera](https://github.com/matthewharwood/arenic/blob/60da21575de191461a12f2b2f68a7efd1b254bcd/crates/arenic/src/intro_scene.rs#L192-L243) uses a vertical field of view of π/8 and perspective distances 24 and 72. Its projected tile size is approximately 18.85 px at 1280 × 720. Godot fits the desired XZ rectangle directly to the current safe viewport instead of using those perspective distances as orthographic settings.
 
@@ -117,7 +128,7 @@ offset.x = (right_inset - left_inset) / (2 × pixels_per_unit)
 offset.z = (bottom_inset - top_inset) / (2 × pixels_per_unit)
 ```
 
-Equal side insets produce no horizontal shift. The larger bottom bar moves the visible arena upward into the safe band. The rig recomputes when its viewport changes; the game shell normally keeps that viewport at 1280 × 720 and enlarges its completed image by an integer factor. At 2× output scale, close-view tiles measure 38 output pixels and boss canvases measure 228.
+Equal side insets produce no horizontal shift. The larger bottom bar moves the visible arena upward into the safe band. The rig works in the 1280 × 720 logical layout; Godot maps camera projection, input, and canvas coordinates to the native render target. At 2× output scale, close-view tiles measure 38 output pixels and boss canvases measure 228. Fonts and shaders render at that higher resolution. Sprites retain nearest filtering; fractional window scales can produce uneven physical pixel widths, but are allowed to use the available window area without large integer-scale borders.
 
 ## Navigation
 
@@ -196,7 +207,7 @@ A native Godot Play launch was visually tested through title → Warrior choice 
 
 `arena_tiles_checks.gd` passed 173 assertions with the native renderer: all 18,414 tile placements and arena seams, the readable source texture, and eight matching boss sprites with Guild House empty. Run it with a normal renderer as shown, **without `--headless`**: Godot's dummy renderer returns identity MultiMesh transforms and cannot validate their placement. On another host, substitute its Godot executable path. Stop an active playtest before running these tests so the runtime MCP registration is not shared.
 
-Earlier visible Godot 4.7.2 checks on macOS covered title → Bard selection → Gala, all nine letter shortcuts and mouse targets, directional selection and edge clamping, bracket wrapping, tween interpolation/interruption, Enter/P/Escape, wheel navigation, the HUD zoom button, stable world/HUD identities during zoom, and stage replacement while keeping the HUD. Earlier resize/picking checks predate the fixed logical viewport. The current 1280 × 720 rendered pass verified all nine arena hotkeys and overview/close-up switching. Pixel inspection across the eight boss arenas found 11,088 unobstructed tiles with exactly one center pixel each; all 46,845 opaque boss pixels matched their paused source frames at 1:1 scale. The gameplay viewport uses integer scaling, but larger physical windows have not been visually certified in this pass. These notes make no exported-build or other-platform claim.
+Earlier visible Godot 4.7.2 checks on macOS covered title → Bard selection → Gala, all nine letter shortcuts and mouse targets, directional selection and edge clamping, bracket wrapping, tween interpolation/interruption, Enter/P/Escape, wheel navigation, the HUD zoom button, stable world/HUD identities during zoom, and stage replacement while keeping the HUD. Earlier resize/picking checks predate the fixed logical viewport. The current 1280 × 720 rendered pass verified all nine arena hotkeys and overview/close-up switching. Pixel inspection across the eight boss arenas found 11,088 unobstructed tiles with exactly one center pixel each; all 46,845 opaque boss pixels matched their paused source frames at 1:1 scale. That earlier pass used integer scaling and did not visually certify larger physical windows; the later native-resolution validation is recorded in [display rendering](display-rendering.md). These notes make no exported-build or other-platform claim.
 
 ![Current overworld with matching boss sprites](images/arenia-overworld.png)
 ![Native 19-pixel tile grid and Hunter boss](images/arenia-arena.png)

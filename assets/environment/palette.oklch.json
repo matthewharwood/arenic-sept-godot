@@ -1,0 +1,487 @@
+{
+  "space": "oklch",
+  "colors": [
+    {
+      "id": "ink",
+      "oklch": [
+        0.17,
+        0.024,
+        275
+      ]
+    },
+    {
+      "id": "shadow",
+      "oklch": [
+        0.14,
+        0.02,
+        275
+      ]
+    },
+    {
+      "id": "woodDeep",
+      "oklch": [
+        0.28,
+        0.055,
+        48
+      ]
+    },
+    {
+      "id": "wood",
+      "oklch": [
+        0.43,
+        0.078,
+        55
+      ]
+    },
+    {
+      "id": "woodLight",
+      "oklch": [
+        0.59,
+        0.09,
+        67
+      ]
+    },
+    {
+      "id": "goldDeep",
+      "oklch": [
+        0.38,
+        0.068,
+        68
+      ]
+    },
+    {
+      "id": "gold",
+      "oklch": [
+        0.69,
+        0.13,
+        76
+      ]
+    },
+    {
+      "id": "goldLight",
+      "oklch": [
+        0.85,
+        0.12,
+        87
+      ]
+    },
+    {
+      "id": "ivory",
+      "oklch": [
+        0.93,
+        0.045,
+        88
+      ]
+    },
+    {
+      "id": "stoneDeep",
+      "oklch": [
+        0.3,
+        0.02,
+        264
+      ]
+    },
+    {
+      "id": "stone",
+      "oklch": [
+        0.47,
+        0.029,
+        260
+      ]
+    },
+    {
+      "id": "stoneLight",
+      "oklch": [
+        0.66,
+        0.037,
+        260
+      ]
+    },
+    {
+      "id": "steel",
+      "oklch": [
+        0.63,
+        0.026,
+        235
+      ]
+    },
+    {
+      "id": "steelLight",
+      "oklch": [
+        0.84,
+        0.025,
+        240
+      ]
+    },
+    {
+      "id": "redDeep",
+      "oklch": [
+        0.32,
+        0.065,
+        20
+      ]
+    },
+    {
+      "id": "red",
+      "oklch": [
+        0.5,
+        0.135,
+        26
+      ]
+    },
+    {
+      "id": "redLight",
+      "oklch": [
+        0.66,
+        0.16,
+        32
+      ]
+    },
+    {
+      "id": "flame",
+      "oklch": [
+        0.73,
+        0.16,
+        51
+      ]
+    },
+    {
+      "id": "flameHot",
+      "oklch": [
+        0.91,
+        0.13,
+        89
+      ]
+    },
+    {
+      "id": "greenDeep",
+      "oklch": [
+        0.26,
+        0.055,
+        158
+      ]
+    },
+    {
+      "id": "green",
+      "oklch": [
+        0.45,
+        0.092,
+        155
+      ]
+    },
+    {
+      "id": "greenLight",
+      "oklch": [
+        0.61,
+        0.13,
+        149
+      ]
+    },
+    {
+      "id": "leafTip",
+      "oklch": [
+        0.76,
+        0.14,
+        137
+      ]
+    },
+    {
+      "id": "pinkDeep",
+      "oklch": [
+        0.4,
+        0.09,
+        329
+      ]
+    },
+    {
+      "id": "pink",
+      "oklch": [
+        0.68,
+        0.135,
+        341
+      ]
+    },
+    {
+      "id": "pinkLight",
+      "oklch": [
+        0.83,
+        0.09,
+        338
+      ]
+    },
+    {
+      "id": "blueDeep",
+      "oklch": [
+        0.32,
+        0.084,
+        272
+      ]
+    },
+    {
+      "id": "blue",
+      "oklch": [
+        0.58,
+        0.12,
+        266
+      ]
+    },
+    {
+      "id": "blueLight",
+      "oklch": [
+        0.76,
+        0.105,
+        260
+      ]
+    },
+    {
+      "id": "violetDeep",
+      "oklch": [
+        0.32,
+        0.083,
+        301
+      ]
+    },
+    {
+      "id": "violet",
+      "oklch": [
+        0.58,
+        0.12,
+        303
+      ]
+    },
+    {
+      "id": "violetLight",
+      "oklch": [
+        0.76,
+        0.134,
+        299.5
+      ]
+    },
+    {
+      "id": "tealDeep",
+      "oklch": [
+        0.29,
+        0.066,
+        200
+      ]
+    },
+    {
+      "id": "teal",
+      "oklch": [
+        0.55,
+        0.11,
+        191
+      ]
+    },
+    {
+      "id": "tealLight",
+      "oklch": [
+        0.82,
+        0.14,
+        183
+      ]
+    },
+    {
+      "id": "acid",
+      "oklch": [
+        0.84,
+        0.19,
+        128
+      ]
+    },
+    {
+      "id": "paper",
+      "oklch": [
+        0.84,
+        0.054,
+        87
+      ]
+    },
+    {
+      "id": "paperShade",
+      "oklch": [
+        0.68,
+        0.048,
+        78
+      ]
+    }
+  ],
+  "themes": [
+    {
+      "id": "labyrinth",
+      "reference_theme": "Tokyo Night",
+      "primary_oklch": [
+        0.719,
+        0.132,
+        264.2
+      ],
+      "secondary_oklch": [
+        0.751,
+        0.134,
+        299.5
+      ],
+      "accent_oklch": [
+        0.82,
+        0.105,
+        235.7
+      ]
+    },
+    {
+      "id": "guild_house",
+      "reference_theme": "Coffee",
+      "primary_oklch": [
+        0.72,
+        0.123,
+        62.4
+      ],
+      "secondary_oklch": [
+        0.724,
+        0.092,
+        78.8
+      ],
+      "accent_oklch": [
+        0.618,
+        0.078,
+        65.5
+      ]
+    },
+    {
+      "id": "sanctum",
+      "reference_theme": "Luxury",
+      "primary_oklch": [
+        0.75,
+        0.13,
+        75
+      ],
+      "secondary_oklch": [
+        0.85,
+        0.04,
+        70
+      ],
+      "accent_oklch": [
+        0.45,
+        0.15,
+        25
+      ]
+    },
+    {
+      "id": "mountain",
+      "reference_theme": "Forest",
+      "primary_oklch": [
+        0.6,
+        0.16,
+        155
+      ],
+      "secondary_oklch": [
+        0.5,
+        0.12,
+        165
+      ],
+      "accent_oklch": [
+        0.75,
+        0.13,
+        75
+      ]
+    },
+    {
+      "id": "bastion",
+      "reference_theme": "Gruvbox Dark",
+      "primary_oklch": [
+        0.731,
+        0.182,
+        51.7
+      ],
+      "secondary_oklch": [
+        0.832,
+        0.159,
+        83
+      ],
+      "accent_oklch": [
+        0.832,
+        0.159,
+        83
+      ]
+    },
+    {
+      "id": "pawnshop",
+      "reference_theme": "Ayu Dark",
+      "primary_oklch": [
+        0.739,
+        0.125,
+        225.7
+      ],
+      "secondary_oklch": [
+        0.824,
+        0.141,
+        70.2
+      ],
+      "accent_oklch": [
+        0.758,
+        0.163,
+        52.4
+      ]
+    },
+    {
+      "id": "crucible",
+      "reference_theme": "Abyss",
+      "primary_oklch": [
+        0.921,
+        0.235,
+        126.3
+      ],
+      "secondary_oklch": [
+        0.823,
+        0.155,
+        175.3
+      ],
+      "accent_oklch": [
+        0.9,
+        0.076,
+        70.4
+      ]
+    },
+    {
+      "id": "casino",
+      "reference_theme": "Rosé Pine",
+      "primary_oklch": [
+        0.843,
+        0.11,
+        74.6
+      ],
+      "secondary_oklch": [
+        0.776,
+        0.095,
+        305
+      ],
+      "accent_oklch": [
+        0.822,
+        0.054,
+        209.6
+      ]
+    },
+    {
+      "id": "gala",
+      "reference_theme": "Synthwave",
+      "primary_oklch": [
+        0.72,
+        0.25,
+        340
+      ],
+      "secondary_oklch": [
+        0.75,
+        0.18,
+        200
+      ],
+      "accent_oklch": [
+        0.85,
+        0.18,
+        90
+      ]
+    }
+  ],
+  "notes": [
+    "Material ramps are authored in OKLCH; RGB conversion happens only at the native Aseprite boundary.",
+    "Theme accents reproduce reference palette tokens; material ramps are additional deliberately authored pixel-art ramps.",
+    "Reference arena.rs contains unnamed primitive placeholders. The new object identities are thematic interpretation, not copied historic prop assets."
+  ]
+}

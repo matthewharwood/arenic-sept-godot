@@ -1,6 +1,8 @@
 [gd_resource type="Resource" script_class="ArenicArenaDefinition" format=3 uid="uid://c63bkd03a85c7"]
 
 [ext_resource type="Script" uid="uid://dcg8c0soqx1cu" path="res://scripts/world/arena_definition.gd" id="1_574o0"]
+[ext_resource type="Resource" path="res://data/music/guild_house_v3.tres" id="1_p1ffg"]
+[ext_resource type="Resource" path="res://data/themes/guild_house.tres" id="2_2gelp"]
 
 [resource]
 script = ExtResource("1_574o0")
@@ -10,3 +12,5 @@ class_id = "guildmaster"
 class_label = "Guild Master"
 hotkey = "G"
 grid_slot = Vector2i(1, 0)
+visual_theme = ExtResource("2_2gelp")
+music = ExtResource("1_p1ffg")

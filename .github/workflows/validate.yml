@@ -1,0 +1,62 @@
+name: Godot validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Godot 4.7.2 / ${{ matrix.suite }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [headless, renderer]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Cache verified Godot download
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/arenic/godot/4.7.2
+          key: godot-linux-x86_64-4.7.2-${{ hashFiles('scripts/ci/install-godot.py') }}
+
+      - name: Install pinned official Godot
+        id: godot
+        run: python3 scripts/ci/install-godot.py
+
+      - name: Install software rendering dependencies
+        if: matrix.suite == 'renderer'
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y xvfb xauth libgl1-mesa-dri libglx-mesa0
+
+      - name: Run headless rule and integration checks
+        if: matrix.suite == 'headless'
+        run: python3 scripts/ci/test-godot.py --godot '${{ steps.godot.outputs.godot_path }}' --suite headless
+
+      - name: Run framebuffer checks with software Compatibility renderer
+        if: matrix.suite == 'renderer'
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: >-
+          xvfb-run -a -s '-screen 0 4096x2304x24'
+          python3 scripts/ci/test-godot.py
+          --godot '${{ steps.godot.outputs.godot_path }}'
+          --suite renderer --display-driver x11
+
+      - name: Upload failure logs
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: godot-${{ matrix.suite }}-failure-logs
+          path: .tmp/ci-logs/
+          if-no-files-found: warn
+          retention-days: 14

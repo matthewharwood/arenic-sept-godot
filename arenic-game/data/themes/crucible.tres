@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="ArenicArenaTheme" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/themes/arena_theme.gd" id="1_theme"]
+
+[resource]
+script = ExtResource("1_theme")
+theme_id = "abyss"
+arena_id = "crucible"
+atmosphere_id = 6
+subtitle = "Deep billows and rippling light"
+palette = {
+"base_100": Vector3(0.219, 0.042, 225.9),
+"base_200": Vector3(0.186, 0.036, 225.9),
+"base_300": Vector3(0.157, 0.03, 225.0),
+"base_content": Vector3(0.9, 0.076, 70.4),
+"primary": Vector3(0.921, 0.235, 126.3),
+"primary_content": Vector3(0.16, 0.08, 126.3),
+"secondary": Vector3(0.823, 0.155, 175.3),
+"secondary_content": Vector3(0.16, 0.062, 175.3),
+"accent": Vector3(0.9, 0.076, 70.4),
+"accent_content": Vector3(0.16, 0.03, 70.4),
+"neutral": Vector3(0.314, 0.056, 215.6),
+"neutral_content": Vector3(0.95, 0.01, 70.4),
+"info": Vector3(0.754, 0.139, 232.7),
+"info_content": Vector3(0.16, 0.056, 232.7),
+"success": Vector3(0.768, 0.204, 130.8),
+"success_content": Vector3(0.16, 0.08, 130.8),
+"warning": Vector3(0.861, 0.173, 91.9),
+"warning_content": Vector3(0.16, 0.069, 91.9),
+"error": Vector3(0.719, 0.169, 13.4),
+"error_content": Vector3(0.16, 0.068, 13.4)
+}
+border = 1.0
+depth = 1.0
+radius_selector = 8.0
+radius_field = 8.0
+radius_box = 16.0
+backdrop_style = 1
+backdrop_scale = 2.5
+backdrop_drift = Vector2(-0.020, 0.015)
+backdrop_coverage = 0.60
+backdrop_vignette = 0.40
+backdrop_speed = 1.00
+foreground_style = 10
+foreground_scale = 4.0
+foreground_drift = Vector2(0.000, 0.000)
+foreground_coverage = 0.50
+foreground_vignette = 0.0
+foreground_speed = 0.80
+source_repository = "https://github.com/matthewharwood/arenic"
+source_revision = "60da21575de191461a12f2b2f68a7efd1b254bcd"
+source_palette_path = "crates/arenic_game/src/theme/palettes.rs"
+source_identity_path = "crates/arenic_game/src/arena.rs"
+source_css_path = ""

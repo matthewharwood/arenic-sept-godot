@@ -8,6 +8,8 @@ extends Resource
 @export var class_label: String = ""
 @export var hotkey: String = ""
 @export var grid_slot: Vector2i = Vector2i.ZERO
+@export var visual_theme: ArenicArenaTheme
+@export var music: ArenicArenaMusicDefinition
 @export var boss: ArenicBossDefinition
 ## Lower-left tile of the boss's six-by-six art canvas; not collision geometry.
 @export var boss_origin_cell: Vector2i = Vector2i(30, 22)

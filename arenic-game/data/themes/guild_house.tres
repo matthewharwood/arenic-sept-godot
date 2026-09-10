@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="ArenicArenaTheme" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/themes/arena_theme.gd" id="1_theme"]
+
+[resource]
+script = ExtResource("1_theme")
+theme_id = "coffee"
+arena_id = "guild_house"
+atmosphere_id = 1
+subtitle = "Warm hearth and rising embers"
+palette = {
+"base_100": Vector3(0.24, 0.025, 329.4),
+"base_200": Vector3(0.197, 0.021, 330.1),
+"base_300": Vector3(0.165, 0.016, 326.3),
+"base_content": Vector3(0.724, 0.092, 78.8),
+"primary": Vector3(0.72, 0.123, 62.4),
+"primary_content": Vector3(0.16, 0.049, 62.4),
+"secondary": Vector3(0.724, 0.092, 78.8),
+"secondary_content": Vector3(0.16, 0.037, 78.8),
+"accent": Vector3(0.618, 0.078, 65.5),
+"accent_content": Vector3(0.16, 0.031, 65.5),
+"neutral": Vector3(0.309, 0.033, 330.6),
+"neutral_content": Vector3(0.95, 0.01, 78.8),
+"info": Vector3(0.69, 0.029, 219.9),
+"info_content": Vector3(0.16, 0.012, 219.9),
+"success": Vector3(0.656, 0.076, 131.7),
+"success_content": Vector3(0.16, 0.03, 131.7),
+"warning": Vector3(0.751, 0.13, 79.8),
+"warning_content": Vector3(0.16, 0.052, 79.8),
+"error": Vector3(0.579, 0.128, 39.5),
+"error_content": Vector3(0.98, 0.012, 39.5)
+}
+border = 1.0
+depth = 1.0
+radius_selector = 8.0
+radius_field = 8.0
+radius_box = 16.0
+backdrop_style = 7
+backdrop_scale = 2.0
+backdrop_drift = Vector2(0.008, 0.004)
+backdrop_coverage = 0.58
+backdrop_vignette = 0.30
+backdrop_speed = 0.40
+foreground_style = 4
+foreground_scale = 6.0
+foreground_drift = Vector2(0.000, 0.050)
+foreground_coverage = 0.50
+foreground_vignette = 0.0
+foreground_speed = 0.50
+source_repository = "https://github.com/matthewharwood/arenic"
+source_revision = "60da21575de191461a12f2b2f68a7efd1b254bcd"
+source_palette_path = "crates/arenic_game/src/theme/palettes.rs"
+source_identity_path = "crates/arenic_game/src/arena.rs"
+source_css_path = ""

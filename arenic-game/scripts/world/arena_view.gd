@@ -11,6 +11,10 @@ func _ready() -> void:
 		push_error("Arena view needs an arena definition.")
 		return
 	position = ArenicGridMath.arena_center(definition.grid_slot)
+	var environment := ArenicArenaEnvironment.new()
+	environment.name = "EnvironmentLayers"
+	add_child(environment)
+	environment.configure(definition, $Tiles)
 	_build_boss()
 	if definition.content_scene != null:
 		$ContentSlot.add_child(definition.content_scene.instantiate())

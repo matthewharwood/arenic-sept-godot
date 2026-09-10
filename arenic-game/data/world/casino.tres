@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="ArenicArenaDefinition" format=3 uid="uid://qsqngj0ctic6"]
 
 [ext_resource type="Script" uid="uid://dcg8c0soqx1cu" path="res://scripts/world/arena_definition.gd" id="1_6vpla"]
-[ext_resource type="Resource" path="res://data/bosses/merchant.tres" id="1_8c3c2"]
+[ext_resource type="Resource" uid="uid://c2gckowvocw4x" path="res://data/bosses/merchant.tres" id="1_8c3c2"]
+[ext_resource type="Resource" path="res://data/music/casino_v3.tres" id="2_42ffa"]
+[ext_resource type="Resource" path="res://data/themes/casino.tres" id="3_tkp26"]
 
 [resource]
 script = ExtResource("1_6vpla")
@@ -11,4 +13,6 @@ class_id = "merchant"
 class_label = "The Merchant"
 hotkey = "M"
 grid_slot = Vector2i(1, 2)
+visual_theme = ExtResource("3_tkp26")
+music = ExtResource("2_42ffa")
 boss = ExtResource("1_8c3c2")

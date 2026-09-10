@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="ArenicArenaDefinition" format=3 uid="uid://cl3d5v0fxsree"]
 
 [ext_resource type="Script" uid="uid://dcg8c0soqx1cu" path="res://scripts/world/arena_definition.gd" id="1_6wo8s"]
-[ext_resource type="Resource" path="res://data/bosses/bard.tres" id="1_44xf7"]
+[ext_resource type="Resource" uid="uid://dfwvy2b8buxe" path="res://data/bosses/bard.tres" id="1_44xf7"]
+[ext_resource type="Resource" path="res://data/music/gala_v3.tres" id="2_cv7hn"]
+[ext_resource type="Resource" path="res://data/themes/gala.tres" id="3_0vfgn"]
 
 [resource]
 script = ExtResource("1_6wo8s")
@@ -11,4 +13,6 @@ class_id = "bard"
 class_label = "The Bard"
 hotkey = "B"
 grid_slot = Vector2i(2, 2)
+visual_theme = ExtResource("3_0vfgn")
+music = ExtResource("2_cv7hn")
 boss = ExtResource("1_44xf7")
