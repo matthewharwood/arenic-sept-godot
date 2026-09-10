@@ -254,9 +254,8 @@ func _cleanup(code: int, message: String) -> void:
 		_shell.free()
 	if is_instance_valid(_watchdog):
 		_watchdog.free()
-	await create_timer(0.1).timeout
-	# A slow render frame can exhaust the timer before main-thread audio cleanup.
-	await process_frame
-	await process_frame
+	if not await preload("res://tests/support/audio_retirement.gd").wait_for_mixer(self):
+		code = 1
+		message = "Audio mixer retirement failed after display checks."
 	print(message)
 	quit(code)
