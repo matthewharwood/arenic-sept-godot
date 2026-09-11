@@ -72,7 +72,9 @@ test('combat: Hunter real cast, cooldown and echo rejection, independent arena p
     await clickLogical(page, state, state.controls.ability.center);
     state = await waitCombat(log, value => value.combat.cooldown === 0 && !value.combat.active,
       'Hunter cooldown ends on the actual simulation clock');
-    await page.keyboard.down('Space'); // Still held: an echo after cooldown is also ignored.
+    // Space is still held from the original press. Do not synthesize another
+    // keydown here: Playwright treats it as a fresh physical press, whereas an
+    // operating-system key-repeat is represented by the game's echo path.
     state = await waitGameSeconds(log, state.combat.physics_seconds, 1.0, 'Held Space does not auto-recast after cooldown');
     expectOnlyGuildDamage(state, 1);
     expect(state.combat.active_fx_count).toBe(0);
