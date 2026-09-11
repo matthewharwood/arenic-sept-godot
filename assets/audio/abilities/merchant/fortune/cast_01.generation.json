@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "merchant.fortune.cast",
+  "exact_request": {
+    "text": "Dry, compact fantasy tactical-game sound. Controlled transients, restrained highs, mono-compatible, no speech, music, ambience, or long reverb. One warm enchanted golden aura opening, a small metallic charm vibrating into a soft magical shimmer. No money exchange, coins pouring, cash register, payout or victory flourish.",
+    "duration_seconds": 0.8,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/merchant/fortune/cast"
+  },
+  "requested_duration_seconds": 0.8,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/merchant/fortune/cast/sfx_Dry,__20260910_162724.mp3",
+  "generated_at_utc": "2026-09-10T23:27:24.594Z",
+  "canonical_source": "assets/audio/abilities/merchant/fortune/cast_01.mp3",
+  "status": "generated",
+  "source_sha256": "b08771e390dfbb0acaab1293278488cdbb062247393c596e73dba14fc2bf905f"
+}

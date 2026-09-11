@@ -4,7 +4,7 @@ The connected biome presentation, rounded coast, cloud clock and glass HUD are d
 
 The overworld follows class selection and presents nine arenas in a continuous 3 × 3 grid. A native orthographic `Camera3D` switches between the complete world and a selected arena. Arena contents, the camera, screen labels, sequences, and the persistent HUD have separate owners so later gameplay or cinematics can extend the scene without replacing its foundations.
 
-**Implemented:** Class selection opens the overworld with Guild House highlighted. The chosen hero spawns there, using its native 19 × 19 sprite, and can be selected and moved in a focused arena. Nine arenas each render a complete 66 × 31 tile lattice. Eight arenas display their matching boss; Guild House has no boss. Orthographic navigation, projected labels, and a persistent HUD are integrated. Bosses are presentation only: combat, recordings, a multi-hero roster, and cutscene content remain future work.
+**Implemented:** Class selection opens the overworld with Guild House highlighted and exactly one chosen hero at tile `(30, 15)`. Its native 19 × 19 sprite can be selected, moved, and use its starter ability in a focused arena. Nine arenas each render a complete 66 × 31 tile lattice and contain an immortal combat target: eight matching bosses and the Guild House training construct. The persistent HUD shows real cumulative damage and phase progress for the selected arena. [Starter combat](combat.md) documents the eight abilities, timing, occupancy, and run-state persistence. Recordings, a multi-hero roster, and authored cutscene content remain future work.
 
 ## Reference and coordinate system
 
@@ -57,7 +57,7 @@ Adjacent arena footprints meet exactly. There is no gap between slots, and no ex
 | 7 | `(1, 2)` | Casino | Merchant | M | `(24.625, 11.75)` |
 | 8 | `(2, 2)` | Gala | Bard | B | `(41.125, 11.75)` |
 
-Each arena resource exposes `arena_id`, `display_name`, `class_id`, `class_label`, `hotkey`, `grid_slot`, `visual_theme: ArenicArenaTheme`, `boss: ArenicBossDefinition`, `boss_origin_cell`, `boss_facing`, and optional `content_scene`. Eight definitions explicitly reference their matching resource in `arenic-game/data/bosses/`; Guild House leaves `boss` null. `boss_origin_cell` defaults to `(30, 22)`, the lower-left tile of the six-by-six-cell art canvas, and `boss_facing` defaults to `"n"`.
+Each arena resource exposes its identity, slot, hotkey, `visual_theme`, `music`, `boss`, `boss_origin_cell`, `boss_facing`, `boss_combat_size`, `phase_damage`, `training_target_frames`, and optional `content_scene`. Eight definitions reference matching resources in `arenic-game/data/bosses/`; Guild House leaves `boss` null and assigns its training-construct frames. `boss_origin_cell` defaults to `(30, 22)`, and `boss_facing` to `"n"`. The explicit gameplay footprint defaults to 6 × 6 independently of artwork; the absolute phase threshold defaults to 20 damage.
 
 The content scene is the extension point for arena-specific gameplay. It is mounted under the arena’s `ContentSlot`, whose origin is the arena center. Subtract `arena_center(slot)` from `tile_to_world(slot, cell)` to place a tile in these local coordinates.
 
@@ -67,7 +67,7 @@ World validation requires exactly nine non-null entries, unique non-empty IDs an
 
 Each arena's `Tiles` node is an `ArenicArenaTiles` / `MultiMeshInstance3D` with **2,046 real PlaneMesh instances** on XZ. Each plane measures 0.25 × 0.25 units. Arenas own separate instance transforms and theme material overrides while sharing the immutable mesh and fallback texture. The themed floor shader preserves the 19 × 19 pixel cell raster and one center dot at `(9, 9)`; its seams and ornaments are decorative. The fallback is a white 19 × 19 texture with one gray center pixel. `tile_center(cell)` returns the local center matching the grid conversion above.
 
-`ArenicArenaView` mounts the assigned boss as an unshaded, nearest-filtered `AnimatedSprite3D` playing `idle_n` by default. Its 114 × 114 frame uses `pixel_size = 0.25 / 19` and the centered `(57, 57)` pivot, so the art canvas covers exactly six cells in each direction. It sits 0.01 units above the tiles; its center is 2.5 tile steps toward +X/−Z from `boss_origin_cell`. The full canvas must fit inside the arena. This footprint positions artwork; it does not define collision, health, or combat rules. See the [boss source and export contract](../assets/bosses/README.md).
+`ArenicArenaView` mounts the assigned boss as an unshaded, nearest-filtered `AnimatedSprite3D` playing `idle_n` by default. Its 114 × 114 frame uses `pixel_size = 0.25 / 19` and the centered `(57, 57)` pivot, so the art canvas covers exactly six cells in each direction. It sits 0.01 units above the tiles; its center is 2.5 tile steps toward +X/−Z from `boss_origin_cell`. The full canvas must fit inside the arena. This art footprint is separate from the explicit `boss_combat_size` used by combat targeting and movement blocking. Guild House mounts its animated training construct in the same position. All nine targets remain immortal; accumulated damage advances available boss appearances without removing the target. See [combat rules](combat.md) and the [boss source and export contract](../assets/bosses/README.md).
 
 ## Arena themes
 
@@ -91,6 +91,7 @@ GameShell (Node)
 │       ├── Transition (CanvasLayer)
 │       │   ├── WorldCopy (BackBufferCopy)
 │       │   └── FogDissolve (ColorRect)
+│       ├── CombatPresentation (Node3D)
 │       └── SequenceSlot (Node)
 └── HUD (CanvasLayer)
     └── HUDOutline
@@ -98,7 +99,7 @@ GameShell (Node)
 
 `GameShell` owns the replaceable stage and the persistent HUD as separate branches. `replace_stage(packed)` replaces the content scene in `ContentSlot` while retaining `HUD` and `HUDOutline`. World labels belong to the stage because they describe its arenas. The stage's public surface includes `camera_rig`, `world`, `select_arena(index)`, `get_arena(index)`, `mount_hero(state)`, `sync_hero(show_selection)`, and `hero_at_screen(point)`.
 
-The HUD shows the selected hero, class, arena, navigation hints, and an active overview/zoom button. Progress and boss-health outlines are explicitly marked as placeholders; roster, loot, auction, and craft buttons are disabled future actions. These controls carry no combat or inventory state.
+The HUD shows the selected hero, class, arena, navigation hints, overview/zoom control, and the chosen starter ability with its cooldown or active state. Its full-width damage bar and phase label read the selected arena’s cumulative combat ledger, not enemy health. Loot, auction, craft, and roster features remain future work. The shell owns input and simulation; the HUD displays their state.
 
 Navigation emits `motion_started(duration)`, `motion_advanced(progress)`, `motion_cancelled`, and `settled` from the existing camera tween. The stage keeps the crossed world visible until motion settles. `Transition` uses those signals for a clipped theme-colored fog blur, preserving density and cloud position on rapid retargets. It adds no camera owner or separate tween; both its copy and draw are disabled at rest after one startup identity pass warms the shader pipeline. The HUD remains sharp. See [title ink and navigation dissolve](arena-themes.md#title-ink-and-navigation-dissolve) for the rendering budget, coverage fix, and measured performance.
 
@@ -139,6 +140,7 @@ Equal side insets produce no horizontal shift. The larger bottom bar moves the v
 | `[` / `]` | Select the previous/next arena, wrapping through all nine. |
 | Arrow keys | In the focused hero arena, step the selected hero one tile per new press. In overview or another arena, select the adjacent arena. |
 | Tab / Shift+Tab | Find the current hero, select it, and zoom to its arena. Both address the sole hero in this revision. |
+| Space / ability button | Cast the selected hero’s starter ability in its focused arena. Hold for Cardinal’s Sacrifice; release to stop the channel. |
 | Click the hero / an empty tile | In its focused arena, select / deselect the hero. An unselected hero does not move. |
 | Enter | Zoom to the selected arena. |
 | Click an arena | Select it. |
@@ -147,17 +149,17 @@ Equal side insets produce no horizontal shift. The larger bottom bar moves the v
 | Wheel down | Return to overview. |
 | Escape | Return to overview; when already there, remain in the game. |
 
-Hero movement follows the reference's [tile-step input](https://github.com/matthewharwood/arenic/blob/60da21575de191461a12f2b2f68a7efd1b254bcd/crates/arenic_game/src/grid.rs#L51-L102) and [edge-walking](https://github.com/matthewharwood/arenic/blob/60da21575de191461a12f2b2f68a7efd1b254bcd/crates/arenic/src/travel.rs#L144-L189): a new arrow press moves exactly one tile, holding never repeats, simultaneous directions combine into a diagonal, and opposites cancel. Crossing an arena edge enters its neighbor at the opposite edge and moves camera focus with the hero. Horizontal crossings take priority at corners; the outer world boundary clamps and never wraps. Boss artwork has no collision in this revision.
+Hero movement follows the reference's [tile-step input](https://github.com/matthewharwood/arenic/blob/60da21575de191461a12f2b2f68a7efd1b254bcd/crates/arenic_game/src/grid.rs#L51-L102) and [edge-walking](https://github.com/matthewharwood/arenic/blob/60da21575de191461a12f2b2f68a7efd1b254bcd/crates/arenic/src/travel.rs#L144-L189): a new arrow press moves exactly one tile, holding never repeats, simultaneous directions combine into a diagonal, and opposites cancel. Crossing an arena edge enters its neighbor at the opposite edge and moves camera focus with the hero. Horizontal crossings take priority at corners; the outer world boundary clamps and never wraps. The shell rejects steps into registered enemy gameplay footprints, including Guild House’s training construct; transparent artwork does not determine collision.
 
 The Godot port deliberately limits hero control to its focused arena so overview arrows retain map navigation. Camera hotkeys do not teleport the hero. Tab finds it again. Clicking the hero is an addition to the original puck controls. Clicking empty floor deselects; arrows then leave both hero and camera still until selection resumes. Letter shortcuts, brackets, P, and Escape remain available. Escape returns to overview, not the title.
 
 ## Hero state, sprite, and input ownership
 
-`RunSetup.choose_class()` creates one `ArenicHeroState`, with the chosen class definition, `arena_id = "guild_house"`, cell `(30, 15)`, north facing, and selected status. `begin_new_game()` resets it. A direct GameShell launch supplies the Hunter as a development default. The hero state lives in the run autoload; replacing a stage remounts a new view without resetting position or identity. A replacement world must contain the hero's current arena; an incompatible stage is rejected before the existing stage is removed.
+`RunSetup.choose_class()` creates one `ArenicHeroState`, with the chosen class definition, `arena_id = "guild_house"`, cell `(30, 15)`, north facing, and selected status. `begin_new_game()` resets both hero and combat state. A direct GameShell launch supplies the Hunter as a development default. The hero state lives in the run autoload; replacing a stage remounts a new view without resetting position or identity. A replacement world must contain the hero's current arena; an incompatible stage is rejected before the existing stage is removed.
 
 `ArenicHeroInput` turns non-echo arrow press events into four bounded flags. The next physics tick consumes a single device-neutral tile vector. Navigation, selection changes, focus loss, and sequence acquisition clear pending input, so it cannot move the hero after control changes. `ArenicHeroState.step()` owns bounds, edge crossing, and facing; no movement rule reads a rendered transform. The four-way art uses vertical facing on diagonal moves and retains its direction on a blocked step.
 
-Each class resource references its own `world_sprite_frames`. `ArenicHeroView` displays an unshaded, nearest-filtered `AnimatedSprite3D` at `pixel_size = 0.25 / 19`, centered above its authoritative tile. A small blue corner marker shows selection without covering the sprite. The native idle frames and timings are preserved; no walking cycle or abilities were invented. See [base hero exports](../assets/README.md).
+Each class resource references its own `world_sprite_frames`. `ArenicHeroView` displays an unshaded, nearest-filtered `AnimatedSprite3D` at `pixel_size = 0.25 / 19`, centered above its authoritative tile. A small blue corner marker shows selection without covering the sprite. Native idle and eight approved starter-ability actor frames retain their source canvases, pivots, and animation timing; the combat model decides actual hit timing. No walking cycle is invented. See [runtime hero and starter exports](../assets/README.md).
 
 The view is a child of its current arena's `ContentSlot`, so arena visibility, scene replacement, and future authored shots work with the existing tree. Edge travel reparents only the view and preserves the same state. During a sequence, both navigation and hero input yield to the sequence owner. The marker returns when ordinary focused control resumes.
 
@@ -205,7 +207,7 @@ A native Godot Play launch was visually tested through title → Warrior choice 
 
 `grid_checks.gd` checks 354 geometry assertions, including all nine footprints, center/corner round trips, height independence, half-open seams and invalid cells. `camera_checks.gd` checks exact 19 px cells, 18 fits across six viewport shapes, native/numeric projection round trips, resize focus, tween interruption using explicit `custom_step`, and sequence ownership/rotation reset. Both passed after the tile/boss integration. `flow_checks.gd` also passed its 98 assertions covering scene/resource wiring, double-click zoom, persistent HUD identity, class setup, and sequence input locking/cancellation.
 
-`arena_tiles_checks.gd` passed 173 assertions with the native renderer: all 18,414 tile placements and arena seams, the readable source texture, and eight matching boss sprites with Guild House empty. Run it with a normal renderer as shown, **without `--headless`**: Godot's dummy renderer returns identity MultiMesh transforms and cannot validate their placement. On another host, substitute its Godot executable path. Stop an active playtest before running these tests so the runtime MCP registration is not shared.
+Before starter combat, `arena_tiles_checks.gd` passed 173 assertions with the native renderer: all 18,414 tile placements and arena seams, the readable source texture, and eight matching boss sprites while Guild House was still empty. The current revision adds its animated training target; [combat validation](combat.md#native-assets-and-validation) records the separate rules checks. Run it with a normal renderer as shown, **without `--headless`**: Godot's dummy renderer returns identity MultiMesh transforms and cannot validate their placement. On another host, substitute its Godot executable path. Stop an active playtest before running these tests so the runtime MCP registration is not shared.
 
 Earlier visible Godot 4.7.2 checks on macOS covered title → Bard selection → Gala, all nine letter shortcuts and mouse targets, directional selection and edge clamping, bracket wrapping, tween interpolation/interruption, Enter/P/Escape, wheel navigation, the HUD zoom button, stable world/HUD identities during zoom, and stage replacement while keeping the HUD. Earlier resize/picking checks predate the fixed logical viewport. The current 1280 × 720 rendered pass verified all nine arena hotkeys and overview/close-up switching. Pixel inspection across the eight boss arenas found 11,088 unobstructed tiles with exactly one center pixel each; all 46,845 opaque boss pixels matched their paused source frames at 1:1 scale. That earlier pass used integer scaling and did not visually certify larger physical windows; the later native-resolution validation is recorded in [display rendering](display-rendering.md). These notes make no exported-build or other-platform claim.
 

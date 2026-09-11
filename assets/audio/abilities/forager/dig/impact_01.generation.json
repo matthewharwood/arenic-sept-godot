@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "forager.dig.impact",
+  "exact_request": {
+    "text": "Dry, compact fantasy tactical-game sound. Controlled transients, restrained highs, mono-compatible, no speech, music, ambience, or long reverb. A compact earthy impact: loose soil and one small stone crack with a short low thump, clear restrained damage feedback. No resource reward chime, no treasure discovery.",
+    "duration_seconds": 0.7,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/forager/dig/impact"
+  },
+  "requested_duration_seconds": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/forager/dig/impact/sfx_Dry,__20260910_162715.mp3",
+  "generated_at_utc": "2026-09-10T23:27:15.982Z",
+  "canonical_source": "assets/audio/abilities/forager/dig/impact_01.mp3",
+  "status": "generated",
+  "source_sha256": "a3773cae76963cec86f59667f359cbf5fc88b201309b5410d2d67e522a2b2c11"
+}

@@ -69,6 +69,11 @@
           "description": "Small arrow tip striking a padded wooden target, compact dry tick and dull body.",
           "duration_seconds": 0.5,
           "loop": false
+        },
+        "charge": {
+          "description": "A short taut bow draw: quiet wooden flex and creaking bowstring tension rising, no release twang yet. One restrained half-second preparation gesture.",
+          "duration_seconds": 0.5,
+          "loop": false
         }
       },
       "notes": [
@@ -292,7 +297,7 @@
       },
       "notes": [
         "Art timing is a presentation contract; damage, cooldowns and status expiry are gameplay-owned.",
-        "Instant activation; demonstration trigger at 1200 ms is a staged collision, not a cast windup. Damage is immediate at trigger. 2×2 explosion footprint."
+        "Instant activation; demonstration trigger at 1200 ms is a staged collision, not a cast windup. Damage is immediate at trigger. 2\u00d72 explosion footprint."
       ]
     }
   ]

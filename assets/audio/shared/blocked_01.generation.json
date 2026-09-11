@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "shared.blocked",
+  "exact_request": {
+    "text": "Compact fantasy tactical game blocked movement cue: a quiet rounded wooden knock with a brief soft low thud, clearly different from a footstep, gentle collision feedback rather than damage. One short event immediately audible, tail ends within half a second. Centered mono-compatible, no speech, no music, no environmental ambience, no reverb, no harsh buzzer.",
+    "duration_seconds": 0.5,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/shared/blocked"
+  },
+  "requested_duration_seconds": 0.5,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/shared/blocked/sfx_Compa_20260910_162333.mp3",
+  "generated_at_utc": "2026-09-10T23:23:34.813Z",
+  "canonical_source": "assets/audio/shared/blocked_01.mp3",
+  "status": "generated",
+  "source_sha256": "210546b1db9a87cd6c4ad622983676b709bae8c34a82a183d3d8973bab56236a"
+}

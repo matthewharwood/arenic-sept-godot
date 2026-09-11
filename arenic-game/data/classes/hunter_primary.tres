@@ -2,7 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_7shmb"]
 
+[ext_resource type="Resource" path="res://data/audio/abilities/auto_shot.tres" id="2_audio"]
+
 [resource]
 script = ExtResource("1_7shmb")
+audio_profile = ExtResource("2_audio")
 title = "Auto Shot"
-description = "A shot that pushes the hero back one square and deals damage over time."
+description = "Shoot the nearest enemy within 8 tiles for 1 damage. The shot lands after 0.75 seconds; 2.5-second cooldown."
+ability_id = "auto_shot"
+effect_kind = "target"
+range_tiles = 8
+cooldown_seconds = 2.5
+cast_seconds = 0.75
+release_seconds = 0.26
+damage = 1

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ArenicMovementSoundProfile" format=3 uid="uid://ds4ytio83jiqv"]
+
+[ext_resource type="Script" uid="uid://c0vr6ul5k1w8f" path="res://scripts/audio/movement_sound_profile.gd" id="1_profile"]
+[ext_resource type="Script" uid="uid://b0xtskt57034t" path="res://scripts/audio/sound_cue.gd" id="2_cue"]
+
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/shared/move.wav" id="wav_move"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/shared/blocked.wav" id="wav_blocked"]
+
+[sub_resource type="Resource" id="Cue_blocked"]
+script = ExtResource("2_cue")
+stream = ExtResource("wav_blocked")
+volume_db = 0.0
+max_instances = 1
+min_interval_seconds = 0.1
+priority = 15
+
+[sub_resource type="Resource" id="Cue_move"]
+script = ExtResource("2_cue")
+stream = ExtResource("wav_move")
+volume_db = 1.0
+max_instances = 1
+min_interval_seconds = 0.065
+priority = 20
+
+[resource]
+script = ExtResource("1_profile")
+move = SubResource("Cue_move")
+blocked = SubResource("Cue_blocked")

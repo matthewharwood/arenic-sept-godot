@@ -34,7 +34,7 @@ SUSTAIN_MEANINGS = {
     'alchemist.acid_flask': 'Bubbling acid pool after the flask lands, not the flying glass flask.',
     'alchemist.ironskin_draft': 'Instant self-protection shimmer; drinking art adds no activation delay.',
     'alchemist.siphon': 'Ally-to-Alchemist life drain after setup, ending when the held channel releases.',
-    'cardinal.heal': 'Cardinal-to-ally life transfer from activation until channel release.',
+    'cardinal.heal': 'Current starter: outward sacrificial damage channel until release; no restoration or spoken prayer.',
     'cardinal.barrier': 'One selected ally\'s protective shell from instant application.',
     'cardinal.resurrect': 'Enhanced-vision harmony after revival resolves, not the two-second charge.',
     'bard.dance': 'The successful eight-beat performance itself, ending before the finale.',
@@ -42,7 +42,7 @@ SUSTAIN_MEANINGS = {
     'forager.bolder': 'Rolling stone travel; stop at collision before the impact/debris tail.',
     'forager.border': 'The living barrier after its cast completes, including a later staged deflection.',
     'forager.mushroom': 'Combined resource-absorption/healing sound during staged feeding of a grown node only.',
-    'merchant.fortune': 'Active prosperity aura; the separate treasure chime is an illustrative proc.',
+    'merchant.fortune': 'Current starter: active golden aura; impact is a real damage tick, never a currency payout.',
     'merchant.vault': 'Vault-zone resonance from immediate activation; opening art adds no buff delay.',
 }
 
@@ -112,6 +112,15 @@ def preview_timing(ability_id, ability):
     return dict(illustrative=True, duration_ms=end, notes=notes), windows
 
 
+def request_text(description):
+    text = STYLE + description
+    if len(text) > 450:
+        text = ('Dry, compact fantasy tactical-game sound. Controlled transients, restrained highs, '
+                'mono-compatible, no speech, music, ambience, or long reverb. ') + description
+    assert len(text) <= 450, 'ElevenLabs sound effects prompts allow at most 450 characters'
+    return text
+
+
 def main():
     audio = ASSETS / 'audio'
     audio.mkdir(exist_ok=True)
@@ -132,7 +141,7 @@ def main():
                 item = dict(event=event, hero=hero, ability=ability['id'], slot=ability['slot'],
                             phase=phase, file=relative, status='ready' if ready else 'pending',
                             loop=bool(cue.get('loop')), duration_seconds=cue['duration_seconds'],
-                            text=STYLE+cue['description'], output_format='mp3_44100_128',
+                            text=request_text(cue['description']), output_format='mp3_44100_128',
                             output_directory=str(audio / 'generation' / hero / ability['id'] / phase))
                 assert .5 <= item['duration_seconds'] <= 5
                 queue.append(item)

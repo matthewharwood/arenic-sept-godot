@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "thief.backstab.impact",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. Precise dagger puncture with a compact leather-like bite and dark magical tick, no exaggerated gore. Isolated game sound effect, no music, no speech, clean short tail.",
+    "duration_seconds": 0.9,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/thief/backstab/impact"
+  },
+  "requested_duration_seconds": 0.9,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/thief/backstab/impact/sfx_Compa_20260910_162601.mp3",
+  "generated_at_utc": "2026-09-10T23:26:01.741Z",
+  "canonical_source": "assets/audio/abilities/thief/backstab/impact_01.mp3",
+  "status": "generated",
+  "source_sha256": "d546b715c9f700cda0b84fa2360c0834282af592b26910fe3d0ff81719d200cb"
+}

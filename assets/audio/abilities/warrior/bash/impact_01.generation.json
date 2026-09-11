@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "warrior.bash.impact",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. Close resonant iron shield impact, low wooden body and a few bright metal fragments. Isolated game sound effect, no music, no speech, clean short tail.",
+    "duration_seconds": 0.9,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/warrior/bash/impact"
+  },
+  "requested_duration_seconds": 0.9,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/warrior/bash/impact/sfx_Compa_20260910_162525.mp3",
+  "generated_at_utc": "2026-09-10T23:25:25.384Z",
+  "canonical_source": "assets/audio/abilities/warrior/bash/impact_01.mp3",
+  "status": "generated",
+  "source_sha256": "809effbb1dc30c5a1976c3579274e4befc7f91e45b7ee75f3b677120ce3e2d09"
+}

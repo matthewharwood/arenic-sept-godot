@@ -2,7 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_w8mha"]
 
+[ext_resource type="Resource" path="res://data/audio/abilities/fortune.tres" id="2_audio"]
+
 [resource]
 script = ExtResource("1_w8mha")
-title = "Coin Toss"
-description = "Spend coins to fire a skill shot. Land the hit to deal heavy damage and win your money back."
+audio_profile = ExtResource("2_audio")
+title = "Fortune"
+description = "For 20 seconds, nearby enemies within 2 tiles, including diagonals, take 1 damage each second. The aura follows you; nearby allies add a future loot bonus. 20-second cooldown."
+ability_id = "fortune"
+effect_kind = "aura"
+cooldown_seconds = 20.0
+duration_seconds = 20.0
+tick_seconds = 1.0
+radius_tiles = 2
+loot_bonus_per_ally = 0.05
+damage = 1

@@ -7,11 +7,20 @@ var _elapsed: float = 0.0
 var _sequence: int = 0
 var _busy: bool = false
 var _capture: AudioEffectCapture
+var _physics_seconds: float = 0.0
+var _combat_presenter_id: int = 0
+var _combat_assets: Dictionary = {}
+var _sfx_capture: AudioEffectCapture
+var _sfx_cues: Dictionary = {}
 
 func _ready() -> void:
 	if not OS.has_feature("web"):
 		set_process(false)
 		set_process_input(false)
+		set_physics_process(false)
+
+func _physics_process(delta: float) -> void:
+	_physics_seconds += delta
 
 func _process(delta: float) -> void:
 	_elapsed += delta
@@ -92,8 +101,92 @@ func _snapshot() -> Dictionary:
 			"world_rect":_rect(shell.hud.get_world_rect()), "music":shell.music.snapshot(),
 			"hero":{"class_id":shell.hero.definition.class_id, "arena":shell.hero.arena_id,
 				"cell":_v2(Vector2(shell.hero.cell)), "facing":shell.hero.facing, "selected":shell.hero.selected}})
-		result.controls = {"toggle":_control(shell.hud.get_node("BottomStrip/OverviewToggle"))}
+		result["combat"] = _combat_snapshot(shell)
+		result["sound"] = _sound_snapshot(shell)
+		var ability := shell.hud.get_node("BottomStrip/AbilityAction") as Button
+		var ability_control: Dictionary = _control(ability)
+		ability_control.merge({"disabled":ability.disabled, "text":ability.text, "pressed":ability.is_pressed()})
+		result.controls = {"toggle":_control(shell.hud.get_node("BottomStrip/OverviewToggle")), "ability":ability_control}
 	return result
+
+# Read existing gameplay/presentation state only. Infinity is represented by null
+# plus is_channeling, keeping every report valid JSON without advancing a timer.
+func _combat_snapshot(shell: Variant) -> Dictionary:
+	var combat: ArenicCombatState = shell.combat
+	if combat == null or not is_instance_valid(shell.combat_presentation):
+		return {}
+	var totals: Dictionary = {}
+	var targets: Dictionary = {}
+	for arena: ArenicArenaDefinition in shell.stage.world.arenas:
+		totals[arena.arena_id] = combat.damage_for_arena(arena.arena_id)
+		targets[arena.arena_id] = combat.damage_for_enemy(arena.arena_id, "boss:" + arena.arena_id)
+	var bar := shell.hud.get_node("TopStrip/DamageBar") as ArenicArenaDamageBar
+	var bar_material := bar.material as ShaderMaterial
+	var active: Dictionary = combat.active_cast_snapshot()
+	var remaining: float = combat.active_remaining()
+	var hero_view: ArenicHeroView = shell.stage.hero_view
+	var presenter: ArenicCombatPresentation = shell.combat_presentation
+	if _combat_presenter_id != presenter.get_instance_id():
+		_combat_presenter_id = presenter.get_instance_id()
+		_combat_assets = _combat_asset_snapshot(presenter)
+	return {
+		"totals":totals, "targets":targets, "physics_seconds":_physics_seconds,
+		"cooldown":combat.cooldown_remaining(), "active":not active.is_empty(),
+		"active_remaining":remaining if is_finite(remaining) else null,
+		"active_elapsed":float(active.get("elapsed", 0.0)), "is_channeling":combat.is_channeling(),
+		"active_fx_count":presenter.active_effect_count(),
+		"starter_ability_id":shell.hero.definition.skills[0].ability_id,
+		"hero_ability_id":hero_view._ability_id,
+		"hero_animation":String(hero_view.sprite.animation),
+		"hero_animation_ready":hero_view.sprite.sprite_frames != null and hero_view.sprite.sprite_frames.has_animation(hero_view.sprite.animation),
+		"bar":{"total":bar.total_damage, "current":bar.current_damage, "completed":bar.completed_phases,
+			"phase_damage":bar.phase_damage, "foundation":bar_material.get_shader_parameter("has_foundation"),
+			"fill":bar_material.get_shader_parameter("fill_fraction"), "rect":_rect(bar.get_global_rect()),
+			"phase_label":shell.hud.get_node("TopStrip/PhaseLabel").text},
+		"ability_status":shell.hud.get_node("BottomStrip/AbilityStatus").text,
+		"assets":_combat_assets,
+	}
+
+func _combat_asset_snapshot(presenter: ArenicCombatPresentation) -> Dictionary:
+	var errors: PackedStringArray = []
+	var actors: Dictionary = {}
+	for id: String in ["auto_shot", "bash", "backstab", "acid_flask", "heal", "cleanse", "dig", "fortune"]:
+		var path := "res://assets/abilities/%s/actor_frames.tres" % id
+		var frames := load(path) as SpriteFrames
+		var tags: PackedStringArray = []
+		for direction: String in ["n", "e", "s", "w"]:
+			if id == "heal":
+				for phase: String in ["connect", "channel", "release"]:
+					tags.append(direction + "_" + phase)
+			else:
+				tags.append(id + "_" + direction)
+		actors[id] = _animations_ready(frames, tags)
+		if not actors[id]:
+			errors.append("actor:" + id)
+	var expected: Dictionary = {
+		"auto_shot/projectile":["flight_e"], "auto_shot/impact":["impact"], "bash/impact":["impact"],
+		"backstab/slash":["slash_n", "slash_e", "slash_s", "slash_w"],
+		"acid_flask/flask":["flight"], "acid_flask/shatter":["shatter"],
+		"heal/healing_aura":["restore"], "heal/life_stream":["transfer"], "heal/receiving_glow":["receive"],
+		"cleanse/wave":["purify"], "cleanse/cleansed":["cleansed"], "dig/excavate":["excavate"],
+		"fortune/fortune":["fortune_loop"], "fortune/prosperity":["prosperity"],
+	}
+	for key: String in expected:
+		var frames: SpriteFrames = presenter._frames.get(key)
+		if not _animations_ready(frames, PackedStringArray(expected[key])):
+			errors.append("effect:" + key)
+	return {"actors":actors, "effects_checked":expected.size(), "errors":errors}
+
+func _animations_ready(frames: SpriteFrames, tags: PackedStringArray) -> bool:
+	if frames == null:
+		return false
+	for tag: String in tags:
+		if not frames.has_animation(tag) or frames.get_frame_count(tag) == 0:
+			return false
+		for index: int in frames.get_frame_count(tag):
+			if frames.get_frame_texture(tag, index) == null:
+				return false
+	return true
 
 func _framebuffer() -> void:
 	_busy = true
@@ -238,3 +331,41 @@ func _audio_suite() -> void:
 	_capture = null
 	_emit("audio", report)
 	_busy = false
+
+
+# Passive SFX-bus tap: music stays connected and is excluded from this meter.
+func _sound_snapshot(shell: Variant) -> Dictionary:
+	var result: Dictionary = shell.sound.snapshot()
+	var bus: int = AudioServer.get_bus_index(ArenicGameplayAudio.BUS)
+	if _sfx_capture == null and bus >= 0:
+		_sfx_capture = AudioEffectCapture.new()
+		_sfx_capture.buffer_length = 0.5
+		AudioServer.add_bus_effect(bus, _sfx_capture)
+	var peak: float = 0.0
+	var energy := Vector2.ZERO
+	var count: int = 0
+	if _sfx_capture != null:
+		var frames: PackedVector2Array = _sfx_capture.get_buffer(_sfx_capture.get_frames_available())
+		count = frames.size()
+		for sample: Vector2 in frames:
+			peak = maxf(peak, maxf(absf(sample.x), absf(sample.y)))
+			energy += sample * sample
+	result.pcm = {"frames":count, "peak":peak, "left_rms":sqrt(energy.x / maxf(1.0, count)), "right_rms":sqrt(energy.y / maxf(1.0, count))}
+	if _sfx_cues.is_empty():
+		var errors: PackedStringArray = []
+		var count_cues: int = 0
+		for id: String in ["auto_shot", "bash", "backstab", "acid_flask", "heal", "cleanse", "dig", "fortune"]:
+			var profile := load("res://data/audio/abilities/%s.tres" % id) as ArenicAbilitySoundProfile
+			if profile == null:
+				errors.append(id + ": missing profile")
+				continue
+			errors.append_array(profile.validation_errors())
+			for phase: String in ["charge", "cast", "impact", "sustain", "end", "cancel"]:
+				var cue: ArenicSoundCue = profile.cue_for_phase(phase)
+				if cue != null:
+					count_cues += 1
+		var movement := load("res://data/audio/movement.tres") as ArenicMovementSoundProfile
+		errors.append_array(movement.validation_errors())
+		_sfx_cues = {"count":count_cues + 2, "errors":errors, "move_seconds":movement.move.stream.get_length()}
+	result.cues = _sfx_cues
+	return result

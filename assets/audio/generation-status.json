@@ -1,9 +1,69 @@
 {
   "provider": "ElevenLabs",
-  "status": "blocked_authentication",
-  "generated_clips": 0,
-  "attempted_event": "hunter.auto_shot.cast",
-  "error_code": "api_key_id_used_as_api_key",
-  "message": "Configured MCP credential is an API-key ID, not a valid API key. User has been asked to update connector settings. No audio was generated.",
-  "resume": "After credential correction, generate pending entries in generation-queue.json through ElevenLabs MCP, save returned audio and per-clip provenance, then rerun prepare-ability-audio.py and build-character-previews.py."
+  "status": "starter_set_generated_and_exported",
+  "generated_clips": 22,
+  "generated_ability_clips": 20,
+  "generated_shared_clips": 2,
+  "remaining_ability_cues_pending": 74,
+  "scope": "Eight current starters only; remaining24 abilities and acid-pool sustain were not generated.",
+  "model": "not exposed by MCP tool",
+  "output_format": "mp3_44100_128",
+  "source_plan": "starter-generation-plan.json",
+  "runtime_manifest": "starter-runtime-manifest.json",
+  "exporter": "../pipeline/export-starter-audio.py",
+  "validation": {
+    "source_and_pcm_assertions": 160,
+    "mono_sample_rate": 44100,
+    "peak_ceiling_dbfs": -12.0,
+    "movement_seconds": 0.5,
+    "sustain_crossfade_seconds": 0.06,
+    "loop_boundary_delta_max": 0.00054931640625,
+    "subjective_listening": "not yet verified; waveform checks do not establish audible quality",
+    "charge_calibration": [
+      {
+        "event": "hunter.auto_shot.charge",
+        "first_260_ms_peak_dbfs": -12.041199826559248,
+        "first_260_ms_rms_dbfs": -27.042890629513238,
+        "cue_gain_db": -3,
+        "post_cue_peak_dbfs": -15.041199826559248,
+        "post_cue_rms_dbfs": -30.042890629513238,
+        "source_leading_trim_ms": 0.0,
+        "peak_time_ms": 150.99773242630386,
+        "gain": 0.9955547363071866,
+        "frames": 22050
+      },
+      {
+        "event": "alchemist.acid_flask.charge",
+        "first_260_ms_peak_dbfs": -12.041199826559248,
+        "first_260_ms_rms_dbfs": -37.54324753581123,
+        "cue_gain_db": 6,
+        "post_cue_peak_dbfs": -6.041199826559248,
+        "post_cue_rms_dbfs": -31.543247535811233,
+        "source_leading_trim_ms": 169.61451247165533,
+        "peak_time_ms": 9.27437641723356,
+        "gain": 8.461410452274468,
+        "frames": 22050
+      }
+    ]
+  },
+  "resolved_attempts": [
+    {
+      "event": "shared.move",
+      "error": "output directory did not exist",
+      "resolution": "created destination and retried successfully"
+    },
+    {
+      "event": "cardinal.heal.cast",
+      "error": "text_too_long, limit450characters",
+      "resolution": "shortened style prefix; generation succeeded"
+    }
+  ],
+  "history": [
+    {
+      "status": "blocked_authentication",
+      "generated_clips": 0,
+      "error_code": "api_key_id_used_as_api_key",
+      "resolution": "Connector corrected before this authorized batch; successful generation now verified."
+    }
+  ]
 }

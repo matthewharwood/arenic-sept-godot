@@ -2,7 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_y0wlr"]
 
+[ext_resource type="Resource" path="res://data/audio/abilities/dig.tres" id="2_audio"]
+
 [resource]
 script = ExtResource("1_y0wlr")
+audio_profile = ExtResource("2_audio")
 title = "Dig"
-description = "Dig up to twice on a grid square to gain loot and one rock."
+description = "Dig into an adjacent enemy for 1 damage after a 0.4-second windup. 1.5-second cooldown."
+ability_id = "dig"
+effect_kind = "target"
+range_tiles = 1
+requires_adjacent = true
+cooldown_seconds = 1.5
+cast_seconds = 0.4
+damage = 1

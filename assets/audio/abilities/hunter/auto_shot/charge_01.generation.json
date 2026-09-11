@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "hunter.auto_shot.charge",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. A short taut bow draw: quiet wooden flex and creaking bowstring tension rising, no release twang yet. One restrained half-second preparation gesture.",
+    "duration_seconds": 0.5,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/hunter/auto_shot/charge"
+  },
+  "requested_duration_seconds": 0.5,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/hunter/auto_shot/charge/sfx_Compa_20260910_162754.mp3",
+  "generated_at_utc": "2026-09-10T23:27:54.925Z",
+  "canonical_source": "assets/audio/abilities/hunter/auto_shot/charge_01.mp3",
+  "status": "generated",
+  "source_sha256": "e48c821f2aefa96930887cb3a3a450267d1e40c4967e959c66100939485e33d5"
+}

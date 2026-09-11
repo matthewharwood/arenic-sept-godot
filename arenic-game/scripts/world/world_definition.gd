@@ -36,6 +36,13 @@ func validation_errors() -> PackedStringArray:
 		if seen_slots.has(arena.grid_slot):
 			errors.append("Arena %d duplicates grid_slot %s." % [index, arena.grid_slot])
 		seen_slots[arena.grid_slot] = true
+		if arena.phase_damage < 1:
+			errors.append("Arena %d needs a positive damage threshold." % index)
+		if arena.boss != null or arena.training_target_frames != null:
+			if arena.boss_combat_size.x < 1 or arena.boss_combat_size.y < 1 or not ArenicGridMath.tile_valid(arena.boss_origin_cell) or not ArenicGridMath.tile_valid(arena.boss_origin_cell + arena.boss_combat_size - Vector2i.ONE):
+				errors.append("Arena %d has an invalid boss combat footprint." % index)
+			if arena.boss_facing not in ["n", "e", "s", "w"]:
+				errors.append("Arena %d has an invalid boss facing." % index)
 	return errors
 
 

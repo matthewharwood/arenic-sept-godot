@@ -1,0 +1,146 @@
+{
+  "id": "fortune",
+  "hero": "merchant",
+  "display_name": "Fortune",
+  "generator": "assets/pipeline/export-starter-abilities.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "release_seconds": 0.0,
+  "preview_impact_seconds": 0.0,
+  "saved_layer_visibility": true,
+  "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "actor": {
+    "source": "assets/characters/merchant/abilities/fortune/merchant_fortune.aseprite",
+    "source_sha256": "5d985748b6849f7da76d046b18aff05965b4c4954fb4125c88681e971d4e0d62",
+    "sprite_frames": "res://assets/abilities/fortune/actor_frames.tres",
+    "canvas": [
+      19,
+      19
+    ],
+    "pivot": [
+      9,
+      9
+    ],
+    "sha256": {
+      "png": "9080016814348d9df86e5dec770e9de3ffecd515f340041f6a3ca4feaf81cc48",
+      "json": "715fa716382688a83212aa7c4e0a169fb6ddd46b9feb822b62b44f690ef3aa4f",
+      "sprite_frames": "986ceb6aa3794e3b87b528a87d4830935c28fe4ef311bf5c6f655c27ed3dd404"
+    },
+    "tags": {
+      "fortune_n": {
+        "duration_ms": 600,
+        "frame_count": 6,
+        "loop": false
+      },
+      "fortune_e": {
+        "duration_ms": 600,
+        "frame_count": 6,
+        "loop": false
+      },
+      "fortune_s": {
+        "duration_ms": 600,
+        "frame_count": 6,
+        "loop": false
+      },
+      "fortune_w": {
+        "duration_ms": 600,
+        "frame_count": 6,
+        "loop": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "source": "abilities/fortune/fx/fortune.aseprite",
+      "role": "aura",
+      "tag": "fortune_loop",
+      "loop": true,
+      "duration_ms": 1000,
+      "canvas": [
+        38,
+        38
+      ],
+      "pivot": [
+        19,
+        19
+      ],
+      "asset": "fortune"
+    },
+    {
+      "source": "abilities/fortune/fx/prosperity.aseprite",
+      "role": "impact",
+      "tag": "prosperity",
+      "loop": false,
+      "duration_ms": 700,
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "asset": "prosperity"
+    }
+  ],
+  "assets": {
+    "fortune": {
+      "source": "assets/characters/merchant/abilities/fortune/fx/fortune.aseprite",
+      "source_sha256": "f5926771984dcfab491ca2e02acac0b68081af0991323ae722f7d48d1fdd1ac6",
+      "sprite_frames": "res://assets/abilities/fortune/fortune_frames.tres",
+      "canvas": [
+        38,
+        38
+      ],
+      "pivot": [
+        19,
+        19
+      ],
+      "sha256": {
+        "png": "cadb223ceabd98b9c6d4535c007c3ad32e9288417719d9b25bca1fa3d0a73ce6",
+        "json": "9ed103fcf0422fa0c5cf6595515ee5720765c6a97414a59d5d04a515084601d3",
+        "sprite_frames": "f90ba944a6451a1caf6385bdd2183f1c04501f19411e7b6478de1c35ffb81184"
+      },
+      "tags": {
+        "fortune_loop": {
+          "duration_ms": 1000,
+          "frame_count": 8,
+          "loop": true
+        }
+      }
+    },
+    "prosperity": {
+      "source": "assets/characters/merchant/abilities/fortune/fx/prosperity.aseprite",
+      "source_sha256": "f87f214f3392d2c48ea42fa99236f1288c623ce140c2f1e1ea4d10240713a777",
+      "sprite_frames": "res://assets/abilities/fortune/prosperity_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "d710877cee0b59a943844f5a5924bee2ce2f2ae238465cbcc9ddfe9434abbeb5",
+        "json": "ce3ae01499c58a35f9d7b50bc56efe0e6e6abdbe346687dbf6147214899527c6",
+        "sprite_frames": "23bef326deaf35d05a5427a007dde2fdc39c919f37a906c36bda0804a723b8bd"
+      },
+      "tags": {
+        "prosperity": {
+          "duration_ms": 700,
+          "frame_count": 7,
+          "loop": false
+        }
+      }
+    }
+  },
+  "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+}

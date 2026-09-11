@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "merchant.fortune.sustain",
+  "exact_request": {
+    "text": "Dry, compact fantasy tactical-game sound. Controlled transients, restrained highs, mono-compatible, no speech, music, ambience, or long reverb. Seamless restrained golden magical aura hum, warm sustained shimmer with soft restrained highs. No coin sounds, no cash register, no payout, no music progression, no attack or ending.",
+    "duration_seconds": 2,
+    "loop": true,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/merchant/fortune/sustain"
+  },
+  "requested_duration_seconds": 2,
+  "loop": true,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/merchant/fortune/sustain/sfx_Dry,__20260910_162739.mp3",
+  "generated_at_utc": "2026-09-10T23:27:39.448Z",
+  "canonical_source": "assets/audio/abilities/merchant/fortune/sustain_01.mp3",
+  "status": "generated",
+  "source_sha256": "9fa32f8595afff1cfe2bc9eea52e6dd2f238854adf11f863c2686052f4010d84"
+}

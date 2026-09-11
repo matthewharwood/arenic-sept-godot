@@ -13,11 +13,11 @@ It calls the reusable native validation workflow and independently builds and
 tests the website. Deployment requires both jobs to pass. PRs never deploy.
 
 1. Install official Godot **4.7.2**, verified against pinned SHA-512 checksums.
-2. Run eleven headless and five software-rendered Godot checks.
+2. Run 16 headless and 5 software-rendered Godot checks.
 3. Export a clean Web release and a separate, disposable instrumented release.
 4. Package the landing page and galleries; deduplicate existing preview images
    without changing their pixels or animation data.
-5. Run 23 Chromium browser tests under `/arenic-sept-godot/`.
+5. Run 28 Chromium browser tests under `/arenic-sept-godot/`.
 6. Upload **only** the clean site and deploy it through GitHub Pages.
 7. Confirm the public build manifest matches the deployed commit, then exercise
    public title/class clicks, arena navigation, actual audio output and catalog links.
@@ -27,6 +27,13 @@ untested future features or every browser/hardware combination. A failed build
 does not replace the last deployed site; a post-deployment failure marks the
 release red and retains evidence for diagnosis. Revert a bad release through a
 reviewed PR and let the same workflow republish it.
+
+The September 10, 2026 local native run passed all 16 headless and 5 rendered
+checks, including 182 SFX and 281 combat-model assertions. All 28 Chromium cases
+also passed against fresh production and private probe exports: the two SFX
+cases completed in 22.4 seconds and the other 26 in 3.6 minutes. SFX checks
+confirmed decoded audio and clean channel-release silence. These are local
+validation results, not a deployment record.
 
 ## Browser contracts
 
@@ -46,15 +53,24 @@ boundaries, independent pause/seek/resume, the bounded two-voice pool, interrupt
 crossfades, panning and hum. Real pointer/keyboard tests cover eight class cards,
 Guild House spawn, hero selection and tile movement, all arena keys, bracket
 navigation, zoom, resizing, letterboxing and DPR 1/2 framebuffer coverage.
+The three combat cases use the real title/class flow and controls: Hunter verifies
+cooldown/repeat rejection and independent arena totals; Cardinal verifies held
+channel damage and cancellation; Merchant moves into range and completes all
+20 Fortune ticks, checking the visible completed-phase foundation. Passive
+readback also verifies all eight starter actor sets and their used effect tags.
+Two SFX cases exercise actual movement and blocked-step sounds, projectile
+cast/impact, held-channel playback and release cleanup. They read decoded SFX
+bus samples separately from music and enforce the bounded voice pool.
 The clean production test uses a passive browser audio tap and never bypasses
 autoplay. Gallery tests exercise every hero ability and boss appearance.
 
 Software-rendered CI is a correctness lane, not a frame-rate benchmark. Game
 tests have a five-minute bound, including full-density screenshot and browser
-cleanup work. The audio-only probe runs at 640 × 360 to avoid unrelated pixel
+cleanup work. The audio and combat cases run at 640 × 360 to avoid unrelated pixel
 work; the separate input and framebuffer cases still exercise 1280 × 720,
 Retina density and resizing. Loop waits observe advancing game time and retain
-a real-time deadline. CI stops on its first failure and uploads diagnostics;
+a real-time deadline. Fortune completion follows actual simulation progress with
+a separate 180-second wall-clock bound. CI stops on its first failure and uploads diagnostics;
 every test must pass in a green release.
 
 `tests/web/probe.gd` is added only to a disposable project copy. Its autoload,

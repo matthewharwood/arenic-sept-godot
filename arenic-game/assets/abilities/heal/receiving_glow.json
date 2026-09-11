@@ -1,0 +1,67 @@
+{ "frames": [
+   {
+    "filename": "receiving_glow 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 60
+   },
+   {
+    "filename": "receiving_glow 1.aseprite",
+    "frame": { "x": 19, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "receiving_glow 2.aseprite",
+    "frame": { "x": 38, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "receiving_glow 3.aseprite",
+    "frame": { "x": 57, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "receiving_glow 4.aseprite",
+    "frame": { "x": 76, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 140
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.5-arm64",
+  "image": "receiving_glow.png",
+  "format": "RGBA8888",
+  "size": { "w": 95, "h": 19 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "receive", "from": 0, "to": 4, "direction": "forward", "repeat": "1", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Shape and shadow", "opacity": 255, "blendMode": "normal" },
+   { "name": "Core fragments", "opacity": 255, "blendMode": "normal" },
+   { "name": "Sparks", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "frame", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 19, "h": 19 }, "pivot": {"x": 9, "y": 9 } }] }
+  ]
+ }
+}

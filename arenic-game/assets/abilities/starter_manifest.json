@@ -1,0 +1,1436 @@
+{
+  "auto_shot": {
+    "id": "auto_shot",
+    "hero": "hunter",
+    "display_name": "Auto Shot",
+    "generator": "assets/pipeline/export-starter-abilities.py",
+    "aseprite_version": "Aseprite 1.3.18.5-arm64",
+    "release_seconds": 0.26,
+    "preview_impact_seconds": 0.74,
+    "saved_layer_visibility": true,
+    "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+    "import_options": {
+      "compress/mode": "0",
+      "mipmaps/generate": "false",
+      "detect_3d/compress_to": "0",
+      "process/fix_alpha_border": "false",
+      "process/premult_alpha": "false",
+      "process/size_limit": "0"
+    },
+    "actor": {
+      "source": "assets/characters/hunter/abilities/auto_shot/hunter_auto_shot.aseprite",
+      "source_sha256": "dffe2f5a31778fa7fef9e48c45f46bb84b63363e86990d9f1567644c0a92bd66",
+      "sprite_frames": "res://assets/abilities/auto_shot/actor_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "b0a2e187f1bb64e656a025062f04c2c8a5ade689ac8f938a238195b4771dcaf7",
+        "json": "3890d10457adc112c779460b1cd766fd5c0d6f609d373bd28a501131e4dbe382",
+        "sprite_frames": "81e4f0fcd1af47b5abca123b70d22472ea5ff783e2e64961c376e1802303e995"
+      },
+      "tags": {
+        "auto_shot_n": {
+          "duration_ms": 700,
+          "frame_count": 8,
+          "loop": false
+        },
+        "n_draw": {
+          "duration_ms": 260,
+          "frame_count": 3,
+          "loop": false
+        },
+        "n_release": {
+          "duration_ms": 60,
+          "frame_count": 1,
+          "loop": false
+        },
+        "n_recover": {
+          "duration_ms": 380,
+          "frame_count": 4,
+          "loop": false
+        },
+        "auto_shot_e": {
+          "duration_ms": 700,
+          "frame_count": 8,
+          "loop": false
+        },
+        "e_draw": {
+          "duration_ms": 260,
+          "frame_count": 3,
+          "loop": false
+        },
+        "e_release": {
+          "duration_ms": 60,
+          "frame_count": 1,
+          "loop": false
+        },
+        "e_recover": {
+          "duration_ms": 380,
+          "frame_count": 4,
+          "loop": false
+        },
+        "auto_shot_s": {
+          "duration_ms": 700,
+          "frame_count": 8,
+          "loop": false
+        },
+        "s_draw": {
+          "duration_ms": 260,
+          "frame_count": 3,
+          "loop": false
+        },
+        "s_release": {
+          "duration_ms": 60,
+          "frame_count": 1,
+          "loop": false
+        },
+        "s_recover": {
+          "duration_ms": 380,
+          "frame_count": 4,
+          "loop": false
+        },
+        "auto_shot_w": {
+          "duration_ms": 700,
+          "frame_count": 8,
+          "loop": false
+        },
+        "w_draw": {
+          "duration_ms": 260,
+          "frame_count": 3,
+          "loop": false
+        },
+        "w_release": {
+          "duration_ms": 60,
+          "frame_count": 1,
+          "loop": false
+        },
+        "w_recover": {
+          "duration_ms": 380,
+          "frame_count": 4,
+          "loop": false
+        }
+      }
+    },
+    "effects": [
+      {
+        "source": "abilities/auto_shot/fx/projectile.aseprite",
+        "role": "projectile",
+        "tag": "flight_e",
+        "loop": true,
+        "duration_ms": 320,
+        "asset": "projectile"
+      },
+      {
+        "source": "abilities/auto_shot/fx/impact.aseprite",
+        "role": "impact",
+        "tag": "impact",
+        "loop": false,
+        "duration_ms": 300,
+        "asset": "impact"
+      }
+    ],
+    "assets": {
+      "projectile": {
+        "source": "assets/characters/hunter/abilities/auto_shot/fx/projectile.aseprite",
+        "source_sha256": "dbeba01b4aea0f99f735ab69f71e42322730ae9d625324624b51b3c3a9209588",
+        "sprite_frames": "res://assets/abilities/auto_shot/projectile_frames.tres",
+        "canvas": [
+          19,
+          9
+        ],
+        "pivot": [
+          17,
+          4
+        ],
+        "sha256": {
+          "png": "1815d2e611663f4a63ed33ed834f1e36694b61121b1a5f31f25835b345f916de",
+          "json": "547a42776dfa0571eca6c60aedda295dc69ab9bf59f3a68b4d9b626cf75bcb70",
+          "sprite_frames": "9a2706bf6e9a11fe90c33fc6735a3c17976d046eae9ab78d6cf981e905a63383"
+        },
+        "tags": {
+          "flight_e": {
+            "duration_ms": 320,
+            "frame_count": 4,
+            "loop": true
+          }
+        }
+      },
+      "impact": {
+        "source": "assets/characters/hunter/abilities/auto_shot/fx/impact.aseprite",
+        "source_sha256": "d0052ecc812418f62218744ef303c747286e5c6cf28364f747c014a4cca4fa0c",
+        "sprite_frames": "res://assets/abilities/auto_shot/impact_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "cfb4a8b551d6324a051ad4495fe0e6d54e793343662d142eba9654400275733e",
+          "json": "ede9b9974068d7557d8f9779336957676381a20894409c2ff952d256bce265ca",
+          "sprite_frames": "022a18516f7fada065c2e45e198bfbd43f667de3ea67b234d3ac8fab2d0da81c"
+        },
+        "tags": {
+          "impact": {
+            "duration_ms": 300,
+            "frame_count": 5,
+            "loop": false
+          }
+        }
+      }
+    },
+    "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+  },
+  "bash": {
+    "id": "bash",
+    "hero": "warrior",
+    "display_name": "Bash",
+    "generator": "assets/pipeline/export-starter-abilities.py",
+    "aseprite_version": "Aseprite 1.3.18.5-arm64",
+    "release_seconds": 0.0,
+    "preview_impact_seconds": 0.0,
+    "saved_layer_visibility": true,
+    "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+    "import_options": {
+      "compress/mode": "0",
+      "mipmaps/generate": "false",
+      "detect_3d/compress_to": "0",
+      "process/fix_alpha_border": "false",
+      "process/premult_alpha": "false",
+      "process/size_limit": "0"
+    },
+    "actor": {
+      "source": "assets/characters/warrior/abilities/bash/warrior_bash.aseprite",
+      "source_sha256": "ad7909038850dee2b146c37810668eec83e986f5f9008334d2ae856ac14bedcc",
+      "sprite_frames": "res://assets/abilities/bash/actor_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "de0082c152e398aec3daf6e11bdaf64b32281f2d6620f17af3d152fd56ccc290",
+        "json": "410284666312fad916c03615acc0185dc350bc8d9543ff322b3727c361feabbc",
+        "sprite_frames": "67368a9d5e44f9d93c99206e15f79949103a034882d8de85004afe217d352698"
+      },
+      "tags": {
+        "bash_n": {
+          "duration_ms": 500,
+          "frame_count": 6,
+          "loop": false
+        },
+        "n_strike": {
+          "duration_ms": 100,
+          "frame_count": 2,
+          "loop": false
+        },
+        "n_recover": {
+          "duration_ms": 400,
+          "frame_count": 4,
+          "loop": false
+        },
+        "bash_e": {
+          "duration_ms": 500,
+          "frame_count": 6,
+          "loop": false
+        },
+        "e_strike": {
+          "duration_ms": 100,
+          "frame_count": 2,
+          "loop": false
+        },
+        "e_recover": {
+          "duration_ms": 400,
+          "frame_count": 4,
+          "loop": false
+        },
+        "bash_s": {
+          "duration_ms": 500,
+          "frame_count": 6,
+          "loop": false
+        },
+        "s_strike": {
+          "duration_ms": 100,
+          "frame_count": 2,
+          "loop": false
+        },
+        "s_recover": {
+          "duration_ms": 400,
+          "frame_count": 4,
+          "loop": false
+        },
+        "bash_w": {
+          "duration_ms": 500,
+          "frame_count": 6,
+          "loop": false
+        },
+        "w_strike": {
+          "duration_ms": 100,
+          "frame_count": 2,
+          "loop": false
+        },
+        "w_recover": {
+          "duration_ms": 400,
+          "frame_count": 4,
+          "loop": false
+        }
+      }
+    },
+    "effects": [
+      {
+        "source": "abilities/bash/fx/impact.aseprite",
+        "role": "impact",
+        "tag": "impact",
+        "loop": false,
+        "duration_ms": 400,
+        "asset": "impact"
+      },
+      {
+        "source": "abilities/bash/fx/weakened.aseprite",
+        "role": "aura",
+        "tag": "weakened",
+        "loop": true,
+        "duration_ms": 1000,
+        "asset": "weakened"
+      }
+    ],
+    "assets": {
+      "impact": {
+        "source": "assets/characters/warrior/abilities/bash/fx/impact.aseprite",
+        "source_sha256": "874a757aae86a94a7e1310f301585b997c62e60634b42a9ae39024088d00505d",
+        "sprite_frames": "res://assets/abilities/bash/impact_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "d0b45a7f7ff84d4dfd613d4fa449954a982bea4f7fa18b3b2d40b45070c2e06a",
+          "json": "35ae7e93c8350703b547c735fabe4a710988bda3e370acee244b3de843ada7da",
+          "sprite_frames": "6b2aa4a41835d78e536ae741b76b9f7fc091a5119c448ee9260a4178670a1265"
+        },
+        "tags": {
+          "impact": {
+            "duration_ms": 400,
+            "frame_count": 6,
+            "loop": false
+          }
+        }
+      },
+      "weakened": {
+        "source": "assets/characters/warrior/abilities/bash/fx/weakened.aseprite",
+        "source_sha256": "5dbfd842a191809d7ea6e32b5d722cfce6ea2529f5b647e8b164c6cf0a74b598",
+        "sprite_frames": "res://assets/abilities/bash/weakened_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "0450621e9cfceb176136287cd6567593e7a82232bffaa126684f3165dc873103",
+          "json": "3aaf130e38881edb87f14f439c2edafb26ac98a2e1c1946db7bc0457e59b2b69",
+          "sprite_frames": "aca5beb881a50f2cb95204b3b7a1d9da6e134b1c2253753e1ea6c88246dd6a16"
+        },
+        "tags": {
+          "weakened": {
+            "duration_ms": 1000,
+            "frame_count": 4,
+            "loop": true
+          }
+        }
+      }
+    },
+    "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+  },
+  "backstab": {
+    "id": "backstab",
+    "hero": "thief",
+    "display_name": "Backstab",
+    "generator": "assets/pipeline/export-starter-abilities.py",
+    "aseprite_version": "Aseprite 1.3.18.5-arm64",
+    "release_seconds": 0.0,
+    "preview_impact_seconds": 0.0,
+    "saved_layer_visibility": true,
+    "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+    "import_options": {
+      "compress/mode": "0",
+      "mipmaps/generate": "false",
+      "detect_3d/compress_to": "0",
+      "process/fix_alpha_border": "false",
+      "process/premult_alpha": "false",
+      "process/size_limit": "0"
+    },
+    "actor": {
+      "source": "assets/characters/thief/abilities/backstab/thief_backstab.aseprite",
+      "source_sha256": "781564105e3efcb385743cc371bca4e51b86e3f5600a8b4808df33bfd2514424",
+      "sprite_frames": "res://assets/abilities/backstab/actor_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "fabb7764ebd6d382352446511420b6b6d16382bf84a31c8e8bec39e333c1f5c1",
+        "json": "a27df44ec3df5973fe6137a0438c62af494228d800008316b37e6abae516e60f",
+        "sprite_frames": "a72220af4a71acf4e4a5cd21071017cbcd7bf6cc8154dae0ff580c9321360def"
+      },
+      "tags": {
+        "backstab_n": {
+          "duration_ms": 600,
+          "frame_count": 8,
+          "loop": false
+        },
+        "n_strike": {
+          "duration_ms": 150,
+          "frame_count": 3,
+          "loop": false
+        },
+        "n_recover": {
+          "duration_ms": 450,
+          "frame_count": 5,
+          "loop": false
+        },
+        "backstab_e": {
+          "duration_ms": 600,
+          "frame_count": 8,
+          "loop": false
+        },
+        "e_strike": {
+          "duration_ms": 150,
+          "frame_count": 3,
+          "loop": false
+        },
+        "e_recover": {
+          "duration_ms": 450,
+          "frame_count": 5,
+          "loop": false
+        },
+        "backstab_s": {
+          "duration_ms": 600,
+          "frame_count": 8,
+          "loop": false
+        },
+        "s_strike": {
+          "duration_ms": 150,
+          "frame_count": 3,
+          "loop": false
+        },
+        "s_recover": {
+          "duration_ms": 450,
+          "frame_count": 5,
+          "loop": false
+        },
+        "backstab_w": {
+          "duration_ms": 600,
+          "frame_count": 8,
+          "loop": false
+        },
+        "w_strike": {
+          "duration_ms": 150,
+          "frame_count": 3,
+          "loop": false
+        },
+        "w_recover": {
+          "duration_ms": 450,
+          "frame_count": 5,
+          "loop": false
+        }
+      }
+    },
+    "effects": [
+      {
+        "source": "abilities/backstab/fx/slash.aseprite",
+        "role": "impact",
+        "tag": "slash_n",
+        "loop": false,
+        "duration_ms": 400,
+        "asset": "slash"
+      },
+      {
+        "source": "abilities/backstab/fx/bleed.aseprite",
+        "role": "aura",
+        "tag": "bleed",
+        "loop": true,
+        "duration_ms": 1000,
+        "asset": "bleed"
+      }
+    ],
+    "assets": {
+      "slash": {
+        "source": "assets/characters/thief/abilities/backstab/fx/slash.aseprite",
+        "source_sha256": "8bd19947a4472850037851f251bf5a233997e016ac56cc537713c8b2de6708c8",
+        "sprite_frames": "res://assets/abilities/backstab/slash_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "6abb233113ecf44ccc4a98564573410951362adaee1203f39d66275406a4ee83",
+          "json": "fa9d0662dfe7bd9978bf98d6807916cd3b8cdc9b9472c390a2e37d42063f26c7",
+          "sprite_frames": "23a838ef036b3da9fcc6cedac0a1288caa20660a7dd9f1d6fa071e055ae9848b"
+        },
+        "tags": {
+          "slash_n": {
+            "duration_ms": 400,
+            "frame_count": 6,
+            "loop": false
+          },
+          "slash_e": {
+            "duration_ms": 400,
+            "frame_count": 6,
+            "loop": false
+          },
+          "slash_s": {
+            "duration_ms": 400,
+            "frame_count": 6,
+            "loop": false
+          },
+          "slash_w": {
+            "duration_ms": 400,
+            "frame_count": 6,
+            "loop": false
+          }
+        }
+      },
+      "bleed": {
+        "source": "assets/characters/thief/abilities/backstab/fx/bleed.aseprite",
+        "source_sha256": "bca77052f7325988c1a565bb67dc6ae7a4cdc57ef340a6d03657867f32d28b53",
+        "sprite_frames": "res://assets/abilities/backstab/bleed_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "200b00393d3686edfa3bf29f2eacb8949da89c77edd20e874f800e30d4ad112c",
+          "json": "0eb1678aba42892c31fdb3fe2ca1f2d9af8728aa79070d73f93441e0be1bf1a2",
+          "sprite_frames": "440eeedbd84aed585c4446597f883ee27d47024f3d0eda6bed3eff1b428bdd86"
+        },
+        "tags": {
+          "bleed": {
+            "duration_ms": 1000,
+            "frame_count": 4,
+            "loop": true
+          }
+        }
+      }
+    },
+    "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+  },
+  "acid_flask": {
+    "id": "acid_flask",
+    "hero": "alchemist",
+    "display_name": "Acid Flask",
+    "generator": "assets/pipeline/export-starter-abilities.py",
+    "aseprite_version": "Aseprite 1.3.18.5-arm64",
+    "release_seconds": 0.26,
+    "preview_impact_seconds": 1.06,
+    "saved_layer_visibility": true,
+    "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+    "import_options": {
+      "compress/mode": "0",
+      "mipmaps/generate": "false",
+      "detect_3d/compress_to": "0",
+      "process/fix_alpha_border": "false",
+      "process/premult_alpha": "false",
+      "process/size_limit": "0"
+    },
+    "actor": {
+      "source": "assets/characters/alchemist/abilities/acid_flask/alchemist_acid_flask.aseprite",
+      "source_sha256": "88ce1193136cdd3406f7dbd6b0a091e47fdaceb3c258da7ccb22fb4b4159e899",
+      "sprite_frames": "res://assets/abilities/acid_flask/actor_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "7d7c4cc2b240452b02a7f457bceb0f5edd604f0a0f309635816ad044145a0d94",
+        "json": "dbc1f5741dc11f85f05de53165dad2f75a7c10ba45b93771d7e775dde449893a",
+        "sprite_frames": "53f7638132a7179df9486c85e2ece696a8c7c2940cb64099d6e6e33ce0e84807"
+      },
+      "tags": {
+        "acid_flask_n": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        },
+        "n_draw": {
+          "duration_ms": 260,
+          "frame_count": 3,
+          "loop": false
+        },
+        "n_release": {
+          "duration_ms": 60,
+          "frame_count": 1,
+          "loop": false
+        },
+        "n_recover": {
+          "duration_ms": 480,
+          "frame_count": 4,
+          "loop": false
+        },
+        "acid_flask_e": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        },
+        "e_draw": {
+          "duration_ms": 260,
+          "frame_count": 3,
+          "loop": false
+        },
+        "e_release": {
+          "duration_ms": 60,
+          "frame_count": 1,
+          "loop": false
+        },
+        "e_recover": {
+          "duration_ms": 480,
+          "frame_count": 4,
+          "loop": false
+        },
+        "acid_flask_s": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        },
+        "s_draw": {
+          "duration_ms": 260,
+          "frame_count": 3,
+          "loop": false
+        },
+        "s_release": {
+          "duration_ms": 60,
+          "frame_count": 1,
+          "loop": false
+        },
+        "s_recover": {
+          "duration_ms": 480,
+          "frame_count": 4,
+          "loop": false
+        },
+        "acid_flask_w": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        },
+        "w_draw": {
+          "duration_ms": 260,
+          "frame_count": 3,
+          "loop": false
+        },
+        "w_release": {
+          "duration_ms": 60,
+          "frame_count": 1,
+          "loop": false
+        },
+        "w_recover": {
+          "duration_ms": 480,
+          "frame_count": 4,
+          "loop": false
+        }
+      }
+    },
+    "effects": [
+      {
+        "source": "abilities/acid_flask/fx/flask.aseprite",
+        "role": "projectile",
+        "tag": "flight",
+        "loop": true,
+        "duration_ms": 800,
+        "asset": "flask"
+      },
+      {
+        "source": "abilities/acid_flask/fx/shatter.aseprite",
+        "role": "impact",
+        "tag": "shatter",
+        "loop": false,
+        "duration_ms": 600,
+        "asset": "shatter"
+      },
+      {
+        "source": "abilities/acid_flask/fx/acid_pool.aseprite",
+        "role": "field",
+        "tag": "bubble",
+        "loop": true,
+        "duration_ms": 1000,
+        "asset": "acid_pool"
+      }
+    ],
+    "assets": {
+      "flask": {
+        "source": "assets/characters/alchemist/abilities/acid_flask/fx/flask.aseprite",
+        "source_sha256": "d2d3328205e9eb05e3aedbb7112a0976d9f782afd819547d2f1fcd2ea073ce19",
+        "sprite_frames": "res://assets/abilities/acid_flask/flask_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "3ffa281d3a32053570f9c309fa193298a5a405f75344b1a303381011e523b0a1",
+          "json": "9d677bd15dec8a8671f0cdc3853bccea8ce8ed906e75e2e8242d0160c3eb1a89",
+          "sprite_frames": "937aa3d0cfc9eefd03f6e49258a90a723c5a70d72ff99b3711fcf59311ff5298"
+        },
+        "tags": {
+          "flight": {
+            "duration_ms": 800,
+            "frame_count": 8,
+            "loop": true
+          }
+        }
+      },
+      "shatter": {
+        "source": "assets/characters/alchemist/abilities/acid_flask/fx/shatter.aseprite",
+        "source_sha256": "353a820e3cbdabdf24d60158d098d51f72fe87f098517e090b7bcf60163f434f",
+        "sprite_frames": "res://assets/abilities/acid_flask/shatter_frames.tres",
+        "canvas": [
+          38,
+          38
+        ],
+        "pivot": [
+          19,
+          19
+        ],
+        "sha256": {
+          "png": "226488fd171ff0c8383565ae1de20b3eb6b62770fdc2c6f2bae7bd5c8032d927",
+          "json": "d88229c421f194238b0a51a8d4683150adae429d5d11f6788ec0600983869281",
+          "sprite_frames": "76e0541cf79d11aecb46e04a3146769a6c5e52e8c6d43b94684286aebf51d991"
+        },
+        "tags": {
+          "shatter": {
+            "duration_ms": 600,
+            "frame_count": 6,
+            "loop": false
+          }
+        }
+      },
+      "acid_pool": {
+        "source": "assets/characters/alchemist/abilities/acid_flask/fx/acid_pool.aseprite",
+        "source_sha256": "5daa6e85f92f57763f12772cfd40b922b5aaea5b3d32afdb2ea5f76967f48fef",
+        "sprite_frames": "res://assets/abilities/acid_flask/acid_pool_frames.tres",
+        "canvas": [
+          38,
+          38
+        ],
+        "pivot": [
+          19,
+          19
+        ],
+        "sha256": {
+          "png": "fc0068539727519168336ddde3146ec42464b288b2c2dfce6365fcb08cd746eb",
+          "json": "79d5e832e7d012beb7d4b7281d65f01392f9edd1030fea4674a5a62479cdc12c",
+          "sprite_frames": "235cc7734691bf82eaf6d238c5c96220ded35cefc474b7256bfa07a6c79f6723"
+        },
+        "tags": {
+          "bubble": {
+            "duration_ms": 1000,
+            "frame_count": 6,
+            "loop": true
+          }
+        }
+      }
+    },
+    "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+  },
+  "heal": {
+    "id": "heal",
+    "hero": "cardinal",
+    "display_name": "Sacrifice",
+    "generator": "assets/pipeline/export-starter-abilities.py",
+    "aseprite_version": "Aseprite 1.3.18.5-arm64",
+    "release_seconds": 0.0,
+    "preview_impact_seconds": 0.0,
+    "saved_layer_visibility": true,
+    "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+    "import_options": {
+      "compress/mode": "0",
+      "mipmaps/generate": "false",
+      "detect_3d/compress_to": "0",
+      "process/fix_alpha_border": "false",
+      "process/premult_alpha": "false",
+      "process/size_limit": "0"
+    },
+    "actor": {
+      "source": "assets/characters/cardinal/abilities/heal/cardinal_heal.aseprite",
+      "source_sha256": "f072ab4d34f3cb2d77968071ee5ef55e94efbbea82999c04a99a115c9758010d",
+      "sprite_frames": "res://assets/abilities/heal/actor_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "1f1772a73b999ac418b47f9dcb4cec1765c6aad2494e67e971722a112505dfcf",
+        "json": "49a6d25e0a0b6eea5ec9eab530f4e99058d7f452c9138a87b59165c4c3486b85",
+        "sprite_frames": "67d69693b1f744e8e15285fc25ffcf997bdb8dfdee28e23772d9749d07aac808"
+      },
+      "tags": {
+        "heal_n": {
+          "duration_ms": 1300,
+          "frame_count": 9,
+          "loop": false
+        },
+        "n_connect": {
+          "duration_ms": 300,
+          "frame_count": 3,
+          "loop": false
+        },
+        "n_channel": {
+          "duration_ms": 800,
+          "frame_count": 4,
+          "loop": true
+        },
+        "n_release": {
+          "duration_ms": 200,
+          "frame_count": 2,
+          "loop": false
+        },
+        "heal_e": {
+          "duration_ms": 1300,
+          "frame_count": 9,
+          "loop": false
+        },
+        "e_connect": {
+          "duration_ms": 300,
+          "frame_count": 3,
+          "loop": false
+        },
+        "e_channel": {
+          "duration_ms": 800,
+          "frame_count": 4,
+          "loop": true
+        },
+        "e_release": {
+          "duration_ms": 200,
+          "frame_count": 2,
+          "loop": false
+        },
+        "heal_s": {
+          "duration_ms": 1300,
+          "frame_count": 9,
+          "loop": false
+        },
+        "s_connect": {
+          "duration_ms": 300,
+          "frame_count": 3,
+          "loop": false
+        },
+        "s_channel": {
+          "duration_ms": 800,
+          "frame_count": 4,
+          "loop": true
+        },
+        "s_release": {
+          "duration_ms": 200,
+          "frame_count": 2,
+          "loop": false
+        },
+        "heal_w": {
+          "duration_ms": 1300,
+          "frame_count": 9,
+          "loop": false
+        },
+        "w_connect": {
+          "duration_ms": 300,
+          "frame_count": 3,
+          "loop": false
+        },
+        "w_channel": {
+          "duration_ms": 800,
+          "frame_count": 4,
+          "loop": true
+        },
+        "w_release": {
+          "duration_ms": 200,
+          "frame_count": 2,
+          "loop": false
+        }
+      }
+    },
+    "effects": [
+      {
+        "source": "abilities/heal/fx/life_stream.aseprite",
+        "role": "beam",
+        "tag": "transfer",
+        "loop": true,
+        "duration_ms": 800,
+        "asset": "life_stream"
+      },
+      {
+        "source": "abilities/heal/fx/receiving_glow.aseprite",
+        "role": "impact",
+        "tag": "receive",
+        "loop": false,
+        "duration_ms": 500,
+        "asset": "receiving_glow"
+      },
+      {
+        "source": "abilities/heal/fx/healing_aura.aseprite",
+        "role": "aura",
+        "tag": "restore",
+        "loop": true,
+        "duration_ms": 1000,
+        "asset": "healing_aura"
+      }
+    ],
+    "assets": {
+      "life_stream": {
+        "source": "assets/characters/cardinal/abilities/heal/fx/life_stream.aseprite",
+        "source_sha256": "7dec82b7d3eace2dcb25c15f16d12f7c8d3325db8bcf7c86f3da6e2951e757f1",
+        "sprite_frames": "res://assets/abilities/heal/life_stream_frames.tres",
+        "canvas": [
+          76,
+          19
+        ],
+        "pivot": [
+          1,
+          9
+        ],
+        "sha256": {
+          "png": "e9d9583380d6f2d9af43fc4e6e40b36020d9a73d0b5068bfdbb8a43436d2687b",
+          "json": "513423887fa6457d779c5869daaf959b1a679590e6222b797551ee48aebfc615",
+          "sprite_frames": "5555913504a842edd2d0beb6974d3b228d02043aab1081333849ad0f930625d5"
+        },
+        "tags": {
+          "transfer": {
+            "duration_ms": 800,
+            "frame_count": 4,
+            "loop": true
+          },
+          "dissipate": {
+            "duration_ms": 500,
+            "frame_count": 4,
+            "loop": false
+          }
+        }
+      },
+      "receiving_glow": {
+        "source": "assets/characters/cardinal/abilities/heal/fx/receiving_glow.aseprite",
+        "source_sha256": "b1a07234865bd71dec5a650a76112150ffe5edb8333a70da870403e8f08d8c88",
+        "sprite_frames": "res://assets/abilities/heal/receiving_glow_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "5fcce9c3a80b78a76e93ca6b5e2ae988f90204b530943424669cd97b18bfc0d9",
+          "json": "8f432917d8401c2382f3d525f7b6d8ba877b749746a98942c654ad86c0298d6c",
+          "sprite_frames": "94ab18d3c8deacd76e54d0b9c016f342e86e06375a099b1ba72323f731382e9c"
+        },
+        "tags": {
+          "receive": {
+            "duration_ms": 500,
+            "frame_count": 5,
+            "loop": false
+          }
+        }
+      },
+      "healing_aura": {
+        "source": "assets/characters/cardinal/abilities/heal/fx/healing_aura.aseprite",
+        "source_sha256": "802e6c949d11c510c3f4ecd46158a9459b2e1cd91665a7a09e3f5be7eb3eff21",
+        "sprite_frames": "res://assets/abilities/heal/healing_aura_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "65d7b2f387017ba736a604fc87b42c32cd1eda90d61d1250fe51721b0fead760",
+          "json": "4b2ff74c681b380e715e3e670f21ad98c2f8050a9c86c8f414b9d690fca6fe72",
+          "sprite_frames": "fd4710c909be9fe2a13ec2369f8c138cd2a38f407a947a3b46fff95569df49c5"
+        },
+        "tags": {
+          "restore": {
+            "duration_ms": 1000,
+            "frame_count": 6,
+            "loop": true
+          }
+        }
+      }
+    },
+    "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+  },
+  "cleanse": {
+    "id": "cleanse",
+    "hero": "bard",
+    "display_name": "Cleanse",
+    "generator": "assets/pipeline/export-starter-abilities.py",
+    "aseprite_version": "Aseprite 1.3.18.5-arm64",
+    "release_seconds": 0.0,
+    "preview_impact_seconds": 0.0,
+    "saved_layer_visibility": true,
+    "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+    "import_options": {
+      "compress/mode": "0",
+      "mipmaps/generate": "false",
+      "detect_3d/compress_to": "0",
+      "process/fix_alpha_border": "false",
+      "process/premult_alpha": "false",
+      "process/size_limit": "0"
+    },
+    "actor": {
+      "source": "assets/characters/bard/abilities/cleanse/bard_cleanse.aseprite",
+      "source_sha256": "f30dbe17ac745d89e0cc3d032b30d23c0bb49c74c6aedb9b690aa55238591f77",
+      "sprite_frames": "res://assets/abilities/cleanse/actor_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "9ad97f7119d68af64af03ad96c9616e80ea91316eaa57b58d25d03d468430616",
+        "json": "344e12ac4db242561a9dcdf48f8ee63234eada68686de186786bf2452ebddcf3",
+        "sprite_frames": "5cc6dc0fe0863789542da894e921fbb003414429a6c6774bea436d9a08cd7d62"
+      },
+      "tags": {
+        "cleanse_n": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        },
+        "cleanse_e": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        },
+        "cleanse_s": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        },
+        "cleanse_w": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        }
+      }
+    },
+    "effects": [
+      {
+        "source": "abilities/cleanse/fx/wave.aseprite",
+        "role": "field",
+        "tag": "purify",
+        "loop": false,
+        "duration_ms": 2000,
+        "canvas": [
+          76,
+          76
+        ],
+        "pivot": [
+          38,
+          38
+        ],
+        "asset": "wave"
+      },
+      {
+        "source": "abilities/cleanse/fx/cleansed.aseprite",
+        "role": "aura",
+        "tag": "cleansed",
+        "loop": false,
+        "duration_ms": 800,
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "asset": "cleansed"
+      }
+    ],
+    "assets": {
+      "wave": {
+        "source": "assets/characters/bard/abilities/cleanse/fx/wave.aseprite",
+        "source_sha256": "040324e08889df15151f73e932fc8a286b97480e3a334331c839040d2e570ad7",
+        "sprite_frames": "res://assets/abilities/cleanse/wave_frames.tres",
+        "canvas": [
+          76,
+          76
+        ],
+        "pivot": [
+          38,
+          38
+        ],
+        "sha256": {
+          "png": "0309002708bf95814ce1d55f23a5286894ce6bf9e0652ad7a9fffcd000b6e19b",
+          "json": "1ead97efc00db3e8e869570cfab279bf6c7693d17add564fe4a6d4e4ca2d0777",
+          "sprite_frames": "25d6eb1aacdd34f81ef96eb44c5a33160f88a83551f0618f5f0f97273583e769"
+        },
+        "tags": {
+          "purify": {
+            "duration_ms": 2000,
+            "frame_count": 8,
+            "loop": false
+          }
+        }
+      },
+      "cleansed": {
+        "source": "assets/characters/bard/abilities/cleanse/fx/cleansed.aseprite",
+        "source_sha256": "a6889a714efd797b67156df3c296096adecd76e11b266c42612601bf47c376d5",
+        "sprite_frames": "res://assets/abilities/cleanse/cleansed_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "63954c1850cbe8acc312474292efb9a3ea757e690bfece714331e3a45f5a2a9e",
+          "json": "000554327d8dcdd7e8d3c84db2918c678f5cd635a5801fef3d824d14f7b8fa88",
+          "sprite_frames": "03e342fc86c73c38c5d9e6bd596f164394090ae3ab2bb716822975fa9f759ffb"
+        },
+        "tags": {
+          "cleansed": {
+            "duration_ms": 800,
+            "frame_count": 8,
+            "loop": false
+          }
+        }
+      }
+    },
+    "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+  },
+  "dig": {
+    "id": "dig",
+    "hero": "forager",
+    "display_name": "Dig",
+    "generator": "assets/pipeline/export-starter-abilities.py",
+    "aseprite_version": "Aseprite 1.3.18.5-arm64",
+    "release_seconds": 0.8,
+    "preview_impact_seconds": 0.8,
+    "saved_layer_visibility": true,
+    "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+    "import_options": {
+      "compress/mode": "0",
+      "mipmaps/generate": "false",
+      "detect_3d/compress_to": "0",
+      "process/fix_alpha_border": "false",
+      "process/premult_alpha": "false",
+      "process/size_limit": "0"
+    },
+    "actor": {
+      "source": "assets/characters/forager/abilities/dig/forager_dig.aseprite",
+      "source_sha256": "56e036a42f024417a1884d5557cc19c36b5e48171fa41a77955084069bdcbf7d",
+      "sprite_frames": "res://assets/abilities/dig/actor_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "9899c5cec80af6dda109afc55d5eeb62a04d5cc235189d5c609a55d9095fcc33",
+        "json": "75f856518e634f9ca2d0a7e3aa6c3450679718680f373b4c3883f9f4f7416ac8",
+        "sprite_frames": "05958306c2f99d0bc9c43ba839518dd4913a1842030fbd01262a51063bfbc155"
+      },
+      "tags": {
+        "dig_n": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        },
+        "dig_e": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        },
+        "dig_s": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        },
+        "dig_w": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        }
+      }
+    },
+    "effects": [
+      {
+        "source": "abilities/dig/fx/excavate.aseprite",
+        "role": "impact",
+        "tag": "excavate",
+        "loop": false,
+        "duration_ms": 800,
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "asset": "excavate"
+      },
+      {
+        "source": "abilities/dig/fx/dug_ground.aseprite",
+        "role": "field",
+        "tag": "dug",
+        "loop": true,
+        "duration_ms": 1000,
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "asset": "dug_ground"
+      }
+    ],
+    "assets": {
+      "excavate": {
+        "source": "assets/characters/forager/abilities/dig/fx/excavate.aseprite",
+        "source_sha256": "0b14f152fb8db8b10633854af58f23761512ef08beecc9ef7655ed1e2d8ecd76",
+        "sprite_frames": "res://assets/abilities/dig/excavate_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "9b090d89512a8e241dd715dc85468b856046109db6d9af194cb801f937a3b34e",
+          "json": "d53e3b9726670e9d0fe251b0becef5d86018716224043e5240d0918fd7f8b91c",
+          "sprite_frames": "98ed69e1b94eef65abc0d978f40b4aa76ad80bbcdc718fd28cff91694105dbb5"
+        },
+        "tags": {
+          "excavate": {
+            "duration_ms": 800,
+            "frame_count": 8,
+            "loop": false
+          }
+        }
+      },
+      "dug_ground": {
+        "source": "assets/characters/forager/abilities/dig/fx/dug_ground.aseprite",
+        "source_sha256": "dca014c6987f17d4583fd9aed1b3892532e64d1f28279ad92367f9ff6ac9afae",
+        "sprite_frames": "res://assets/abilities/dig/dug_ground_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "a9566522f144c2e77ff2d5a4343cc9f8830ea223b997a3dbe602bccaec1d0812",
+          "json": "5ef4ca3b98f108338b13cfc9391323fc167e8aca6964a84c77eda1f5b2587a9a",
+          "sprite_frames": "cba8b8655b6eb689a8de4b288c1284a25ed040bdf47bbc328a47ab1a0e91643d"
+        },
+        "tags": {
+          "dug": {
+            "duration_ms": 1000,
+            "frame_count": 8,
+            "loop": true
+          }
+        }
+      }
+    },
+    "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+  },
+  "fortune": {
+    "id": "fortune",
+    "hero": "merchant",
+    "display_name": "Fortune",
+    "generator": "assets/pipeline/export-starter-abilities.py",
+    "aseprite_version": "Aseprite 1.3.18.5-arm64",
+    "release_seconds": 0.0,
+    "preview_impact_seconds": 0.0,
+    "saved_layer_visibility": true,
+    "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+    "import_options": {
+      "compress/mode": "0",
+      "mipmaps/generate": "false",
+      "detect_3d/compress_to": "0",
+      "process/fix_alpha_border": "false",
+      "process/premult_alpha": "false",
+      "process/size_limit": "0"
+    },
+    "actor": {
+      "source": "assets/characters/merchant/abilities/fortune/merchant_fortune.aseprite",
+      "source_sha256": "5d985748b6849f7da76d046b18aff05965b4c4954fb4125c88681e971d4e0d62",
+      "sprite_frames": "res://assets/abilities/fortune/actor_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "9080016814348d9df86e5dec770e9de3ffecd515f340041f6a3ca4feaf81cc48",
+        "json": "715fa716382688a83212aa7c4e0a169fb6ddd46b9feb822b62b44f690ef3aa4f",
+        "sprite_frames": "986ceb6aa3794e3b87b528a87d4830935c28fe4ef311bf5c6f655c27ed3dd404"
+      },
+      "tags": {
+        "fortune_n": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        },
+        "fortune_e": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        },
+        "fortune_s": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        },
+        "fortune_w": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        }
+      }
+    },
+    "effects": [
+      {
+        "source": "abilities/fortune/fx/fortune.aseprite",
+        "role": "aura",
+        "tag": "fortune_loop",
+        "loop": true,
+        "duration_ms": 1000,
+        "canvas": [
+          38,
+          38
+        ],
+        "pivot": [
+          19,
+          19
+        ],
+        "asset": "fortune"
+      },
+      {
+        "source": "abilities/fortune/fx/prosperity.aseprite",
+        "role": "impact",
+        "tag": "prosperity",
+        "loop": false,
+        "duration_ms": 700,
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "asset": "prosperity"
+      }
+    ],
+    "assets": {
+      "fortune": {
+        "source": "assets/characters/merchant/abilities/fortune/fx/fortune.aseprite",
+        "source_sha256": "f5926771984dcfab491ca2e02acac0b68081af0991323ae722f7d48d1fdd1ac6",
+        "sprite_frames": "res://assets/abilities/fortune/fortune_frames.tres",
+        "canvas": [
+          38,
+          38
+        ],
+        "pivot": [
+          19,
+          19
+        ],
+        "sha256": {
+          "png": "cadb223ceabd98b9c6d4535c007c3ad32e9288417719d9b25bca1fa3d0a73ce6",
+          "json": "9ed103fcf0422fa0c5cf6595515ee5720765c6a97414a59d5d04a515084601d3",
+          "sprite_frames": "f90ba944a6451a1caf6385bdd2183f1c04501f19411e7b6478de1c35ffb81184"
+        },
+        "tags": {
+          "fortune_loop": {
+            "duration_ms": 1000,
+            "frame_count": 8,
+            "loop": true
+          }
+        }
+      },
+      "prosperity": {
+        "source": "assets/characters/merchant/abilities/fortune/fx/prosperity.aseprite",
+        "source_sha256": "f87f214f3392d2c48ea42fa99236f1288c623ce140c2f1e1ea4d10240713a777",
+        "sprite_frames": "res://assets/abilities/fortune/prosperity_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ],
+        "sha256": {
+          "png": "d710877cee0b59a943844f5a5924bee2ce2f2ae238465cbcc9ddfe9434abbeb5",
+          "json": "ce3ae01499c58a35f9d7b50bc56efe0e6e6abdbe346687dbf6147214899527c6",
+          "sprite_frames": "23bef326deaf35d05a5427a007dde2fdc39c919f37a906c36bda0804a723b8bd"
+        },
+        "tags": {
+          "prosperity": {
+            "duration_ms": 700,
+            "frame_count": 7,
+            "loop": false
+          }
+        }
+      }
+    },
+    "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+  }
+}

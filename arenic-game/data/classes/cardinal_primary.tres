@@ -2,7 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_6dvcp"]
 
+[ext_resource type="Resource" path="res://data/audio/abilities/heal.tres" id="2_audio"]
+
 [resource]
 script = ExtResource("1_6dvcp")
-title = "Beam"
-description = "Fire a straight beam across eight grid squares to hurt foes. Remain still while casting."
+audio_profile = ExtResource("2_audio")
+title = "Sacrifice"
+description = "Hold to channel at an enemy within 8 tiles, dealing 1 damage each second. Moving or releasing stops the channel. 1-second cooldown."
+ability_id = "heal"
+effect_kind = "channel"
+range_tiles = 8
+cooldown_seconds = 1.0
+duration_seconds = 0.0
+tick_seconds = 1.0
+damage = 1

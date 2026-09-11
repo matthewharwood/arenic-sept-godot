@@ -1,0 +1,223 @@
+{
+  "id": "acid_flask",
+  "hero": "alchemist",
+  "display_name": "Acid Flask",
+  "generator": "assets/pipeline/export-starter-abilities.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "release_seconds": 0.26,
+  "preview_impact_seconds": 1.06,
+  "saved_layer_visibility": true,
+  "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "actor": {
+    "source": "assets/characters/alchemist/abilities/acid_flask/alchemist_acid_flask.aseprite",
+    "source_sha256": "88ce1193136cdd3406f7dbd6b0a091e47fdaceb3c258da7ccb22fb4b4159e899",
+    "sprite_frames": "res://assets/abilities/acid_flask/actor_frames.tres",
+    "canvas": [
+      19,
+      19
+    ],
+    "pivot": [
+      9,
+      9
+    ],
+    "sha256": {
+      "png": "7d7c4cc2b240452b02a7f457bceb0f5edd604f0a0f309635816ad044145a0d94",
+      "json": "dbc1f5741dc11f85f05de53165dad2f75a7c10ba45b93771d7e775dde449893a",
+      "sprite_frames": "53f7638132a7179df9486c85e2ece696a8c7c2940cb64099d6e6e33ce0e84807"
+    },
+    "tags": {
+      "acid_flask_n": {
+        "duration_ms": 800,
+        "frame_count": 8,
+        "loop": false
+      },
+      "n_draw": {
+        "duration_ms": 260,
+        "frame_count": 3,
+        "loop": false
+      },
+      "n_release": {
+        "duration_ms": 60,
+        "frame_count": 1,
+        "loop": false
+      },
+      "n_recover": {
+        "duration_ms": 480,
+        "frame_count": 4,
+        "loop": false
+      },
+      "acid_flask_e": {
+        "duration_ms": 800,
+        "frame_count": 8,
+        "loop": false
+      },
+      "e_draw": {
+        "duration_ms": 260,
+        "frame_count": 3,
+        "loop": false
+      },
+      "e_release": {
+        "duration_ms": 60,
+        "frame_count": 1,
+        "loop": false
+      },
+      "e_recover": {
+        "duration_ms": 480,
+        "frame_count": 4,
+        "loop": false
+      },
+      "acid_flask_s": {
+        "duration_ms": 800,
+        "frame_count": 8,
+        "loop": false
+      },
+      "s_draw": {
+        "duration_ms": 260,
+        "frame_count": 3,
+        "loop": false
+      },
+      "s_release": {
+        "duration_ms": 60,
+        "frame_count": 1,
+        "loop": false
+      },
+      "s_recover": {
+        "duration_ms": 480,
+        "frame_count": 4,
+        "loop": false
+      },
+      "acid_flask_w": {
+        "duration_ms": 800,
+        "frame_count": 8,
+        "loop": false
+      },
+      "w_draw": {
+        "duration_ms": 260,
+        "frame_count": 3,
+        "loop": false
+      },
+      "w_release": {
+        "duration_ms": 60,
+        "frame_count": 1,
+        "loop": false
+      },
+      "w_recover": {
+        "duration_ms": 480,
+        "frame_count": 4,
+        "loop": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "source": "abilities/acid_flask/fx/flask.aseprite",
+      "role": "projectile",
+      "tag": "flight",
+      "loop": true,
+      "duration_ms": 800,
+      "asset": "flask"
+    },
+    {
+      "source": "abilities/acid_flask/fx/shatter.aseprite",
+      "role": "impact",
+      "tag": "shatter",
+      "loop": false,
+      "duration_ms": 600,
+      "asset": "shatter"
+    },
+    {
+      "source": "abilities/acid_flask/fx/acid_pool.aseprite",
+      "role": "field",
+      "tag": "bubble",
+      "loop": true,
+      "duration_ms": 1000,
+      "asset": "acid_pool"
+    }
+  ],
+  "assets": {
+    "flask": {
+      "source": "assets/characters/alchemist/abilities/acid_flask/fx/flask.aseprite",
+      "source_sha256": "d2d3328205e9eb05e3aedbb7112a0976d9f782afd819547d2f1fcd2ea073ce19",
+      "sprite_frames": "res://assets/abilities/acid_flask/flask_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "3ffa281d3a32053570f9c309fa193298a5a405f75344b1a303381011e523b0a1",
+        "json": "9d677bd15dec8a8671f0cdc3853bccea8ce8ed906e75e2e8242d0160c3eb1a89",
+        "sprite_frames": "937aa3d0cfc9eefd03f6e49258a90a723c5a70d72ff99b3711fcf59311ff5298"
+      },
+      "tags": {
+        "flight": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": true
+        }
+      }
+    },
+    "shatter": {
+      "source": "assets/characters/alchemist/abilities/acid_flask/fx/shatter.aseprite",
+      "source_sha256": "353a820e3cbdabdf24d60158d098d51f72fe87f098517e090b7bcf60163f434f",
+      "sprite_frames": "res://assets/abilities/acid_flask/shatter_frames.tres",
+      "canvas": [
+        38,
+        38
+      ],
+      "pivot": [
+        19,
+        19
+      ],
+      "sha256": {
+        "png": "226488fd171ff0c8383565ae1de20b3eb6b62770fdc2c6f2bae7bd5c8032d927",
+        "json": "d88229c421f194238b0a51a8d4683150adae429d5d11f6788ec0600983869281",
+        "sprite_frames": "76e0541cf79d11aecb46e04a3146769a6c5e52e8c6d43b94684286aebf51d991"
+      },
+      "tags": {
+        "shatter": {
+          "duration_ms": 600,
+          "frame_count": 6,
+          "loop": false
+        }
+      }
+    },
+    "acid_pool": {
+      "source": "assets/characters/alchemist/abilities/acid_flask/fx/acid_pool.aseprite",
+      "source_sha256": "5daa6e85f92f57763f12772cfd40b922b5aaea5b3d32afdb2ea5f76967f48fef",
+      "sprite_frames": "res://assets/abilities/acid_flask/acid_pool_frames.tres",
+      "canvas": [
+        38,
+        38
+      ],
+      "pivot": [
+        19,
+        19
+      ],
+      "sha256": {
+        "png": "fc0068539727519168336ddde3146ec42464b288b2c2dfce6365fcb08cd746eb",
+        "json": "79d5e832e7d012beb7d4b7281d65f01392f9edd1030fea4674a5a62479cdc12c",
+        "sprite_frames": "235cc7734691bf82eaf6d238c5c96220ded35cefc474b7256bfa07a6c79f6723"
+      },
+      "tags": {
+        "bubble": {
+          "duration_ms": 1000,
+          "frame_count": 6,
+          "loop": true
+        }
+      }
+    }
+  },
+  "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+}

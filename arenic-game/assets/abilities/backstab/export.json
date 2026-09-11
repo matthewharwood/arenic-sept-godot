@@ -1,0 +1,185 @@
+{
+  "id": "backstab",
+  "hero": "thief",
+  "display_name": "Backstab",
+  "generator": "assets/pipeline/export-starter-abilities.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "release_seconds": 0.0,
+  "preview_impact_seconds": 0.0,
+  "saved_layer_visibility": true,
+  "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "actor": {
+    "source": "assets/characters/thief/abilities/backstab/thief_backstab.aseprite",
+    "source_sha256": "781564105e3efcb385743cc371bca4e51b86e3f5600a8b4808df33bfd2514424",
+    "sprite_frames": "res://assets/abilities/backstab/actor_frames.tres",
+    "canvas": [
+      19,
+      19
+    ],
+    "pivot": [
+      9,
+      9
+    ],
+    "sha256": {
+      "png": "fabb7764ebd6d382352446511420b6b6d16382bf84a31c8e8bec39e333c1f5c1",
+      "json": "a27df44ec3df5973fe6137a0438c62af494228d800008316b37e6abae516e60f",
+      "sprite_frames": "a72220af4a71acf4e4a5cd21071017cbcd7bf6cc8154dae0ff580c9321360def"
+    },
+    "tags": {
+      "backstab_n": {
+        "duration_ms": 600,
+        "frame_count": 8,
+        "loop": false
+      },
+      "n_strike": {
+        "duration_ms": 150,
+        "frame_count": 3,
+        "loop": false
+      },
+      "n_recover": {
+        "duration_ms": 450,
+        "frame_count": 5,
+        "loop": false
+      },
+      "backstab_e": {
+        "duration_ms": 600,
+        "frame_count": 8,
+        "loop": false
+      },
+      "e_strike": {
+        "duration_ms": 150,
+        "frame_count": 3,
+        "loop": false
+      },
+      "e_recover": {
+        "duration_ms": 450,
+        "frame_count": 5,
+        "loop": false
+      },
+      "backstab_s": {
+        "duration_ms": 600,
+        "frame_count": 8,
+        "loop": false
+      },
+      "s_strike": {
+        "duration_ms": 150,
+        "frame_count": 3,
+        "loop": false
+      },
+      "s_recover": {
+        "duration_ms": 450,
+        "frame_count": 5,
+        "loop": false
+      },
+      "backstab_w": {
+        "duration_ms": 600,
+        "frame_count": 8,
+        "loop": false
+      },
+      "w_strike": {
+        "duration_ms": 150,
+        "frame_count": 3,
+        "loop": false
+      },
+      "w_recover": {
+        "duration_ms": 450,
+        "frame_count": 5,
+        "loop": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "source": "abilities/backstab/fx/slash.aseprite",
+      "role": "impact",
+      "tag": "slash_n",
+      "loop": false,
+      "duration_ms": 400,
+      "asset": "slash"
+    },
+    {
+      "source": "abilities/backstab/fx/bleed.aseprite",
+      "role": "aura",
+      "tag": "bleed",
+      "loop": true,
+      "duration_ms": 1000,
+      "asset": "bleed"
+    }
+  ],
+  "assets": {
+    "slash": {
+      "source": "assets/characters/thief/abilities/backstab/fx/slash.aseprite",
+      "source_sha256": "8bd19947a4472850037851f251bf5a233997e016ac56cc537713c8b2de6708c8",
+      "sprite_frames": "res://assets/abilities/backstab/slash_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "6abb233113ecf44ccc4a98564573410951362adaee1203f39d66275406a4ee83",
+        "json": "fa9d0662dfe7bd9978bf98d6807916cd3b8cdc9b9472c390a2e37d42063f26c7",
+        "sprite_frames": "23a838ef036b3da9fcc6cedac0a1288caa20660a7dd9f1d6fa071e055ae9848b"
+      },
+      "tags": {
+        "slash_n": {
+          "duration_ms": 400,
+          "frame_count": 6,
+          "loop": false
+        },
+        "slash_e": {
+          "duration_ms": 400,
+          "frame_count": 6,
+          "loop": false
+        },
+        "slash_s": {
+          "duration_ms": 400,
+          "frame_count": 6,
+          "loop": false
+        },
+        "slash_w": {
+          "duration_ms": 400,
+          "frame_count": 6,
+          "loop": false
+        }
+      }
+    },
+    "bleed": {
+      "source": "assets/characters/thief/abilities/backstab/fx/bleed.aseprite",
+      "source_sha256": "bca77052f7325988c1a565bb67dc6ae7a4cdc57ef340a6d03657867f32d28b53",
+      "sprite_frames": "res://assets/abilities/backstab/bleed_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "200b00393d3686edfa3bf29f2eacb8949da89c77edd20e874f800e30d4ad112c",
+        "json": "0eb1678aba42892c31fdb3fe2ca1f2d9af8728aa79070d73f93441e0be1bf1a2",
+        "sprite_frames": "440eeedbd84aed585c4446597f883ee27d47024f3d0eda6bed3eff1b428bdd86"
+      },
+      "tags": {
+        "bleed": {
+          "duration_ms": 1000,
+          "frame_count": 4,
+          "loop": true
+        }
+      }
+    }
+  },
+  "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+}

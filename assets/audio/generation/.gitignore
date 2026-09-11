@@ -1,0 +1,4 @@
+# Provider working filenames. Canonical MP3s and provenance are committed in
+# ../abilities/ and ../shared/; those originals are copied byte-identically.
+*
+!.gitignore

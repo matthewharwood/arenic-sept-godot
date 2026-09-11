@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "cardinal.heal.cast",
+  "exact_request": {
+    "text": "Dry, compact fantasy tactical-game sound. Controlled transients, restrained highs, mono-compatible, no speech, music, ambience, or long reverb. A subdued heartbeat opens into an outward sacrificial life-force pulse, warm but strained ethereal energy leaving the caster. No voice or spoken prayer, no healing-completion bell.",
+    "duration_seconds": 0.7,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/cardinal/heal/cast"
+  },
+  "requested_duration_seconds": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/cardinal/heal/cast/sfx_Dry,__20260910_162655.mp3",
+  "generated_at_utc": "2026-09-10T23:26:55.457Z",
+  "canonical_source": "assets/audio/abilities/cardinal/heal/cast_01.mp3",
+  "status": "generated",
+  "source_sha256": "05bef1214ce3ba80b7f0b751ecb32954eece2743d345da7c5630c81826e72715"
+}

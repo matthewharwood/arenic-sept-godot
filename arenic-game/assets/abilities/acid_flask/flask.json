@@ -1,0 +1,94 @@
+{ "frames": [
+   {
+    "filename": "flask 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "flask 1.aseprite",
+    "frame": { "x": 19, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "flask 2.aseprite",
+    "frame": { "x": 38, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "flask 3.aseprite",
+    "frame": { "x": 57, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "flask 4.aseprite",
+    "frame": { "x": 76, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "flask 5.aseprite",
+    "frame": { "x": 95, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "flask 6.aseprite",
+    "frame": { "x": 114, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "flask 7.aseprite",
+    "frame": { "x": 133, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.5-arm64",
+  "image": "flask.png",
+  "format": "RGBA8888",
+  "size": { "w": 152, "h": 19 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "flight", "from": 0, "to": 7, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Glass flask", "opacity": 255, "blendMode": "normal" },
+   { "name": "Liquid", "opacity": 255, "blendMode": "normal" },
+   { "name": "Flight droplets", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "frame", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 19, "h": 19 }, "pivot": {"x": 9, "y": 9 } }] }
+  ]
+ }
+}

@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "alchemist.acid_flask.cast",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. Small glass flask toss, liquid slosh and a quick airy whistle, alchemical fantasy.",
+    "duration_seconds": 0.7,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/alchemist/acid_flask/cast"
+  },
+  "requested_duration_seconds": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/alchemist/acid_flask/cast/sfx_Compa_20260910_162611.mp3",
+  "generated_at_utc": "2026-09-10T23:26:11.567Z",
+  "canonical_source": "assets/audio/abilities/alchemist/acid_flask/cast_01.mp3",
+  "status": "generated",
+  "source_sha256": "1334713b3b367d3ce5ab5b2da90fd2809126b57e61c206a4127c7346fc5e6fd8"
+}

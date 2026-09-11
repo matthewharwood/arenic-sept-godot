@@ -1,0 +1,243 @@
+[gd_resource type="Resource" format=3]
+
+[resource]
+metadata/abilities = {
+  "auto_shot": {
+    "release_seconds": 0.26,
+    "assets": {
+      "projectile": {
+        "sprite_frames": "res://assets/abilities/auto_shot/projectile_frames.tres",
+        "canvas": [
+          19,
+          9
+        ],
+        "pivot": [
+          17,
+          4
+        ]
+      },
+      "impact": {
+        "sprite_frames": "res://assets/abilities/auto_shot/impact_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      }
+    }
+  },
+  "bash": {
+    "release_seconds": 0.0,
+    "assets": {
+      "impact": {
+        "sprite_frames": "res://assets/abilities/bash/impact_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      },
+      "weakened": {
+        "sprite_frames": "res://assets/abilities/bash/weakened_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      }
+    }
+  },
+  "backstab": {
+    "release_seconds": 0.0,
+    "assets": {
+      "slash": {
+        "sprite_frames": "res://assets/abilities/backstab/slash_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      },
+      "bleed": {
+        "sprite_frames": "res://assets/abilities/backstab/bleed_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      }
+    }
+  },
+  "acid_flask": {
+    "release_seconds": 0.26,
+    "assets": {
+      "flask": {
+        "sprite_frames": "res://assets/abilities/acid_flask/flask_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      },
+      "shatter": {
+        "sprite_frames": "res://assets/abilities/acid_flask/shatter_frames.tres",
+        "canvas": [
+          38,
+          38
+        ],
+        "pivot": [
+          19,
+          19
+        ]
+      },
+      "acid_pool": {
+        "sprite_frames": "res://assets/abilities/acid_flask/acid_pool_frames.tres",
+        "canvas": [
+          38,
+          38
+        ],
+        "pivot": [
+          19,
+          19
+        ]
+      }
+    }
+  },
+  "heal": {
+    "release_seconds": 0.0,
+    "assets": {
+      "life_stream": {
+        "sprite_frames": "res://assets/abilities/heal/life_stream_frames.tres",
+        "canvas": [
+          76,
+          19
+        ],
+        "pivot": [
+          1,
+          9
+        ]
+      },
+      "receiving_glow": {
+        "sprite_frames": "res://assets/abilities/heal/receiving_glow_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      },
+      "healing_aura": {
+        "sprite_frames": "res://assets/abilities/heal/healing_aura_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      }
+    }
+  },
+  "cleanse": {
+    "release_seconds": 0.0,
+    "assets": {
+      "wave": {
+        "sprite_frames": "res://assets/abilities/cleanse/wave_frames.tres",
+        "canvas": [
+          76,
+          76
+        ],
+        "pivot": [
+          38,
+          38
+        ]
+      },
+      "cleansed": {
+        "sprite_frames": "res://assets/abilities/cleanse/cleansed_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      }
+    }
+  },
+  "dig": {
+    "release_seconds": 0.8,
+    "assets": {
+      "excavate": {
+        "sprite_frames": "res://assets/abilities/dig/excavate_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      },
+      "dug_ground": {
+        "sprite_frames": "res://assets/abilities/dig/dug_ground_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      }
+    }
+  },
+  "fortune": {
+    "release_seconds": 0.0,
+    "assets": {
+      "fortune": {
+        "sprite_frames": "res://assets/abilities/fortune/fortune_frames.tres",
+        "canvas": [
+          38,
+          38
+        ],
+        "pivot": [
+          19,
+          19
+        ]
+      },
+      "prosperity": {
+        "sprite_frames": "res://assets/abilities/fortune/prosperity_frames.tres",
+        "canvas": [
+          19,
+          19
+        ],
+        "pivot": [
+          9,
+          9
+        ]
+      }
+    }
+  }
+}

@@ -2,7 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_xk4a4"]
 
+[ext_resource type="Resource" path="res://data/audio/abilities/acid_flask.tres" id="2_audio"]
+
 [resource]
 script = ExtResource("1_xk4a4")
+audio_profile = ExtResource("2_audio")
 title = "Acid Flask"
-description = "Throw a bottle of acid onto a target tile, dealing damage over time to enemies passing through."
+description = "Throw acid at the nearest enemy tile within 8 tiles. After 0.8 seconds, enemies occupying that tile each take 1 damage. 4-second cooldown."
+ability_id = "acid_flask"
+effect_kind = "ground"
+range_tiles = 8
+cooldown_seconds = 4.0
+cast_seconds = 0.8
+release_seconds = 0.26
+damage = 1

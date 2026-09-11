@@ -1,0 +1,146 @@
+{
+  "id": "dig",
+  "hero": "forager",
+  "display_name": "Dig",
+  "generator": "assets/pipeline/export-starter-abilities.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "release_seconds": 0.8,
+  "preview_impact_seconds": 0.8,
+  "saved_layer_visibility": true,
+  "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "actor": {
+    "source": "assets/characters/forager/abilities/dig/forager_dig.aseprite",
+    "source_sha256": "56e036a42f024417a1884d5557cc19c36b5e48171fa41a77955084069bdcbf7d",
+    "sprite_frames": "res://assets/abilities/dig/actor_frames.tres",
+    "canvas": [
+      19,
+      19
+    ],
+    "pivot": [
+      9,
+      9
+    ],
+    "sha256": {
+      "png": "9899c5cec80af6dda109afc55d5eeb62a04d5cc235189d5c609a55d9095fcc33",
+      "json": "75f856518e634f9ca2d0a7e3aa6c3450679718680f373b4c3883f9f4f7416ac8",
+      "sprite_frames": "05958306c2f99d0bc9c43ba839518dd4913a1842030fbd01262a51063bfbc155"
+    },
+    "tags": {
+      "dig_n": {
+        "duration_ms": 800,
+        "frame_count": 8,
+        "loop": false
+      },
+      "dig_e": {
+        "duration_ms": 800,
+        "frame_count": 8,
+        "loop": false
+      },
+      "dig_s": {
+        "duration_ms": 800,
+        "frame_count": 8,
+        "loop": false
+      },
+      "dig_w": {
+        "duration_ms": 800,
+        "frame_count": 8,
+        "loop": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "source": "abilities/dig/fx/excavate.aseprite",
+      "role": "impact",
+      "tag": "excavate",
+      "loop": false,
+      "duration_ms": 800,
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "asset": "excavate"
+    },
+    {
+      "source": "abilities/dig/fx/dug_ground.aseprite",
+      "role": "field",
+      "tag": "dug",
+      "loop": true,
+      "duration_ms": 1000,
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "asset": "dug_ground"
+    }
+  ],
+  "assets": {
+    "excavate": {
+      "source": "assets/characters/forager/abilities/dig/fx/excavate.aseprite",
+      "source_sha256": "0b14f152fb8db8b10633854af58f23761512ef08beecc9ef7655ed1e2d8ecd76",
+      "sprite_frames": "res://assets/abilities/dig/excavate_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "9b090d89512a8e241dd715dc85468b856046109db6d9af194cb801f937a3b34e",
+        "json": "d53e3b9726670e9d0fe251b0becef5d86018716224043e5240d0918fd7f8b91c",
+        "sprite_frames": "98ed69e1b94eef65abc0d978f40b4aa76ad80bbcdc718fd28cff91694105dbb5"
+      },
+      "tags": {
+        "excavate": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        }
+      }
+    },
+    "dug_ground": {
+      "source": "assets/characters/forager/abilities/dig/fx/dug_ground.aseprite",
+      "source_sha256": "dca014c6987f17d4583fd9aed1b3892532e64d1f28279ad92367f9ff6ac9afae",
+      "sprite_frames": "res://assets/abilities/dig/dug_ground_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "a9566522f144c2e77ff2d5a4343cc9f8830ea223b997a3dbe602bccaec1d0812",
+        "json": "5ef4ca3b98f108338b13cfc9391323fc167e8aca6964a84c77eda1f5b2587a9a",
+        "sprite_frames": "cba8b8655b6eb689a8de4b288c1284a25ed040bdf47bbc328a47ab1a0e91643d"
+      },
+      "tags": {
+        "dug": {
+          "duration_ms": 1000,
+          "frame_count": 8,
+          "loop": true
+        }
+      }
+    }
+  },
+  "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+}

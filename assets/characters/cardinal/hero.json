@@ -7,7 +7,7 @@
       "id": "heal",
       "name": "Sacrifice",
       "slot": 1,
-      "description": "Channel the Cardinal’s own vitality to one ally as an outward crimson stream and a gentle gold receiving glow.",
+      "description": "Channel the Cardinal\u2019s own vitality to one ally as an outward crimson stream and a gentle gold receiving glow.",
       "source_doc": "../arenic_bevy/_docs/abilities/cardinal/heal.md",
       "actor": "abilities/heal/cardinal_heal.aseprite",
       "frames_per_direction": 9,
@@ -54,17 +54,17 @@
       ],
       "audio": {
         "cast": {
-          "description": "Soft heartbeat and ethereal outward life-force whoosh, immediate divine connection.",
+          "description": "A subdued heartbeat opens into an outward sacrificial life-force pulse, warm but strained ethereal energy leaving the caster. No voice or spoken prayer, no healing-completion bell.",
           "duration_seconds": 0.7,
           "loop": false
         },
         "impact": {
-          "description": "Gentle golden healing chime with a warm breath of restoration at the receiving ally.",
+          "description": "One short outward sacrificial energy hit: a soft low pulse and compact crystalline bite at an enemy, clear restrained damage tick, no voice, no prayer, no restoration flourish.",
           "duration_seconds": 0.8,
           "loop": false
         },
         "sustain": {
-          "description": "Seamless calm heartbeat and ethereal life-stream hum, subdued and warm.",
+          "description": "Seamless sustained outward sacrificial life-stream: subdued warm ethereal hum with a quiet steady heartbeat texture, restrained tension, no voice or prayer, no rhythmic impact events, no attack or ending.",
           "duration_seconds": 2.0,
           "loop": true
         }
@@ -133,7 +133,7 @@
         }
       },
       "notes": [
-        "One selected ally, not a group-wide shield; game owns round-robin selection within 8×8.",
+        "One selected ally, not a group-wide shield; game owns round-robin selection within 8\u00d78.",
         "Instant application,12 s lifetime,75 HP absorption,20 percent reduction,5 s cooldown."
       ]
     },
@@ -197,7 +197,7 @@
         }
       },
       "notes": [
-        "8-tile straight beam,1-tile gameplay width;152×19 art.",
+        "8-tile straight beam,1-tile gameplay width;152\u00d719 art.",
         "Instant simultaneous damage/healing at release;1500 ms visual does not add a damage delay.",
         "Preview boss is a demo endpoint only; ability pierces enemies and heals allies in the full line."
       ]
@@ -270,7 +270,7 @@
         }
       },
       "notes": [
-        "Game owns 4×4 revival selection and 50 percent restored health; wave attaches to each fallen ally.",
+        "Game owns 4\u00d74 revival selection and 50 percent restored health; wave attaches to each fallen ally.",
         "Game owns 60 s cooldown and 15 s team telegraph enhancement; no invulnerability upgrade.",
         "Damage interrupts the 2 s channel; no upright light columns in the overhead art."
       ]

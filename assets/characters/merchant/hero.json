@@ -246,31 +246,31 @@
       ],
       "audio": {
         "cast": {
-          "description": "A purse opens with a rich handful of coins and a warm enchanted prosperity chord. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "description": "One warm enchanted golden aura opening, a small metallic charm vibrating into a soft magical shimmer. No money exchange, coins pouring, cash register, payout or victory flourish.",
           "duration_seconds": 0.8,
           "loop": false
         },
         "impact": {
-          "description": "A delicate treasure discovery sparkle, gem chinks and a soft lucky chime. Fantasy tactical game sound effect, isolated, no voice, no speech.",
-          "duration_seconds": 0.8,
+          "description": "One very short compact enchanted damage tick: soft golden metallic ping with a small dry low pulse and tiny sparkle. No coins, cash register, treasure discovery or currency payout.",
+          "duration_seconds": 0.5,
           "loop": false
         },
         "sustain": {
-          "description": "Seamless restrained golden aura hum with occasional coin chimes, warm prosperous ambience, no cash-register rhythm. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "description": "Seamless restrained golden magical aura hum, warm sustained shimmer with soft restrained highs. No coin sounds, no cash register, no payout, no music progression, no attack or ending.",
           "duration_seconds": 2,
           "loop": true
         }
       },
       "notes": [
         "Aura is economic support, not damage, healing or guaranteed loot.",
-        "38×38 accent does not define gameplay radius; range 2 tiles, duration 20 seconds, cooldown 45 seconds remain gameplay-owned."
+        "38\u00d738 accent does not define gameplay radius; range 2 tiles, duration 20 seconds, cooldown 45 seconds remain gameplay-owned."
       ]
     },
     {
       "id": "vault",
       "name": "Vault",
       "slot": 4,
-      "description": "Instantly place a 4×4 zone up to three tiles away, doubling critical-hit damage for occupants for 10 seconds.",
+      "description": "Instantly place a 4\u00d74 zone up to three tiles away, doubling critical-hit damage for occupants for 10 seconds.",
       "source_doc": "../arenic_bevy/_docs/abilities/merchant/vault.md",
       "actor": "abilities/vault/merchant_vault.aseprite",
       "frames_per_direction": 6,
@@ -355,7 +355,7 @@
       },
       "notes": [
         "Buff zone activates immediately. Opening animation adds no gameplay delay.",
-        "76×76 canvas shows exact 4×4 cells. Base 10-second zone,cooldown 30 seconds; no fortress or defensive bonuses."
+        "76\u00d776 canvas shows exact 4\u00d74 cells. Base 10-second zone,cooldown 30 seconds; no fortress or defensive bonuses."
       ]
     }
   ]

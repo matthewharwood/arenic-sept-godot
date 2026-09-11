@@ -1,0 +1,228 @@
+{
+  "id": "heal",
+  "hero": "cardinal",
+  "display_name": "Sacrifice",
+  "generator": "assets/pipeline/export-starter-abilities.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "release_seconds": 0.0,
+  "preview_impact_seconds": 0.0,
+  "saved_layer_visibility": true,
+  "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "actor": {
+    "source": "assets/characters/cardinal/abilities/heal/cardinal_heal.aseprite",
+    "source_sha256": "f072ab4d34f3cb2d77968071ee5ef55e94efbbea82999c04a99a115c9758010d",
+    "sprite_frames": "res://assets/abilities/heal/actor_frames.tres",
+    "canvas": [
+      19,
+      19
+    ],
+    "pivot": [
+      9,
+      9
+    ],
+    "sha256": {
+      "png": "1f1772a73b999ac418b47f9dcb4cec1765c6aad2494e67e971722a112505dfcf",
+      "json": "49a6d25e0a0b6eea5ec9eab530f4e99058d7f452c9138a87b59165c4c3486b85",
+      "sprite_frames": "67d69693b1f744e8e15285fc25ffcf997bdb8dfdee28e23772d9749d07aac808"
+    },
+    "tags": {
+      "heal_n": {
+        "duration_ms": 1300,
+        "frame_count": 9,
+        "loop": false
+      },
+      "n_connect": {
+        "duration_ms": 300,
+        "frame_count": 3,
+        "loop": false
+      },
+      "n_channel": {
+        "duration_ms": 800,
+        "frame_count": 4,
+        "loop": true
+      },
+      "n_release": {
+        "duration_ms": 200,
+        "frame_count": 2,
+        "loop": false
+      },
+      "heal_e": {
+        "duration_ms": 1300,
+        "frame_count": 9,
+        "loop": false
+      },
+      "e_connect": {
+        "duration_ms": 300,
+        "frame_count": 3,
+        "loop": false
+      },
+      "e_channel": {
+        "duration_ms": 800,
+        "frame_count": 4,
+        "loop": true
+      },
+      "e_release": {
+        "duration_ms": 200,
+        "frame_count": 2,
+        "loop": false
+      },
+      "heal_s": {
+        "duration_ms": 1300,
+        "frame_count": 9,
+        "loop": false
+      },
+      "s_connect": {
+        "duration_ms": 300,
+        "frame_count": 3,
+        "loop": false
+      },
+      "s_channel": {
+        "duration_ms": 800,
+        "frame_count": 4,
+        "loop": true
+      },
+      "s_release": {
+        "duration_ms": 200,
+        "frame_count": 2,
+        "loop": false
+      },
+      "heal_w": {
+        "duration_ms": 1300,
+        "frame_count": 9,
+        "loop": false
+      },
+      "w_connect": {
+        "duration_ms": 300,
+        "frame_count": 3,
+        "loop": false
+      },
+      "w_channel": {
+        "duration_ms": 800,
+        "frame_count": 4,
+        "loop": true
+      },
+      "w_release": {
+        "duration_ms": 200,
+        "frame_count": 2,
+        "loop": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "source": "abilities/heal/fx/life_stream.aseprite",
+      "role": "beam",
+      "tag": "transfer",
+      "loop": true,
+      "duration_ms": 800,
+      "asset": "life_stream"
+    },
+    {
+      "source": "abilities/heal/fx/receiving_glow.aseprite",
+      "role": "impact",
+      "tag": "receive",
+      "loop": false,
+      "duration_ms": 500,
+      "asset": "receiving_glow"
+    },
+    {
+      "source": "abilities/heal/fx/healing_aura.aseprite",
+      "role": "aura",
+      "tag": "restore",
+      "loop": true,
+      "duration_ms": 1000,
+      "asset": "healing_aura"
+    }
+  ],
+  "assets": {
+    "life_stream": {
+      "source": "assets/characters/cardinal/abilities/heal/fx/life_stream.aseprite",
+      "source_sha256": "7dec82b7d3eace2dcb25c15f16d12f7c8d3325db8bcf7c86f3da6e2951e757f1",
+      "sprite_frames": "res://assets/abilities/heal/life_stream_frames.tres",
+      "canvas": [
+        76,
+        19
+      ],
+      "pivot": [
+        1,
+        9
+      ],
+      "sha256": {
+        "png": "e9d9583380d6f2d9af43fc4e6e40b36020d9a73d0b5068bfdbb8a43436d2687b",
+        "json": "513423887fa6457d779c5869daaf959b1a679590e6222b797551ee48aebfc615",
+        "sprite_frames": "5555913504a842edd2d0beb6974d3b228d02043aab1081333849ad0f930625d5"
+      },
+      "tags": {
+        "transfer": {
+          "duration_ms": 800,
+          "frame_count": 4,
+          "loop": true
+        },
+        "dissipate": {
+          "duration_ms": 500,
+          "frame_count": 4,
+          "loop": false
+        }
+      }
+    },
+    "receiving_glow": {
+      "source": "assets/characters/cardinal/abilities/heal/fx/receiving_glow.aseprite",
+      "source_sha256": "b1a07234865bd71dec5a650a76112150ffe5edb8333a70da870403e8f08d8c88",
+      "sprite_frames": "res://assets/abilities/heal/receiving_glow_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "5fcce9c3a80b78a76e93ca6b5e2ae988f90204b530943424669cd97b18bfc0d9",
+        "json": "8f432917d8401c2382f3d525f7b6d8ba877b749746a98942c654ad86c0298d6c",
+        "sprite_frames": "94ab18d3c8deacd76e54d0b9c016f342e86e06375a099b1ba72323f731382e9c"
+      },
+      "tags": {
+        "receive": {
+          "duration_ms": 500,
+          "frame_count": 5,
+          "loop": false
+        }
+      }
+    },
+    "healing_aura": {
+      "source": "assets/characters/cardinal/abilities/heal/fx/healing_aura.aseprite",
+      "source_sha256": "802e6c949d11c510c3f4ecd46158a9459b2e1cd91665a7a09e3f5be7eb3eff21",
+      "sprite_frames": "res://assets/abilities/heal/healing_aura_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "65d7b2f387017ba736a604fc87b42c32cd1eda90d61d1250fe51721b0fead760",
+        "json": "4b2ff74c681b380e715e3e670f21ad98c2f8050a9c86c8f414b9d690fca6fe72",
+        "sprite_frames": "fd4710c909be9fe2a13ec2369f8c138cd2a38f407a947a3b46fff95569df49c5"
+      },
+      "tags": {
+        "restore": {
+          "duration_ms": 1000,
+          "frame_count": 6,
+          "loop": true
+        }
+      }
+    }
+  },
+  "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+}

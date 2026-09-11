@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "warrior.bash.cast",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. Heavy shield thrust with leather strap and a quick armored air rush. Isolated game sound effect, no music, no speech, clean short tail.",
+    "duration_seconds": 0.7,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/warrior/bash/cast"
+  },
+  "requested_duration_seconds": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/warrior/bash/cast/sfx_Compa_20260910_162523.mp3",
+  "generated_at_utc": "2026-09-10T23:25:23.517Z",
+  "canonical_source": "assets/audio/abilities/warrior/bash/cast_01.mp3",
+  "status": "generated",
+  "source_sha256": "09b88c2a0ea63fb3888da78b23c4d36fbaf26e490599085c017c9cd5fac2ae26"
+}

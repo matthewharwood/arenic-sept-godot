@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "shared.move",
+  "exact_request": {
+    "text": "Compact fantasy tactical game UI movement sound, one quiet single leather boot footstep on smooth worn stone: soft dry tap, tiny cloth swish, rounded restrained transient. Exactly one step, immediately audible, short clean tail within half a second. Centered mono-compatible, no speech, no music, no environmental ambience, no reverb, no sequence of footsteps.",
+    "duration_seconds": 0.5,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/shared/move"
+  },
+  "requested_duration_seconds": 0.5,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/shared/move/sfx_Compa_20260910_162331.mp3",
+  "generated_at_utc": "2026-09-10T23:23:33.121Z",
+  "canonical_source": "assets/audio/shared/move_01.mp3",
+  "status": "generated",
+  "source_sha256": "fa0b644238f20288b5f02f9af3b35fc4aecde35ac0c5ecbf9b0fc6854679d612"
+}

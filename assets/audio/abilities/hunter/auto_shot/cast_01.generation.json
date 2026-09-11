@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "hunter.auto_shot.cast",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. One taut wooden recurve bowstring twang with a light arrow whisk away.",
+    "duration_seconds": 0.5,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/hunter/auto_shot/cast"
+  },
+  "requested_duration_seconds": 0.5,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/hunter/auto_shot/cast/sfx_Compa_20260910_162355.mp3",
+  "generated_at_utc": "2026-09-10T23:23:55.673Z",
+  "canonical_source": "assets/audio/abilities/hunter/auto_shot/cast_01.mp3",
+  "status": "generated",
+  "source_sha256": "b7f653a67d5cb48f3d0e9d0ec84cad9d0e8ed00d8707fa3492165e034ead3209"
+}

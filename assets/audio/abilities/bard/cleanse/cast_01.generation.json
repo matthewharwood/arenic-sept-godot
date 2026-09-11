@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "bard.cleanse.cast",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. A pure brilliant lute chord releasing an instant cleansing harmony. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+    "duration_seconds": 0.7,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/bard/cleanse/cast"
+  },
+  "requested_duration_seconds": 0.7,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/bard/cleanse/cast/sfx_Compa_20260910_162704.mp3",
+  "generated_at_utc": "2026-09-10T23:27:04.699Z",
+  "canonical_source": "assets/audio/abilities/bard/cleanse/cast_01.mp3",
+  "status": "generated",
+  "source_sha256": "942c6df5d72f2092d3675a3c505a5c585995b0ef46e64b0c807d950bec844d05"
+}

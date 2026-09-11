@@ -81,7 +81,7 @@
           "loop": false
         },
         "impact": {
-          "description": "Loose earth settling and a small discovered rock tumbling into a pouch, gentle resource chime. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+          "description": "A compact earthy impact: loose soil and one small stone crack with a short low thump, clear restrained damage feedback. No resource reward chime, no treasure discovery.",
           "duration_seconds": 0.7,
           "loop": false
         }
@@ -95,7 +95,7 @@
       "id": "bolder",
       "name": "Boulder",
       "slot": 2,
-      "description": "Spend two rocks to launch a 2×2 rolling boulder at four tiles per second until a solid obstruction.",
+      "description": "Spend two rocks to launch a 2\u00d72 rolling boulder at four tiles per second until a solid obstruction.",
       "source_doc": "../arenic_bevy/_docs/abilities/forager/bolder.md",
       "actor": "abilities/bolder/forager_bolder.aseprite",
       "frames_per_direction": 8,
@@ -270,7 +270,7 @@
       },
       "notes": [
         "One-cell barrier persists 60 seconds and deflects friendly and hostile projectiles.",
-        "Preview must require/stage dug ground; no upgraded 2×2 barrier or melee-health bonus."
+        "Preview must require/stage dug ground; no upgraded 2\u00d72 barrier or melee-health bonus."
       ]
     },
     {

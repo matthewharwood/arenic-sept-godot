@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="ArenicAbilitySoundProfile" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/audio/ability_sound_profile.gd" id="1_profile"]
+[ext_resource type="Script" path="res://scripts/audio/sound_cue.gd" id="2_cue"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/heal/cast.wav" id="3_cast"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/heal/impact.wav" id="4_impact"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/heal/sustain.wav" id="5_sustain"]
+
+[sub_resource type="Resource" id="Cue_cast"]
+script = ExtResource("2_cue")
+stream = ExtResource("3_cast")
+volume_db = 2.0
+max_instances = 2
+min_interval_seconds = 0.045
+priority = 60
+loop = false
+fade_out_seconds = 0.035
+
+[sub_resource type="Resource" id="Cue_impact"]
+script = ExtResource("2_cue")
+stream = ExtResource("4_impact")
+volume_db = 3.0
+max_instances = 3
+min_interval_seconds = 0.045
+priority = 80
+loop = false
+fade_out_seconds = 0.035
+
+[sub_resource type="Resource" id="Cue_sustain"]
+script = ExtResource("2_cue")
+stream = ExtResource("5_sustain")
+volume_db = 1.0
+max_instances = 1
+min_interval_seconds = 0.045
+priority = 40
+loop = true
+fade_out_seconds = 0.035
+
+[resource]
+script = ExtResource("1_profile")
+charge = null
+cast = SubResource("Cue_cast")
+impact = SubResource("Cue_impact")
+sustain = SubResource("Cue_sustain")
+end = null
+cancel = null

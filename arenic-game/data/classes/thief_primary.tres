@@ -2,7 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_rf2t0"]
 
+[ext_resource type="Resource" path="res://data/audio/abilities/backstab.tres" id="2_audio"]
+
 [resource]
 script = ExtResource("1_rf2t0")
+audio_profile = ExtResource("2_audio")
 title = "Backstab"
-description = "Strike from behind to gain a positional advantage."
+description = "Strike an adjacent enemy from strictly behind its facing for 1 damage. 0.2-second windup; 1.5-second cooldown."
+ability_id = "backstab"
+effect_kind = "target"
+range_tiles = 1
+requires_adjacent = true
+requires_backstab = true
+cooldown_seconds = 1.5
+cast_seconds = 0.2
+damage = 1

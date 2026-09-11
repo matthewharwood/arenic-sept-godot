@@ -410,10 +410,29 @@ func _check_focused_style(index: int) -> bool:
 	for card: Node in _shell.stage.labels.get_children():
 		if not _check(not (card as Control).visible, "Focused arena view removes every overview label."):
 			return false
-	for action: String in ["Roster", "Loot", "Auction", "Craft"]:
-		var button := bottom.get_node(action) as Button
-		if not _check(button.disabled and button.mouse_filter == Control.MOUSE_FILTER_IGNORE, "Unavailable actions remain dormant and do not intercept world input."):
+	var ability := bottom.get_node("AbilityAction") as Button
+	if not _check(ability.mouse_filter == Control.MOUSE_FILTER_STOP and ability.focus_mode == Control.FOCUS_NONE, "The real ability control accepts pointer input without stealing map keyboard focus."):
+		return false
+	if not _check(Rect2(Vector2.ZERO, bottom.size).encloses(ability.get_rect()) and not SAFE_RECT.intersects(ability.get_global_rect()), "The ability action stays entirely in the bottom HUD and never covers the world."):
+		return false
+	var theme: ArenicArenaTheme = arena.definition.visual_theme
+	if not _check(ability.get_theme_color("font_color").is_equal_approx(theme.color("base_content")) and ability.get_theme_color("font_pressed_color").is_equal_approx(theme.color("primary")), "Ability text and pressed accent follow the selected arena palette."):
+		return false
+	for state_name: String in ["normal", "hover", "pressed", "disabled"]:
+		var style := ability.get_theme_stylebox(state_name) as StyleBoxFlat
+		if not _check(style != null and style.corner_radius_top_left == 0 and style.corner_radius_top_right == 0 and style.corner_radius_bottom_left == 0 and style.corner_radius_bottom_right == 0 and style.shadow_size == 0 and style.shadow_offset.is_zero_approx(), "Every ability button state remains square and shadow-free."):
 			return false
+		var token: String = "base_200" if state_name == "normal" else ("base_100" if state_name == "disabled" else "base_300")
+		if not _check(style.bg_color.is_equal_approx(theme.color(token)), "Focused ability surfaces use the selected arena's source palette."):
+			return false
+	if not _check(top.get_rect().is_equal_approx(Rect2(0.0, 0.0, _shell.hud.size.x, 35.0)) and bottom.get_rect().is_equal_approx(Rect2(0.0, _shell.hud.size.y - 96.0, _shell.hud.size.x, 96.0)), "The actionable HUD retains full-width top and bottom strips without outer margins."):
+		return false
+	if not _check(top_style.border_width_top == 0 and top_style.border_width_left == 0 and top_style.border_width_right == 0 and top_style.border_width_bottom == 1 and bottom_style.border_width_bottom == 0 and bottom_style.border_width_left == 0 and bottom_style.border_width_right == 0 and bottom_style.border_width_top == 1, "Full-width strips retain only their inner separators."):
+		return false
+	var damage_bar := top.get_node("DamageBar") as ArenicArenaDamageBar
+	var damage_material := damage_bar.material as ShaderMaterial
+	if not _check(damage_bar.visible and damage_bar.get_rect().is_equal_approx(Rect2(0.0, 0.0, _shell.hud.size.x, 9.0)) and damage_bar.mouse_filter == Control.MOUSE_FILTER_IGNORE and int(damage_material.get_shader_parameter("pattern_id")) == theme.atmosphere_id, "The themed damage strip stays full-width, square and outside the input path."):
+		return false
 	var cell_center: Vector3 = ArenicGridMath.tile_to_world(arena.definition.grid_slot, Vector2i(32, 15))
 	var screen: Vector2 = rig.world_to_screen(cell_center)
 	var next: Vector2 = rig.world_to_screen(cell_center + Vector3(ArenicGridMath.TILE_SIZE, 0.0, 0.0))

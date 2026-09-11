@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "cardinal.heal.sustain",
+  "exact_request": {
+    "text": "Dry, compact fantasy tactical-game sound. Controlled transients, restrained highs, mono-compatible, no speech, music, ambience, or long reverb. Seamless sustained outward sacrificial life-stream: subdued warm ethereal hum with a quiet steady heartbeat texture, restrained tension, no voice or prayer, no rhythmic impact events, no attack or ending.",
+    "duration_seconds": 2,
+    "loop": true,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/cardinal/heal/sustain"
+  },
+  "requested_duration_seconds": 2,
+  "loop": true,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/cardinal/heal/sustain/sfx_Dry,__20260910_162736.mp3",
+  "generated_at_utc": "2026-09-10T23:27:36.533Z",
+  "canonical_source": "assets/audio/abilities/cardinal/heal/sustain_01.mp3",
+  "status": "generated",
+  "source_sha256": "41505e98fc5fe7bc3e4113c778b1705151a2f854562be7609e4d7c7083f76f09"
+}

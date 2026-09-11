@@ -1,0 +1,170 @@
+{
+  "id": "bash",
+  "hero": "warrior",
+  "display_name": "Bash",
+  "generator": "assets/pipeline/export-starter-abilities.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "release_seconds": 0.0,
+  "preview_impact_seconds": 0.0,
+  "saved_layer_visibility": true,
+  "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "actor": {
+    "source": "assets/characters/warrior/abilities/bash/warrior_bash.aseprite",
+    "source_sha256": "ad7909038850dee2b146c37810668eec83e986f5f9008334d2ae856ac14bedcc",
+    "sprite_frames": "res://assets/abilities/bash/actor_frames.tres",
+    "canvas": [
+      19,
+      19
+    ],
+    "pivot": [
+      9,
+      9
+    ],
+    "sha256": {
+      "png": "de0082c152e398aec3daf6e11bdaf64b32281f2d6620f17af3d152fd56ccc290",
+      "json": "410284666312fad916c03615acc0185dc350bc8d9543ff322b3727c361feabbc",
+      "sprite_frames": "67368a9d5e44f9d93c99206e15f79949103a034882d8de85004afe217d352698"
+    },
+    "tags": {
+      "bash_n": {
+        "duration_ms": 500,
+        "frame_count": 6,
+        "loop": false
+      },
+      "n_strike": {
+        "duration_ms": 100,
+        "frame_count": 2,
+        "loop": false
+      },
+      "n_recover": {
+        "duration_ms": 400,
+        "frame_count": 4,
+        "loop": false
+      },
+      "bash_e": {
+        "duration_ms": 500,
+        "frame_count": 6,
+        "loop": false
+      },
+      "e_strike": {
+        "duration_ms": 100,
+        "frame_count": 2,
+        "loop": false
+      },
+      "e_recover": {
+        "duration_ms": 400,
+        "frame_count": 4,
+        "loop": false
+      },
+      "bash_s": {
+        "duration_ms": 500,
+        "frame_count": 6,
+        "loop": false
+      },
+      "s_strike": {
+        "duration_ms": 100,
+        "frame_count": 2,
+        "loop": false
+      },
+      "s_recover": {
+        "duration_ms": 400,
+        "frame_count": 4,
+        "loop": false
+      },
+      "bash_w": {
+        "duration_ms": 500,
+        "frame_count": 6,
+        "loop": false
+      },
+      "w_strike": {
+        "duration_ms": 100,
+        "frame_count": 2,
+        "loop": false
+      },
+      "w_recover": {
+        "duration_ms": 400,
+        "frame_count": 4,
+        "loop": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "source": "abilities/bash/fx/impact.aseprite",
+      "role": "impact",
+      "tag": "impact",
+      "loop": false,
+      "duration_ms": 400,
+      "asset": "impact"
+    },
+    {
+      "source": "abilities/bash/fx/weakened.aseprite",
+      "role": "aura",
+      "tag": "weakened",
+      "loop": true,
+      "duration_ms": 1000,
+      "asset": "weakened"
+    }
+  ],
+  "assets": {
+    "impact": {
+      "source": "assets/characters/warrior/abilities/bash/fx/impact.aseprite",
+      "source_sha256": "874a757aae86a94a7e1310f301585b997c62e60634b42a9ae39024088d00505d",
+      "sprite_frames": "res://assets/abilities/bash/impact_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "d0b45a7f7ff84d4dfd613d4fa449954a982bea4f7fa18b3b2d40b45070c2e06a",
+        "json": "35ae7e93c8350703b547c735fabe4a710988bda3e370acee244b3de843ada7da",
+        "sprite_frames": "6b2aa4a41835d78e536ae741b76b9f7fc091a5119c448ee9260a4178670a1265"
+      },
+      "tags": {
+        "impact": {
+          "duration_ms": 400,
+          "frame_count": 6,
+          "loop": false
+        }
+      }
+    },
+    "weakened": {
+      "source": "assets/characters/warrior/abilities/bash/fx/weakened.aseprite",
+      "source_sha256": "5dbfd842a191809d7ea6e32b5d722cfce6ea2529f5b647e8b164c6cf0a74b598",
+      "sprite_frames": "res://assets/abilities/bash/weakened_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "0450621e9cfceb176136287cd6567593e7a82232bffaa126684f3165dc873103",
+        "json": "3aaf130e38881edb87f14f439c2edafb26ac98a2e1c1946db7bc0457e59b2b69",
+        "sprite_frames": "aca5beb881a50f2cb95204b3b7a1d9da6e134b1c2253753e1ea6c88246dd6a16"
+      },
+      "tags": {
+        "weakened": {
+          "duration_ms": 1000,
+          "frame_count": 4,
+          "loop": true
+        }
+      }
+    }
+  },
+  "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+}

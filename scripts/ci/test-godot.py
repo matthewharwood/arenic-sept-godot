@@ -22,7 +22,8 @@ HEADLESS = (
     "world/grid_checks", "world/camera_checks", "world/flow_checks",
     "heroes/hero_checks", "heroes/hero_flow_checks", "bosses/catalog_checks",
     "themes/theme_checks", "themes/region_checks", "world/transition_checks",
-    "audio/clock_checks", "audio/music_checks",
+    "audio/clock_checks", "audio/music_checks", "audio/sfx_checks",
+    "combat/combat_checks", "combat/flow_checks", "combat/presentation_checks", "ui/damage_bar_checks",
 )
 RENDERER = (
     "world/arena_tiles_checks", "themes/presentation_checks", "themes/overworld_checks",

@@ -38,47 +38,11 @@ Held channels and guards have separate loop tags. Cardinal Sacrifice flows outwa
 
 ## Resolution and grid contract
 
-Use a **1280 × 720 logical art viewport** with a **1280 × 720 default window**.
-At 1× output scale with one arena framed, one source pixel is one display pixel
-and each hero’s frame is exactly **19 × 19 on screen**. A **66 × 31** arena of
-19-pixel cells occupies **1254 × 589 pixels**. The overworld HUD leaves precisely
-that rectangle at `(13, 35)`, with 13-pixel side insets, 35 pixels above, and 96 below.
-The grid defines the actor's one-cell occupancy; transparent frame pixels do not
-define its collision geometry.
+Use a **1280 × 720 logical art layout**. At 1× output scale with one arena framed, one source pixel is one display pixel and each hero’s frame is exactly **19 × 19**. A **66 × 31** arena of 19-pixel cells occupies **1254 × 589 logical pixels** at `(13, 35)`: 13-pixel side insets, 35 above, and 96 below. Inspect art previews at native or whole-number scale with nearest filtering.
 
-Scale the single source with nearest-neighbor filtering and whole-number scale
-factors. Center the game image when a display cannot fit the next integer scale.
+The [Godot overworld](../docs/overworld.md) uses a native orthographic `Camera3D` and real 0.25-unit tiles. `GameShell` retains the 1280 × 720 logical layout with `CANVAS_ITEMS` / `KEEP` and fractional stretch, rendering at the actual window resolution. Sprites remain nearest-filtered. At 2× output, a focused hero occupies 38 × 38 physical pixels; fractional scales may give uneven physical pixel widths. `DisplayPolicy` owns desktop window sizing, including Retina density. See [display rendering](../docs/display-rendering.md); do not impose integer-only letterboxing on the runtime or multiply gameplay coordinates by device scale.
 
-| Display pixels | Presentation scale | Game image | Close-view hero frame |
-| --- | ---: | --- | --- |
-| 1280 × 720 — default | 1× | 1280 × 720 | 19 × 19 |
-| 1920 × 1080 | 1× | 1280 × 720 | 19 × 19 |
-| 2560 × 1440 | 2× | 2560 × 1440 | 38 × 38 |
-| 3456 × 2234 — this Mac's native panel | 2× | 2560 × 1440 | 38 × 38 |
-| 3840 × 2160 — future 4K | 3× | 3840 × 2160 | 57 × 57 |
-
-For the Mac panel, a centered 2560 × 1440 game image leaves **448 pixels at each
-side** and **397 pixels above and below**. At 1080p, the 1× image leaves 320 pixels
-at each side and 180 above and below. These are physical pixel calculations;
-use the actual drawable area, accounting for Retina scaling and the display's
-safe area. A different available drawable size can select a different integer
-scale. Filling every panel pixel would require
-expanding the visible game area or accepting fractional scaling.
-
-The [Godot overworld](../docs/overworld.md) now implements this close-view contract
-with a native orthographic `Camera3D` and real 0.25-unit tiles. Each arena contains
-2,046 tile instances using a nearest-filtered, unshaded 19 × 19 white texture with
-one gray center pixel. Eight arenas display their matching 114 × 114 boss idle
-art at six cells square; Guild House has no boss. These presentation assets do
-not define movement, collision, or combat rules.
-
-`GameShell` sets a fixed 1280 × 720 viewport with `VIEWPORT` / `KEEP` / `INTEGER`
-content scaling. Larger windows enlarge and letterbox that image at whole-number
-scale; the project default window is 1280 × 720. Title and class selection retain
-their responsive canvas reference layouts. Overview uses one-third of the arena
-camera scale, so its tiles are 6⅓ logical pixels and boss canvases are 38 × 38;
-the 1:1 source-pixel guarantee applies to close view. Integer window enlargement
-preserves the completed logical image and does not change that overview reduction.
+Overview uses one-third of the arena camera scale, so its tiles are 6⅓ logical pixels and six-cell boss canvases are 38 × 38. The one-source-pixel guarantee applies to focused close view at 1× output. Eight arenas display their matching 114 × 114 boss sprites; Guild House has an animated training construct. All nine are immortal combat targets. Explicit gameplay footprints determine collision and range, independently of the artwork and decorative FX; see [starter combat](../docs/combat.md).
 
 ## Rebuild and review
 
@@ -92,9 +56,9 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory assets/previews
 
 Open `http://127.0.0.1:8765/index.html`. All images and available sounds are embedded in each hero page. The builder caches sheets by source hash, verifies action tags/timing, and writes only source-side previews. Use repeated `--hero <id>` arguments to rebuild selected heroes. The older Hunter-only tools remain available for its original detailed source audit; the shared builder is the current gallery authority.
 
-Read [the audio framework](audio/README.md) for stable `charge`, `cast`, `impact` and optional `sustain` events. The finite first-pass queue contains92 ElevenLabs requests for32 abilities. **The configured ElevenLabs key failed authentication; no clips have been generated yet.** Gallery cues are visibly pending. Once the connection is fixed, the same event names and rebuild process add generated audio without changing artwork.
+Read [the audio framework](audio/README.md) for stable `charge`, `cast`, `impact` and optional `sustain` events. The broader preview queue contains 94 requests across 32 abilities. The 22 authorized starter/shared clips have been generated and integrated; the remaining preview cues are intentionally pending. Stable event names and the same rebuild process allow later additions without changing artwork.
 
-## Runtime base heroes and remaining exports
+## Runtime base heroes and starter abilities
 
 The eight saved base hero masters are now exported for Godot integration. Rebuild
 only these authorized idle sprites from the repository root:
@@ -121,8 +85,27 @@ After Godot re-saves a SpriteFrames resource, provenance records retain the
 original exporter hash alongside the verified current resource hash. UID and
 formatting changes are checked separately from frame content and timing.
 
-Hero abilities, separate FX, and audio are **not integrated** by the base-idle
-export. Their future native destinations mirror into
+The base-idle exporter handles only idle sprites. A separate, narrowly authorized
+starter exporter integrates the actor animation and associated native FX for
+`auto_shot`, `bash`, `backstab`, `acid_flask`, `heal` (Sacrifice), `cleanse`, `dig`,
+and `fortune`:
+
+```sh
+python3 assets/pipeline/export-starter-abilities.py --aseprite aseprite
+```
+
+Use `--ability <id>` for a subset. Runtime outputs live under
+`arenic-game/assets/abilities/<ability_id>/`, with a shared
+`starter_catalog.tres`. Saved masters are not changed. The exporter verifies
+untrimmed native pixels, actor pivots, frame tags, and durations; runtime sprites
+use nearest filtering and FX retain their own authored sizes. Source animations
+provide presentation while the physics-driven combat model owns hits, cooldowns,
+channels, and phase damage. [Combat defaults and APIs](../docs/combat.md) describe
+the explicit prototype rules, including damage-normalized Sacrifice and Fortune.
+The source galleries retain their broader design studies.
+
+The other 24 abilities, their FX, and their sound effects remain **preview-only**.
+Future native destinations configured by the general preset helper mirror into
 `arenic-game/assets/characters/<hero>/` with the same relative path/stem and `.png`
 plus `.json` extensions. Configure or verify those presets without exporting:
 
@@ -133,8 +116,8 @@ aseprite --batch --script-param all=true --script-param verify_only=true --scrip
 
 Use `source=<saved .aseprite path>` instead of `all=true` for a single source. These preferences are local Aseprite host state; rerun after moving the checkout. The preset keeps1× native pixels, horizontal layout, JSON Array, all layers/frames, frame tags and slices, no trimming, duplicate merging or padding. Actor frames remain19×19 and FX retain native canvases. The script creates destination folders and preferences only; it does not save artwork or export runtime textures/data.
 
-Ability integration must apply texture filtering, animation durations, phase
-events and pivots explicitly. The base-idle SpriteFrames generator does not
+Any further ability integration must apply texture filtering, animation durations, phase
+events and pivots explicitly and needs authorization for those additional assets. The base-idle SpriteFrames generator does not
 implement ability phase handling or audio event dispatch, and does not export
 ability/FX sheets or audio.
 

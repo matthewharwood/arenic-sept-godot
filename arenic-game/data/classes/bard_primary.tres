@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_ta4bj"]
 
+[ext_resource type="Resource" path="res://data/audio/abilities/cleanse.tres" id="2_audio"]
+
 [resource]
 script = ExtResource("1_ta4bj")
-title = "Dance"
-description = "A quick-time attack sequence."
+audio_profile = ExtResource("2_audio")
+title = "Cleanse"
+description = "Immediately cleanse a 4 by 4 area around you: heal allies by 1 and clear their debuffs; enemies each take 1 damage. 4-second cooldown."
+ability_id = "cleanse"
+effect_kind = "cleanse"
+cooldown_seconds = 4.0
+damage = 1

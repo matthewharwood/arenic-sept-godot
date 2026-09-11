@@ -16,7 +16,7 @@
         "cast": {
           "event": "hunter.auto_shot.cast",
           "file": "abilities/hunter/auto_shot/cast_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -27,12 +27,23 @@
         "impact": {
           "event": "hunter.auto_shot.impact",
           "file": "abilities/hunter/auto_shot/impact_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
             "start_ms": 740,
             "end_ms": 1240
+          }
+        },
+        "charge": {
+          "event": "hunter.auto_shot.charge",
+          "file": "abilities/hunter/auto_shot/charge_01.mp3",
+          "status": "ready",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 260
           }
         }
       },
@@ -183,7 +194,7 @@
         "cast": {
           "event": "warrior.bash.cast",
           "file": "abilities/warrior/bash/cast_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -194,7 +205,7 @@
         "impact": {
           "event": "warrior.bash.impact",
           "file": "abilities/warrior/bash/impact_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -353,7 +364,7 @@
         "cast": {
           "event": "thief.backstab.cast",
           "file": "abilities/thief/backstab/cast_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -364,7 +375,7 @@
         "impact": {
           "event": "thief.backstab.impact",
           "file": "abilities/thief/backstab/impact_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -510,7 +521,7 @@
         "cast": {
           "event": "alchemist.acid_flask.cast",
           "file": "abilities/alchemist/acid_flask/cast_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -521,7 +532,7 @@
         "impact": {
           "event": "alchemist.acid_flask.impact",
           "file": "abilities/alchemist/acid_flask/impact_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -538,6 +549,17 @@
           "preview_window": {
             "start_ms": 1060,
             "end_ms": 2600
+          }
+        },
+        "charge": {
+          "event": "alchemist.acid_flask.charge",
+          "file": "abilities/alchemist/acid_flask/charge_01.mp3",
+          "status": "ready",
+          "loop": false,
+          "variant": "01",
+          "preview_window": {
+            "start_ms": 0,
+            "end_ms": 260
           }
         }
       },
@@ -703,7 +725,7 @@
         "cast": {
           "event": "cardinal.heal.cast",
           "file": "abilities/cardinal/heal/cast_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -714,7 +736,7 @@
         "impact": {
           "event": "cardinal.heal.impact",
           "file": "abilities/cardinal/heal/impact_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -725,7 +747,7 @@
         "sustain": {
           "event": "cardinal.heal.sustain",
           "file": "abilities/cardinal/heal/sustain_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": true,
           "variant": "01",
           "preview_window": {
@@ -738,7 +760,7 @@
         "illustrative": true,
         "duration_ms": 2200,
         "notes": [
-          "Cardinal-to-ally life transfer from activation until channel release."
+          "Current starter: outward sacrificial damage channel until release; no restoration or spoken prayer."
         ]
       }
     },
@@ -989,7 +1011,7 @@
         "cast": {
           "event": "bard.cleanse.cast",
           "file": "abilities/bard/cleanse/cast_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -1000,7 +1022,7 @@
         "impact": {
           "event": "bard.cleanse.impact",
           "file": "abilities/bard/cleanse/impact_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -1074,7 +1096,7 @@
         "cast": {
           "event": "forager.dig.cast",
           "file": "abilities/forager/dig/cast_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -1085,7 +1107,7 @@
         "impact": {
           "event": "forager.dig.impact",
           "file": "abilities/forager/dig/impact_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -1357,7 +1379,7 @@
         "cast": {
           "event": "merchant.fortune.cast",
           "file": "abilities/merchant/fortune/cast_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
@@ -1368,18 +1390,18 @@
         "impact": {
           "event": "merchant.fortune.impact",
           "file": "abilities/merchant/fortune/impact_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": false,
           "variant": "01",
           "preview_window": {
             "start_ms": 0,
-            "end_ms": 800
+            "end_ms": 500
           }
         },
         "sustain": {
           "event": "merchant.fortune.sustain",
           "file": "abilities/merchant/fortune/sustain_01.mp3",
-          "status": "pending",
+          "status": "ready",
           "loop": true,
           "variant": "01",
           "preview_window": {
@@ -1392,7 +1414,7 @@
         "illustrative": true,
         "duration_ms": 3200,
         "notes": [
-          "Active prosperity aura; the separate treasure chime is an illustrative proc."
+          "Current starter: active golden aura; impact is a real damage tick, never a currency payout."
         ]
       }
     },

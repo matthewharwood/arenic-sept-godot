@@ -1,0 +1,146 @@
+{
+  "id": "cleanse",
+  "hero": "bard",
+  "display_name": "Cleanse",
+  "generator": "assets/pipeline/export-starter-abilities.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "release_seconds": 0.0,
+  "preview_impact_seconds": 0.0,
+  "saved_layer_visibility": true,
+  "required_filter": "BaseMaterial3D.TEXTURE_FILTER_NEAREST",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "actor": {
+    "source": "assets/characters/bard/abilities/cleanse/bard_cleanse.aseprite",
+    "source_sha256": "f30dbe17ac745d89e0cc3d032b30d23c0bb49c74c6aedb9b690aa55238591f77",
+    "sprite_frames": "res://assets/abilities/cleanse/actor_frames.tres",
+    "canvas": [
+      19,
+      19
+    ],
+    "pivot": [
+      9,
+      9
+    ],
+    "sha256": {
+      "png": "9ad97f7119d68af64af03ad96c9616e80ea91316eaa57b58d25d03d468430616",
+      "json": "344e12ac4db242561a9dcdf48f8ee63234eada68686de186786bf2452ebddcf3",
+      "sprite_frames": "5cc6dc0fe0863789542da894e921fbb003414429a6c6774bea436d9a08cd7d62"
+    },
+    "tags": {
+      "cleanse_n": {
+        "duration_ms": 600,
+        "frame_count": 6,
+        "loop": false
+      },
+      "cleanse_e": {
+        "duration_ms": 600,
+        "frame_count": 6,
+        "loop": false
+      },
+      "cleanse_s": {
+        "duration_ms": 600,
+        "frame_count": 6,
+        "loop": false
+      },
+      "cleanse_w": {
+        "duration_ms": 600,
+        "frame_count": 6,
+        "loop": false
+      }
+    }
+  },
+  "effects": [
+    {
+      "source": "abilities/cleanse/fx/wave.aseprite",
+      "role": "field",
+      "tag": "purify",
+      "loop": false,
+      "duration_ms": 2000,
+      "canvas": [
+        76,
+        76
+      ],
+      "pivot": [
+        38,
+        38
+      ],
+      "asset": "wave"
+    },
+    {
+      "source": "abilities/cleanse/fx/cleansed.aseprite",
+      "role": "aura",
+      "tag": "cleansed",
+      "loop": false,
+      "duration_ms": 800,
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "asset": "cleansed"
+    }
+  ],
+  "assets": {
+    "wave": {
+      "source": "assets/characters/bard/abilities/cleanse/fx/wave.aseprite",
+      "source_sha256": "040324e08889df15151f73e932fc8a286b97480e3a334331c839040d2e570ad7",
+      "sprite_frames": "res://assets/abilities/cleanse/wave_frames.tres",
+      "canvas": [
+        76,
+        76
+      ],
+      "pivot": [
+        38,
+        38
+      ],
+      "sha256": {
+        "png": "0309002708bf95814ce1d55f23a5286894ce6bf9e0652ad7a9fffcd000b6e19b",
+        "json": "1ead97efc00db3e8e869570cfab279bf6c7693d17add564fe4a6d4e4ca2d0777",
+        "sprite_frames": "25d6eb1aacdd34f81ef96eb44c5a33160f88a83551f0618f5f0f97273583e769"
+      },
+      "tags": {
+        "purify": {
+          "duration_ms": 2000,
+          "frame_count": 8,
+          "loop": false
+        }
+      }
+    },
+    "cleansed": {
+      "source": "assets/characters/bard/abilities/cleanse/fx/cleansed.aseprite",
+      "source_sha256": "a6889a714efd797b67156df3c296096adecd76e11b266c42612601bf47c376d5",
+      "sprite_frames": "res://assets/abilities/cleanse/cleansed_frames.tres",
+      "canvas": [
+        19,
+        19
+      ],
+      "pivot": [
+        9,
+        9
+      ],
+      "sha256": {
+        "png": "63954c1850cbe8acc312474292efb9a3ea757e690bfece714331e3a45f5a2a9e",
+        "json": "000554327d8dcdd7e8d3c84db2918c678f5cd635a5801fef3d824d14f7b8fa88",
+        "sprite_frames": "03e342fc86c73c38c5d9e6bd596f164394090ae3ab2bb716822975fa9f759ffb"
+      },
+      "tags": {
+        "cleansed": {
+          "duration_ms": 800,
+          "frame_count": 8,
+          "loop": false
+        }
+      }
+    }
+  },
+  "authority": "Presentation timing and native pixels only; gameplay owns impacts, status lifetimes and ranges."
+}

@@ -1,0 +1,329 @@
+{ "frames": [
+   {
+    "filename": "alchemist_acid_flask 0.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 1.aseprite",
+    "frame": { "x": 19, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 2.aseprite",
+    "frame": { "x": 38, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "alchemist_acid_flask 3.aseprite",
+    "frame": { "x": 57, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 60
+   },
+   {
+    "filename": "alchemist_acid_flask 4.aseprite",
+    "frame": { "x": 76, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 5.aseprite",
+    "frame": { "x": 95, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "alchemist_acid_flask 6.aseprite",
+    "frame": { "x": 114, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "alchemist_acid_flask 7.aseprite",
+    "frame": { "x": 133, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 180
+   },
+   {
+    "filename": "alchemist_acid_flask 8.aseprite",
+    "frame": { "x": 152, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 9.aseprite",
+    "frame": { "x": 171, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 10.aseprite",
+    "frame": { "x": 190, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "alchemist_acid_flask 11.aseprite",
+    "frame": { "x": 209, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 60
+   },
+   {
+    "filename": "alchemist_acid_flask 12.aseprite",
+    "frame": { "x": 228, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 13.aseprite",
+    "frame": { "x": 247, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "alchemist_acid_flask 14.aseprite",
+    "frame": { "x": 266, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "alchemist_acid_flask 15.aseprite",
+    "frame": { "x": 285, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 180
+   },
+   {
+    "filename": "alchemist_acid_flask 16.aseprite",
+    "frame": { "x": 304, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 17.aseprite",
+    "frame": { "x": 323, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 18.aseprite",
+    "frame": { "x": 342, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "alchemist_acid_flask 19.aseprite",
+    "frame": { "x": 361, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 60
+   },
+   {
+    "filename": "alchemist_acid_flask 20.aseprite",
+    "frame": { "x": 380, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 21.aseprite",
+    "frame": { "x": 399, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "alchemist_acid_flask 22.aseprite",
+    "frame": { "x": 418, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "alchemist_acid_flask 23.aseprite",
+    "frame": { "x": 437, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 180
+   },
+   {
+    "filename": "alchemist_acid_flask 24.aseprite",
+    "frame": { "x": 456, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 25.aseprite",
+    "frame": { "x": 475, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 26.aseprite",
+    "frame": { "x": 494, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "alchemist_acid_flask 27.aseprite",
+    "frame": { "x": 513, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 60
+   },
+   {
+    "filename": "alchemist_acid_flask 28.aseprite",
+    "frame": { "x": 532, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 80
+   },
+   {
+    "filename": "alchemist_acid_flask 29.aseprite",
+    "frame": { "x": 551, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 100
+   },
+   {
+    "filename": "alchemist_acid_flask 30.aseprite",
+    "frame": { "x": 570, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 120
+   },
+   {
+    "filename": "alchemist_acid_flask 31.aseprite",
+    "frame": { "x": 589, "y": 0, "w": 19, "h": 19 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 19 },
+    "sourceSize": { "w": 19, "h": 19 },
+    "duration": 180
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.5-arm64",
+  "image": "actor.png",
+  "format": "RGBA8888",
+  "size": { "w": 608, "h": 19 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "acid_flask_n", "from": 0, "to": 7, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "n_draw", "from": 0, "to": 2, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "n_release", "from": 3, "to": 3, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "n_recover", "from": 4, "to": 7, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "acid_flask_e", "from": 8, "to": 15, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "e_draw", "from": 8, "to": 10, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "e_release", "from": 11, "to": 11, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "e_recover", "from": 12, "to": 15, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "acid_flask_s", "from": 16, "to": 23, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "s_draw", "from": 16, "to": 18, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "s_release", "from": 19, "to": 19, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "s_recover", "from": 20, "to": 23, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "acid_flask_w", "from": 24, "to": 31, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "w_draw", "from": 24, "to": 26, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "w_release", "from": 27, "to": 27, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "w_recover", "from": 28, "to": 31, "direction": "forward", "repeat": "1", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "01 Robe overhead", "opacity": 255, "blendMode": "normal" },
+   { "name": "02 Shoulders and trim", "opacity": 255, "blendMode": "normal" },
+   { "name": "03 Kit and equipment", "opacity": 255, "blendMode": "normal" },
+   { "name": "04 Arms and hands", "opacity": 255, "blendMode": "normal" },
+   { "name": "05 Crown overhead", "opacity": 255, "blendMode": "normal" },
+   { "name": "06 Held focus", "opacity": 255, "blendMode": "normal" },
+   { "name": "07 Cast accents", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "frame", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 19, "h": 19 }, "pivot": {"x": 9, "y": 9 } }] }
+  ]
+ }
+}

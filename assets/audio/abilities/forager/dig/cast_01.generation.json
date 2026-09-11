@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "forager.dig.cast",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. A shovel blade biting soil, two short earthy scrapes with tiny stone clicks. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+    "duration_seconds": 0.8,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/forager/dig/cast"
+  },
+  "requested_duration_seconds": 0.8,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/forager/dig/cast/sfx_Compa_20260910_162714.mp3",
+  "generated_at_utc": "2026-09-10T23:27:14.079Z",
+  "canonical_source": "assets/audio/abilities/forager/dig/cast_01.mp3",
+  "status": "generated",
+  "source_sha256": "ae34041dac922b0730c00470877173926c5f38de9f558a38170c68db15f42bb2"
+}

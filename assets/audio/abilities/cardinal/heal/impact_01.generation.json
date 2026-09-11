@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "cardinal.heal.impact",
+  "exact_request": {
+    "text": "Dry, compact fantasy tactical-game sound. Controlled transients, restrained highs, mono-compatible, no speech, music, ambience, or long reverb. One short outward sacrificial energy hit: a soft low pulse and compact crystalline bite at an enemy, clear restrained damage tick, no voice, no prayer, no restoration flourish.",
+    "duration_seconds": 0.8,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/cardinal/heal/impact"
+  },
+  "requested_duration_seconds": 0.8,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/cardinal/heal/impact/sfx_Dry,__20260910_162657.mp3",
+  "generated_at_utc": "2026-09-10T23:26:57.043Z",
+  "canonical_source": "assets/audio/abilities/cardinal/heal/impact_01.mp3",
+  "status": "generated",
+  "source_sha256": "b8ea92c4da9d76ee0957b1b57d02552ed617b5d9e79d7cba5fd71e5e7caf5246"
+}

@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "merchant.fortune.impact",
+  "exact_request": {
+    "text": "Dry, compact fantasy tactical-game sound. Controlled transients, restrained highs, mono-compatible, no speech, music, ambience, or long reverb. One very short compact enchanted damage tick: soft golden metallic ping with a small dry low pulse and tiny sparkle. No coins, cash register, treasure discovery or currency payout.",
+    "duration_seconds": 0.5,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/merchant/fortune/impact"
+  },
+  "requested_duration_seconds": 0.5,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/merchant/fortune/impact/sfx_Dry,__20260910_162726.mp3",
+  "generated_at_utc": "2026-09-10T23:27:26.408Z",
+  "canonical_source": "assets/audio/abilities/merchant/fortune/impact_01.mp3",
+  "status": "generated",
+  "source_sha256": "c9e8e2537350998c8fd6b8abe92332357042376b8e2e66005d9bcf01a19ed8cc"
+}

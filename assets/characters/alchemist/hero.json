@@ -66,6 +66,11 @@
           "description": "Quiet seamless corrosive puddle bubbling with sparse small bubble pops and chemical hiss.",
           "duration_seconds": 2.0,
           "loop": true
+        },
+        "charge": {
+          "description": "A short preparation of a small glass flask: gentle cork touch and liquid swirl, a tiny rising alchemical fizz, no toss and no shatter. One restrained half-second preparation gesture.",
+          "duration_seconds": 0.5,
+          "loop": false
         }
       },
       "notes": [

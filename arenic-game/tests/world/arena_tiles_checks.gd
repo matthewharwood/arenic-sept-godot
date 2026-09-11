@@ -64,7 +64,7 @@ func _run() -> void:
 		_host.add_child(arena)
 		if not _check_tiles(arena) or not _check_boss(arena):
 			return
-	if not _check(_bosses_checked == 8, "Eight matching bosses are present; Guild House is empty."):
+	if not _check(_bosses_checked == 9, "Eight matching bosses plus the Guild House training target are present."):
 		return
 	if not _check_seams():
 		return
@@ -146,7 +146,12 @@ func _check_boss(arena: ArenicArenaView) -> bool:
 	var expected_id: String = str(EXPECTED_BOSSES[definition.arena_id])
 	var sprite := arena.get_node_or_null("Boss") as AnimatedSprite3D
 	if expected_id.is_empty():
-		return _check(definition.boss == null and sprite == null, "Guild House has no boss definition or sprite.")
+		if not _check(definition.boss == null and definition.training_target_frames != null and sprite != null, "Guild House has its dedicated training target."):
+			return false
+		if not _check(sprite.sprite_frames == definition.training_target_frames and sprite.animation == &"idle_n", "Guild target uses the native north-facing sparring construct."):
+			return false
+		_bosses_checked += 1
+		return true
 	if not _check(definition.boss != null and sprite != null, "%s has its assigned boss sprite." % definition.arena_id):
 		return false
 	var boss: ArenicBossDefinition = definition.boss

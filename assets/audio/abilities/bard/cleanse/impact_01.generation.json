@@ -1,0 +1,21 @@
+{
+  "provider": "ElevenLabs",
+  "tool": "text_to_sound_effects",
+  "model": "not exposed by MCP tool",
+  "event": "bard.cleanse.impact",
+  "exact_request": {
+    "text": "Compact fantasy tactical game sound, dry close recording, clear at low volume, controlled transients and soft high frequencies, centered mono-compatible, no speech, no background music, no environmental ambience, no long reverb. Keep instrument gestures brief when musically themed. Dark magical grit dissolves into clear golden crystalline chimes, gentle cleansing completion. Fantasy tactical game sound effect, isolated, no voice, no speech.",
+    "duration_seconds": 1.1,
+    "loop": false,
+    "output_format": "mp3_44100_128",
+    "output_directory": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/bard/cleanse/impact"
+  },
+  "requested_duration_seconds": 1.1,
+  "loop": false,
+  "output_format": "mp3_44100_128",
+  "original_returned_file_path": "/Users/matthewharwood/Documents/GitHub/arenic-sept-godot/assets/audio/generation/bard/cleanse/impact/sfx_Compa_20260910_162706.mp3",
+  "generated_at_utc": "2026-09-10T23:27:06.446Z",
+  "canonical_source": "assets/audio/abilities/bard/cleanse/impact_01.mp3",
+  "status": "generated",
+  "source_sha256": "c07a325a656b13c69c947217721a020d2d085bd39082c070cd98bc9b17195320"
+}

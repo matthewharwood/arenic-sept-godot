@@ -3,18 +3,22 @@ extends Control
 ## Persistent screen-space chrome. Overview blends into inexpensive themed glass.
 
 signal toggle_requested
+signal ability_requested
+signal ability_released
 signal world_rect_changed
 
 const DISPLAY_FONT: Font = preload("res://assets/fonts/PPMigra-Extrabold.ttf")
 const BODY_FONT: Font = preload("res://assets/fonts/Barlow-Regular.ttf")
 const TOP_HEIGHT: float = 35.0
 const BOTTOM_HEIGHT: float = 96.0 # Keep the 589px world band and native 19px tiles.
+const DAMAGE_BAR_HEIGHT: float = 9.0
 
 var _top: Panel
 var _bottom: Panel
 var _brand: Label
-var _progress_label: Label
-var _boss_label: Label
+var _damage_label: Label
+var _phase_label: Label
+var _damage_bar: ArenicArenaDamageBar
 var _top_context: Label
 var _arena_key: Label
 var _hero_label: Label
@@ -22,14 +26,21 @@ var _class_label: Label
 var _hero_status: Label
 var _arena_label: Label
 var _subtitle: Label
-var _future_label: Label
+var _ability: Button
+var _ability_status: Label
 var _key_hint: Label
 var _secondary_hint: Label
 var _toggle: Button
 var _accent: ColorRect
 var _top_divider: ColorRect
 var _hero_divider: ColorRect
-var _stubs: Array[Button] = []
+var _total_damage: int = 0
+var _phase_damage: int = 20
+var _ability_title: String = "Ability"
+var _ability_status_text: String = "Choose a hero"
+var _ability_cooldown: float = 0.0
+var _ability_active: float = 0.0
+var _ability_enabled: bool = false
 var _arena: ArenicArenaDefinition
 var _visual_theme: ArenicArenaTheme
 var _hero_name: String = ""
@@ -62,6 +73,8 @@ func _ready() -> void:
 	resized.connect(_on_resized)
 	_apply_context()
 	_apply_palette()
+	_apply_damage()
+	_apply_ability()
 	_layout_hud()
 	world_rect_changed.emit()
 
@@ -84,6 +97,29 @@ func set_hero_control(here: bool, selected: bool) -> void:
 	_hero_selected = selected
 	if is_node_ready():
 		_apply_context()
+
+
+## Damage is cumulative; per-phase damage is the layer threshold, not the remainder.
+func set_damage_progress(total_damage: int, phase_damage: int = 20) -> void:
+	var next_total: int = maxi(0, total_damage)
+	var next_phase: int = maxi(1, phase_damage)
+	if is_node_ready() and next_total == _total_damage and next_phase == _phase_damage:
+		return
+	_total_damage = next_total
+	_phase_damage = next_phase
+	if is_node_ready():
+		_apply_damage()
+
+
+## The shell owns input and timers; positive infinity denotes a held channel.
+func set_ability_context(title: String, status: String, cooldown: float, active_remaining: float, enabled: bool) -> void:
+	_ability_title = title if not title.is_empty() else "Ability"
+	_ability_status_text = status
+	_ability_cooldown = maxf(0.0, cooldown) if is_finite(cooldown) else 0.0
+	_ability_active = maxf(0.0, active_remaining) if not is_nan(active_remaining) else 0.0
+	_ability_enabled = enabled
+	if is_node_ready():
+		_apply_ability()
 
 
 ## Zero preserves focused chrome; one reveals the sky through smoked glass.
@@ -112,8 +148,11 @@ func _build_hud() -> void:
 	_bottom_sheen = _make_sheen(_bottom, sheen_texture)
 	_brand = _make_label(_top, "Wordmark", "Arenic", DISPLAY_FONT, 19)
 	_top_divider = _make_rule(_top, "StatusDivider")
-	_progress_label = _make_label(_top, "ProgressLabel", "Progress  —", BODY_FONT, 12)
-	_boss_label = _make_label(_top, "BossLabel", "Boss health  —", BODY_FONT, 12)
+	_damage_bar = ArenicArenaDamageBar.new()
+	_damage_bar.name = "DamageBar"
+	_top.add_child(_damage_bar)
+	_damage_label = _make_label(_top, "DamageLabel", "Damage  0", BODY_FONT, 12)
+	_phase_label = _make_label(_top, "PhaseLabel", "Phase 1  ·  0 / 20", BODY_FONT, 12)
 	_top_context = _make_label(_top, "ViewContext", "OVERWORLD", BODY_FONT, 12)
 	_top_context.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_arena_key = _make_label(_top, "ArenaHotkey", "—", BODY_FONT, 13)
@@ -125,20 +164,17 @@ func _build_hud() -> void:
 	_hero_status = _make_label(_bottom, "HeroControl", "Tab to locate", BODY_FONT, 12)
 	_subtitle = _make_label(_bottom, "ArenaSubtitle", "", BODY_FONT, 12)
 	_arena_label = _make_label(_bottom, "ArenaName", "No arena selected", DISPLAY_FONT, 27)
-	_future_label = _make_label(_bottom, "FutureActions", "LATER", BODY_FONT, 10)
-	for action_name: String in PackedStringArray(["Roster", "Loot", "Auction", "Craft"]):
-		var stub := Button.new()
-		stub.name = action_name
-		stub.text = action_name + " —"
-		stub.disabled = true
-		stub.focus_mode = Control.FOCUS_NONE
-		stub.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		stub.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		stub.add_theme_font_override("font", BODY_FONT)
-		stub.add_theme_font_size_override("font_size", 12)
-		stub.add_theme_stylebox_override("disabled", StyleBoxEmpty.new())
-		_bottom.add_child(stub)
-		_stubs.append(stub)
+	_ability = Button.new()
+	_ability.name = "AbilityAction"
+	_ability.focus_mode = Control.FOCUS_NONE
+	_ability.mouse_filter = Control.MOUSE_FILTER_STOP
+	_ability.clip_text = true
+	_ability.add_theme_font_override("font", BODY_FONT)
+	_ability.add_theme_font_size_override("font_size", 13)
+	_ability.button_down.connect(_on_ability_down)
+	_ability.button_up.connect(_on_ability_up)
+	_bottom.add_child(_ability)
+	_ability_status = _make_label(_bottom, "AbilityStatus", "Choose a hero", BODY_FONT, 12)
 	_toggle = Button.new()
 	_toggle.name = "OverviewToggle"
 	_toggle.focus_mode = Control.FOCUS_NONE
@@ -161,7 +197,9 @@ func _build_hud() -> void:
 		var style := StyleBoxFlat.new()
 		_toggle_styles.append(style)
 		_toggle.add_theme_stylebox_override(state_name, style)
+		_ability.add_theme_stylebox_override(state_name, style)
 	_toggle.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	_ability.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 
 
 func _apply_context() -> void:
@@ -200,20 +238,19 @@ func _apply_palette() -> void:
 	var primary: Color = _color("primary")
 	for label: Label in [_brand, _hero_label, _arena_label]:
 		label.add_theme_color_override("font_color", content)
-	for label: Label in [_progress_label, _boss_label, _top_context, _hero_status, _subtitle, _secondary_hint]:
+	for label: Label in [_damage_label, _phase_label, _top_context, _hero_status, _subtitle, _secondary_hint, _ability_status]:
 		label.add_theme_color_override("font_color", _color("base_content", 0.78))
 	_class_label.add_theme_color_override("font_color", primary)
 	_key_hint.add_theme_color_override("font_color", content)
-	_future_label.add_theme_color_override("font_color", _color("base_content", 0.55))
-	for stub: Button in _stubs:
-		stub.add_theme_color_override("font_disabled_color", _color("base_content", 0.38))
+	_damage_bar.set_visual_theme(_visual_theme)
 	_accent.color = primary
 	_border_width = maxi(1, roundi(_visual_theme.border)) if _visual_theme != null else 1
 	_arena_key.add_theme_color_override("font_color", primary)
-	_toggle.add_theme_color_override("font_color", content)
-	_toggle.add_theme_color_override("font_hover_color", content)
-	_toggle.add_theme_color_override("font_pressed_color", primary)
-	_toggle.add_theme_color_override("font_disabled_color", _color("base_content", 0.38))
+	for button: Button in [_toggle, _ability]:
+		button.add_theme_color_override("font_color", content)
+		button.add_theme_color_override("font_hover_color", content)
+		button.add_theme_color_override("font_pressed_color", primary)
+		button.add_theme_color_override("font_disabled_color", _color("base_content", 0.38))
 	var sheen: Color = content.lerp(primary, 0.18)
 	_sheen_gradient.colors = PackedColorArray([
 		Color(sheen, 0.13), Color(sheen, 0.035), Color(sheen, 0.0),
@@ -274,12 +311,14 @@ func _layout_hud() -> void:
 	_place(_bottom, 0.0, size.y - BOTTOM_HEIGHT, size.x, BOTTOM_HEIGHT)
 	_place(_top_sheen, 0.0, 0.0, size.x, 17.0)
 	_place(_bottom_sheen, 0.0, 1.0, size.x, 42.0)
-	_place(_brand, 13.0, 0.0, 79.0, TOP_HEIGHT)
-	_place(_top_divider, 108.0, 10.0, 1.0, 15.0)
-	_place(_progress_label, 127.0, 0.0, 115.0, TOP_HEIGHT)
-	_place(_boss_label, 265.0, 0.0, 140.0, TOP_HEIGHT)
-	_place(_top_context, 450.0, 0.0, maxf(0.0, size.x - 502.0), TOP_HEIGHT)
-	_place(_arena_key, size.x - 39.0, 7.0, 26.0, 22.0)
+	_place(_damage_bar, 0.0, 0.0, size.x, DAMAGE_BAR_HEIGHT)
+	var label_height: float = TOP_HEIGHT - DAMAGE_BAR_HEIGHT
+	_place(_brand, 13.0, DAMAGE_BAR_HEIGHT, 79.0, label_height)
+	_place(_top_divider, 108.0, 15.0, 1.0, 14.0)
+	_place(_damage_label, 127.0, DAMAGE_BAR_HEIGHT, 123.0, label_height)
+	_place(_phase_label, 265.0, DAMAGE_BAR_HEIGHT, 200.0, label_height)
+	_place(_top_context, 475.0, DAMAGE_BAR_HEIGHT, maxf(0.0, size.x - 527.0), label_height)
+	_place(_arena_key, size.x - 39.0, 11.0, 26.0, 22.0)
 	_place(_accent, 13.0, 14.0, 2.0, 48.0)
 	_place(_class_label, 25.0, 9.0, 250.0, 18.0)
 	_place(_hero_label, 24.0, 27.0, 260.0, 36.0)
@@ -288,9 +327,8 @@ func _layout_hud() -> void:
 	var center_width: float = maxf(0.0, size.x - 670.0)
 	_place(_subtitle, 323.0, 9.0, center_width, 18.0)
 	_place(_arena_label, 322.0, 28.0, center_width, 35.0)
-	_place(_future_label, 323.0, 70.0, 39.0, 18.0)
-	for index: int in range(_stubs.size()):
-		_place(_stubs[index], 369.0 + float(index) * 70.0, 69.0, 66.0, 19.0)
+	_place(_ability, 323.0, 67.0, 222.0, 24.0)
+	_place(_ability_status, 557.0, 69.0, maxf(0.0, size.x - 904.0), 20.0)
 	_place(_toggle, size.x - 193.0, 12.0, 180.0, 37.0)
 	_place(_key_hint, size.x - 326.0, 55.0, 313.0, 19.0)
 	_place(_secondary_hint, size.x - 326.0, 75.0, 313.0, 16.0)
@@ -310,6 +348,39 @@ func _on_resized() -> void:
 	_layout_hud()
 	queue_redraw()
 	world_rect_changed.emit()
+
+
+func _apply_damage() -> void:
+	_damage_bar.set_progress(_total_damage, _phase_damage)
+	_damage_label.text = "Damage  %d" % _total_damage
+	_phase_label.text = "Phase %d  ·  %d / %d" % [_damage_bar.completed_phases + 1, _damage_bar.current_damage, _phase_damage]
+	_damage_bar.tooltip_text = "%d damage · %d completed phases" % [_total_damage, _damage_bar.completed_phases]
+
+
+func _apply_ability() -> void:
+	var channeling: bool = is_inf(_ability_active) and _ability_active > 0.0
+	_ability.text = _ability_title + "   [SPACE]"
+	_ability.disabled = not (_ability_enabled or channeling)
+	if channeling:
+		_ability_status.text = "Channeling · release to stop"
+	else:
+		var parts: PackedStringArray = []
+		if not _ability_status_text.is_empty():
+			parts.append(_ability_status_text)
+		if _ability_active > 0.0:
+			parts.append("%.1fs active" % _ability_active)
+		if _ability_cooldown > 0.0:
+			parts.append("%.1fs cooldown" % _ability_cooldown)
+		_ability_status.text = " · ".join(parts) if not parts.is_empty() else "Ready"
+	_ability.tooltip_text = _ability_title + " · " + _ability_status.text
+
+
+func _on_ability_down() -> void:
+	ability_requested.emit()
+
+
+func _on_ability_up() -> void:
+	ability_released.emit()
 
 
 func _on_toggle_pressed() -> void:
