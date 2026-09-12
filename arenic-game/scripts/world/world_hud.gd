@@ -6,6 +6,9 @@ signal toggle_requested
 signal ability_requested
 signal ability_released
 signal world_rect_changed
+signal hero_requested(identity: int)
+signal arena_requested(index: int)
+signal record_requested
 
 const DISPLAY_FONT: Font = preload("res://assets/fonts/PPMigra-Extrabold.ttf")
 const BODY_FONT: Font = preload("res://assets/fonts/Barlow-Regular.ttf")
@@ -64,6 +67,38 @@ var _field_color: Color
 var _rail_color: Color
 var _edge_color: Color
 var _border_width: int = 1
+var _vitals: ArenicHeroVitals
+var _roster: ArenicRosterStrip
+var _roster_hint: Button
+var _reserve: Button
+var _reserve_panel: Panel
+var _reserve_list: VBoxContainer
+var _slots: Array[Button] = []
+var _record: Button
+var _raid: Label
+var _map: Array[Button] = []
+var _map_styles: Array[StyleBoxFlat] = []
+var _previous: Button
+var _next: Button
+var _help: Button
+var _help_panel: Panel
+var _help_text: Label
+var _world: ArenicWorldDefinition
+var _hero: ArenicHeroState
+var _selected_arena: int = -1
+var _roster_entries: Array[Dictionary] = []
+var _selected_identity: int = -1
+## Ghosts per arena — what the map's X has always meant: no activity here.
+var _map_counts: Array[int] = []
+## Guild members standing there, recorded or not, for the tooltip.
+var _map_present: Array[int] = []
+## Supplied by the shell so the strip can mark a folded member without the HUD
+## reaching into the conductor.
+var _ghost_check: Callable = Callable()
+var _recruit: Label
+## Supplied by the shell so the strip can mark a fallen guild member without the
+## HUD holding a combat reference of its own.
+var _combat_health: Callable = Callable()
 
 
 func _ready() -> void:
@@ -153,6 +188,7 @@ func _build_hud() -> void:
 	_top.add_child(_damage_bar)
 	_damage_label = _make_label(_top, "DamageLabel", "Damage  0", BODY_FONT, 12)
 	_phase_label = _make_label(_top, "PhaseLabel", "Phase 1  ·  0 / 20", BODY_FONT, 12)
+	_recruit = _make_label(_top, "GuildRolls", "", BODY_FONT, 12)
 	_top_context = _make_label(_top, "ViewContext", "OVERWORLD", BODY_FONT, 12)
 	_top_context.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_arena_key = _make_label(_top, "ArenaHotkey", "—", BODY_FONT, 13)
@@ -200,6 +236,7 @@ func _build_hud() -> void:
 		_ability.add_theme_stylebox_override(state_name, style)
 	_toggle.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 	_ability.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	_build_roster_hud()
 
 
 func _apply_context() -> void:
@@ -256,6 +293,7 @@ func _apply_palette() -> void:
 		Color(sheen, 0.13), Color(sheen, 0.035), Color(sheen, 0.0),
 	])
 	_apply_surfaces()
+	_apply_roster_palette()
 
 
 func _apply_surfaces() -> void:
@@ -317,21 +355,37 @@ func _layout_hud() -> void:
 	_place(_top_divider, 108.0, 15.0, 1.0, 14.0)
 	_place(_damage_label, 127.0, DAMAGE_BAR_HEIGHT, 123.0, label_height)
 	_place(_phase_label, 265.0, DAMAGE_BAR_HEIGHT, 200.0, label_height)
-	_place(_top_context, 475.0, DAMAGE_BAR_HEIGHT, maxf(0.0, size.x - 527.0), label_height)
+	_place(_recruit, 452.0, DAMAGE_BAR_HEIGHT, 232.0, label_height)
+	_place(_top_context, 700.0, DAMAGE_BAR_HEIGHT, maxf(0.0, size.x - 752.0), label_height)
 	_place(_arena_key, size.x - 39.0, 11.0, 26.0, 22.0)
-	_place(_accent, 13.0, 14.0, 2.0, 48.0)
-	_place(_class_label, 25.0, 9.0, 250.0, 18.0)
-	_place(_hero_label, 24.0, 27.0, 260.0, 36.0)
-	_place(_hero_status, 25.0, 69.0, 250.0, 18.0)
-	_place(_hero_divider, 302.0, 16.0, 1.0, 65.0)
-	var center_width: float = maxf(0.0, size.x - 670.0)
-	_place(_subtitle, 323.0, 9.0, center_width, 18.0)
-	_place(_arena_label, 322.0, 28.0, center_width, 35.0)
-	_place(_ability, 323.0, 67.0, 222.0, 24.0)
-	_place(_ability_status, 557.0, 69.0, maxf(0.0, size.x - 904.0), 20.0)
-	_place(_toggle, size.x - 193.0, 12.0, 180.0, 37.0)
-	_place(_key_hint, size.x - 326.0, 55.0, 313.0, 19.0)
-	_place(_secondary_hint, size.x - 326.0, 75.0, 313.0, 16.0)
+	# Preserve the existing 96px strip so the world and native 19px sprites keep their framing.
+	for legacy: Control in [_accent, _class_label, _hero_label, _hero_status, _subtitle, _arena_label, _secondary_hint]:
+		legacy.hide()
+	_place(_roster_hint, 13, 4, 106, 17)
+	_place(_reserve, 123, 4, 55, 17)
+	_place(_roster, 13, 25, 160, 64)
+	_place(_hero_divider, 185, 12, 1, 72)
+	_place(_vitals, 200, 7, 255, 82)
+	for index: int in 4:
+		_place(_slots[index], 478 + index * 72, 20, 66, 43)
+	_place(_ability_status, 478, 66, 282, 24)
+	_ability_status.add_theme_font_size_override("font_size", 10)
+	_place(_record, 782, 20, 68, 43)
+	_place(_raid, 869, 5, 136, 15)
+	for index: int in _map.size():
+		var slot: Vector2i = _world.arenas[index].grid_slot if _world != null else Vector2i(index % 3, index / 3)
+		_place(_map[index], 869 + slot.x * 26, 26 + slot.y * 19, 23, 16)
+	_place(_previous, 952, 26, 32, 23)
+	_place(_next, 952, 54, 32, 23)
+	_place(_toggle, size.x - 268, 12, 151, 30)
+	_toggle.add_theme_font_size_override("font_size", 13)
+	_place(_help, size.x - 109, 12, 96, 30)
+	_place(_key_hint, size.x - 268, 49, 255, 37)
+	_key_hint.add_theme_font_size_override("font_size", 11)
+	_place(_reserve_panel, 13, size.y - BOTTOM_HEIGHT - 192, 254, 184)
+	_place(_reserve_list, 8, 8, 238, 168)
+	_place(_help_panel, size.x - 373, size.y - BOTTOM_HEIGHT - 230, 360, 222)
+	_place(_help_text, 14, 12, 332, 198)
 
 
 func _draw() -> void:
@@ -359,7 +413,7 @@ func _apply_damage() -> void:
 
 func _apply_ability() -> void:
 	var channeling: bool = is_inf(_ability_active) and _ability_active > 0.0
-	_ability.text = _ability_title + "   [SPACE]"
+	_ability.text = _ability_title + "\n1"
 	_ability.disabled = not (_ability_enabled or channeling)
 	if channeling:
 		_ability_status.text = "Channeling · release to stop"
@@ -372,7 +426,10 @@ func _apply_ability() -> void:
 		if _ability_cooldown > 0.0:
 			parts.append("%.1fs cooldown" % _ability_cooldown)
 		_ability_status.text = " · ".join(parts) if not parts.is_empty() else "Ready"
-	_ability.tooltip_text = _ability_title + " · " + _ability_status.text
+	_ability.tooltip_text = _ability_title + " · 1 / Space · " + _ability_status.text
+	for index: int in range(1, 4):
+		_slots[index].text = "—\n%d" % (index + 1)
+		_slots[index].tooltip_text = "Unassigned ability slot %d" % (index + 1)
 
 
 func _on_ability_down() -> void:
@@ -432,3 +489,208 @@ func _make_sheen(parent: Control, texture: GradientTexture2D) -> TextureRect:
 func _place(control: Control, x: float, y: float, width: float, height: float) -> void:
 	control.position = Vector2(x, y)
 	control.size = Vector2(width, height)
+
+
+func _build_roster_hud() -> void:
+	_vitals = ArenicHeroVitals.new()
+	_vitals.name = "HeroVitals"
+	_bottom.add_child(_vitals)
+	_roster = ArenicRosterStrip.new()
+	_roster.name = "CharacterRoster"
+	_roster.character_requested.connect(func(identity: int) -> void: hero_requested.emit(identity))
+	_bottom.add_child(_roster)
+	_roster_hint = _small_button(_bottom, "RosterNavigation", "TAB · SHIFT TAB")
+	_roster_hint.pressed.connect(func() -> void: hero_requested.emit(_hero.identity_id if _hero != null else -1))
+	_reserve = _small_button(_bottom, "RosterCount", "0 / 40")
+	_reserve.pressed.connect(_toggle_reserve)
+	_slots.append(_ability)
+	for index: int in range(1, 4):
+		var button := _small_button(_bottom, "AbilitySlot%d" % (index + 1), "—\n%d" % (index + 1))
+		button.disabled = true
+		_slots.append(button)
+	_record = _small_button(_bottom, "RecordAction", "Record\nR")
+	_record.tooltip_text = "R records a two-minute staff for this hero in this arena."
+	# Clicking Record drives exactly the same flow as the R key.
+	_record.pressed.connect(func() -> void: record_requested.emit())
+	_raid = _make_label(_bottom, "RaidDifficulty", "Raid: Normal", BODY_FONT, 11)
+	for index: int in 9:
+		var button := _small_button(_bottom, "ArenaCell%d" % index, "X")
+		button.add_theme_font_size_override("font_size", 10)
+		button.pressed.connect(func() -> void: arena_requested.emit(index))
+		var style := StyleBoxFlat.new()
+		_map_styles.append(style)
+		button.add_theme_stylebox_override("normal", style)
+		_map.append(button)
+	_previous = _small_button(_bottom, "PreviousArena", "[ ←")
+	_previous.pressed.connect(func() -> void: arena_requested.emit(posmod(_selected_arena - 1, 9)))
+	_next = _small_button(_bottom, "NextArena", "→ ]")
+	_next.pressed.connect(func() -> void: arena_requested.emit(posmod(_selected_arena + 1, 9)))
+	_help = _small_button(_bottom, "ControlsHelp", "Controls  H")
+	_help.pressed.connect(toggle_help)
+	_help_panel = _make_panel(self, "ControlsGuide")
+	_help_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_help_panel.add_theme_stylebox_override("panel", _bottom_style)
+	_help_text = _make_label(_help_panel, "GuideText", "", BODY_FONT, 13)
+	_help_text.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+	_help_panel.hide()
+	_reserve_panel = _make_panel(self, "ReserveCharacters")
+	_reserve_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_reserve_panel.add_theme_stylebox_override("panel", _bottom_style)
+	var scroll := ScrollContainer.new()
+	scroll.name = "Scroll"
+	_reserve_panel.add_child(scroll)
+	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_reserve_list = VBoxContainer.new()
+	scroll.add_child(_reserve_list)
+	_reserve_panel.hide()
+
+
+func _small_button(parent: Control, node_name: String, text: String) -> Button:
+	var button := Button.new()
+	button.name = node_name
+	button.text = text
+	button.focus_mode = Control.FOCUS_NONE
+	button.mouse_filter = Control.MOUSE_FILTER_STOP
+	button.add_theme_font_override("font", BODY_FONT)
+	button.add_theme_font_size_override("font_size", 11)
+	for index: int in _toggle_styles.size():
+		button.add_theme_stylebox_override(["normal", "hover", "pressed", "disabled"][index], _toggle_styles[index])
+	button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	parent.add_child(button)
+	return button
+
+
+## `roster` is every guild member, wherever it stands. The strip shows the ones
+## in the focused arena; the map counts them per arena, which is what its "X"
+## and its numbers have always meant.
+func set_run_context(world: ArenicWorldDefinition, hero: ArenicHeroState, selected_arena: int, health: Dictionary, effects: Array[Dictionary], roster: Array = []) -> void:
+	_world = world
+	_hero = hero
+	_selected_arena = selected_arena
+	_roster_entries.clear()
+	_map_counts.clear()
+	_map_present.clear()
+	var guild: Array = roster if not roster.is_empty() else ([hero] if hero != null else [])
+	for index: int in world.arenas.size():
+		var present: int = 0
+		for member: ArenicHeroState in guild:
+			if member != null and member.arena_id == world.arenas[index].arena_id:
+				present += 1
+		_map_present.append(present)
+		if _map_counts.size() <= index:
+			_map_counts.append(0)
+	var focused: String = world.arenas[selected_arena].arena_id
+	for member: ArenicHeroState in guild:
+		if member == null or member.arena_id != focused:
+			continue
+		var vitals: Dictionary = health if member == hero else _combat_health.call(member) if _combat_health.is_valid() else {}
+		_roster_entries.append({
+			"identity": member.identity_id, "name": member.display_name(),
+			"class": member.definition.display_name,
+			"initial": member.definition.display_name.left(1).to_upper(),
+			"dead": int(vitals.get("health", 1)) <= 0,
+			"ghost": bool(_ghost_check.call(member)) if _ghost_check.is_valid() else false,
+		})
+	_selected_identity = hero.identity_id if hero != null and hero.selected and _hero_here else -1
+	if hero == null or not hero.selected:
+		_vitals.clear_selection()
+	else:
+		_vitals.set_snapshot(hero.identity_id, hero.display_name(), hero.definition.display_name, hero.level, hero.experience, hero.experience_to_next_level, int(health.get("health", 1)), int(health.get("max_health", 1)), effects)
+	_apply_roster_palette()
+	_layout_hud()
+
+
+## Lets the HUD read any guild member's health without owning the ledger.
+func set_health_source(source: Callable) -> void:
+	_combat_health = source
+
+
+## And whether a member is folded into its arena's stream.
+func set_ghost_source(source: Callable) -> void:
+	_ghost_check = source
+
+
+## Ghosts per arena, in world order. This is the map's "activity": an arena with
+## members standing idle in it still reads as X, because nothing is running there.
+func set_arena_activity(counts: PackedInt32Array) -> void:
+	_map_counts.clear()
+	for value: int in counts:
+		_map_counts.append(value)
+	if is_node_ready():
+		_apply_roster_palette()
+
+
+func _apply_roster_palette() -> void:
+	if _vitals == null:
+		return
+	_vitals.set_visual_theme(_visual_theme)
+	_roster.set_roster(_roster_entries, _selected_identity, _content_color, ArenicHudTokens.color("selection"))
+	_reserve.text = "%d / 40" % _roster_entries.size() if _roster_entries.size() <= 40 else "+%d more" % (_roster_entries.size() - 40)
+	_reserve.disabled = _roster_entries.size() <= 40
+	for button: Button in [_roster_hint, _reserve, _record, _previous, _next, _help] + _slots.slice(1):
+		button.add_theme_color_override("font_color", _content_color)
+		button.add_theme_color_override("font_hover_color", _content_color)
+		button.add_theme_color_override("font_pressed_color", _primary_color)
+		button.add_theme_color_override("font_disabled_color", Color(_content_color, 0.42))
+	_raid.add_theme_color_override("font_color", _content_color)
+	_help_text.add_theme_color_override("font_color", _content_color)
+	for index: int in _map.size():
+		var active: bool = index == _selected_arena
+		var ghosts: int = _map_counts[index] if index < _map_counts.size() else 0
+		var present: int = _map_present[index] if index < _map_present.size() else 0
+		# The cell counts what is RUNNING there. An arena holding idle members
+		# still reads X: the map answers "where is my guild working", and the
+		# black fill alone says which arena you are looking at.
+		_map[index].text = str(ghosts) if ghosts > 0 else "X"
+		_map[index].tooltip_text = "%s · Normal · %d ghost%s · %d here" % [
+			_world.arenas[index].display_name if _world != null else "Arena",
+			ghosts, "" if ghosts == 1 else "s", present]
+		_map[index].add_theme_color_override("font_color", ArenicHudTokens.color("selected_content") if active else _content_color)
+		var style: StyleBoxFlat = _map_styles[index]
+		style.bg_color = ArenicHudTokens.color("map_active") if active else _field_color
+		style.border_color = Color(_content_color, 0.45)
+		style.set_border_width_all(1)
+		style.set_corner_radius_all(0)
+
+
+## Damage earned toward the next guild roll, or that a roll is waiting. Reads as
+## progress rather than a balance, because damage is never spent.
+func set_recruitment(progress: Dictionary) -> void:
+	if _recruit == null:
+		return
+	var available: int = int(progress.get("available", 0))
+	if available > 0:
+		_recruit.text = "%d roll%s ready   [N]" % [available, "" if available == 1 else "s"]
+		_recruit.add_theme_color_override("font_color", ArenicHudTokens.color("xp", _visual_theme))
+	elif int(progress.get("next_at", 0)) > 0:
+		_recruit.text = "Next hero   %d / %d" % [int(progress.get("toward", 0)), int(progress.get("span", 1))]
+		_recruit.add_theme_color_override("font_color", Color(_content_color, 0.7))
+	else:
+		_recruit.text = ""
+
+
+## The record control doubles as the recording read-out: the cycle clock while a
+## take is running, the countdown before it starts.
+func set_recording_state(label: String, detail: String, active: bool) -> void:
+	if _record == null:
+		return
+	_record.text = label
+	_record.tooltip_text = detail
+	_record.add_theme_color_override("font_color", ArenicHudTokens.color("negative") if active else _content_color)
+
+
+func toggle_help() -> void:
+	_help_text.text = "FIND YOUR WAY\n\nTab   Cycle the heroes in this arena\n[ / ]   Previous / next arena\nArrows   Move hero / select arena\nN   Claim a guild roll\nP / Enter / wheel   Overview and zoom\n1 / Space   Use or hold your starter ability\n2 / 3 / 4   Unassigned ability slots\nR   Record a two-minute staff · H   Close controls\n\nBlue: HP / selected and ghosts · Green: XP / gains"
+	_help_panel.visible = not _help_panel.visible
+	_reserve_panel.hide()
+
+
+func _toggle_reserve() -> void:
+	_reserve_panel.visible = not _reserve_panel.visible
+	_help_panel.hide()
+	for child: Node in _reserve_list.get_children():
+		child.queue_free()
+	for entry: Dictionary in _roster.hidden_entries():
+		var button := _small_button(_reserve_list, "ReserveHero%d" % int(entry.identity), str(entry.name))
+		button.disabled = bool(entry.get("dead", false))
+		button.pressed.connect(func() -> void: hero_requested.emit(int(entry.identity)))

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GodotDoctorSettings" format=3 uid="uid://dk02mg62vw2m1"]
+
+[ext_resource type="Script" uid="uid://dtaq5a6mhbihi" path="res://addons/godot_doctor/settings/godot_doctor_settings.gd" id="1_w45p4"]
+[ext_resource type="Resource" path="res://data/validation/arenic_authored_content.tres" id="2_arenic"]
+
+[resource]
+script = ExtResource("1_w45p4")
+metadata/_custom_type_script = "uid://dtaq5a6mhbihi"
+check_for_updates_on_startup = false
+show_welcome_dialog = false
+validate_on_save = true
+validate_on_open = true
+use_default_validations = false
+validation_suites = Array[ExtResource("2_arenic")]([ExtResource("2_arenic")])
+fallback_cli_delay_before_start = 5.0
+fallback_cli_delay_before_quit = 45.0

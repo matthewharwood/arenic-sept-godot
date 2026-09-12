@@ -102,7 +102,7 @@ func _check_hud() -> bool:
 	for child: Node in hud.find_children("*", "Control", true, false):
 		original_rects[child.get_path()] = (child as Control).get_rect()
 	var original_styles: Array[StyleBoxFlat] = _hud_styles()
-	if not _check(hud.get_world_rect().is_equal_approx(SAFE_RECT) and toggle.get_rect().is_equal_approx(Rect2(1087.0, 12.0, 180.0, 37.0)), "Glass retains the exact safe area and actionable button hitbox."):
+	if not _check(hud.get_world_rect().is_equal_approx(SAFE_RECT) and toggle.get_rect().is_equal_approx(Rect2(1012.0, 12.0, 151.0, 30.0)), "Glass retains the exact safe area and actionable button hitbox."):
 		return false
 	if not _check(top.get_rect().is_equal_approx(Rect2(0.0, 0.0, hud.size.x, 35.0)) and bottom.get_rect().is_equal_approx(Rect2(0.0, hud.size.y - 96.0, hud.size.x, 96.0)), "Both HUD strips fill the viewport width and meet its outer edges without margins."):
 		return false

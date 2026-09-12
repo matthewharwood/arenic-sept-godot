@@ -1,3 +1,4 @@
+@tool
 class_name ArenicClassCatalog
 extends Resource
 
@@ -26,3 +27,7 @@ func validation_errors() -> PackedStringArray:
 			if skill == null or skill.title.is_empty() or skill.description.is_empty():
 				errors.append("An ability needs a title and description: %s" % definition.class_id)
 	return errors
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())

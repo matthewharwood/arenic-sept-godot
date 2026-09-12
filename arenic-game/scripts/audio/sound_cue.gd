@@ -1,3 +1,4 @@
+@tool
 class_name ArenicSoundCue
 extends Resource
 ## Explicit playback policy for one sound. The shared source stream stays immutable.
@@ -32,3 +33,7 @@ func validation_errors() -> PackedStringArray:
 	elif loop and fade_out_seconds <= 0.0:
 		errors.append("A looping cue needs a positive stop fade.")
 	return errors
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())

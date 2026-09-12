@@ -6,6 +6,10 @@ import { watch, installAudioMeter, loadGame, renderedPixels, clickLogical, enter
 test.describe.configure({ timeout: 300_000 });
 
 test('clean production: real pointer flow and browser output samples', async ({ page }, testInfo) => {
+  // Single-threaded Web audio shares the main thread with rendering. Software
+  // WebGL at full density can starve its mixer even while the context runs.
+  // Match the dedicated mixer/SFX lane; viewport tests below retain full density.
+  await page.setViewportSize({ width: 640, height: 360 });
   const log = watch(page);
   await installAudioMeter(page);
   try {

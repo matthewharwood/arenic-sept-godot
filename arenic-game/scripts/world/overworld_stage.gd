@@ -7,7 +7,16 @@ var selected_index: int = 0
 @onready var camera_rig: ArenicCameraRig = $CameraRig
 @onready var labels: ArenicWorldLabels = $Labels/WorldLabels
 var _arenas: Array[ArenicArenaView] = []
-var hero_view: ArenicHeroView
+## One view per guild member, keyed by run identity. A hero is drawn in the
+## arena it currently stands in, so views reparent as heroes travel.
+var hero_views: Dictionary[int, ArenicHeroView] = {}
+var selected_identity: int = -1
+## The controlled hero's view. Ability presentation animates the caster, and
+## only the controlled hero casts live; recorded casts will resolve through
+## their own performer's view when ghost playback arrives.
+var hero_view: ArenicHeroView:
+	get:
+		return hero_views.get(selected_identity)
 var transition: ArenicArenaTransition
 var atmosphere: ArenicOverworldAtmosphere
 var overview_mix: float = -1.0
@@ -139,39 +148,63 @@ func arena_at_screen(point: Vector2) -> int:
 			return index
 	return -1
 
-func mount_hero(hero: ArenicHeroState) -> void:
-	if is_instance_valid(hero_view):
-		hero_view.free()
+func mount_heroes(heroes: Array) -> void:
+	for view: ArenicHeroView in hero_views.values():
+		if is_instance_valid(view):
+			view.free()
+	hero_views.clear()
+	for hero: ArenicHeroState in heroes:
+		_mount_hero(hero)
+
+## Adds one guild member's view. Called again as the guild grows; a hero that
+## already has a view keeps it rather than being rebuilt mid-cycle.
+func _mount_hero(hero: ArenicHeroState) -> void:
 	if hero == null or hero.definition == null or hero.definition.world_sprite_frames == null:
-		push_error("Chosen hero needs an authored world sprite.")
+		push_error("A guild member needs an authored world sprite.")
 		return
-	hero_view = ArenicHeroView.new()
-	hero_view.name = "Hero"
-	hero_view.configure(hero)
+	if hero_views.has(hero.identity_id) and is_instance_valid(hero_views[hero.identity_id]):
+		return
 	var arena := get_arena(world.index_for_id(hero.arena_id))
 	if arena == null:
-		hero_view.free()
-		push_error("Chosen hero is in an unknown arena.")
+		push_error("A guild member is in an unknown arena: " + hero.arena_id)
 		return
-	arena.get_node("ContentSlot").add_child(hero_view)
-	sync_hero(false)
+	var view := ArenicHeroView.new()
+	view.name = "Hero%d" % hero.identity_id
+	view.configure(hero)
+	arena.get_node("ContentSlot").add_child(view)
+	hero_views[hero.identity_id] = view
 
-func sync_hero(show_selection: bool) -> void:
-	if not is_instance_valid(hero_view):
-		return
-	var arena := get_arena(world.index_for_id(hero_view.state.arena_id))
-	if arena == null:
-		return
-	var content := arena.get_node("ContentSlot")
-	if hero_view.get_parent() != content:
-		hero_view.reparent(content, false)
-	hero_view.sync(arena.definition, show_selection)
+## Draws every guild member where it stands. Only `selected_identity` wears the
+## selection ring; the rest are present and visible but unmarked.
+func sync_heroes(identity_id: int, show_selection: bool, ghost_check: Callable = Callable()) -> void:
+	selected_identity = identity_id
+	for identity: int in hero_views.keys():
+		var view: ArenicHeroView = hero_views[identity]
+		if not is_instance_valid(view):
+			hero_views.erase(identity)
+			continue
+		var arena := get_arena(world.index_for_id(view.state.arena_id))
+		if arena == null:
+			continue
+		var content := arena.get_node("ContentSlot")
+		if view.get_parent() != content:
+			view.reparent(content, false)
+		view.sync(arena.definition, show_selection and identity == identity_id)
+		if ghost_check.is_valid():
+			view.set_ghost(bool(ghost_check.call(view.state)))
 
-func hero_at_screen(point: Vector2) -> bool:
-	if not is_instance_valid(hero_view):
-		return false
-	var index := world.index_for_id(hero_view.state.arena_id)
-	if index != arena_at_screen(point):
-		return false
-	var world_point := camera_rig.screen_to_world(point)
-	return ArenicGridMath.world_to_tile(world.arenas[index].grid_slot, world_point) == hero_view.state.cell
+## The run identity of a guild member under `point`, or -1. Later members win a
+## shared tile, matching how they are drawn.
+func hero_at_screen(point: Vector2) -> int:
+	var found: int = -1
+	for identity: int in hero_views.keys():
+		var view: ArenicHeroView = hero_views[identity]
+		if not is_instance_valid(view):
+			continue
+		var index := world.index_for_id(view.state.arena_id)
+		if index != arena_at_screen(point):
+			continue
+		var world_point := camera_rig.screen_to_world(point)
+		if ArenicGridMath.world_to_tile(world.arenas[index].grid_slot, world_point) == view.state.cell:
+			found = identity
+	return found

@@ -33,7 +33,7 @@ func _run() -> void:
 	var bar := _hud.get_node("TopStrip/DamageBar") as ArenicArenaDamageBar
 	var bar_material := bar.material as ShaderMaterial
 	var toggle := _hud.get_node("BottomStrip/OverviewToggle") as Button
-	if not _check(_hud.get_world_rect() == Rect2(13.0, 35.0, 1254.0, 589.0) and toggle.get_rect() == Rect2(1087.0, 12.0, 180.0, 37.0), "Damage presentation preserves the native world band and Overview hitbox."):
+	if not _check(_hud.get_world_rect() == Rect2(13.0, 35.0, 1254.0, 589.0) and toggle.get_rect() == Rect2(1012.0, 12.0, 151.0, 30.0), "Damage presentation preserves the native world band and the compact Overview hitbox."):
 		return
 	if not _check(bar.get_rect() == Rect2(0.0, 0.0, 1280.0, 9.0) and bar.mouse_filter == Control.MOUSE_FILTER_IGNORE, "The thin strip reaches both viewport edges and cannot intercept input."):
 		return

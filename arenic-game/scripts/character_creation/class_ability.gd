@@ -6,7 +6,7 @@ extends Resource
 @export_multiline var description: String
 ## Starter rules; animation lengths never decide gameplay timing or hit size.
 @export var ability_id: String = ""
-@export_enum("target", "ground", "channel", "cleanse", "aura") var effect_kind: String = "target"
+@export_enum("target", "ground", "channel", "cleanse", "aura", "dig") var effect_kind: String = "target"
 @export_range(1, 100, 1) var damage: int = 1
 @export_range(0.0, 120.0, 0.05) var cooldown_seconds: float = 1.0
 @export_range(0, 66, 1) var range_tiles: int = 1

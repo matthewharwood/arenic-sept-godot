@@ -8,11 +8,10 @@
 script = ExtResource("1_y0wlr")
 audio_profile = ExtResource("2_audio")
 title = "Dig"
-description = "Dig into an adjacent enemy for 1 damage after a 0.4-second windup. 1.5-second cooldown."
+description = "Break the ground underfoot. The tile yields 1-3 toward the next hero, and damages any boss standing on it for 1 every 8 seconds until the cycle ends. 1.5-second cooldown."
 ability_id = "dig"
-effect_kind = "target"
-range_tiles = 1
-requires_adjacent = true
+effect_kind = "dig"
+range_tiles = 0
 cooldown_seconds = 1.5
-cast_seconds = 0.4
+cast_seconds = 0.0
 damage = 1

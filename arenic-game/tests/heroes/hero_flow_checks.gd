@@ -1,6 +1,7 @@
 extends SceneTree
 ## Exercises real viewport input, class handoff and scene ownership without a renderer.
 const SHELL_PATH: String = "res://scenes/game/game_shell.tscn"
+const RETIRE_AUDIO: GDScript = preload("res://tests/support/audio_retirement.gd")
 const CLASSES: Array[String] = ["hunter", "bard", "merchant", "warrior", "cardinal", "alchemist", "forager", "thief"]
 var checks: int = 0
 var failed: bool = false
@@ -33,7 +34,7 @@ func _run() -> void:
 		shell = packed_shell.instantiate()
 		root.add_child(shell)
 		await process_frame
-		check(shell.hero == setup.hero and shell.hero.definition == setup.selected_class, class_id + " uses the actual chosen class/state")
+		check(shell.hero == setup.get_hero() and shell.hero.definition == setup.selected_class, class_id + " uses the actual chosen class/state")
 		check(shell.hero.arena_id == "guild_house" and shell.hero.cell == Vector2i(30, 15), class_id + " spawns in Guild House")
 		check(shell.selected_index == 1 and not shell.zoomed, class_id + " begins with Guild House highlighted in overview")
 		var view: ArenicHeroView = shell.stage.hero_view
@@ -90,10 +91,15 @@ func _run() -> void:
 	press(KEY_TAB)
 	check(shell.selected_index == 1 and shell.hero.selected, "Tab finds the hero from a different arena")
 	var hero: ArenicHeroState = shell.hero
+	hero.identity_id = 812
+	hero.level = 7
+	hero.gain_experience(49)
+	var identity_before: Array = [hero.identity_id, hero.display_name(), hero.level, hero.experience, hero.experience_to_next_level]
 	var hud: ArenicWorldHUD = shell.hud
 	var old_view_id: int = shell.stage.hero_view.get_instance_id()
 	shell.replace_stage(shell.stage_scene)
 	check(shell.hero == hero and shell.hero.cell == before_cancel, "Stage swap preserves authoritative hero and tile")
+	check([shell.hero.identity_id, shell.hero.display_name(), shell.hero.level, shell.hero.experience, shell.hero.experience_to_next_level] == identity_before, "Stage swap preserves stable identity, authored name and progression")
 	check(shell.stage.hero_view.get_instance_id() != old_view_id and shell.hud == hud, "Stage swap replaces view but retains HUD")
 	# Sequence acquisition cancels queued movement and ignores inputs until released.
 	shell.select_hero()
@@ -115,7 +121,7 @@ func _run() -> void:
 	check(shell.hero.cell == before_cancel, "No stale movement after cinematic")
 	# Exercise a real edge step, reparent and camera follow, then return.
 	shell.hero.cell = Vector2i(65, 15)
-	shell.stage.sync_hero(true)
+	shell.stage.sync_heroes(shell.hero.identity_id, true)
 	press(KEY_RIGHT)
 	await physics_frame
 	await physics_frame
@@ -131,11 +137,16 @@ func _run() -> void:
 	var center := ArenicGridMath.tile_to_world(Vector2i(1, 0), shell.hero.cell)
 	check(shell.stage.hero_view.global_position.is_equal_approx(center + Vector3(0, 0.025, 0)), "Sprite stays on authoritative tile center")
 	var screen: Vector2 = shell.stage.camera_rig.world_to_screen(center)
-	check(shell.stage.hero_at_screen(screen), "Projected hero center is pickable")
-	check(not shell.stage.hero_at_screen(Vector2(640, 680)), "HUD is excluded from hero picking")
+	check(shell.stage.hero_at_screen(screen) == shell.hero.identity_id, "Projected hero center picks that guild member")
+	check(shell.stage.hero_at_screen(Vector2(640, 680)) < 0, "HUD is excluded from hero picking")
 	shell.free()
 	setup.begin_new_game()
 	await process_frame
+	# This suite mounts a real shell, so it plays real sound. Godot retires a
+	# stopped playback on the mixer thread and releases it on a later main-thread
+	# update; exiting before that leaves the streams alive and the run reports a
+	# resource leak. Every other shell-mounting suite waits the same way.
+	check(await RETIRE_AUDIO.wait_for_mixer(self), "Stopped audio resources retire before test exit")
 	print("Hero flow checks: %d assertions, %s." % [checks, "FAILED" if failed else "passed"])
 	quit(1 if failed else 0)
 

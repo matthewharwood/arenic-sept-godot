@@ -73,23 +73,27 @@ func configure(stage: ArenicOverworldStage) -> void:
 			_pool.append(effect)
 	set_process(false)
 
-func show_cast(ability_id: String, arena_id: String, origin: Vector2i, target_cell: Vector2i, facing: String, rules: ArenicClassAbility = null) -> void:
+## `caster_identity` is the run identity of whoever cast: with ghosts in the
+## arena the caster is often not the hero the player controls, and animating the
+## controlled hero instead would show someone else's ability on your own sprite.
+func show_cast(caster_identity: int, ability_id: String, arena_id: String, origin: Vector2i, target_cell: Vector2i, facing: String, rules: ArenicClassAbility = null) -> void:
 	var id: String = "heal" if ability_id == "sacrifice" else ability_id
 	if not _catalog.has(id) or not is_instance_valid(_stage):
 		return
 	var arena: ArenicArenaDefinition = _arena(arena_id)
 	if arena == null:
 		return
-	if rules == null and is_instance_valid(_stage.hero_view):
-		var skills: Array[ArenicClassAbility] = _stage.hero_view.state.definition.skills
+	var caster: ArenicHeroView = _caster_view(caster_identity)
+	if rules == null and is_instance_valid(caster):
+		var skills: Array[ArenicClassAbility] = caster.state.definition.skills
 		if not skills.is_empty() and skills[0].ability_id == id:
 			rules = skills[0]
 	if rules == null:
 		return
 	_last_ability = id
 	_last_facing = facing
-	if is_instance_valid(_stage.hero_view):
-		_stage.hero_view.play_ability(id, facing)
+	if is_instance_valid(caster):
+		caster.play_ability(id, facing)
 	var start: Vector3 = _point(arena, origin)
 	var finish: Vector3 = _point(arena, target_cell)
 	match id:
@@ -141,7 +145,9 @@ func restore_active(snapshot: Dictionary) -> void:
 	rules.cast_seconds = float(snapshot.cast_seconds)
 	rules.release_seconds = float(snapshot.release_seconds)
 	rules.duration_seconds = float(snapshot.duration_seconds)
-	show_cast(id, snapshot.arena_id, snapshot.origin, snapshot.target_cell, snapshot.facing, rules)
+	# A fixture may hand over a snapshot with no caster; it falls back to the
+	# controlled hero's view rather than dropping the restored effect.
+	show_cast(int(snapshot.get("caster_identity", -1)), id, snapshot.arena_id, snapshot.origin, snapshot.target_cell, snapshot.facing, rules)
 	if id == "fortune":
 		_fortune_seconds = maxf(0.0, float(snapshot.remaining))
 	for effect: Effect in _pool:
@@ -186,6 +192,16 @@ func sync_active(channeling: bool, fortune_seconds: float) -> void:
 	_fortune_seconds = maxf(0.0, fortune_seconds)
 	if _fortune_seconds == 0.0:
 		_for_each_stop("fortune")
+
+## The view of one guild member, falling back to the controlled hero so a
+## fixture that names no caster still animates something.
+func _caster_view(caster_identity: int) -> ArenicHeroView:
+	if not is_instance_valid(_stage):
+		return null
+	if caster_identity >= 0 and _stage.hero_views.has(caster_identity):
+		return _stage.hero_views[caster_identity]
+	return _stage.hero_view
+
 
 func cancel_channel(cancel_actor: bool = true) -> void:
 	_channeling = false

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ArenicEncounterCatalog" format=3]
+
+[ext_resource type="Script" path="res://scripts/encounters/encounter_catalog.gd" id="1_catalog"]
+[ext_resource type="Script" path="res://scripts/encounters/encounter_score.gd" id="2_score"]
+[ext_resource type="Resource" path="res://data/encounters/labyrinth_normal.tres" id="Score_labyrinth_normal"]
+
+[resource]
+script = ExtResource("1_catalog")
+scores = Array[ExtResource("2_score")]([ExtResource("Score_labyrinth_normal")])

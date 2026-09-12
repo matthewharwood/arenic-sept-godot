@@ -1,0 +1,198 @@
+[gd_resource type="Resource" script_class="ArenicEncounterScore" format=3]
+
+[ext_resource type="Script" path="res://scripts/encounters/encounter_score.gd" id="1_score"]
+[ext_resource type="Script" path="res://scripts/encounters/encounter_beat.gd" id="2_beat"]
+
+[sub_resource type="Resource" id="Beat_00"]
+script = ExtResource("2_beat")
+at_tick = 0
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "centre"
+
+[sub_resource type="Resource" id="Beat_01"]
+script = ExtResource("2_beat")
+at_tick = 480
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 20)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 1, lap 1"
+
+[sub_resource type="Resource" id="Beat_02"]
+script = ExtResource("2_beat")
+at_tick = 900
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 4)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 2, lap 1"
+
+[sub_resource type="Resource" id="Beat_03"]
+script = ExtResource("2_beat")
+at_tick = 1320
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(54, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 3, lap 1"
+
+[sub_resource type="Resource" id="Beat_04"]
+script = ExtResource("2_beat")
+at_tick = 1740
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(6, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 4, lap 1"
+
+[sub_resource type="Resource" id="Beat_05"]
+script = ExtResource("2_beat")
+at_tick = 2160
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 20)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 1, lap 2"
+
+[sub_resource type="Resource" id="Beat_06"]
+script = ExtResource("2_beat")
+at_tick = 2580
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 4)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 2, lap 2"
+
+[sub_resource type="Resource" id="Beat_07"]
+script = ExtResource("2_beat")
+at_tick = 3000
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(54, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 3, lap 2"
+
+[sub_resource type="Resource" id="Beat_08"]
+script = ExtResource("2_beat")
+at_tick = 3420
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(6, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 4, lap 2"
+
+[sub_resource type="Resource" id="Beat_09"]
+script = ExtResource("2_beat")
+at_tick = 3840
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 20)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 1, lap 3"
+
+[sub_resource type="Resource" id="Beat_10"]
+script = ExtResource("2_beat")
+at_tick = 4260
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 4)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 2, lap 3"
+
+[sub_resource type="Resource" id="Beat_11"]
+script = ExtResource("2_beat")
+at_tick = 4680
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(54, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 3, lap 3"
+
+[sub_resource type="Resource" id="Beat_12"]
+script = ExtResource("2_beat")
+at_tick = 5100
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(6, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 4, lap 3"
+
+[sub_resource type="Resource" id="Beat_13"]
+script = ExtResource("2_beat")
+at_tick = 5520
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 20)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 1, lap 4"
+
+[sub_resource type="Resource" id="Beat_14"]
+script = ExtResource("2_beat")
+at_tick = 5940
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(30, 4)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 2, lap 4"
+
+[sub_resource type="Resource" id="Beat_15"]
+script = ExtResource("2_beat")
+at_tick = 6360
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(54, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 3, lap 4"
+
+[sub_resource type="Resource" id="Beat_16"]
+script = ExtResource("2_beat")
+at_tick = 6780
+action_id = "boss_jump"
+boss_origin_cell = Vector2i(6, 12)
+facing = "n"
+travel_ticks = 72
+lift_tiles = 6.0
+blast_radius_tiles = 7.0
+metadata/station = "station 4, lap 4"
+
+[resource]
+script = ExtResource("1_score")
+arena_id = "labyrinth"
+difficulty = "normal"
+cycle_ticks = 7200
+beats = Array[ExtResource("2_beat")]([SubResource("Beat_00"), SubResource("Beat_01"), SubResource("Beat_02"), SubResource("Beat_03"), SubResource("Beat_04"), SubResource("Beat_05"), SubResource("Beat_06"), SubResource("Beat_07"), SubResource("Beat_08"), SubResource("Beat_09"), SubResource("Beat_10"), SubResource("Beat_11"), SubResource("Beat_12"), SubResource("Beat_13"), SubResource("Beat_14"), SubResource("Beat_15"), SubResource("Beat_16")])

@@ -10,6 +10,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 ERRORS = re.compile(r'SCRIPT ERROR|SHADER ERROR|(?:^|\n)ERROR:|Parse Error|Assertion failed')
+EDITOR_PLUGINS = re.compile(r'(?m)^(\[editor_plugins\]\n\n)enabled=PackedStringArray\([^\n]*\)$')
 
 
 def run(command, log):
@@ -33,12 +34,18 @@ def export(repo, godot, output, probe=None):
         project = Path(tmp) / 'project'
         shutil.copytree(repo / 'arenic-game', project,
                         ignore=shutil.ignore_patterns('.godot', '.mcp.json', '.DS_Store', 'addons', 'tests'))
+        # The validation suite references the editor-only Godot Doctor script.
+        # It is never loaded by the game, and must not survive into a clean export
+        # after the add-on directory has been intentionally stripped.
+        validation_suite = project / 'data' / 'validation' / 'arenic_authored_content.tres'
+        if validation_suite.exists():
+            validation_suite.unlink()
         config = project / 'project.godot'
         text = config.read_text()
         text, removed = re.subn(r'^MCPRuntimeServer=.*\n', '', text, flags=re.M)
         if removed != 1:
             raise ValueError('Expected exactly one development MCP autoload to strip.')
-        text, plugins = re.subn(r'^enabled=PackedStringArray\("res://addons/godot_mcp_toolkit/plugin.cfg"\)', 'enabled=PackedStringArray()', text, flags=re.M)
+        text, plugins = EDITOR_PLUGINS.subn(r'\1enabled=PackedStringArray()', text, count=1)
         if plugins != 1:
             raise ValueError('Editor plugin configuration changed; review export isolation.')
         config.write_text(text)
@@ -56,7 +63,7 @@ def export(repo, godot, output, probe=None):
         # rejects any accidentally shipped editor, test, or probe resources.
         if not probe:
             pack = (output / 'index.pck').read_bytes()
-            for forbidden in (b'addons/', b'tests/', b'web_probe', b'WebCIProbe', b'__ci__', b'.mcp.json'):
+            for forbidden in (b'addons/', b'tests/', b'data/validation/arenic_authored_content.tres', b'web_probe', b'WebCIProbe', b'__ci__', b'.mcp.json'):
                 if forbidden in pack:
                     raise ValueError(f'Development resource in production pack: {forbidden!r}')
     print(f'Exported {"probe" if probe else "production"} Web release: {output}')

@@ -35,13 +35,6 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Set up Node.js 24
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: "24"
-          cache: npm
-          cache-dependency-path: package-lock.json
-
       - name: Cache verified editor and Web template download
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
@@ -53,6 +46,25 @@ jobs:
         run: |
           mkdir -p .tmp/pages-logs
           python3 scripts/ci/install-godot.py --templates | tee .tmp/pages-logs/install-godot.log
+
+      - name: Run Godot Doctor authored-data preflight
+        env:
+          GODOT_BIN: ${{ steps.godot.outputs.godot_path }}
+        run: |
+          python3 scripts/ci/test-godot.py --godot "$GODOT_BIN" --suite doctor 2>&1 | tee .tmp/pages-logs/godot-doctor.log
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Cache Playwright Chromium
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install browser test dependencies
         run: |
@@ -137,6 +149,11 @@ jobs:
         with:
           node-version: "24"
           cache: npm
+      - name: Cache Playwright Chromium
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - name: Wait for the deployed revision
         env:
           PAGE_URL: ${{ needs.deploy.outputs.page_url }}

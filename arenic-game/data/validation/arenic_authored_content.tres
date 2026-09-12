@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GodotDoctorValidationSuite" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/godot_doctor/cli/godot_doctor_validation_suite.gd" id="1_suite"]
+
+[resource]
+resource_name = "arenic_authored_content"
+script = ExtResource("1_suite")
+treat_warnings_as_errors = true
+generate_suite_contents = true
+directories_to_include = Array[String](["res://data"])

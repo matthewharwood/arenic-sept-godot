@@ -48,6 +48,13 @@ func set_overview_mix(value: float) -> void:
 ## Equals tile_to_world(slot, cell) - arena_center(slot) for every arena slot.
 ## Local tile rows advance toward -Z, matching the authoritative grid mapping.
 static func tile_center(cell: Vector2i) -> Vector3:
+	return tile_point(Vector2(cell))
+
+
+## The same local mapping for a fractional tile coordinate. An even footprint is
+## centered on a half tile, and a boss in flight is between tiles entirely, so
+## motion and blast geometry need the continuous form.
+static func tile_point(cell: Vector2) -> Vector3:
 	return Vector3(
 		(cell.x - (Grid.GRID_WIDTH - 1) * 0.5) * Grid.TILE_SIZE,
 		0.0,

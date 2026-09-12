@@ -103,9 +103,13 @@ func movement(arena_id: String, cell: Vector2i, collided: bool = false) -> void:
 	if _movement != null:
 		_request(_movement.blocked if collided else _movement.move, arena_id, Vector2(cell), "blocked" if collided else "move", 0)
 
-func _on_ability_phase(ability_id: String, phase: String, arena_id: String, cell: Vector2, cast_id: int) -> void:
+func _on_ability_phase(caster_id: String, ability_id: String, phase: String, arena_id: String, cell: Vector2, cast_id: int) -> void:
 	events_received += 1
-	if _profile == null or _hero.definition.skills[0].ability_id != ability_id:
+	# Ability sound follows the hero the player controls. A ghost's cast is
+	# silent for now; spatial per-caster ability audio is its own change.
+	if _profile == null or _hero == null or caster_id != _hero.ally_id():
+		return
+	if _hero.definition.skills[0].ability_id != ability_id:
 		return
 	if phase == "cast":
 		_stop_cast_loops(cast_id, "charge")
@@ -230,7 +234,7 @@ static func _reserved_priority(voice: Voice) -> int:
 func _refresh_pending_loop(request: Request) -> bool:
 	if _combat == null or _hero == null or _profile == null:
 		return false
-	var state: Dictionary = _combat.active_cast_snapshot()
+	var state: Dictionary = _combat.active_cast_snapshot(_hero)
 	if state.is_empty() or int(state.cast_id) != request.cast_id or _profile.cue_for_phase(request.phase) != request.cue:
 		return false
 	var expected: String = "charge" if not state.released else ("sustain" if state.effect_kind in ["channel", "aura"] else "")
@@ -261,7 +265,7 @@ func _stop_cast_loops(cast_id: int, phase: String = "") -> void:
 func _restore_loop() -> void:
 	if _combat == null or _hero == null or _profile == null or not _audible(_hero.arena_id):
 		return
-	var state: Dictionary = _combat.active_cast_snapshot()
+	var state: Dictionary = _combat.active_cast_snapshot(_hero)
 	if state.is_empty():
 		return
 	var phase: String = ""

@@ -34,7 +34,14 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_mcp_toolkit/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_mcp_toolkit/plugin.cfg", "res://addons/godot_doctor/plugin.cfg")
+
+[physics]
+
+; One physics step is exactly one simulation tick. Encounter cycles, recorded
+; timelines and ghost playback all count ticks, so this rate is a contract:
+; changing it changes what every authored score and every recording means.
+common/physics_ticks_per_second=60
 
 [input]
 

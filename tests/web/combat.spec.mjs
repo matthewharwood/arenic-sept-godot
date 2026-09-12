@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { watch, enterProbeWorld, clickLogical, renderedPixels, attachResults } from './helpers.mjs';
+import { watch, enterProbeWorld, renderedPixels, attachResults } from './helpers.mjs';
 
 // Keep continuous combat practical on software WebGL. Input still uses the
 // game's reported logical coordinates; no teleport, damage or timer hooks exist.
@@ -66,10 +66,14 @@ test('combat: Hunter real cast, cooldown and echo rejection, independent arena p
     expectOnlyGuildDamage(state, 1);
     expect(state.combat.bar).toMatchObject({ current: 1, completed: 0, foundation: false });
     expect(state.combat.bar.fill).toBeCloseTo(0.05, 5);
-    // The disabled real control must not queue another cast during cooldown.
+    // The real control reports itself disabled for the whole cooldown. Clicking
+    // it here is deliberately NOT tested: the reported state lags the running
+    // game by over a second, so a click aimed at the cooldown can land after it
+    // expired, where casting is correct behaviour rather than the rejection
+    // under test. That a cooling ability refuses a cast is asserted against a
+    // deterministic clock in combat_checks instead.
     expect(state.combat.cooldown).toBeGreaterThan(0);
     expect(state.controls.ability.disabled).toBe(true);
-    await clickLogical(page, state, state.controls.ability.center);
     state = await waitCombat(log, value => value.combat.cooldown === 0 && !value.combat.active,
       'Hunter cooldown ends on the actual simulation clock');
     // Space is still held from the original press. Do not synthesize another

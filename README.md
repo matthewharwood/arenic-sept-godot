@@ -23,8 +23,14 @@ Open `arenic-game/project.godot` in Godot for native development. Editable art
 and galleries live in `assets/`; the Bevy repositories are reference material.
 
 - [Web builds, deployment and regression checks](docs/github-pages.md)
+- [Godot Doctor authored-data preflight](docs/godot-doctor.md)
 - [Starter combat and damage phases](docs/combat.md)
+- [Battle sequences](docs/encounters.md)
+- [Recording and ghosts](docs/recording.md)
+- [The guild](docs/guild.md)
 - [Arena music](docs/arena-music.md)
 - [Overworld and controls](docs/overworld.md)
 - [Display density](docs/display-rendering.md)
 - [Art pipeline](assets/README.md)
+
+The [main-game HUD](docs/hud.md) documents the roster, hero vitals, fixed ability slots, arena map, and controls.

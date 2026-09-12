@@ -1,3 +1,4 @@
+@tool
 class_name ArenicArenaMusicDefinition
 extends Resource
 ## One replaceable arena score. Versioned resources preserve prior audio choices.
@@ -35,3 +36,7 @@ func validation_errors() -> PackedStringArray:
 		if not mp3.loop or not is_zero_approx(mp3.loop_offset):
 			errors.append("MP3 music must loop from the beginning.")
 	return errors
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())

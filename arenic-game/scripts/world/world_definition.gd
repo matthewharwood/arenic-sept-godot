@@ -1,3 +1,4 @@
+@tool
 class_name ArenicWorldDefinition
 extends Resource
 ## Ordered arena data. Valid definitions contain each of the nine grid slots once.
@@ -68,3 +69,7 @@ func index_for_id(id: String) -> int:
 		if arena != null and arena.arena_id == id:
 			return index
 	return -1
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())

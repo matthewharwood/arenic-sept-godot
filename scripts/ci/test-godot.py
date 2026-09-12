@@ -20,10 +20,12 @@ import time
 REPOSITORY = Path(__file__).resolve().parents[2]
 HEADLESS = (
     "world/grid_checks", "world/camera_checks", "world/flow_checks",
-    "heroes/hero_checks", "heroes/hero_flow_checks", "bosses/catalog_checks",
+    "heroes/hero_checks", "heroes/hero_flow_checks", "heroes/guild_checks", "heroes/recruitment_checks", "heroes/arena_selection_checks", "bosses/catalog_checks",
     "themes/theme_checks", "themes/region_checks", "world/transition_checks",
     "audio/clock_checks", "audio/music_checks", "audio/sfx_checks",
     "combat/combat_checks", "combat/flow_checks", "combat/presentation_checks", "ui/damage_bar_checks",
+    "ui/hero_vitals_checks", "ui/world_hud_checks", "ui/modal_checks",
+    "encounters/timeline_checks", "encounters/dig_checks", "encounters/score_checks", "encounters/recording_flow_checks", "encounters/encounter_flow_checks",
 )
 RENDERER = (
     "world/arena_tiles_checks", "themes/presentation_checks", "themes/overworld_checks",
@@ -31,9 +33,11 @@ RENDERER = (
 )
 MANUAL = {"audio/render_checks": "Requires a working non-Dummy audio mixer; retain separate native audio validation."}
 ERROR = re.compile(r"SCRIPT ERROR|SHADER ERROR|(?:^|\n)\s*ERROR:|Assertion failed|Parse Error|Failed to compile", re.IGNORECASE)
+EDITOR_PLUGINS = re.compile(r"(?m)^(\[editor_plugins\]\n\n)enabled=PackedStringArray\([^\n]*\)$")
+DOCTOR_PLUGIN = '"res://addons/godot_doctor/plugin.cfg"'
 
 
-def isolated_project(destination: Path) -> Path:
+def isolated_project(destination: Path, *, enable_doctor: bool) -> Path:
     project = destination / "arenic-game"
     ignore = shutil.ignore_patterns(".godot", ".git", ".mcp.json", ".DS_Store", "__pycache__")
     shutil.copytree(REPOSITORY / "arenic-game", project, ignore=ignore)
@@ -41,8 +45,15 @@ def isolated_project(destination: Path) -> Path:
     shutil.copytree(REPOSITORY / "assets", destination / "assets", ignore=ignore)
     settings = project / "project.godot"
     text = settings.read_text(encoding="utf-8")
-    text = re.sub(r'^MCPRuntimeServer=.*\n', '', text, flags=re.MULTILINE)
-    text = text.replace('"res://addons/godot_mcp_toolkit/plugin.cfg"', '')
+    text, removed_autoload = re.subn(r'^MCPRuntimeServer=.*\n', '', text, flags=re.MULTILINE)
+    if removed_autoload != 1:
+        raise RuntimeError("Expected exactly one development MCP autoload to strip.")
+    enabled = DOCTOR_PLUGIN if enable_doctor else ""
+    text, replaced_plugins = EDITOR_PLUGINS.subn(
+        rf'\1enabled=PackedStringArray({enabled})', text, count=1
+    )
+    if replaced_plugins != 1:
+        raise RuntimeError("Editor plugin configuration changed; review CI isolation.")
     text = re.sub(r'^config/name=.*$', f'config/name="arenic-ci-{destination.name}"', text, flags=re.MULTILINE)
     settings.write_text(text, encoding="utf-8")
     return project
@@ -79,7 +90,7 @@ def run(command: list[str], label: str, logs: Path, environment: dict[str, str],
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--godot", default=os.environ.get("GODOT_BIN", "godot"))
-    parser.add_argument("--suite", choices=("headless", "renderer", "all"), default="all")
+    parser.add_argument("--suite", choices=("doctor", "headless", "renderer", "all"), default="all")
     parser.add_argument("--logs-dir", type=Path, default=REPOSITORY / ".tmp/ci-logs")
     parser.add_argument("--display-driver", help="For example x11 under Xvfb; omitted for local macOS.")
     parser.add_argument("--timeout", type=float, default=90.0, help="Outer timeout per test; in-script watchdogs still apply.")
@@ -101,7 +112,8 @@ def main() -> int:
     try:
         with tempfile.TemporaryDirectory(prefix="arenic-ci-") as temporary:
             work = Path(temporary)
-            project = isolated_project(work)
+            runs_doctor = args.suite in ("doctor", "headless", "all")
+            project = isolated_project(work, enable_doctor=runs_doctor)
             # macOS requires the installed, signed app binary. Never move it out
             # of its bundle; the project copy and distinct app name isolate tests.
             engine = Path(binary)
@@ -126,7 +138,12 @@ def main() -> int:
             base = [str(engine), "--path", str(project), "--audio-driver", "Dummy", "--disable-file-logging", "--verbose"]
             results.append(run(base + ["--headless", "--editor", "--import", "--quit", "--rendering-method", "gl_compatibility"],
                                "import", logs, environment, 180))
-            if results[-1]["passed"]:
+            if results[-1]["passed"] and runs_doctor:
+                results.append(run(
+                    base + ["--headless", "--editor", "--quit-after", "3600", "--", "--run-godot-doctor"],
+                    "doctor", logs, environment, args.timeout,
+                ))
+            if results[-1]["passed"] and args.suite != "doctor":
                 selected = (HEADLESS if args.suite != "renderer" else ()) + (RENDERER if args.suite != "headless" else ())
                 for test in selected:
                     flags = ["--headless"] if test in HEADLESS else ["--rendering-method", "gl_compatibility"]

@@ -8,11 +8,14 @@
 script = ExtResource("1_xk4a4")
 audio_profile = ExtResource("2_audio")
 title = "Acid Flask"
-description = "Throw acid at the nearest enemy tile within 8 tiles. After 0.8 seconds, enemies occupying that tile each take 1 damage. 4-second cooldown."
+description = "Throw acid three tiles the way you are facing. It lands after 0.8 seconds and leaves a 3x3 pool for 8 seconds, burning any enemy inside it for 1 a second. 4-second cooldown."
 ability_id = "acid_flask"
-effect_kind = "ground"
-range_tiles = 8
+effect_kind = "flask"
+range_tiles = 3
 cooldown_seconds = 4.0
 cast_seconds = 0.8
 release_seconds = 0.26
+duration_seconds = 8.0
+tick_seconds = 1.0
+area_size = Vector2i(3, 3)
 damage = 1
