@@ -69,7 +69,18 @@ test('combat: Hunter real cast, cooldown and echo rejection, independent arena p
     // The disabled real control must not queue another cast during cooldown.
     expect(state.combat.cooldown).toBeGreaterThan(0);
     expect(state.controls.ability.disabled).toBe(true);
+    // Click while the cooldown is unambiguously still running: a reported state
+    // can lag, and clicking after it expired would be a legitimate cast rather
+    // than the rejection under test.
+    state = await waitCombat(log, value => value.combat.cooldown > 1.0 && value.controls.ability.disabled,
+      'The control is still disabled and cooling down');
+    const cooldownAtClick = state.combat.cooldown;
     await clickLogical(page, state, state.controls.ability.center);
+    // An accepted cast would reset the cooldown upward. Requiring it to keep
+    // decaying tests the rejection itself rather than the order of two clocks.
+    state = await waitCombat(log, value => value.combat.cooldown < cooldownAtClick,
+      'The disabled control queued nothing: the cooldown only ever decays');
+    expectOnlyGuildDamage(state, 1);
     state = await waitCombat(log, value => value.combat.cooldown === 0 && !value.combat.active,
       'Hunter cooldown ends on the actual simulation clock');
     // Space is still held from the original press. Do not synthesize another

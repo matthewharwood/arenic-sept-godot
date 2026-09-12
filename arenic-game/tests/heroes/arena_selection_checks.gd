@@ -163,6 +163,9 @@ func _check_ghost_still_asks() -> void:
 	event.physical_keycode = KEY_LEFT
 	event.pressed = true
 	Input.parse_input_event(event)
+	# A parsed event is dispatched on an idle frame; wait for one before the
+	# physics step that would consume it, or a loaded runner can race past it.
+	await process_frame
 	await physics_frame
 	await physics_frame
 	check(shell.modal.is_open(), "Moving a selected ghost still asks before breaking it out")

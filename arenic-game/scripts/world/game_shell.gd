@@ -23,6 +23,8 @@ const ENCOUNTERS: ArenicEncounterCatalog = preload("res://data/encounters/catalo
 const RESPAWN_ARENA: String = "guild_house"
 const RESPAWN_CELL: Vector2i = Vector2i(30, 15)
 const RESPAWN_FACING: String = "n"
+## Floor markers refresh at 10 Hz; the simulation still runs at 60.
+const MARKER_INTERVAL_TICKS: int = 6
 var sound: ArenicGameplayAudio
 const MOVEMENT_SOUNDS: ArenicMovementSoundProfile = preload("res://data/audio/movement.tres")
 var _cast_queued: bool = false
@@ -41,6 +43,7 @@ var session := ArenicRecordingSession.new()
 ## Damage earns guild rolls; a roll recruits. Owned by the run so it survives a
 ## stage swap along with the guild it grows.
 var recruitment: ArenicRecruitmentState
+var _marker_countdown: int = 1
 
 func _ready() -> void:
 	ArenicDisplayPolicy.apply_game_layout(get_window())
@@ -472,11 +475,13 @@ func _mount_combat() -> void:
 		if combat != null:
 			combat.progress_changed.disconnect(_on_progress_changed)
 			combat.ability_cast.disconnect(_on_ability_cast)
+			combat.ability_landed.disconnect(_on_ability_landed)
 			combat.damage_applied.disconnect(_on_damage_applied)
 			combat.ally_defeated.disconnect(_on_ally_defeated)
 		combat = run_combat
 		combat.progress_changed.connect(_on_progress_changed)
 		combat.ability_cast.connect(_on_ability_cast)
+		combat.ability_landed.connect(_on_ability_landed)
 		combat.damage_applied.connect(_on_damage_applied)
 		combat.ally_defeated.connect(_on_ally_defeated)
 	combat.configure(stage.world)
@@ -519,6 +524,14 @@ func _on_ability_cast(caster_id: String, ability_id: String, arena_id: String, o
 	if caster == null:
 		return
 	combat_presentation.show_cast(caster.identity_id, ability_id, arena_id, origin, target_cell, facing, caster.definition.skills[0])
+
+
+## Relayed to the conductor, which owns arena ground. The shell is a Node and is
+## disconnected when it is freed; the conductor is not, and subscribing it
+## directly to the run-long ledger would keep every past one alive.
+func _on_ability_landed(_caster_id: String, ability_id: String, arena_id: String, area: Rect2i, rules: ArenicClassAbility) -> void:
+	if encounter != null:
+		encounter.apply_landing(ability_id, arena_id, area, rules)
 
 
 func _hero_for_ally(caster_id: String) -> ArenicHeroState:
@@ -702,9 +715,17 @@ func _on_ally_defeated(arena_id: String, actor_id: String) -> void:
 ## Broken ground is drawn for the focused arena only: the markers exist to stop
 ## you digging the same tile twice and to show a boss standing in a trap, and
 ## neither reads at overview scale.
+##
+## Rebuilding the cell lists means sorting arrays and testing every dug tile
+## against every target. That is presentation, not simulation, so it runs at a
+## tenth of the tick rate rather than competing with the model for frame time.
 func _sync_dig_markers() -> void:
 	if encounter == null or not is_instance_valid(stage):
 		return
+	_marker_countdown -= 1
+	if _marker_countdown > 0:
+		return
+	_marker_countdown = MARKER_INTERVAL_TICKS
 	var arena_id: String = stage.world.arenas[selected_index].arena_id
 	var view: ArenicArenaView = stage.get_arena(selected_index)
 	var field: ArenicDigField = encounter.dig_field(arena_id)

@@ -54,10 +54,6 @@ var _sizes: Dictionary[String, Vector2i] = {}
 ## its own clocks. Restarting them here would let a replaced stage drift a battle
 ## sequence permanently out of step with the arena it is playing against.
 func configure(world: ArenicWorldDefinition, catalog: ArenicEncounterCatalog, combat: ArenicCombatState, tier: String = DEFAULT_DIFFICULTY) -> void:
-	# One door for live and recorded casts: both reach the ledger through
-	# try_cast, so listening here means a ghost digs exactly where its take did.
-	if combat != null and not combat.ability_landed.is_connected(_on_ability_landed):
-		combat.ability_landed.connect(_on_ability_landed)
 	var retained: Dictionary = _clocks.duplicate()
 	var retained_fields: Dictionary = _dig_fields.duplicate()
 	var retained_acid: Dictionary = _acid_fields.duplicate()
@@ -195,7 +191,11 @@ func _roll_ground(arena_id: String) -> void:
 
 ## Something landed on an arena's floor. Live casts and ghost playback both
 ## arrive here, because both go through the ledger.
-func _on_ability_landed(_caster_id: String, ability_id: String, arena_id: String, area: Rect2i, rules: ArenicClassAbility) -> void:
+##
+## The SHELL relays this rather than the conductor subscribing itself: the ledger
+## outlives every shell, and a signal connected to a RefCounted holds it alive
+## forever — one immortal conductor, and everything it references, per stage swap.
+func apply_landing(ability_id: String, arena_id: String, area: Rect2i, rules: ArenicClassAbility) -> void:
 	match ability_id:
 		"dig":
 			var field: ArenicDigField = _dig_fields.get(arena_id)

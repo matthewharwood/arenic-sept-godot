@@ -331,6 +331,8 @@ func _arrow(key: int) -> void:
 	event.physical_keycode = key
 	event.pressed = true
 	Input.parse_input_event(event)
+	# Input dispatches on an idle frame; the physics step consumes it after.
+	await process_frame
 	await physics_frame
 	await physics_frame
 
