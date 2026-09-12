@@ -68,8 +68,8 @@ autoplay. Gallery tests exercise every hero ability and boss appearance.
 
 Software-rendered CI is a correctness lane, not a frame-rate benchmark. Game
 tests have a five-minute bound, including full-density screenshot and browser
-cleanup work. The audio and combat cases run at 640 × 360 to avoid unrelated pixel
-work; the separate input and framebuffer cases still exercise 1280 × 720,
+cleanup work. The clean production smoke test, audio and combat cases run at
+640 × 360 to avoid unrelated pixel work; the separate input and framebuffer cases still exercise 1280 × 720,
 Retina density and resizing. Loop waits observe advancing game time and retain
 a real-time deadline. Fortune completion follows actual simulation progress with
 a separate 180-second wall-clock bound. CI stops on its first failure and uploads diagnostics;
