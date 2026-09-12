@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { watch, loadGame, renderedPixels, clickLogical, attachResults, GAME, PROBE } from './helpers.mjs';
+import { watch, loadGame, renderedPixels, readTitleButton, clickTitleButton, clickLogical, attachResults, GAME, PROBE } from './helpers.mjs';
 
 test.use({ viewport: { width: 640, height: 360 }, deviceScaleFactor: 1 });
 test.describe.configure({ timeout: 240_000 });
@@ -92,19 +92,45 @@ async function paper(page, classes = false) {
   { timeout: 60_000, message: classes ? 'Class selection is visibly rendered' : 'Title is visibly rendered' }).toBe(true);
 }
 
-async function cleanTitleButton(page, x) {
-  const box = await page.locator('#canvas').boundingBox();
-  const scale = Math.min(box.width / 1440, box.height / 1024);
-  await page.mouse.click(box.x + box.width / 2 + x * scale, box.y + box.height / 2 + 237.5 * scale);
+// Hold the first real app read completion on each navigation. This exposes the
+// actual loading UI deterministically, without slowing rendering or faking IDB.
+async function holdInitialHydration(page) {
+  await page.addInitScript(() => {
+    const completion = Object.getOwnPropertyDescriptor(IDBTransaction.prototype, 'oncomplete');
+    let held = false;
+    Object.defineProperty(IDBTransaction.prototype, 'oncomplete', {
+      ...completion,
+      set(callback) {
+        if (!held && this.db.name === 'arenic-saves' && this.mode === 'readonly') {
+          held = true;
+          completion.set.call(this, event => {
+            window.__releaseHydrationRead = () => {
+              delete window.__releaseHydrationRead;
+              callback.call(this, event);
+            };
+          });
+        } else completion.set.call(this, callback);
+      },
+    });
+  });
+}
+
+async function releaseObservedHydration(page) {
+  await page.waitForFunction(() => typeof window.__releaseHydrationRead === 'function');
+  expect((await readTitleButton(page, 'start')).ready, 'Pending hydration renders disabled Start').toBe(false);
+  expect((await readTitleButton(page, 'continue')).ready, 'Pending hydration hides Continue').toBe(false);
+  await page.evaluate(() => window.__releaseHydrationRead());
 }
 
 test('clean production: saved run survives reload and Continue opens its slot', async ({ page }, testInfo) => {
   const log = watch(page);
   try {
+    await holdInitialHydration(page);
     await loadGame(page, GAME, log);
     await paper(page);
+    await releaseObservedHydration(page);
     expect(await records(page)).toEqual({});
-    await cleanTitleButton(page, -119);
+    await clickTitleButton(page, 'start');
     await paper(page, true);
     await expect.poll(async () => Object.keys(await records(page))).toEqual(['0']);
     const original = decode((await records(page))[0]);
@@ -112,7 +138,8 @@ test('clean production: saved run survives reload and Continue opens its slot', 
     expect(original.payload.scene).toBe('class_selection');
     await reload(page, log);
     await paper(page);
-    await cleanTitleButton(page, 88.5);
+    await releaseObservedHydration(page);
+    await clickTitleButton(page, 'continue');
     await expect.poll(async () => (await renderedPixels(page, MARGINS)).every(pixel =>
       pixel.slice(0, 3).every(value => value > 20 && value < 110)),
     { timeout: 20_000, message: 'Continue visibly opens the shaded save picker' }).toBe(true);

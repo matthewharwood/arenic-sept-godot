@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { watch, installAudioMeter, loadGame, renderedPixels, attachResults, GAME } from './helpers.mjs';
+import { watch, installAudioMeter, loadGame, renderedPixels, clickTitleButton, attachResults, GAME } from './helpers.mjs';
 
 test.use({ viewport: { width: 640, height: 360 }, deviceScaleFactor: 1 });
 test.describe.configure({ timeout: 180_000 });
@@ -20,8 +20,7 @@ test('clean production: title theme plays after a gesture and stops on Start', a
       .some(row => row.state === 'running' && row.peak > 0.00001)),
     { timeout: 30_000, message: 'Title song emits decoded browser audio' }).toBe(true);
     await page.screenshot({ path: testInfo.outputPath('title-music.png') });
-    const scale = Math.min(box.width / 1440, box.height / 1024);
-    await page.mouse.click(box.x + box.width / 2 - 119 * scale, box.y + box.height / 2 + 237.5 * scale);
+    await clickTitleButton(page, 'start');
     await expect.poll(async () => (await renderedPixels(page, margins))
       .every(pixel => pixel.slice(0, 3).every(value => value >= 253)),
     { timeout: 60_000, message: 'Start opens class selection' }).toBe(true);

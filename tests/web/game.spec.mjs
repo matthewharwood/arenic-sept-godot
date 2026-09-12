@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { watch, installAudioMeter, loadGame, renderedPixels, clickLogical, enterProbeWorld, attachResults, GAME, PROBE, CLASSES, ARENAS } from './helpers.mjs';
+import { watch, installAudioMeter, loadGame, renderedPixels, clickTitleButton, clickLogical, enterProbeWorld, attachResults, GAME, PROBE, CLASSES, ARENAS } from './helpers.mjs';
 
 // Software WebGL in CI can take seconds per frame. These are bounded correctness
 // checks; native-density rendering remains covered independently of mixer timing.
@@ -21,18 +21,15 @@ test('clean production: real pointer flow and browser output samples', async ({ 
       .every(pixel => pixel.slice(0, 3).every(channel => channel >= 215 && channel <= 250)),
     { message: 'Rendered title paper is ready', timeout: 60_000 }).toBe(true);
     await page.screenshot({ path: testInfo.outputPath('clean-title.png') });
-    // Shipping title has a 1440x1024 EXPAND reference and centered Start offsets.
-    let box = await page.locator('#canvas').boundingBox();
-    let scale = Math.min(box.width / 1440, box.height / 1024);
-    await page.mouse.click(box.x + box.width / 2 - 119 * scale, box.y + box.height / 2 + 237.5 * scale);
+    await clickTitleButton(page, 'start');
     // Class selection has white outer margins. Observe the real rendered scene
     // instead of assuming a fixed delay is enough for loading and layout.
     await expect.poll(async () => (await renderedPixels(page, marginPoints))
       .every(pixel => pixel.slice(0, 3).every(channel => channel >= 253)),
     { message: 'Rendered class selection is ready', timeout: 60_000 }).toBe(true);
     await page.screenshot({ path: testInfo.outputPath('clean-classes.png') });
-    box = await page.locator('#canvas').boundingBox();
-    scale = Math.min(box.width / 1280, box.height / 768);
+    const box = await page.locator('#canvas').boundingBox();
+    const scale = Math.min(box.width / 1280, box.height / 768);
     const width = box.width / scale;
     const height = box.height / scale;
     const cell = (width - 64 - 11 * 12) / 12;
