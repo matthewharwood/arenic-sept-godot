@@ -9,6 +9,7 @@ signal world_rect_changed
 signal hero_requested(identity: int)
 signal arena_requested(index: int)
 signal record_requested
+signal save_title_requested
 
 const DISPLAY_FONT: Font = preload("res://assets/fonts/PPMigra-Extrabold.ttf")
 const BODY_FONT: Font = preload("res://assets/fonts/Barlow-Regular.ttf")
@@ -17,6 +18,8 @@ const BOTTOM_HEIGHT: float = 96.0 # Keep the 589px world band and native 19px ti
 const DAMAGE_BAR_HEIGHT: float = 9.0
 
 var _top: Panel
+var _save_title: Button
+var _save_error: Label
 var _bottom: Panel
 var _brand: Label
 var _damage_label: Label
@@ -191,6 +194,10 @@ func _build_hud() -> void:
 	_recruit = _make_label(_top, "GuildRolls", "", BODY_FONT, 12)
 	_top_context = _make_label(_top, "ViewContext", "OVERWORLD", BODY_FONT, 12)
 	_top_context.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_save_error = _make_label(self, "SaveError", "", BODY_FONT, 13)
+	_save_error.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_save_error.add_theme_color_override("font_color", Color(1.0, 0.8, 0.65))
+	_save_error.hide()
 	_arena_key = _make_label(_top, "ArenaHotkey", "—", BODY_FONT, 13)
 	_arena_key.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_accent = _make_rule(_bottom, "HeroAccent")
@@ -236,6 +243,8 @@ func _build_hud() -> void:
 		_ability.add_theme_stylebox_override(state_name, style)
 	_toggle.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 	_ability.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	_save_title = _small_button(_top, "SaveAndTitle", "Saved · Title")
+	_save_title.pressed.connect(func() -> void: save_title_requested.emit())
 	_build_roster_hud()
 
 
@@ -356,7 +365,9 @@ func _layout_hud() -> void:
 	_place(_damage_label, 127.0, DAMAGE_BAR_HEIGHT, 123.0, label_height)
 	_place(_phase_label, 265.0, DAMAGE_BAR_HEIGHT, 200.0, label_height)
 	_place(_recruit, 452.0, DAMAGE_BAR_HEIGHT, 232.0, label_height)
-	_place(_top_context, 700.0, DAMAGE_BAR_HEIGHT, maxf(0.0, size.x - 752.0), label_height)
+	_place(_top_context, 700.0, DAMAGE_BAR_HEIGHT, maxf(0.0, size.x - 878.0), label_height)
+	_place(_save_title, size.x - 165.0, 11.0, 112.0, 22.0)
+	_place(_save_error, size.x - 510.0, TOP_HEIGHT + 8.0, 480.0, 72.0)
 	_place(_arena_key, size.x - 39.0, 11.0, 26.0, 22.0)
 	# Preserve the existing 96px strip so the world and native 19px sprites keep their framing.
 	for legacy: Control in [_accent, _class_label, _hero_label, _hero_status, _subtitle, _arena_label, _secondary_hint]:
@@ -627,7 +638,7 @@ func _apply_roster_palette() -> void:
 	_roster.set_roster(_roster_entries, _selected_identity, _content_color, ArenicHudTokens.color("selection"))
 	_reserve.text = "%d / 40" % _roster_entries.size() if _roster_entries.size() <= 40 else "+%d more" % (_roster_entries.size() - 40)
 	_reserve.disabled = _roster_entries.size() <= 40
-	for button: Button in [_roster_hint, _reserve, _record, _previous, _next, _help] + _slots.slice(1):
+	for button: Button in [_roster_hint, _reserve, _record, _previous, _next, _help, _save_title] + _slots.slice(1):
 		button.add_theme_color_override("font_color", _content_color)
 		button.add_theme_color_override("font_hover_color", _content_color)
 		button.add_theme_color_override("font_pressed_color", _primary_color)
@@ -682,6 +693,14 @@ func set_recording_state(label: String, detail: String, active: bool) -> void:
 func toggle_help() -> void:
 	_help_text.text = "FIND YOUR WAY\n\nTab   Cycle the heroes in this arena\n[ / ]   Previous / next arena\nArrows   Move hero / select arena\nN   Claim a guild roll\nP / Enter / wheel   Overview and zoom\n1 / Space   Use or hold your starter ability\n2 / 3 / 4   Unassigned ability slots\nR   Record a two-minute staff · H   Close controls\n\nBlue: HP / selected and ghosts · Green: XP / gains"
 	_help_panel.visible = not _help_panel.visible
+
+
+func set_save_status(message: String) -> void:
+	var failed: bool = not message in ["Saved", "Saving…", "Preview"]
+	_save_title.text = "Save failed" if failed else message + " · Title"
+	_save_title.tooltip_text = message if failed else "Save your game and return to the title screen"
+	_save_error.text = message
+	_save_error.visible = failed
 	_reserve_panel.hide()
 
 

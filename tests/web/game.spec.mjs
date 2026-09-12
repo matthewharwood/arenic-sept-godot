@@ -58,7 +58,8 @@ test('actual cards, selected hero, movement, arena hotkeys and bracket navigatio
   const log = watch(page);
   try {
     await loadGame(page, PROBE, log);
-    let state = await log.wait(value => value?.scene === 'title');
+    let state = await log.wait(value => value?.scene === 'title' && value.saves?.ready && !value.controls.start.disabled,
+      'Title enables Start after save storage hydration');
     await clickLogical(page, state, state.controls.start.center);
     state = await log.wait(value => value?.scene === 'classes');
     expect(state.cards.map(card => [card.id, card.character])).toEqual(CLASSES);

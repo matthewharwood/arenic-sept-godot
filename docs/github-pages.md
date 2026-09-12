@@ -14,12 +14,13 @@ tests the website. Deployment requires both jobs to pass. PRs never deploy.
 
 1. Install official Godot **4.7.2**, verified against pinned SHA-512 checksums.
 2. Run the Godot Doctor authored-data preflight before installing browser dependencies.
-3. Run 16 headless and 5 software-rendered Godot checks; the headless lane also
+3. Run 32 headless and 5 software-rendered Godot checks; the headless lane also
    runs Godot Doctor before its gameplay checks.
 4. Export a clean Web release and a separate, disposable instrumented release.
 5. Package the landing page and galleries; deduplicate existing preview images
    without changing their pixels or animation data.
-6. Run 28 Chromium browser tests under `/arenic-sept-godot/`.
+6. Run 43 Chromium browser tests under `/arenic-sept-godot/`, including save
+   reloads, actual IndexedDB transactions, slot capacity, corruption, and quota/conflict recovery.
 7. Upload **only** the clean site and deploy it through GitHub Pages.
 8. Confirm the public build manifest matches the deployed commit, then exercise
    public title/class clicks, arena navigation, actual audio output and catalog links.
@@ -69,8 +70,8 @@ autoplay. Gallery tests exercise every hero ability and boss appearance.
 Software-rendered CI is a correctness lane, not a frame-rate benchmark. Game
 tests have a five-minute bound, including full-density screenshot and browser
 cleanup work. The clean production smoke test, audio and combat cases run at
-640 × 360 to avoid unrelated pixel work; the separate input and framebuffer cases still exercise 1280 × 720,
-Retina density and resizing. Loop waits observe advancing game time and retain
+640 × 360 to avoid unrelated pixel work; the separate input and framebuffer cases
+still exercise 1280 × 720, Retina density and resizing. Loop waits observe advancing game time and retain
 a real-time deadline. Fortune completion follows actual simulation progress with
 a separate 180-second wall-clock bound. CI stops on its first failure and uploads diagnostics;
 every test must pass in a green release.

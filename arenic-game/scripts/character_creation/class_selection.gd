@@ -58,7 +58,7 @@ func _ready() -> void:
 	_back.focus_next = _back.get_path_to(_cards.front())
 	_back.focus_previous = _back.get_path_to(_confirm)
 	resized.connect(_layout_grid)
-	_select_class(0, false)
+	_select_class(clampi(SaveGames.selection_index, 0, catalog.classes.size() - 1) if SaveGames.active_slot >= 0 else 0, false)
 	_layout_grid.call_deferred()
 
 
@@ -126,6 +126,8 @@ func _select_class(index: int, animate: bool = true) -> void:
 		return
 	var changed := selected_index != index
 	selected_index = index
+	if SaveGames.active_slot >= 0:
+		SaveGames.selection_index = index
 	var definition := catalog.classes[index]
 	for card_index in _cards.size():
 		_cards[card_index].set_pressed_no_signal(card_index == index)
@@ -172,6 +174,10 @@ func _confirm_class() -> void:
 
 
 func _return_to_title() -> void:
+	if SaveGames.active_slot >= 0:
+		if not await SaveGames.return_to_title():
+			_status.text = SaveGames.last_error
+		return
 	var error := get_tree().change_scene_to_file(TITLE_SCENE)
 	if error != OK:
 		push_error("Could not return to the title: %s" % error_string(error))

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ArenicTitleMusicDefinition" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/audio/title_music_definition.gd" id="1_definition"]
+[ext_resource type="AudioStreamMP3" path="res://assets/music/title_theme_v1.mp3" id="2_track"]
+
+[resource]
+resource_name = "Arenic Theme Song V1"
+script = ExtResource("1_definition")
+enabled = true
+version = 1
+stream = ExtResource("2_track")
+gain_db = -12.0
+loop = true
+fade_in_seconds = 0.75

@@ -162,7 +162,8 @@ export async function clickLogical(page, state, point) {
 
 export async function enterProbeWorld(page, log, classIndex = 3) {
   await loadGame(page, PROBE, log);
-  let state = await log.wait(value => value?.scene === 'title', 'Title becomes ready');
+  let state = await log.wait(value => value?.scene === 'title' && value.saves?.ready && !value.controls.start.disabled,
+    'Title enables Start after save storage hydration');
   await clickLogical(page, state, state.controls.start.center);
   state = await log.wait(value => value?.scene === 'classes', 'Actual Start opens class selection');
   await clickLogical(page, state, state.cards[classIndex].center);

@@ -1,4 +1,14 @@
-# Arena music V3
+# Music
+
+## Title theme
+
+`title_theme_v1.mp3` is the user-supplied **Arenic Theme Song.mp3**, moved unchanged
+from Downloads. Its hash, source name and measurements are recorded in
+`title_theme_v1.json`. The Inspector-editable title score selects it through
+`res://data/music/title_theme_v1.tres`; see [title music](../../../docs/title-music.md)
+for playback ownership and replacement controls.
+
+## Arena music V3
 
 Nine user-supplied48kHz stereo MP3s, retained without re-encoding. Canonical filenames
 are `{arena_id}_v3.mp3`; original names, unchanged SHA256 hashes, source durations,

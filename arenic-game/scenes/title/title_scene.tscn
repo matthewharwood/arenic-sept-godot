@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://3suudmyyw1in" path="res://scenes/character_creation/class_selection.tscn" id="3_lbup6"]
 [ext_resource type="FontFile" uid="uid://cydk58l1b4l1w" path="res://assets/fonts/PPMigra-Extrabold.ttf" id="4_lbup6"]
 [ext_resource type="Script" uid="uid://cdx4dbg368iry" path="res://scripts/title/title_menu.gd" id="10_n8ikt"]
+[ext_resource type="Script" path="res://scripts/audio/title_music.gd" id="11_music"]
+[ext_resource type="Resource" path="res://data/music/title_theme_v1.tres" id="12_music_data"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bf8ko"]
 shader = ExtResource("3_b670g")
@@ -145,6 +147,10 @@ anchor_bottom = 1.0
 theme = ExtResource("1_b670g")
 script = ExtResource("10_n8ikt")
 new_game_scene = ExtResource("3_lbup6")
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+script = ExtResource("11_music")
+definition = ExtResource("12_music_data")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1325125026]
 material = SubResource("ShaderMaterial_bf8ko")

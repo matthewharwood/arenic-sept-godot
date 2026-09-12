@@ -19,6 +19,17 @@
 - Browser releases and CI gates are documented in [docs/github-pages.md](docs/github-pages.md). Preserve the single-threaded Web preset, test real pointer/keyboard and decoded audio behavior, and keep the private browser probe and editor MCP out of production artifacts. Deploy only the clean site after native and browser checks pass.
 - Godot Doctor's authored-data preflight is documented in [docs/godot-doctor.md](docs/godot-doctor.md). Use it to catch deterministic resource-contract failures early, without treating it as a substitute for the native, browser, rendering, audio, or performance gates.
 
+## Versioned save state — every task
+
+- At the start of every task, classify its impact on authoritative, derived, and transient state. If there is no state impact, use the task's normal scoped checks; unrelated art or documentation does not require a persistence build.
+- For gameplay or save-state changes, load the repository-local [five-phase-pass](.agents/skills/five-phase-pass/SKILL.md) and follow the shared contract in [docs/save-state.md](docs/save-state.md). Apply it when authored IDs, defaults, or simulation semantics affect saved runs, even if no save file changes directly.
+- All authoritative state must have an explicit, bounded, versioned representation in `ArenicSaveCodec`, with capture and restore updated together. Derived state needs one authoritative source; transient state needs an intentional restore behavior. Never serialize Godot objects, nodes, Callables, audio voices, or held input as a save format.
+- `SaveGames` is the single game-facing save interface on development, native, and browser builds. Keep storage access inside its platform adapters. Use the same document validation, revision/error semantics, and deterministic seed construction on both targets; future remote work must enter through this boundary.
+- A schema or semantic change requires a migration/compatibility decision, focused round-trip coverage, and relevant native/browser persistence proof. Validate the entire candidate before replacing the live run. Preserve exact integer values, stable identities, ordered events, and explicit collection limits; never truncate data silently.
+- Preserve unsupported future saves and invalid records until deliberately discarded. Obsolete-version removal and local reset must be explicit, application-scoped, and coordinated with pending writes so deleted runs cannot reappear. A load failure is never authorization to overwrite the last committed save.
+- Keep the codec, state owners, native/browser adapters, development seeds, owning docs, and CI gates aligned through the five-phase pass. Report actual verification separately from deployment; this policy adds no permission prompt and grants no extra external-action authority.
+- Store project-specific skills under this repository's `.agents/skills/`; do not install them into a user- or machine-level skill directory.
+
 ## Tool selection: control of the result comes first
 
 Choose the tool that gives the most complete and precise control over the intended result. Preserve visual quality, expressive freedom, and required behavior first; then favor reliable verification, repeatability, and speed. Do not simplify the desired outcome merely to fit an MCP parameter list or avoid using the full application.
