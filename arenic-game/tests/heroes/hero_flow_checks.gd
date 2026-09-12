@@ -1,6 +1,7 @@
 extends SceneTree
 ## Exercises real viewport input, class handoff and scene ownership without a renderer.
 const SHELL_PATH: String = "res://scenes/game/game_shell.tscn"
+const RETIRE_AUDIO: GDScript = preload("res://tests/support/audio_retirement.gd")
 const CLASSES: Array[String] = ["hunter", "bard", "merchant", "warrior", "cardinal", "alchemist", "forager", "thief"]
 var checks: int = 0
 var failed: bool = false
@@ -141,6 +142,11 @@ func _run() -> void:
 	shell.free()
 	setup.begin_new_game()
 	await process_frame
+	# This suite mounts a real shell, so it plays real sound. Godot retires a
+	# stopped playback on the mixer thread and releases it on a later main-thread
+	# update; exiting before that leaves the streams alive and the run reports a
+	# resource leak. Every other shell-mounting suite waits the same way.
+	check(await RETIRE_AUDIO.wait_for_mixer(self), "Stopped audio resources retire before test exit")
 	print("Hero flow checks: %d assertions, %s." % [checks, "FAILED" if failed else "passed"])
 	quit(1 if failed else 0)
 
