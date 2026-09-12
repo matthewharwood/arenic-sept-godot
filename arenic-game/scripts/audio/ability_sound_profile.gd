@@ -1,3 +1,4 @@
+@tool
 class_name ArenicAbilitySoundProfile
 extends Resource
 ## Phase routing is explicit. Asset names never decide when a sound plays.
@@ -35,3 +36,7 @@ func validation_errors() -> PackedStringArray:
 		if cue.loop != expects_loop:
 			errors.append("%s must be %s." % [phase, "a loop" if expects_loop else "a one-shot cue"])
 	return errors
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())

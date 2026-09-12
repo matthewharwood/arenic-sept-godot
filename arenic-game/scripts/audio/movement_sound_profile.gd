@@ -1,3 +1,4 @@
+@tool
 class_name ArenicMovementSoundProfile
 extends Resource
 ## Separate confirmed movement and blocked-step cues; no input-repeat playback.
@@ -18,3 +19,7 @@ func validation_errors() -> PackedStringArray:
 		if cue.loop:
 			errors.append("%s must be a one-shot cue." % phase)
 	return errors
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())

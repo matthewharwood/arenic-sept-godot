@@ -70,10 +70,12 @@ func _run() -> void:
 		view.free()
 	var hero := ArenicHeroState.new()
 	hero.definition = load("res://data/classes/hunter.tres") as ArenicClassDefinition
-	stage.hero_view = ArenicHeroView.new()
-	root.add_child(stage.hero_view)
-	stage.hero_view.configure(hero)
-	stage.hero_view.sync(world.arenas[1], false)
+	var view := ArenicHeroView.new()
+	root.add_child(view)
+	view.configure(hero)
+	view.sync(world.arenas[1], false)
+	stage.hero_views[hero.identity_id] = view
+	stage.selected_identity = hero.identity_id
 	var presentation := ArenicCombatPresentation.new()
 	root.add_child(presentation)
 	presentation.configure(stage)
@@ -87,17 +89,17 @@ func _run() -> void:
 	var slower := (load("res://data/classes/hunter_primary.tres") as ArenicClassAbility).duplicate() as ArenicClassAbility
 	slower.cast_seconds = 1.5
 	presentation.clear()
-	presentation.show_cast("auto_shot", "guild_house", Vector2i(30,15), Vector2i(38,15), "e", slower)
+	presentation.show_cast(0, "auto_shot", "guild_house", Vector2i(30,15), Vector2i(38,15), "e", slower)
 	_check(is_equal_approx(presentation._pool[0].duration + presentation._pool[0].delay, 1.5), "Data-tuned cast duration controls projectile landing")
 	shot.elapsed = 0.8
 	presentation.restore_active(shot)
 	_check(presentation.active_effect_count() == 0, "Landed projectile is not resurrected")
 	presentation.clear()
-	presentation.show_cast("cleanse", "guild_house", Vector2i(10,10), Vector2i(10,10), "n", load("res://data/classes/bard_primary.tres"))
+	presentation.show_cast(0, "cleanse", "guild_house", Vector2i(10,10), Vector2i(10,10), "n", load("res://data/classes/bard_primary.tres"))
 	var expected: Vector3 = ArenicGridMath.tile_to_world(world.arenas[1].grid_slot, Vector2i(10,10)) + Vector3(0.125,0.05,-0.125)
 	_check(presentation._pool[0].sprite.global_position.is_equal_approx(expected), "Even four-tile wave centers over occupied cells")
 	presentation.clear()
-	presentation.show_cast("cleanse", "guild_house", Vector2i.ZERO, Vector2i.ZERO, "n", load("res://data/classes/bard_primary.tres"))
+	presentation.show_cast(0, "cleanse", "guild_house", Vector2i.ZERO, Vector2i.ZERO, "n", load("res://data/classes/bard_primary.tres"))
 	expected = ArenicGridMath.arena_origin(world.arenas[1].grid_slot) + Vector3(0.375,0.05,-0.375)
 	_check(presentation._pool[0].sprite.global_position.is_equal_approx(expected), "Wave follows model edge clamp")
 	presentation.restore_active({"ability_id":"fortune", "arena_id":"guild_house", "origin":hero.cell, "target_cell":hero.cell, "facing":"n", "elapsed":10.0, "remaining":10.0, "is_channeling":false, "cast_seconds":0.0, "release_seconds":0.0, "cast_id":2, "released":true, "duration_seconds":20.0})

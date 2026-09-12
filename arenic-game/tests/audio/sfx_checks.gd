@@ -171,7 +171,7 @@ func _check_cancel_fade() -> void:
 	_choose("cardinal", Vector2i(30, 15))
 	_check(_combat.try_cast(_hero).is_empty() and _phases(true).has("sustain"), "Held channel starts its sustain from a real model event.")
 	_step(0.008)
-	_combat.cancel_channel()
+	_combat.cancel_channel(_hero)
 	var fading: bool = false
 	for voice: Dictionary in _sound.snapshot().voices:
 		if voice.loop:
@@ -196,9 +196,9 @@ func _check_focus_and_stage() -> void:
 	_sound.notification(NOTIFICATION_APPLICATION_FOCUS_OUT)
 	_sound.set_focus("guild_house", true)
 	_check(_sound.snapshot().active == 0, "A background application cannot restore a loop.")
-	var remaining: float = _combat.active_remaining()
+	var remaining: float = _combat.active_remaining(_hero)
 	_sound.notification(NOTIFICATION_APPLICATION_FOCUS_IN)
-	_check(_phases() == PackedStringArray(["sustain"]) and _sound.voices_started == before + 1 and _combat.active_remaining() == remaining, "Foreground restores only the existing active loop without replaying cast/impact or time.")
+	_check(_phases() == PackedStringArray(["sustain"]) and _sound.voices_started == before + 1 and _combat.active_remaining(_hero) == remaining, "Foreground restores only the existing active loop without replaying cast/impact or time.")
 	var music: ArenicArenaMusicDirector = _shell.music
 	var listener_id: int = music.get_node("MusicListener").get_instance_id()
 	var clocks: Dictionary = {}
@@ -207,7 +207,7 @@ func _check_focus_and_stage() -> void:
 	var audio_id: int = _sound.get_instance_id()
 	_shell.replace_stage(_shell.stage_scene)
 	_sound.set_process(false)
-	_check(_shell.sound.get_instance_id() == audio_id and _sound.snapshot().active == 0 and _combat.active_remaining() == remaining, "Stage replacement preserves the director/model and starts quietly in overview.")
+	_check(_shell.sound.get_instance_id() == audio_id and _sound.snapshot().active == 0 and _combat.active_remaining(_hero) == remaining, "Stage replacement preserves the director/model and starts quietly in overview.")
 	_shell.select_hero()
 	_sound.set_process(false)
 	_check(_phases() == PackedStringArray(["sustain"]), "Refocusing the replacement stage restores only the continuing aura loop.")
@@ -216,7 +216,7 @@ func _check_focus_and_stage() -> void:
 		_check(music.clocks[id].get_instance_id() == clocks[id][0] and music.clocks[id].get_position() == clocks[id][1], "SFX handoff preserves independent music clocks.")
 
 func _emit(phase: String, cast_id: int) -> void:
-	_combat.ability_phase.emit(_hero.definition.skills[0].ability_id, phase, "guild_house", Vector2(_hero.cell), cast_id)
+	_combat.ability_phase.emit(_hero.ally_id(), _hero.definition.skills[0].ability_id, phase, "guild_house", Vector2(_hero.cell), cast_id)
 	_sound.set_process(false)
 
 func _check_pool() -> void:
@@ -300,7 +300,7 @@ func _check_pending_loop() -> void:
 	_sound.set_focus("", false)
 	_sound.set_focus("guild_house", true)
 	_sound.set_process(false)
-	_combat.cancel_channel()
+	_combat.cancel_channel(_hero)
 	_step(0.035)
 	_check(_phases(true).is_empty() and _sound.snapshot().pending == 0, "Cancelling the model invalidates any pending loop restoration.")
 

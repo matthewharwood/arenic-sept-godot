@@ -1,3 +1,4 @@
+@tool
 class_name ArenicBossDefinition
 extends Resource
 ## Boss presentation data only. Canvas size is not a collision footprint.
@@ -241,3 +242,7 @@ static func _json_rect(value: Variant) -> Rect2:
 		if not _is_integer(value.get(key)):
 			return Rect2(-1, -1, -1, -1)
 	return Rect2(float(value["x"]), float(value["y"]), float(value["w"]), float(value["h"]))
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())

@@ -13,13 +13,15 @@ It calls the reusable native validation workflow and independently builds and
 tests the website. Deployment requires both jobs to pass. PRs never deploy.
 
 1. Install official Godot **4.7.2**, verified against pinned SHA-512 checksums.
-2. Run 16 headless and 5 software-rendered Godot checks.
-3. Export a clean Web release and a separate, disposable instrumented release.
-4. Package the landing page and galleries; deduplicate existing preview images
+2. Run the Godot Doctor authored-data preflight before installing browser dependencies.
+3. Run 16 headless and 5 software-rendered Godot checks; the headless lane also
+   runs Godot Doctor before its gameplay checks.
+4. Export a clean Web release and a separate, disposable instrumented release.
+5. Package the landing page and galleries; deduplicate existing preview images
    without changing their pixels or animation data.
-5. Run 28 Chromium browser tests under `/arenic-sept-godot/`.
-6. Upload **only** the clean site and deploy it through GitHub Pages.
-7. Confirm the public build manifest matches the deployed commit, then exercise
+6. Run 28 Chromium browser tests under `/arenic-sept-godot/`.
+7. Upload **only** the clean site and deploy it through GitHub Pages.
+8. Confirm the public build manifest matches the deployed commit, then exercise
    public title/class clicks, arena navigation, actual audio output and catalog links.
 
 The checks cover the current implemented contracts. They cannot guarantee
@@ -86,6 +88,7 @@ Use fresh empty export directories; the exporter refuses to overwrite an
 existing export. It never modifies the open editor project or its imports.
 
 ```sh
+python3 scripts/ci/test-godot.py --godot /path/to/godot --suite doctor
 npm ci
 npx playwright install chromium
 python3 scripts/build-web.py --godot /path/to/godot --output .tmp/web-production

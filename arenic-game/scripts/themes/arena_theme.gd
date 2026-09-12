@@ -1,3 +1,4 @@
+@tool
 class_name ArenicArenaTheme
 extends Resource
 ## Palette primitives stay in OKLCH: Vector3(lightness 0–1, chroma, hue degrees).
@@ -91,3 +92,7 @@ func validation_errors() -> PackedStringArray:
 	if atmosphere_id < 0 or atmosphere_id > 8 or backdrop_style < 0 or backdrop_style > 10 or foreground_style < 0 or foreground_style > 10:
 		errors.append("Atmosphere identity or voice style is outside the source catalogue.")
 	return errors
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())

@@ -43,6 +43,8 @@ func _run() -> void:
 		return
 	if not _check_crossings() or not _check_borders() or not _check_invalid():
 		return
+	if not _check_names() or not _check_progression():
+		return
 	_finish(0, "Hero checks passed: %d assertions; all eight class identities and %d directed arena crossings." % [_checks, _crossings])
 
 
@@ -54,6 +56,8 @@ func _check_spawns() -> bool:
 		var hero := ArenicHeroState.new()
 		hero.definition = chosen
 		if not _check(hero.arena_id == "guild_house" and hero.cell == Vector2i(30, 15) and hero.facing == "n" and hero.selected, "%s starts selected in Guild House at (30,15), facing north." % id):
+			return false
+		if not _check(hero.display_name() == chosen.character_name and hero.level == 1 and hero.experience == 0, "%s preserves its authored starter name and begins with fresh progression." % id):
 			return false
 		if not _step(hero, Vector2i(1, 0), "guild_house", Vector2i(31, 15), true, "e"):
 			return false
@@ -184,6 +188,52 @@ func _check_invalid() -> bool:
 	return _reject(_hero("guild_house", Vector2i(65, 15)), Vector2i(1, 0), incomplete_world, "A missing destination rejects crossing atomically.")
 
 
+func _check_names() -> bool:
+	if not _check(ArenicHeroNames.FIRST_NAMES.size() == 100 and ArenicHeroNames.LAST_NAMES.size() == 100, "Generated names use exactly 100 first names and 100 surnames."):
+		return false
+	var names: Dictionary = {}
+	for identity_id in range(ArenicHeroNames.NAME_COMBINATIONS):
+		names[ArenicHeroNames.name_for_id(identity_id)] = true
+	if not _check(names.size() == 10000, "The first 10,000 identities have distinct deterministic full names."):
+		return false
+	if not _check(ArenicHeroNames.name_for_id(0) == "Arlen Ashford" and ArenicHeroNames.name_for_id(10000) == "Arlen Ashford", "Names have a stable, explicit 10,000-identity cycle."):
+		return false
+	if not _check(names.has(ArenicHeroNames.name_for_id(ArenicHeroState.MAX_EXPERIENCE)) and names.has(ArenicHeroNames.name_for_id(-ArenicHeroState.MAX_EXPERIENCE - 1)), "Both signed 64-bit identity boundaries resolve safely into the name pool."):
+		return false
+	var generated := ArenicHeroState.new()
+	generated.identity_id = 812
+	if not _check(generated.display_name() == ArenicHeroNames.name_for_id(812), "A hero without an authored name uses its stable identity."):
+		return false
+	generated.definition = ArenicClassDefinition.new()
+	return _check(generated.display_name() == ArenicHeroNames.name_for_id(812), "An unlabelled class keeps the same generated name.")
+
+
+func _check_progression() -> bool:
+	var hero := _hero("guild_house", Vector2i(65, 15))
+	hero.identity_id = 812
+	hero.level = 7
+	hero.experience_to_next_level = 250
+	if not _check(hero.gain_experience(49) == 49 and hero.experience == 49 and hero.level == 7, "Explicit XP gains accumulate without inventing level-up rules."):
+		return false
+	if not _check(hero.gain_experience(0) == 0 and hero.gain_experience(-9) == 0 and hero.experience == 49, "Zero and negative XP gains cannot spend stored progress."):
+		return false
+	var before: Array = [hero.identity_id, hero.display_name(), hero.level, hero.experience, hero.experience_to_next_level]
+	if not _step(hero, Vector2i(1, 0), "sanctum", Vector2i(0, 15), true, "e"):
+		return false
+	if not _check([hero.identity_id, hero.display_name(), hero.level, hero.experience, hero.experience_to_next_level] == before, "Arena travel preserves identity, authored name and progression."):
+		return false
+	hero.identity_id = -1
+	hero.level = 0
+	hero.experience = -1
+	hero.experience_to_next_level = 0
+	if not _check(hero.identity_id == 0 and hero.level == 1 and hero.experience == 0 and hero.experience_to_next_level == 1, "Assignments preserve nonnegative identity/XP and positive level/threshold bounds."):
+		return false
+	hero.experience = ArenicHeroState.MAX_EXPERIENCE - 3
+	if not _check(hero.gain_experience(9) == 3 and hero.experience == ArenicHeroState.MAX_EXPERIENCE, "XP saturates at the signed integer limit and reports only the accepted gain."):
+		return false
+	return _check(hero.gain_experience(ArenicHeroState.MAX_EXPERIENCE) == 0 and hero.experience == ArenicHeroState.MAX_EXPERIENCE, "Further XP at the integer limit cannot wrap or change the total.")
+
+
 func _hero(arena_id: String = "guild_house", cell: Vector2i = Vector2i(30, 15)) -> ArenicHeroState:
 	var hero := ArenicHeroState.new()
 	hero.definition = _definition
@@ -212,7 +262,7 @@ func _reject(hero: ArenicHeroState, direction: Vector2i, world: ArenicWorldDefin
 
 
 func _snapshot(hero: ArenicHeroState) -> Array:
-	return [hero.definition, hero.arena_id, hero.cell, hero.facing, hero.selected]
+	return [hero.definition, hero.arena_id, hero.cell, hero.facing, hero.selected, hero.identity_id, hero.display_name(), hero.level, hero.experience, hero.experience_to_next_level]
 
 
 func _check(condition: bool, message: String) -> bool:

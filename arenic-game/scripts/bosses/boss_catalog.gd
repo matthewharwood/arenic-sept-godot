@@ -1,3 +1,4 @@
+@tool
 class_name ArenicBossCatalog
 extends Resource
 ## Eight authored boss identities; appearance metadata never supplies combat rules.
@@ -24,6 +25,10 @@ func validation_errors() -> PackedStringArray:
 		for error in boss.validation_errors():
 			errors.append("Boss '%s': %s" % [id, error])
 	return errors
+
+
+func _get_validation_conditions() -> Array:
+	return ArenicDoctorConditions.from_errors(validation_errors())
 
 
 func index_for_id(boss_id: String) -> int:

@@ -10,6 +10,8 @@ var _starter_frames: SpriteFrames
 var _starter_id: String = ""
 var _ability_id: String = ""
 var _ability_direction: String = "n"
+var _themed: ArenicArenaTheme
+var _ghost_ring: Sprite3D
 var _channeling: bool = false
 
 func configure(hero: ArenicHeroState) -> void:
@@ -42,6 +44,28 @@ func configure(hero: ArenicHeroState) -> void:
 	_selection.rotation.x = -PI * 0.5
 	_selection.position.y = -0.005
 	add_child(_selection)
+	# A ghost wears blue where the controlled hero wears the arena's accent, so
+	# a selected ghost reads as both at once rather than one replacing the other.
+	_ghost_ring = Sprite3D.new()
+	_ghost_ring.name = "GhostRing"
+	_ghost_ring.texture = _selection.texture
+	_ghost_ring.pixel_size = PIXEL_SIZE
+	_ghost_ring.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	_ghost_ring.shaded = false
+	_ghost_ring.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_ghost_ring.rotation.x = -PI * 0.5
+	_ghost_ring.position.y = -0.006
+	_ghost_ring.scale = Vector3.ONE * 1.18
+	_ghost_ring.modulate = ArenicHudTokens.color("selection")
+	_ghost_ring.visible = false
+	add_child(_ghost_ring)
+
+## Marks this hero as folded into its arena's stream. Playback drives it, so the
+## ring is what tells the player their arrows will not move it.
+func set_ghost(value: bool) -> void:
+	if _ghost_ring != null:
+		_ghost_ring.visible = value
+
 
 func sync(arena: ArenicArenaDefinition, show_selection: bool) -> void:
 	global_position = ArenicGridMath.tile_to_world(arena.grid_slot, state.cell) + Vector3(0.0, 0.025, 0.0)
@@ -50,7 +74,11 @@ func sync(arena: ArenicArenaDefinition, show_selection: bool) -> void:
 		if sprite.animation != animation_name or not sprite.is_playing():
 			sprite.play(animation_name)
 	_selection.visible = show_selection and state.selected
-	if arena.visual_theme != null:
+	# Views follow the ledger every tick, so the OKLCH conversion behind
+	# `color()` cannot run per hero per frame; it only changes when the hero
+	# stands in a different arena.
+	if arena.visual_theme != null and arena.visual_theme != _themed:
+		_themed = arena.visual_theme
 		_selection.modulate = arena.visual_theme.color("primary")
 
 func _selection_texture() -> ImageTexture:

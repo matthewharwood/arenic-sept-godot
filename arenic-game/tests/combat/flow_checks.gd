@@ -30,7 +30,7 @@ func _run() -> void:
 		shell = packed_shell.instantiate()
 		root.add_child(shell)
 		await process_frame
-		check(shell.hero == setup.hero and shell.hero.definition.class_id == class_id, class_id + " is the single chosen hero")
+		check(shell.hero == setup.get_hero() and shell.hero.definition.class_id == class_id, class_id + " is the founding guild member")
 		check(shell.hero.arena_id == "guild_house" and shell.hero.cell == Vector2i(30, 15), "New run starts in Guild House")
 		check(shell.combat == setup.combat, "RunSetup owns the combat ledger")
 		for arena: ArenicArenaDefinition in shell.stage.world.arenas:
@@ -44,7 +44,7 @@ func _run() -> void:
 		# A fixture places the hero behind the training target; real arrow input
 		# checks occupancy, and real Space input drives every starter's damage.
 		shell.hero.cell = Vector2i(30, 21)
-		shell.stage.sync_hero(true)
+		shell.stage.sync_heroes(shell.hero.identity_id, true)
 		press(KEY_UP)
 		await physics_frame
 		await physics_frame
@@ -59,11 +59,24 @@ func _run() -> void:
 			await create_timer(0.05).timeout
 			waited += 0.05
 		key(KEY_SPACE, false)
-		check(shell.combat.damage_for_arena("guild_house") == 1, class_id + " deals normalized damage through real cast input")
-		check(shell.combat.damage_for_enemy("guild_house", "boss:guild_house") == 1, "Target and arena totals agree")
 		var bar := shell.hud.get_node("TopStrip/DamageBar") as ArenicArenaDamageBar
+		if class_id == "alchemist":
+			# The flask leaves a pool; the pool is what burns, a second later.
+			check(shell.combat.damage_for_arena("guild_house") == 0, "The flask impact deals the target no damage")
+			var pools: ArenicAcidField = shell.encounter.acid_field("guild_house")
+			check(pools.count() == 1, "It leaves a pool of acid behind instead")
+			shell.combat.apply_hazard_damage("guild_house", "boss:guild_house", 1)
+		elif class_id == "forager":
+			# Dig pays the guild in broken ground rather than the boss in damage.
+			check(shell.combat.damage_for_arena("guild_house") == 0, "Dig deals the target no damage through real cast input")
+			check(setup.prospected > 0, "It yields toward the next hero instead")
+			check(shell.encounter.dig_field("guild_house").is_dug(shell.hero.cell), "And leaves the tile underfoot broken")
+			shell.combat.apply_hazard_damage("guild_house", "boss:guild_house", 1)
+		else:
+			check(shell.combat.damage_for_arena("guild_house") == 1, class_id + " deals normalized damage through real cast input")
+		check(shell.combat.damage_for_enemy("guild_house", "boss:guild_house") == 1, "Target and arena totals agree")
 		check(bar.total_damage == 1 and bar.current_damage == 1, "Selected HUD displays the damage event")
-		check(not shell.combat.is_channeling(), "Release stops a held channel")
+		check(not shell.combat.is_channeling(shell.hero), "Release stops a held channel")
 		press(KEY_ESCAPE)
 		press(KEY_BRACKETLEFT)
 		check(shell.selected_index == 0 and not shell.zoomed and bar.total_damage == 0, "Overview bracket selection shows the other arena's independent total")

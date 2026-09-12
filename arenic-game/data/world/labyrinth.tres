@@ -15,3 +15,4 @@ hotkey = "L"
 visual_theme = ExtResource("3_2mfrm")
 music = ExtResource("2_ghike")
 boss = ExtResource("1_h7x3q")
+boss_origin_cell = Vector2i(30, 12)

@@ -1,3 +1,4 @@
+@tool
 class_name ArenicBossVisualState
 extends Resource
 ## An authored appearance loop, not a gameplay state or transformation rule.

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ArenicRecruitmentCurve" format=3]
+
+[ext_resource type="Script" path="res://scripts/guild/recruitment_curve.gd" id="1_curve"]
+
+[resource]
+script = ExtResource("1_curve")
+first_roll_damage = 40
+growth = 1.6
+offers_per_roll = 3

@@ -1,14 +1,51 @@
 # Starter combat
 
-Class selection creates **one chosen hero**, selected and facing north at Guild House tile `(30, 15)`. It does not create a party or extra heroes. Each of the nine arenas has an immortal target: eight class bosses and Guild House's animated training construct. They occupy explicit 6 × 6 gameplay footprints at `(30, 22)` by default, facing north. Artwork size and transparent pixels do not determine occupancy.
+Class selection founds a **guild** with one chosen hero, selected and facing north at Guild House tile `(30, 15)`. It does not create a party or extra heroes. Each of the nine arenas has an immortal target: eight class bosses and Guild House's animated training construct. They occupy explicit 6 × 6 gameplay footprints at `(30, 22)` by default, facing north; the Labyrinth rests at `(30, 12)` because its [battle sequence](encounters.md) opens on the arena centre, and a scored boss moves its footprint as its cycle runs. Artwork size and transparent pixels do not determine occupancy.
 
-This is a normalized combat prototype. Every authored damaging hit deals **1 damage**. Targets accumulate damage without losing health, dying, or disappearing. Sacrifice has no health cost in this prototype. Loot, currency, enemy attacks, additional abilities, and ability sound playback are not implemented by this change.
+This is a normalized combat prototype. Every authored damaging hit deals **1 damage**. Targets accumulate damage without losing health, dying, or disappearing. Enemies deal no damage through abilities; the one way a hero is defeated is standing inside a boss landing's blast radius, which returns it to Guild House with its progress intact ([battle sequences](encounters.md)). Sacrifice has no health cost in this prototype. Loot, currency, enemy attacks, additional abilities, and ability sound playback are not implemented by this change.
+
+Heroes are a roster from the start, even while it holds exactly one: the guild
+grows over a run and nothing downstream may assume a single hero. Each member
+owns its own ledger entry, keyed `hero:<identity>` by its run identity, so health
+and debuffs are per-member and travel with that member between arenas.
+`ArenicCombatState.sync_allies()` is the one place a member's entry relocates.
+Members do not block one another: several may share a tile.
+
+### Who an arena hands you
+
+Each arena remembers the member you last controlled in it, so walking a patrol of
+arenas picks up where you left off rather than resetting to the top of the
+roster. Paginating — brackets, an arena hotkey, the map, or overview arrows —
+hands control to that member. An arena with no memory hands over the **first**
+member standing there; an arena with **no members at all changes nothing**, so
+you keep the hero you had.
+
+**Tab** cycles the members standing in the focused arena, and every stop updates
+what that arena remembers. Tab still finds the controlled hero when it is
+somewhere else entirely.
+
+A member that walks out of an arena takes that arena's memory with it, so the
+arena will offer whoever is still there rather than someone who has gone. Another
+member leaving does not erase a memory that still points at someone present.
+Selection and that memory change together in `RunSetup.select()`, so the two
+cannot drift apart.
+
+Only deliberate navigation adopts a default. Following a hero that already moved
+— edge-walking, respawning, Tab-to-find — leaves control where it is.
+
+Being handed a **ghost** is allowed and asks nothing; moving it or recording over
+it still opens its modal first.
 
 ## Controls and timing
 
 Press **Tab** to focus and select the hero, then press **Space** or click the HUD ability button to cast. The hero must be selected in its focused arena. A new press queues at most one cast for the next physics tick; key repeat and holding an ordinary ability do not auto-cast. A rejected cast reports a reason and spends no cooldown. Accepted casts start their cooldown at windup, and another cast is rejected while the current cast, channel, or aura is active.
 
 Hold Space or the button for Cardinal's Sacrifice. Releasing both cast controls ends it. Movement input, navigation/zoom changes, deselection, application focus loss, sequence acquisition, and stage replacement cancel the held channel and clear queued input. The model also cancels if the hero moves or changes arena. A quick press and release before the first one-second tick deals no damage.
+
+Each caster owns its own in-flight cast and cooldown, keyed by run identity, so
+forty recorded heroes and the player can all act in one arena without contending.
+Every cast query — cooldown, remaining, channel state, presentation snapshot — is
+scoped to a caster; there is no single "the" cast to ask about.
 
 `GameShell._physics_process()` advances combat explicitly through `tick(delta, hero)`. Overview continues cooldowns and Fortune; a camera sequence pauses combat advancement after cancelling a held channel. The combat model has no node timer, rendering callback, or audio-playback dependency. Music maintains its separate clock contract in [arena-music.md](arena-music.md).
 
@@ -21,11 +58,76 @@ Defaults are authored in `arenic-game/data/classes/<class>_primary.tres`, using 
 | Hunter | Auto Shot / `auto_shot` | Nearest enemy within 8 tiles. | One hit after 0.75 s. | 2.5 s |
 | Warrior | Bash / `bash` | One adjacent enemy, including diagonals. | One hit after 0.35 s. | 1 s |
 | Thief | Backstab / `backstab` | One adjacent enemy, strictly behind its facing. | One hit after 0.2 s. | 1.5 s |
-| Alchemist | Acid Flask / `acid_flask` | Nearest enemy tile within 8 tiles; every enemy footprint occupying that ground cell at impact is hit once. | Ground impact after 0.8 s. | 4 s |
+| Alchemist | Acid Flask / `acid_flask` | Aimed three tiles along the caster's facing. No target. | Lands after 0.8 s; see [ground effects](#ground-effects). | 4 s |
 | Cardinal | Sacrifice / `heal` | Hold a channel on one enemy within 8 tiles. No health cost or health gate. | First hit at 1 s, then once per second while held and in range. | 1 s |
 | Bard | Cleanse / `cleanse` | Exact 4 × 4 area: heal allies by 1, clear their debuffs, and hit each intersecting enemy once. | Immediate. | 4 s |
-| Forager | Dig / `dig` | One adjacent enemy, including diagonals. | One hit after 0.4 s. | 1.5 s |
+| Forager | Dig / `dig` | The tile underfoot. No target, no range, no adjacency. | Instant; see [digging](#digging). | 1.5 s |
 | Merchant | Fortune / `fortune` | Aura follows the caster and hits all enemies within radius 2, including diagonals. | Exactly 20 one-second ticks, from 1 s through 20 s. | 20 s |
+
+## Ground effects
+
+Two starters do not damage anything themselves — they put something on the floor
+and let it work. Both belong to the **arena's cycle** rather than to the combat
+ledger, and both clear when that cycle ends, so a replayed take always starts on
+level ground.
+
+Ground effects lie **under** whatever stands on them: a boss wading through acid
+is drawn over the pool, never swallowed by it. That needs two things to agree —
+each layer sits below the boss sprite's own lift in world height, and sorts below
+the default priority a `Sprite3D` renders at. Acid still reads over broken
+ground, because the layers sort among themselves first.
+
+The ledger announces a landing through `ability_landed`, and the arena's cycle
+state does the rest. Instant abilities land at cast; thrown ones land when they
+resolve. Live casts and ghost playback reach it through the same door, so a ghost
+lays exactly the ground its take did.
+
+### Acid Flask
+
+A **skill shot**: it flies three tiles along the caster's facing, whatever is
+there, and needs no target. Aim is taken when it is *cast*, so turning during the
+0.8-second flight does not steer it, and a throw into the arena wall lands
+against the wall rather than vanishing.
+
+Where it lands it leaves a **3 × 3 pool for 8 seconds**, burning everything
+inside it for **1 a second** — eight burns, then it dries up. Acid with nothing
+standing in it burns nothing. A second flask onto the same ground lays a *second*
+pool rather than refreshing the first, so two flasks burn twice as fast.
+
+**Acid has no allegiance.** A hero standing in a pool burns like anything else,
+and at one health that is fatal, so an Alchemist has to record a path around
+their own ground. A burned hero dies exactly as it would to a boss landing: a
+free one walks home to the Guild House, a **ghost dies where it stood** and rises
+with the next cycle — and since both its intent and the pool are fixed, it will
+burn at the same tick every cycle until the take changes.
+
+The pool itself is purely temporal: it reports *when* and *where* a burn came
+due, never *who* is standing in it, and the ledger applies it to enemies and
+allies alike. That is why friendly fire needed no second code path.
+
+### Digging
+
+Dig breaks the ground the Forager is standing on. It needs no enemy, so it casts
+anywhere — in a boss arena or the Guild House alike — and it deals no damage by
+itself.
+
+When a cycle starts, every tile in the arena is worth **1-3**. Breaking one pays
+that toward the next hero: damage and broken ground are two incomes feeding the
+same [guild rolls](guild.md). A tile pays **once** — digging spent ground is
+still a legal cast, it simply finds nothing left to take, which is why spent
+tiles are marked on the floor.
+
+Broken ground is also a trap. A boss standing on a dug tile takes **1 damage
+every 8 seconds**, counted in whole ticks of *actual overlap*. Overlap is banked
+rather than reset when the boss leaves, so a boss that parks on prepared ground
+for part of each cycle still eventually pays for it; one that only passes through
+does not. Each dug tile bleeds independently, so ground prepared under a landing
+site is far stronger than a scattered trail.
+
+Every dig clears when the arena's cycle ends and the ground rolls fresh. The roll
+is seeded from the arena and its cycle number, never from chance at the moment of
+asking — a recorded Forager must dig the same tile for the same value every time
+that cycle comes around.
 
 Range is the **Chebyshev distance to the nearest occupied footprint cell**: `max(abs(dx), abs(dy))`. Target selection considers only the caster's arena, then sorts equal-distance candidates by stable enemy ID. Targeted casts face the selected cell, using vertical facing when both axes tie. Self-area abilities retain the hero's facing. Adjacent means distance exactly 1; standing inside a target is not adjacency. Movement into target footprints is blocked by the shell.
 

@@ -100,14 +100,74 @@ func _snapshot() -> Dictionary:
 			"tile_pixels":screen.distance_to(rig.world_to_screen(center + Vector3(ArenicGridMath.TILE_SIZE, 0.0, 0.0))),
 			"world_rect":_rect(shell.hud.get_world_rect()), "music":shell.music.snapshot(),
 			"hero":{"class_id":shell.hero.definition.class_id, "arena":shell.hero.arena_id,
+				"identity":shell.hero.identity_id, "name":shell.hero.display_name(),
 				"cell":_v2(Vector2(shell.hero.cell)), "facing":shell.hero.facing, "selected":shell.hero.selected}})
 		result["combat"] = _combat_snapshot(shell)
 		result["sound"] = _sound_snapshot(shell)
+		result["hud"] = _hud_snapshot(shell.hud)
+		result["recording"] = _recording_snapshot(shell)
 		var ability := shell.hud.get_node("BottomStrip/AbilityAction") as Button
 		var ability_control: Dictionary = _control(ability)
 		ability_control.merge({"disabled":ability.disabled, "text":ability.text, "pressed":ability.is_pressed()})
 		result.controls = {"toggle":_control(shell.hud.get_node("BottomStrip/OverviewToggle")), "ability":ability_control}
 	return result
+
+
+# Read actual HUD controls and roster state. No extra heroes, input commands,
+# timer advancement, or state mutation are introduced by this browser probe.
+func _hud_snapshot(hud: ArenicWorldHUD) -> Dictionary:
+	var roster := hud.get_node("BottomStrip/CharacterRoster") as ArenicRosterStrip
+	var roster_state: Dictionary = _control(roster)
+	var entries: Array[Dictionary] = []
+	for slot: int in roster.CAPACITY:
+		var point := Vector2(float(slot % 10) * roster.CELL + 7.0, floorf(float(slot) / 10.0) * roster.CELL + 7.0)
+		var index: int = roster._entry_at(point)
+		if index < 0:
+			continue
+		var entry: Dictionary = roster.entries[index]
+		entries.append({"identity":int(entry.identity), "name":str(entry.name), "dead":bool(entry.get("dead", false)),
+			"center":_v2(roster.get_global_transform_with_canvas() * point)})
+	roster_state.merge({"capacity":roster.CAPACITY, "count":roster.entries.size(), "entries":entries,
+		"selected_identity":roster.selected_identity, "hidden_count":roster.hidden_entries().size()})
+	var slots: Array[Dictionary] = []
+	for slot: int in range(1, 5):
+		var node_name: String = "AbilityAction" if slot == 1 else "AbilitySlot%d" % slot
+		var button := hud.get_node("BottomStrip/" + node_name) as Button
+		var control: Dictionary = _control(button)
+		control.merge({"slot":slot, "text":button.text, "disabled":button.disabled})
+		slots.append(control)
+	var arenas: Array[Dictionary] = []
+	for index: int in 9:
+		var button := hud.get_node("BottomStrip/ArenaCell%d" % index) as Button
+		var control: Dictionary = _control(button)
+		var style := button.get_theme_stylebox("normal") as StyleBoxFlat
+		control.merge({"index":index, "text":button.text,
+			"active":style.bg_color.is_equal_approx(ArenicHudTokens.color("map_active"))})
+		arenas.append(control)
+	var guide := hud.get_node("ControlsGuide") as Control
+	var guide_state: Dictionary = _control(guide)
+	guide_state["text"] = guide.get_node("GuideText").text
+	return {"roster":roster_state, "slots":slots, "arenas":arenas, "guide":guide_state,
+		"previous":_control(hud.get_node("BottomStrip/PreviousArena")),
+		"next":_control(hud.get_node("BottomStrip/NextArena")),
+		"help":_control(hud.get_node("BottomStrip/ControlsHelp")),
+		"record":_control(hud.get_node("BottomStrip/RecordAction")),
+		"raid":hud.get_node("BottomStrip/RaidDifficulty").text}
+
+# Read the recording session and folded ghosts. This observes state; it never
+# arms, captures, commits or advances anything.
+func _recording_snapshot(shell: Variant) -> Dictionary:
+	var session: ArenicRecordingSession = shell.session
+	var names: PackedStringArray = ["idle", "countdown", "recording"]
+	var ghosts: Array[Dictionary] = []
+	for member: ArenicHeroState in shell.heroes:
+		if shell.encounter.is_ghost(member):
+			ghosts.append({"identity":member.identity_id, "arena":member.arena_id, "cell":_v2(Vector2(member.cell))})
+	return {"state":names[int(session.state)], "countdown":session.countdown_left,
+		"captured":session.events.size(), "arena":session.arena_id,
+		"ghosts":ghosts, "modal_open":shell.modal.is_open(),
+		"cycle":shell.encounter.cycle_position(shell.hero.arena_id)}
+
 
 # Read existing gameplay/presentation state only. Infinity is represented by null
 # plus is_channeling, keeping every report valid JSON without advancing a timer.
@@ -122,8 +182,8 @@ func _combat_snapshot(shell: Variant) -> Dictionary:
 		targets[arena.arena_id] = combat.damage_for_enemy(arena.arena_id, "boss:" + arena.arena_id)
 	var bar := shell.hud.get_node("TopStrip/DamageBar") as ArenicArenaDamageBar
 	var bar_material := bar.material as ShaderMaterial
-	var active: Dictionary = combat.active_cast_snapshot()
-	var remaining: float = combat.active_remaining()
+	var active: Dictionary = combat.active_cast_snapshot(shell.hero)
+	var remaining: float = combat.active_remaining(shell.hero)
 	var hero_view: ArenicHeroView = shell.stage.hero_view
 	var presenter: ArenicCombatPresentation = shell.combat_presentation
 	if _combat_presenter_id != presenter.get_instance_id():
@@ -131,9 +191,9 @@ func _combat_snapshot(shell: Variant) -> Dictionary:
 		_combat_assets = _combat_asset_snapshot(presenter)
 	return {
 		"totals":totals, "targets":targets, "physics_seconds":_physics_seconds,
-		"cooldown":combat.cooldown_remaining(), "active":not active.is_empty(),
+		"cooldown":combat.cooldown_remaining(shell.hero), "active":not active.is_empty(),
 		"active_remaining":remaining if is_finite(remaining) else null,
-		"active_elapsed":float(active.get("elapsed", 0.0)), "is_channeling":combat.is_channeling(),
+		"active_elapsed":float(active.get("elapsed", 0.0)), "is_channeling":combat.is_channeling(shell.hero),
 		"active_fx_count":presenter.active_effect_count(),
 		"starter_ability_id":shell.hero.definition.skills[0].ability_id,
 		"hero_ability_id":hero_view._ability_id,

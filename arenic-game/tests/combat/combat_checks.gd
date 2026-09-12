@@ -13,6 +13,7 @@ func _initialize() -> void:
 	_check_data()
 	_check_targeting()
 	_check_melee()
+	_check_dig()
 	_check_backstab()
 	_check_ground()
 	_check_channel()
@@ -70,21 +71,25 @@ func _check_targeting() -> void:
 	var h: ArenicHeroState = f.hero
 	c.register_enemy("guild_house", "training", BOSS)
 	_expect(c.cast_unavailable_reason(h).is_empty(), "Guild spawn is seven cells from training target edge, within range eight.")
-	_expect(c.cooldown_remaining() == 0.0 and c.active_remaining() == 0.0, "Availability lookup is read-only.")
+	_expect(c.cooldown_remaining(h) == 0.0 and c.active_remaining(h) == 0.0, "Availability lookup is read-only.")
 	var signals: Array = []
-	c.ability_cast.connect(func(id: String, arena: String, origin: Vector2i, target: Vector2i, facing: String): signals.append([id, arena, origin, target, facing]))
+	var casters: Array = []
+	c.ability_cast.connect(func(caster: String, id: String, arena: String, origin: Vector2i, target: Vector2i, facing: String):
+		signals.append([id, arena, origin, target, facing])
+		casters.append(caster))
 	_expect(c.try_cast(h).is_empty(), "Hunter starts its shot.")
 	_expect(signals == [["auto_shot", "guild_house", Vector2i(30, 15), Vector2i(30, 22), "n"]], "Cast signal gives windup, footprint edge target and correct facing.")
+	_expect(casters == [h.ally_id()], "The cast signal names the caster, so a presenter animates the right hero.")
 	_expect(c.damage_for_arena("guild_house") == 0, "Projectile does not deal damage at launch.")
 	c.tick(0.74, h)
 	_expect(c.damage_for_arena("guild_house") == 0, "Hunter hit waits for landing.")
 	c.tick(0.01, h)
-	_expect(c.damage_for_arena("guild_house") == 1 and c.active_remaining() == 0.0, "Hunter lands exactly at0.75 seconds.")
+	_expect(c.damage_for_arena("guild_house") == 1 and c.active_remaining(h) == 0.0, "Hunter lands exactly at0.75 seconds.")
 	_expect(not c.try_cast(h).is_empty(), "Cooldown remains after a shot lands.")
 	c.tick(1.75, h)
-	_expect(c.cooldown_remaining() == 0.0, "Hunter can shoot again at2.5 seconds.")
+	_expect(c.cooldown_remaining(h) == 0.0, "Hunter can shoot again at2.5 seconds.")
 	h.cell = Vector2i(30, 13)
-	_expect(not c.try_cast(h).is_empty() and c.cooldown_remaining() == 0.0, "Outside edge range rejects without spending cooldown.")
+	_expect(not c.try_cast(h).is_empty() and c.cooldown_remaining(h) == 0.0, "Outside edge range rejects without spending cooldown.")
 	h.cell = Vector2i(30, 14)
 	_expect(c.try_cast(h).is_empty(), "Exact eight-cell boundary is included.")
 	c.tick(1.0, h)
@@ -106,8 +111,31 @@ func _check_targeting() -> void:
 	_expect(c.damage_for_enemy("guild_house", "near") == 1 and h.facing == "n", "Nearest edge wins; equal-axis diagonal uses vertical facing.")
 
 
+## Dig is not a melee attack: it needs no target, no adjacency and no range, and
+## it deals no damage by itself. What it does to the ground is the dig field's,
+## and dig_checks covers that.
+func _check_dig() -> void:
+	var f := _fixture("forager", Vector2i(4, 4))
+	var c: RefCounted = f.combat
+	var h: ArenicHeroState = f.hero
+	c.register_enemy("guild_house", "boss", BOSS)
+	_expect(h.definition.skills[0].effect_kind == "dig", "The Forager's starter places ground.")
+	_expect(c.cast_unavailable_reason(h).is_empty(), "Dig is available with no enemy anywhere near.")
+	var seen: Array = []
+	c.ability_cast.connect(func(caster: String, id: String, arena: String, origin: Vector2i, target: Vector2i, facing: String):
+		seen.append([id, arena, origin]))
+	_expect(c.try_cast(h).is_empty(), "Dig casts from open ground.")
+	_expect(seen == [["dig", "guild_house", Vector2i(4, 4)]], "It publishes the tile underfoot, which is what breaks the ground.")
+	_expect(c.damage_for_arena("guild_house") == 0, "And deals no damage on its own.")
+	_expect(c.active_cast_snapshot(h).is_empty(), "Dig is instant: it leaves nothing in flight.")
+	_expect(not c.try_cast(h).is_empty() and c.cooldown_remaining(h) > 0.0, "It still spends a cooldown like any other cast.")
+	c.tick(2.0, h)
+	h.cell = Vector2i(30, 22)
+	_expect(c.try_cast(h).is_empty(), "Standing inside a target is no obstacle to digging.")
+
+
 func _check_melee() -> void:
-	for class_id: String in ["warrior", "forager"]:
+	for class_id: String in ["warrior"]:
 		var f := _fixture(class_id, Vector2i(29, 21))
 		var c: RefCounted = f.combat
 		var h: ArenicHeroState = f.hero
@@ -150,25 +178,35 @@ func _check_backstab() -> void:
 		_expect(c.damage_for_arena("guild_house") == 1, "Target turning during windup defeats the backstab.")
 
 
+## The flask is aimed, not targeted, and what it leaves behind does the work.
+## What the pool then does to whoever stands in it is the acid field's, and
+## dig_checks covers that.
 func _check_ground() -> void:
-	var f := _fixture("alchemist")
+	var f := _fixture("alchemist", Vector2i(30, 18))
 	var c: RefCounted = f.combat
 	var h: ArenicHeroState = f.hero
 	c.register_enemy("guild_house", "first", BOSS)
-	c.register_enemy("guild_house", "second", Rect2i(30, 22, 1, 1))
-	c.register_enemy("guild_house", "miss", Rect2i(31, 22, 1, 1))
-	c.try_cast(h)
-	c.cancel_channel()
+	h.facing = "n"
+	var landings: Array = []
+	c.ability_landed.connect(func(caster: String, id: String, arena: String, area: Rect2i, rules: ArenicClassAbility):
+		landings.append([id, arena, area]))
+	_expect(c.cast_unavailable_reason(h).is_empty(), "A flask needs no target in range.")
+	_expect(c.try_cast(h).is_empty(), "It throws from open ground.")
+	c.cancel_channel(h)
 	c.tick(0.79, h)
-	_expect(c.damage_for_arena("guild_house") == 0, "Flask windup is not instant and release does not cancel it.")
+	_expect(landings.is_empty() and c.damage_for_arena("guild_house") == 0, "Flask flight is not instant and release does not cancel it.")
 	c.tick(0.01, h)
-	_expect(c.damage_for_enemy("guild_house", "first") == 1 and c.damage_for_enemy("guild_house", "second") == 1 and c.damage_for_enemy("guild_house", "miss") == 0, "Ground impact hits every occupying footprint once, no adjacent splash.")
+	# Thrown north three tiles from (30,18), so the 3x3 is centred on (30,21).
+	_expect(landings == [["acid_flask", "guild_house", Rect2i(29, 20, 3, 3)]], "It lands three tiles along the facing, as a three-by-three.")
+	_expect(c.damage_for_arena("guild_house") == 0, "The impact itself deals no damage; the pool does.")
+	_expect(c.active_cast_snapshot(h).is_empty(), "And the flask is spent once it lands.")
+	# Aim is taken at CAST time, so a target that wanders off is simply missed.
 	c.tick(4.0, h)
+	h.facing = "e"
 	c.try_cast(h)
-	c.register_enemy("guild_house", "first", Rect2i(40, 22, 6, 6))
-	c.register_enemy("guild_house", "second", Rect2i(41, 22, 1, 1))
+	h.facing = "w"
 	c.tick(0.8, h)
-	_expect(c.damage_for_arena("guild_house") == 2, "Flask keeps its ground cell; moving targets can leave before impact.")
+	_expect(Rect2i(landings[1][2]).position.x > 30, "The throw keeps the facing it was cast with, not the one it lands with.")
 
 
 func _check_channel() -> void:
@@ -178,24 +216,24 @@ func _check_channel() -> void:
 	c.register_enemy("guild_house", "boss", BOSS)
 	c.register_ally("guild_house", "hero", h.cell, 0, 3, PackedStringArray(["slow"]))
 	c.try_cast(h)
-	_expect(c.is_channeling() and is_inf(c.active_remaining()), "Sacrifice remains active until a control cancellation.")
+	_expect(c.is_channeling(h) and is_inf(c.active_remaining(h)), "Sacrifice remains active until a control cancellation.")
 	c.tick(0.99, h)
 	_expect(c.damage_for_arena("guild_house") == 0, "Channel first tick is after one second.")
 	c.tick(0.01, h)
 	c.tick(2.0, h)
 	_expect(c.damage_for_arena("guild_house") == 3, "Channel catches up each one-second hit, including exact boundaries.")
 	_expect(c.ally_status("guild_house", "hero").health == 0, "Support health does not gate normalized combat or invent a life cost.")
-	c.cancel_channel()
+	c.cancel_channel(h)
 	c.tick(10.0, h)
-	_expect(not c.is_channeling() and c.damage_for_arena("guild_house") == 3, "Release stops the channel and future ticks.")
+	_expect(not c.is_channeling(h) and c.damage_for_arena("guild_house") == 3, "Release stops the channel and future ticks.")
 	c.try_cast(h)
 	h.cell.x += 1
 	c.tick(1.0, h)
-	_expect(not c.is_channeling() and c.damage_for_arena("guild_house") == 3, "Movement cancels before a due hit.")
+	_expect(not c.is_channeling(h) and c.damage_for_arena("guild_house") == 3, "Movement cancels before a due hit.")
 	c.try_cast(h)
 	h.arena_id = "sanctum"
 	c.tick(1.0, h)
-	_expect(not c.is_channeling() and c.damage_for_arena("guild_house") == 3 and c.damage_for_arena("sanctum") == 0, "Arena change cancels before a due hit.")
+	_expect(not c.is_channeling(h) and c.damage_for_arena("guild_house") == 3 and c.damage_for_arena("sanctum") == 0, "Arena change cancels before a due hit.")
 	h.arena_id = "guild_house"
 	c.try_cast(h)
 	c.tick(130.0, h)
@@ -252,16 +290,16 @@ func _check_fortune() -> void:
 	c.register_ally("guild_house", "ally", Vector2i(8, 8))
 	c.register_ally("guild_house", "far", Vector2i(7, 8))
 	c.try_cast(h)
-	_expect(not c.try_cast(h).is_empty() and c.active_remaining() == 20.0, "Fortune does not stack or reset on recast.")
+	_expect(not c.try_cast(h).is_empty() and c.active_remaining(h) == 20.0, "Fortune does not stack or reset on recast.")
 	c.tick(0.99, h)
 	_expect(c.damage_for_arena("guild_house") == 0, "Fortune does not add an extra time-zero hit.")
-	c.cancel_channel()
+	c.cancel_channel(h)
 	c.tick(0.01, h)
 	_expect(c.damage_for_enemy("guild_house", "diagonal") == 1 and c.damage_for_enemy("guild_house", "outside") == 0, "Radius two includes diagonal boundary and excludes radius three.")
-	_expect(is_equal_approx(c.fortune_loot_bonus(), 0.05), "Nearby ally data hook excludes self and distant allies.")
+	_expect(is_equal_approx(c.fortune_loot_bonus(h), 0.05), "Nearby ally data hook excludes self and distant allies.")
 	c.tick(19.0, h)
-	_expect(c.damage_for_enemy("guild_house", "diagonal") == 20 and c.active_remaining() == 0.0, "Fortune produces exactly twenty one-second ticks, including its endpoint.")
-	_expect(c.fortune_loot_bonus() == 0.0, "Temporary loot bonus clears when aura ends.")
+	_expect(c.damage_for_enemy("guild_house", "diagonal") == 20 and c.active_remaining(h) == 0.0, "Fortune produces exactly twenty one-second ticks, including its endpoint.")
+	_expect(c.fortune_loot_bonus(h) == 0.0, "Temporary loot bonus clears when aura ends.")
 	c.tick(100.0, h)
 	_expect(c.damage_for_enemy("guild_house", "diagonal") == 20 and c.damage_for_arena("sanctum") == 0, "Expired aura adds no further damage or remote hits.")
 	c.try_cast(h)
@@ -279,7 +317,7 @@ func _check_fortune() -> void:
 	c.try_cast(h)
 	for index: int in range(200):
 		c.tick(0.1, h)
-	_expect(c.damage_for_arena("guild_house") == 20 and c.active_remaining() == 0.0, "Fractional simulation steps have the same twenty ticks as one large step.")
+	_expect(c.damage_for_arena("guild_house") == 20 and c.active_remaining(h) == 0.0, "Fractional simulation steps have the same twenty ticks as one large step.")
 	c.tick(20.0, h)
 	c.try_cast(h)
 	c.tick(1000000.0, h)
@@ -326,13 +364,13 @@ func _check_invalid_inputs() -> void:
 	c.register_enemy("guild_house", "invalid", Rect2i(-1, 0, 2, 2))
 	c.register_enemy("guild_house", "empty", Rect2i(2, 2, 0, 1))
 	c.register_enemy("missing", "remote", BOSS)
-	_expect(not c.try_cast(h).is_empty() and c.cooldown_remaining() == 0.0, "Malformed and remote targets are not registered.")
+	_expect(not c.try_cast(h).is_empty() and c.cooldown_remaining(h) == 0.0, "Malformed and remote targets are not registered.")
 	_expect(not c.try_cast(null).is_empty(), "Missing hero returns an explicit reason.")
 	c.register_enemy("guild_house", "boss", BOSS)
 	c.try_cast(h)
 	for delta: float in [-1.0, INF, -INF, NAN]:
 		c.tick(delta, h)
-		_expect(c.damage_for_arena("guild_house") == 0 and c.cooldown_remaining() == 2.5 and c.active_remaining() == 0.75, "Invalid time cannot change an accepted cast.")
+		_expect(c.damage_for_arena("guild_house") == 0 and c.cooldown_remaining(h) == 2.5 and c.active_remaining(h) == 0.75, "Invalid time cannot change an accepted cast.")
 	c.tick(2.5, h)
 	h.definition.skills[0].cooldown_seconds = NAN
 	_expect(not c.try_cast(h).is_empty(), "Invalid authored timing is rejected explicitly.")
@@ -344,18 +382,18 @@ func _check_active_handoff() -> void:
 	var c: RefCounted = f.combat
 	var h: ArenicHeroState = f.hero
 	c.register_enemy("guild_house", "boss", BOSS)
-	_expect(c.active_cast_snapshot().is_empty(), "Idle combat has no presentation handoff.")
+	_expect(c.active_cast_snapshot(h).is_empty(), "Idle combat has no presentation handoff.")
 	c.try_cast(h)
 	c.tick(0.3, h)
-	var before: Dictionary = c.active_cast_snapshot()
+	var before: Dictionary = c.active_cast_snapshot(h)
 	c.configure(f.world)
 	c.register_enemy("guild_house", "boss", BOSS)
-	_expect(c.active_cast_snapshot() == before, "Reconfiguration preserves authoritative projectile timing and geometry.")
+	_expect(c.active_cast_snapshot(h) == before, "Reconfiguration preserves authoritative projectile timing and geometry.")
 	_expect(before.ability_id == "auto_shot" and before.arena_id == "guild_house" and before.origin == Vector2i(30, 15) and before.target_cell == Vector2i(30, 22) and before.facing == "n" and is_equal_approx(before.remaining, 0.45), "Projectile handoff identifies exact in-flight state.")
 	before.origin = Vector2i.ZERO
-	_expect(c.active_cast_snapshot().origin == Vector2i(30, 15), "Presenter snapshot cannot mutate authoritative origin.")
+	_expect(c.active_cast_snapshot(h).origin == Vector2i(30, 15), "Presenter snapshot cannot mutate authoritative origin.")
 	c.tick(0.45, h)
-	_expect(c.damage_for_arena("guild_house") == 1 and c.active_cast_snapshot().is_empty(), "Restoring a presenter neither restarts nor duplicates the pending hit.")
+	_expect(c.damage_for_arena("guild_house") == 1 and c.active_cast_snapshot(h).is_empty(), "Restoring a presenter neither restarts nor duplicates the pending hit.")
 	f = _fixture("merchant")
 	c = f.combat
 	h = f.hero
@@ -364,10 +402,10 @@ func _check_active_handoff() -> void:
 	h.arena_id = "sanctum"
 	h.cell = Vector2i(5, 6)
 	c.configure(f.world)
-	var aura: Dictionary = c.active_cast_snapshot()
+	var aura: Dictionary = c.active_cast_snapshot(h)
 	_expect(aura.ability_id == "fortune" and aura.arena_id == "sanctum" and aura.origin == h.cell and aura.target_cell == h.cell and aura.elapsed == 4.25 and aura.remaining == 15.75, "Fortune handoff follows current caster location and retains remaining duration.")
-	c.cancel_channel()
-	_expect(c.active_cast_snapshot() == aura, "Channel cancellation cannot erase Fortune during stage replacement.")
+	c.cancel_channel(h)
+	_expect(c.active_cast_snapshot(h) == aura, "Channel cancellation cannot erase Fortune during stage replacement.")
 
 
 func _expect(condition: bool, message: String) -> void:
@@ -378,7 +416,7 @@ func _expect(condition: bool, message: String) -> void:
 
 func _phase_log(combat: RefCounted) -> Array:
 	var events: Array = []
-	combat.ability_phase.connect(func(ability: String, phase: String, arena: String, cell: Vector2, cast_id: int): events.append({"ability": ability, "phase": phase, "arena": arena, "cell": cell, "cast_id": cast_id}))
+	combat.ability_phase.connect(func(caster: String, ability: String, phase: String, arena: String, cell: Vector2, cast_id: int): events.append({"caster": caster, "ability": ability, "phase": phase, "arena": arena, "cell": cell, "cast_id": cast_id}))
 	return events
 
 
@@ -398,15 +436,15 @@ func _check_release_phases() -> void:
 	c.register_enemy("guild_house", "boss", BOSS)
 	c.try_cast(h)
 	_expect(_phase_names(events) == ["charge"] and events[0].cast_id == 1, "First accepted cast starts one charge with ID1; rejection consumed no ID.")
-	var charging: Dictionary = c.active_cast_snapshot()
+	var charging: Dictionary = c.active_cast_snapshot(h)
 	_expect(charging.cast_id == 1 and not charging.released and charging.release_seconds == 0.26, "Charging snapshot identifies its loop without replaying a cast.")
 	c.configure(f.world)
-	_expect(c.active_cast_snapshot() == charging and events.size() == 1, "Stage reconfiguration emits nothing and preserves charging identity.")
+	_expect(c.active_cast_snapshot(h) == charging and events.size() == 1, "Stage reconfiguration emits nothing and preserves charging identity.")
 	c.tick(0.25, h)
 	_expect(_phase_names(events) == ["charge"], "Charge stays active until its actual release boundary.")
 	c.tick(0.01, h)
 	_expect(_phase_names(events) == ["charge", "cast"] and c.damage_for_arena("guild_house") == 0, "Actual release precedes landing and does not deal damage.")
-	var released: Dictionary = c.active_cast_snapshot()
+	var released: Dictionary = c.active_cast_snapshot(h)
 	_expect(released.released and released.cast_id == 1 and released.release_seconds == 0.26, "Released snapshot distinguishes a flight from a charging loop.")
 	c.configure(f.world)
 	c.tick(0.49, h)
@@ -419,8 +457,13 @@ func _check_release_phases() -> void:
 	c.tick(1.75, h)
 	c.try_cast(h)
 	_expect(events[-1].phase == "charge" and events[-1].cast_id == 2, "Next accepted cast receives the next monotonic ID.")
+	# Ticking no longer cancels a cast whose owner is not the hero passed in: a
+	# cast belongs to its caster, and with ghosts in the arena the old rule would
+	# have cancelled every ghost's cast on every frame the player was ticked.
 	c.tick(0.1, null)
-	_expect(_phase_names(events).slice(4) == ["charge", "cancel"] and c.active_cast_snapshot().is_empty(), "Interrupted windup stops its charge without release or impact.")
+	_expect(not c.active_cast_snapshot(h).is_empty(), "Advancing the model does not cancel another caster's cast.")
+	c.cancel_active(h)
+	_expect(_phase_names(events).slice(4) == ["charge", "cancel"] and c.active_cast_snapshot(h).is_empty(), "Interrupted windup stops its charge without release or impact.")
 	c.tick(5.0, h)
 	_expect(events.size() == 6, "An interrupted charge cannot release later.")
 
@@ -433,7 +476,7 @@ func _check_fast_phases_and_misses() -> void:
 	h.definition.skills[0].cast_seconds = 0.01
 	c.register_enemy("guild_house", "boss", BOSS)
 	c.try_cast(h)
-	_expect(c.active_cast_snapshot().release_seconds == 0.01, "Release delay cannot outlast a shortened projectile hit time.")
+	_expect(c.active_cast_snapshot(h).release_seconds == 0.01, "Release delay cannot outlast a shortened projectile hit time.")
 	c.tick(1.0, h)
 	_expect(_phase_names(events) == ["charge", "cast", "impact", "end"] and c.damage_for_arena("guild_house") == 1, "One large step delivers release and impact in order without polling losses.")
 	f = _fixture("hunter")
@@ -475,11 +518,11 @@ func _check_channel_aura_phases() -> void:
 	var events: Array = _phase_log(c)
 	c.register_enemy("guild_house", "boss", BOSS)
 	c.try_cast(h)
-	_expect(_phase_names(events) == ["cast", "sustain"] and c.active_cast_snapshot().released, "Channel activation starts its sustain after immediate release.")
+	_expect(_phase_names(events) == ["cast", "sustain"] and c.active_cast_snapshot(h).released, "Channel activation starts its sustain after immediate release.")
 	c.tick(2.0, h)
-	c.cancel_channel()
+	c.cancel_channel(h)
 	_expect(_phase_names(events) == ["cast", "sustain", "impact", "impact", "cancel"], "Channel release cancels sustain after its actual one-second hits.")
-	c.cancel_channel()
+	c.cancel_channel(h)
 	c.tick(5.0, h)
 	_expect(events.size() == 5, "Repeated release and later simulation cannot restart a channel loop.")
 	c.try_cast(h)
@@ -513,7 +556,7 @@ func _check_support_phases() -> void:
 	_expect(events[1].cell == Vector2(11, 11) and events[2].cell == Vector2(10, 10), "Support and enemy impacts use their actual application cells.")
 	for event: Dictionary in events:
 		_expect(event.ability == "cleanse" and event.cast_id == 1, "Instant Cleanse carries explicit identity without an active-cast slot.")
-	_expect(c.active_cast_snapshot().is_empty() and c.ally_status("guild_house", "hero").health == 1 and c.ally_status("guild_house", "hero").debuffs.is_empty(), "Lifecycle events do not change instant support rules.")
+	_expect(c.active_cast_snapshot(h).is_empty() and c.ally_status("guild_house", "hero").health == 1 and c.ally_status("guild_house", "hero").debuffs.is_empty(), "Lifecycle events do not change instant support rules.")
 	f = _fixture("bard", Vector2i(10, 10))
 	c = f.combat
 	h = f.hero
