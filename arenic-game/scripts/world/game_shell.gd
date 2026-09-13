@@ -71,8 +71,18 @@ func _ready() -> void:
 	hud.set_ghost_source(_is_ghost)
 	hud.hero_requested.connect(_on_hud_hero_requested)
 	replace_stage(stage_scene)
-	if entry_sequence != null:
+	if not SaveGames.attach_shell(self):
+		set_physics_process(false)
+		return
+	hud.save_title_requested.connect(_save_and_title)
+	SaveGames.status_changed.connect(hud.set_save_status)
+	hud.set_save_status("Saved" if SaveGames.active_slot >= 0 else "Preview")
+	if entry_sequence != null and SaveGames.active_slot < 0:
 		play_sequence(entry_sequence)
+
+
+func _save_and_title() -> void:
+	await SaveGames.return_to_title()
 
 func replace_stage(packed: PackedScene) -> void:
 	if packed == null:

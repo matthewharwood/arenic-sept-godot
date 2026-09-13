@@ -151,6 +151,45 @@ export async function renderedPixels(page, points) {
   }, { encoded: png.toString('base64'), points });
 }
 
+// Shipping title buttons have centered authored geometry. Read only their
+// interior: dark label ink on light paper distinguishes an enabled button from
+// disabled Start or hidden Continue without relying on an engine/test hook.
+export async function readTitleButton(page, name) {
+  const authored = { start: { x: -119, width: 144 }, continue: { x: 88.5, width: 205 } }[name];
+  if (!authored) throw new Error(`Unknown title button: ${name}`);
+  const box = await page.locator('#canvas').boundingBox();
+  expect(box).toBeTruthy();
+  const scale = Math.min(box.width / 1440, box.height / 1024);
+  const center = [box.width / 2 + authored.x * scale, box.height / 2 + 237.5 * scale];
+  const png = await page.locator('#canvas').screenshot({ scale: 'css' });
+  const sample = await page.evaluate(async ({ encoded, center, width, scale }) => {
+    const bytes = Uint8Array.from(atob(encoded), character => character.charCodeAt(0));
+    const image = await createImageBitmap(new Blob([bytes], { type: 'image/png' }));
+    const canvas = new OffscreenCanvas(image.width, image.height);
+    const context = canvas.getContext('2d');
+    context.drawImage(image, 0, 0);
+    const data = context.getImageData(Math.round(center[0] - (width - 28) * scale / 2),
+      Math.round(center[1] - 21 * scale), Math.max(1, Math.round((width - 28) * scale)),
+      Math.max(1, Math.round(42 * scale))).data;
+    let ink = 0, paper = 0;
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i] < 100 && data[i + 1] < 100 && data[i + 2] < 100) ink++;
+      if (data[i] > 200 && data[i + 1] > 200 && data[i + 2] > 200) paper++;
+    }
+    image.close();
+    const pixels = data.length / 4;
+    return { ready: ink >= Math.max(6, pixels * 0.0075) && paper > pixels * 0.55, ink, paper, pixels };
+  }, { encoded: png.toString('base64'), center, width: authored.width, scale });
+  return { ...sample, center: [box.x + center[0], box.y + center[1]] };
+}
+
+export async function clickTitleButton(page, name) {
+  let state;
+  await expect.poll(async () => { state = await readTitleButton(page, name); return state.ready; },
+    { timeout: 30_000, message: `Rendered ${name} button is visible and enabled after hydration` }).toBe(true);
+  await page.mouse.click(...state.center);
+}
+
 export async function clickLogical(page, state, point) {
   const box = await page.locator('#canvas').boundingBox();
   expect(box).toBeTruthy();
@@ -162,7 +201,8 @@ export async function clickLogical(page, state, point) {
 
 export async function enterProbeWorld(page, log, classIndex = 3) {
   await loadGame(page, PROBE, log);
-  let state = await log.wait(value => value?.scene === 'title', 'Title becomes ready');
+  let state = await log.wait(value => value?.scene === 'title' && value.saves?.ready && !value.controls.start.disabled,
+    'Title enables Start after save storage hydration');
   await clickLogical(page, state, state.controls.start.center);
   state = await log.wait(value => value?.scene === 'classes', 'Actual Start opens class selection');
   await clickLogical(page, state, state.cards[classIndex].center);

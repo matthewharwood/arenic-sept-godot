@@ -29,6 +29,8 @@ and galleries live in `assets/`; the Bevy repositories are reference material.
 - [Recording and ghosts](docs/recording.md)
 - [The guild](docs/guild.md)
 - [Arena music](docs/arena-music.md)
+- [Title music and Inspector controls](docs/title-music.md)
+- [Local saves, versioned state, and development seeds](docs/save-state.md)
 - [Overworld and controls](docs/overworld.md)
 - [Display density](docs/display-rendering.md)
 - [Art pipeline](assets/README.md)

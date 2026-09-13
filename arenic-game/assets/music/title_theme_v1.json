@@ -1,0 +1,14 @@
+{
+  "title": "Arenic Theme Song",
+  "version": 1,
+  "source": "User-supplied MP3",
+  "original_filename": "Arenic Theme Song.mp3",
+  "filename": "title_theme_v1.mp3",
+  "sha256": "b62bb3610eef6b1c094e27da94c71f26c9dc899346caa88b531f47e4fa3361cb",
+  "bytes": 6979886,
+  "duration_seconds": 298.92,
+  "sample_rate_hz": 48000,
+  "channels": 2,
+  "processing": "Moved unchanged; no re-encoding or trimming.",
+  "loop_note": "Full track repeats. A seamless musical join is not assumed."
+}

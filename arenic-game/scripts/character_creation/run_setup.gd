@@ -22,6 +22,8 @@ var recruitment: ArenicRecruitmentState
 ## Everything digging has yielded this run. Damage is one income; broken ground
 ## is the other, and both count toward the same guild rolls.
 var prospected: int = 0
+## Stable domain seed; a slot's random identity is independent of its fixture.
+var run_seed: int = 1
 var _next_identity: int = 0
 const RECRUITMENT_CURVE: ArenicRecruitmentCurve = preload("res://data/guild/recruitment.tres")
 const CLASSES: ArenicClassCatalog = preload("res://data/classes/catalog.tres")
@@ -35,6 +37,7 @@ func begin_new_game() -> void:
 	combat = null
 	recruitment = null
 	prospected = 0
+	run_seed = 1
 	_next_identity = 0
 
 

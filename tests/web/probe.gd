@@ -12,6 +12,8 @@ var _combat_presenter_id: int = 0
 var _combat_assets: Dictionary = {}
 var _sfx_capture: AudioEffectCapture
 var _sfx_cues: Dictionary = {}
+var _save_slots: Array[Dictionary] = []
+var _save_refresh_msec: int = -1000
 
 func _ready() -> void:
 	if not OS.has_feature("web"):
@@ -52,8 +54,11 @@ func _rect(value: Rect2) -> Array:
 	return [value.position.x, value.position.y, value.size.x, value.size.y]
 
 func _control(control: Control) -> Dictionary:
-	return {"center":_v2(control.get_global_transform_with_canvas() * (control.size * 0.5)),
+	var result := {"center":_v2(control.get_global_transform_with_canvas() * (control.size * 0.5)),
 		"rect":_rect(control.get_global_rect()), "visible":control.is_visible_in_tree()}
+	if control is Button:
+		result.merge({"disabled":control.disabled, "text":control.text})
+	return result
 
 func _shell() -> Variant:
 	var scene: Node = get_tree().current_scene
@@ -65,12 +70,15 @@ func _snapshot() -> Dictionary:
 	var window := get_window()
 	var scene: Node = get_tree().current_scene
 	var result := {"scene":"loading", "window":_v2(Vector2(window.size)),
-		"logical":_v2(window.get_visible_rect().size), "controls":{}}
+		"logical":_v2(window.get_visible_rect().size), "controls":{}, "saves":_save_snapshot()}
 	if scene == null or not scene.is_node_ready():
 		return result
 	if scene.scene_file_path.ends_with("/title_scene.tscn"):
 		result.scene = "title"
 		result.controls = {"start":_control(scene.get_node("Start")), "continue":_control(scene.get_node("Continue"))}
+		result.controls["manage"] = _control(scene.get_node("ManageSaves"))
+		result["status"] = scene.get_node("Status").text
+		result["picker"] = _save_picker_snapshot(scene)
 	elif scene.scene_file_path.ends_with("/class_selection.tscn"):
 		result.scene = "classes"
 		result.selected_index = scene.selected_index
@@ -109,8 +117,35 @@ func _snapshot() -> Dictionary:
 		var ability := shell.hud.get_node("BottomStrip/AbilityAction") as Button
 		var ability_control: Dictionary = _control(ability)
 		ability_control.merge({"disabled":ability.disabled, "text":ability.text, "pressed":ability.is_pressed()})
-		result.controls = {"toggle":_control(shell.hud.get_node("BottomStrip/OverviewToggle")), "ability":ability_control}
+		result.controls = {"toggle":_control(shell.hud.get_node("BottomStrip/OverviewToggle")), "ability":ability_control,
+			"save_title":_control(shell.hud.get_node("TopStrip/SaveAndTitle"))}
 	return result
+
+
+# Observe the facade only. Cache decoded summaries for one second so this QA
+# report does not parse every full recording ten times per second.
+func _save_snapshot() -> Dictionary:
+	var now: int = Time.get_ticks_msec()
+	if now - _save_refresh_msec >= 1000:
+		_save_refresh_msec = now
+		_save_slots = SaveGames.list_slots()
+	return {"ready":SaveGames.storage_ready, "active_slot":SaveGames.active_slot,
+		"busy":SaveGames.is_busy(), "error":SaveGames.last_error,
+		"revision":int(SaveGames._metadata.get("revision", 0)),
+		"run_id":str(SaveGames._metadata.get("run_id", "")), "slots":_save_slots}
+
+
+func _save_picker_snapshot(scene: Node) -> Dictionary:
+	var picker := scene.get_node_or_null("SaveSlots") as ArenicSaveSlotPicker
+	if picker == null or not picker.is_inside_tree() or not picker.is_node_ready():
+		return {"visible":false}
+	var rows: Array[Dictionary] = []
+	for line: Node in picker._rows.get_children():
+		rows.append({"slot":int(String(line.name).trim_prefix("Slot")),
+			"choose":_control(line.get_node("Choose")), "remove":_control(line.get_node("Remove"))})
+	return {"visible":picker.is_visible_in_tree(), "rows":rows,
+		"confirm":_control(picker._confirm), "back":_control(picker.find_child("Back", true, false)),
+		"detail":picker._detail.text, "working":picker._working}
 
 
 # Read actual HUD controls and roster state. No extra heroes, input commands,

@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 MCPRuntimeServer="*res://addons/godot_mcp_toolkit/runtime/mcp_runtime_server.gd"
 RunSetup="*uid://ce3yiiuchhd3p"
 DisplayPolicy="*res://scripts/app/display_policy.gd"
+SaveGames="*res://scripts/persistence/save_games.gd"
 
 [display]
 

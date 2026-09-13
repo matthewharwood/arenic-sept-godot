@@ -19,10 +19,11 @@ import time
 
 REPOSITORY = Path(__file__).resolve().parents[2]
 HEADLESS = (
+    "persistence/save_codec_checks", "persistence/native_store_checks", "persistence/save_service_checks", "persistence/save_restart_checks",
     "world/grid_checks", "world/camera_checks", "world/flow_checks",
     "heroes/hero_checks", "heroes/hero_flow_checks", "heroes/guild_checks", "heroes/recruitment_checks", "heroes/arena_selection_checks", "bosses/catalog_checks",
     "themes/theme_checks", "themes/region_checks", "world/transition_checks",
-    "audio/clock_checks", "audio/music_checks", "audio/sfx_checks",
+    "audio/clock_checks", "audio/music_checks", "audio/sfx_checks", "audio/title_music_checks",
     "combat/combat_checks", "combat/flow_checks", "combat/presentation_checks", "ui/damage_bar_checks",
     "ui/hero_vitals_checks", "ui/world_hud_checks", "ui/modal_checks",
     "encounters/timeline_checks", "encounters/dig_checks", "encounters/score_checks", "encounters/recording_flow_checks", "encounters/encounter_flow_checks",
