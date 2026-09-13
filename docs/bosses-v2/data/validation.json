@@ -1,0 +1,257 @@
+{
+  "status": "PASS",
+  "scope": "Static documentation/data validation and conservative solo navigation only; not Godot gameplay or balance validation.",
+  "encounters": 8,
+  "unique_moves": 48,
+  "events": 200,
+  "ability_boss_cells": 256,
+  "ordered_pair_classifications": 8192,
+  "class_subset_checks": 2040,
+  "pair_rule_counts": {
+    "P02": 504,
+    "P08": 3584,
+    "P09": 8192,
+    "P10": 8192,
+    "P04": 3192,
+    "P05": 2784,
+    "P03": 3192,
+    "P07": 1464,
+    "P06": 504,
+    "P01": 992
+  },
+  "walking_intervals": 3840,
+  "research_module_count": 551,
+  "distance_pairs": [
+    {
+      "first": "hunter",
+      "second": "warrior",
+      "behavior": 0.3,
+      "spatial": 0.6448,
+      "ability_fit": 0.3906,
+      "distance": 0.4043
+    },
+    {
+      "first": "hunter",
+      "second": "thief",
+      "behavior": 0.2167,
+      "spatial": 0.5119,
+      "ability_fit": 0.2656,
+      "distance": 0.3003
+    },
+    {
+      "first": "hunter",
+      "second": "alchemist",
+      "behavior": 0.4,
+      "spatial": 0.5992,
+      "ability_fit": 0.3125,
+      "distance": 0.4323
+    },
+    {
+      "first": "hunter",
+      "second": "cardinal",
+      "behavior": 0.3333,
+      "spatial": 0.3452,
+      "ability_fit": 0.3594,
+      "distance": 0.3415
+    },
+    {
+      "first": "hunter",
+      "second": "bard",
+      "behavior": 0.1333,
+      "spatial": 0.8214,
+      "ability_fit": 0.375,
+      "distance": 0.3537
+    },
+    {
+      "first": "hunter",
+      "second": "forager",
+      "behavior": 0.3833,
+      "spatial": 0.7639,
+      "ability_fit": 0.3281,
+      "distance": 0.4674
+    },
+    {
+      "first": "hunter",
+      "second": "merchant",
+      "behavior": 0.3167,
+      "spatial": 0.6131,
+      "ability_fit": 0.3594,
+      "distance": 0.3993
+    },
+    {
+      "first": "warrior",
+      "second": "thief",
+      "behavior": 0.3167,
+      "spatial": 0.4201,
+      "ability_fit": 0.5938,
+      "distance": 0.3979
+    },
+    {
+      "first": "warrior",
+      "second": "alchemist",
+      "behavior": 0.3667,
+      "spatial": 0.5029,
+      "ability_fit": 0.1406,
+      "distance": 0.3555
+    },
+    {
+      "first": "warrior",
+      "second": "cardinal",
+      "behavior": 0.3,
+      "spatial": 0.5415,
+      "ability_fit": 0.2188,
+      "distance": 0.3441
+    },
+    {
+      "first": "warrior",
+      "second": "bard",
+      "behavior": 0.2333,
+      "spatial": 0.7773,
+      "ability_fit": 0.3281,
+      "distance": 0.3883
+    },
+    {
+      "first": "warrior",
+      "second": "forager",
+      "behavior": 0.4167,
+      "spatial": 0.6075,
+      "ability_fit": 0.25,
+      "distance": 0.431
+    },
+    {
+      "first": "warrior",
+      "second": "merchant",
+      "behavior": 0.4167,
+      "spatial": 0.4919,
+      "ability_fit": 0.2812,
+      "distance": 0.4084
+    },
+    {
+      "first": "thief",
+      "second": "alchemist",
+      "behavior": 0.4833,
+      "spatial": 0.356,
+      "ability_fit": 0.4844,
+      "distance": 0.4517
+    },
+    {
+      "first": "thief",
+      "second": "cardinal",
+      "behavior": 0.4167,
+      "spatial": 0.3775,
+      "ability_fit": 0.5312,
+      "distance": 0.4298
+    },
+    {
+      "first": "thief",
+      "second": "bard",
+      "behavior": 0.2833,
+      "spatial": 0.7126,
+      "ability_fit": 0.4531,
+      "distance": 0.4246
+    },
+    {
+      "first": "thief",
+      "second": "forager",
+      "behavior": 0.4,
+      "spatial": 0.6148,
+      "ability_fit": 0.375,
+      "distance": 0.4487
+    },
+    {
+      "first": "thief",
+      "second": "merchant",
+      "behavior": 0.4333,
+      "spatial": 0.4306,
+      "ability_fit": 0.5,
+      "distance": 0.446
+    },
+    {
+      "first": "alchemist",
+      "second": "cardinal",
+      "behavior": 0.3333,
+      "spatial": 0.4669,
+      "ability_fit": 0.1719,
+      "distance": 0.3344
+    },
+    {
+      "first": "alchemist",
+      "second": "bard",
+      "behavior": 0.4,
+      "spatial": 0.813,
+      "ability_fit": 0.4375,
+      "distance": 0.5108
+    },
+    {
+      "first": "alchemist",
+      "second": "forager",
+      "behavior": 0.15,
+      "spatial": 0.6978,
+      "ability_fit": 0.1406,
+      "distance": 0.2851
+    },
+    {
+      "first": "alchemist",
+      "second": "merchant",
+      "behavior": 0.3167,
+      "spatial": 0.4701,
+      "ability_fit": 0.2969,
+      "distance": 0.3511
+    },
+    {
+      "first": "cardinal",
+      "second": "bard",
+      "behavior": 0.3333,
+      "spatial": 0.75,
+      "ability_fit": 0.3594,
+      "distance": 0.4427
+    },
+    {
+      "first": "cardinal",
+      "second": "forager",
+      "behavior": 0.4167,
+      "spatial": 0.7004,
+      "ability_fit": 0.2812,
+      "distance": 0.4605
+    },
+    {
+      "first": "cardinal",
+      "second": "merchant",
+      "behavior": 0.45,
+      "spatial": 0.4258,
+      "ability_fit": 0.2812,
+      "distance": 0.4102
+    },
+    {
+      "first": "bard",
+      "second": "forager",
+      "behavior": 0.45,
+      "spatial": 0.7019,
+      "ability_fit": 0.4219,
+      "distance": 0.5073
+    },
+    {
+      "first": "bard",
+      "second": "merchant",
+      "behavior": 0.3833,
+      "spatial": 0.7662,
+      "ability_fit": 0.3281,
+      "distance": 0.468
+    },
+    {
+      "first": "forager",
+      "second": "merchant",
+      "behavior": 0.3667,
+      "spatial": 0.6667,
+      "ability_fit": 0.3438,
+      "distance": 0.4371
+    }
+  ],
+  "minimum_distance": 0.2851,
+  "input_sha256": {
+    "scores.json": "5f35230e20e043f8912e65327199b2ad28941fde6e9c9c7027ae1f3fbea7b599",
+    "abilities.json": "255e811c76a5154722132e8387847a38ae43ef31035d1289b23f66e4cd3d2d21",
+    "ability-coverage.json": "b719b841f7e2381fbbaa861ded8b06b077feb018e5bd52f553e847d0379c5b74",
+    "research-corpus.json": "177aba07ca764dcd17f1b12eab69e1b631947a9967cdc327c679b67951cd4432"
+  }
+}

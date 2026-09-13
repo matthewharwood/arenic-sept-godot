@@ -1,0 +1,2050 @@
+[
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "auto_shot",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Fire from a siding before Shuttle; hold shots whose flight crosses Siding Change."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "auto_shot",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Shoot between cuts; the rear route can spend Open Guard more efficiently than retreating."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "auto_shot",
+    "hero": "hunter",
+    "rating": "-",
+    "interaction": "Inventory Turn defeats fixed aim; release after transfer instead of firing at the old display."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "auto_shot",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Shoot across clean bench aisles; Catalyst Jet makes a stationary line less forgiving."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "auto_shot",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Neutral aisles keep range without attunement; enter a seal only for the optional bonus."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "auto_shot",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Short draws fit between footfalls; moving early still changes the accepted firing opportunity."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "auto_shot",
+    "hero": "hunter",
+    "rating": "-",
+    "interaction": "Ribs can obstruct proposed rays; use open ends or fire after Shatter Fan."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "auto_shot",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "A short shot spends Posted Dividend without a long Coin Toss commitment."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "poison_shot",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Apply before a siding transfer; plan recoil onto a safe tile outside the next track."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "poison_shot",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Poison persists through facing changes; recoil can put the Hunter into Oath Line."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "poison_shot",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Attached poison survives display transfer; never recoil onto an occupied mirror endpoint."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "poison_shot",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Apply before Distillation to earn its field/DOT bonus; keep the recoil out of vat pads."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "poison_shot",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Poison needs no matching seal; recoil into the other chapel may lose safe attunement."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "poison_shot",
+    "hero": "hunter",
+    "rating": "-",
+    "interaction": "Recoil can leave the active footfall block; cast from the square edge facing inward."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "poison_shot",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Poison lasts across temporary ribs; prepare recoil space before the walls rise."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "poison_shot",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Apply before the audit and retreat; a DOT does not spend the direct-hit dividend."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "sniper",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Long concourse sightlines give safe ranged work; transfers still require correct impact timing."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "sniper",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Range avoids cleaves, but Open Guard rewards re-entry rather than permanent disengagement."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "sniper",
+    "hero": "hunter",
+    "rating": "-",
+    "interaction": "Repeated display transfers punish blind reticles; aim during the five-second Inventory Turn dwell."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "sniper",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Clean outer aisles support aimed fire; direct damage receives no Distillation field bonus."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "sniper",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Use the neutral aisle to reach either stance without crossing polarity hazards."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "sniper",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Aim during Encore rather than trying to finish a draw on a dangerous footfall."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "sniper",
+    "hero": "hunter",
+    "rating": "-",
+    "interaction": "Opaque ribs break sightlines; wait for shatter or find a route around their ends."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "sniper",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Spend the pad bonus with a half-second aim; avoid the later outer-strip Closing Bell."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "trap",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Plant at a future siding during absence; Shuttle timing never depends on detonation."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "trap",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Seed the two-cell strip of the next lateral stance; Open Guard\u2019s transfer guarantees a later trigger."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "trap",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Trap the next display before Inventory Turn; avoid placing it on a shared portal endpoint."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "trap",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Future benches guarantee a trigger; Trap deals direct damage and misses the DOT-only Distillation bonus."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "trap",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Prepare the upper transept destination; attunement neither arms nor disarms the trap."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "trap",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Place at the next recess while the boss is away; keep the dance square clear."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "trap",
+    "hero": "hunter",
+    "rating": "+",
+    "interaction": "Pre-arm the next seam before the transfer; never interpret detonation as early wall demolition."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "trap",
+    "hero": "hunter",
+    "rating": "=",
+    "interaction": "Trap the next vault anchor; remote detonation uses the planter\u2019s position for pad bonuses."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "bash",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Use the stationary siding; chasing the boss across active tracks costs more than waiting."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "bash",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Adjacent timing and known facing make the duel a natural work area; Bash never interrupts."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "bash",
+    "hero": "warrior",
+    "rating": "-",
+    "interaction": "A short melee reach requires gallery travel; wait at the announced arrival\u2019s adjacent cell."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "bash",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Strike at the bench; keep one exit free of your Alchemist partners\u2019 acid."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "bash",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Stand at an aisle-facing corner; matching attunement is helpful but never needed to hit."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "bash",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "A 21-tick hit fits Encore; do not spend a floor-step deadline to finish a swing."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "bash",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Work the open seam after shatter; ribs must not turn melee approach into a dead end."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "bash",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Strike from the dividend pad when adjacent; otherwise keep full ordinary melee damage."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "block",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Face west for Signal Bolt, east for its mirrored repeat; trains remain crush hazards."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "block",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Guard Spear has a known approach; cleaves need movement or Bulwark instead."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "block",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Refraction reverses direction in A\u2032; rotate during the warning, then cross normally."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "block",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Catch Catalyst Jet or Glass Rain; the floor reaction is unaffected by the shield."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "block",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Block Confession to avoid Exposure; neither seal nor hammer is a projectile."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "block",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Block Coda Bolt while outside the optional square; the floor phrase still needs steps."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "block",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Protect a seam worker from Ore Spit after the free rib cover disappears."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "block",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Shield Coin Sweep or Security Bolts; Closing Bell still demands central positioning."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "taunt",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Guard a channeling ally from Signal Bolt; a pledge cannot draw a train off their recording."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "taunt",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Pledge before Left/Right Cut for an aggressive flank partner; two-HP hits retain some risk."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "taunt",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Absorb one wound from Glass Cut; do not promise to pull a portal or central blade."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "taunt",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Guard a stationary distiller from Gas Fan; the fixed recipient transfer is not chemistry control."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "taunt",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Protect a Confession target while preparing Cleanse; attunement never changes through the pledge."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "taunt",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Pledge for Coda Bolt so a Bard can finish taps; missed floor steps still count as missed."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "taunt",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Cover Ore Spit while the Forager matures a node; wall appearance bypasses the pledge."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "taunt",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Protect a charging Merchant from Audit Fan; no minimum two-hero roster is required."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "bulwark",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Cover Steam Release at its fixed fan; place the wall outside the next train track."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "bulwark",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Prepare a frontal answer to cleaves; rotate the cast orientation for A\u2032."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "bulwark",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Shelter a gallery from Glass Cut; Collector\u2019s Blade remains a floor evacuation."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "bulwark",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "A four-second wall covers Gas Fan and a short channel; Binary Reaction still lands."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "bulwark",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "The Split Hammer fan gives a clear team-defense moment without a mandatory tank."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "bulwark",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "Coda Bolt can be sheltered; Encore starts after the danger, so late walls waste duration."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "bulwark",
+    "hero": "warrior",
+    "rating": "=",
+    "interaction": "A replacement shelter after ribs expire keeps the garden useful through Ore Spit."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "bulwark",
+    "hero": "warrior",
+    "rating": "+",
+    "interaction": "Protect Audit Fan near a work pad; never turn the deployed graphic into body collision."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "backstab",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Wait beside the next siding\u2019s rear; do not follow the visually moving sprite through a train."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "backstab",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "The fight explicitly exposes authored rears; leave the stamped ring before returning."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "backstab",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Reserve the next display\u2019s rear via a portal shortcut; other heroes may require the walking route."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "backstab",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Bench-facing changes yield known rear windows; acid can punish an unreserved approach."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "backstab",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Use rear cells beside neutral aisles; a wrong seal affects survival, not Backstab eligibility."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "backstab",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "The south-facing upper recess exposes its north rear; schedule approach during Encore."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "backstab",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Rear access changes with the seam; wait until rib removal rather than squeezing into crush."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "backstab",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Long vault dwells support repeated stabs; dividend rewards only the first qualifying hit."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "shadow_step",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Cross one threatened track quickly; arrive outside crush masks before the train becomes active."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "shadow_step",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Recover a missed flank; immunity cannot earn a clean dodge if the combo mask was occupied."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "shadow_step",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Provides an alternative shortcut when a mirror exit is busy; check destination contact."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "shadow_step",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Cross a short reactive link without damage; an occupied exit never pushes another hero."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "shadow_step",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Reach the neutral aisle after a mismatch; font contact on arrival is explicit."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "shadow_step",
+    "hero": "thief",
+    "rating": "-",
+    "interaction": "Skipping a floor block can forfeit Encore credit; step only after its occupancy check."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "shadow_step",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Pass a short rib span after checking the legal destination; no ability is required to walk around."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "shadow_step",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Escape Closing Bell to the middle; a long charged Coin Toss is still cancelled by own movement."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "smoke_screen",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Convert Signal Bolt into damage without altering its lane; the following Shuttle is unchanged."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "smoke_screen",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Convert Guard Spear; Left Cut and Heel Stamp cannot be reversed."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "smoke_screen",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Place the field across Refraction\u2019s ray; never obscure the portal exit label."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "smoke_screen",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Convert a vial or Catalyst Jet; no intercepted projectile changes the reagent reaction."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "smoke_screen",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Convert Confession; polarity and physical hammer retain their printed semantics."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "smoke_screen",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Convert Coda Bolt while dancing nearby; no false floor indicator is introduced."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "smoke_screen",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Convert Ore Spit through a garden station; neither raising nor shattering ribs can be reflected."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "smoke_screen",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Coin Sweep supplies a thematic guaranteed return; conversion never steals persistent currency."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "pickpocket",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "A six-second siding dwell fits the full hold, but approach after the transfer completes."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "pickpocket",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Open Guard offers economic time at the cost of a damage riposte; boss guard stays intact."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "pickpocket",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Inventory Turn is a literal inventory window; route early to keep the full hold adjacent."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "pickpocket",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Take a bench token during Distillation; it does not consume reagent state or shorten the window."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "pickpocket",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Choose a quiet rear beside a neutral aisle; stolen rewards never invert healing."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "pickpocket",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Hold during Encore if skipping its damage bonus; no steal changes the next downbeat."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "pickpocket",
+    "hero": "thief",
+    "rating": "=",
+    "interaction": "Wait for Fresh Seam and avoid the former rib fan; tokens are personal, not mined shared stock."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "pickpocket",
+    "hero": "thief",
+    "rating": "+",
+    "interaction": "Posted Dividend advertises exactly when a long theft is safe; greed is timing, not RNG."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "acid_flask",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Throw onto the next siding; keep pools away from cross-track approach routes and shared rear cells."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "acid_flask",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "The long central dwell rewards eight burns; protect the melee retreat strip from friendly fire."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "acid_flask",
+    "hero": "alchemist",
+    "rating": "-",
+    "interaction": "Frequent display changes waste late pools; throw before Inventory Turn at its known destination."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "acid_flask",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Pre-existing pools spend Distillation\u2019s bonus; own acid never extends or ignites boss vats."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "acid_flask",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Pool the boss footprint from a neutral aisle; do not poison a font\u2019s safe approach."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "acid_flask",
+    "hero": "alchemist",
+    "rating": "-",
+    "interaction": "Throwing into the optional dance square harms dancers; target the orchestra recess instead."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "acid_flask",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Prepare the next seam while walls guide traffic; shattering never removes player acid."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "acid_flask",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Use a vault footprint rather than a dividend pad; friendly pools can erase the pad\u2019s advantage."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "ironskin_draft",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Work through Steam Release or a mine wound; no armor can survive a Shuttle crush."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "ironskin_draft",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Cover a heavy cut during a committed action; clean-dodge credit still requires avoiding the mask."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "ironskin_draft",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Survive a late Collector\u2019s Blade escape; transfer crush remains unmitigated."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "ironskin_draft",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Reduce several Fill Vat pulses during a controlled risky cast; immunity never suppresses later reactions."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "ironskin_draft",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Absorb the personal mismatch wound and Exposure; neutral walking remains the free solution."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "ironskin_draft",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Finish Dance through one missed footfall while losing the optional perfect-floor reward."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "ironskin_draft",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Protect a stationary plant through Ore Spit and its delayed Exposure; avoid wall appearance."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "ironskin_draft",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Cover a planned charge against Audit Fan; the aura cannot repay a missed coin."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "siphon",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Channel from a siding after traffic clears; use boss mode solo, never drain a last-HP ally."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "siphon",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Close boss dwell gives a reliable three-pulse self-recovery; cutters still limit greed."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "siphon",
+    "hero": "alchemist",
+    "rating": "-",
+    "interaction": "Gallery transfers leave short channels; accept a one-pulse recovery instead of chasing the beam."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "siphon",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Bench pauses provide a full boss-mode drain; ally donor mode requires explicit recorded consent."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "siphon",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Recover a personal seal mismatch without demanding a healer; a donor\u2019s attunement is irrelevant."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "siphon",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Use Encore for a brief drain or consenting duet; movement to a footfall cancels the channel."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "siphon",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Use the shelter interval after Quarry Ray; a donor behind a rib cannot change the boss route."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "siphon",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Recovery after Closing Bell supports another investment; no siphoned HP funds permanent gold."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "transmute",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Use the west cache while a train owns the center; return with a fixed guard for Steam."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "transmute",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Trade distant-cache travel for a guard before a duel phrase; no loot roll is needed."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "transmute",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Portal planning can shorten the return from the cache; take the walking route if its exit is reserved."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "transmute",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Personal reagent conversion matches the lab\u2019s planning rhythm but cannot mutate boss pools."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "transmute",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Convert a reagent into a guard before Confession; it never changes Sun/Moon identity."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "transmute",
+    "hero": "alchemist",
+    "rating": "=",
+    "interaction": "Cache work is a deliberate alternative to the optional floor phrase, then rejoin at Encore."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "transmute",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Prepare a guard during the wall interval and return for shatter; no wall material is consumed."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "transmute",
+    "hero": "alchemist",
+    "rating": "+",
+    "interaction": "Guaranteed conversion supports cycle investment; zero permanent wealth is sufficient to start."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "heal",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Full siding dwell supports several Sacrifice pulses; end before traffic blocks your approach."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "heal",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Channel from the south retreat between spears; this starter damages the boss and does not heal allies."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "heal",
+    "hero": "cardinal",
+    "rating": "-",
+    "interaction": "Accepted identity survives transfers but range can break; use the announced display pause."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "heal",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "A fixed bench is a reliable channel target; keep the caster off the reagent links."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "heal",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Channel from a neutral aisle; matching a seal changes optional bonus access, not the beam."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "heal",
+    "hero": "cardinal",
+    "rating": "-",
+    "interaction": "Floor participation competes with stationary channeling; Encore provides a reliable alternative."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "heal",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Use the open end of a rib to keep range; wall geometry must be checked before casting."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "heal",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Channel beside a vault during a quiet dwell; direct-hit dividend rules do not count channel pulses."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "barrier",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Shield a wounded crossing partner before Steam Release; trains bypass the shield."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "barrier",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "A shield absorbs one of a two-HP cleave, preserving a risky melee answer."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "barrier",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Protect a late gallery crossing; revival and shields cannot make an occupied portal exit legal."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "barrier",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Pre-shield a bench worker before Gas Fan; exposure still needs its own subsequent protection."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "barrier",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Protect a mismatched seal visitor or a Confession target; no healer-only assignment is imposed."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "barrier",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Shield a floor learner; the missed-position counter remains an honest failure."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "barrier",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Shield a planter while ribs provide partial cover; wall emergence is still crush."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "barrier",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Shield an investing actor; personal event caps prevent an army of shields from multiplying income."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "beam",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Line up the boss from a clear siding; a one-second aim cannot run through a train crossing."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "beam",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Aim across the boss and a wounded melee partner during Open Guard."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "beam",
+    "hero": "cardinal",
+    "rating": "-",
+    "interaction": "Moving displays can leave the ray; fire after Inventory Turn rather than before."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "beam",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "A clean bench ray both harms the boss and heals an ally outside acid."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "beam",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "The neutral aisle allows a healing/damage line without opposite-element punishment."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "beam",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Encore can fit the full aim; avoid aiming across a dangerous footfall check."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "beam",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Ray through the open quarry after shatter; opaque ribs stop it while active."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "beam",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "A clear dividend line can repay positioning with damage and healing; no ally body blocks it."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "resurrect",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Revive after a train clears, preserving the staff cursor; empty-corpse fallback gives a Steam shield."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "resurrect",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Use Open Guard to recover a duelist; the returning staff must still avoid the next cut."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "resurrect",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Revive only at a vacant gallery cell; never move a corpse through a mirror to force success."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "resurrect",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Wait until a vat expires before reviving there; otherwise take the living shield fallback."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "resurrect",
+    "hero": "cardinal",
+    "rating": "+",
+    "interaction": "Recover a failed attunement route or gain a personal shield before Confession."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "resurrect",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Encore creates a channel gap; a revived dancer gets no retroactive footfall credit."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "resurrect",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Revive after rib removal; an occupied or blocked corpse cell causes the living fallback."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "resurrect",
+    "hero": "cardinal",
+    "rating": "=",
+    "interaction": "Revive between audit phases; restored actors receive no refund of missed dividends."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "cleanse",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Clear Steam Exposure beside the siding, then let attached damage follow its next transfer."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "cleanse",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Heal melee wounds while stacking damage; avoid clustering heroes onto the same rear tile."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "cleanse",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Attached stacks survive display changes; a small party can share area coverage without sharing a cell."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "cleanse",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Remove Gas/Jet Exposure and earn Distillation on attached stacks; acid pools are never cleansed."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "cleanse",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Confession gives a visible cleanse opportunity; Sun/Moon attunement is not removed."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "cleanse",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Repair a missed footfall and maintain boss DOTs during movement; it does not restore floor credit."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "cleanse",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Clear splinter Exposure near a garden while the boss moves onto the seam."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "cleanse",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Repair an overlong investment and keep damage ticking through a vault transfer."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "dance",
+    "hero": "bard",
+    "rating": "-",
+    "interaction": "An eight-tap performance spans traffic decisions; use the six-second siding pause for all taps."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "dance",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Combine taps with deliberate dodge movement, or perform in Open Guard\u2019s quieter interval."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "dance",
+    "hero": "bard",
+    "rating": "-",
+    "interaction": "Portal contact and display shifts complicate target range; complete the performance during a dwell."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "dance",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "The bench window can fit all eight taps; stay off persistent Fill Vat pads."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "dance",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Perform in the neutral aisle; floor polarity and key timing are independent."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "dance",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Hero taps and floor steps form a deliberate duet; both score independently and allow partial success."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "dance",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Perform behind ribs before shatter, then exit before the next shard fan."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "dance",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "A four-second performance can fit a posted quiet investment window without spending scrip."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "mimic",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Stand adjacent to a ranged siding partner; count ten direct hits, never copied mines or trains."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "mimic",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Frequent Bash/Backstab hits fill the meter; adjacent cells are enough and must not overlap."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "mimic",
+    "hero": "bard",
+    "rating": "-",
+    "interaction": "Portal separation can break adjacency; own-hit fallback provides value when working alone."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "mimic",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Echo direct bench attacks; copying acid, Siphon, or Distillation bonus damage is forbidden."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "mimic",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Adjacent actors can use separate neutral cells; no shared attunement is required for Mimic."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "mimic",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "A Bard\u2019s final Dance hit can count; echoed hits cannot start an infinite call-and-response."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "mimic",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Pair at an open rib end; a long blocked sightline can waste the delayed echo."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "mimic",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Count direct pad hits but not dividend bonus packets; Vault cannot recursively amplify echoes."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "helix",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Regenerate a siding group or bank a Haste hit; neither mode speeds a track crossing."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "helix",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Sustain adjacent duelists or add one fixed hit charge; recorded dodge timings never change."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "helix",
+    "hero": "bard",
+    "rating": "-",
+    "interaction": "Gallery separation reduces aura coverage; the caster still benefits from their own aura."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "helix",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Regeneration supports deliberate chemical risk; Haste charges do not accelerate reactions."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "helix",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Sustain a neutral-aisle group without touching attunement or spell allegiance."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "helix",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "Choose recovery or a damage charge between phrases; music and floor clocks remain fixed."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "helix",
+    "hero": "bard",
+    "rating": "+",
+    "interaction": "A stationary quarry garden benefits from repeated pulses; overlaps use the shared aura cap."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "helix",
+    "hero": "bard",
+    "rating": "=",
+    "interaction": "Prepare a charge before investment; a new aura never shortens a Coin Toss hold."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "dig",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Prepare future sidings, not transit tracks; ground damage needs accumulated boss overlap."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "dig",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Prepare the exposed two-cell strip while the boss occupies its old stance; repeated dwell banks overlap."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "dig",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Pre-dig the next gallery while the boss is elsewhere; portals shorten setup travel."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "dig",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Bench transfers make deliberate ground preparation pay during Distillation."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "dig",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Prepare the upper transept, leaving fonts and aisles walkable; income never changes seal order."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "dig",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Prepare the orchestra recess while dancing is optional; dug floor never removes footfall safety."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "dig",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "The signature setup tool: excavate future seams while ribs advertise safe work areas."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "dig",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Prepare the next vault anchor; digging a dividend pad does not damage an absent boss."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "bolder",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Roll parallel to a safe track after traffic; the stone never pushes the train."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "bolder",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "A stable boss footprint rewards a straight stone; start with the guaranteed two rocks."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "bolder",
+    "hero": "forager",
+    "rating": "-",
+    "interaction": "Portal transit does not carry boulders; aim from the current gallery\u2019s open line."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "bolder",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Bench lanes give long unobstructed paths; stone contact does not trigger chemical reactions."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "bolder",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Roll from a neutral aisle; rock damage carries no Sun/Moon allegiance."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "bolder",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Use the orchestra lane during Encore; stones do not collide with floor dancers."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "bolder",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Roll after ribs shatter; before that, opaque ribs stop the boulder without early demolition."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "bolder",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Roll down an approach toward the vault; collision with scenery stops rather than refunds it."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "border",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Dig a safe siding tile, then deflect Signal Bolt; never place the plan on a crush track."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "border",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Guard Spear gives a predictable defensive line; Border does not absorb cleave cones."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "border",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Protect a fixed gallery ray; the shield does not block a portal or move its exit."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "border",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Prepare beside a bench for Catalyst Jet; player substrate is independent of reagent pads."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "border",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Deflect Confession from a neutral aisle; neither attunement seal is a projectile."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "border",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Protect the Coda line; the one-cell shield does not count as a correct dance step."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "border",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Permanent-duration personal cover replaces expired ribs against Ore Spit, without body blocking."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "border",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "A dug watch-post line can turn Security Bolts into boss credit; no random payout."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "mushroom",
+    "hero": "forager",
+    "rating": "-",
+    "interaction": "Traffic separates work groups; plant in a siding and retain self-healing even without allies."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "mushroom",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Stable duel geography rewards a mature healing node just beyond the stamped ring."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "mushroom",
+    "hero": "forager",
+    "rating": "-",
+    "interaction": "Gallery travel shortens coverage; plant near a portal apron while leaving its cell unoccupied."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "mushroom",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "A mature node supports risky bench channels; acid can still kill allies faster than it heals."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "mushroom",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Plant along the neutral aisle; healing never turns into opposite-element harm."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "mushroom",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "Plant outside the floor square for learners; a seed does not obstruct the choreography."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "mushroom",
+    "hero": "forager",
+    "rating": "+",
+    "interaction": "Invest beside a rib, mature before Ore Spit, and keep the garden through shatter."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "mushroom",
+    "hero": "forager",
+    "rating": "=",
+    "interaction": "A vault-side node repairs investment wounds; feeding uses fixed rocks, never random income."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "fortune",
+    "hero": "merchant",
+    "rating": "-",
+    "interaction": "Twenty-second commitment needs near-boss route planning across sidings; skip optional dividend actions."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "fortune",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Stable melee proximity pays regular aura pulses; retreat from Heel Stamp before returning."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "fortune",
+    "hero": "merchant",
+    "rating": "-",
+    "interaction": "Wide display transfers lose ticks; plan portal or walking routes without assuming every pulse hits."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "fortune",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Following aura can track a bench shift; Distillation accepts its pre-existing periodic hit."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "fortune",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Stay in a neutral aisle within radius two when possible; aura does not satisfy direct-hit seal bonuses."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "fortune",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Follow the orchestra during the phrase; an active aura prevents another Merchant cast."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "fortune",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Follow the seam after shatter and use frequent overlap; terrain cover cannot change aura radius."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "fortune",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Guaranteed base-income damage fits the theme; it competes with Coin Toss/Dice/Vault while active."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "coin_toss",
+    "hero": "merchant",
+    "rating": "-",
+    "interaction": "Long charges can outlast a siding; use a short release or wait for its posted dwell."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "coin_toss",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Charge in a retreat strip, release into the stable boss; direct hits may spend Open Guard."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "coin_toss",
+    "hero": "merchant",
+    "rating": "-",
+    "interaction": "Display relocation punishes full charge; five-second Inventory Turn needs a shorter safe release."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "coin_toss",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Charge through a clear bench window, never while standing on a ticking vat."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "coin_toss",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Neutral aisle avoids seal risk during charge; match only when the expected extra hit is worthwhile."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "coin_toss",
+    "hero": "merchant",
+    "rating": "-",
+    "interaction": "Floor steps interrupt a charge; skip the optional dance and invest during Encore."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "coin_toss",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Wait for rib removal to establish a clear ray; a blocked shot loses only cycle scrip."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "coin_toss",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Short versus full charge is the central decision; Closing Bell and the next pad are known."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "dice",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Build visible pips during traffic downtime, then spend on a siding direct hit."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "dice",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Prepare three pips before Open Guard; capped bonus priority prevents multiplier spikes."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "dice",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Build pips while walking galleries; preserve them if no direct hit lands."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "dice",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Save certainty for bench direct hits; DOT-only Distillation cannot consume it."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "dice",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Store pips before matching a seal; a higher-priority seal bonus leaves pips available."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "dice",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Build in rests rather than during an active Fortune aura; no random tempo relationship."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "dice",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Stack pips while ribs obstruct shots, then release a direct hit after shatter."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "dice",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "The house\u2019s odds are visible arithmetic; dividend priority preserves unused certainty."
+  },
+  {
+    "arena": "labyrinth",
+    "boss": "hunter",
+    "ability": "vault",
+    "hero": "merchant",
+    "rating": "-",
+    "interaction": "A fixed zone can outlive the siding position; place for the next known stop."
+  },
+  {
+    "arena": "bastion",
+    "boss": "warrior",
+    "ability": "vault",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Stable flank work fits the ten-second zone; do not cover the unsafe stamp ring."
+  },
+  {
+    "arena": "pawnshop",
+    "boss": "thief",
+    "ability": "vault",
+    "hero": "merchant",
+    "rating": "-",
+    "interaction": "Gallery shifts waste a poorly placed zone; author it at the next display\u2019s firing station."
+  },
+  {
+    "arena": "crucible",
+    "boss": "alchemist",
+    "ability": "vault",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Bench dwell offers predictable territory, but field/DOT bonus rules do not multiply Vault."
+  },
+  {
+    "arena": "sanctum",
+    "boss": "cardinal",
+    "ability": "vault",
+    "hero": "merchant",
+    "rating": "=",
+    "interaction": "Place in a neutral aisle for reliable access; matching a seal is an optional extra route."
+  },
+  {
+    "arena": "gala",
+    "boss": "bard",
+    "ability": "vault",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Encore offers a scheduled shared damage window without accelerating anyone\u2019s recorded cast."
+  },
+  {
+    "arena": "mountain",
+    "boss": "forager",
+    "ability": "vault",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Place just outside the future shard fan; rib removal creates the planned line of fire."
+  },
+  {
+    "arena": "casino",
+    "boss": "merchant",
+    "ability": "vault",
+    "hero": "merchant",
+    "rating": "+",
+    "interaction": "Territory and posted payout reinforce each other, with one bonus packet per hit and no exponential stacking."
+  }
+]

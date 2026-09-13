@@ -1,0 +1,6337 @@
+[
+  {
+    "id": "hunter",
+    "arena": "labyrinth",
+    "title": "The Switchkeeper",
+    "file": "01-hunter.md",
+    "verb": "CROSS",
+    "precedent": "Operator Thogar",
+    "raid": "Blackrock Foundry",
+    "era": "Warlords of Draenor",
+    "difficulty": "Normal/Heroic, 2015; Mythic considered separately",
+    "source": "https://www.icy-veins.com/wow/operator-thogar-strategy-guide-normal-heroic-mythic",
+    "features": [
+      4,
+      1,
+      1,
+      0,
+      1,
+      1,
+      3,
+      0
+    ],
+    "premise": "A colossal trapper operates four luminous rail beds. The boss is the stationmaster; the moving danger is traffic. Sidings give uninterrupted work, but the best firing line is on the far side of the next departure.",
+    "research": "Thogar uses four tracks and a repeatable train arrival sequence, with troop arrivals and blocked space creating prioritization. The documented original train sequence is fixed per pull rather than a looping two-minute pattern. Arenic borrows anticipation of cross-traffic and station occupancy; it authors a new loop and removes kill-dependent departures and the all-track enrage.",
+    "difference": "Trains are spectral web shuttles with a finite hazard rectangle, never target-seeking traps. Optional projectile cover and preparatory floor damage matter between departures. A cross-platform swap in B reverses the direction of study without changing the map.",
+    "layout": "Four six-cell tracks occupy y=4\u20269, 10\u202615, 16\u202621, 22\u202627 across x=12\u202653. Their painted bed is decorative except during a listed shuttle impact. West/east concourses x=9\u202611 and 54\u202656 stay open. Crossings use y=3 or y=28. The working siding beside the boss stays distinct from a currently active track. The four track masks are explicitly selected in every phrase; generic mirroring never moves a train off its painted track.",
+    "phrase": [
+      "Read lower traffic while the boss faces north.",
+      "Reverse the lane order and expose the eastern siding.",
+      "Alternate cross-traffic with the signalbox, then transfer back through center. The bridge\u2019s exact reordered attacks appear in the event table.",
+      "Return to the opening order, adding one previously taught grenade while traffic clears. The event labeled overlap is simultaneous with a familiar move, with its own mask and damage."
+    ],
+    "actions": [
+      {
+        "id": "shuttle",
+        "name": "Web Shuttle",
+        "kind": "impact",
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "description": "A spectral train occupies its entire painted track rectangle for 60 ticks. Leave the marked track or reach a concourse; defensive spells cannot absorb it."
+      },
+      {
+        "id": "signal_bolt",
+        "name": "Signal Bolt",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "description": "A west-to-east warning line resolves once; Block faces west, a Border or Misdirection crossing may intercept it."
+      },
+      {
+        "id": "switch_mine",
+        "name": "Switch Mine",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "Two fixed 3\u00d73 pads explode once. Both the pads and their numerical IDs are shown; neither follows a hero."
+      },
+      {
+        "id": "double_departure",
+        "name": "Double Departure",
+        "kind": "impact",
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "description": "Two separated tracks run simultaneously for 60 ticks. At least one central track and both concourses remain open."
+      },
+      {
+        "id": "steam_release",
+        "name": "Steam Release",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "description": "A rectangular east- or west-facing steam fan wounds and applies Exposure; walk around its end or use frontal cover."
+      },
+      {
+        "id": "siding_change",
+        "name": "Siding Change",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Boss phase-transfers to the next siding, then offers one extra damage on each actor\u2019s first direct hit during the six-second stop. Every transfer is warned for 180 ticks."
+      }
+    ],
+    "recovery": "The west concourse and perimeter always remain a walking alternative. At each Siding Change, approach the announced rear after arrival; do not stand on the arriving 6\u00d76 footprint. Between 24\u201330 seconds the first rear is east of the new footprint, at x=44. A ranged actor may stay in the west concourse and wait for a closer phase instead of crossing a train.",
+    "risks": "Train occupancy is a timed hazard, not physics or a line-of-sight wall. Do not accidentally make the scenic rails impassable. A shortened travel animation must not shorten the 180-tick transfer warning.",
+    "cycle_ticks": 7200,
+    "ruleset": "v2.0-draft.1",
+    "tier": "normal",
+    "events": [
+      {
+        "event_id": "hunter.1.1",
+        "phrase": "A",
+        "action": "shuttle",
+        "cue_tick": 180,
+        "at_tick": 360,
+        "end_tick": 420,
+        "masks": [
+          [
+            12,
+            4,
+            42,
+            6
+          ]
+        ],
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.1.2",
+        "phrase": "A",
+        "action": "signal_bolt",
+        "cue_tick": 480,
+        "at_tick": 600,
+        "end_tick": 601,
+        "masks": [
+          [
+            12,
+            12,
+            42,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "hunter.1.3",
+        "phrase": "A",
+        "action": "switch_mine",
+        "cue_tick": 720,
+        "at_tick": 840,
+        "end_tick": 841,
+        "masks": [
+          [
+            24,
+            10,
+            3,
+            3
+          ],
+          [
+            42,
+            18,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.1.4",
+        "phrase": "A",
+        "action": "double_departure",
+        "cue_tick": 900,
+        "at_tick": 1080,
+        "end_tick": 1140,
+        "masks": [
+          [
+            12,
+            4,
+            42,
+            6
+          ],
+          [
+            12,
+            22,
+            42,
+            6
+          ]
+        ],
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.1.5",
+        "phrase": "A",
+        "action": "steam_release",
+        "cue_tick": 1200,
+        "at_tick": 1320,
+        "end_tick": 1321,
+        "masks": [
+          [
+            36,
+            12,
+            12,
+            6
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "hunter.1.6",
+        "phrase": "A",
+        "action": "siding_change",
+        "cue_tick": 1260,
+        "at_tick": 1440,
+        "end_tick": 1800,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          38,
+          12
+        ],
+        "boss_facing": "w",
+        "window_condition": "first_direct_hit"
+      },
+      {
+        "event_id": "hunter.2.1",
+        "phrase": "A_prime",
+        "action": "shuttle",
+        "cue_tick": 1980,
+        "at_tick": 2160,
+        "end_tick": 2220,
+        "masks": [
+          [
+            12,
+            22,
+            42,
+            6
+          ]
+        ],
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.2.2",
+        "phrase": "A_prime",
+        "action": "signal_bolt",
+        "cue_tick": 2280,
+        "at_tick": 2400,
+        "end_tick": 2401,
+        "masks": [
+          [
+            12,
+            12,
+            42,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "hunter.2.3",
+        "phrase": "A_prime",
+        "action": "switch_mine",
+        "cue_tick": 2520,
+        "at_tick": 2640,
+        "end_tick": 2641,
+        "masks": [
+          [
+            39,
+            10,
+            3,
+            3
+          ],
+          [
+            21,
+            18,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.2.4",
+        "phrase": "A_prime",
+        "action": "double_departure",
+        "cue_tick": 2700,
+        "at_tick": 2880,
+        "end_tick": 2940,
+        "masks": [
+          [
+            12,
+            4,
+            42,
+            6
+          ],
+          [
+            12,
+            16,
+            42,
+            6
+          ]
+        ],
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.2.5",
+        "phrase": "A_prime",
+        "action": "steam_release",
+        "cue_tick": 3000,
+        "at_tick": 3120,
+        "end_tick": 3121,
+        "masks": [
+          [
+            18,
+            12,
+            12,
+            6
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "hunter.2.6",
+        "phrase": "A_prime",
+        "action": "siding_change",
+        "cue_tick": 3060,
+        "at_tick": 3240,
+        "end_tick": 3600,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          18
+        ],
+        "boss_facing": "s",
+        "window_condition": "first_direct_hit"
+      },
+      {
+        "event_id": "hunter.3.1",
+        "phrase": "B",
+        "action": "signal_bolt",
+        "cue_tick": 3840,
+        "at_tick": 3960,
+        "end_tick": 3961,
+        "masks": [
+          [
+            12,
+            18,
+            42,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "hunter.3.2",
+        "phrase": "B",
+        "action": "switch_mine",
+        "cue_tick": 4080,
+        "at_tick": 4200,
+        "end_tick": 4201,
+        "masks": [
+          [
+            24,
+            18,
+            3,
+            3
+          ],
+          [
+            42,
+            10,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.3.3",
+        "phrase": "B",
+        "action": "shuttle",
+        "cue_tick": 4260,
+        "at_tick": 4440,
+        "end_tick": 4500,
+        "masks": [
+          [
+            12,
+            10,
+            42,
+            6
+          ]
+        ],
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.3.4",
+        "phrase": "B",
+        "action": "steam_release",
+        "cue_tick": 4560,
+        "at_tick": 4680,
+        "end_tick": 4681,
+        "masks": [
+          [
+            36,
+            13,
+            12,
+            6
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "hunter.3.5",
+        "phrase": "B",
+        "action": "double_departure",
+        "cue_tick": 4740,
+        "at_tick": 4920,
+        "end_tick": 4980,
+        "masks": [
+          [
+            12,
+            10,
+            42,
+            6
+          ],
+          [
+            12,
+            22,
+            42,
+            6
+          ]
+        ],
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.3.6",
+        "phrase": "B",
+        "action": "siding_change",
+        "cue_tick": 4860,
+        "at_tick": 5040,
+        "end_tick": 5400,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          22,
+          12
+        ],
+        "boss_facing": "e",
+        "window_condition": "first_direct_hit"
+      },
+      {
+        "event_id": "hunter.4.1",
+        "phrase": "A_double_prime",
+        "action": "shuttle",
+        "cue_tick": 5580,
+        "at_tick": 5760,
+        "end_tick": 5820,
+        "masks": [
+          [
+            12,
+            4,
+            42,
+            6
+          ]
+        ],
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.4.2",
+        "phrase": "A_double_prime",
+        "action": "signal_bolt",
+        "cue_tick": 5880,
+        "at_tick": 6000,
+        "end_tick": 6001,
+        "masks": [
+          [
+            12,
+            12,
+            42,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "hunter.4.3",
+        "phrase": "A_double_prime",
+        "action": "switch_mine",
+        "cue_tick": 6120,
+        "at_tick": 6240,
+        "end_tick": 6241,
+        "masks": [
+          [
+            24,
+            10,
+            3,
+            3
+          ],
+          [
+            42,
+            18,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.4.4",
+        "phrase": "A_double_prime",
+        "action": "double_departure",
+        "cue_tick": 6300,
+        "at_tick": 6480,
+        "end_tick": 6540,
+        "masks": [
+          [
+            12,
+            4,
+            42,
+            6
+          ],
+          [
+            12,
+            22,
+            42,
+            6
+          ]
+        ],
+        "damage": 4,
+        "tags": [
+          "crush"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.4.5",
+        "phrase": "A_double_prime",
+        "action": "steam_release",
+        "cue_tick": 6600,
+        "at_tick": 6720,
+        "end_tick": 6721,
+        "masks": [
+          [
+            36,
+            12,
+            12,
+            6
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "hunter.4.overlap",
+        "phrase": "A_double_prime",
+        "action": "switch_mine",
+        "cue_tick": 6600,
+        "at_tick": 6720,
+        "end_tick": 6721,
+        "masks": [
+          [
+            24,
+            10,
+            3,
+            3
+          ],
+          [
+            42,
+            18,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "hunter.4.6",
+        "phrase": "A_double_prime",
+        "action": "siding_change",
+        "cue_tick": 6600,
+        "at_tick": 6780,
+        "end_tick": 7200,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "first_direct_hit"
+      }
+    ],
+    "pose_track": [
+      {
+        "tick": 0,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 1440,
+        "origin": [
+          38,
+          12
+        ],
+        "facing": "w"
+      },
+      {
+        "tick": 3240,
+        "origin": [
+          30,
+          18
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 5040,
+        "origin": [
+          22,
+          12
+        ],
+        "facing": "e"
+      },
+      {
+        "tick": 6780,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      }
+    ],
+    "cache_cell": [
+      8,
+      15
+    ],
+    "draft_revision": "v2.0-draft.1",
+    "schema_version": 1
+  },
+  {
+    "id": "warrior",
+    "arena": "bastion",
+    "title": "The Iron Cantor",
+    "file": "02-warrior.md",
+    "verb": "ANSWER",
+    "precedent": "Will of the Emperor",
+    "raid": "Mogu\u2019shan Vaults",
+    "era": "Mists of Pandaria",
+    "difficulty": "Normal five-strike combo; Heroic\u2019s longer combo is not imported",
+    "source": "https://www.icy-veins.com/mists-of-pandaria-classic/will-of-the-emperor-encounter-guide-strategy-abilities-loot",
+    "features": [
+      1,
+      4,
+      0,
+      0,
+      0,
+      1,
+      2,
+      0
+    ],
+    "premise": "An armored duelist recites a visible sequence of left cut, right cut, retreat, and answer. Space close to the boss is more readable than the perimeter. The central lesson is to move the minimum distance and return to the exposed rear.",
+    "research": "Will of the Emperor rewards avoiding Devastating Combo with Opportunistic Strike while adds create separate pressures. Normal and Heroic have different combo lengths; references to ten attacks belong to Heroic. Arenic takes the dodge-and-answer relationship, not the original encounter\u2019s adds, taunt behavior, or numerical damage.",
+    "difference": "One immortal duelist replaces two bosses. Every cleave direction is printed in advance. Completing a phrase provides an optional personal riposte; failure loses only the reward or health, never prevents the next phrase.",
+    "layout": "A central dueling square spans x=22\u202643,y=6\u202625. West/east flanks occupy x=23\u202629 and 36\u202642; north/south retreat strips y=6\u20268 and 21\u202623. The four-square motif is orientation relative to the fixed boss origin, not to the controlled hero.",
+    "phrase": [
+      "West cut, east cut, retreat, return.",
+      "Rotate the combo by 180 degrees, preserving its spoken order.",
+      "Use a long guard-and-projectile bridge rather than a rapid footwork phrase. The bridge\u2019s exact reordered attacks appear in the event table.",
+      "Return to the opening facing with both earlier retreat cues visible. The event labeled overlap is simultaneous with a familiar move, with its own mask and damage."
+    ],
+    "actions": [
+      {
+        "id": "left_cut",
+        "name": "Left Cut",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "description": "Strike the printed side rectangle once (west in the opening). Walk outside the fan or use an appropriately facing Bulwark; Block only catches projectiles."
+      },
+      {
+        "id": "right_cut",
+        "name": "Right Cut",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "description": "Strike the complementary printed side rectangle once (east in the opening). This is a fresh fixed event, not a tracking continuation."
+      },
+      {
+        "id": "heel_stamp",
+        "name": "Heel Stamp",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "Strike a rectangular ring around the boss, leaving the outer retreat strip safe. No jump button is required."
+      },
+      {
+        "id": "guard_spear",
+        "name": "Guard Spear",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "description": "A narrow north-to-south spear tests a directionally prepared shield. Its Exposure can be cleansed or healed."
+      },
+      {
+        "id": "oath_line",
+        "name": "Oath Line",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "description": "Two lateral strips briefly punish lingering far from the duel. The south retreat remains safe."
+      },
+      {
+        "id": "open_guard",
+        "name": "Open Guard",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Transfer exactly two cells laterally to the next marked origin and turn. For 330 ticks, each actor that avoided this phrase\u2019s first five events gets +1 on its first direct hit; ordinary hits always count. The small transfer exposes new ground for Trap and Dig without becoming a perimeter chase."
+      }
+    ],
+    "recovery": "The published solo route begins at (29,8). Stand in the south retreat for the first three strikes, then approach the current rear after the spear. Dodging outside melee does not grant a different damage multiplier: enter to spend the one-hit riposte while the guard is open. An actor unable to finish the combo can keep ordinary ranged or floor damage.",
+    "risks": "Rotated masks must be baked into data. Never use current player orientation to rotate the duel. No weapon animation creates extra contact frames.",
+    "cycle_ticks": 7200,
+    "ruleset": "v2.0-draft.1",
+    "tier": "normal",
+    "events": [
+      {
+        "event_id": "warrior.1.1",
+        "phrase": "A",
+        "action": "left_cut",
+        "cue_tick": 270,
+        "at_tick": 390,
+        "end_tick": 391,
+        "masks": [
+          [
+            23,
+            9,
+            7,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "warrior.1.2",
+        "phrase": "A",
+        "action": "right_cut",
+        "cue_tick": 450,
+        "at_tick": 570,
+        "end_tick": 571,
+        "masks": [
+          [
+            36,
+            9,
+            7,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "warrior.1.3",
+        "phrase": "A",
+        "action": "heel_stamp",
+        "cue_tick": 630,
+        "at_tick": 750,
+        "end_tick": 751,
+        "masks": [
+          [
+            27,
+            9,
+            12,
+            3
+          ],
+          [
+            27,
+            18,
+            12,
+            3
+          ],
+          [
+            27,
+            12,
+            3,
+            6
+          ],
+          [
+            36,
+            12,
+            3,
+            6
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.1.4",
+        "phrase": "A",
+        "action": "guard_spear",
+        "cue_tick": 870,
+        "at_tick": 990,
+        "end_tick": 991,
+        "masks": [
+          [
+            32,
+            5,
+            2,
+            21
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "warrior.1.5",
+        "phrase": "A",
+        "action": "oath_line",
+        "cue_tick": 1170,
+        "at_tick": 1290,
+        "end_tick": 1291,
+        "masks": [
+          [
+            20,
+            7,
+            3,
+            16
+          ],
+          [
+            43,
+            7,
+            3,
+            16
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.1.6",
+        "phrase": "A",
+        "action": "open_guard",
+        "cue_tick": 1290,
+        "at_tick": 1470,
+        "end_tick": 1800,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          32,
+          12
+        ],
+        "boss_facing": "s",
+        "window_condition": "clean_phrase_direct_hit"
+      },
+      {
+        "event_id": "warrior.2.1",
+        "phrase": "A_prime",
+        "action": "left_cut",
+        "cue_tick": 2070,
+        "at_tick": 2190,
+        "end_tick": 2191,
+        "masks": [
+          [
+            36,
+            9,
+            7,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "warrior.2.2",
+        "phrase": "A_prime",
+        "action": "right_cut",
+        "cue_tick": 2250,
+        "at_tick": 2370,
+        "end_tick": 2371,
+        "masks": [
+          [
+            23,
+            9,
+            7,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "warrior.2.3",
+        "phrase": "A_prime",
+        "action": "heel_stamp",
+        "cue_tick": 2430,
+        "at_tick": 2550,
+        "end_tick": 2551,
+        "masks": [
+          [
+            27,
+            9,
+            12,
+            3
+          ],
+          [
+            27,
+            18,
+            12,
+            3
+          ],
+          [
+            36,
+            12,
+            3,
+            6
+          ],
+          [
+            27,
+            12,
+            3,
+            6
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.2.4",
+        "phrase": "A_prime",
+        "action": "guard_spear",
+        "cue_tick": 2670,
+        "at_tick": 2790,
+        "end_tick": 2791,
+        "masks": [
+          [
+            32,
+            5,
+            2,
+            21
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "warrior.2.5",
+        "phrase": "A_prime",
+        "action": "oath_line",
+        "cue_tick": 2970,
+        "at_tick": 3090,
+        "end_tick": 3091,
+        "masks": [
+          [
+            43,
+            7,
+            3,
+            16
+          ],
+          [
+            20,
+            7,
+            3,
+            16
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.2.6",
+        "phrase": "A_prime",
+        "action": "open_guard",
+        "cue_tick": 3090,
+        "at_tick": 3270,
+        "end_tick": 3600,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "e",
+        "window_condition": "clean_phrase_direct_hit"
+      },
+      {
+        "event_id": "warrior.3.1",
+        "phrase": "B",
+        "action": "guard_spear",
+        "cue_tick": 3870,
+        "at_tick": 3990,
+        "end_tick": 3991,
+        "masks": [
+          [
+            32,
+            5,
+            2,
+            21
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "warrior.3.2",
+        "phrase": "B",
+        "action": "left_cut",
+        "cue_tick": 4050,
+        "at_tick": 4170,
+        "end_tick": 4171,
+        "masks": [
+          [
+            23,
+            10,
+            7,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "warrior.3.3",
+        "phrase": "B",
+        "action": "heel_stamp",
+        "cue_tick": 4230,
+        "at_tick": 4350,
+        "end_tick": 4351,
+        "masks": [
+          [
+            27,
+            19,
+            12,
+            3
+          ],
+          [
+            27,
+            10,
+            12,
+            3
+          ],
+          [
+            27,
+            13,
+            3,
+            6
+          ],
+          [
+            36,
+            13,
+            3,
+            6
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.3.4",
+        "phrase": "B",
+        "action": "right_cut",
+        "cue_tick": 4470,
+        "at_tick": 4590,
+        "end_tick": 4591,
+        "masks": [
+          [
+            36,
+            10,
+            7,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "warrior.3.5",
+        "phrase": "B",
+        "action": "oath_line",
+        "cue_tick": 4770,
+        "at_tick": 4890,
+        "end_tick": 4891,
+        "masks": [
+          [
+            20,
+            8,
+            3,
+            16
+          ],
+          [
+            43,
+            8,
+            3,
+            16
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.3.6",
+        "phrase": "B",
+        "action": "open_guard",
+        "cue_tick": 4890,
+        "at_tick": 5070,
+        "end_tick": 5400,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          28,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "clean_phrase_direct_hit"
+      },
+      {
+        "event_id": "warrior.4.1",
+        "phrase": "A_double_prime",
+        "action": "left_cut",
+        "cue_tick": 5670,
+        "at_tick": 5790,
+        "end_tick": 5791,
+        "masks": [
+          [
+            23,
+            9,
+            7,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "warrior.4.2",
+        "phrase": "A_double_prime",
+        "action": "right_cut",
+        "cue_tick": 5850,
+        "at_tick": 5970,
+        "end_tick": 5971,
+        "masks": [
+          [
+            36,
+            9,
+            7,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "warrior.4.3",
+        "phrase": "A_double_prime",
+        "action": "heel_stamp",
+        "cue_tick": 6030,
+        "at_tick": 6150,
+        "end_tick": 6151,
+        "masks": [
+          [
+            27,
+            9,
+            12,
+            3
+          ],
+          [
+            27,
+            18,
+            12,
+            3
+          ],
+          [
+            27,
+            12,
+            3,
+            6
+          ],
+          [
+            36,
+            12,
+            3,
+            6
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.4.4",
+        "phrase": "A_double_prime",
+        "action": "guard_spear",
+        "cue_tick": 6270,
+        "at_tick": 6390,
+        "end_tick": 6391,
+        "masks": [
+          [
+            32,
+            5,
+            2,
+            21
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "warrior.4.overlap",
+        "phrase": "A_double_prime",
+        "action": "oath_line",
+        "cue_tick": 6270,
+        "at_tick": 6390,
+        "end_tick": 6391,
+        "masks": [
+          [
+            20,
+            7,
+            3,
+            16
+          ],
+          [
+            43,
+            7,
+            3,
+            16
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.4.5",
+        "phrase": "A_double_prime",
+        "action": "oath_line",
+        "cue_tick": 6570,
+        "at_tick": 6690,
+        "end_tick": 6691,
+        "masks": [
+          [
+            20,
+            7,
+            3,
+            16
+          ],
+          [
+            43,
+            7,
+            3,
+            16
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "warrior.4.6",
+        "phrase": "A_double_prime",
+        "action": "open_guard",
+        "cue_tick": 6600,
+        "at_tick": 6780,
+        "end_tick": 7200,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "clean_phrase_direct_hit"
+      }
+    ],
+    "pose_track": [
+      {
+        "tick": 0,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 1470,
+        "origin": [
+          32,
+          12
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 3270,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "e"
+      },
+      {
+        "tick": 5070,
+        "origin": [
+          28,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 6780,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      }
+    ],
+    "cache_cell": [
+      8,
+      15
+    ],
+    "draft_revision": "v2.0-draft.1",
+    "schema_version": 1
+  },
+  {
+    "id": "thief",
+    "arena": "pawnshop",
+    "title": "The Glass Usurer",
+    "file": "03-thief.md",
+    "verb": "ROUTE",
+    "precedent": "Artificer Xy'mox",
+    "raid": "Castle Nathria",
+    "era": "Shadowlands",
+    "difficulty": "Normal/Heroic relic phases; Mythic overlap used only as a comparison",
+    "source": "https://www.icy-veins.com/wow/artificer-xy-mox-strategy-guide-for-castle-nathria",
+    "features": [
+      3,
+      1,
+      4,
+      0,
+      0,
+      0,
+      2,
+      0
+    ],
+    "premise": "A collector opens paired mirrors to move between display rooms. The route, not the identity of the boss, is the puzzle. Mirrors are labeled entrances with exact destinations; every hazard is honest.",
+    "research": "Castle Nathria Xy\u2019mox combines Dimensional Tear portals with relic hazards including seeds, spirits, and a central annihilation weapon. Its original portals are dropped by selected players. Arenic instead fixes portal positions and relic order, and omits random assignment and chasing fixates.",
+    "difference": "Three displayed relics correspond to three reproducible routing problems. The boss remains a single clearly identified target. A recorded portal route remains legible even without audio, and walking around the outside always works.",
+    "layout": "Two one-cell portal endpoints are (20,8) and (45,22), each with a two-cell approach apron. They exist only during Mirror Lease. The southern walking bypass y=3 connects west and east galleries; the northern bypass is y=28. The central display occupies x=27\u202638,y=9\u202620.",
+    "phrase": [
+      "Take a portal or walk around the first central blade.",
+      "Reverse the mirrored beam; the destination label never changes.",
+      "Seeds occupy the center while the collector moves to the upper display. The bridge\u2019s exact reordered attacks appear in the event table.",
+      "Return to the opening gallery with a known portal/seed overlap. The event labeled overlap is simultaneous with a familiar move, with its own mask and damage."
+    ],
+    "actions": [
+      {
+        "id": "mirror_lease",
+        "name": "Mirror Lease",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Open the fixed paired portals for 18 seconds. Stepping on an endpoint transfers to the other subject to the shared vacancy/cooldown rules; no player targeting."
+      },
+      {
+        "id": "refraction",
+        "name": "Refraction",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "description": "A fixed horizontal glass ray resolves through the lower gallery. Its direction reverses in A\u2032; the mask is still printed."
+      },
+      {
+        "id": "sealed_relic",
+        "name": "Sealed Relic",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "Three labeled 3\u00d73 relic pads detonate once. Portals shorten the crossing, but the perimeter bypass is long enough at ordinary movement speed."
+      },
+      {
+        "id": "collector_blade",
+        "name": "Collector\u2019s Blade",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "The central 12\u00d712 display is dangerous for one instant, with no suction or forced movement. Port out or leave by either bypass."
+      },
+      {
+        "id": "glass_cut",
+        "name": "Glass Cut",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "description": "A side gallery fan wounds and applies Exposure. A portal is optional; conventional cover or movement handles the fan."
+      },
+      {
+        "id": "inventory_turn",
+        "name": "Inventory Turn",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Transfer to the next display and face its open aisle. Five seconds of guaranteed boss dwell, with a one-hit direct-damage bonus after a portal used earlier in this phrase; walkers keep normal damage."
+      }
+    ],
+    "recovery": "Walk from (18,3) around the outside of the display; keep away from y=7\u20268 during Refraction. Waiting in the west gallery at x=16 never requires a portal. Record a portal shortcut only after its exit lane is reserved. Inventory Turn creates a rear opportunity appropriate to the next displayed facing.",
+    "risks": "Portal transfers must be integrated into the existing movement/contact phase. Do not replay a portal crossing twice after restore, resolve it against a render position, or search for a different exit if occupied.",
+    "cycle_ticks": 7200,
+    "ruleset": "v2.0-draft.1",
+    "tier": "normal",
+    "events": [
+      {
+        "event_id": "thief.1.1",
+        "phrase": "A",
+        "action": "mirror_lease",
+        "cue_tick": 240,
+        "at_tick": 360,
+        "end_tick": 1440,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "portal_endpoints": [
+          [
+            20,
+            8
+          ],
+          [
+            45,
+            22
+          ]
+        ],
+        "window_condition": "portal_interval"
+      },
+      {
+        "event_id": "thief.1.2",
+        "phrase": "A",
+        "action": "refraction",
+        "cue_tick": 510,
+        "at_tick": 630,
+        "end_tick": 631,
+        "masks": [
+          [
+            18,
+            7,
+            30,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "thief.1.3",
+        "phrase": "A",
+        "action": "sealed_relic",
+        "cue_tick": 780,
+        "at_tick": 900,
+        "end_tick": 901,
+        "masks": [
+          [
+            24,
+            10,
+            3,
+            3
+          ],
+          [
+            32,
+            20,
+            3,
+            3
+          ],
+          [
+            43,
+            12,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.1.4",
+        "phrase": "A",
+        "action": "collector_blade",
+        "cue_tick": 1050,
+        "at_tick": 1170,
+        "end_tick": 1171,
+        "masks": [
+          [
+            27,
+            9,
+            12,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.1.5",
+        "phrase": "A",
+        "action": "glass_cut",
+        "cue_tick": 1230,
+        "at_tick": 1350,
+        "end_tick": 1351,
+        "masks": [
+          [
+            36,
+            16,
+            14,
+            6
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "thief.1.6",
+        "phrase": "A",
+        "action": "inventory_turn",
+        "cue_tick": 1320,
+        "at_tick": 1500,
+        "end_tick": 1800,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          40,
+          16
+        ],
+        "boss_facing": "w",
+        "window_condition": "portal_success_direct_hit"
+      },
+      {
+        "event_id": "thief.2.1",
+        "phrase": "A_prime",
+        "action": "mirror_lease",
+        "cue_tick": 2040,
+        "at_tick": 2160,
+        "end_tick": 3240,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "portal_endpoints": [
+          [
+            20,
+            8
+          ],
+          [
+            45,
+            22
+          ]
+        ],
+        "window_condition": "portal_interval"
+      },
+      {
+        "event_id": "thief.2.2",
+        "phrase": "A_prime",
+        "action": "refraction",
+        "cue_tick": 2310,
+        "at_tick": 2430,
+        "end_tick": 2431,
+        "masks": [
+          [
+            18,
+            7,
+            30,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "thief.2.3",
+        "phrase": "A_prime",
+        "action": "sealed_relic",
+        "cue_tick": 2580,
+        "at_tick": 2700,
+        "end_tick": 2701,
+        "masks": [
+          [
+            39,
+            10,
+            3,
+            3
+          ],
+          [
+            31,
+            20,
+            3,
+            3
+          ],
+          [
+            20,
+            12,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.2.4",
+        "phrase": "A_prime",
+        "action": "collector_blade",
+        "cue_tick": 2850,
+        "at_tick": 2970,
+        "end_tick": 2971,
+        "masks": [
+          [
+            27,
+            9,
+            12,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.2.5",
+        "phrase": "A_prime",
+        "action": "glass_cut",
+        "cue_tick": 3030,
+        "at_tick": 3150,
+        "end_tick": 3151,
+        "masks": [
+          [
+            16,
+            16,
+            14,
+            6
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "thief.2.6",
+        "phrase": "A_prime",
+        "action": "inventory_turn",
+        "cue_tick": 3120,
+        "at_tick": 3300,
+        "end_tick": 3600,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          20
+        ],
+        "boss_facing": "s",
+        "window_condition": "portal_success_direct_hit"
+      },
+      {
+        "event_id": "thief.3.1",
+        "phrase": "B",
+        "action": "mirror_lease",
+        "cue_tick": 3840,
+        "at_tick": 3960,
+        "end_tick": 5040,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "portal_endpoints": [
+          [
+            20,
+            8
+          ],
+          [
+            45,
+            22
+          ]
+        ],
+        "window_condition": "portal_interval"
+      },
+      {
+        "event_id": "thief.3.2",
+        "phrase": "B",
+        "action": "sealed_relic",
+        "cue_tick": 4110,
+        "at_tick": 4230,
+        "end_tick": 4231,
+        "masks": [
+          [
+            24,
+            18,
+            3,
+            3
+          ],
+          [
+            32,
+            8,
+            3,
+            3
+          ],
+          [
+            43,
+            16,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.3.3",
+        "phrase": "B",
+        "action": "refraction",
+        "cue_tick": 4380,
+        "at_tick": 4500,
+        "end_tick": 4501,
+        "masks": [
+          [
+            18,
+            22,
+            30,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "thief.3.4",
+        "phrase": "B",
+        "action": "collector_blade",
+        "cue_tick": 4650,
+        "at_tick": 4770,
+        "end_tick": 4771,
+        "masks": [
+          [
+            27,
+            10,
+            12,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.3.5",
+        "phrase": "B",
+        "action": "glass_cut",
+        "cue_tick": 4830,
+        "at_tick": 4950,
+        "end_tick": 4951,
+        "masks": [
+          [
+            36,
+            9,
+            14,
+            6
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "thief.3.6",
+        "phrase": "B",
+        "action": "inventory_turn",
+        "cue_tick": 4920,
+        "at_tick": 5100,
+        "end_tick": 5400,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          20,
+          12
+        ],
+        "boss_facing": "e",
+        "window_condition": "portal_success_direct_hit"
+      },
+      {
+        "event_id": "thief.4.1",
+        "phrase": "A_double_prime",
+        "action": "mirror_lease",
+        "cue_tick": 5640,
+        "at_tick": 5760,
+        "end_tick": 6840,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "portal_endpoints": [
+          [
+            20,
+            8
+          ],
+          [
+            45,
+            22
+          ]
+        ],
+        "window_condition": "portal_interval"
+      },
+      {
+        "event_id": "thief.4.2",
+        "phrase": "A_double_prime",
+        "action": "refraction",
+        "cue_tick": 5910,
+        "at_tick": 6030,
+        "end_tick": 6031,
+        "masks": [
+          [
+            18,
+            7,
+            30,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "thief.4.3",
+        "phrase": "A_double_prime",
+        "action": "sealed_relic",
+        "cue_tick": 6180,
+        "at_tick": 6300,
+        "end_tick": 6301,
+        "masks": [
+          [
+            24,
+            10,
+            3,
+            3
+          ],
+          [
+            32,
+            20,
+            3,
+            3
+          ],
+          [
+            43,
+            12,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.4.4",
+        "phrase": "A_double_prime",
+        "action": "collector_blade",
+        "cue_tick": 6450,
+        "at_tick": 6570,
+        "end_tick": 6571,
+        "masks": [
+          [
+            27,
+            9,
+            12,
+            12
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.4.5",
+        "phrase": "A_double_prime",
+        "action": "glass_cut",
+        "cue_tick": 6630,
+        "at_tick": 6750,
+        "end_tick": 6751,
+        "masks": [
+          [
+            36,
+            16,
+            14,
+            6
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "thief.4.overlap",
+        "phrase": "A_double_prime",
+        "action": "sealed_relic",
+        "cue_tick": 6630,
+        "at_tick": 6750,
+        "end_tick": 6751,
+        "masks": [
+          [
+            24,
+            10,
+            3,
+            3
+          ],
+          [
+            32,
+            20,
+            3,
+            3
+          ],
+          [
+            43,
+            12,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "thief.4.6",
+        "phrase": "A_double_prime",
+        "action": "inventory_turn",
+        "cue_tick": 6600,
+        "at_tick": 6780,
+        "end_tick": 7200,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "portal_success_direct_hit"
+      }
+    ],
+    "pose_track": [
+      {
+        "tick": 0,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 1500,
+        "origin": [
+          40,
+          16
+        ],
+        "facing": "w"
+      },
+      {
+        "tick": 3300,
+        "origin": [
+          30,
+          20
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 5100,
+        "origin": [
+          20,
+          12
+        ],
+        "facing": "e"
+      },
+      {
+        "tick": 6780,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      }
+    ],
+    "cache_cell": [
+      8,
+      15
+    ],
+    "draft_revision": "v2.0-draft.1",
+    "schema_version": 1
+  },
+  {
+    "id": "alchemist",
+    "arena": "crucible",
+    "title": "The Ninth Formula",
+    "file": "04-alchemist.md",
+    "verb": "SEQUENCE",
+    "precedent": "Professor Putricide",
+    "raid": "Icecrown Citadel",
+    "era": "Wrath of the Lich King",
+    "difficulty": "Normal baseline; Heroic Unbound Plague explicitly excluded",
+    "source": "https://www.icy-veins.com/wotlk-classic/professor-putricide-encounter-guide-strategy-abilities-loot",
+    "features": [
+      1,
+      0,
+      0,
+      4,
+      1,
+      3,
+      2,
+      1
+    ],
+    "premise": "Three reagent circuits are drawn before the fight. The alchemist fills, combines, and vents them in a visible order. Heroes may exploit fixed reaction windows, but cannot accidentally change the chemistry for everyone else.",
+    "research": "Putricide mixes persistent slime, alternating experimental adds, gas bombs and bouncing goo; the abomination provides a way to manage floor pressure. Health thresholds change the original phases, and Heroic adds Unbound Plague. Arenic preserves laboratory sequencing and preparation, while replacing player-chasing experiments with fixed reagent tracks.",
+    "difference": "The chemistry is a scored circuit, not a simulation of arbitrary multiplying pools. Player Acid never changes a boss pool\u2019s radius, identity, fuse, or next reaction. A helpful reagent action earns a local bonus without causing a cascade.",
+    "layout": "Reagent vats are nonblocking props at (18,10), (32,22), and (47,10). Their danger pads are 5\u00d75. A U-shaped lab aisle runs x=12 and x=53 with the south cross-aisle y=4. The boss\u2019s work benches are centered, left, upper, and right anchors; a six-second bench pause rewards traps and Dig.",
+    "phrase": [
+      "Fill two separate pads and demonstrate their joined vent.",
+      "Substitute the upper vat for the left vat while retaining the same combine delay; the exact fixed pipe rectangles are listed below.",
+      "Distill at the upper bench: the contrasting task is a long channel window between vents. The bridge\u2019s exact reordered attacks appear in the event table.",
+      "Reprise the initial fill order, joining one old pipe with the familiar gas spray. The event labeled overlap is simultaneous with a familiar move, with its own mask and damage."
+    ],
+    "actions": [
+      {
+        "id": "fill_vat",
+        "name": "Fill Vat",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "description": "Activate two fixed 5\u00d75 pads for 180 ticks, pulse at activation and +60,+120. Each pulse is a distinct wound event. No autonomous growth."
+      },
+      {
+        "id": "catalyst_jet",
+        "name": "Catalyst Jet",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "description": "A narrow reagent stream crosses a fixed pipe, applying Exposure on a hit. Defense changes damage only; the next reaction still happens."
+      },
+      {
+        "id": "binary_reaction",
+        "name": "Binary Reaction",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "Two designated circuit links flash once. The pair is specified in the score, never chosen from player-made acid."
+      },
+      {
+        "id": "gas_fan",
+        "name": "Gas Fan",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "description": "A fixed bench-side fan wounds and applies Exposure. The complementary aisle remains open."
+      },
+      {
+        "id": "glass_rain",
+        "name": "Glass Rain",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "description": "Four 2\u00d72 marked pads receive falling vials once; projectile defense can cover a prepared work station."
+      },
+      {
+        "id": "distillation",
+        "name": "Distillation",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Transfer to a bench for six seconds. The first hit owned by an actor from a pre-existing DOT or ground field during the window gains +1; direct hits retain normal value."
+      }
+    ],
+    "recovery": "The U aisle is always available. Work on the lower side of a future bench after checking the next Jet line. Acid should be thrown toward the bench rather than across the walking aisle. Distillation rewards a field laid before arrival, while ranged direct attacks still have ordinary access if the floor is already crowded.",
+    "risks": "All reaction dependencies are authored event IDs, with depth at most one. Never let a player pool, a cleansed debuff, or an intercepted vial trigger or cancel another boss event.",
+    "cycle_ticks": 7200,
+    "ruleset": "v2.0-draft.1",
+    "tier": "normal",
+    "events": [
+      {
+        "event_id": "alchemist.1.1",
+        "phrase": "A",
+        "action": "fill_vat",
+        "cue_tick": 240,
+        "at_tick": 360,
+        "end_tick": 540,
+        "masks": [
+          [
+            16,
+            8,
+            5,
+            5
+          ],
+          [
+            45,
+            8,
+            5,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "pulse_offsets": [
+          0,
+          60,
+          120
+        ]
+      },
+      {
+        "event_id": "alchemist.1.2",
+        "phrase": "A",
+        "action": "catalyst_jet",
+        "cue_tick": 540,
+        "at_tick": 660,
+        "end_tick": 661,
+        "masks": [
+          [
+            17,
+            14,
+            32,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "alchemist.1.3",
+        "phrase": "A",
+        "action": "binary_reaction",
+        "cue_tick": 810,
+        "at_tick": 930,
+        "end_tick": 931,
+        "masks": [
+          [
+            21,
+            10,
+            10,
+            2
+          ],
+          [
+            36,
+            10,
+            9,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "alchemist.1.4",
+        "phrase": "A",
+        "action": "gas_fan",
+        "cue_tick": 1020,
+        "at_tick": 1140,
+        "end_tick": 1141,
+        "masks": [
+          [
+            25,
+            18,
+            16,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "alchemist.1.5",
+        "phrase": "A",
+        "action": "glass_rain",
+        "cue_tick": 1200,
+        "at_tick": 1320,
+        "end_tick": 1321,
+        "masks": [
+          [
+            20,
+            20,
+            2,
+            2
+          ],
+          [
+            27,
+            7,
+            2,
+            2
+          ],
+          [
+            40,
+            20,
+            2,
+            2
+          ],
+          [
+            46,
+            7,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "alchemist.1.6",
+        "phrase": "A",
+        "action": "distillation",
+        "cue_tick": 1260,
+        "at_tick": 1440,
+        "end_tick": 1800,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          20,
+          12
+        ],
+        "boss_facing": "e",
+        "window_condition": "prepared_periodic_hit"
+      },
+      {
+        "event_id": "alchemist.2.1",
+        "phrase": "A_prime",
+        "action": "fill_vat",
+        "cue_tick": 2040,
+        "at_tick": 2160,
+        "end_tick": 2340,
+        "masks": [
+          [
+            30,
+            21,
+            5,
+            5
+          ],
+          [
+            45,
+            8,
+            5,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "pulse_offsets": [
+          0,
+          60,
+          120
+        ]
+      },
+      {
+        "event_id": "alchemist.2.2",
+        "phrase": "A_prime",
+        "action": "catalyst_jet",
+        "cue_tick": 2340,
+        "at_tick": 2460,
+        "end_tick": 2461,
+        "masks": [
+          [
+            17,
+            14,
+            32,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "alchemist.2.3",
+        "phrase": "A_prime",
+        "action": "binary_reaction",
+        "cue_tick": 2610,
+        "at_tick": 2730,
+        "end_tick": 2731,
+        "masks": [
+          [
+            34,
+            16,
+            2,
+            6
+          ],
+          [
+            36,
+            12,
+            9,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "alchemist.2.4",
+        "phrase": "A_prime",
+        "action": "gas_fan",
+        "cue_tick": 2820,
+        "at_tick": 2940,
+        "end_tick": 2941,
+        "masks": [
+          [
+            25,
+            18,
+            16,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "alchemist.2.5",
+        "phrase": "A_prime",
+        "action": "glass_rain",
+        "cue_tick": 3000,
+        "at_tick": 3120,
+        "end_tick": 3121,
+        "masks": [
+          [
+            44,
+            20,
+            2,
+            2
+          ],
+          [
+            37,
+            7,
+            2,
+            2
+          ],
+          [
+            24,
+            20,
+            2,
+            2
+          ],
+          [
+            18,
+            7,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "alchemist.2.6",
+        "phrase": "A_prime",
+        "action": "distillation",
+        "cue_tick": 3060,
+        "at_tick": 3240,
+        "end_tick": 3600,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          20
+        ],
+        "boss_facing": "s",
+        "window_condition": "prepared_periodic_hit"
+      },
+      {
+        "event_id": "alchemist.3.1",
+        "phrase": "B",
+        "action": "catalyst_jet",
+        "cue_tick": 3840,
+        "at_tick": 3960,
+        "end_tick": 3961,
+        "masks": [
+          [
+            17,
+            16,
+            32,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "alchemist.3.2",
+        "phrase": "B",
+        "action": "fill_vat",
+        "cue_tick": 4140,
+        "at_tick": 4260,
+        "end_tick": 4440,
+        "masks": [
+          [
+            16,
+            18,
+            5,
+            5
+          ],
+          [
+            45,
+            18,
+            5,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "pulse_offsets": [
+          0,
+          60,
+          120
+        ]
+      },
+      {
+        "event_id": "alchemist.3.3",
+        "phrase": "B",
+        "action": "binary_reaction",
+        "cue_tick": 4410,
+        "at_tick": 4530,
+        "end_tick": 4531,
+        "masks": [
+          [
+            21,
+            19,
+            10,
+            2
+          ],
+          [
+            36,
+            19,
+            9,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "alchemist.3.4",
+        "phrase": "B",
+        "action": "glass_rain",
+        "cue_tick": 4620,
+        "at_tick": 4740,
+        "end_tick": 4741,
+        "masks": [
+          [
+            20,
+            9,
+            2,
+            2
+          ],
+          [
+            27,
+            22,
+            2,
+            2
+          ],
+          [
+            40,
+            9,
+            2,
+            2
+          ],
+          [
+            46,
+            22,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "alchemist.3.5",
+        "phrase": "B",
+        "action": "gas_fan",
+        "cue_tick": 4800,
+        "at_tick": 4920,
+        "end_tick": 4921,
+        "masks": [
+          [
+            25,
+            8,
+            16,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "alchemist.3.6",
+        "phrase": "B",
+        "action": "distillation",
+        "cue_tick": 4860,
+        "at_tick": 5040,
+        "end_tick": 5400,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          40,
+          12
+        ],
+        "boss_facing": "w",
+        "window_condition": "prepared_periodic_hit"
+      },
+      {
+        "event_id": "alchemist.4.1",
+        "phrase": "A_double_prime",
+        "action": "fill_vat",
+        "cue_tick": 5640,
+        "at_tick": 5760,
+        "end_tick": 5940,
+        "masks": [
+          [
+            16,
+            8,
+            5,
+            5
+          ],
+          [
+            45,
+            8,
+            5,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "pulse_offsets": [
+          0,
+          60,
+          120
+        ]
+      },
+      {
+        "event_id": "alchemist.4.2",
+        "phrase": "A_double_prime",
+        "action": "catalyst_jet",
+        "cue_tick": 5940,
+        "at_tick": 6060,
+        "end_tick": 6061,
+        "masks": [
+          [
+            17,
+            14,
+            32,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "alchemist.4.3",
+        "phrase": "A_double_prime",
+        "action": "binary_reaction",
+        "cue_tick": 6210,
+        "at_tick": 6330,
+        "end_tick": 6331,
+        "masks": [
+          [
+            21,
+            10,
+            10,
+            2
+          ],
+          [
+            36,
+            10,
+            9,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "alchemist.4.4",
+        "phrase": "A_double_prime",
+        "action": "gas_fan",
+        "cue_tick": 6420,
+        "at_tick": 6540,
+        "end_tick": 6541,
+        "masks": [
+          [
+            25,
+            18,
+            16,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "alchemist.4.overlap",
+        "phrase": "A_double_prime",
+        "action": "glass_rain",
+        "cue_tick": 6420,
+        "at_tick": 6540,
+        "end_tick": 6541,
+        "masks": [
+          [
+            20,
+            20,
+            2,
+            2
+          ],
+          [
+            27,
+            7,
+            2,
+            2
+          ],
+          [
+            40,
+            20,
+            2,
+            2
+          ],
+          [
+            46,
+            7,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "alchemist.4.5",
+        "phrase": "A_double_prime",
+        "action": "glass_rain",
+        "cue_tick": 6600,
+        "at_tick": 6720,
+        "end_tick": 6721,
+        "masks": [
+          [
+            20,
+            20,
+            2,
+            2
+          ],
+          [
+            27,
+            7,
+            2,
+            2
+          ],
+          [
+            40,
+            20,
+            2,
+            2
+          ],
+          [
+            46,
+            7,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "alchemist.4.6",
+        "phrase": "A_double_prime",
+        "action": "distillation",
+        "cue_tick": 6600,
+        "at_tick": 6780,
+        "end_tick": 7200,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "prepared_periodic_hit"
+      }
+    ],
+    "pose_track": [
+      {
+        "tick": 0,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 1440,
+        "origin": [
+          20,
+          12
+        ],
+        "facing": "e"
+      },
+      {
+        "tick": 3240,
+        "origin": [
+          30,
+          20
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 5040,
+        "origin": [
+          40,
+          12
+        ],
+        "facing": "w"
+      },
+      {
+        "tick": 6780,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      }
+    ],
+    "cache_cell": [
+      8,
+      15
+    ],
+    "draft_revision": "v2.0-draft.1",
+    "schema_version": 1
+  },
+  {
+    "id": "cardinal",
+    "arena": "sanctum",
+    "title": "The Twofold Witness",
+    "file": "05-cardinal.md",
+    "verb": "ATTUNE",
+    "precedent": "Maiden of Vigilance",
+    "raid": "Tomb of Sargeras",
+    "era": "Legion",
+    "difficulty": "Normal/Heroic infusion and instability; no raid-wide mandatory soak",
+    "source": "https://www.icy-veins.com/wow/maiden-of-vigilance-strategy-tactics-normal-heroic",
+    "features": [
+      1,
+      1,
+      0,
+      0,
+      4,
+      3,
+      1,
+      0
+    ],
+    "premise": "A two-faced witness alternates Sun and Moon seals on a cathedral floor. The player chooses an attunement by standing on a marked font. Matching a seal offers efficient work; the unsealed central aisle is a universal alternative.",
+    "research": "Maiden of Vigilance assigns Light/Fel infusions; opposite-element interactions trigger Unstable Soul, with a pit-and-ward response and a later shielded phase. Arenic uses explicit polarity and personal recovery, but removes random assignment, inter-player chain explosions, knockback, and required shield breaking. Twin Val\u2019kyr supplies a secondary comparison for voluntarily selected essences, not a second primary precedent.",
+    "difference": "No beneficial ability ever becomes hostile. Sun and Moon are actor-owned tags, not healing inversion. An untagged solo actor can complete the entire score through the neutral aisle. A failed match deals one immediate personal wound; Confession separately applies delayed Exposure. Neither creates a raid-wide explosion.",
+    "layout": "Sun font (22,4), Moon font (43,4); entering sets that actor\u2019s attunement until changed or cycle reset. Fonts are outside attack masks. West chapel x=14\u202627, east chapel x=38\u202651; neutral aisles x=28\u202629 and x=36\u202637 remain open around the central boss. The south transept y=4 connects both.",
+    "phrase": [
+      "Show Sun, then Moon, then the personal instability tell.",
+      "Reverse the two seals; fonts remain fixed.",
+      "Use neutral aisle travel while both outer chapels answer. The bridge\u2019s exact reordered attacks appear in the event table.",
+      "Return to Sun-first with an already learned fan before reconciliation. The event labeled overlap is simultaneous with a familiar move, with its own mask and damage."
+    ],
+    "actions": [
+      {
+        "id": "sun_seal",
+        "name": "Sun Seal",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor",
+          "sun"
+        ],
+        "description": "The west chapel pulses once. Sun actors take zero; Moon/untagged actors take one wound. The central aisle is safe for everyone."
+      },
+      {
+        "id": "moon_seal",
+        "name": "Moon Seal",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor",
+          "moon"
+        ],
+        "description": "The east chapel pulses once. Moon actors take zero; Sun/untagged actors take one wound. No other actor is affected by a mismatch."
+      },
+      {
+        "id": "split_hammer",
+        "name": "Split Hammer",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "description": "A central forward hammer fan hits once. Attunement does not protect against this physical hit; leave the fan or place frontal protection."
+      },
+      {
+        "id": "confession",
+        "name": "Confession",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "description": "Two labeled narrow beams apply a personal Exposure. Walk out, shield, cleanse afterward, or heal; no cleanse is mandatory."
+      },
+      {
+        "id": "eclipse",
+        "name": "Eclipse",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "description": "Both outer chapels pulse. An actor matching the element label of its occupied mask takes zero; others take one wound. Mirrored phrases preserve labels per mask, not fixed west/east meaning. Neutral aisles remain safe."
+      },
+      {
+        "id": "reconciliation",
+        "name": "Reconciliation",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Face the next transept; for five seconds the first direct hit by an actor with the phrase\u2019s displayed attunement earns +1. Healing and damage keep their ordinary allegiance."
+      }
+    ],
+    "recovery": "Use x=28 or x=37 around the boss and y=4 to change sides. Attunement is optional. For a short melee approach, enter the current rear during Reconciliation; a Cardinal can channel from the neutral aisle whenever within eight tiles. A missed seal is recoverable at four HP.",
+    "risks": "Do not implement polarity as a debuff that Cleanse removes, and do not trigger explosions on hero adjacency. Attunement affects only damage evaluation and the optional bonus, never movement or recorded casts.",
+    "cycle_ticks": 7200,
+    "ruleset": "v2.0-draft.1",
+    "tier": "normal",
+    "events": [
+      {
+        "event_id": "cardinal.1.1",
+        "phrase": "A",
+        "action": "sun_seal",
+        "cue_tick": 270,
+        "at_tick": 390,
+        "end_tick": 391,
+        "masks": [
+          [
+            14,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "sun"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "mask_elements": [
+          "sun"
+        ]
+      },
+      {
+        "event_id": "cardinal.1.2",
+        "phrase": "A",
+        "action": "moon_seal",
+        "cue_tick": 570,
+        "at_tick": 690,
+        "end_tick": 691,
+        "masks": [
+          [
+            38,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "moon"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "mask_elements": [
+          "moon"
+        ]
+      },
+      {
+        "event_id": "cardinal.1.3",
+        "phrase": "A",
+        "action": "split_hammer",
+        "cue_tick": 810,
+        "at_tick": 930,
+        "end_tick": 931,
+        "masks": [
+          [
+            27,
+            18,
+            12,
+            6
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "cardinal.1.4",
+        "phrase": "A",
+        "action": "confession",
+        "cue_tick": 1050,
+        "at_tick": 1170,
+        "end_tick": 1171,
+        "masks": [
+          [
+            24,
+            5,
+            2,
+            21
+          ],
+          [
+            40,
+            5,
+            2,
+            21
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "cardinal.1.5",
+        "phrase": "A",
+        "action": "eclipse",
+        "cue_tick": 1230,
+        "at_tick": 1350,
+        "end_tick": 1351,
+        "masks": [
+          [
+            14,
+            6,
+            14,
+            19
+          ],
+          [
+            38,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "mask_elements": [
+          "sun",
+          "moon"
+        ]
+      },
+      {
+        "event_id": "cardinal.1.6",
+        "phrase": "A",
+        "action": "reconciliation",
+        "cue_tick": 1320,
+        "at_tick": 1500,
+        "end_tick": 1800,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "attunement_bonus": "sun",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "e",
+        "window_condition": "matched_attunement_direct_hit"
+      },
+      {
+        "event_id": "cardinal.2.1",
+        "phrase": "A_prime",
+        "action": "sun_seal",
+        "cue_tick": 2070,
+        "at_tick": 2190,
+        "end_tick": 2191,
+        "masks": [
+          [
+            38,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "sun"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "mask_elements": [
+          "sun"
+        ]
+      },
+      {
+        "event_id": "cardinal.2.2",
+        "phrase": "A_prime",
+        "action": "moon_seal",
+        "cue_tick": 2370,
+        "at_tick": 2490,
+        "end_tick": 2491,
+        "masks": [
+          [
+            14,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "moon"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "mask_elements": [
+          "moon"
+        ]
+      },
+      {
+        "event_id": "cardinal.2.3",
+        "phrase": "A_prime",
+        "action": "split_hammer",
+        "cue_tick": 2610,
+        "at_tick": 2730,
+        "end_tick": 2731,
+        "masks": [
+          [
+            27,
+            18,
+            12,
+            6
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "cardinal.2.4",
+        "phrase": "A_prime",
+        "action": "confession",
+        "cue_tick": 2850,
+        "at_tick": 2970,
+        "end_tick": 2971,
+        "masks": [
+          [
+            40,
+            5,
+            2,
+            21
+          ],
+          [
+            24,
+            5,
+            2,
+            21
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "cardinal.2.5",
+        "phrase": "A_prime",
+        "action": "eclipse",
+        "cue_tick": 3030,
+        "at_tick": 3150,
+        "end_tick": 3151,
+        "masks": [
+          [
+            38,
+            6,
+            14,
+            19
+          ],
+          [
+            14,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "mask_elements": [
+          "sun",
+          "moon"
+        ]
+      },
+      {
+        "event_id": "cardinal.2.6",
+        "phrase": "A_prime",
+        "action": "reconciliation",
+        "cue_tick": 3120,
+        "at_tick": 3300,
+        "end_tick": 3600,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "attunement_bonus": "moon",
+        "boss_origin": [
+          30,
+          18
+        ],
+        "boss_facing": "s",
+        "window_condition": "matched_attunement_direct_hit"
+      },
+      {
+        "event_id": "cardinal.3.1",
+        "phrase": "B",
+        "action": "confession",
+        "cue_tick": 3870,
+        "at_tick": 3990,
+        "end_tick": 3991,
+        "masks": [
+          [
+            24,
+            5,
+            2,
+            21
+          ],
+          [
+            40,
+            5,
+            2,
+            21
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "cardinal.3.2",
+        "phrase": "B",
+        "action": "sun_seal",
+        "cue_tick": 4170,
+        "at_tick": 4290,
+        "end_tick": 4291,
+        "masks": [
+          [
+            14,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "sun"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "mask_elements": [
+          "sun"
+        ]
+      },
+      {
+        "event_id": "cardinal.3.3",
+        "phrase": "B",
+        "action": "moon_seal",
+        "cue_tick": 4410,
+        "at_tick": 4530,
+        "end_tick": 4531,
+        "masks": [
+          [
+            38,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "moon"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "mask_elements": [
+          "moon"
+        ]
+      },
+      {
+        "event_id": "cardinal.3.4",
+        "phrase": "B",
+        "action": "split_hammer",
+        "cue_tick": 4650,
+        "at_tick": 4770,
+        "end_tick": 4771,
+        "masks": [
+          [
+            27,
+            7,
+            12,
+            6
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "cardinal.3.5",
+        "phrase": "B",
+        "action": "eclipse",
+        "cue_tick": 4830,
+        "at_tick": 4950,
+        "end_tick": 4951,
+        "masks": [
+          [
+            14,
+            6,
+            14,
+            19
+          ],
+          [
+            38,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "moon",
+        "mask_elements": [
+          "sun",
+          "moon"
+        ]
+      },
+      {
+        "event_id": "cardinal.3.6",
+        "phrase": "B",
+        "action": "reconciliation",
+        "cue_tick": 4920,
+        "at_tick": 5100,
+        "end_tick": 5400,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "attunement_bonus": "moon",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "w",
+        "window_condition": "matched_attunement_direct_hit"
+      },
+      {
+        "event_id": "cardinal.4.1",
+        "phrase": "A_double_prime",
+        "action": "sun_seal",
+        "cue_tick": 5670,
+        "at_tick": 5790,
+        "end_tick": 5791,
+        "masks": [
+          [
+            14,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "sun"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "mask_elements": [
+          "sun"
+        ]
+      },
+      {
+        "event_id": "cardinal.4.2",
+        "phrase": "A_double_prime",
+        "action": "moon_seal",
+        "cue_tick": 5970,
+        "at_tick": 6090,
+        "end_tick": 6091,
+        "masks": [
+          [
+            38,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "moon"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "mask_elements": [
+          "moon"
+        ]
+      },
+      {
+        "event_id": "cardinal.4.3",
+        "phrase": "A_double_prime",
+        "action": "split_hammer",
+        "cue_tick": 6210,
+        "at_tick": 6330,
+        "end_tick": 6331,
+        "masks": [
+          [
+            27,
+            18,
+            12,
+            6
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "cone"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "cardinal.4.4",
+        "phrase": "A_double_prime",
+        "action": "confession",
+        "cue_tick": 6450,
+        "at_tick": 6570,
+        "end_tick": 6571,
+        "masks": [
+          [
+            24,
+            5,
+            2,
+            21
+          ],
+          [
+            40,
+            5,
+            2,
+            21
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "cardinal.4.overlap",
+        "phrase": "A_double_prime",
+        "action": "sun_seal",
+        "cue_tick": 6450,
+        "at_tick": 6570,
+        "end_tick": 6571,
+        "masks": [
+          [
+            14,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor",
+          "sun"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "mask_elements": [
+          "sun"
+        ]
+      },
+      {
+        "event_id": "cardinal.4.5",
+        "phrase": "A_double_prime",
+        "action": "eclipse",
+        "cue_tick": 6630,
+        "at_tick": 6750,
+        "end_tick": 6751,
+        "masks": [
+          [
+            14,
+            6,
+            14,
+            19
+          ],
+          [
+            38,
+            6,
+            14,
+            19
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "attunement_bonus": "sun",
+        "mask_elements": [
+          "sun",
+          "moon"
+        ]
+      },
+      {
+        "event_id": "cardinal.4.6",
+        "phrase": "A_double_prime",
+        "action": "reconciliation",
+        "cue_tick": 6600,
+        "at_tick": 6780,
+        "end_tick": 7200,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "attunement_bonus": "sun",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "matched_attunement_direct_hit"
+      }
+    ],
+    "pose_track": [
+      {
+        "tick": 0,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 1500,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "e"
+      },
+      {
+        "tick": 3300,
+        "origin": [
+          30,
+          18
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 5100,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "w"
+      },
+      {
+        "tick": 6780,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      }
+    ],
+    "cache_cell": [
+      8,
+      15
+    ],
+    "draft_revision": "v2.0-draft.1",
+    "schema_version": 1,
+    "font_cells": {
+      "sun": [
+        22,
+        4
+      ],
+      "moon": [
+        43,
+        4
+      ]
+    }
+  },
+  {
+    "id": "bard",
+    "arena": "gala",
+    "title": "The Last Conductor",
+    "file": "06-bard.md",
+    "verb": "PHRASE",
+    "precedent": "The Council of Blood",
+    "raid": "Castle Nathria",
+    "era": "Shadowlands",
+    "difficulty": "Normal/Heroic dance; no health-triggered transition or kill order",
+    "source": "https://www.icy-veins.com/wow/the-council-of-blood-strategy-guide-for-castle-nathria",
+    "features": [
+      3,
+      2,
+      0,
+      0,
+      1,
+      1,
+      4,
+      0
+    ],
+    "premise": "A conductor teaches a three scored floor steps and a free fourth return, answers it with a slow waltz, then combines both. The player composes movement around their own cast rhythm rather than responding to hidden tempo changes.",
+    "research": "Council of Blood alternates ordinary combat with Danse Macabre at health thresholds; successful movement earns a benefit. Different kill orders also change the remaining mechanics. Arenic borrows a readable dance and returning combat, while fixing every intermission in time and removing kill-order dependence and attack-speed changes.",
+    "difference": "The floor gives a movement score separate from the Bard hero\u2019s Dance ability. Any class can perform the floor phrase. Visual footfall markers carry the full information when sound is muted.",
+    "layout": "Four adjacent 4\u00d74 floor blocks form a loop: SW [22,6,4,4], SE [26,6,4,4], NE [26,10,4,4], NW [22,10,4,4]. The dance square is optional. Forty actors do not share a single tile; the floor mask has sixteen cells per block and surrounding walking room. The boss stands in the central or upper orchestra recess.",
+    "phrase": [
+      "Teach the SW\u2192SE\u2192NE\u2192NW footfall phrase.",
+      "Reverse the traversal to NW\u2192NE\u2192SE\u2192SW.",
+      "The bridge is a slow waltz across the upper room with a long stationary answer. The bridge\u2019s exact reordered attacks appear in the event table.",
+      "Bring back the original footfalls while the previously seen waltz occupies a separate strip. The event labeled overlap is simultaneous with a familiar move, with its own mask and damage."
+    ],
+    "actions": [
+      {
+        "id": "downbeat",
+        "name": "Downbeat",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "description": "Pulse the three inactive floor blocks once; the displayed active block and all cells outside the dance square are safe. This begins optional phrase participation."
+      },
+      {
+        "id": "upbeat",
+        "name": "Upbeat",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "description": "Advance the active block and pulse the other three. A second earned footfall is optional; missing it only loses phrase credit."
+      },
+      {
+        "id": "turn",
+        "name": "Turn",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "description": "Advance to the third block and pulse the others. Floor cues use ticks, never detected audio beats."
+      },
+      {
+        "id": "waltz",
+        "name": "Waltz",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "A 2-cell-wide dancer strip crosses the upper room at its listed resolve time; it has no body that pushes actors."
+      },
+      {
+        "id": "coda_bolt",
+        "name": "Coda Bolt",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "description": "A short diagonal-looking visual resolves as the exact listed rectangular cells; tagged projectile defenses remain useful."
+      },
+      {
+        "id": "encore",
+        "name": "Encore",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Transfer/turn to the orchestra recess for six seconds. Actors who occupied each active block at the first three footfalls gain +1 on their first direct hit. Outside actors keep full ordinary damage."
+      }
+    ],
+    "recovery": "A solo actor can ignore the dance square and approach through x=36\u202637. The floor-performance bonus requires only three checks, not perfect rhythmic input for the entire two minutes. A separate voluntary fourth step completes the visual loop but grants no additional gameplay requirement. The six-second Encore is a cast/recovery opportunity even after a missed footfall.",
+    "risks": "Dance ability grading and encounter floor grading are separate actor counters. Do not pause or speed up a timeline to align music. Never shuffle keys, icons, or cast order.",
+    "cycle_ticks": 7200,
+    "ruleset": "v2.0-draft.1",
+    "tier": "normal",
+    "events": [
+      {
+        "event_id": "bard.1.1",
+        "phrase": "A",
+        "action": "downbeat",
+        "cue_tick": 240,
+        "at_tick": 360,
+        "end_tick": 361,
+        "masks": [
+          [
+            26,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            10,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          22,
+          6,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.1.2",
+        "phrase": "A",
+        "action": "upbeat",
+        "cue_tick": 480,
+        "at_tick": 600,
+        "end_tick": 601,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            10,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          26,
+          6,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.1.3",
+        "phrase": "A",
+        "action": "turn",
+        "cue_tick": 720,
+        "at_tick": 840,
+        "end_tick": 841,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            6,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          26,
+          10,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.1.4",
+        "phrase": "A",
+        "action": "waltz",
+        "cue_tick": 990,
+        "at_tick": 1110,
+        "end_tick": 1111,
+        "masks": [
+          [
+            18,
+            22,
+            32,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "bard.1.5",
+        "phrase": "A",
+        "action": "coda_bolt",
+        "cue_tick": 1200,
+        "at_tick": 1320,
+        "end_tick": 1321,
+        "masks": [
+          [
+            18,
+            16,
+            12,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "bard.1.6",
+        "phrase": "A",
+        "action": "encore",
+        "cue_tick": 1260,
+        "at_tick": 1440,
+        "end_tick": 1800,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          18
+        ],
+        "boss_facing": "s",
+        "window_condition": "three_floor_steps_direct_hit"
+      },
+      {
+        "event_id": "bard.2.1",
+        "phrase": "A_prime",
+        "action": "downbeat",
+        "cue_tick": 2040,
+        "at_tick": 2160,
+        "end_tick": 2161,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          22,
+          10,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.2.2",
+        "phrase": "A_prime",
+        "action": "upbeat",
+        "cue_tick": 2280,
+        "at_tick": 2400,
+        "end_tick": 2401,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            6,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          26,
+          10,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.2.3",
+        "phrase": "A_prime",
+        "action": "turn",
+        "cue_tick": 2520,
+        "at_tick": 2640,
+        "end_tick": 2641,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            10,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          26,
+          6,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.2.4",
+        "phrase": "A_prime",
+        "action": "waltz",
+        "cue_tick": 2790,
+        "at_tick": 2910,
+        "end_tick": 2911,
+        "masks": [
+          [
+            16,
+            22,
+            32,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "bard.2.5",
+        "phrase": "A_prime",
+        "action": "coda_bolt",
+        "cue_tick": 3000,
+        "at_tick": 3120,
+        "end_tick": 3121,
+        "masks": [
+          [
+            36,
+            16,
+            12,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "bard.2.6",
+        "phrase": "A_prime",
+        "action": "encore",
+        "cue_tick": 3060,
+        "at_tick": 3240,
+        "end_tick": 3600,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          38,
+          12
+        ],
+        "boss_facing": "w",
+        "window_condition": "three_floor_steps_direct_hit"
+      },
+      {
+        "event_id": "bard.3.1",
+        "phrase": "B",
+        "action": "downbeat",
+        "cue_tick": 3840,
+        "at_tick": 3960,
+        "end_tick": 3961,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          22,
+          10,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.3.2",
+        "phrase": "B",
+        "action": "upbeat",
+        "cue_tick": 4080,
+        "at_tick": 4200,
+        "end_tick": 4201,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            6,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          26,
+          10,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.3.3",
+        "phrase": "B",
+        "action": "turn",
+        "cue_tick": 4320,
+        "at_tick": 4440,
+        "end_tick": 4441,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            10,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          26,
+          6,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.3.4",
+        "phrase": "B",
+        "action": "waltz",
+        "cue_tick": 4590,
+        "at_tick": 4710,
+        "end_tick": 4711,
+        "masks": [
+          [
+            18,
+            22,
+            32,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "bard.3.5",
+        "phrase": "B",
+        "action": "coda_bolt",
+        "cue_tick": 4800,
+        "at_tick": 4920,
+        "end_tick": 4921,
+        "masks": [
+          [
+            18,
+            16,
+            12,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "bard.3.6",
+        "phrase": "B",
+        "action": "encore",
+        "cue_tick": 4860,
+        "at_tick": 5040,
+        "end_tick": 5400,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          18
+        ],
+        "boss_facing": "s",
+        "window_condition": "three_floor_steps_direct_hit"
+      },
+      {
+        "event_id": "bard.4.1",
+        "phrase": "A_double_prime",
+        "action": "downbeat",
+        "cue_tick": 5640,
+        "at_tick": 5760,
+        "end_tick": 5761,
+        "masks": [
+          [
+            26,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            10,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          22,
+          6,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.4.2",
+        "phrase": "A_double_prime",
+        "action": "upbeat",
+        "cue_tick": 5880,
+        "at_tick": 6000,
+        "end_tick": 6001,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            10,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          26,
+          6,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.4.3",
+        "phrase": "A_double_prime",
+        "action": "turn",
+        "cue_tick": 6120,
+        "at_tick": 6240,
+        "end_tick": 6241,
+        "masks": [
+          [
+            22,
+            6,
+            4,
+            4
+          ],
+          [
+            26,
+            6,
+            4,
+            4
+          ],
+          [
+            22,
+            10,
+            4,
+            4
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact",
+        "active_pad": [
+          26,
+          10,
+          4,
+          4
+        ]
+      },
+      {
+        "event_id": "bard.4.overlap",
+        "phrase": "A_double_prime",
+        "action": "waltz",
+        "cue_tick": 6120,
+        "at_tick": 6240,
+        "end_tick": 6241,
+        "masks": [
+          [
+            18,
+            22,
+            32,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "bard.4.4",
+        "phrase": "A_double_prime",
+        "action": "waltz",
+        "cue_tick": 6390,
+        "at_tick": 6510,
+        "end_tick": 6511,
+        "masks": [
+          [
+            18,
+            22,
+            32,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "bard.4.5",
+        "phrase": "A_double_prime",
+        "action": "coda_bolt",
+        "cue_tick": 6600,
+        "at_tick": 6720,
+        "end_tick": 6721,
+        "masks": [
+          [
+            18,
+            16,
+            12,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "bard.4.6",
+        "phrase": "A_double_prime",
+        "action": "encore",
+        "cue_tick": 6600,
+        "at_tick": 6780,
+        "end_tick": 7200,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "three_floor_steps_direct_hit"
+      }
+    ],
+    "pose_track": [
+      {
+        "tick": 0,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 1440,
+        "origin": [
+          30,
+          18
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 3240,
+        "origin": [
+          38,
+          12
+        ],
+        "facing": "w"
+      },
+      {
+        "tick": 5040,
+        "origin": [
+          30,
+          18
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 6780,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      }
+    ],
+    "cache_cell": [
+      8,
+      15
+    ],
+    "draft_revision": "v2.0-draft.1",
+    "schema_version": 1
+  },
+  {
+    "id": "forager",
+    "arena": "mountain",
+    "title": "The Crystal Mason",
+    "file": "07-forager.md",
+    "verb": "BUILD",
+    "precedent": "Fractillus",
+    "raid": "Manaforge Omega",
+    "era": "The War Within",
+    "difficulty": "Heroic wall construction/shattering relationship; original tuning not copied",
+    "source": "https://www.method.gg/guides/manaforge-omega/fractillus-heroic",
+    "features": [
+      2,
+      0,
+      1,
+      4,
+      0,
+      2,
+      1,
+      1
+    ],
+    "premise": "A mason raises measured crystal ribs, uses them as cover, and shatters them into a known fan. Prepared ground and healing gardens earn long-lived value, while every wall comes with a posted demolition time.",
+    "research": "Fractillus creates crystal walls in lanes and uses later mechanics to shatter them; wall accumulation and fragments create pressure. Source guides describe player-directed placement and knockback-driven destruction. Arenic keeps construction followed by demolition but fixes wall locations and expiry, and replaces knockback tasks with optional preparation rewards.",
+    "difference": "The arena changes connectivity on schedule. Player attacks cannot open or close a route early. Each raised rib has two open ends; permanent corridors and a perimeter circuit prevent topology locks.",
+    "layout": "Crystal ribs stand at [22,8,2,12] and [42,8,2,12]. They obstruct bodies only during Raise Ribs, and no portal or ability is needed to get around y=7 or y=20. Central quarry x=25\u202640 is the working area. Shards land beside the ribs, never on the permanent perimeter or cache.",
+    "phrase": [
+      "Raise two ribs, shelter from a beam, then leave their shatter fans.",
+      "Mirror the shard pads while the rib footprints stay unchanged.",
+      "Build a shorter pair of cross-ribs and work the open north/south aisle. The bridge\u2019s exact reordered attacks appear in the event table.",
+      "Return to vertical ribs and combine their known fan with the earlier quarry pulse. The event labeled overlap is simultaneous with a familiar move, with its own mask and damage."
+    ],
+    "actions": [
+      {
+        "id": "raise_ribs",
+        "name": "Raise Ribs",
+        "kind": "terrain",
+        "damage": 0,
+        "tags": [],
+        "description": "Raise two fixed impassable rectangles for 570 ticks. At their appearance only, a hero inside suffers crush; during the warning step around an end. Never trap or push a hero."
+      },
+      {
+        "id": "quarry_ray",
+        "name": "Quarry Ray",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "description": "A horizontal ray crosses the room but subtracts the active rib shadow; players behind a rib may work. The exact subtracted masks are stored, not raytraced against sprite pixels."
+      },
+      {
+        "id": "shatter_fan",
+        "name": "Shatter Fan",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "Ribs expire before the impact; their adjacent fixed shard rectangles hit once. No knockback, no player-dependent wall break."
+      },
+      {
+        "id": "ore_spit",
+        "name": "Ore Spit",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "description": "Two quarry pads receive splinters and Exposure. Directional defenses can shelter a planted node."
+      },
+      {
+        "id": "fault_pulse",
+        "name": "Fault Pulse",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "description": "A narrow central cross-fault pulses once, leaving the long side lanes open."
+      },
+      {
+        "id": "fresh_seam",
+        "name": "Fresh Seam",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Transfer onto the next quarry seam for five seconds. Each actor\u2019s first grounded field tick during the window earns +1. No rock, heal, or damage threshold changes demolition timing."
+      }
+    ],
+    "recovery": "Before Raise Ribs finishes, cross through y=7 or y=20; neither rib reaches the border. Work behind a rib for Quarry Ray, then leave the two announced shard pads before Shatter Fan. Dig at future anchors while the boss is elsewhere; the next transfer rewards the prepared substrate. Every hero can instead use the open south route and ordinary direct attacks.",
+    "risks": "Wall removal at the same tick as shatter must happen before movement and impact geometry. Do not use player Boulder or Dig to remove the wall collision early; those interactions grant damage only.",
+    "cycle_ticks": 7200,
+    "ruleset": "v2.0-draft.1",
+    "tier": "normal",
+    "events": [
+      {
+        "event_id": "forager.1.1",
+        "phrase": "A",
+        "action": "raise_ribs",
+        "cue_tick": 180,
+        "at_tick": 360,
+        "end_tick": 930,
+        "masks": [
+          [
+            22,
+            8,
+            2,
+            12
+          ],
+          [
+            42,
+            8,
+            2,
+            12
+          ]
+        ],
+        "damage": 0,
+        "tags": [],
+        "kind": "terrain",
+        "appearance_damage": 4
+      },
+      {
+        "event_id": "forager.1.2",
+        "phrase": "A",
+        "action": "quarry_ray",
+        "cue_tick": 510,
+        "at_tick": 630,
+        "end_tick": 631,
+        "masks": [
+          [
+            24,
+            14,
+            18,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "forager.1.3",
+        "phrase": "A",
+        "action": "shatter_fan",
+        "cue_tick": 810,
+        "at_tick": 930,
+        "end_tick": 931,
+        "masks": [
+          [
+            20,
+            7,
+            6,
+            2
+          ],
+          [
+            40,
+            20,
+            6,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.1.4",
+        "phrase": "A",
+        "action": "ore_spit",
+        "cue_tick": 1050,
+        "at_tick": 1170,
+        "end_tick": 1171,
+        "masks": [
+          [
+            26,
+            8,
+            3,
+            3
+          ],
+          [
+            37,
+            20,
+            3,
+            3
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "forager.1.5",
+        "phrase": "A",
+        "action": "fault_pulse",
+        "cue_tick": 1230,
+        "at_tick": 1350,
+        "end_tick": 1351,
+        "masks": [
+          [
+            28,
+            6,
+            2,
+            18
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.1.6",
+        "phrase": "A",
+        "action": "fresh_seam",
+        "cue_tick": 1320,
+        "at_tick": 1500,
+        "end_tick": 1800,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          18
+        ],
+        "boss_facing": "s",
+        "window_condition": "prepared_ground_tick"
+      },
+      {
+        "event_id": "forager.2.1",
+        "phrase": "A_prime",
+        "action": "raise_ribs",
+        "cue_tick": 1980,
+        "at_tick": 2160,
+        "end_tick": 2730,
+        "masks": [
+          [
+            42,
+            8,
+            2,
+            12
+          ],
+          [
+            22,
+            8,
+            2,
+            12
+          ]
+        ],
+        "damage": 0,
+        "tags": [],
+        "kind": "terrain",
+        "appearance_damage": 4
+      },
+      {
+        "event_id": "forager.2.2",
+        "phrase": "A_prime",
+        "action": "quarry_ray",
+        "cue_tick": 2310,
+        "at_tick": 2430,
+        "end_tick": 2431,
+        "masks": [
+          [
+            24,
+            14,
+            18,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "forager.2.3",
+        "phrase": "A_prime",
+        "action": "shatter_fan",
+        "cue_tick": 2610,
+        "at_tick": 2730,
+        "end_tick": 2731,
+        "masks": [
+          [
+            40,
+            7,
+            6,
+            2
+          ],
+          [
+            20,
+            20,
+            6,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.2.4",
+        "phrase": "A_prime",
+        "action": "ore_spit",
+        "cue_tick": 2850,
+        "at_tick": 2970,
+        "end_tick": 2971,
+        "masks": [
+          [
+            37,
+            8,
+            3,
+            3
+          ],
+          [
+            26,
+            20,
+            3,
+            3
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "forager.2.5",
+        "phrase": "A_prime",
+        "action": "fault_pulse",
+        "cue_tick": 3030,
+        "at_tick": 3150,
+        "end_tick": 3151,
+        "masks": [
+          [
+            36,
+            6,
+            2,
+            18
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.2.6",
+        "phrase": "A_prime",
+        "action": "fresh_seam",
+        "cue_tick": 3120,
+        "at_tick": 3300,
+        "end_tick": 3600,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          24,
+          12
+        ],
+        "boss_facing": "e",
+        "window_condition": "prepared_ground_tick"
+      },
+      {
+        "event_id": "forager.3.1",
+        "phrase": "B",
+        "action": "raise_ribs",
+        "cue_tick": 3780,
+        "at_tick": 3960,
+        "end_tick": 4530,
+        "masks": [
+          [
+            20,
+            8,
+            10,
+            2
+          ],
+          [
+            36,
+            20,
+            10,
+            2
+          ]
+        ],
+        "damage": 0,
+        "tags": [],
+        "kind": "terrain",
+        "appearance_damage": 4
+      },
+      {
+        "event_id": "forager.3.2",
+        "phrase": "B",
+        "action": "quarry_ray",
+        "cue_tick": 4110,
+        "at_tick": 4230,
+        "end_tick": 4231,
+        "masks": [
+          [
+            30,
+            14,
+            6,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "forager.3.3",
+        "phrase": "B",
+        "action": "shatter_fan",
+        "cue_tick": 4410,
+        "at_tick": 4530,
+        "end_tick": 4531,
+        "masks": [
+          [
+            19,
+            6,
+            12,
+            2
+          ],
+          [
+            35,
+            22,
+            12,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.3.4",
+        "phrase": "B",
+        "action": "ore_spit",
+        "cue_tick": 4650,
+        "at_tick": 4770,
+        "end_tick": 4771,
+        "masks": [
+          [
+            26,
+            8,
+            3,
+            3
+          ],
+          [
+            37,
+            20,
+            3,
+            3
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "forager.3.5",
+        "phrase": "B",
+        "action": "fault_pulse",
+        "cue_tick": 4830,
+        "at_tick": 4950,
+        "end_tick": 4951,
+        "masks": [
+          [
+            28,
+            6,
+            2,
+            18
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.3.6",
+        "phrase": "B",
+        "action": "fresh_seam",
+        "cue_tick": 4920,
+        "at_tick": 5100,
+        "end_tick": 5400,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          36,
+          12
+        ],
+        "boss_facing": "w",
+        "window_condition": "prepared_ground_tick"
+      },
+      {
+        "event_id": "forager.4.1",
+        "phrase": "A_double_prime",
+        "action": "raise_ribs",
+        "cue_tick": 5580,
+        "at_tick": 5760,
+        "end_tick": 6330,
+        "masks": [
+          [
+            22,
+            8,
+            2,
+            12
+          ],
+          [
+            42,
+            8,
+            2,
+            12
+          ]
+        ],
+        "damage": 0,
+        "tags": [],
+        "kind": "terrain",
+        "appearance_damage": 4
+      },
+      {
+        "event_id": "forager.4.2",
+        "phrase": "A_double_prime",
+        "action": "quarry_ray",
+        "cue_tick": 5910,
+        "at_tick": 6030,
+        "end_tick": 6031,
+        "masks": [
+          [
+            24,
+            14,
+            18,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "forager.4.3",
+        "phrase": "A_double_prime",
+        "action": "shatter_fan",
+        "cue_tick": 6210,
+        "at_tick": 6330,
+        "end_tick": 6331,
+        "masks": [
+          [
+            20,
+            7,
+            6,
+            2
+          ],
+          [
+            40,
+            20,
+            6,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.4.4",
+        "phrase": "A_double_prime",
+        "action": "ore_spit",
+        "cue_tick": 6450,
+        "at_tick": 6570,
+        "end_tick": 6571,
+        "masks": [
+          [
+            26,
+            8,
+            3,
+            3
+          ],
+          [
+            37,
+            20,
+            3,
+            3
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "forager.4.overlap",
+        "phrase": "A_double_prime",
+        "action": "shatter_fan",
+        "cue_tick": 6450,
+        "at_tick": 6570,
+        "end_tick": 6571,
+        "masks": [
+          [
+            20,
+            7,
+            6,
+            2
+          ],
+          [
+            40,
+            20,
+            6,
+            2
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.4.5",
+        "phrase": "A_double_prime",
+        "action": "fault_pulse",
+        "cue_tick": 6630,
+        "at_tick": 6750,
+        "end_tick": 6751,
+        "masks": [
+          [
+            28,
+            6,
+            2,
+            18
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "forager.4.6",
+        "phrase": "A_double_prime",
+        "action": "fresh_seam",
+        "cue_tick": 6600,
+        "at_tick": 6780,
+        "end_tick": 7200,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "prepared_ground_tick"
+      }
+    ],
+    "pose_track": [
+      {
+        "tick": 0,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 1500,
+        "origin": [
+          30,
+          18
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 3300,
+        "origin": [
+          24,
+          12
+        ],
+        "facing": "e"
+      },
+      {
+        "tick": 5100,
+        "origin": [
+          36,
+          12
+        ],
+        "facing": "w"
+      },
+      {
+        "tick": 6780,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      }
+    ],
+    "cache_cell": [
+      8,
+      15
+    ],
+    "draft_revision": "v2.0-draft.1",
+    "schema_version": 1
+  },
+  {
+    "id": "merchant",
+    "arena": "casino",
+    "title": "The House Without Chance",
+    "file": "08-merchant.md",
+    "verb": "INVEST",
+    "precedent": "Opulence",
+    "raid": "Battle of Dazar\u2019alor",
+    "era": "Battle for Azeroth",
+    "difficulty": "Normal/Heroic split approach and jewel preparation",
+    "source": "https://www.wowhead.com/guide/opulence-treasure-guardian-battle-of-dazaralor-raid-strategy-guide",
+    "features": [
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      3,
+      4
+    ],
+    "premise": "A treasury guardian displays every dividend before the first bet. Two trap-lined approaches lead to the same vault. The gamble is how much stationary work to risk in a known window, never a coin flip.",
+    "research": "Opulence begins with separate trapped approaches and preparatory crown jewels before the treasury fight, whose gold effects reward spatial organization. Arenic takes investment before payoff and different approaches. It omits compulsory group splitting, mandatory jewel roles, raid-size tuning, and random payouts.",
+    "difference": "Cycle-local scrip and personal entitlements guarantee a solvent next loop. The house advertises a posted dividend schedule; a cautious outer route trades a small opportunity for stable progress. Cosmetic dice and roulette never decide combat.",
+    "layout": "Two approach strips lie at x=18\u202625 and x=40\u202647, joined by y=4 and y=26. The vault stays in the central room; three dividend pads [26,10,4,4], [36,10,4,4], [32,20,4,4] open in a fixed order. No pad is a compulsory soak or a finite shared pickup.",
+    "phrase": [
+      "Read the west approach and save a short charge for the first dividend.",
+      "Take the east approach with the same payoff warning.",
+      "The bridge offers a long investment channel before a small safe return. The bridge\u2019s exact reordered attacks appear in the event table.",
+      "Reprise the west route with the familiar sweeping tax; unspent resources reset predictably. The event labeled overlap is simultaneous with a familiar move, with its own mask and damage."
+    ],
+    "actions": [
+      {
+        "id": "coin_sweep",
+        "name": "Coin Sweep",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "description": "A horizontal row of coins crosses the lower vault once. It can be blocked or converted but cannot drain permanent gold."
+      },
+      {
+        "id": "gilt_tiles",
+        "name": "Gilt Tiles",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "Three 3\u00d73 gilded pads burst once; their symbols match the visible posted schedule, not a random suit."
+      },
+      {
+        "id": "audit_fan",
+        "name": "Audit Fan",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "description": "A fixed vault-side fan wounds and applies Exposure. No damage is based on an actor\u2019s gold, buffs, or deaths."
+      },
+      {
+        "id": "closing_bell",
+        "name": "Closing Bell",
+        "kind": "impact",
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "description": "Both outer approach strips flash once; the middle room and all perimeter routes remain safe."
+      },
+      {
+        "id": "security_bolts",
+        "name": "Security Bolts",
+        "kind": "impact",
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "description": "Two marked 2\u00d72 watch posts fire once, creating a defensive support job beside the next dividend pad."
+      },
+      {
+        "id": "dividend",
+        "name": "Posted Dividend",
+        "kind": "window",
+        "damage": 0,
+        "tags": [],
+        "description": "Transfer/turn to the next vault position for 330 ticks. Each actor on the active dividend pad gains +1 on its first direct hit, plus one cycle scrip on that hit. Off-pad hits remain normal and do not spend banked damage."
+      }
+    ],
+    "recovery": "Use y=4 to cross between approaches, then enter the central room before Closing Bell. A Merchant can decline every dividend and use Fortune at ordinary range. A Thief can pickpocket during a posted dwell without altering the next audit. A Cardinal or Bard can repair an overambitious charge after it finishes.",
+    "risks": "No bonus depends on bank wealth, lucky rolls, prior-cycle streaks, or how many other heroes took the pad. Do not turn resource shortage into a recording refusal on a later cycle; wallets reset at the seam.",
+    "cycle_ticks": 7200,
+    "ruleset": "v2.0-draft.1",
+    "tier": "normal",
+    "events": [
+      {
+        "event_id": "merchant.1.1",
+        "phrase": "A",
+        "action": "coin_sweep",
+        "cue_tick": 270,
+        "at_tick": 390,
+        "end_tick": 391,
+        "masks": [
+          [
+            18,
+            8,
+            30,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "merchant.1.2",
+        "phrase": "A",
+        "action": "gilt_tiles",
+        "cue_tick": 510,
+        "at_tick": 630,
+        "end_tick": 631,
+        "masks": [
+          [
+            20,
+            12,
+            3,
+            3
+          ],
+          [
+            43,
+            12,
+            3,
+            3
+          ],
+          [
+            31,
+            22,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.1.3",
+        "phrase": "A",
+        "action": "audit_fan",
+        "cue_tick": 750,
+        "at_tick": 870,
+        "end_tick": 871,
+        "masks": [
+          [
+            27,
+            18,
+            12,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "merchant.1.4",
+        "phrase": "A",
+        "action": "closing_bell",
+        "cue_tick": 990,
+        "at_tick": 1110,
+        "end_tick": 1111,
+        "masks": [
+          [
+            18,
+            6,
+            6,
+            18
+          ],
+          [
+            42,
+            6,
+            6,
+            18
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.1.5",
+        "phrase": "A",
+        "action": "security_bolts",
+        "cue_tick": 1170,
+        "at_tick": 1290,
+        "end_tick": 1291,
+        "masks": [
+          [
+            25,
+            18,
+            2,
+            2
+          ],
+          [
+            39,
+            18,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "merchant.1.6",
+        "phrase": "A",
+        "action": "dividend",
+        "cue_tick": 1290,
+        "at_tick": 1470,
+        "end_tick": 1800,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "dividend_pad": [
+          26,
+          10,
+          4,
+          4
+        ],
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "s",
+        "window_condition": "dividend_pad_direct_hit"
+      },
+      {
+        "event_id": "merchant.2.1",
+        "phrase": "A_prime",
+        "action": "coin_sweep",
+        "cue_tick": 2070,
+        "at_tick": 2190,
+        "end_tick": 2191,
+        "masks": [
+          [
+            18,
+            8,
+            30,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "east"
+      },
+      {
+        "event_id": "merchant.2.2",
+        "phrase": "A_prime",
+        "action": "gilt_tiles",
+        "cue_tick": 2310,
+        "at_tick": 2430,
+        "end_tick": 2431,
+        "masks": [
+          [
+            43,
+            12,
+            3,
+            3
+          ],
+          [
+            20,
+            12,
+            3,
+            3
+          ],
+          [
+            32,
+            22,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.2.3",
+        "phrase": "A_prime",
+        "action": "audit_fan",
+        "cue_tick": 2550,
+        "at_tick": 2670,
+        "end_tick": 2671,
+        "masks": [
+          [
+            27,
+            18,
+            12,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "merchant.2.4",
+        "phrase": "A_prime",
+        "action": "closing_bell",
+        "cue_tick": 2790,
+        "at_tick": 2910,
+        "end_tick": 2911,
+        "masks": [
+          [
+            42,
+            6,
+            6,
+            18
+          ],
+          [
+            18,
+            6,
+            6,
+            18
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.2.5",
+        "phrase": "A_prime",
+        "action": "security_bolts",
+        "cue_tick": 2970,
+        "at_tick": 3090,
+        "end_tick": 3091,
+        "masks": [
+          [
+            39,
+            18,
+            2,
+            2
+          ],
+          [
+            25,
+            18,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "merchant.2.6",
+        "phrase": "A_prime",
+        "action": "dividend",
+        "cue_tick": 3090,
+        "at_tick": 3270,
+        "end_tick": 3600,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "dividend_pad": [
+          36,
+          10,
+          4,
+          4
+        ],
+        "boss_origin": [
+          36,
+          16
+        ],
+        "boss_facing": "w",
+        "window_condition": "dividend_pad_direct_hit"
+      },
+      {
+        "event_id": "merchant.3.1",
+        "phrase": "B",
+        "action": "audit_fan",
+        "cue_tick": 3870,
+        "at_tick": 3990,
+        "end_tick": 3991,
+        "masks": [
+          [
+            27,
+            8,
+            12,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "merchant.3.2",
+        "phrase": "B",
+        "action": "coin_sweep",
+        "cue_tick": 4110,
+        "at_tick": 4230,
+        "end_tick": 4231,
+        "masks": [
+          [
+            18,
+            22,
+            30,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "merchant.3.3",
+        "phrase": "B",
+        "action": "gilt_tiles",
+        "cue_tick": 4350,
+        "at_tick": 4470,
+        "end_tick": 4471,
+        "masks": [
+          [
+            20,
+            16,
+            3,
+            3
+          ],
+          [
+            43,
+            16,
+            3,
+            3
+          ],
+          [
+            31,
+            6,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.3.4",
+        "phrase": "B",
+        "action": "security_bolts",
+        "cue_tick": 4590,
+        "at_tick": 4710,
+        "end_tick": 4711,
+        "masks": [
+          [
+            25,
+            11,
+            2,
+            2
+          ],
+          [
+            39,
+            11,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "merchant.3.5",
+        "phrase": "B",
+        "action": "closing_bell",
+        "cue_tick": 4770,
+        "at_tick": 4890,
+        "end_tick": 4891,
+        "masks": [
+          [
+            18,
+            7,
+            6,
+            18
+          ],
+          [
+            42,
+            7,
+            6,
+            18
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.3.6",
+        "phrase": "B",
+        "action": "dividend",
+        "cue_tick": 4890,
+        "at_tick": 5070,
+        "end_tick": 5400,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "dividend_pad": [
+          32,
+          20,
+          4,
+          4
+        ],
+        "boss_origin": [
+          24,
+          12
+        ],
+        "boss_facing": "e",
+        "window_condition": "dividend_pad_direct_hit"
+      },
+      {
+        "event_id": "merchant.4.1",
+        "phrase": "A_double_prime",
+        "action": "coin_sweep",
+        "cue_tick": 5670,
+        "at_tick": 5790,
+        "end_tick": 5791,
+        "masks": [
+          [
+            18,
+            8,
+            30,
+            1
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "west"
+      },
+      {
+        "event_id": "merchant.4.2",
+        "phrase": "A_double_prime",
+        "action": "gilt_tiles",
+        "cue_tick": 5910,
+        "at_tick": 6030,
+        "end_tick": 6031,
+        "masks": [
+          [
+            20,
+            12,
+            3,
+            3
+          ],
+          [
+            43,
+            12,
+            3,
+            3
+          ],
+          [
+            31,
+            22,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.4.3",
+        "phrase": "A_double_prime",
+        "action": "audit_fan",
+        "cue_tick": 6150,
+        "at_tick": 6270,
+        "end_tick": 6271,
+        "masks": [
+          [
+            27,
+            18,
+            12,
+            5
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "cone",
+          "expose"
+        ],
+        "kind": "impact",
+        "incoming_direction": "south"
+      },
+      {
+        "event_id": "merchant.4.overlap",
+        "phrase": "A_double_prime",
+        "action": "gilt_tiles",
+        "cue_tick": 6150,
+        "at_tick": 6270,
+        "end_tick": 6271,
+        "masks": [
+          [
+            20,
+            12,
+            3,
+            3
+          ],
+          [
+            43,
+            12,
+            3,
+            3
+          ],
+          [
+            31,
+            22,
+            3,
+            3
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.4.4",
+        "phrase": "A_double_prime",
+        "action": "closing_bell",
+        "cue_tick": 6390,
+        "at_tick": 6510,
+        "end_tick": 6511,
+        "masks": [
+          [
+            18,
+            6,
+            6,
+            18
+          ],
+          [
+            42,
+            6,
+            6,
+            18
+          ]
+        ],
+        "damage": 2,
+        "tags": [
+          "floor"
+        ],
+        "kind": "impact"
+      },
+      {
+        "event_id": "merchant.4.5",
+        "phrase": "A_double_prime",
+        "action": "security_bolts",
+        "cue_tick": 6570,
+        "at_tick": 6690,
+        "end_tick": 6691,
+        "masks": [
+          [
+            25,
+            18,
+            2,
+            2
+          ],
+          [
+            39,
+            18,
+            2,
+            2
+          ]
+        ],
+        "damage": 1,
+        "tags": [
+          "projectile"
+        ],
+        "kind": "impact",
+        "incoming_direction": "north"
+      },
+      {
+        "event_id": "merchant.4.6",
+        "phrase": "A_double_prime",
+        "action": "dividend",
+        "cue_tick": 6600,
+        "at_tick": 6780,
+        "end_tick": 7200,
+        "masks": [],
+        "damage": 0,
+        "tags": [],
+        "kind": "window",
+        "dividend_pad": [
+          26,
+          10,
+          4,
+          4
+        ],
+        "boss_origin": [
+          30,
+          12
+        ],
+        "boss_facing": "n",
+        "window_condition": "dividend_pad_direct_hit"
+      }
+    ],
+    "pose_track": [
+      {
+        "tick": 0,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      },
+      {
+        "tick": 1470,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "s"
+      },
+      {
+        "tick": 3270,
+        "origin": [
+          36,
+          16
+        ],
+        "facing": "w"
+      },
+      {
+        "tick": 5070,
+        "origin": [
+          24,
+          12
+        ],
+        "facing": "e"
+      },
+      {
+        "tick": 6780,
+        "origin": [
+          30,
+          12
+        ],
+        "facing": "n"
+      }
+    ],
+    "cache_cell": [
+      8,
+      15
+    ],
+    "draft_revision": "v2.0-draft.1",
+    "schema_version": 1
+  }
+]

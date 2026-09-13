@@ -1,0 +1,290 @@
+[
+  {
+    "hero": "hunter",
+    "id": "auto_shot",
+    "name": "Auto Shot",
+    "status": "live",
+    "cooldown_ticks": "150",
+    "effect": "Nearest eligible enemy within 8 Chebyshev tiles; stable enemy ID breaks distance ties. Draw 16 ticks, then the smallest integer n with (16n)\u00b2 \u2265 3600 \u00d7 (dx\u00b2+dy\u00b2) ticks of flight. Freeze aim cell and flight time at acceptance; 1 damage only if the authoritative footprint still covers that cell.",
+    "decision": "Mobile, short firing windows; never homes or retargets."
+  },
+  {
+    "hero": "hunter",
+    "id": "poison_shot",
+    "name": "Poison Shot",
+    "status": "planned",
+    "cooldown_ticks": "720",
+    "effect": "24-tick draw; fixed aim within 8 tiles, same flight rule as Auto Shot. On hit, 1 direct damage plus 1 damage at +240,+480,+720,+960,+1200 ticks. One active poison per caster/target, refresh duration without an immediate tick. At release recoil one cell opposite facing; reject recoil into a wall/occupied destination and keep the cast, never relocate another actor.",
+    "decision": "Recoil is an explicit own-staff movement effect; attached poison survives boss transfers."
+  },
+  {
+    "hero": "hunter",
+    "id": "sniper",
+    "name": "Sniper",
+    "status": "planned",
+    "cooldown_ticks": "240",
+    "effect": "30-tick stationary aim; target boss only anywhere in this arena; impact at aim completion, fixed cell, 2 damage. Movement during aim cancels without refunding elapsed cooldown. Terrain marked opaque blocks the ray.",
+    "decision": "Long range changes access, not the clock; no cross-arena shot."
+  },
+  {
+    "hero": "hunter",
+    "id": "trap",
+    "name": "Trap",
+    "status": "planned",
+    "cooldown_ticks": "180",
+    "effect": "Instant placement under caster, arms after 60 ticks; max 4 traps/caster, 1 per cell/caster; reject a fifth without cost. Lasts 1,200 ticks. First grounded boss overlap triggers a 2\u00d72 footprint [x,y,2,2], clipped at arena edge, 2 damage once per enemy and no friendly damage. Trap never roots or interrupts.",
+    "decision": "Pre-position at future boss anchors; recorded geometry is independent of boss damage."
+  },
+  {
+    "hero": "warrior",
+    "id": "bash",
+    "name": "Bash",
+    "status": "live",
+    "cooldown_ticks": "60",
+    "effect": "Adjacent enemy including diagonal; hit after 21 ticks for 1 damage. The live starter has no weakening rider. v2 keeps that damage contract and adds no hidden interrupt.",
+    "decision": "Fast flank punish; scripted cleaves always finish."
+  },
+  {
+    "hero": "warrior",
+    "id": "block",
+    "name": "Block",
+    "status": "planned",
+    "cooldown_ticks": "60",
+    "effect": "Toggle shield, initially north; repeated taps rotate N\u2192E\u2192S\u2192W. Active until own cancel. Suppresses incoming projectile wound/heavy damage from the cardinal facing. Does not reduce movement speed in v2. Cannot block floor, cone, Exposure, or crush.",
+    "decision": "Directional defense; exact boundary directions are cardinal attack tags, not float angles."
+  },
+  {
+    "hero": "warrior",
+    "id": "taunt",
+    "name": "Taunt",
+    "status": "planned",
+    "cooldown_ticks": "600",
+    "effect": "48-tick cast; six-second guard pledge to the nearest living ally within 3 tiles, tie stable actor ID. At a tagged projectile/cone hit on that ally, transfer at most 1 HP of that event to this Warrior if still within 3. Per Warrior maximum 1 transfer per 60 ticks. Solo fallback: self gains a one-hit 1-HP guard.",
+    "decision": "Redefines old aggro redirection as damage interception: no changed boss aim, facing, or hazard footprint."
+  },
+  {
+    "hero": "warrior",
+    "id": "bulwark",
+    "name": "Bulwark",
+    "status": "planned",
+    "cooldown_ticks": "720",
+    "effect": "Instant, 240-tick frontal 3\u00d72 field adjacent to the caster, rotates with cast facing only. Absorbs projectile and cone events crossing its leading edge for allies behind it within the rectangle; no body collision. One active field per caster; later cast replaces it after normal cooldown.",
+    "decision": "A team shelter; cannot stop trains, walls, floor reactions, or collapse."
+  },
+  {
+    "hero": "thief",
+    "id": "backstab",
+    "name": "Backstab",
+    "status": "live",
+    "cooldown_ticks": "30",
+    "effect": "One adjacent enemy strictly behind its authored facing. Hit after 12 ticks for 1 damage. Keep the live active attack rather than the old passive multiplier/bleed concept.",
+    "decision": "Rear access must exist in every encounter; arriving at a future rear is a meaningful skill."
+  },
+  {
+    "hero": "thief",
+    "id": "shadow_step",
+    "name": "Shadow Step",
+    "status": "planned",
+    "cooldown_ticks": "480",
+    "effect": "Commit a four-cell cardinal displacement over 12 ticks; pass through boss/hazard cells, then 48 ticks of immunity to wound/heavy/Exposure damage. Pick the farthest legal cell along that four-cell segment from the cast snapshot; if none exists reject. Hero contact still resolves at the destination. No crush immunity.",
+    "decision": "Own intent owns displacement; no automatic target acquisition."
+  },
+  {
+    "hero": "thief",
+    "id": "smoke_screen",
+    "name": "Misdirection",
+    "status": "planned",
+    "cooldown_ticks": "900",
+    "effect": "Place radius-3 Chebyshev field at an aim cell within 6 tiles for 360 ticks. A hostile projectile traversing it keeps its scheduled trajectory and impact, but deals zero hero damage and awards 1 boss damage to its owner once. Max 1 conversion per field per 60 ticks, lowest event ID wins.",
+    "decision": "Preserves the smoke_screen source ID; offense conversion cannot reflect recursively or change pathing."
+  },
+  {
+    "hero": "thief",
+    "id": "pickpocket",
+    "name": "Pickpocket",
+    "status": "planned",
+    "cooldown_ticks": "600",
+    "effect": "Adjacent to the boss, hold 30\u2026180 ticks. At valid release, grant 1 cycle scrip per full 60 ticks, minimum 1; boss keeps all schedule-critical properties. At 180 ticks also grant 1 deterministic study token, redeemable outside combat for fixed progress. Max one token per actor per phrase.",
+    "decision": "A safe economic line exists even with no stealable buff; no permanent player currency cost."
+  },
+  {
+    "hero": "alchemist",
+    "id": "acid_flask",
+    "name": "Acid Flask",
+    "status": "live",
+    "cooldown_ticks": "240",
+    "effect": "Aim exactly three tiles in facing at cast; wall clamp. At +48 ticks place a 3\u00d73 pool for 480 ticks; pulse 1 damage at +60\u2026+480 from landing, eight pulses, allies and enemies alike. Separate casts stack.",
+    "decision": "Tick at final lifetime boundary resolves once before field deletion by an explicit terminal-pulse record; document this exception to half-open field occupancy."
+  },
+  {
+    "hero": "alchemist",
+    "id": "ironskin_draft",
+    "name": "Ironskin Draft",
+    "status": "planned",
+    "cooldown_ticks": "720",
+    "effect": "Instant self protection for 240 ticks: subtract 1 HP from each wound/heavy damage event, minimum zero. Exposure damage included; crush excluded. Cannot stack with itself.",
+    "decision": "A four-second committed work period; durations never depend on health or difficulty."
+  },
+  {
+    "hero": "alchemist",
+    "id": "siphon",
+    "name": "Siphon",
+    "status": "planned",
+    "cooldown_ticks": "240",
+    "effect": "Channel up to 180 ticks. Each 60 ticks, transfer 1 HP from the designated adjacent consenting ally above 1 HP to caster missing health. Select donor ID at acceptance; donor availability affects only that pulse. If solo, target the boss within 3 tiles: deal 1 and heal self 1 per pulse. Move cancels.",
+    "decision": "Explicit opt-in is recorded in the donor build; never drain an unwilling or last-HP actor. Full-health caster can still use boss mode."
+  },
+  {
+    "hero": "alchemist",
+    "id": "transmute",
+    "name": "Transmute",
+    "status": "planned",
+    "cooldown_ticks": "600",
+    "effect": "120-tick stationary conversion of one cycle reagent in a cache within 3 tiles into 2 cycle scrip or a 1-HP self guard lasting 300 ticks; mode recorded on cast. Every phrase spawns a personal reagent entitlement at the arena cache; entitlement is never consumed by other actors. If inventory is empty, reject before cast.",
+    "decision": "Guaranteed value; never performs a combat loot roll or consumes permanent items. First cache exists at tick zero."
+  },
+  {
+    "hero": "cardinal",
+    "id": "heal",
+    "name": "Sacrifice",
+    "status": "live",
+    "cooldown_ticks": "60",
+    "effect": "Hold on one accepted enemy identity within 8 tiles; 1 damage each 60 ticks while in range and grounded; no personal HP cost. Movement/cancel ends it. Unlike the old description, the live starter is an offensive channel.",
+    "decision": "Preserve stable source ID heal and live Sacrifice semantics; other Cardinal abilities supply healing."
+  },
+  {
+    "hero": "cardinal",
+    "id": "barrier",
+    "name": "Barrier",
+    "status": "planned",
+    "cooldown_ticks": "480",
+    "effect": "Instant shield on living ally within a caster-centered 8\u00d78 area [x\u22123,y\u22123,8,8]. Choose unshielded missing-health ally, then least recently served, distance, ID. Self is eligible. Absorb 1 HP from the next wound/heavy event; 360-tick expiry. Multiple shields on one actor use only the earliest-expiring one for an event.",
+    "decision": "Round-robin fairness state is cycle-local and saved; damage protection is optional, never a route prerequisite."
+  },
+  {
+    "hero": "cardinal",
+    "id": "beam",
+    "name": "Beam",
+    "status": "planned",
+    "cooldown_ticks": "360",
+    "effect": "60-tick stationary windup, then a one-cell-wide cardinal ray to arena boundary. Each intersected enemy takes 2 damage once; living allies on the ray heal 1. Stops at opaque boss terrain; ignores other heroes. Does not pierce between arenas.",
+    "decision": "Aimed line can join offense and recovery; moving early cancels."
+  },
+  {
+    "hero": "cardinal",
+    "id": "resurrect",
+    "name": "Resurrect",
+    "status": "planned",
+    "cooldown_ticks": "3600",
+    "effect": "120-tick stationary channel; revive one dead ghost in a centered 4\u00d74 area [x\u22121,y\u22121,4,4], stable actor ID. Restore 2 HP at its defeated cell only if vacant. Resume only staff events at/after current tick; do not replay missed events. If no legal corpse, give caster a 1-HP barrier for 600 ticks and display the next three boss events.",
+    "decision": "A living fallback prevents a dead button. Revival changes actor outcomes, not the boss; it cannot repair an already-impossible recorded route."
+  },
+  {
+    "hero": "bard",
+    "id": "cleanse",
+    "name": "Cleanse",
+    "status": "live",
+    "cooldown_ticks": "240",
+    "effect": "Instant centered 4\u00d74 [x\u22121,y\u22121,4,4]: heal living allies 1, remove Exposure, hit intersecting enemies for 1 and attach an independent 300-tick stack, pulsing 1 at +60,+120,+180,+240,+300. Max pending stacks is bounded by cooldown and actor count.",
+    "decision": "Attached stacks follow target identity through transfers. Live ability is more than old cleanse-only design."
+  },
+  {
+    "hero": "bard",
+    "id": "dance",
+    "name": "Dance",
+    "status": "planned",
+    "cooldown_ticks": "600",
+    "effect": "Record eight taps at +30,+60,+90,+120,+150,+180,+210,+240 ticks after acceptance. Each within \u00b16 ticks scores one point; first tap assigned to earliest unfilled window, one per window. Finish at +247, nearest enemy within 8 tiles takes 1 damage for each two successes, minimum 1 if any succeed. Own movement allowed; actor contact still applies.",
+    "decision": "Fixed rhythm in ticks, not audio BPM or random prompts; partial success contributes."
+  },
+  {
+    "hero": "bard",
+    "id": "mimic",
+    "name": "Mimic",
+    "status": "planned",
+    "cooldown_ticks": "passive",
+    "effect": "Count eligible adjacent-ally direct offensive hits; every tenth schedules a 1-damage echo to that target identity after 30 ticks if in 8-tile range. Solo fallback counts own direct hits. Echoes never copy movement, fields, healing, resource spend, procs, or Mimic. If both self and adjacent allies hit, count ally events only for that tick.",
+    "decision": "Replaces 10% chance with a visible deterministic ten-note meter; bonus events never advance it."
+  },
+  {
+    "hero": "bard",
+    "id": "helix",
+    "name": "Helix",
+    "status": "planned",
+    "cooldown_ticks": "60",
+    "effect": "Toggle a radius-3 Chebyshev aura. Regeneration heals each living ally 1 every 240 ticks; Haste grants self and allies one +1 direct-hit charge every 240 ticks, maximum one unspent charge each. Starts first pulse at +240. Toggling resets the pulse timer.",
+    "decision": "Haste means extra damage, not faster movement or cooldowns; adding a Bard cannot invalidate another recording\u2019s action timestamps."
+  },
+  {
+    "hero": "forager",
+    "id": "dig",
+    "name": "Dig",
+    "status": "live",
+    "cooldown_ticks": "90",
+    "effect": "Instant underfoot, marks one new cell per cast. Keep fixed 1 damage per 480 ticks of actual boss overlap per cell and existing independent economic income. v2 also grants exactly 1 cycle rock on the caster\u2019s first personal dig of that cell this cycle, capped at 8; globally spent ground grants no duplicate economic payout or damage field. Ground stays walkable.",
+    "decision": "No combat resource RNG; existing banked overlap clears at seam. Cannot dig under an occupied boss."
+  },
+  {
+    "hero": "forager",
+    "id": "bolder",
+    "name": "Boulder",
+    "status": "planned",
+    "cooldown_ticks": "360",
+    "effect": "Spend 2 cycle rocks; launch a 2\u00d72 stone, one cell every 15 ticks in facing, to boundary or fixed opaque terrain. Each enemy takes 2 damage once per boulder. No hero collision or knockback. The stable historical ID is bolder.",
+    "decision": "Starts with 2 cycle rocks, so a first cast is always obtainable without luck."
+  },
+  {
+    "hero": "forager",
+    "id": "border",
+    "name": "Border",
+    "status": "planned",
+    "cooldown_ticks": "900",
+    "effect": "Spend 1 rock on a dug cell within 2 tiles; 90-tick cast, one-cell projectile shield for 3,600 ticks, max 2 per caster. Reflect projectile damage into one 1-damage boss credit per event without reversing the original hazard\u2019s geometry; projectile deals zero damage to heroes behind its crossing.",
+    "decision": "Dug substrate is required but deterministic; does not obstruct hero movement or a boss transfer."
+  },
+  {
+    "hero": "forager",
+    "id": "mushroom",
+    "name": "Symbiosis",
+    "status": "planned",
+    "cooldown_ticks": "900",
+    "effect": "Plant within 2 tiles, 120-tick maturation, lives 1,200 ticks. Base radius 2, heal 1 each 240 ticks after maturation. Spend up to 2 rocks through recorded feed intents: each raises radius by 1; no pulse-speed changes. One active node per caster; replaced only by a new accepted cast.",
+    "decision": "Preserves mushroom ID and healing-node concept. Zero-cost base seed makes an empty-rock build useful."
+  },
+  {
+    "hero": "merchant",
+    "id": "fortune",
+    "name": "Fortune",
+    "status": "live",
+    "cooldown_ticks": "1200",
+    "effect": "Following radius-2 Chebyshev aura, 1 damage to each enemy at +60\u2026+1200 ticks, exactly 20 pulses, same terminal-pulse exception as Acid. Movement allowed. No critical chance or random damage.",
+    "decision": "Current live damage aura takes precedence over the old luck-only design."
+  },
+  {
+    "hero": "merchant",
+    "id": "coin_toss",
+    "name": "Coin Toss",
+    "status": "planned",
+    "cooldown_ticks": "600",
+    "effect": "Spend 1 of 4 starting cycle scrip; charge 0\u2026300 ticks, then fixed cardinal skill shot at 16 cells/s. Damage = 1 + floor(charge/100), max 4. A hit refunds the one spent scrip; miss loses it this cycle only. Every phrase restores the personal wallet to at least 1, maximum 8.",
+    "decision": "No permanent gold spend, roll, or compounding bank dependence. Fortune always supplies a resource-free fallback."
+  },
+  {
+    "hero": "merchant",
+    "id": "dice",
+    "name": "Dice",
+    "status": "planned",
+    "cooldown_ticks": "180",
+    "effect": "Instant, add one certainty pip, cap 3. At 3 pips the next direct hit gains +1 damage and consumes 3. No proc chance. Pips reset at the seam. A blocked bonus priority leaves them intact.",
+    "decision": "Accumulate in downtime and spend in a chosen window; title and animation can still feature dice."
+  },
+  {
+    "hero": "merchant",
+    "id": "vault",
+    "name": "Vault",
+    "status": "planned",
+    "cooldown_ticks": "1200",
+    "effect": "Instant 4\u00d74 field within 3 tiles for 600 ticks. Each actor standing inside gets +1 on its first qualifying direct hit during that field, once; max one Vault bonus per actor per 600 ticks across all Merchants. No multiplication or boss-benefiting effect.",
+    "decision": "Scheduled dividend territory replaces old exponential critical stacking; field origin never follows its caster."
+  }
+]
