@@ -350,16 +350,26 @@ func _retire_scene() -> void:
 		await process_frame
 
 
-func _write_json(path: String, data: Dictionary) -> void:
-	var file := FileAccess.open(path, FileAccess.WRITE)
+func _write_json(path: String, data: Dictionary) -> bool:
+	# File existence is the parent's ready signal. Publish only after closing
+	# the complete document; opening the final path exposes an empty file.
+	var pending: String = path + ".pending"
+	var file := FileAccess.open(pending, FileAccess.WRITE)
+	if file == null:
+		return false
 	file.store_string(JSON.stringify(data, "", true, true))
+	var error: Error = file.get_error()
 	file.close()
+	return error == OK and DirAccess.rename_absolute(pending, path) == OK
 
 
 func _finish(ok: bool, error: String = "", extra: Dictionary = {}) -> void:
 	var result: Dictionary = {"ok": ok, "error": error}
 	result.merge(extra)
-	_write_json(directory.path_join(mode + "-result.json"), result)
+	if not _write_json(directory.path_join(mode + "-result.json"), result):
+		push_error("Restart worker could not publish its complete result")
+		quit(2)
+		return
 	quit(0 if ok else 1)
 
 
