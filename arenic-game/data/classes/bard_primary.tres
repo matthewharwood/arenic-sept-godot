@@ -8,8 +8,11 @@
 script = ExtResource("1_ta4bj")
 audio_profile = ExtResource("2_audio")
 title = "Cleanse"
-description = "Immediately cleanse a 4 by 4 area around you: heal allies by 1 and clear their debuffs; enemies each take 1 damage. 4-second cooldown."
+description = "Cleanse a 4 by 4 area: heal allies by 1 and clear their debuffs. Enemies take 1 damage immediately, then 1 damage each second for 5 seconds. Each cast adds an independent stack. 4-second cooldown."
 ability_id = "cleanse"
 effect_kind = "cleanse"
 cooldown_seconds = 4.0
 damage = 1
+enemy_dot_duration_seconds = 5.0
+enemy_dot_tick_seconds = 1.0
+enemy_dot_damage = 1

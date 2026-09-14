@@ -31,6 +31,7 @@ func _run() -> void:
 	_check_offers()
 	setup = root.get_node("RunSetup")
 	setup.begin_new_game()
+	setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 	setup.choose_class(load("res://data/classes/hunter.tres"))
 	shell = load(SHELL_PATH).instantiate()
 	root.add_child(shell)
@@ -48,7 +49,14 @@ func _check_curve() -> void:
 	check(curve.cost_of(0) == 40, "The first hero costs about one cycle of a single ghost")
 	check(curve.cost_of(1) > curve.cost_of(0), "Every roll costs more than the one before it")
 	check(curve.total_for(2) == curve.cost_of(0) + curve.cost_of(1), "Thresholds are cumulative")
-	check(curve.cost_of(400) <= ArenicRecruitmentCurve.MAX_COST, "Geometric growth is clamped rather than overflowing")
+	check(curve.cost_of(400) <= ArenicRecruitmentCurve.MAX_COST, "Later costs stay inside the authored bound")
+	check([curve.cost_of(0), curve.cost_of(1), curve.cost_of(2), curve.cost_of(3)] == [40, 64, 102, 164], "The established opening four rewards preserve their exact costs")
+	var full_guild_hours: float = 0.0
+	for roll_index: int in 319:
+		# Reference pace: each deployed Hunter deals 40 damage per two minutes,
+		# with 80% of the expanding guild contributing throughout progression.
+		full_guild_hours += float(curve.cost_of(roll_index)) / float(roll_index + 1) * 120.0 / (40.0 * 0.8) / 3600.0
+	check(full_guild_hours >= 10.0 and full_guild_hours <= 20.0, "The 320-hero guild fits the chosen ten-to-twenty-hour reference pace")
 	var state := ArenicRecruitmentState.new()
 	state.configure(curve, 320)
 	check(state.rolls_earned(0) == 0, "No damage earns no rolls")
@@ -90,28 +98,39 @@ func _check_earning() -> void:
 	check(shell.recruitment.rolls_available(shell.combat.total_damage()) == 1, "Crossing the threshold banks a roll")
 	for frame: int in 10:
 		await physics_frame
+	check(shell.reward_cards.is_open() and shell.reward_cards.snapshot().mode == "heroes", "Newly earned damage automatically opens three hero cards")
+	check(not shell.encounter.is_paused(GUILD) and not shell.modal.is_open(), "The reward presentation never pauses the arena or opens a gameplay decision")
+	shell.reward_cards.consume_input(_key(KEY_ESCAPE))
 	var readout := shell.hud.get_node("TopStrip/GuildRolls") as Label
-	check(readout.text.contains("1 roll") and readout.text.contains("[N]"), "The read-out says a roll is waiting: %s" % readout.text)
+	var ready := shell.hud.get_node("TopStrip/RollsReady") as Button
+	check(readout.text == "Next hero 0/64", "Banking a roll keeps progress toward the next unearned hero visible")
+	check(ready.visible and not ready.disabled and ready.text == "1 [N]", "A separate enabled button identifies the banked roll")
 
 
 ## Claiming deploys a hero to the Guild House, unrecorded.
 func _check_claiming() -> void:
 	var before: int = shell.heroes.size()
-	shell._open_roll()
-	check(shell.modal.is_open(), "N opens the roll")
+	var readout := shell.hud.get_node("TopStrip/GuildRolls") as Label
+	var ready := shell.hud.get_node("TopStrip/RollsReady") as Button
+	var progress_before: String = readout.text
+	click(ready.get_global_rect().get_center())
+	check(shell.reward_cards.is_open(), "A real pointer click on the ready button opens the recruitment cards")
+	shell.reward_cards._process(0.6)
 	var offers: Array[ArenicClassDefinition] = shell.recruitment.offers(0, setup.class_catalog())
-	shell.modal.choose(0)
+	click(shell.reward_cards.get_node("Panel/Card1").get_global_rect().get_center())
 	await physics_frame
 	check(shell.heroes.size() == before + 1, "Claiming adds one guild member")
 	var recruit: ArenicHeroState = shell.heroes[shell.heroes.size() - 1]
 	check(recruit.definition.class_id == offers[0].class_id, "The member is the class that was picked")
-	check(recruit.arena_id == GUILD and recruit.cell == Vector2i(30, 15), "They deploy to the Guild House")
+	check(recruit.arena_id == GUILD and recruit.cell != shell.heroes[0].cell and recruit.cell.distance_to(Vector2i(30, 15)) <= 2.0, "They deploy to a nearby empty Guild House tile")
 	check(recruit.recordings.is_empty() and not shell.encounter.is_ghost(recruit), "A recruit arrives unrecorded and controllable")
 	check(shell.recruitment.rolls_claimed == 1, "The roll is spent")
 	check(shell.recruitment.rolls_available(shell.combat.total_damage()) == 0, "And cannot be claimed twice")
 	check(shell.stage.hero_views.has(recruit.identity_id), "The recruit is drawn where it arrived")
+	check(readout.text == progress_before, "Claiming spends only the banked roll, leaving next-hero progress visible and unchanged")
+	check(not ready.visible and ready.disabled, "Claiming the final banked roll hides and disables its separate button")
 	shell._open_roll()
-	check(not shell.modal.is_open(), "With no roll banked there is nothing to open")
+	check(not shell.reward_cards.is_open(), "With no roll banked there is nothing to open")
 
 
 ## Declining keeps the roll for later.
@@ -121,12 +140,37 @@ func _check_declining() -> void:
 	check(banked >= 1, "More damage banks more rolls")
 	var before: int = shell.heroes.size()
 	shell._open_roll()
-	check(shell.modal.is_open(), "A banked roll opens")
-	shell.modal.choose(shell.recruitment.curve.offers_per_roll) # "Later"
+	check(shell.reward_cards.is_open(), "A banked roll opens")
+	var offered_ids: Array = shell.reward_cards.snapshot().cards.map(func(card: Dictionary): return card.class_id)
+	shell.reward_cards.consume_input(_key(KEY_ESCAPE))
 	await physics_frame
 	check(shell.heroes.size() == before, "Declining recruits nobody")
 	check(shell.recruitment.rolls_available(shell.combat.total_damage()) == banked, "And keeps the roll banked")
-	check(not shell.encounter.is_paused(shell.hero.arena_id), "Declining resumes the arena it paused")
+	check(not shell.encounter.is_paused(shell.hero.arena_id), "Deferring leaves the already-running arena clock alone")
+	shell._unhandled_input(_key(KEY_N))
+	check(shell.reward_cards.is_open() and shell.reward_cards.snapshot().cards.map(func(card: Dictionary): return card.class_id) == offered_ids, "N reopens exactly the deferred three offers")
+	shell.reward_cards.consume_input(_key(KEY_ESCAPE))
+	check(ArenicSaveCodec.validate(ArenicSaveCodec.capture_run(setup, shell)).is_empty(), "Deferred offers leave a valid save with the same unspent roll")
+
+
+func _key(key: Key) -> InputEventKey:
+	var event := InputEventKey.new()
+	event.physical_keycode = key
+	event.keycode = key
+	event.pressed = true
+	return event
+
+
+func click(position: Vector2) -> void:
+	var event := InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_LEFT
+	event.pressed = true
+	event.position = position
+	event.global_position = position
+	root.push_input(event, true)
+	var released := event.duplicate() as InputEventMouseButton
+	released.pressed = false
+	root.push_input(released, true)
 
 
 func _finish() -> void:

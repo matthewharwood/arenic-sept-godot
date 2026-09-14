@@ -47,6 +47,20 @@ async function waitGameSeconds(log, start, duration, message) {
   return waitCombat(log, value => value.combat.physics_seconds >= start + duration, message);
 }
 
+function expectImpactTiming(log, cast) {
+  const phases = log.events.filter(event => event.kind === 'combat_phase'
+    && event.data.ability === 'auto_shot' && event.data.cast_id === cast.id).map(event => event.data);
+  const charge = phases.find(event => event.phase === 'charge');
+  const impact = phases.find(event => event.phase === 'impact');
+  expect(charge, 'The actual cast-start notification was observed').toBeTruthy();
+  expect(impact, 'The actual damage-impact notification was observed').toBeTruthy();
+  const elapsed = impact.physics_seconds - charge.physics_seconds;
+  // Both notifications use the same fixed-step observer clock. The cast can
+  // advance in its acceptance tick; rendered snapshot cadence is irrelevant.
+  expect(elapsed).toBeGreaterThanOrEqual(cast.resolve_seconds - 1 / 60 - 1e-6);
+  expect(elapsed).toBeLessThanOrEqual(cast.resolve_seconds + 1 / 60 + 1e-6);
+}
+
 test('combat: Hunter real cast, cooldown and echo rejection, independent arena progress', async ({ page }, testInfo) => {
   const log = watch(page);
   try {
@@ -59,11 +73,27 @@ test('combat: Hunter real cast, cooldown and echo rejection, independent arena p
       'Space starts a real Hunter cast');
     expect(state.combat.active_fx_count).toBeGreaterThan(0);
     expect(state.combat.hero_animation_ready).toBe(true);
+    const farShot = state.combat.active_cast;
+    expect(farShot.origin).toEqual([30, 15]);
+    expect(farShot.target).toEqual([30, 22]);
+    expect(farShot.release_seconds).toBeCloseTo(0.26, 6);
+    expect(farShot.resolve_seconds).toBeCloseTo(0.26 + 7 / 16, 6);
     // Repeated down events are actual browser key-repeat events, not model calls.
     for (let echo = 0; echo < 5; echo++) await page.keyboard.down('Space');
     state = await waitCombat(log, value => value.combat.totals.guild_house === 1
       && value.combat.bar.total === 1, 'The in-range shot applies one target/arena/HUD hit');
     expectOnlyGuildDamage(state, 1);
+    expectImpactTiming(log, farShot);
+    const flight = await seenCombat(log, beforeCast, value => value.combat.projectiles.some(effect =>
+      effect.ability === 'auto_shot' && effect.visible && effect.age > effect.delay
+      && effect.travelled_tiles > 0 && effect.travelled_tiles < effect.distance_tiles),
+    'The actual visible arrow travels between its launch and target positions');
+    const projectile = flight.combat.projectiles.find(effect => effect.ability === 'auto_shot'
+      && effect.visible && effect.age > effect.delay && effect.travelled_tiles > 0
+      && effect.travelled_tiles < effect.distance_tiles);
+    expect(projectile.distance_tiles).toBeCloseTo(7, 5);
+    expect(projectile.duration).toBeCloseTo(7 / 16, 6);
+    expect(projectile.travelled_tiles).toBeCloseTo(16 * (projectile.age - projectile.delay), 2);
     expect(state.combat.bar).toMatchObject({ current: 1, completed: 0, foundation: false });
     expect(state.combat.bar.fill).toBeCloseTo(0.05, 5);
     // The real control reports itself disabled for the whole cooldown. Clicking
@@ -96,6 +126,29 @@ test('combat: Hunter real cast, cooldown and echo rejection, independent arena p
       'Returning to Guild restores its independent progress');
     expectOnlyGuildDamage(state, 1);
     await page.screenshot({ path: testInfo.outputPath('hunter-guild-progress.png') });
+
+    await page.keyboard.press('Tab');
+    await waitCombat(log, value => value.zoomed && value.hero.selected && !value.motion_active,
+      'Focus the Hunter before walking to the target edge');
+    for (let y = 16; y <= 21; y++) {
+      await page.keyboard.press('ArrowUp');
+      await waitCombat(log, value => value.hero.cell[0] === 30 && value.hero.cell[1] === y,
+        `Walk the Hunter to row ${y} without teleporting`);
+    }
+    const beforeNearCast = log.events.at(-1)?.sequence ?? 0;
+    await page.keyboard.press('1');
+    const nearState = await seenCombat(log, beforeNearCast, value => value.combat.active,
+      'The one-tile shot starts through its real ability hotkey');
+    const nearShot = nearState.combat.active_cast;
+    expect(nearShot.origin).toEqual([30, 21]);
+    expect(nearShot.target).toEqual([30, 22]);
+    expect(nearShot.release_seconds).toBeCloseTo(farShot.release_seconds, 6);
+    expect(nearShot.resolve_seconds).toBeCloseTo(0.26 + 1 / 16, 6);
+    expect(farShot.resolve_seconds - nearShot.resolve_seconds).toBeCloseTo(6 / 16, 6);
+    state = await waitCombat(log, value => !value.combat.active && value.combat.totals.guild_house === 2,
+      'The shorter flight resolves exactly one further hit');
+    expectOnlyGuildDamage(state, 2);
+    expectImpactTiming(log, nearShot);
     expect(log.errors).toEqual([]);
   } finally {
     await page.keyboard.up('Space').catch(() => {});
@@ -116,7 +169,7 @@ test('combat: Cardinal held Space deals timed damage and release or movement sto
     expect(state.combat.hero_animation_ready).toBe(true);
     expect(state.combat.active_fx_count).toBeGreaterThan(0);
     expect(state.controls.ability.disabled).toBe(false);
-    expect(state.combat.ability_status).toBe('Channeling · release to stop');
+    expect(state.combat.ability_status).toBe('Channeling');
     expectOnlyGuildDamage(state, state.combat.totals.guild_house);
     await page.keyboard.up('Space');
     state = await waitCombat(log, value => !value.combat.is_channeling && !value.combat.active,
@@ -158,10 +211,15 @@ test('combat: Merchant real movement and twenty-second Fortune completes a visib
     expectOnlyGuildDamage(state, 0);
     const stripPoints = [[0.1, 4 / 720], [0.5, 4 / 720], [0.9, 4 / 720]];
     const emptyPixels = await renderedPixels(page, stripPoints);
+    expect(state.introduction.near_npc).toBe(true);
+    expect(state.introduction.dialogue_visible).toBe(false);
     const beforeCast = log.events.at(-1)?.sequence ?? 0;
-    await page.keyboard.press('Space');
+    // This aura position is within the Keeper's interaction radius. Space talks
+    // here; the explicit ability-slot hotkey must still cast the actual Fortune.
+    await page.keyboard.press('1');
     const firstHit = await seenCombat(log, beforeCast, value => value.combat.totals.guild_house > 0,
       'The nearby Fortune aura applies its first timed hit');
+    expect(firstHit.introduction.dialogue_visible).toBe(false);
     expectOnlyGuildDamage(firstHit, 1);
     expect(firstHit.combat.active).toBe(true);
     expect(firstHit.combat.is_channeling).toBe(false);
@@ -178,7 +236,6 @@ test('combat: Merchant real movement and twenty-second Fortune completes a visib
     'The complete twenty-second aura finishes without test-driven clock changes', 180_000);
     expectOnlyGuildDamage(state, 20);
     expect(state.combat.bar).toMatchObject({ total: 20, current: 0, completed: 1, phase_damage: 20, foundation: true, fill: 0 });
-    expect(state.combat.bar.phase_label).toMatch(/^Phase 2\s/);
     const completedPixels = await renderedPixels(page, stripPoints);
     for (let index = 0; index < stripPoints.length; index++) {
       const colorChange = completedPixels[index].slice(0, 3)

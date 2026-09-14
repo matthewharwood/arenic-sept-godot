@@ -1,12 +1,12 @@
 # Arena music
 
-`GameShell` owns `ArenicArenaMusicDirector` alongside the persistent HUD. The director owns independent arena clocks and a fixed playback pool; replacing the stage preserves clock phases and pause flags for matching arena IDs. Entering a new `GameShell` starts all nine clocks together at zero.
+`GameShell` owns `ArenicArenaMusicDirector` alongside the persistent HUD. The encounter owns each arena’s loop position and pause state. The director derives music phase from those clocks and uses a fixed playback pool; replacing the stage or loading a save restores the same cycle phase.
 
 ## Music data and replacements
 
 Each `ArenicArenaDefinition.music` points to `res://data/music/{arena_id}_v3.tres`, an `ArenicArenaMusicDefinition` containing the stable arena `id`, `version`, `stream`, `loop_seconds`, and `gain_db`. The current gain is −12 dB. The stream references `res://assets/music/{arena_id}_v3.mp3` with native looping enabled at offset zero.
 
-The nine supplied 48 kHz stereo MP3s are retained unchanged for native and Web builds. Actual durations range from **118.824 to 120.024 seconds**; clocks use each file's metadata duration, not an assumed 120 seconds. Original names, hashes, decoder measurements, and quiet-tail measurements are in the [music manifest](../arenic-game/assets/music/manifest_v3.json). See the [asset README](../arenic-game/assets/music/README.md) for the per-arena table and import contract. Quiet endings are retained; repeating the files does not establish a seamless musical join.
+The nine supplied 48 kHz stereo MP3s are retained unchanged for native and Web builds. Actual durations range from **118.824 to 120.024 seconds**; playback maps each complete file onto the two-minute gameplay cycle. `pitch_scale = file_duration / cycle_duration` keeps the track ending aligned with the cycle; the supplied tracks need less than a 1% rate adjustment. Original names, hashes, decoder measurements, and quiet-tail measurements are in the [music manifest](../arenic-game/assets/music/manifest_v3.json). See the [asset README](../arenic-game/assets/music/README.md) for the per-arena table and import contract. Quiet endings are retained; repeating the files does not establish a seamless musical join.
 
 For V4, add a versioned audio file and definition, enable import looping, and record its actual duration and hash. Change the matching arena's `music` resource reference; no director logic needs changing. Keep prior versions until explicitly retired. The definition validates the ID, stream, version, duration, looping, and gain; duration agreement allows 0.15 seconds for decoder padding differences.
 
@@ -14,9 +14,11 @@ For V4, add a versioned audio file and definition, enable import looping, and re
 
 `ArenicArenaMusicClock` holds a wrapped position in `[0, duration_seconds)`. `configure(duration, phase = 0)` initializes it; `advance(delta)` accepts positive finite game time; `seek(seconds)` wraps signed finite positions; `running` controls advancement; `get_position()` reads the authoritative phase. Invalid advances/seeks leave the phase unchanged, and an invalid duration disables the clock.
 
-All running clocks advance with game delta even while their arenas are inaudible. Decoders never supply timing authority. Returning to an arena starts its stream at its current clock phase. A stage replacement reuses clocks by arena ID; a changed duration wraps the preserved phase into the new duration.
+In gameplay, `cycle_source` binds the director to the encounter. Phase is `tick / cycle_ticks * file_duration`; inaudible arenas retain their own independent simulation positions. Starting a recording resets its track immediately, holds it silent at zero during the countdown, then starts it with capture. Decisions, rewinds and pending restarts pause their owning track; natural wraps and explicit resets return it to zero. Introduction and camera sequences suspend playback with simulation. Navigation never resets a track. Decoder positions never advance gameplay.
 
-Future choreography should use the director's independent controls:
+The director updates the derived phase without seeking every frame. It restarts an existing voice on a reset, pause/resume transition, or significant discontinuity; periodic drift recovery still handles decoder suspension. An unbound director retains independent clock controls for isolated decoder and asset tests.
+
+Decoder-only checks can use these controls on an unbound director. Gameplay choreography must change the owning encounter clock:
 
 ```gdscript
 shell.music.seek_arena(&"casino", 30.0)
@@ -49,11 +51,10 @@ Godot 4.7.2 isolated-project checks passed on 2026-09-10:
 - `tests/audio/clock_checks.gd`: **54 assertions** covering boundaries, large deltas, independent phase/pause, and invalid inputs.
 - `tests/audio/music_checks.gd`: **289 assertions** covering nine V3 loops, silent clock advancement, real decoder seeks, bounded voices, burst coalescing, hum handoff, independent pause/resume, spatial sources, drift recovery, and stage clock preservation.
 
-The integration check mutes its test process while checking decoder behavior; it does not establish listening quality. From the repository root, run these checks when a separate Godot process is safe:
+The integration check mutes its test process while checking decoder behavior; it does not establish listening quality. From the repository root, run the isolated native gate; it copies the project instead of importing the open editor checkout:
 
 ```sh
-godot --headless --path arenic-game --script res://tests/audio/clock_checks.gd
-godot --headless --path arenic-game --script res://tests/audio/music_checks.gd
+python3 scripts/ci/test-godot.py --godot /path/to/godot --suite headless
 ```
 
 Additional checks passed; full measurements are in [arena-music-validation.json](arena-music-validation.json).
@@ -63,15 +64,27 @@ Additional checks passed; full measurements are in [arena-music-validation.json]
 - Chrome/WebGL 2, single-threaded export: pointer title → class → world, zoom, hotkeys, rapid retargeting and return to overview worked. After the first gesture, WebAudio ran at 44.1 kHz stereo. All nine tracks and the hum produced nonzero mixed PCM; all nine near-end seeks wrapped and kept playing. No browser errors or synchronization corrections occurred. The longer navigation run returned to Guild House around 106 seconds rather than restarting it.
 - Scene flow (98 assertions), hero flow (112), display (78) and all 54 project scripts also passed their checks. Short audio tests await mixer retirement before quitting; the director stops its voices on exit.
 
-`tests/audio/render_checks.gd` performs the real-driver PCM/panning/loop test. It writes its JSON and WAV evidence under `user://audio-validation/`, or the directory supplied in `ARENIC_AUDIO_TEST_OUTPUT`. Run it with a real audio driver; the two headless suites above cover logic without an audible test. Subjective headphone/speaker listening quality and sample-perfect musical joins were not assessed.
+`tests/audio/render_checks.gd` performs the real-driver PCM/panning/loop test. It writes its JSON and WAV evidence under `user://audio-validation/`, or the directory supplied in `ARENIC_AUDIO_TEST_OUTPUT`. Run it in a disposable imported project copy with a real audio driver; the two headless suites above cover logic without an audible test. Subjective headphone/speaker listening quality and sample-perfect musical joins were not assessed.
 
 ## Local Web export
 
 The runnable **Web** preset uses a standard adaptive shell without threads. From the repository root, with matching Godot export templates installed:
 
 ```sh
-mkdir -p .tmp/web
-godot --headless --path arenic-game --export-debug Web "$PWD/.tmp/web/index.html"
+python3 scripts/build-web.py --godot /path/to/godot --output .tmp/web
 ```
 
-Serve `.tmp/web/` over localhost or HTTPS; opening `index.html` as a file is insufficient. Keep the Toolkit editor plugin enabled during export so its export hook removes the development MCP autoload before the addon is excluded. The finished pack contains game/audio resources, without development tests or Toolkit runtime code.
+Serve `.tmp/web/` over localhost or HTTPS; opening `index.html` as a file is insufficient. The build script creates an isolated copy, strips editor plugins and the development MCP autoload, exports it, and audits the resulting pack. The finished pack contains game/audio resources, without development tests or Toolkit runtime code.
+
+The loop/selection update adds `tests/audio/loop_selection_checks.gd` and native restart workers for empty-arena continuation. The browser save suite exercises a real legacy save, empty-arena input, recruitment, per-arena memory, actual decoder alignment after recording reset, countdown silence and decision reload. The independent mixer suites explicitly unbind the encounter while testing standalone seeks; gameplay and the new integration case stay bound.
+
+## Slow frames and explicit seeks
+
+The director tracks each arena clock's transient seek revision. An explicit seek,
+recording reset or natural wrap restarts the owning decoder; pause/resume changes
+still stop/start it. Ordinary forward fixed ticks only update the derived phase,
+even when a rendered frame spans more than 120 ms. They must not repeatedly stop
+queued Web playback. The separate one-second playhead drift check remains active.
+A five-FPS native regression distinguishes normal progress, forward/backward seeks
+and pause/resume. The revision counter is rebuilt on hydration and never enters
+save payloads, recording events or encounter content fingerprints.

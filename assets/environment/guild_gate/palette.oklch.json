@@ -1,0 +1,17 @@
+{
+  "space": "oklch",
+  "colors": [
+    {"id":"ink", "oklch":[0.16,0.024,294]},
+    {"id":"recess", "oklch":[0.24,0.045,298]},
+    {"id":"violet", "oklch":[0.34,0.065,301]},
+    {"id":"violet_light", "oklch":[0.45,0.060,304]},
+    {"id":"gold_dark", "oklch":[0.40,0.072,68]},
+    {"id":"gold", "oklch":[0.66,0.105,80]},
+    {"id":"gold_light", "oklch":[0.82,0.097,88]},
+    {"id":"glint", "oklch":[0.94,0.045,93]},
+    {"id":"stone_shadow", "oklch":[0.27,0.020,295]},
+    {"id":"stone", "oklch":[0.38,0.025,295]},
+    {"id":"stone_light", "oklch":[0.49,0.030,293]},
+    {"id":"shadow", "oklch":[0.12,0.020,290], "alpha":0.35}
+  ]
+}

@@ -1,0 +1,697 @@
+{
+  "events": [
+    {
+      "event_id": "cardinal.1.1",
+      "phrase": "A",
+      "action": "sun_seal",
+      "cue_tick": 270,
+      "at_tick": 390,
+      "end_tick": 391,
+      "masks": [
+        [
+          14,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "sun"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "mask_elements": [
+        "sun"
+      ]
+    },
+    {
+      "event_id": "cardinal.1.2",
+      "phrase": "A",
+      "action": "moon_seal",
+      "cue_tick": 570,
+      "at_tick": 690,
+      "end_tick": 691,
+      "masks": [
+        [
+          38,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "moon"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "mask_elements": [
+        "moon"
+      ]
+    },
+    {
+      "event_id": "cardinal.1.3",
+      "phrase": "A",
+      "action": "split_hammer",
+      "cue_tick": 810,
+      "at_tick": 930,
+      "end_tick": 931,
+      "masks": [
+        [
+          27,
+          18,
+          12,
+          6
+        ]
+      ],
+      "damage": 2,
+      "tags": [
+        "cone"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "incoming_direction": "south"
+    },
+    {
+      "event_id": "cardinal.1.4",
+      "phrase": "A",
+      "action": "confession",
+      "cue_tick": 1050,
+      "at_tick": 1170,
+      "end_tick": 1171,
+      "masks": [
+        [
+          24,
+          5,
+          2,
+          21
+        ],
+        [
+          40,
+          5,
+          2,
+          21
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "projectile",
+        "expose"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "incoming_direction": "north"
+    },
+    {
+      "event_id": "cardinal.1.5",
+      "phrase": "A",
+      "action": "eclipse",
+      "cue_tick": 1230,
+      "at_tick": 1350,
+      "end_tick": 1351,
+      "masks": [
+        [
+          14,
+          6,
+          14,
+          19
+        ],
+        [
+          38,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "mask_elements": [
+        "sun",
+        "moon"
+      ]
+    },
+    {
+      "event_id": "cardinal.1.6",
+      "phrase": "A",
+      "action": "reconciliation",
+      "cue_tick": 1320,
+      "at_tick": 1500,
+      "end_tick": 1800,
+      "masks": [],
+      "damage": 0,
+      "tags": [],
+      "kind": "window",
+      "attunement_bonus": "sun",
+      "boss_origin": [
+        30,
+        12
+      ],
+      "boss_facing": "e",
+      "window_condition": "matched_attunement_direct_hit"
+    },
+    {
+      "event_id": "cardinal.2.1",
+      "phrase": "A_prime",
+      "action": "sun_seal",
+      "cue_tick": 2070,
+      "at_tick": 2190,
+      "end_tick": 2191,
+      "masks": [
+        [
+          38,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "sun"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "mask_elements": [
+        "sun"
+      ]
+    },
+    {
+      "event_id": "cardinal.2.2",
+      "phrase": "A_prime",
+      "action": "moon_seal",
+      "cue_tick": 2370,
+      "at_tick": 2490,
+      "end_tick": 2491,
+      "masks": [
+        [
+          14,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "moon"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "mask_elements": [
+        "moon"
+      ]
+    },
+    {
+      "event_id": "cardinal.2.3",
+      "phrase": "A_prime",
+      "action": "split_hammer",
+      "cue_tick": 2610,
+      "at_tick": 2730,
+      "end_tick": 2731,
+      "masks": [
+        [
+          27,
+          18,
+          12,
+          6
+        ]
+      ],
+      "damage": 2,
+      "tags": [
+        "cone"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "incoming_direction": "south"
+    },
+    {
+      "event_id": "cardinal.2.4",
+      "phrase": "A_prime",
+      "action": "confession",
+      "cue_tick": 2850,
+      "at_tick": 2970,
+      "end_tick": 2971,
+      "masks": [
+        [
+          40,
+          5,
+          2,
+          21
+        ],
+        [
+          24,
+          5,
+          2,
+          21
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "projectile",
+        "expose"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "incoming_direction": "north"
+    },
+    {
+      "event_id": "cardinal.2.5",
+      "phrase": "A_prime",
+      "action": "eclipse",
+      "cue_tick": 3030,
+      "at_tick": 3150,
+      "end_tick": 3151,
+      "masks": [
+        [
+          38,
+          6,
+          14,
+          19
+        ],
+        [
+          14,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "mask_elements": [
+        "sun",
+        "moon"
+      ]
+    },
+    {
+      "event_id": "cardinal.2.6",
+      "phrase": "A_prime",
+      "action": "reconciliation",
+      "cue_tick": 3120,
+      "at_tick": 3300,
+      "end_tick": 3600,
+      "masks": [],
+      "damage": 0,
+      "tags": [],
+      "kind": "window",
+      "attunement_bonus": "moon",
+      "boss_origin": [
+        30,
+        18
+      ],
+      "boss_facing": "s",
+      "window_condition": "matched_attunement_direct_hit"
+    },
+    {
+      "event_id": "cardinal.3.1",
+      "phrase": "B",
+      "action": "confession",
+      "cue_tick": 3870,
+      "at_tick": 3990,
+      "end_tick": 3991,
+      "masks": [
+        [
+          24,
+          5,
+          2,
+          21
+        ],
+        [
+          40,
+          5,
+          2,
+          21
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "projectile",
+        "expose"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "incoming_direction": "north"
+    },
+    {
+      "event_id": "cardinal.3.2",
+      "phrase": "B",
+      "action": "sun_seal",
+      "cue_tick": 4170,
+      "at_tick": 4290,
+      "end_tick": 4291,
+      "masks": [
+        [
+          14,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "sun"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "mask_elements": [
+        "sun"
+      ]
+    },
+    {
+      "event_id": "cardinal.3.3",
+      "phrase": "B",
+      "action": "moon_seal",
+      "cue_tick": 4410,
+      "at_tick": 4530,
+      "end_tick": 4531,
+      "masks": [
+        [
+          38,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "moon"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "mask_elements": [
+        "moon"
+      ]
+    },
+    {
+      "event_id": "cardinal.3.4",
+      "phrase": "B",
+      "action": "split_hammer",
+      "cue_tick": 4650,
+      "at_tick": 4770,
+      "end_tick": 4771,
+      "masks": [
+        [
+          27,
+          7,
+          12,
+          6
+        ]
+      ],
+      "damage": 2,
+      "tags": [
+        "cone"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "incoming_direction": "north"
+    },
+    {
+      "event_id": "cardinal.3.5",
+      "phrase": "B",
+      "action": "eclipse",
+      "cue_tick": 4830,
+      "at_tick": 4950,
+      "end_tick": 4951,
+      "masks": [
+        [
+          14,
+          6,
+          14,
+          19
+        ],
+        [
+          38,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "moon",
+      "mask_elements": [
+        "sun",
+        "moon"
+      ]
+    },
+    {
+      "event_id": "cardinal.3.6",
+      "phrase": "B",
+      "action": "reconciliation",
+      "cue_tick": 4920,
+      "at_tick": 5100,
+      "end_tick": 5400,
+      "masks": [],
+      "damage": 0,
+      "tags": [],
+      "kind": "window",
+      "attunement_bonus": "moon",
+      "boss_origin": [
+        30,
+        12
+      ],
+      "boss_facing": "w",
+      "window_condition": "matched_attunement_direct_hit"
+    },
+    {
+      "event_id": "cardinal.4.1",
+      "phrase": "A_double_prime",
+      "action": "sun_seal",
+      "cue_tick": 5670,
+      "at_tick": 5790,
+      "end_tick": 5791,
+      "masks": [
+        [
+          14,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "sun"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "mask_elements": [
+        "sun"
+      ]
+    },
+    {
+      "event_id": "cardinal.4.2",
+      "phrase": "A_double_prime",
+      "action": "moon_seal",
+      "cue_tick": 5970,
+      "at_tick": 6090,
+      "end_tick": 6091,
+      "masks": [
+        [
+          38,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "moon"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "mask_elements": [
+        "moon"
+      ]
+    },
+    {
+      "event_id": "cardinal.4.3",
+      "phrase": "A_double_prime",
+      "action": "split_hammer",
+      "cue_tick": 6210,
+      "at_tick": 6330,
+      "end_tick": 6331,
+      "masks": [
+        [
+          27,
+          18,
+          12,
+          6
+        ]
+      ],
+      "damage": 2,
+      "tags": [
+        "cone"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "incoming_direction": "south"
+    },
+    {
+      "event_id": "cardinal.4.4",
+      "phrase": "A_double_prime",
+      "action": "confession",
+      "cue_tick": 6450,
+      "at_tick": 6570,
+      "end_tick": 6571,
+      "masks": [
+        [
+          24,
+          5,
+          2,
+          21
+        ],
+        [
+          40,
+          5,
+          2,
+          21
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "projectile",
+        "expose"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "incoming_direction": "north"
+    },
+    {
+      "event_id": "cardinal.4.overlap",
+      "phrase": "A_double_prime",
+      "action": "sun_seal",
+      "cue_tick": 6450,
+      "at_tick": 6570,
+      "end_tick": 6571,
+      "masks": [
+        [
+          14,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor",
+        "sun"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "mask_elements": [
+        "sun"
+      ]
+    },
+    {
+      "event_id": "cardinal.4.5",
+      "phrase": "A_double_prime",
+      "action": "eclipse",
+      "cue_tick": 6630,
+      "at_tick": 6750,
+      "end_tick": 6751,
+      "masks": [
+        [
+          14,
+          6,
+          14,
+          19
+        ],
+        [
+          38,
+          6,
+          14,
+          19
+        ]
+      ],
+      "damage": 1,
+      "tags": [
+        "floor"
+      ],
+      "kind": "impact",
+      "attunement_bonus": "sun",
+      "mask_elements": [
+        "sun",
+        "moon"
+      ]
+    },
+    {
+      "event_id": "cardinal.4.6",
+      "phrase": "A_double_prime",
+      "action": "reconciliation",
+      "cue_tick": 6600,
+      "at_tick": 6780,
+      "end_tick": 7200,
+      "masks": [],
+      "damage": 0,
+      "tags": [],
+      "kind": "window",
+      "attunement_bonus": "sun",
+      "boss_origin": [
+        30,
+        12
+      ],
+      "boss_facing": "n",
+      "window_condition": "matched_attunement_direct_hit"
+    }
+  ],
+  "pose_track": [
+    {
+      "tick": 0,
+      "origin": [
+        30,
+        12
+      ],
+      "facing": "n"
+    },
+    {
+      "tick": 1500,
+      "origin": [
+        30,
+        12
+      ],
+      "facing": "e"
+    },
+    {
+      "tick": 3300,
+      "origin": [
+        30,
+        18
+      ],
+      "facing": "s"
+    },
+    {
+      "tick": 5100,
+      "origin": [
+        30,
+        12
+      ],
+      "facing": "w"
+    },
+    {
+      "tick": 6780,
+      "origin": [
+        30,
+        12
+      ],
+      "facing": "n"
+    }
+  ],
+  "cycle_ticks": 7200
+}

@@ -1,3 +1,5 @@
+> Cardinal Normal is now playable for new `cardinal-1` runs. See [Cardinal runtime and tuning](cardinal-runtime.md) for its 25-event score, actor effects, practice controls and schema-10 compatibility. The Hunter material below describes the retained legacy patrol.
+
 # Battle sequences
 
 Every arena owns a **two-minute battle cycle**, counted in whole simulation
@@ -37,7 +39,7 @@ than a missing feature.
 | Score | `ArenicEncounterScore` | One arena's staff at one difficulty. |
 | Beat | `ArenicEncounterBeat` | One action at one cycle position. |
 | Conductor | `ArenicEncounterState` | Performs scores against the combat ledger. |
-| Clock | `ArenicCycleClock` | One arena's integer cycle position, and its pause flag. |
+| Clock | `ArenicCycleClock` | One arena's integer cycle position, ordinary pause flag, and saved restart-pending flag. |
 | Catalogue | `ArenicEncounterCatalog` | Every score, addressed by arena and difficulty. |
 
 `at_tick` is when a beat **resolves**, not when its motion starts. A jump
@@ -96,15 +98,76 @@ Godot's sort is **not stable**, so order cannot be left implicit. Merged events
 compare on tick, then the performer's fold order, then position within its staff
 — a total order, so two runs resolve simultaneous events identically.
 
+Movement has an explicit phase within each physics step. The shell captures all
+living heroes before applying live movement. `tick(combat, steps, snapshot,
+before_effects)` then collects the due events from every running arena and applies
+all recorded moves. `ArenicHeroContact` uses integer world-grid coordinates and
+exact fractional intersection times to decide shared-cell arrivals, swaps and
+diagonal crossings together. A paused arena's occupants remain physical even
+though their own staff does not advance.
+
+A lone arriving mover defeats the stationary occupant. Contested movers prefer
+the lowest-identity nonselected survivor; all other participants lose. Final
+overlaps without movement use the same identity/selection tie-break. The combat
+ledger zeros every victim and cancels their active casts before publishing
+`hero_contact_defeated(arena, actor, contact)` followed by `ally_defeated`. The
+contact dictionary preserves identity, selected flag, survivor and cause for the
+shell's response; it is transient and never a second death authority.
+
+Only after contact does the optional callback handle live casts and combat time.
+The remaining non-move events retain their original stable stream order, followed
+by attached DOTs, ground hazards, `arena_advanced(arena)`, and the clock step.
+The arena signal advances gathering on exactly the same unpaused clock, including
+off-camera arenas. A contact victim's already-collected ability is suppressed
+even if a defeat listener immediately respawns it. Longer test/scrub calls repeat
+this complete sequence per step with fresh movement snapshots.
+
+Natural and explicit restarts rewind ghosts, revive their ledger entries and
+clear cycle effects. Final start-cell contacts resolve before
+`arena_restarted(arena)` is published; rewind teleports never sweep through
+intermediate cells. Dead ghost smoke is excluded from ordinary contact. The
+roster callback includes free heroes as well as folded performers, so these rules
+also apply to mining, gathering and dropoff positions.
+
+The [arena rewind presentation](arena-rewind.md) surrounds this existing reset.
+`arena_restarting` seals the played visual history before the reset; afterward,
+`restart_pending` holds the canonical model at tick zero while sampled imagery
+plays backward at a default 10×, accelerated as needed to finish within five
+seconds, followed by a separate three-second countdown. The playback rate is
+frozen when it begins. No event is resolved
+backward and accumulated damage or resource banks are never refunded. Ordinary
+cycle cleanup still clears carried Guild House bags for affected participants.
+The flag participates in `is_paused` independently of saved modal pauses, so the
+owning arena's combat, ghosts, hazards and gathering remain frozen while other
+arenas advance. Starting a recording skips the reverse phase and uses its existing
+recording countdown. Loading a pending restart starts a fresh three-second
+countdown without repeating the model reset.
+
 ## What a landing does
 
 The footprint moves first, then the blast resolves, so the landing and the ground
 the boss now occupies are one event to anything reading the ledger. Accumulated
 damage travels with the target: a jump never resets a phase.
 
+Collision derives the scored boss's current pose from that same cycle clock.
+During a jump it has no ground hitbox: it cannot be targeted or struck by ground
+attacks, pools, or broken tiles. The first jump is airborne on ticks **408–479**
+and grounded at its new station on tick **480**. Takeoff includes the initial
+zero-lift pose, so the drawing and collision share one explicit boundary.
+At the exact landing tick collision uses the new scored footprint even if
+combat is checked before the landing event updates the stored ledger.
+
+The combat model reads this pose through `enemy_pose_lookup`; its static closure
+holds a weak encounter reference and creates no combat/encounter ownership
+cycle. Ordinary targets and bosses without scores use their stored footprints.
+The pose is derived, never another saved copy of the boss's location or air state.
+An Auto Shot arrow retains its aim cell: if the Hunter is airborne or has landed
+elsewhere when the arrow arrives, it misses without a hit effect, damage report,
+or damage credit.
+
 A blast strikes **support actors only**; targets stay immortal, and a landing
-adds nothing to the arena damage ledger. A struck hero is defeated and respawns
-at Guild House `(30, 15)` with full health. Level, experience, arena damage and
+adds nothing to the arena damage ledger. A struck free hero is defeated and respawns
+at a vacant cell nearest Guild House `(30, 15)` with full health. Level, experience, arena damage and
 phase progress all survive; only position and health are restored. Any active
 cast is cancelled.
 
@@ -153,3 +216,5 @@ Recording, richer beat actions, tile choreography, per-difficulty loadouts, and
 authored landing art are future work. The beat vocabulary is meant to grow by
 adding actions to `ArenicEncounterBeat.ACTION_IDS` and a matching arm in
 `ArenicEncounterState._resolve`, never by forking the score format.
+
+Cleanse attaches independent enemy DOT stacks in the combat ledger. The conductor advances them once per unpaused arena tick after due actions and before ground hazards, including arenas off camera. Each stack stays on its enemy through jumps and landings; the boss conditions row includes it alongside Airborne. Pausing freezes damage and countdown together. Explicit restart and natural cycle wrap clear attached DOTs with the other cycle effects. Reconfiguring a stage preserves them.

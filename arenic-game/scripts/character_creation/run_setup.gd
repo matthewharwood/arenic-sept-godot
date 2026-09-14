@@ -19,13 +19,19 @@ var selected_identity: int = -1
 var arena_selection: Dictionary[String, int] = {}
 var combat: ArenicCombatState
 var recruitment: ArenicRecruitmentState
+var gathering: ArenicGatheringState
+var loot: ArenicLootState
 ## Everything digging has yielded this run. Damage is one income; broken ground
 ## is the other, and both count toward the same guild rolls.
 var prospected: int = 0
 ## Stable domain seed; a slot's random identity is independent of its fixture.
 var run_seed: int = 1
+## Next prologue beat: quote (0), beckoning (1), dialogue (2-5), complete (6).
+## Animation/read timers are presentation; this checkpoint alone survives reload.
+var intro_step: int = 0
 var _next_identity: int = 0
 const RECRUITMENT_CURVE: ArenicRecruitmentCurve = preload("res://data/guild/recruitment.tres")
+const GATHERING: ArenicGatheringDefinition = preload("res://data/guild/gathering.tres")
 const CLASSES: ArenicClassCatalog = preload("res://data/classes/catalog.tres")
 
 
@@ -36,8 +42,11 @@ func begin_new_game() -> void:
 	arena_selection.clear()
 	combat = null
 	recruitment = null
+	gathering = null
+	loot = null
 	prospected = 0
 	run_seed = 1
+	intro_step = 0
 	_next_identity = 0
 
 
@@ -50,7 +59,10 @@ func choose_class(definition: ArenicClassDefinition) -> void:
 	arena_selection.clear()
 	_next_identity = 0
 	combat = ArenicCombatState.new()
-	recruit(definition)
+	combat.encounter_effects.ruleset = ArenicActorEffects.RULESET
+	var founder: ArenicHeroState = recruit(definition)
+	if intro_step == 0:
+		founder.cell = Vector2i(33, 15) # New-game center; Continue restores its saved placement.
 	class_chosen.emit(definition)
 
 
@@ -63,7 +75,9 @@ func recruit(definition: ArenicClassDefinition) -> ArenicHeroState:
 	hero.definition = definition
 	hero.identity_id = _next_identity
 	hero.arena_id = GUILD_ARENA
-	hero.cell = GUILD_CELL
+	hero.cell = ArenicHeroPlacement.for_hero(GUILD_ARENA, GUILD_CELL, heroes, combat)
+	if hero.cell == ArenicHeroPlacement.NONE:
+		return null
 	hero.facing = "n"
 	hero.selected = heroes.is_empty()
 	_next_identity += 1
@@ -157,3 +171,16 @@ func get_combat() -> ArenicCombatState:
 	if combat == null:
 		combat = ArenicCombatState.new()
 	return combat
+
+
+func get_gathering() -> ArenicGatheringState:
+	if gathering == null:
+		gathering = ArenicGatheringState.new()
+		gathering.configure(GATHERING)
+	return gathering
+
+
+func get_loot() -> ArenicLootState:
+	if loot == null:
+		loot = ArenicLootState.new()
+	return loot

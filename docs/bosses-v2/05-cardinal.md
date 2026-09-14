@@ -1,6 +1,8 @@
 # The Twofold Witness
 
-**Sanctum · Cardinal boss · Normal · 120 seconds / 7,200 ticks · six moves · 25 authored events.** Design revision `v2.0-draft.1`. Shared rules: [CONTRACT](CONTRACT.md). All numbers are proposed Arenic tuning, not WoW values or current runtime behavior.
+> **Playable implementation:** Normal is implemented as `cardinal-normal-1` for new `cardinal-1` runs. See [runtime, practice controls and tuning](../cardinal-runtime.md). The original design below retains its planned ability comparisons; the remaining 24 hero abilities and Transmute economy are not implemented by this encounter.
+
+**Sanctum · Cardinal boss · Normal · 120 seconds / 7,200 ticks · six moves · 25 authored events.** Design revision `v2.0-draft.1`. Shared rules: [CONTRACT](CONTRACT.md). These are Arenic tuning values, not WoW values. The Normal event score is now implemented; planned ability comparisons below remain design proposals.
 
 ## Historical precedent and creative direction
 

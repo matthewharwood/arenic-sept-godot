@@ -2,8 +2,8 @@
 """Package saved Arenic review galleries; no native art rebuild or source export.
 
 Usage: python3 publish-gallery.py --repo PATH --output PATH [--report PATH]
-Only the 16 studies, two indexes, necessary boss JSON and content-hashed PNGs
-are published. Output must be a dedicated generated directory outside assets/.
+Hero, boss and NPC studies, their indexes, necessary boss JSON and content-hashed
+PNGs are published. Output must be a dedicated generated directory outside assets/.
 """
 import argparse
 import base64
@@ -76,9 +76,14 @@ def package(repo, output, report_path):
     media.mkdir()
     image_hashes = set()
     edges = set()
-    pages = [PurePosixPath('index.html'), PurePosixPath('bosses/index.html')]
+    npc_catalog = json.loads((source / 'npcs/gallery.json').read_text())
+    npc_ids = [entry['id'] for entry in npc_catalog]
+    if len(set(npc_ids)) != len(npc_ids) or any(not re.fullmatch(r'[a-z][a-z0-9_]*', identifier) for identifier in npc_ids):
+        raise ValueError('NPC catalog identities must be unique and safe path components.')
+    pages = [PurePosixPath('index.html'), PurePosixPath('bosses/index.html'), PurePosixPath('npcs/index.html')]
     pages += [PurePosixPath(identifier, 'attacks.html') for identifier in ROSTER]
     pages += [PurePosixPath('bosses', identifier, 'attacks.html') for identifier in ROSTER]
+    pages += [PurePosixPath('npcs', identifier, 'index.html') for identifier in npc_ids]
     payloads = {}
     source_html_bytes = sum((source / page).stat().st_size for page in pages)
 
@@ -204,6 +209,14 @@ def package(repo, output, report_path):
             assert metadata['meta']['frameTags'] == boss['sprite']['tags']
             edge(metadata_path, metadata['image'])
 
+        for identifier in npc_ids:
+            npc = payloads[f'npcs/{identifier}/index.html']
+            assert npc['npc']['id'] == identifier and npc['sprite']['frames']
+            assert npc['sprite']['pivot'] == [9, 9]
+            for state in npc['npc']['visual_states']:
+                for direction in 'nesw':
+                    assert any(tag['name'] == state['id'] + '_' + direction for tag in npc['sprite']['tags'])
+
         files = sorted(path for path in stage.rglob('*') if path.is_file())
         incoming = {target for _, target in edges}
         orphaned = {path.relative_to(stage).as_posix() for path in files} - incoming - {'index.html'}
@@ -212,13 +225,13 @@ def package(repo, output, report_path):
         if any(path.suffix not in ('.html', '.json', '.png') for path in files):
             raise ValueError('Unexpected public file type.')
         report = {
-            'heroes': 8, 'hero_abilities': 32, 'bosses': 8,
+            'heroes': 8, 'hero_abilities': 32, 'bosses': 8, 'npcs': len(npc_ids),
             'html_pages': len(pages), 'json_files': 9, 'unique_pngs': len(image_hashes),
             'file_count': len(files), 'total_bytes': sum(path.stat().st_size for path in files),
             'html_bytes': sum((stage / page).stat().st_size for page in pages),
             'source_html_bytes': source_html_bytes,
             'verified_dependency_edges': len(edges),
-            'pending_ability_audio_cues': sum(len(a['sounds']) for key, value in payloads.items() if not key.startswith('bosses/') for a in value['hero']['abilities']),
+            'pending_ability_audio_cues': sum(len(a['sounds']) for identifier in ROSTER for a in payloads[f'{identifier}/attacks.html']['hero']['abilities']),
             'ability_links': [{'hero': identifier, 'id': a['id'], 'name': a['name'], 'href': f'{identifier}/attacks.html#ability-{a["id"]}'} for identifier in ROSTER for a in payloads[f'{identifier}/attacks.html']['hero']['abilities']],
             'files': [{'path': p.relative_to(stage).as_posix(), 'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in files],
             'dependencies': [{'from': a, 'to': b} for a, b in sorted(edges)],

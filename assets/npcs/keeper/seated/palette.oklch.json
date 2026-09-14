@@ -1,0 +1,6 @@
+{
+  "space": "oklch",
+  "inherits": ["../palette.oklch.json", "../../../environment/palette.oklch.json"],
+  "notes": "Keeper costume and silver crown retain their original OKLCH swatches. The chair shares the tavern timber ramp; the environment ink does not replace the Keeper ink.",
+  "colors": []
+}

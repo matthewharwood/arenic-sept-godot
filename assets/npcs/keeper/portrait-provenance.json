@@ -1,0 +1,9 @@
+{
+  "generator": "built-in image_gen",
+  "requested_model": "latest available Image Gen",
+  "verified_model": null,
+  "note": "The built-in tool does not expose a model selector or a verified model identity.",
+  "prompt": "portrait-prompt.txt",
+  "source": "/Users/matthewharwood/.codex/generated_images/01a096f9-7ed6-7091-a215-de42451921bb/exec-0019036d-4295-47e3-886c-2a261d817988.png",
+  "selected": "portrait.png"
+}

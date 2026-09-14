@@ -30,6 +30,9 @@ func _run() -> void:
 	_check_rejections()
 	_check_staff(score)
 	_check_placement(score)
+	_check_collision_pose()
+	_check_boss_effects()
+	_check_cleanse_clock()
 	_check_world(catalog)
 	_finish()
 
@@ -133,6 +136,180 @@ func _check_placement(score: ArenicEncounterScore) -> void:
 	_check(state.boss_placement("sanctum").is_empty(), "An arena without a score reports no placement rather than a default one.")
 
 
+func _check_collision_pose() -> void:
+	var world := load(WORLD_PATH) as ArenicWorldDefinition
+	var combat := ArenicCombatState.new()
+	combat.configure(world)
+	var state := ArenicEncounterState.new()
+	state.configure(world, load(CATALOG_PATH) as ArenicEncounterCatalog, combat)
+	var boss_id: String = ArenicCombatState.boss_enemy_id(LABYRINTH)
+	var centre := Rect2i(CENTRE_ORIGIN, Vector2i(6, 6))
+	var station_one := Rect2i(STATIONS[0], Vector2i(6, 6))
+	state.seek(LABYRINTH, 407)
+	var grounded: Dictionary = combat.enemy_pose_lookup.call(LABYRINTH, boss_id)
+	_check(grounded.footprint == centre and not grounded.airborne, "The last tick before takeoff still has grounded collision.")
+	for tick: int in [408, 444, 479]:
+		state.seek(LABYRINTH, tick)
+		var pose: Dictionary = combat.enemy_pose_lookup.call(LABYRINTH, boss_id)
+		_check(pose.airborne and pose.footprint == centre and state.boss_placement(LABYRINTH).airborne, "Collision and visible jump agree throughout takeoff, apex and final airborne tick: %d." % tick)
+		_check(not combat.is_occupied(LABYRINTH, CENTRE_ORIGIN) and combat.enemies_in(LABYRINTH, centre).is_empty(), "An airborne boss occupies no ground hitbox at tick %d." % tick)
+	state.seek(LABYRINTH, 480)
+	_check(combat._arenas[LABYRINTH].enemies[boss_id].footprint == centre, "Seeking does not mutate the last resolved landing ledger.")
+	grounded = combat.enemy_pose_lookup.call(LABYRINTH, boss_id)
+	_check(grounded.footprint == station_one and not grounded.airborne, "The exact landing tick uses the new scored footprint even before its beat resolves.")
+	_check(not combat.is_occupied(LABYRINTH, CENTRE_ORIGIN) and combat.is_occupied(LABYRINTH, STATIONS[0]), "Landing collision cannot linger at the old station for one combat tick.")
+	state.seek(LABYRINTH, 7199)
+	_check(combat.enemy_pose_lookup.call(LABYRINTH, boss_id).airborne, "The final jump stays airborne across the cycle boundary.")
+	state.restart(LABYRINTH)
+	grounded = combat.enemy_pose_lookup.call(LABYRINTH, boss_id)
+	_check(grounded.footprint == centre and not grounded.airborne, "Restart immediately derives the grounded opening pose.")
+	_check(combat.enemy_pose_lookup.call("sanctum", ArenicCombatState.boss_enemy_id("sanctum")).is_empty() and combat.enemy_pose_lookup.call(LABYRINTH, "fixture").is_empty(), "Unscored bosses and ordinary targets defer to their stored footprints.")
+	var caster := ArenicHeroState.new()
+	caster.definition = load("res://data/classes/hunter.tres")
+	caster.arena_id = LABYRINTH
+	caster.cell = Vector2i(25, 14)
+	var reports: Array = []
+	var impacts: Array = []
+	var progress: Array = []
+	combat.damage_reported.connect(func(owner: String, ability: String, arena: String, enemy: String, amount: int): reports.append([owner, ability, arena, enemy, amount]))
+	combat.ability_phase.connect(func(_owner: String, _ability: String, phase: String, _arena: String, _cell: Vector2, _cast: int):
+		if phase == "impact":
+			impacts.append(phase))
+	combat.progress_changed.connect(func(arena: String): progress.append(arena))
+	state.seek(LABYRINTH, 240)
+	_check(combat.try_cast(caster).is_empty(), "A grounded Hunter boss can be aimed at.")
+	combat.tick(100.0)
+	_check(combat.total_damage() == 1 and reports.size() == 1 and impacts.size() == 1 and progress.size() == 1, "A stationary grounded impact reports and credits exactly one hit.")
+	reports.clear()
+	impacts.clear()
+	progress.clear()
+	state.seek(LABYRINTH, 407)
+	_check(combat.try_cast(caster).is_empty(), "A shot can be launched immediately before the Hunter jumps.")
+	state.seek(LABYRINTH, 444)
+	combat.tick(100.0)
+	_check(combat.total_damage() == 1 and reports.is_empty() and impacts.is_empty() and progress.is_empty(), "A shot reaching an airborne Hunter misses without impact, report or damage credit.")
+	state.seek(LABYRINTH, 240)
+	_check(combat.try_cast(caster).is_empty(), "Another grounded shot captures its original aim cell.")
+	state.seek(LABYRINTH, 480)
+	combat.tick(100.0)
+	_check(combat.total_damage() == 1 and reports.is_empty() and impacts.is_empty() and progress.is_empty(), "Landing elsewhere before arrival cannot retarget an arrow or credit a hit through the stale ledger.")
+	# Exercise the real shell order, not only poses established by seeking:
+	# combat advances first, then one encounter tick exposes the next pose.
+	state.seek(LABYRINTH, 407)
+	_check(combat.try_cast(caster).is_empty(), "A fixed-tick shot launches on the final grounded tick before takeoff.")
+	var arrival_tick: int = -1
+	var airborne_on_arrival: bool = false
+	for step: int in 120:
+		var collision_tick: int = state.cycle_position(LABYRINTH)
+		combat.tick(1.0 / ArenicCycleClock.TICKS_PER_SECOND)
+		var ended: bool = combat.active_remaining(caster) <= 0.0
+		if ended:
+			arrival_tick = collision_tick
+			airborne_on_arrival = bool(state.enemy_pose(LABYRINTH, boss_id).airborne)
+		state.tick(combat)
+		if ended:
+			break
+	_check(arrival_tick >= 408 and arrival_tick < 480 and airborne_on_arrival and combat._arenas[LABYRINTH].enemies[boss_id].footprint == centre, "Fixed shell-order ticks resolve the arriving shot in the air while the raw ledger still holds the old ground footprint.")
+	_check(combat.total_damage() == 1 and reports.is_empty() and impacts.is_empty() and progress.is_empty(), "The integrated airborne shot misses without hit feedback or credit.")
+	var owner_ref: WeakRef = weakref(state)
+	var lookup: Callable = combat.enemy_pose_lookup
+	state = null
+	_check(owner_ref.get_ref() == null and lookup.call(LABYRINTH, boss_id).is_empty(), "The derived-pose hook does not retain a retired encounter or create a combat reference cycle.")
+
+
+func _check_boss_effects() -> void:
+	var world := load(WORLD_PATH) as ArenicWorldDefinition
+	var combat := ArenicCombatState.new()
+	combat.configure(world)
+	var state := ArenicEncounterState.new()
+	_check(state.boss_effects(LABYRINTH).is_empty(), "An unconfigured encounter has no invented boss effects.")
+	state.configure(world, load(CATALOG_PATH) as ArenicEncounterCatalog, combat)
+	state.seek(LABYRINTH, 240)
+	_check(state.boss_effects(LABYRINTH).is_empty() and state.boss_effects("unknown").is_empty(), "A grounded boss without hazards and an unknown arena have no effects.")
+	var rules := load("res://data/classes/alchemist_primary.tres") as ArenicClassAbility
+	var acid: ArenicAcidField = state.acid_field(LABYRINTH)
+	acid.spawn(Rect2i(CENTRE_ORIGIN, Vector2i.ONE), rules)
+	acid.spawn(Rect2i(CENTRE_ORIGIN, Vector2i(2, 1)), rules)
+	acid._pools[1].ticks_left = 120
+	acid.spawn(Rect2i(0, 0, 1, 1), rules)
+	var ground: ArenicDigField = state.dig_field(LABYRINTH)
+	ground.dig(CENTRE_ORIGIN)
+	ground.dig(CENTRE_ORIGIN + Vector2i.RIGHT)
+	ground.dig(Vector2i.ZERO)
+	var effects: Array[Dictionary] = state.boss_effects(LABYRINTH)
+	_check(effects.size() == 2 and effects[0].id == "acid" and effects[1].id == "broken_ground", "Only hazards touching the grounded boss appear in stable order.")
+	_check(effects[0].stacks == 2 and effects[0].remaining_seconds == 2.0 and not effects[0].beneficial, "Acid counts overlapping pools and reports the earliest expiry, not the longest pool.")
+	_check(effects[1].stacks == 2 and effects[1].remaining_seconds == -1.0 and not effects[1].beneficial, "Broken ground counts affecting tiles without inventing a duration or Bleed status.")
+	_check(effects[0].detail.contains("pool") and effects[1].detail.contains("tile"), "Effect details explain what their stack counts mean.")
+	effects[0].name = "Changed presentation copy"
+	_check(state.boss_effects(LABYRINTH)[0].name == "Acid" and state.cycle_position(LABYRINTH) == 240 and acid._pools[1].ticks_left == 120 and acid._pools[1].debt == 0 and combat.total_damage() == 0, "Reading or editing returned effects cannot advance or mutate the simulation.")
+	state.set_paused(LABYRINTH, true)
+	_check(state.boss_effects(LABYRINTH)[0].remaining_seconds == 2.0, "Paused boss effect readouts remain simulation-clock values.")
+	state.seek(LABYRINTH, 408)
+	effects = state.boss_effects(LABYRINTH)
+	_check(effects.size() == 1 and effects[0].id == "airborne" and effects[0].beneficial and effects[0].stacks == 1, "Airborne ground immunity replaces ground hazards during a jump.")
+	_check(is_equal_approx(effects[0].remaining_seconds, 1.2), "Airborne expiry is the actual authored landing countdown.")
+	state.seek(LABYRINTH, 480)
+	_check(state.boss_effects(LABYRINTH).is_empty(), "Landing away from old hazards clears the derived conditions immediately.")
+	state.restart(LABYRINTH)
+	_check(state.boss_effects(LABYRINTH).is_empty(), "Cycle restart clears the source hazards and therefore their readouts.")
+	var training_id: String = ArenicCombatState.boss_enemy_id("guild_house")
+	combat.register_enemy("guild_house", training_id, Rect2i(35, 15, 1, 1))
+	state.acid_field("guild_house").spawn(Rect2i(35, 15, 1, 1), rules)
+	state.seek("guild_house", 7190)
+	effects = state.boss_effects("guild_house")
+	_check(effects.size() == 1 and effects[0].id == "acid" and is_equal_approx(effects[0].remaining_seconds, 10.0 / 60.0), "Unscored training targets use the ledger, with acid expiry capped by the actual cycle reset.")
+
+
+func _check_cleanse_clock() -> void:
+	var world := load(WORLD_PATH) as ArenicWorldDefinition
+	var combat := ArenicCombatState.new()
+	combat.configure(world)
+	var state := ArenicEncounterState.new()
+	state.configure(world, load(CATALOG_PATH) as ArenicEncounterCatalog, combat)
+	var bard := ArenicHeroState.new()
+	bard.definition = load("res://data/classes/bard.tres")
+	bard.arena_id = LABYRINTH
+	bard.cell = CENTRE_ORIGIN - Vector2i.ONE
+	state.seek(LABYRINTH, 407)
+	_check(combat.try_cast(bard).is_empty(), "Cleanse attaches on the final grounded tick before the boss jumps.")
+	var effects: Array[Dictionary] = state.boss_effects(LABYRINTH)
+	_check(effects.size() == 1 and effects[0].name == "Cleanse" and effects[0].remaining_seconds == 5.0, "The boss bar exposes the fresh five-second attached debuff.")
+	state.tick(combat)
+	effects = state.boss_effects(LABYRINTH)
+	_check(effects.size() == 2 and effects[0].name == "Cleanse" and effects[1].id == "airborne", "A jumping boss displays both attached Cleanse and its Airborne condition.")
+	state.set_paused(LABYRINTH, true)
+	state.tick(combat, 120)
+	_check(combat._enemy_dots[0].remaining_ticks == 299 and combat.damage_for_arena(LABYRINTH) == 1, "Pausing the owning arena freezes DOT lifetime and damage together.")
+	state.set_paused(LABYRINTH, false)
+	state.tick(combat, 59)
+	_check(combat.damage_for_arena(LABYRINTH) == 2 and state.boss_placement(LABYRINTH).airborne, "The first attached tick damages the airborne boss, independent of ground contact.")
+	state.tick(combat, 240)
+	_check(combat.damage_for_arena(LABYRINTH) == 6 and combat._enemy_dots.is_empty(), "Five real encounter seconds add exactly five delayed damage through jump and landing, then remove the stack.")
+	_check(state.boss_effects(LABYRINTH).is_empty(), "Expired Cleanse disappears from the boss progress bar.")
+	state.seek(LABYRINTH, 240)
+	combat.reset_caster(bard)
+	_check(combat.try_cast(bard).is_empty(), "A later ground cast starts a new independent effect.")
+	state.configure(world, load(CATALOG_PATH) as ArenicEncounterCatalog, combat)
+	_check(combat._enemy_dots.size() == 1, "Replacing the stage or configuring a retained encounter preserves active DOTs.")
+	state.restart(LABYRINTH)
+	_check(combat._enemy_dots.is_empty() and state.boss_effects(LABYRINTH).is_empty(), "Explicit arena restart clears DOT state and its derived readout.")
+	var training := ArenicHeroState.new()
+	training.identity_id = 1
+	training.definition = bard.definition
+	training.arena_id = "guild_house"
+	training.cell = Vector2i(10, 10)
+	combat.register_enemy("guild_house", ArenicCombatState.boss_enemy_id("guild_house"), Rect2i(10, 10, 1, 1))
+	_check(combat.try_cast(training).is_empty(), "Unscored arenas attach the same Cleanse effect.")
+	state.set_paused(LABYRINTH, true)
+	state.tick(combat, 60)
+	_check(combat.damage_for_arena("guild_house") == 2 and combat._enemy_dots[0].remaining_ticks == 240, "Another arena's pause does not stop this arena's damage or timer.")
+	state.seek("guild_house", 7199)
+	_check(is_equal_approx(float(state.boss_effects("guild_house")[0].remaining_seconds), 1.0 / 60.0), "The bar caps its countdown at the actual next cycle reset.")
+	state.tick(combat)
+	_check(combat._enemy_dots.is_empty() and state.boss_effects("guild_house").is_empty(), "Natural cycle wrap clears lingering stacks as well as explicit restart.")
+
+
 ## The catalogue must address arenas that actually exist, with footprints that
 ## fit the gameplay size those arenas authored.
 func _check_world(catalog: ArenicEncounterCatalog) -> void:
@@ -150,6 +327,8 @@ func _check_world(catalog: ArenicEncounterCatalog) -> void:
 					"Every beat of '%s' fits that arena's authored boss size." % score.arena_id):
 				return
 		var opening: ArenicEncounterBeat = score.beats[score.index_at(0)]
+		if score is ArenicMaskScore:
+			continue # V2 derives its opening; legacy static placement is deliberately retained.
 		_check(opening.boss_origin_cell == arena.boss_origin_cell, "Arena '%s' rests where its score opens, so nothing jumps on the first frame." % score.arena_id)
 
 

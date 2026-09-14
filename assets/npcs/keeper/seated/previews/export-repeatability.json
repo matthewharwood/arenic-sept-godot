@@ -1,0 +1,10 @@
+{
+  "export_only_preserves_hashes": true,
+  "sha256": {
+    "assets/environment/guild_clearing/tavern/tavern.aseprite": "d80244bbe1adc3c1a672abc05f15214d2126c2129e4be4768b9ec0b13f0ebf7f",
+    "assets/npcs/keeper/seated/keeper_seated.aseprite": "498abd7037e09e66386657907bf6c44b79b3144b74aa216c339646219e615533",
+    "arenic-game/assets/environment/guild_clearing/tavern/tavern.png": "0838fb8416f3ce10080e318a152ea4d917983fad599a4bd016376714a3f9f272",
+    "arenic-game/assets/npcs/keeper/seated/keeper_seated.png": "aa948855b0b1d8e0b81873bb7d98ca2748c6f6d54d754771397c1e01d0326cae",
+    "arenic-game/assets/npcs/keeper/seated/keeper_seated.tres": "7f0213ec4c3cc752b16210b17d44ad702a1210dd29712c02df46756c1d034580"
+  }
+}

@@ -53,6 +53,7 @@ func _run() -> void:
 	if not _check(metadata is Dictionary and metadata.has("arenas") and metadata.has("meta"), "Decoration export metadata loads."):
 		return
 	_manifest = metadata
+	root.get_node("RunSetup").intro_step = 6 # Established-world presentation fixture.
 	var packed := load(SHELL_PATH) as PackedScene
 	if not _check(packed != null, "Actual game shell loads."):
 		return
@@ -73,7 +74,7 @@ func _run() -> void:
 		var arena: ArenicArenaView = _shell.stage.get_arena(index)
 		if not _check_arena(arena, index):
 			return
-	if not _check(_materials.size() == 27 and _atlas_regions.size() == 27, "Nine floors and eighteen atmosphere materials are isolated; all 27 exported prop frames are used."):
+	if not _check(_materials.size() == 27 and _atlas_regions.size() == 24, "Nine floors and eighteen atmosphere materials are isolated; eight arenas use their 24 exported prop frames while Guild House uses clearing art."):
 		return
 	if not _check(_swarm_instances == 119 and _swarm_materials.size() == 9, "Nine isolated swarm draws preserve the source total of 119 bounded motes."):
 		return
@@ -82,7 +83,7 @@ func _run() -> void:
 	for index: int in range(9):
 		if not _check_focused_style(index):
 			return
-	_finish(0, "Presentation checks passed: %d assertions; nine styles, isolated materials, 108 native props, actor clearance, camera scale and themed HUD/labels." % _checks)
+	_finish(0, "Presentation checks passed: %d assertions; nine styles, isolated materials, 96 native props plus the Guild Clearing, actor clearance, camera scale and themed HUD/labels." % _checks)
 
 
 func _check_arena(arena: ArenicArenaView, index: int) -> bool:
@@ -218,6 +219,16 @@ func _check_material(material: ShaderMaterial, expected_shader: String, theme: A
 
 func _check_decorations(arena: ArenicArenaView, environment: ArenicArenaEnvironment, foreground: MeshInstance3D, index: int) -> bool:
 	var decorations := environment.get_node_or_null("Decorations") as Node3D
+	if arena.definition.arena_id == "guild_house":
+		var clearing := environment.get_node_or_null("GuildClearing") as ArenicGuildClearingView
+		if not _check(decorations == null and clearing != null and clearing.trees.size() == 53 and not clearing.paths.is_empty(), "Guild House mounts its authored outdoor clearing without indoor prop placements."):
+			return false
+		var floor_material := (arena.get_node("Tiles") as ArenicArenaTiles).material_override as ShaderMaterial
+		var grass := floor_material.get_shader_parameter("guild_grass") as Texture2D
+		if not _check(grass != null and grass.get_size() == Vector2(76, 19), "The Guild House floor samples the four native 19px grass variants."):
+			return false
+		var tavern := arena.get_node_or_null("Boss") as AnimatedSprite3D
+		return _check(tavern != null and tavern.offset.is_equal_approx(Vector2(0.5, 0.0)) and tavern.sprite_frames.get_frame_texture(tavern.animation, tavern.frame).get_size() == Vector2(247, 171), "The actual odd-sized tavern sprite compensates its half-cell visual center with a half-pixel horizontal offset.")
 	if not _check(decorations != null and decorations.get_child_count() == 12, "Each arena has twelve bounded decorative placements."):
 		return false
 	var exported_arena: Dictionary = _manifest.arenas[index]
@@ -225,6 +236,8 @@ func _check_decorations(arena: ArenicArenaView, environment: ArenicArenaEnvironm
 		return false
 	var boss := arena.get_node_or_null("Boss") as AnimatedSprite3D
 	if boss != null and not _check(boss.render_priority == 0, "Boss art sorts above all transparent environment layers."):
+		return false
+	if boss != null and not _check(boss.offset.is_equal_approx(Vector2.ZERO), "Existing even-sized boss frames retain their original zero native offset."):
 		return false
 	for prop_index: int in range(decorations.get_child_count()):
 		var prop := decorations.get_child(prop_index) as Sprite3D
@@ -407,20 +420,25 @@ func _check_focused_style(index: int) -> bool:
 		return false
 	if not _check(_shell.hud.get_world_rect().is_equal_approx(SAFE_RECT), "All nine styles preserve native play-area dimensions."):
 		return false
+	var title := top.get_node("ArenaTitle") as Label
+	var effects := top.get_node("BossEffects") as RichTextLabel
+	if not _check(title.text == arena.definition.display_name and title.mouse_filter == Control.MOUSE_FILTER_IGNORE and effects.mouse_filter == Control.MOUSE_FILTER_PASS, "Each themed top bar names the selected arena and lets boss effect tooltips receive hover without blocking parent input."):
+		return false
 	for card: Node in _shell.stage.labels.get_children():
 		if not _check(not (card as Control).visible, "Focused arena view removes every overview label."):
 			return false
 	var ability := bottom.get_node("AbilityAction") as Button
-	if not _check(ability.mouse_filter == Control.MOUSE_FILTER_STOP and ability.focus_mode == Control.FOCUS_NONE, "The real ability control accepts pointer input without stealing map keyboard focus."):
+	var ability_hotkey := ability.get_node("Hotkey") as Label
+	if not _check(ability.mouse_filter == Control.MOUSE_FILTER_STOP and ability.focus_mode == Control.FOCUS_NONE and ability_hotkey.mouse_filter == Control.MOUSE_FILTER_IGNORE, "The real ability control accepts pointer input through its hotkey without stealing map keyboard focus."):
 		return false
 	if not _check(Rect2(Vector2.ZERO, bottom.size).encloses(ability.get_rect()) and not SAFE_RECT.intersects(ability.get_global_rect()), "The ability action stays entirely in the bottom HUD and never covers the world."):
 		return false
 	var theme: ArenicArenaTheme = arena.definition.visual_theme
-	if not _check(ability.get_theme_color("font_color").is_equal_approx(theme.color("base_content")) and ability.get_theme_color("font_pressed_color").is_equal_approx(theme.color("primary")), "Ability text and pressed accent follow the selected arena palette."):
+	if not _check(ability.get_theme_color("font_color").is_equal_approx(theme.color("base_content")) and ability.get_theme_color("font_pressed_color").is_equal_approx(theme.color("primary")) and ability_hotkey.get_theme_color("font_color").is_equal_approx(theme.color("accent")), "Ability text, pressed color and separate hotkey accent follow the selected arena palette."):
 		return false
 	for state_name: String in ["normal", "hover", "pressed", "disabled"]:
 		var style := ability.get_theme_stylebox(state_name) as StyleBoxFlat
-		if not _check(style != null and style.corner_radius_top_left == 0 and style.corner_radius_top_right == 0 and style.corner_radius_bottom_left == 0 and style.corner_radius_bottom_right == 0 and style.shadow_size == 0 and style.shadow_offset.is_zero_approx(), "Every ability button state remains square and shadow-free."):
+		if not _check(style != null and style.corner_radius_top_left == 12 and style.corner_radius_top_right == 12 and style.corner_radius_bottom_left == 12 and style.corner_radius_bottom_right == 12 and style.shadow_size == 0 and style.shadow_offset.is_zero_approx(), "Every ability button state keeps 12-pixel corners without a shadow."):
 			return false
 		var token: String = "base_200" if state_name == "normal" else ("base_100" if state_name == "disabled" else "base_300")
 		if not _check(style.bg_color.is_equal_approx(theme.color(token)), "Focused ability surfaces use the selected arena's source palette."):
@@ -438,11 +456,17 @@ func _check_focused_style(index: int) -> bool:
 	var next: Vector2 = rig.world_to_screen(cell_center + Vector3(ArenicGridMath.TILE_SIZE, 0.0, 0.0))
 	if not _check(absf(screen.distance_to(next) - 19.0) < 0.01, "Every themed arena focuses at exactly nineteen screen pixels per tile."):
 		return false
-	var prop := arena.get_node("EnvironmentLayers/Decorations/Prop00") as Sprite3D
+	var prop_path: String = "EnvironmentLayers/GuildClearing/Tree00" if arena.definition.arena_id == "guild_house" else "EnvironmentLayers/Decorations/Prop00"
+	var prop := arena.get_node(prop_path) as Sprite3D
 	var local_top_left := Vector3(prop.offset.x - 38.0, prop.offset.y + 38.0, 0.0) * prop.pixel_size
 	var upper_left: Vector2 = rig.world_to_screen(prop.global_transform * local_top_left)
 	if not _check(upper_left.distance_to(upper_left.round()) < 0.01, "Native 76px decoration canvas begins on an integer screen pixel."):
 		return false
+	if arena.definition.arena_id == "guild_house":
+		for tree: Sprite3D in arena.get_node("EnvironmentLayers/GuildClearing").trees:
+			var corner: Vector2 = rig.world_to_screen(tree.global_transform * local_top_left)
+			if not _check(corner.distance_to(corner.round()) < 0.01, "Every authored tree, including half-cell placements, snaps to the native screen raster."):
+				return false
 	var hero: ArenicHeroView = _shell.stage.hero_view
 	var selection := hero.get_node("Selection") as Sprite3D
 	if not _check(hero.sprite.render_priority == 0 and selection.render_priority == 0, "Hero and selection sort above all transparent environment layers."):

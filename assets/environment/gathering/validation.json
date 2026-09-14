@@ -1,0 +1,68 @@
+{
+  "source_sha256": "28afbdae0aceeecc8de6ce40a3066a26e93e0f2ac06dde423e8a1bb8b80f585c",
+  "atlas_sha256": "69087c3f14612b55d0aa79dbccc2243e212bbdf8c9082245246042df6915abb2",
+  "export_preserves_source": true,
+  "atlas_size": [
+    228,
+    57
+  ],
+  "mode": "RGBA",
+  "frames": {
+    "wood_source": {
+      "visible_bounds": [
+        6,
+        8,
+        51,
+        51
+      ],
+      "opaque_pixels": 1076,
+      "translucent_pixels": 336,
+      "pivot": [
+        28,
+        28
+      ]
+    },
+    "gold_source": {
+      "visible_bounds": [
+        6,
+        8,
+        52,
+        49
+      ],
+      "opaque_pixels": 1198,
+      "translucent_pixels": 165,
+      "pivot": [
+        28,
+        28
+      ]
+    },
+    "wood_dropoff": {
+      "visible_bounds": [
+        6,
+        9,
+        51,
+        49
+      ],
+      "opaque_pixels": 1383,
+      "translucent_pixels": 91,
+      "pivot": [
+        28,
+        28
+      ]
+    },
+    "gold_dropoff": {
+      "visible_bounds": [
+        6,
+        8,
+        51,
+        49
+      ],
+      "opaque_pixels": 1355,
+      "translucent_pixels": 134,
+      "pivot": [
+        28,
+        28
+      ]
+    }
+  }
+}

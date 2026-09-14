@@ -37,6 +37,7 @@ func _run() -> void:
 		return
 	_setup = root.get_node("RunSetup")
 	_setup.begin_new_game()
+	_setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 	_setup.choose_class(load("res://data/classes/hunter.tres"))
 	var packed := load(SHELL_PATH) as PackedScene
 	_shell = packed.instantiate()
@@ -100,6 +101,7 @@ func _resources() -> bool:
 
 func _choose(class_id: String, cell: Vector2i) -> void:
 	_setup.begin_new_game()
+	_setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 	_setup.choose_class(load("res://data/classes/%s.tres" % class_id))
 	_shell.replace_stage(_shell.stage_scene)
 	_shell.set_physics_process(false)

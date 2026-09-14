@@ -1,4 +1,4 @@
-"""Build the shared Heroes / Bosses entry points from saved manifests and previews."""
+"""Build shared Heroes / Bosses / NPCs entry points from saved previews."""
 import base64
 import html
 import json
@@ -13,9 +13,26 @@ def uri(path):
     return 'data:image/png;base64,'+base64.b64encode(path.read_bytes()).decode()
 
 
+def navigation(kind):
+    prefix = '' if kind == 'heroes' else '../'
+    links = [('heroes', 'Heroes', 'index.html'), ('bosses', 'Bosses', 'bosses/index.html'), ('npcs', 'NPCs', 'npcs/index.html')]
+    return '<nav aria-label="Character type">' + ''.join(
+        f'<a href="{prefix}{path}"' + (' aria-current="page"' if name == kind else '') + f'>{title}</a>'
+        for name, title, path in links) + '</nav>'
+
+
+def npc_page():
+    cards = []
+    for manifest in sorted((ASSETS/'npcs').glob('*/npc.json')):
+        npc = json.loads(manifest.read_text())
+        if not (ASSETS/'previews/npcs'/npc['id']/'index.html').exists():
+            continue
+        cards.append(f'<a class="card" href="{npc["id"]}/index.html"><img class="boss-portrait" src="{npc["id"]}/portrait.png" alt="{html.escape(npc["name"])} portrait"><strong>{html.escape(npc["name"])}</strong><span>{html.escape(npc["description"])}</span></a>')
+    return f'<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arenic · NPCs</title><style>{STYLE}</style>' + navigation('npcs') + '<div class="eyebrow">Arenic / Character studies</div><h1>The people between the battles.</h1><p>Portrait references, native overhead studies, and opening dialogue.<br>Future identity notes are kept behind a labeled design-spoiler disclosure.</p><main>' + ''.join(cards) + '</main></html>'
+
+
 def page(kind):
     is_boss = kind == 'bosses'
-    prefix = '../' if is_boss else ''
     cards = []
     for identifier in ROSTER:
         manifest = ASSETS/('bosses' if is_boss else 'characters')/identifier/('boss.json' if is_boss else 'hero.json')
@@ -33,13 +50,13 @@ def page(kind):
         cards.append(f'<a class="card" href="{identifier}/attacks.html">{visual}<strong>{html.escape(spec["name"])}</strong><span>{html.escape(description)}</span></a>')
     title = 'Eight bosses. One arena.' if is_boss else 'Eight heroes. One grid.'
     sub = 'Portraits and overhead idle studies · 114 × 114 pixels · six-tile footprint<br>Choose a boss to inspect its forms, four directions, and size beside a hero.' if is_boss else '32 base abilities · 19 × 19 overhead characters · 720p arena previews<br>Choose a hero to inspect all four animations and their sound cues.'
-    current_hero = '' if is_boss else ' aria-current="page"'
-    current_boss = ' aria-current="page"' if is_boss else ''
-    return f'<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arenic · {kind.title()}</title><style>{STYLE}</style><nav aria-label="Character type"><a href="{prefix}index.html"{current_hero}>Heroes</a><a href="{prefix}bosses/index.html"{current_boss}>Bosses</a></nav><div class="eyebrow">Arenic / Character studies</div><h1>{title}</h1><p>{sub}</p><main>'+''.join(cards)+'</main></html>'
+    return f'<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arenic · {kind.title()}</title><style>{STYLE}</style>' + navigation(kind) + f'<div class="eyebrow">Arenic / Character studies</div><h1>{title}</h1><p>{sub}</p><main>'+''.join(cards)+'</main></html>'
 
 
 if __name__ == '__main__':
     (ASSETS/'previews/index.html').write_text(page('heroes'))
     (ASSETS/'previews/bosses').mkdir(exist_ok=True)
     (ASSETS/'previews/bosses/index.html').write_text(page('bosses'))
-    print('Built Heroes / Bosses gallery entry points.')
+    (ASSETS/'previews/npcs').mkdir(exist_ok=True)
+    (ASSETS/'previews/npcs/index.html').write_text(npc_page())
+    print('Built Heroes / Bosses / NPCs gallery entry points.')

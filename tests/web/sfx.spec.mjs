@@ -46,11 +46,16 @@ test('sfx: movement, blocked collision and projectile impact produce bounded bro
     await page.keyboard.press('ArrowUp');
     await heard(log, after, 'blocked');
     expect(log.latest().hero.cell).toEqual([31, 21]);
+    expect(log.latest().introduction.near_npc).toBe(true);
+    expect(log.latest().introduction.dialogue_visible).toBe(false);
     after = log.events.at(-1).sequence;
-    await page.keyboard.press('Space');
+    // The target edge is also within Keeper range: use the explicit ability
+    // slot because Space correctly opens the nearby NPC's reminder here.
+    await page.keyboard.press('1');
     await heard(log, after, 'cast');
     await heard(log, after, 'impact');
     await until(log, s => s.combat.totals.guild_house === 1 && s.sound.active === 0, 'Hit and its sound finish');
+    expect(log.latest().introduction.dialogue_visible).toBe(false);
     expect(log.latest().sound.peak).toBeLessThanOrEqual(12);
     expect(log.errors).toEqual([]);
   } finally { await attachResults(testInfo, log); }

@@ -62,10 +62,27 @@ func _check_arena(arena: ArenicArenaView, environment: ArenicArenaEnvironment) -
 		var expected: Color = definition.visual_theme.linear_color("base_100").lerp(definition.visual_theme.linear_color("base_200"), 0.34)
 		if not _check(actual[index].is_equal_approx(Vector3(expected.r, expected.g, expected.b)), "Palette lookup follows grid slot even when the catalogue is reversed."):
 			return false
-	var props: Array[Node] = environment.get_node("Decorations").get_children()
+	var is_clearing: bool = arena.definition.arena_id == "guild_house"
+	var props: Array[Node] = []
+	var clearing: ArenicGuildClearingView
+	if is_clearing:
+		clearing = environment.get_node("GuildClearing") as ArenicGuildClearingView
+		if not _check(environment.get_node_or_null("Decorations") == null and clearing != null and clearing.trees.size() == 53, "Regional Guild House presentation uses its complete clearing tree layout instead of indoor decorations."):
+			return false
+		for tree: Sprite3D in clearing.trees:
+			props.append(tree)
+	else:
+		props = environment.get_node("Decorations").get_children()
 	var positions := PackedVector3Array()
 	for node: Node in props:
-		positions.append((node as Sprite3D).position)
+		var prop := node as Sprite3D
+		positions.append(prop.position)
+		if is_clearing:
+			var local_bounds := Rect2(Vector2(-8.25, -3.875), Vector2(16.5, 7.75))
+			var canvas_bounds := Rect2(Vector2(prop.position.x, prop.position.z) - Vector2.ONE * prop.pixel_size * 38.0, Vector2.ONE * prop.pixel_size * 76.0)
+			var pixel_point := Vector2(prop.position.x, -prop.position.z) / prop.pixel_size + Vector2(32.5, 15) * 19.0
+			if not _check(local_bounds.encloses(canvas_bounds) and pixel_point.distance_to(pixel_point.round()) < 0.001 and prop.texture_filter == BaseMaterial3D.TEXTURE_FILTER_NEAREST, "Every clearing tree remains within arena bounds at its native sampling position."):
+				return false
 	var boss := arena.get_node_or_null("Boss") as AnimatedSprite3D
 	var boss_position: Vector3 = boss.position if boss != null else Vector3.ZERO
 	var boss_color: Color = boss.modulate if boss != null else Color.WHITE
@@ -79,8 +96,10 @@ func _check_arena(arena: ArenicArenaView, environment: ArenicArenaEnvironment) -
 		if not _check(material.get_shader_parameter("overview_mix") == 1.0, "Overview mix clamps at one across all layers."):
 			return false
 	for node: Node in props:
-		if not _check(is_equal_approx((node as Sprite3D).modulate.a, 0.57), "Overview subdues the repeated perimeter props."):
+		if not _check(is_equal_approx((node as Sprite3D).modulate.a, 0.72 if is_clearing else 0.57), "Overview subdues the current arena's authored scenery."):
 			return false
+	if is_clearing and not _check(is_zero_approx(clearing.paths[0].modulate.a), "Regional overview removes small clearing path stamps."):
+		return false
 	if boss != null and not _check(boss.position == boss_position and boss.modulate == boss_color, "Regional blending leaves actor placement and color unchanged."):
 		return false
 	environment.set_overview_mix(-1.0)
@@ -91,6 +110,8 @@ func _check_arena(arena: ArenicArenaView, environment: ArenicArenaEnvironment) -
 		var prop := props[index] as Sprite3D
 		if not _check(prop.position == positions[index] and prop.modulate.a == 1.0, "Focus restores every original prop position and opacity exactly."):
 			return false
+	if is_clearing and not _check(is_equal_approx(clearing.paths[0].modulate.a, 0.72), "Returning to focus restores the authored clearing paths."):
+		return false
 	environment.set_overview_mix(NAN)
 	return _check(surface.get_shader_parameter("overview_mix") == 0.0, "A nonfinite blend cannot reach the shader.")
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dcg8c0soqx1cu" path="res://scripts/world/arena_definition.gd" id="1_574o0"]
 [ext_resource type="Resource" path="res://data/music/guild_house_v3.tres" id="1_p1ffg"]
 [ext_resource type="Resource" path="res://data/themes/guild_house.tres" id="2_2gelp"]
-[ext_resource type="SpriteFrames" path="res://assets/environment/training_target_frames.tres" id="3_training"]
+[ext_resource type="SpriteFrames" path="res://assets/environment/guild_clearing/tavern/tavern_frames.tres" id="3_training"]
 
 [resource]
 script = ExtResource("1_574o0")
@@ -15,4 +15,5 @@ hotkey = "G"
 grid_slot = Vector2i(1, 0)
 visual_theme = ExtResource("2_2gelp")
 music = ExtResource("1_p1ffg")
+boss_visual_offset = Vector2(0, -2.5)
 training_target_frames = ExtResource("3_training")

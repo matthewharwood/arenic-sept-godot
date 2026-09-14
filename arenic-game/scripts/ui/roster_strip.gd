@@ -5,11 +5,13 @@ signal character_requested(identity: int)
 const CAPACITY: int = 40
 const CELL: float = 16.0
 const FONT: Font = preload("res://assets/fonts/Barlow-Regular.ttf")
+const FONT_SIZE: int = 10
 var entries: Array[Dictionary] = []
 var selected_identity: int = -1
 var content: Color
 var selected_color: Color
 var _visible_indices: Array[int] = []
+var _glyph_origins: Dictionary[int, Vector2] = {}
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -39,7 +41,7 @@ func _draw() -> void:
 	for slot: int in CAPACITY:
 		var center := Vector2(float(slot % 10) * CELL + 7.0, float(slot / 10) * CELL + 7.0)
 		if slot >= _visible_indices.size():
-			draw_string(FONT, center + Vector2(-5.0, 4.0), "X", HORIZONTAL_ALIGNMENT_CENTER, 10.0, 10, Color(content, 0.38))
+			_draw_initial(center, "X", Color(content, 0.38))
 			continue
 		var entry: Dictionary = entries[_visible_indices[slot]]
 		var active: bool = int(entry.get("identity", -1)) == selected_identity
@@ -60,7 +62,21 @@ func _draw() -> void:
 			draw_circle(center + Vector2(-1.5, -1), 0.9, cutout)
 			draw_circle(center + Vector2(1.5, -1), 0.9, cutout)
 		else:
-			draw_string(FONT, center + Vector2(-5, 4), str(entry.get("initial", "?")), HORIZONTAL_ALIGNMENT_CENTER, 10, 10, ink)
+			_draw_initial(center, str(entry.get("initial", "?")), ink)
+
+func _draw_initial(center: Vector2, initial: String, ink: Color) -> void:
+	var character: int = initial.unicode_at(0) if not initial.is_empty() else 63
+	if not _glyph_origins.has(character):
+		# Center the visible glyph, rather than its advance and line spacing.
+		var text_server: TextServer = TextServerManager.get_primary_interface()
+		var font_rid: RID = FONT.get_rids()[0]
+		var glyph: int = text_server.font_get_glyph_index(font_rid, FONT_SIZE, character, 0)
+		var cache_size := Vector2i(FONT_SIZE, 0)
+		text_server.font_render_glyph(font_rid, cache_size, glyph)
+		var offset: Vector2 = text_server.font_get_glyph_offset(font_rid, cache_size, glyph)
+		var glyph_size: Vector2 = text_server.font_get_glyph_size(font_rid, cache_size, glyph)
+		_glyph_origins[character] = -offset - glyph_size * 0.5
+	FONT.draw_char(get_canvas_item(), center + _glyph_origins[character], character, FONT_SIZE, ink)
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

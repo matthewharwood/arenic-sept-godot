@@ -56,6 +56,21 @@ def export(repo, godot, output, probe=None):
             subprocess.run(['node', str(probe), '--source', str(project), '--destination', str(probe_project)], check=True)
             project = probe_project
         run([godot, '--headless', '--path', str(project), '--editor', '--import', '--quit'], reports / 'import.log')
+        if probe:
+            fixtures = output / 'fixtures'
+            fixtures.mkdir()
+            (fixtures / 'index.html').write_text('<!doctype html><title>Private browser fixture setup</title>')
+            # The generator constructs models itself. Disable every autoload so
+            # it cannot hydrate/write the developer's native save directory.
+            config = project / 'project.godot'
+            probe_config = config.read_text()
+            config.write_text(re.sub(r'(?ms)^\[autoload\].*?(?=^\[)', '[autoload]\n\n', probe_config))
+            try:
+                run([godot, '--headless', '--path', str(project), '--script',
+                     'res://__ci__/prepare_fixtures.gd', '--', str(fixtures)], reports / 'fixtures.log')
+            finally:
+                config.write_text(probe_config)
+            (project / '__ci__' / 'prepare_fixtures.gd').unlink()
         run([godot, '--headless', '--path', str(project), '--export-release', 'Web', str(output / 'index.html')], reports / 'export.log')
         if not (output / 'index.wasm').is_file() or not (output / 'index.pck').is_file():
             raise RuntimeError('Godot did not produce the game payload.')

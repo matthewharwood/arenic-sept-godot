@@ -1,7 +1,7 @@
 class_name ArenicArenaMusicDirector
 extends Node3D
-## Lives with GameShell, outside the replaceable stage. Clocks are authoritative;
-## the fixed voice pool only decodes music that can currently be heard.
+## Lives with GameShell, outside the replaceable stage. Encounter clocks own
+## gameplay phase; the fixed voice pool decodes only music that can be heard.
 const VOICE_LIMIT: int = 2
 const DEBOUNCE_SECONDS: float = 0.10
 const FADE_SECONDS: float = 0.65
@@ -18,6 +18,13 @@ class Voice:
 	var arena_id: StringName = &""
 	var weight: float = 0.0
 	var gain_db: float = -12.0
+
+## The encounter owns gameplay phase; an unbound director remains usable for
+## isolated decoder/asset checks. Voices are always presentation, never authority.
+var cycle_source: ArenicEncounterState
+var suspension_lookup: Callable
+var _cycle_ticks: Dictionary[StringName, int] = {}
+var _cycle_seeks: Dictionary[StringName, int] = {}
 
 var clocks: Dictionary[StringName, ArenicArenaMusicClock] = {}
 var voices_started: int = 0
@@ -123,8 +130,11 @@ func set_clock_running(arena_id: StringName, running: bool) -> void:
 func _process(delta: float) -> void:
 	if _world == null or not is_instance_valid(_rig):
 		return
-	for id in clocks:
-		clocks[id].advance(delta)
+	if cycle_source != null:
+		synchronize_cycles()
+	else:
+		for id in clocks:
+			clocks[id].advance(delta)
 	_orbit_time = fposmod(_orbit_time + delta, ORBIT_SECONDS)
 	_sync_listener()
 	_pending_seconds = maxf(0.0, _pending_seconds - delta)
@@ -171,7 +181,7 @@ func _sync_playheads() -> void:
 		var clock: ArenicArenaMusicClock = clocks[voice.arena_id]
 		if not clock.running:
 			continue
-		var actual: float = fposmod(voice.player.get_playback_position() + AudioServer.get_time_since_last_mix(), clock.duration_seconds)
+		var actual: float = fposmod(voice.player.get_playback_position() + AudioServer.get_time_since_last_mix() * voice.player.pitch_scale, clock.duration_seconds)
 		var difference: float = absf(actual - clock.get_position())
 		difference = minf(difference, clock.duration_seconds - difference)
 		if difference > SYNC_TOLERANCE:
@@ -198,6 +208,7 @@ func _restart_voice(voice: Voice) -> void:
 	# pending playback can be ignored. Stop + play sets the latest phase even
 	# in that same frame. Paused clocks retain no decoder until resumed.
 	voice.player.stop()
+	voice.player.pitch_scale = clocks[voice.arena_id].duration_seconds / (float(cycle_source.cycle_ticks(String(voice.arena_id))) / ArenicCycleClock.TICKS_PER_SECOND) if cycle_source != null else 1.0
 	var clock: ArenicArenaMusicClock = clocks[voice.arena_id]
 	if clock.running:
 		voice.player.play(clock.get_position())
@@ -236,13 +247,43 @@ func _apply_mix() -> void:
 ## Small readback for diagnostics, tests, and future audio controls.
 func snapshot() -> Dictionary:
 	var phases: Dictionary = {}
+	var durations: Dictionary = {}
+	var running: Dictionary = {}
 	for id in clocks:
 		phases[id] = clocks[id].get_position()
+		durations[id] = clocks[id].duration_seconds
+		running[id] = clocks[id].running
 	var voices: Array[Dictionary] = []
 	for voice in _voices:
 		voices.append({"arena_id": voice.arena_id, "weight": voice.weight,
 			"playing": voice.player.playing, "position": voice.player.get_playback_position(),
 			"source": voice.player.global_position})
 	return {"desired": _desired, "pending_seconds": _pending_seconds,
-		"clocks": phases, "voices": voices, "hum_weight": _hum_weight,
+		"clocks": phases, "durations": durations, "running": running, "voices": voices, "hum_weight": _hum_weight,
 		"voices_started": voices_started, "sync_corrections": sync_corrections}
+
+
+## Map each complete track to one complete encounter cycle, including files
+## with encoder padding or slightly shorter durations. Never seek every frame.
+func synchronize_cycles() -> void:
+	if cycle_source == null:
+		return
+	for id: StringName in clocks:
+		var arena_id := String(id)
+		var tick: int = cycle_source.cycle_position(arena_id)
+		var clock: ArenicArenaMusicClock = clocks[id]
+		var phase: float = float(tick) / cycle_source.cycle_ticks(arena_id) * clock.duration_seconds
+		var running: bool = not cycle_source.is_paused(arena_id) and not (suspension_lookup.is_valid() and suspension_lookup.call())
+		var seek_revision: int = cycle_source.cycle_seek_revision(arena_id)
+		# A slow frame can contain many legitimate fixed ticks. Its elapsed phase
+		# is not a seek: restarting here repeatedly can starve queued Web audio.
+		var discontinuity: bool = tick < _cycle_ticks.get(id, tick) or seek_revision != _cycle_seeks.get(id, seek_revision)
+		var changed: bool = running != clock.running
+		clock.seek(phase)
+		clock.running = running
+		_cycle_ticks[id] = tick
+		_cycle_seeks[id] = seek_revision
+		if discontinuity or changed:
+			for voice: Voice in _voices:
+				if voice.arena_id == id:
+					_restart_voice(voice)

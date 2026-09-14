@@ -48,7 +48,7 @@ def build(repo, output, game):
         (stage / 'docs/attacks.html').write_text(attacks)
         for page in (stage / 'docs').rglob('*.html'):
             prefix = os.path.relpath(stage, page.parent).replace(os.sep, '/') + '/'
-            nav = f'<nav class="site-nav" aria-label="Arenic site"><a href="{prefix}">Arenic</a><a href="{prefix}play/">Play ↗</a><a href="{prefix}docs/">Heroes</a><a href="{prefix}docs/bosses/">Bosses</a><a href="{prefix}docs/attacks.html">Attacks</a></nav>'
+            nav = f'<nav class="site-nav" aria-label="Arenic site"><a href="{prefix}">Arenic</a><a href="{prefix}play/">Play ↗</a><a href="{prefix}docs/">Heroes</a><a href="{prefix}docs/bosses/">Bosses</a><a href="{prefix}docs/npcs/">NPCs</a><a href="{prefix}docs/attacks.html">Attacks</a></nav>'
             style = '<style>.site-nav{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;border-bottom:1px solid oklch(.45 .03 150);padding:0 0 20px;margin:0 0 24px}.site-nav a{font:16px/1.5 system-ui;text-decoration:none;border:0!important;padding:0!important;background:transparent!important}.site-nav a:first-child{font-weight:800;margin-right:auto}.site-nav a:hover{text-decoration:underline}a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid oklch(.8 .12 150);outline-offset:4px}*{border-radius:0!important}</style>'
             content = page.read_text()
             body = re.search(r'<body\b[^>]*>', content)
@@ -58,7 +58,7 @@ def build(repo, output, game):
                 content = content.replace('<nav ', style + nav + '<nav ', 1)
             page.write_text(content)
         revision = subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True).strip()
-        (stage / 'build-info.json').write_text(json.dumps({'commit': revision, 'godot': '4.7.2', 'heroes': 8, 'bosses': 8, 'abilities': 32, 'music_version': 3}, indent=2)+'\n')
+        (stage / 'build-info.json').write_text(json.dumps({'commit': revision, 'godot': '4.7.2', 'heroes': 8, 'bosses': 8, 'npcs': report['npcs'], 'abilities': 32, 'music_version': 3}, indent=2)+'\n')
         (stage / '.nojekyll').touch()
         if output.exists():
             shutil.rmtree(output)

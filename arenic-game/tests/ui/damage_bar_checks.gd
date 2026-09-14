@@ -32,8 +32,13 @@ func _run() -> void:
 		return
 	var bar := _hud.get_node("TopStrip/DamageBar") as ArenicArenaDamageBar
 	var bar_material := bar.material as ShaderMaterial
-	var toggle := _hud.get_node("BottomStrip/OverviewToggle") as Button
-	if not _check(_hud.get_world_rect() == Rect2(13.0, 35.0, 1254.0, 589.0) and toggle.get_rect() == Rect2(1012.0, 12.0, 151.0, 30.0), "Damage presentation preserves the native world band and the compact Overview hitbox."):
+	var guide := _hud.get_node("ControlsLayer/ControlsGuide") as Control
+	var toggle := guide.get_node("OverviewToggle") as Button
+	var title := _hud.get_node("TopStrip/ArenaTitle") as Label
+	var effects := _hud.get_node("TopStrip/BossEffects") as RichTextLabel
+	if not _check(_hud.get_world_rect() == Rect2(13.0, 35.0, 1254.0, 589.0) and Rect2(Vector2.ZERO, guide.size).encloses(toggle.get_rect()) and not guide.visible, "Damage presentation preserves the native world band and keeps Overview in the closed Controls panel."):
+		return
+	if not _check(effects.text.is_empty() and not effects.visible, "A boss without supplied effects has no placeholder status text."):
 		return
 	if not _check(bar.get_rect() == Rect2(0.0, 0.0, 1280.0, 9.0) and bar.mouse_filter == Control.MOUSE_FILTER_IGNORE, "The thin strip reaches both viewport edges and cannot intercept input."):
 		return
@@ -45,11 +50,22 @@ func _run() -> void:
 		arena.display_name = ARENAS[index]
 		arena.visual_theme = load("res://data/themes/%s.tres" % ARENAS[index]) as ArenicArenaTheme
 		_hud.set_context(arena, "Dean", "Hunter", index % 2 == 0)
+		if not _check(title.text == arena.display_name, "The top title is exactly the selected arena's authored name."):
+			return
 		if not _check(bar.visible and bar.material == bar_material and bar_material.get_shader_parameter("pattern_id") == index, "Each selected arena changes the same strip to its unique pattern."):
 			return
 		var primary: Color = bar_material.get_shader_parameter("primary_color")
 		if not _check(primary.is_equal_approx(arena.visual_theme.color("primary")), "Damage color comes from the selected arena's shared theme resource."):
 			return
+	_hud.set_boss_effects([
+		{"name": "Poison", "beneficial": false, "remaining_seconds": 10.0, "stacks": 2},
+		{"name": "Fortify", "beneficial": true, "remaining_seconds": 4.5, "stacks": 1},
+	])
+	if not _check(effects.visible and effects.get_parsed_text().contains("Poison") and effects.get_parsed_text().contains("Fortify") and effects.mouse_filter == Control.MOUSE_FILTER_PASS, "The top effect readout renders supplied boss observations and permits tooltip hover without blocking parent input."):
+		return
+	_hud.set_boss_effects([])
+	if not _check(not effects.visible and effects.text.is_empty(), "Clearing boss effects removes their text immediately."):
+		return
 	for total: int in [0, 19, 20, 21, 40, 47]:
 		_hud.set_damage_progress(total, 20)
 		var expected_phase: int = floori(float(total) / 20.0)
@@ -62,17 +78,19 @@ func _run() -> void:
 	if not _check(bar.total_damage == 0 and bar.phase_damage == 1 and bar.completed_phases == 0, "Invalid display inputs remain bounded."):
 		return
 	var ability := _hud.get_node("BottomStrip/AbilityAction") as Button
-	var status := _hud.get_node("BottomStrip/AbilityStatus") as Label
+	var status := ability.get_node("Feedback") as Label
 	_hud.ability_requested.connect(func(): _requests += 1)
 	_hud.ability_released.connect(func(): _releases += 1)
 	_hud.set_ability_context("Sacrifice", "Ready", 0.0, 0.0, true)
+	if not _check(status.text == "Ready" and status.mouse_filter == Control.MOUSE_FILTER_IGNORE and Rect2(Vector2.ZERO, ability.size).encloses(status.get_rect()), "Ready feedback stays inside its action button without intercepting input."):
+		return
 	if not _check(not ability.disabled and ability.focus_mode == Control.FOCUS_NONE and ability.mouse_filter == Control.MOUSE_FILTER_STOP and toggle.focus_mode == Control.FOCUS_NONE, "The ability accepts pointer input without stealing map keyboard focus."):
 		return
 	_pointer(ability, true)
 	if not _check(_requests == 1, "A real pointer press requests the ability immediately, before release."):
 		return
 	_hud.set_ability_context("Sacrifice", "", 0.0, INF, false)
-	if not _check(not ability.disabled and ability.is_pressed() and status.text == "Channeling · release to stop", "A held channel stays enabled through context updates and never displays infinity."):
+	if not _check(not ability.disabled and ability.is_pressed() and status.text == "Channeling", "A held channel stays enabled through context updates and never displays infinity."):
 		return
 	_pointer(ability, false)
 	if not _check(_releases == 1, "Pointer release ends a held ability."):
@@ -80,11 +98,17 @@ func _run() -> void:
 	_hud.set_ability_context("Arrow", "", 1.25, 0.0, false)
 	_pointer(ability, true)
 	_pointer(ability, false)
-	if not _check(ability.disabled and _requests == 1 and status.text == "%.1fs cooldown" % 1.25, "Cooldown disables ordinary pointer casts and shows finite remaining time."):
+	if not _check(ability.disabled and _requests == 1 and status.text == "CD %.1fs" % 1.25, "Cooldown disables ordinary pointer casts and shows finite remaining time inside the button."):
+		return
+	_hud.set_ability_context("Fortune", "A live aura with its full explanation in the tooltip.", 10.0, 4.5, false)
+	if not _check(ability.text == "Fortune" and status.text == "Active 4.5s" and ability.tooltip_text.contains("full explanation"), "An active effect takes feedback priority over cooldown while preserving its title and detailed tooltip."):
+		return
+	_hud.set_ability_context("Arrow", "Move within the authored attack range before casting.", 0.0, 0.0, false, "No target")
+	if not _check(ability.disabled and status.text == "No target" and ability.tooltip_text.contains("authored attack range"), "Explicit compact feedback is independent of its longer explanatory tooltip."):
 		return
 	for state_name: String in ["normal", "hover", "pressed", "disabled"]:
 		var style := ability.get_theme_stylebox(state_name) as StyleBoxFlat
-		if not _check(style != null and style.corner_radius_top_left == 0 and style.corner_radius_bottom_right == 0 and style.shadow_size == 0, "Every ability surface keeps square corners without a shadow."):
+		if not _check(style != null and style.corner_radius_top_left == 12 and style.corner_radius_top_right == 12 and style.corner_radius_bottom_left == 12 and style.corner_radius_bottom_right == 12 and style.shadow_size == 0, "Every ability surface keeps 12-pixel corners without a shadow."):
 			return
 	_finish(0, "Damage HUD checks passed: %d assertions; cumulative phases, nine palettes, geometry and pointer hold/release." % _checks)
 

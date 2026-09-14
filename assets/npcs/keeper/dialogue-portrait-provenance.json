@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "requested_model": "latest available Image Gen",
+  "verified_model": null,
+  "note": "The built-in tool does not expose a model selector or verified model identity. Both outputs were opaque RGB; native Aseprite supplies the final cutout alpha.",
+  "prompt": "dialogue-portrait-prompt.txt",
+  "identity_reference": "portrait.png",
+  "composition_reference": "User-supplied Hades dialogue screenshot",
+  "generated_source": "dialogue-portrait-generated.png",
+  "native_master": "dialogue-portrait.aseprite",
+  "selected": "dialogue-portrait.png",
+  "runtime": "arenic-game/assets/portraits/npcs/keeper-dialogue.png",
+  "processing": "Background removal in native Aseprite; preserve the generated character illustration."
+}

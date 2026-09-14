@@ -28,6 +28,7 @@ var _swarm: ArenicArenaSwarm
 var _tiles: ArenicArenaTiles
 var _overview_mix: float = 0.0
 var _regions_ready: bool = false
+var _clearing: ArenicGuildClearingView
 var _props: Array[Sprite3D] = []
 var _prop_positions: PackedVector3Array = []
 
@@ -41,6 +42,8 @@ func configure(definition: ArenicArenaDefinition, tiles: ArenicArenaTiles) -> vo
 	# Explicit transparent ordering also holds while cinematic cameras tilt.
 	_surface.render_priority = -10
 	_surface.set_shader_parameter("identity", _theme.atmosphere_id)
+	if definition.arena_id == "guild_house":
+		_surface.set_shader_parameter("guild_grass", load("res://assets/environment/guild_clearing/ground/grass_tiles.png"))
 	_tiles = tiles
 	tiles.material_override = _surface
 	tiles.set_overview_mix(_overview_mix)
@@ -50,7 +53,12 @@ func configure(definition: ArenicArenaDefinition, tiles: ArenicArenaTiles) -> vo
 	_swarm.name = "Swarm"
 	add_child(_swarm)
 	_swarm.configure(_theme)
-	_build_decorations()
+	if definition.arena_id == "guild_house":
+		_clearing = ArenicGuildClearingView.new()
+		_clearing.name = "GuildClearing"
+		add_child(_clearing)
+	else:
+		_build_decorations()
 
 
 ## Called once by the stage after all arenas are mounted. Slot order, not list
@@ -96,6 +104,8 @@ func set_overview_mix(value: float) -> void:
 	for material: ShaderMaterial in _materials:
 		material.set_shader_parameter("overview_mix", _overview_mix)
 	var amount: float = _overview_mix if _regions_ready else 0.0
+	if _clearing != null:
+		_clearing.set_overview_mix(amount)
 	for index in _props.size():
 		var prop: Sprite3D = _props[index]
 		var phase: float = float(index) * 2.39996 + float(_theme.atmosphere_id) * 1.618

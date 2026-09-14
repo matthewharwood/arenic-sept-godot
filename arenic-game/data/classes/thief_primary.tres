@@ -8,12 +8,12 @@
 script = ExtResource("1_rf2t0")
 audio_profile = ExtResource("2_audio")
 title = "Backstab"
-description = "Strike an adjacent enemy from strictly behind its facing for 1 damage. 0.2-second windup; 1.5-second cooldown."
+description = "Strike an adjacent enemy from strictly behind its facing for 1 damage. 0.2-second windup; 0.5-second cooldown."
 ability_id = "backstab"
 effect_kind = "target"
 range_tiles = 1
 requires_adjacent = true
 requires_backstab = true
-cooldown_seconds = 1.5
+cooldown_seconds = 0.5
 cast_seconds = 0.2
 damage = 1

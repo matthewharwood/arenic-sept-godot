@@ -14,13 +14,13 @@ const SEED_SALT: int = 0x5AFE_C0DE
 
 var curve: ArenicRecruitmentCurve
 var rolls_claimed: int = 0
-var max_rolls: int = 320
+var max_rolls: int = 319
 var _thresholds: PackedInt64Array = PackedInt64Array()
 
 
 func configure(recruitment_curve: ArenicRecruitmentCurve, guild_cap: int) -> void:
 	curve = recruitment_curve
-	max_rolls = maxi(0, guild_cap)
+	max_rolls = maxi(0, guild_cap - 1) # The founding hero already owns one slot.
 	rolls_claimed = 0
 	_thresholds = PackedInt64Array()
 	if curve == null:
@@ -31,8 +31,6 @@ func configure(recruitment_curve: ArenicRecruitmentCurve, guild_cap: int) -> voi
 	for index: int in max_rolls:
 		total += curve.cost_of(index)
 		_thresholds.append(total)
-		if total >= ArenicRecruitmentCurve.MAX_COST:
-			break
 
 
 ## Rolls the run has earned outright, claimed or not.

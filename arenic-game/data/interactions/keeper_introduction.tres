@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArenicInteractionMarkerDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/interaction/interaction_marker_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+marker_id = "first_thread"
+target_id = "keeper"
+display_name = "The Keeper"
+kind = 1
+head_offset = 24.0

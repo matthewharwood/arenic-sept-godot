@@ -1,12 +1,12 @@
 # Class selection
 
-Title **Start** clears the previous in-memory choice and opens `res://scenes/character_creation/class_selection.tscn`. **Back** or Escape returns to the title. There is no gameplay destination or save system yet.
+Title **Start** creates a pending save slot and opens `res://scenes/character_creation/class_selection.tscn`. **Back** or Escape returns to the title through `SaveGames`.
 
 ## Choose a class
 
-The eight cards appear in catalog order: Hunter, Bard, Merchant, Warrior, Cardinal, Alchemist, Forager, and Thief. Clicking a card or moving keyboard focus to it updates the blue selection, portrait, character name, and skills. Tab and arrow keys move focus; Enter activates the focused button.
+The eight cards appear in catalog order: Hunter, Bard, Merchant, Warrior, Cardinal, Alchemist, Forager, and Thief. Clicking a card or moving keyboard focus to it updates the blue selection, portrait, character name, and skills. Tab and arrow keys move focus. **Space**, **Enter / Return**, or the numeric keypad Enter key starts with the selected hero, including while its card has focus. Back keeps its own keyboard activation; held-key repeats do not confirm again.
 
-The class screen's **Start** stores the definition in `RunSetup.selected_class`, emits `RunSetup.class_chosen` and the screen's `class_confirmed` signal, then displays **Selected** and a status message. This is an in-memory class choice, not a gameplay launch or saved game. The root's optional **Next Scene** (`next_scene`) export is the future gameplay destination.
+The class screen's **Start** stores the definition through `RunSetup.choose_class`, emits the screen's `class_confirmed` signal, and opens its configured **Next Scene** (`next_scene`), the game shell. New heroes enter the [Guild House introduction](introduction.md). The button shows outlined Spacebar and Return keycaps beside Start; its native minimum size keeps the text and icons inside the button. The reusable SVG is `arenic-game/assets/icons/controls/start-shortcuts.svg`.
 
 ## Layout and portraits
 
@@ -34,7 +34,7 @@ The current skill summaries are temporary copy based on the user's reference scr
 
 Verified in Godot 4.7.2 on the current Mac: all eight class selections, content and portrait changes, click-through on overlapping artwork, arrow-key navigation, Enter confirmation, Escape back to the title, and clearing the previous choice when starting again. All 22 interaction and state checks passed. Eight GDScript files had no diagnostics, and the final runtime log contained no errors or warnings.
 
-Rendered layouts were reviewed at 1280×768, 1600×900, and 1024×768. The reference-size grid margins, gutters, and first-card bounds were also checked numerically. Gameplay and save transitions remain unconnected and were not tested.
+Rendered layouts were reviewed at 1280×768, 1600×900, and 1024×768. The reference-size grid margins, gutters, and first-card bounds were also checked numerically. At that initial verification, gameplay and save transitions had not yet been connected.
 
 After activating v2, all eight textures were reimported, all eight crop regions were read back, and each class was selected and visually reviewed in the 1152×819 embedded Godot preview. No runtime errors or warnings were reported. The image below shows the active v2 Hunter.
 

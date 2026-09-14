@@ -89,9 +89,9 @@ func set_snapshot(identity: int, hero_name: String, class_label: String, level: 
 		if stats_changed:
 			_animate_bars()
 		if xp_delta > 0:
-			_add_feedback("+%d XP" % xp_delta, "xp", 31.0, -1.0)
+			_add_feedback("+%d XP" % xp_delta, "xp", _xp_label.position.y, -1.0)
 		if hp_delta != 0:
-			_add_feedback("%+d HP" % hp_delta, "positive" if hp_delta > 0 else "negative", 47.0, 1.0)
+			_add_feedback("%+d HP" % hp_delta, "positive" if hp_delta > 0 else "negative", _hp_label.position.y, 1.0)
 	else:
 		_clear_feedback()
 		_snap_bars()
@@ -115,6 +115,7 @@ func clear_selection() -> void:
 
 func _build() -> void:
 	_class_name = _label("ClassName", BODY_FONT, 9)
+	_class_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_name_label = _label("HeroName", DISPLAY_FONT, 18)
 	_xp_label = _label("ExperienceLabel", BODY_FONT, 10)
 	_hp_label = _label("HealthLabel", BODY_FONT, 10)
@@ -132,10 +133,13 @@ func _build() -> void:
 
 func _refresh_labels() -> void:
 	_class_name.text = _class_label.to_upper() if _has_snapshot else "HERO"
+	_class_name.tooltip_text = _class_label
 	_name_label.text = _hero_name if _has_snapshot else "No hero selected"
 	_name_label.tooltip_text = _hero_name
-	_xp_label.text = "LVL %d   ·   XP %d / %d" % [_level, _xp, _xp_max] if _has_snapshot else "Select a hero to view vitals"
-	_hp_label.text = "HP   %d / %d" % [_hp, _hp_max] if _has_snapshot else ""
+	_xp_label.text = "LVL %d · XP %d/%d" % [_level, _xp, _xp_max] if _has_snapshot else "Select a hero to view vitals"
+	_hp_label.text = "HP %d/%d" % [_hp, _hp_max] if _has_snapshot else ""
+	_xp_label.tooltip_text = _xp_label.text
+	_hp_label.tooltip_text = _hp_label.text
 	for item: Control in [_xp_track, _hp_track, _xp_fill, _hp_fill]:
 		item.visible = _has_snapshot
 	_refresh_effects()
@@ -286,22 +290,32 @@ func _process(delta: float) -> void:
 func _layout() -> void:
 	if not is_node_ready():
 		return
-	_place(_class_name, 0.0, 0.0, size.x, 10.0)
-	_place(_name_label, 0.0, 8.0, size.x, 22.0)
-	_place(_xp_label, 0.0, 30.0, size.x, 10.0)
-	_place(_hp_label, 0.0, 43.0, size.x, 10.0)
-	# Barlow's 10px line box is exactly 12px; a shorter row clips the descenders.
-	_place(_debuffs, 0.0, 56.0, size.x, 12.0)
-	_place(_buffs, 0.0, 68.0, size.x, 12.0)
+	# One identity row leaves room for real line heights, bars, and both effect rows.
+	var name_height: float = _name_label.get_combined_minimum_size().y
+	var class_height: float = _class_name.get_combined_minimum_size().y
+	var class_width: float = minf(size.x * 0.4, ceilf(BODY_FONT.get_string_size(_class_name.text, HORIZONTAL_ALIGNMENT_LEFT, -1, 9).x))
+	var class_y: float = maxf(0.0, DISPLAY_FONT.get_ascent(18) - BODY_FONT.get_ascent(9))
+	_place(_name_label, 0.0, 0.0, maxf(0.0, size.x - class_width - 12.0), name_height)
+	_place(_class_name, size.x - class_width, class_y, class_width, class_height)
+	var row_y: float = maxf(name_height, class_y + class_height) + 1.0
+	_place(_xp_label, 0.0, row_y, size.x, _xp_label.get_combined_minimum_size().y)
+	row_y = _xp_label.get_rect().end.y + 5.0 # One-pixel gaps around the 3px bar.
+	_place(_hp_label, 0.0, row_y, size.x, _hp_label.get_combined_minimum_size().y)
+	row_y = _hp_label.get_rect().end.y + 5.0
+	var effect_height: float = BODY_FONT.get_height(ROW_FONT_SIZE)
+	_place(_debuffs, 0.0, row_y, size.x, effect_height)
+	_place(_buffs, 0.0, row_y + effect_height, size.x, effect_height)
 	_layout_bars()
 	_refresh_effects()
 
 
 func _layout_bars() -> void:
-	_place(_xp_track, 0.0, 41.0, size.x, 3.0)
-	_place(_hp_track, 0.0, 53.0, size.x, 3.0)
-	_place(_xp_fill, 0.0, 41.0, size.x * _display_xp, 3.0)
-	_place(_hp_fill, 0.0, 53.0, size.x * _display_hp, 3.0)
+	var xp_y: float = _xp_label.get_rect().end.y + 1.0
+	var hp_y: float = _hp_label.get_rect().end.y + 1.0
+	_place(_xp_track, 0.0, xp_y, size.x, 3.0)
+	_place(_hp_track, 0.0, hp_y, size.x, 3.0)
+	_place(_xp_fill, 0.0, xp_y, size.x * _display_xp, 3.0)
+	_place(_hp_fill, 0.0, hp_y, size.x * _display_hp, 3.0)
 
 
 func _label(node_name: String, font: Font, font_size: int) -> Label:
@@ -310,6 +324,7 @@ func _label(node_name: String, font: Font, font_size: int) -> Label:
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.clip_text = true
+	label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	label.add_theme_font_override("font", font)
 	label.add_theme_font_size_override("font_size", font_size)
 	add_child(label)

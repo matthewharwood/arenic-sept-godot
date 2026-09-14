@@ -26,6 +26,9 @@ func validation_errors() -> PackedStringArray:
 		for skill in definition.skills:
 			if skill == null or skill.title.is_empty() or skill.description.is_empty():
 				errors.append("An ability needs a title and description: %s" % definition.class_id)
+			if skill != null:
+				for error: String in skill.validation_errors():
+					errors.append("%s / %s: %s" % [definition.class_id, skill.title, error])
 	return errors
 
 

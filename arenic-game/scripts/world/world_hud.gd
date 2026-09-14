@@ -10,40 +10,44 @@ signal hero_requested(identity: int)
 signal arena_requested(index: int)
 signal record_requested
 signal save_title_requested
+signal recruitment_requested
+signal loot_requested
+signal overworld_action_requested(action: StringName)
 
 const DISPLAY_FONT: Font = preload("res://assets/fonts/PPMigra-Extrabold.ttf")
 const BODY_FONT: Font = preload("res://assets/fonts/Barlow-Regular.ttf")
 const TOP_HEIGHT: float = 35.0
 const BOTTOM_HEIGHT: float = 96.0 # Keep the 589px world band and native 19px tiles.
 const DAMAGE_BAR_HEIGHT: float = 9.0
+const ACTION_SIZE: float = 70.0
+const ACTION_TEXT_WIDTH: float = ACTION_SIZE - 12.0
 
 var _top: Panel
 var _save_title: Button
 var _save_error: Label
 var _bottom: Panel
-var _brand: Label
-var _damage_label: Label
-var _phase_label: Label
 var _damage_bar: ArenicArenaDamageBar
-var _top_context: Label
-var _arena_key: Label
+var _arena_title: Label
+var _encounter_cue: Label
+var _boss_effects: RichTextLabel
+var _boss_effect_snapshot: Array[Dictionary] = []
 var _hero_label: Label
 var _class_label: Label
 var _hero_status: Label
 var _arena_label: Label
 var _subtitle: Label
 var _ability: Button
-var _ability_status: Label
+var _ability_feedback: Label
 var _key_hint: Label
 var _secondary_hint: Label
 var _toggle: Button
 var _accent: ColorRect
-var _top_divider: ColorRect
 var _hero_divider: ColorRect
 var _total_damage: int = 0
 var _phase_damage: int = 20
 var _ability_title: String = "Ability"
-var _ability_status_text: String = "Choose a hero"
+var _ability_detail: String = "Choose a hero"
+var _ability_feedback_text: String = "Select hero"
 var _ability_cooldown: float = 0.0
 var _ability_active: float = 0.0
 var _ability_enabled: bool = false
@@ -57,8 +61,9 @@ var _hero_selected: bool = false
 var _overview_mix: float = 0.0
 var _top_style: StyleBoxFlat
 var _bottom_style: StyleBoxFlat
-var _key_style: StyleBoxFlat
 var _toggle_styles: Array[StyleBoxFlat] = [] # Normal, hover, pressed, disabled.
+var _action_styles: Array[StyleBoxFlat] = []
+var _action_hotkeys: Array[Label] = []
 var _top_sheen: TextureRect
 var _bottom_sheen: TextureRect
 var _sheen_gradient: Gradient
@@ -72,12 +77,17 @@ var _edge_color: Color
 var _border_width: int = 1
 var _vitals: ArenicHeroVitals
 var _roster: ArenicRosterStrip
-var _roster_hint: Button
 var _reserve: Button
 var _reserve_panel: Panel
 var _reserve_list: VBoxContainer
 var _slots: Array[Button] = []
 var _record: Button
+var _record_feedback: Label
+var _record_active: bool = false
+var _record_title: String = "Record"
+var _record_detail: String = "R records a two-minute staff for this hero in this arena."
+var _record_readout: String = ""
+var _chat: ArenicActivityFeedView
 var _raid: Label
 var _map: Array[Button] = []
 var _map_styles: Array[StyleBoxFlat] = []
@@ -99,6 +109,13 @@ var _map_present: Array[int] = []
 ## reaching into the conductor.
 var _ghost_check: Callable = Callable()
 var _recruit: Label
+var _recruit_full_text: String = ""
+var _recruit_compact_text: String = ""
+var _roll_ready: Button
+var _roll_count: int = 0
+var _loot_ready: Button
+var _loot_count: int = 0
+var _top_layout_pending: bool = false
 ## Supplied by the shell so the strip can mark a fallen guild member without the
 ## HUD holding a combat reference of its own.
 var _combat_health: Callable = Callable()
@@ -122,6 +139,8 @@ func get_world_rect() -> Rect2:
 
 
 func set_context(arena: ArenicArenaDefinition, hero_name: String, class_name_text: String, zoomed: bool) -> void:
+	if _arena != arena:
+		_boss_effect_snapshot.clear()
 	_arena = arena
 	_hero_name = hero_name
 	_class_name_text = class_name_text
@@ -150,9 +169,10 @@ func set_damage_progress(total_damage: int, phase_damage: int = 20) -> void:
 
 
 ## The shell owns input and timers; positive infinity denotes a held channel.
-func set_ability_context(title: String, status: String, cooldown: float, active_remaining: float, enabled: bool) -> void:
+func set_ability_context(title: String, detail: String, cooldown: float, active_remaining: float, enabled: bool, feedback: String = "") -> void:
 	_ability_title = title if not title.is_empty() else "Ability"
-	_ability_status_text = status
+	_ability_detail = detail
+	_ability_feedback_text = feedback
 	_ability_cooldown = maxf(0.0, cooldown) if is_finite(cooldown) else 0.0
 	_ability_active = maxf(0.0, active_remaining) if not is_nan(active_remaining) else 0.0
 	_ability_enabled = enabled
@@ -174,6 +194,14 @@ func set_overview_mix(value: float) -> void:
 func _build_hud() -> void:
 	_top = _make_panel(self, "TopStrip")
 	_bottom = _make_panel(self, "BottomStrip")
+	# Keep menu drawing and pointer input above the later Keeper overlay.
+	var controls_layer := CanvasLayer.new()
+	controls_layer.name = "ControlsLayer"
+	var hud_layer: CanvasLayer = get_canvas_layer_node()
+	controls_layer.layer = hud_layer.layer + 1 if hud_layer != null else 1
+	add_child(controls_layer)
+	_help_panel = _make_panel(controls_layer, "ControlsGuide")
+	_help_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	_sheen_gradient = Gradient.new()
 	_sheen_gradient.offsets = PackedFloat32Array([0.0, 0.45, 1.0])
 	var sheen_texture := GradientTexture2D.new()
@@ -184,22 +212,50 @@ func _build_hud() -> void:
 	sheen_texture.fill_to = Vector2(0.0, 1.0)
 	_top_sheen = _make_sheen(_top, sheen_texture)
 	_bottom_sheen = _make_sheen(_bottom, sheen_texture)
-	_brand = _make_label(_top, "Wordmark", "Arenic", DISPLAY_FONT, 19)
-	_top_divider = _make_rule(_top, "StatusDivider")
 	_damage_bar = ArenicArenaDamageBar.new()
 	_damage_bar.name = "DamageBar"
 	_top.add_child(_damage_bar)
-	_damage_label = _make_label(_top, "DamageLabel", "Damage  0", BODY_FONT, 12)
-	_phase_label = _make_label(_top, "PhaseLabel", "Phase 1  ·  0 / 20", BODY_FONT, 12)
+	_arena_title = _make_label(_top, "ArenaTitle", "", BODY_FONT, 13)
+	_arena_title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	_boss_effects = RichTextLabel.new()
+	_boss_effects.name = "BossEffects"
+	_boss_effects.bbcode_enabled = true
+	_boss_effects.scroll_active = false
+	_boss_effects.mouse_filter = Control.MOUSE_FILTER_PASS
+	_boss_effects.add_theme_font_override("normal_font", BODY_FONT)
+	_boss_effects.add_theme_font_size_override("normal_font_size", 11)
+	_top.add_child(_boss_effects)
 	_recruit = _make_label(_top, "GuildRolls", "", BODY_FONT, 12)
-	_top_context = _make_label(_top, "ViewContext", "OVERWORLD", BODY_FONT, 12)
-	_top_context.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_recruit.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_recruit.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	_roll_ready = _small_button(_top, "RollsReady", "")
+	_roll_ready.add_theme_font_size_override("font_size", 10)
+	for state_name: String in ["normal", "hover", "pressed", "disabled"]:
+		var ready_style := StyleBoxFlat.new()
+		ready_style.set_border_width_all(1)
+		ready_style.content_margin_left = 4.0
+		ready_style.content_margin_right = 4.0
+		ready_style.content_margin_top = 0.0
+		ready_style.content_margin_bottom = 0.0
+		_roll_ready.add_theme_stylebox_override(state_name, ready_style)
+	_roll_ready.hide()
+	_roll_ready.disabled = true
+	_roll_ready.pressed.connect(func() -> void: recruitment_requested.emit())
+	_loot_ready = _small_button(_top, "LootReady", "")
+	_loot_ready.add_theme_font_size_override("font_size", 11)
+	for state: String in ["normal", "hover", "pressed", "disabled"]:
+		var style := StyleBoxFlat.new()
+		style.set_border_width_all(1)
+		style.content_margin_left = 4.0
+		style.content_margin_right = 4.0
+		_loot_ready.add_theme_stylebox_override(state, style)
+	_loot_ready.hide()
+	_loot_ready.disabled = true
+	_loot_ready.pressed.connect(func() -> void: loot_requested.emit())
 	_save_error = _make_label(self, "SaveError", "", BODY_FONT, 13)
 	_save_error.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_save_error.add_theme_color_override("font_color", Color(1.0, 0.8, 0.65))
 	_save_error.hide()
-	_arena_key = _make_label(_top, "ArenaHotkey", "—", BODY_FONT, 13)
-	_arena_key.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_accent = _make_rule(_bottom, "HeroAccent")
 	_hero_divider = _make_rule(_bottom, "HeroDivider")
 	_class_label = _make_label(_bottom, "ClassName", "HERO", BODY_FONT, 12)
@@ -217,7 +273,6 @@ func _build_hud() -> void:
 	_ability.button_down.connect(_on_ability_down)
 	_ability.button_up.connect(_on_ability_up)
 	_bottom.add_child(_ability)
-	_ability_status = _make_label(_bottom, "AbilityStatus", "Choose a hero", BODY_FONT, 12)
 	_toggle = Button.new()
 	_toggle.name = "OverviewToggle"
 	_toggle.focus_mode = Control.FOCUS_NONE
@@ -225,27 +280,34 @@ func _build_hud() -> void:
 	_toggle.add_theme_font_override("font", BODY_FONT)
 	_toggle.add_theme_font_size_override("font_size", 16)
 	_toggle.pressed.connect(_on_toggle_pressed)
-	_bottom.add_child(_toggle)
+	_help_panel.add_child(_toggle)
 	_key_hint = _make_label(_bottom, "NavigationHint", "", BODY_FONT, 13)
 	_key_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_secondary_hint = _make_label(_bottom, "NavigationDetail", "", BODY_FONT, 12)
 	_secondary_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_top_style = StyleBoxFlat.new()
 	_bottom_style = StyleBoxFlat.new()
-	_key_style = StyleBoxFlat.new()
 	_top.add_theme_stylebox_override("panel", _top_style)
 	_bottom.add_theme_stylebox_override("panel", _bottom_style)
-	_arena_key.add_theme_stylebox_override("normal", _key_style)
 	for state_name: String in ["normal", "hover", "pressed", "disabled"]:
 		var style := StyleBoxFlat.new()
 		_toggle_styles.append(style)
 		_toggle.add_theme_stylebox_override(state_name, style)
-		_ability.add_theme_stylebox_override(state_name, style)
+		var ability_style := StyleBoxFlat.new()
+		ability_style.set_corner_radius_all(12)
+		ability_style.content_margin_left = 6.0
+		ability_style.content_margin_right = 6.0
+		# Reserve separate rows below the centered title for feedback and the hotkey.
+		ability_style.content_margin_top = 0.0
+		ability_style.content_margin_bottom = 24.0
+		_action_styles.append(ability_style)
 	_toggle.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 	_ability.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
-	_save_title = _small_button(_top, "SaveAndTitle", "Saved · Title")
+	_save_title = _small_button(_help_panel, "SaveAndTitle", "Save & Title")
 	_save_title.pressed.connect(func() -> void: save_title_requested.emit())
 	_build_roster_hud()
+	for control: Control in [_arena_title, _recruit, _roll_ready, _loot_ready, _reserve]:
+		control.minimum_size_changed.connect(_queue_top_layout)
 
 
 func _apply_context() -> void:
@@ -258,20 +320,23 @@ func _apply_context() -> void:
 	_class_label.text = _class_name_text.to_upper() if not _class_name_text.is_empty() else "HERO"
 	_arena_label.text = arena_name
 	_subtitle.text = _visual_theme.subtitle if _visual_theme != null else ""
-	_top_context.text = ("ARENA  /  " if _zoomed else "OVERWORLD  /  ") + arena_name.to_upper()
-	_arena_key.text = _arena.hotkey if _arena != null else "—"
+	_arena_title.text = arena_name
+	_arena_title.tooltip_text = arena_name
+	_queue_top_layout()
 	_toggle.text = "Overview     [P]" if _zoomed else "Zoom in     [P]"
 	_toggle.disabled = _arena == null
-	_hero_status.text = "Selected" if _hero_here and _hero_selected else ("Click to select" if _hero_here else "Tab to locate")
+	_hero_status.text = "Selected" if _hero_here and _hero_selected else ("Click to select" if _hero_here else "No hero here")
 	if _zoomed and _hero_here:
 		_key_hint.text = "ARROWS  Step · TAB  Select" if _hero_selected else "TAB  Select hero"
 		_secondary_hint.text = "ESC  Overview · Click hero to select"
 	elif _zoomed:
-		_key_hint.text = "ARROWS  Select · TAB  Hero"
+		_key_hint.text = "No hero in this arena"
 		_secondary_hint.text = "[ ]  Cycle · ESC  Overview"
 	else:
 		_key_hint.text = "ARROWS  Select · ENTER  Zoom"
 		_secondary_hint.text = "[ ]  Cycle · TAB  Hero · Wheel  Zoom"
+	_apply_action_mode()
+	_refresh_roster_selection()
 
 
 func _apply_palette() -> void:
@@ -282,31 +347,35 @@ func _apply_palette() -> void:
 	_field_color = _color("base_200")
 	var content: Color = _color("base_content")
 	var primary: Color = _color("primary")
-	for label: Label in [_brand, _hero_label, _arena_label]:
+	for label: Label in [_arena_title, _hero_label, _arena_label]:
 		label.add_theme_color_override("font_color", content)
-	for label: Label in [_damage_label, _phase_label, _top_context, _hero_status, _subtitle, _secondary_hint, _ability_status]:
+	for label: Label in [_hero_status, _subtitle, _secondary_hint, _ability_feedback]:
 		label.add_theme_color_override("font_color", _color("base_content", 0.78))
 	_class_label.add_theme_color_override("font_color", primary)
 	_key_hint.add_theme_color_override("font_color", content)
 	_damage_bar.set_visual_theme(_visual_theme)
 	_accent.color = primary
 	_border_width = maxi(1, roundi(_visual_theme.border)) if _visual_theme != null else 1
-	_arena_key.add_theme_color_override("font_color", primary)
 	for button: Button in [_toggle, _ability]:
 		button.add_theme_color_override("font_color", content)
 		button.add_theme_color_override("font_hover_color", content)
 		button.add_theme_color_override("font_pressed_color", primary)
 		button.add_theme_color_override("font_disabled_color", _color("base_content", 0.38))
+	for hotkey: Label in _action_hotkeys:
+		hotkey.add_theme_color_override("font_color", _color("accent"))
 	var sheen: Color = content.lerp(primary, 0.18)
 	_sheen_gradient.colors = PackedColorArray([
 		Color(sheen, 0.13), Color(sheen, 0.035), Color(sheen, 0.0),
 	])
 	_apply_surfaces()
 	_apply_roster_palette()
+	_apply_recruitment_palette()
+	_boss_effects.add_theme_color_override("default_color", content)
+	_refresh_boss_effects()
 
 
 func _apply_surfaces() -> void:
-	# Mutate seven existing style resources; never rebuild controls while blending.
+	# Mutate existing style resources; never rebuild controls while blending.
 	var fill: Color = _surface_color.lerp(_primary_color, 0.08 * _overview_mix)
 	fill.a = lerpf(1.0, 0.78, _overview_mix)
 	_edge_color = _content_color.lerp(_primary_color, 0.24 * _overview_mix)
@@ -323,20 +392,14 @@ func _apply_surfaces() -> void:
 	_bottom_style.border_width_top = 1
 	var field: Color = _field_color.lerp(_primary_color, 0.08 * _overview_mix)
 	field.a = lerpf(1.0, 0.64, _overview_mix)
-	_key_style.bg_color = field
-	_key_style.border_color = _edge_color
-	_key_style.set_border_width_all(_border_width)
-	_key_style.set_corner_radius_all(0)
 	var hover: Color = _deep_color.lerp(_primary_color, 0.12 * _overview_mix)
 	hover.a = lerpf(1.0, 0.88, _overview_mix)
 	for index: int in range(_toggle_styles.size()):
-		var style: StyleBoxFlat = _toggle_styles[index]
-		style.bg_color = field if index == 0 else (fill if index == 3 else hover)
-		style.border_color = _edge_color if index == 3 else Color(_primary_color, 0.65 if index == 0 else 1.0)
-		style.set_border_width_all(_border_width + (1 if index == 2 else 0))
-		style.set_corner_radius_all(0)
+		for style: StyleBoxFlat in [_toggle_styles[index], _action_styles[index]]:
+			style.bg_color = field if index == 0 else (fill if index == 3 else hover)
+			style.border_color = _edge_color if index == 3 else Color(_primary_color, 0.65 if index == 0 else 1.0)
+			style.set_border_width_all(_border_width + (1 if index == 2 else 0))
 	_rail_color = Color(_field_color, lerpf(1.0, 0.50, _overview_mix))
-	_top_divider.color = _edge_color
 	_hero_divider.color = _edge_color
 	_top_sheen.modulate.a = _overview_mix
 	_bottom_sheen.modulate.a = _overview_mix
@@ -349,7 +412,7 @@ func _color(token: String, alpha: float = 1.0) -> Color:
 	if _visual_theme != null:
 		return _visual_theme.color(token, alpha)
 	# A neutral, readable shell while no arena has been supplied.
-	var value: float = 1.0 if token in ["base_content", "primary"] else 0.0
+	var value: float = 1.0 if token in ["base_content", "primary", "accent"] else 0.0
 	return Color(value, value, value, alpha)
 
 
@@ -359,44 +422,133 @@ func _layout_hud() -> void:
 	_place(_top_sheen, 0.0, 0.0, size.x, 17.0)
 	_place(_bottom_sheen, 0.0, 1.0, size.x, 42.0)
 	_place(_damage_bar, 0.0, 0.0, size.x, DAMAGE_BAR_HEIGHT)
-	var label_height: float = TOP_HEIGHT - DAMAGE_BAR_HEIGHT
-	_place(_brand, 13.0, DAMAGE_BAR_HEIGHT, 79.0, label_height)
-	_place(_top_divider, 108.0, 15.0, 1.0, 14.0)
-	_place(_damage_label, 127.0, DAMAGE_BAR_HEIGHT, 123.0, label_height)
-	_place(_phase_label, 265.0, DAMAGE_BAR_HEIGHT, 200.0, label_height)
-	_place(_recruit, 452.0, DAMAGE_BAR_HEIGHT, 232.0, label_height)
-	_place(_top_context, 700.0, DAMAGE_BAR_HEIGHT, maxf(0.0, size.x - 878.0), label_height)
-	_place(_save_title, size.x - 165.0, 11.0, 112.0, 22.0)
 	_place(_save_error, size.x - 510.0, TOP_HEIGHT + 8.0, 480.0, 72.0)
-	_place(_arena_key, size.x - 39.0, 11.0, 26.0, 22.0)
 	# Preserve the existing 96px strip so the world and native 19px sprites keep their framing.
 	for legacy: Control in [_accent, _class_label, _hero_label, _hero_status, _subtitle, _arena_label, _secondary_hint]:
 		legacy.hide()
-	_place(_roster_hint, 13, 4, 106, 17)
-	_place(_reserve, 123, 4, 55, 17)
+	_layout_roster_status()
 	_place(_roster, 13, 25, 160, 64)
 	_place(_hero_divider, 185, 12, 1, 72)
 	_place(_vitals, 200, 7, 255, 82)
 	for index: int in 4:
-		_place(_slots[index], 478 + index * 72, 20, 66, 43)
-	_place(_ability_status, 478, 66, 282, 24)
-	_ability_status.add_theme_font_size_override("font_size", 10)
-	_place(_record, 782, 20, 68, 43)
-	_place(_raid, 869, 5, 136, 15)
+		_place(_slots[index], 478 + index * 76, 13, ACTION_SIZE, ACTION_SIZE)
+	_place(_record, 782, 13, ACTION_SIZE, ACTION_SIZE)
+	_place(_chat, 864, 4, maxf(270.0, size.x - 1010.0), 88)
+	_place(_raid, size.x - 130, 5, 117, 15)
 	for index: int in _map.size():
 		var slot: Vector2i = _world.arenas[index].grid_slot if _world != null else Vector2i(index % 3, index / 3)
-		_place(_map[index], 869 + slot.x * 26, 26 + slot.y * 19, 23, 16)
-	_place(_previous, 952, 26, 32, 23)
-	_place(_next, 952, 54, 32, 23)
-	_place(_toggle, size.x - 268, 12, 151, 30)
-	_toggle.add_theme_font_size_override("font_size", 13)
-	_place(_help, size.x - 109, 12, 96, 30)
-	_place(_key_hint, size.x - 268, 49, 255, 37)
-	_key_hint.add_theme_font_size_override("font_size", 11)
+		_place(_map[index], size.x - 130 + slot.x * 26, 26 + slot.y * 19, 23, 16)
+	_place(_previous, size.x - 46, 26, 32, 23)
+	_place(_next, size.x - 46, 54, 32, 23)
+	_toggle.add_theme_font_size_override("font_size", 11)
+	_layout_top_status()
+	_key_hint.hide()
 	_place(_reserve_panel, 13, size.y - BOTTOM_HEIGHT - 192, 254, 184)
 	_place(_reserve_list, 8, 8, 238, 168)
-	_place(_help_panel, size.x - 373, size.y - BOTTOM_HEIGHT - 230, 360, 222)
-	_place(_help_text, 14, 12, 332, 198)
+	_layout_controls_guide()
+
+
+func _layout_controls_guide() -> void:
+	_place(_help_text, 14, 12, 332, maxf(216.0, _help_text.get_combined_minimum_size().y))
+	var footer_y: float = _help_text.get_rect().end.y + 12.0
+	var panel_height: float = footer_y + 40.0
+	_place(_help_panel, size.x - 373, size.y - BOTTOM_HEIGHT - 8.0 - panel_height, 360, panel_height)
+	_place(_toggle, 14, footer_y, 104, 26)
+	_place(_save_title, 126, footer_y, 124, 26)
+	_place(_help, 258, footer_y, 88, 26)
+
+
+func _queue_top_layout() -> void:
+	if _top_layout_pending or not is_node_ready():
+		return
+	_top_layout_pending = true
+	_remeasure_top.call_deferred()
+
+
+func _remeasure_top() -> void:
+	_top_layout_pending = false
+	if is_node_ready():
+		_layout_top_status()
+		_layout_roster_status()
+
+
+func _text_width(control: Control, text: String) -> float:
+	return ceilf(control.get_theme_font("font").get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, control.get_theme_font_size("font_size")).x)
+
+
+func _layout_top_status() -> void:
+	# Reward actions anchor to the right edge. Conditions use only the remaining
+	# middle band and keep their complete readout available in the tooltip.
+	var right: float = size.x - 13.0
+	for button: Button in [_loot_ready, _roll_ready]:
+		if not button.visible:
+			continue
+		var width: float = maxf(40.0, _text_width(button, button.text) + 12.0)
+		_place(button, right - width, DAMAGE_BAR_HEIGHT + 3.0, width, 20.0)
+		right -= width + 8.0
+	if _recruit.get_theme_font_size("font_size") < 12:
+		_recruit.add_theme_font_size_override("font_size", 12)
+	var counter: String = _recruit_full_text
+	var counter_width: float = _text_width(_recruit, counter)
+	var budget: float = minf(188.0, size.x * 0.28)
+	if counter_width > budget:
+		counter = "Next hero " + _recruit_compact_text if _recruit_full_text.begins_with("Next hero") else _recruit_compact_text
+		counter_width = minf(budget, _text_width(_recruit, counter))
+	_recruit.text = counter
+	_place(_recruit, right - counter_width, DAMAGE_BAR_HEIGHT, counter_width, TOP_HEIGHT - DAMAGE_BAR_HEIGHT)
+	var status_end: float = _recruit.position.x - 22.0
+	var title_width: float = minf(_text_width(_arena_title, _arena_title.text), minf(size.x * 0.25, maxf(0.0, status_end - 13.0)))
+	_place(_arena_title, 13.0, DAMAGE_BAR_HEIGHT, title_width, TOP_HEIGHT - DAMAGE_BAR_HEIGHT)
+	var effects_x: float = _arena_title.get_rect().end.x + 20.0
+	_place(_boss_effects, effects_x, DAMAGE_BAR_HEIGHT + 5.0, maxf(0.0, status_end - effects_x), 18.0)
+	_refresh_boss_effects()
+
+
+func _layout_roster_status() -> void:
+	var reserve_width: float = maxf(36.0, _reserve.get_combined_minimum_size().x)
+	_place(_reserve, 178.0 - reserve_width, 3.0, reserve_width, 18.0)
+
+
+## Presentation observes live boss state; it never advances or manufactures effects.
+func set_boss_effects(effects: Array[Dictionary]) -> void:
+	if effects == _boss_effect_snapshot:
+		return
+	_boss_effect_snapshot = effects.duplicate(true)
+	if is_node_ready():
+		_refresh_boss_effects()
+
+
+func _refresh_boss_effects() -> void:
+	var parts: PackedStringArray = []
+	var details: PackedStringArray = []
+	var used: float = 0.0
+	for index: int in _boss_effect_snapshot.size():
+		var effect: Dictionary = _boss_effect_snapshot[index]
+		var name: String = str(effect.get("name", "Effect")).replace("\n", " ").left(40)
+		var seconds: float = float(effect.get("remaining_seconds", -1.0))
+		var stacks: int = maxi(1, int(effect.get("stacks", 1)))
+		var value: String = " ×%d" % stacks if stacks > 1 else ""
+		if is_finite(seconds) and seconds >= 0.0:
+			value += " [%ds]" % ceili(seconds)
+		var plain: String = name + value
+		details.append(plain + (" · " + str(effect.detail) if effect.has("detail") else ""))
+		var width: float = BODY_FONT.get_string_size(plain, HORIZONTAL_ALIGNMENT_LEFT, -1, 11).x
+		var reserve: float = 26.0 if index < _boss_effect_snapshot.size() - 1 else 0.0
+		if used + width + reserve <= _boss_effects.size.x:
+			var color: String = ArenicHudTokens.color("positive" if bool(effect.get("beneficial", false)) else "negative", _visual_theme).to_html(false)
+			parts.append("[color=#%s]%s[/color]" % [color, plain.replace("[", "[lb]")])
+			used += width + 16.0
+		else:
+			# Keep full details in the tooltip when a narrow viewport needs a count.
+			var hidden: int = _boss_effect_snapshot.size() - index
+			parts.append("+%d" % hidden)
+			for hidden_index: int in range(index + 1, _boss_effect_snapshot.size()):
+				var hidden_effect: Dictionary = _boss_effect_snapshot[hidden_index]
+				details.append(str(hidden_effect.get("name", "Effect")) + " · " + str(hidden_effect.get("detail", "")))
+			break
+	_boss_effects.text = "    ".join(parts)
+	_boss_effects.tooltip_text = "\n".join(details)
+	_boss_effects.visible = not parts.is_empty()
 
 
 func _draw() -> void:
@@ -417,41 +569,80 @@ func _on_resized() -> void:
 
 func _apply_damage() -> void:
 	_damage_bar.set_progress(_total_damage, _phase_damage)
-	_damage_label.text = "Damage  %d" % _total_damage
-	_phase_label.text = "Phase %d  ·  %d / %d" % [_damage_bar.completed_phases + 1, _damage_bar.current_damage, _phase_damage]
-	_damage_bar.tooltip_text = "%d damage · %d completed phases" % [_total_damage, _damage_bar.completed_phases]
+	_damage_bar.tooltip_text = "%d damage taken in this arena" % _total_damage
 
 
 func _apply_ability() -> void:
+	if not _zoomed:
+		return
 	var channeling: bool = is_inf(_ability_active) and _ability_active > 0.0
-	_ability.text = _ability_title + "\n1"
+	if _ability.text != _ability_title:
+		_ability.text = _ability_title
+		_fit_action_text(_ability, _ability_title, 10, 13)
 	_ability.disabled = not (_ability_enabled or channeling)
+	var feedback: String = _ability_feedback_text
 	if channeling:
-		_ability_status.text = "Channeling · release to stop"
-	else:
-		var parts: PackedStringArray = []
-		if not _ability_status_text.is_empty():
-			parts.append(_ability_status_text)
-		if _ability_active > 0.0:
-			parts.append("%.1fs active" % _ability_active)
-		if _ability_cooldown > 0.0:
-			parts.append("%.1fs cooldown" % _ability_cooldown)
-		_ability_status.text = " · ".join(parts) if not parts.is_empty() else "Ready"
-	_ability.tooltip_text = _ability_title + " · 1 / Space · " + _ability_status.text
+		feedback = "Channeling"
+	elif _ability_active > 0.0:
+		feedback = "Active %.1fs" % _ability_active
+	elif _ability_cooldown > 0.0:
+		feedback = "CD %.1fs" % _ability_cooldown
+	elif feedback.is_empty():
+		feedback = "Ready" if _ability_enabled else "Not ready"
+	_set_action_feedback(_ability_feedback, feedback)
+	var detail: String = "Release to stop" if channeling else _ability_detail
+	_ability.tooltip_text = "%s · 1 / Space · %s" % [_ability_title, feedback]
+	if not detail.is_empty():
+		_ability.tooltip_text += "\n" + detail
 	for index: int in range(1, 4):
-		_slots[index].text = "—\n%d" % (index + 1)
+		_slots[index].text = "—"
+		_slots[index].disabled = true
 		_slots[index].tooltip_text = "Unassigned ability slot %d" % (index + 1)
 
 
+func _apply_action_mode() -> void:
+	_ability_feedback.visible = _zoomed
+	_record_feedback.visible = _zoomed
+	for index: int in ArenicOverworldActions.COUNT:
+		var button: Button = _slots[index] if index < _slots.size() else _record
+		button.autowrap_mode = TextServer.AUTOWRAP_OFF if _zoomed else TextServer.AUTOWRAP_WORD_SMART
+		button.add_theme_font_size_override("font_size", 13)
+		if not _zoomed:
+			var action: StringName = ArenicOverworldActions.action_for_slot(index)
+			button.text = ArenicOverworldActions.title(action)
+			_action_hotkeys[index].text = ArenicOverworldActions.hotkey(action)
+			button.tooltip_text = button.text
+			button.disabled = false
+		else:
+			_action_hotkeys[index].text = str(index + 1) if index < _slots.size() else "R"
+	if _zoomed:
+		_apply_ability()
+		_fit_action_text(_ability, _ability_title, 10, 13)
+		_apply_recording()
+	_apply_record_palette()
+	# Autowrap changes can defer the native Button's text repaint across frames.
+	_record.queue_redraw()
+
+
 func _on_ability_down() -> void:
-	ability_requested.emit()
+	if _zoomed:
+		ability_requested.emit()
 
 
 func _on_ability_up() -> void:
-	ability_released.emit()
+	if _zoomed:
+		ability_released.emit()
+
+
+func _on_action_pressed(index: int) -> void:
+	if not _zoomed:
+		overworld_action_requested.emit(ArenicOverworldActions.action_for_slot(index))
+	elif index == ArenicOverworldActions.COUNT - 1:
+		record_requested.emit()
 
 
 func _on_toggle_pressed() -> void:
+	_help_panel.hide()
 	toggle_requested.emit()
 
 
@@ -468,7 +659,7 @@ func _make_label(parent: Control, node_name: String, text: String, font: Font, f
 	return label
 
 
-func _make_panel(parent: Control, node_name: String) -> Panel:
+func _make_panel(parent: Node, node_name: String) -> Panel:
 	var panel := Panel.new()
 	panel.name = node_name
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -510,19 +701,28 @@ func _build_roster_hud() -> void:
 	_roster.name = "CharacterRoster"
 	_roster.character_requested.connect(func(identity: int) -> void: hero_requested.emit(identity))
 	_bottom.add_child(_roster)
-	_roster_hint = _small_button(_bottom, "RosterNavigation", "TAB · SHIFT TAB")
-	_roster_hint.pressed.connect(func() -> void: hero_requested.emit(_hero.identity_id if _hero != null else -1))
-	_reserve = _small_button(_bottom, "RosterCount", "0 / 40")
+	_reserve = _small_button(_bottom, "RosterCount", "0/40")
+	_reserve.add_theme_font_size_override("font_size", 10)
+	_reserve.tooltip_text = "Heroes in this arena · Tab / Shift-Tab cycles heroes"
 	_reserve.pressed.connect(_toggle_reserve)
 	_slots.append(_ability)
 	for index: int in range(1, 4):
-		var button := _small_button(_bottom, "AbilitySlot%d" % (index + 1), "—\n%d" % (index + 1))
+		var button := _small_button(_bottom, "AbilitySlot%d" % (index + 1), "—")
 		button.disabled = true
 		_slots.append(button)
-	_record = _small_button(_bottom, "RecordAction", "Record\nR")
+	for index: int in _slots.size():
+		_style_action_button(_slots[index], str(index + 1))
+		_slots[index].pressed.connect(_on_action_pressed.bind(index))
+	_ability_feedback = _make_action_feedback(_ability)
+	_record = _small_button(_bottom, "RecordAction", "Record")
+	_style_action_button(_record, "R")
+	_record_feedback = _make_action_feedback(_record)
 	_record.tooltip_text = "R records a two-minute staff for this hero in this arena."
 	# Clicking Record drives exactly the same flow as the R key.
-	_record.pressed.connect(func() -> void: record_requested.emit())
+	_record.pressed.connect(_on_action_pressed.bind(ArenicOverworldActions.COUNT - 1))
+	_chat = ArenicActivityFeedView.new()
+	_chat.name = "GlobalChat"
+	_bottom.add_child(_chat)
 	_raid = _make_label(_bottom, "RaidDifficulty", "Raid: Normal", BODY_FONT, 11)
 	for index: int in 9:
 		var button := _small_button(_bottom, "ArenaCell%d" % index, "X")
@@ -536,12 +736,11 @@ func _build_roster_hud() -> void:
 	_previous.pressed.connect(func() -> void: arena_requested.emit(posmod(_selected_arena - 1, 9)))
 	_next = _small_button(_bottom, "NextArena", "→ ]")
 	_next.pressed.connect(func() -> void: arena_requested.emit(posmod(_selected_arena + 1, 9)))
-	_help = _small_button(_bottom, "ControlsHelp", "Controls  H")
+	_help = _small_button(_help_panel, "CloseGuide", "Close H")
 	_help.pressed.connect(toggle_help)
-	_help_panel = _make_panel(self, "ControlsGuide")
-	_help_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	_help_panel.add_theme_stylebox_override("panel", _bottom_style)
 	_help_text = _make_label(_help_panel, "GuideText", "", BODY_FONT, 13)
+	_help_text.minimum_size_changed.connect(_layout_controls_guide)
 	_help_text.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	_help_panel.hide()
 	_reserve_panel = _make_panel(self, "ReserveCharacters")
@@ -554,6 +753,45 @@ func _build_roster_hud() -> void:
 	_reserve_list = VBoxContainer.new()
 	scroll.add_child(_reserve_list)
 	_reserve_panel.hide()
+
+
+## All five action controls share geometry and pointer-transparent hotkeys.
+func _style_action_button(button: Button, key: String) -> void:
+	button.size = Vector2(ACTION_SIZE, ACTION_SIZE)
+	button.clip_text = true
+	button.add_theme_font_size_override("font_size", 13)
+	for state: int in _action_styles.size():
+		button.add_theme_stylebox_override(["normal", "hover", "pressed", "disabled"][state], _action_styles[state])
+	var hotkey := _make_label(button, "Hotkey", key, BODY_FONT, 12)
+	hotkey.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
+	hotkey.offset_left = -21.0
+	hotkey.offset_top = -21.0
+	hotkey.offset_right = -7.0
+	hotkey.offset_bottom = -5.0
+	hotkey.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	hotkey.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+	_action_hotkeys.append(hotkey)
+
+
+func _make_action_feedback(button: Button) -> Label:
+	var feedback := _make_label(button, "Feedback", "", BODY_FONT, 10)
+	feedback.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_place(feedback, 6.0, 35.0, ACTION_TEXT_WIDTH, 14.0)
+	return feedback
+
+
+func _set_action_feedback(label: Label, text: String) -> void:
+	if label.text == text:
+		return
+	label.text = text
+	_fit_action_text(label, text, 9, 10)
+
+
+func _fit_action_text(control: Control, text: String, minimum: int, maximum: int) -> void:
+	var font_size: int = maximum
+	while font_size > minimum and BODY_FONT.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > ACTION_TEXT_WIDTH:
+		font_size -= 1
+	control.add_theme_font_size_override("font_size", font_size)
 
 
 func _small_button(parent: Control, node_name: String, text: String) -> Button:
@@ -602,13 +840,22 @@ func set_run_context(world: ArenicWorldDefinition, hero: ArenicHeroState, select
 			"dead": int(vitals.get("health", 1)) <= 0,
 			"ghost": bool(_ghost_check.call(member)) if _ghost_check.is_valid() else false,
 		})
-	_selected_identity = hero.identity_id if hero != null and hero.selected and _hero_here else -1
-	if hero == null or not hero.selected:
+	_refresh_roster_selection()
+	if hero == null or hero.arena_id != focused:
 		_vitals.clear_selection()
 	else:
 		_vitals.set_snapshot(hero.identity_id, hero.display_name(), hero.definition.display_name, hero.level, hero.experience, hero.experience_to_next_level, int(health.get("health", 1)), int(health.get("max_health", 1)), effects)
 	_apply_roster_palette()
 	_layout_hud()
+
+
+func _refresh_roster_selection() -> void:
+	var next_identity: int = _hero.identity_id if _zoomed and _hero != null and _hero.selected and _hero_here and _hero_selected else -1
+	if next_identity == _selected_identity:
+		return
+	_selected_identity = next_identity
+	if _roster != null:
+		_roster.set_roster(_roster_entries, _selected_identity, _content_color, ArenicHudTokens.color("selection"))
 
 
 ## Lets the HUD read any guild member's health without owning the ledger.
@@ -635,14 +882,19 @@ func _apply_roster_palette() -> void:
 	if _vitals == null:
 		return
 	_vitals.set_visual_theme(_visual_theme)
+	_chat.set_visual_theme(_visual_theme)
 	_roster.set_roster(_roster_entries, _selected_identity, _content_color, ArenicHudTokens.color("selection"))
-	_reserve.text = "%d / 40" % _roster_entries.size() if _roster_entries.size() <= 40 else "+%d more" % (_roster_entries.size() - 40)
+	_reserve.text = "%d/40" % _roster_entries.size() if _roster_entries.size() <= 40 else "+%d" % (_roster_entries.size() - 40)
+	_reserve.tooltip_text = "%d heroes · Tab / Shift+Tab to focus" % _roster_entries.size()
+	if _roster_entries.size() > 40:
+		_reserve.tooltip_text += "\nShow %d more heroes" % (_roster_entries.size() - 40)
 	_reserve.disabled = _roster_entries.size() <= 40
-	for button: Button in [_roster_hint, _reserve, _record, _previous, _next, _help, _save_title] + _slots.slice(1):
+	for button: Button in [_reserve, _previous, _next, _help, _save_title] + _slots.slice(1):
 		button.add_theme_color_override("font_color", _content_color)
 		button.add_theme_color_override("font_hover_color", _content_color)
 		button.add_theme_color_override("font_pressed_color", _primary_color)
 		button.add_theme_color_override("font_disabled_color", Color(_content_color, 0.42))
+	_apply_record_palette()
 	_raid.add_theme_color_override("font_color", _content_color)
 	_help_text.add_theme_color_override("font_color", _content_color)
 	for index: int in _map.size():
@@ -664,40 +916,139 @@ func _apply_roster_palette() -> void:
 		style.set_corner_radius_all(0)
 
 
-## Damage earned toward the next guild roll, or that a roll is waiting. Reads as
-## progress rather than a balance, because damage is never spent.
+## Progress to the next unearned threshold and banked rolls are independent.
+## Claiming a roll changes only the small ready action, never the counter.
 func set_recruitment(progress: Dictionary) -> void:
 	if _recruit == null:
 		return
-	var available: int = int(progress.get("available", 0))
-	if available > 0:
-		_recruit.text = "%d roll%s ready   [N]" % [available, "" if available == 1 else "s"]
-		_recruit.add_theme_color_override("font_color", ArenicHudTokens.color("xp", _visual_theme))
-	elif int(progress.get("next_at", 0)) > 0:
-		_recruit.text = "Next hero   %d / %d" % [int(progress.get("toward", 0)), int(progress.get("span", 1))]
-		_recruit.add_theme_color_override("font_color", Color(_content_color, 0.7))
-	else:
-		_recruit.text = ""
+	var available: int = maxi(0, int(progress.get("available", 0)))
+	var counter: String = "Next hero %d/%d" % [int(progress.get("toward", 0)), int(progress.get("span", 1))] if int(progress.get("next_at", 0)) > 0 else "All rolls earned"
+	if counter == _recruit_full_text and available == _roll_count:
+		return
+	_recruit_full_text = counter
+	_recruit_compact_text = "%s/%s" % [_compact_count(int(progress.get("toward", 0))), _compact_count(int(progress.get("span", 1)))] if int(progress.get("next_at", 0)) > 0 else "All earned"
+	_recruit.tooltip_text = "Damage earned toward the next hero roll; claiming a banked roll does not spend damage." if int(progress.get("next_at", 0)) > 0 else "Every recruitment threshold has been earned. Banked rolls remain available."
+	_recruit.tooltip_text = ("Next hero %d / %d" % [int(progress.get("toward", 0)), int(progress.get("span", 1))] if int(progress.get("next_at", 0)) > 0 else counter) + "\n" + _recruit.tooltip_text
+	_roll_count = available
+	_roll_ready.text = "%d [N]" % available
+	_roll_ready.tooltip_text = "%d banked roll%s ready. Click or press N to choose a hero." % [available, "" if available == 1 else "s"]
+	_roll_ready.visible = available > 0
+	_roll_ready.disabled = available <= 0
+	_apply_recruitment_palette()
+	_queue_top_layout()
+
+
+## Only the authoritative reward queue determines this count.
+func set_loot(available: int) -> void:
+	_loot_count = maxi(0, available)
+	if _loot_ready == null:
+		return
+	_loot_ready.text = "Loot %s" % _compact_count(_loot_count)
+	_loot_ready.tooltip_text = "%d arena reward%s ready. Open three concealed cards and reveal one piece of equipment." % [_loot_count, "" if _loot_count == 1 else "s"]
+	_loot_ready.visible = _loot_count > 0
+	_loot_ready.disabled = _loot_count <= 0
+	_apply_recruitment_palette()
+	_queue_top_layout()
+
+
+static func _compact_count(value: int) -> String:
+	var amount: float = float(value)
+	var suffixes: Array[String] = ["", "K", "M", "B", "T", "Q"]
+	var index: int = 0
+	while amount >= 1000.0 and index < suffixes.size() - 1:
+		amount /= 1000.0
+		index += 1
+	return str(value) if index == 0 else "%.1f%s" % [amount, suffixes[index]]
+
+
+func _apply_recruitment_palette() -> void:
+	if _roll_ready == null:
+		return
+	_recruit.add_theme_color_override("font_color", Color(_content_color, 0.78))
+	if _loot_ready != null:
+		var loot_accent: Color = _color("accent")
+		for state: String in ["normal", "hover", "pressed", "disabled"]:
+			var style := _loot_ready.get_theme_stylebox(state) as StyleBoxFlat
+			style.bg_color = _field_color.lerp(loot_accent, 0.08 if state == "normal" else 0.16)
+			style.border_color = Color(loot_accent, 0.65)
+			_loot_ready.add_theme_color_override("font_color" if state == "normal" else "font_%s_color" % state, loot_accent)
+	var ready: Color = ArenicHudTokens.color("xp", _visual_theme)
+	for state_name: String in ["normal", "hover", "pressed", "disabled"]:
+		var style := _roll_ready.get_theme_stylebox(state_name) as StyleBoxFlat
+		style.bg_color = _field_color.lerp(ready, 0.08 if state_name == "normal" else 0.16)
+		style.border_color = Color(ready, 0.65)
+		style.content_margin_left = 4.0
+		style.content_margin_right = 4.0
+		_roll_ready.add_theme_color_override("font_color" if state_name == "normal" else "font_%s_color" % state_name, ready)
 
 
 ## The record control doubles as the recording read-out: the cycle clock while a
 ## take is running, the countdown before it starts.
-func set_recording_state(label: String, detail: String, active: bool) -> void:
-	if _record == null:
+func set_recording_state(label: String, detail: String, active: bool, readout: String = "") -> void:
+	_record_title = label
+	_record_detail = detail
+	_record_readout = readout
+	_record_active = active
+	if _record != null:
+		_apply_recording()
+
+
+func _apply_recording() -> void:
+	if not _zoomed:
 		return
-	_record.text = label
-	_record.tooltip_text = detail
-	_record.add_theme_color_override("font_color", ArenicHudTokens.color("negative") if active else _content_color)
+	_record.text = _record_title
+	_fit_action_text(_record, _record_title, 10, 13)
+	_set_action_feedback(_record_feedback, _record_readout)
+	_record.tooltip_text = _record_detail
+	_apply_record_palette()
+
+
+func _apply_record_palette() -> void:
+	var color: Color = ArenicHudTokens.color("negative") if _zoomed and _record_active else _content_color
+	_record_feedback.add_theme_color_override("font_color", color)
+	for state_name: String in ["font_color", "font_hover_color", "font_pressed_color"]:
+		_record.add_theme_color_override(state_name, color)
+
+
+func set_activity_feed(feed: ArenicActivityFeed) -> void:
+	_chat.set_feed(feed)
+
+
+func is_chat_expanded() -> bool:
+	return _chat.is_expanded()
+
+
+func toggle_chat() -> void:
+	_help_panel.hide()
+	_reserve_panel.hide()
+	_chat.toggle_expanded()
 
 
 func toggle_help() -> void:
-	_help_text.text = "FIND YOUR WAY\n\nTab   Cycle the heroes in this arena\n[ / ]   Previous / next arena\nArrows   Move hero / select arena\nN   Claim a guild roll\nP / Enter / wheel   Overview and zoom\n1 / Space   Use or hold your starter ability\n2 / 3 / 4   Unassigned ability slots\nR   Record a two-minute staff · H   Close controls\n\nBlue: HP / selected and ghosts · Green: XP / gains"
+	if _chat.is_expanded():
+		_chat.toggle_expanded()
+	var actions := "1 / Space   Use or hold your starter ability\n2 / 3 / 4   Unassigned ability slots\nR   Record a two-minute staff"
+	if not _zoomed:
+		actions = ""
+		for entry: Dictionary in ArenicOverworldActions.entries():
+			actions += "%s   %s\n" % [entry.hotkey, entry.title]
+		actions = actions.trim_suffix("\n")
+	_help_text.text = "FIND YOUR WAY\n\nTab   Cycle the heroes in this arena\n[ / ]   Previous / next arena\nArrows   Move hero / select arena\nN   Claim a guild roll\nP / Enter / wheel   Overview and zoom\n%s\nC   Global Chat · H   Close controls\n\nBlue: HP / selection · Green: XP / gains" % actions
 	_help_panel.visible = not _help_panel.visible
+	_layout_controls_guide()
+
+
+## Other modal owners can dismiss HUD popovers without touching gameplay state.
+func hide_overlays() -> void:
+	_help_panel.hide()
+	_reserve_panel.hide()
+	if _chat.is_expanded():
+		_chat.toggle_expanded()
 
 
 func set_save_status(message: String) -> void:
 	var failed: bool = not message in ["Saved", "Saving…", "Preview"]
-	_save_title.text = "Save failed" if failed else message + " · Title"
+	_save_title.text = "Retry & Title" if failed else "Save & Title"
 	_save_title.tooltip_text = message if failed else "Save your game and return to the title screen"
 	_save_error.text = message
 	_save_error.visible = failed
@@ -713,3 +1064,20 @@ func _toggle_reserve() -> void:
 		var button := _small_button(_reserve_list, "ReserveHero%d" % int(entry.identity), str(entry.name))
 		button.disabled = bool(entry.get("dead", false))
 		button.pressed.connect(func() -> void: hero_requested.emit(int(entry.identity)))
+
+
+func set_encounter_cue(text: String) -> void:
+	if _encounter_cue == null:
+		_encounter_cue = Label.new()
+		_encounter_cue.name = "EncounterCue"
+		_encounter_cue.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_encounter_cue.add_theme_font_override("font", BODY_FONT)
+		_encounter_cue.add_theme_font_size_override("font_size", 13)
+		_encounter_cue.add_theme_color_override("font_color", Color(0.97, 0.96, 0.88))
+		_encounter_cue.add_theme_color_override("font_shadow_color", Color(0.02, 0.025, 0.04))
+		_encounter_cue.add_theme_constant_override("shadow_offset_x", 1)
+		_encounter_cue.add_theme_constant_override("shadow_offset_y", 1)
+		add_child(_encounter_cue)
+	_encounter_cue.position = Vector2(13, TOP_HEIGHT + 8)
+	_encounter_cue.text = text
+	_encounter_cue.visible = not text.is_empty()

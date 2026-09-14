@@ -12,6 +12,7 @@ const LIFT_SCALE_PER_TILE: float = 0.075
 const MAX_LIFT_SCALE: float = 2.0
 var damage_phase: int = 0
 var _boss: AnimatedSprite3D
+var _score_view: ArenicScoreView
 var _blast: ArenicBossBlastRing
 var _ground: ArenicGroundOverlay
 var _acid: ArenicGroundOverlay
@@ -67,16 +68,26 @@ func _build_boss() -> void:
 	sprite.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	# Sprite3D's centered 114px frame has the authored (57,57) pivot.
 	sprite.centered = true
+	# Keep odd tavern art on the same native raster as even boss canvases.
+	var visual_center: Vector2 = Vector2(definition.boss_origin_cell) + Vector2(2.5, 2.5) + definition.boss_visual_offset
+	var frame_size: Vector2 = frames.get_frame_texture(animation_name, 0).get_size()
+	var parity := Vector2(0.5 if int(frame_size.x) % 2 == 0 else 0.0, 0.5 if int(frame_size.y) % 2 == 0 else 0.0)
+	var native_center: Vector2 = visual_center * TILE_PIXELS
+	sprite.offset = (native_center - parity).round() + parity - native_center
 	# Stated, not inherited: a boss standing in acid or on broken ground is drawn
 	# over it. Ground effects sort below zero precisely so this holds.
 	sprite.render_priority = 0
 	sprite.rotation.x = -PI * 0.5
 	var lower_left := ArenicGridMath.tile_to_world(definition.grid_slot, definition.boss_origin_cell)
 	var canvas_center := lower_left + Vector3(2.5, 0.0, -2.5) * ArenicGridMath.TILE_SIZE
-	sprite.position = canvas_center - position + Vector3(0.0, 0.01, 0.0)
+	sprite.position = canvas_center - position + _visual_offset() + Vector3(0.0, 0.01, 0.0)
 	add_child(sprite)
 	sprite.play(animation_name)
 	_boss = sprite
+
+func _visual_offset() -> Vector3:
+	return Vector3(definition.boss_visual_offset.x, 0.0, -definition.boss_visual_offset.y) * ArenicGridMath.TILE_SIZE
+
 
 ## Damage phases never remove the target. Authored forms advance until the last
 ## available appearance; later phase layers remain represented by the ledger/HUD.
@@ -100,11 +111,15 @@ func set_damage_phase(completed: int) -> void:
 func set_boss_placement(placement: Dictionary) -> void:
 	if _boss == null or placement.is_empty():
 		return
+	if placement.has("facing"):
+		var animation_name: String = "idle_" + String(placement.facing)
+		if _boss.sprite_frames.has_animation(animation_name) and _boss.animation != animation_name:
+			_boss.play(animation_name)
 	var center: Vector2 = placement["center"]
 	var lift: float = float(placement["lift"])
 	# The world lift still keeps an airborne boss sorted above ground decoration;
 	# the scale is what actually shows it leaving the floor.
-	_boss.position = ArenicArenaTiles.tile_point(center) + Vector3(0.0, lift * ArenicGridMath.TILE_SIZE + 0.01, 0.0)
+	_boss.position = ArenicArenaTiles.tile_point(center) + _visual_offset() + Vector3(0.0, lift * ArenicGridMath.TILE_SIZE + 0.01, 0.0)
 	_boss.scale = Vector3.ONE * minf(MAX_LIFT_SCALE, 1.0 + lift * LIFT_SCALE_PER_TILE)
 	if _blast != null:
 		_blast.show_warning(placement["target"], float(placement["radius"]), int(placement["until"]), int(placement["travel"]))
@@ -154,3 +169,13 @@ func show_dig(cell: Vector2i, value: int) -> void:
 func show_blast(center: Vector2, radius_tiles: float) -> void:
 	if _blast != null:
 		_blast.strike(center, radius_tiles)
+
+
+func set_score_view(score: ArenicMaskScore, tick: int) -> void:
+	if _score_view == null and score != null:
+		_score_view = ArenicScoreView.new()
+		_score_view.name = "ScoreWarnings"
+		add_child(_score_view)
+	if _score_view != null:
+		_score_view.configure(score)
+		_score_view.sync(tick)

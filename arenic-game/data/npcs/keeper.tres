@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ArenicNpcDefinition" format=3 uid="uid://8bkd8cy0jcdv"]
+
+[ext_resource type="Script" uid="uid://du60kqi5axk23" path="res://scripts/intro/npc_definition.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dfv77m4ixstkx" path="res://assets/portraits/npcs/keeper.png" id="2"]
+[ext_resource type="SpriteFrames" path="res://assets/npcs/keeper/seated/keeper_seated.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://q1slw5krrsqf" path="res://assets/portraits/npcs/keeper-dialogue.png" id="4"]
+[ext_resource type="Resource" path="res://data/interactions/keeper_introduction.tres" id="5"]
+
+[resource]
+script = ExtResource("1")
+npc_id = "keeper"
+display_name = "The Keeper"
+role = "Caretaker of the Guild House"
+interaction_marker = ExtResource("5")
+portrait = ExtResource("2")
+dialogue_portrait = ExtResource("4")
+sprite_frames = ExtResource("3")

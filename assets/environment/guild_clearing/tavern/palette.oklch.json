@@ -1,0 +1,16 @@
+{
+  "space": "oklch",
+  "inherits": "assets/environment/palette.oklch.json",
+  "colors": [
+    {"id":"roofDeep","oklch":[0.30,0.063,29]},
+    {"id":"roofShade","oklch":[0.40,0.087,32]},
+    {"id":"roof","oklch":[0.52,0.107,39]},
+    {"id":"roofWarm","oklch":[0.59,0.110,46]},
+    {"id":"roofLight","oklch":[0.67,0.102,57]},
+    {"id":"mortar","oklch":[0.32,0.025,83]},
+    {"id":"sandstone","oklch":[0.57,0.038,85]},
+    {"id":"sandstoneLight","oklch":[0.72,0.043,88]},
+    {"id":"plaster","oklch":[0.79,0.054,79]}
+  ],
+  "notes":["One overhead timber tavern; upper-left screen lighting.","Shared wood, stone, gold and foliage ramps are inherited unchanged."]
+}

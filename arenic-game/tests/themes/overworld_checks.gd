@@ -31,6 +31,7 @@ func _run() -> void:
 	_watchdog.start()
 	if not _check(DisplayServer.get_name() != "headless", "Use a real renderer for the actual canvas and camera integration."):
 		return
+	root.get_node("RunSetup").intro_step = 6 # Established-world presentation fixture.
 	var packed := load(SHELL_PATH) as PackedScene
 	if not _check(packed != null, "Actual persistent game shell loads."):
 		return
@@ -84,8 +85,9 @@ func _run() -> void:
 func _hud_styles() -> Array[StyleBoxFlat]:
 	var top := _shell.hud.get_node("TopStrip") as Panel
 	var bottom := _shell.hud.get_node("BottomStrip") as Panel
-	var toggle := bottom.get_node("OverviewToggle") as Button
-	var result: Array[StyleBoxFlat] = [top.get_theme_stylebox("panel") as StyleBoxFlat, bottom.get_theme_stylebox("panel") as StyleBoxFlat, (top.get_node("ArenaHotkey") as Label).get_theme_stylebox("normal") as StyleBoxFlat]
+	var guide := _shell.hud.get_node("ControlsLayer/ControlsGuide") as Panel
+	var toggle := guide.get_node("OverviewToggle") as Button
+	var result: Array[StyleBoxFlat] = [top.get_theme_stylebox("panel") as StyleBoxFlat, bottom.get_theme_stylebox("panel") as StyleBoxFlat, guide.get_theme_stylebox("panel") as StyleBoxFlat]
 	for state_name: String in ["normal", "hover", "pressed", "disabled"]:
 		result.append(toggle.get_theme_stylebox(state_name) as StyleBoxFlat)
 	return result
@@ -95,14 +97,18 @@ func _check_hud() -> bool:
 	var hud: ArenicWorldHUD = _shell.hud
 	var top := hud.get_node("TopStrip") as Panel
 	var bottom := hud.get_node("BottomStrip") as Panel
-	var toggle := bottom.get_node("OverviewToggle") as Button
+	var guide := hud.get_node("ControlsLayer/ControlsGuide") as Control
+	var toggle := guide.get_node("OverviewToggle") as Button
 	var top_sheen := top.get_node("GlassSheen") as TextureRect
 	var bottom_sheen := bottom.get_node("GlassSheen") as TextureRect
 	var original_rects: Dictionary = {}
 	for child: Node in hud.find_children("*", "Control", true, false):
+		# The measured arena title and its remaining effect width follow content.
+		if child.name in ["ArenaTitle", "BossEffects"]:
+			continue
 		original_rects[child.get_path()] = (child as Control).get_rect()
 	var original_styles: Array[StyleBoxFlat] = _hud_styles()
-	if not _check(hud.get_world_rect().is_equal_approx(SAFE_RECT) and toggle.get_rect().is_equal_approx(Rect2(1012.0, 12.0, 151.0, 30.0)), "Glass retains the exact safe area and actionable button hitbox."):
+	if not _check(hud.get_world_rect().is_equal_approx(SAFE_RECT) and Rect2(Vector2.ZERO, guide.size).encloses(toggle.get_rect()), "Glass retains the exact safe area with navigation inside the Controls panel."):
 		return false
 	if not _check(top.get_rect().is_equal_approx(Rect2(0.0, 0.0, hud.size.x, 35.0)) and bottom.get_rect().is_equal_approx(Rect2(0.0, hud.size.y - 96.0, hud.size.x, 96.0)), "Both HUD strips fill the viewport width and meet its outer edges without margins."):
 		return false
@@ -120,7 +126,7 @@ func _check_hud() -> bool:
 		if not _check(is_equal_approx(styles[0].bg_color.a, 0.78) and styles[0].bg_color.is_equal_approx(styles[1].bg_color), "All nine overview palettes use matching translucent glass strips."):
 			return false
 		for style: StyleBoxFlat in styles:
-			if not _check(style.corner_radius_top_left == 0 and style.corner_radius_top_right == 0 and style.corner_radius_bottom_left == 0 and style.corner_radius_bottom_right == 0 and style.shadow_size == 0 and style.shadow_offset.is_zero_approx(), "Overview strips, hotkey badge and every button state keep square corners without shadows."):
+			if not _check(style.corner_radius_top_left == 0 and style.corner_radius_top_right == 0 and style.corner_radius_bottom_left == 0 and style.corner_radius_bottom_right == 0 and style.shadow_size == 0 and style.shadow_offset.is_zero_approx(), "Overview strips, Controls panel and every menu button state keep square corners without shadows."):
 				return false
 		if not _check(styles[0].border_width_top == 0 and styles[0].border_width_left == 0 and styles[0].border_width_right == 0 and styles[0].border_width_bottom == 1 and styles[1].border_width_bottom == 0 and styles[1].border_width_left == 0 and styles[1].border_width_right == 0 and styles[1].border_width_top == 1, "HUD strips retain only their inner separators, with no outer frame."):
 			return false
@@ -138,7 +144,7 @@ func _check_hud() -> bool:
 			if not _check(styles[index] == original_styles[index], "Palette and overview updates reuse the same style resources."):
 				return false
 		for child_path: NodePath in original_rects:
-			if not _check((hud.get_node(child_path) as Control).get_rect().is_equal_approx(original_rects[child_path]), "Blending and retheming leave every HUD control rectangle unchanged."):
+			if not _check((hud.get_node(child_path) as Control).get_rect().is_equal_approx(original_rects[child_path]), "Blending and retheming leave content-independent HUD rectangles unchanged."):
 				return false
 	return true
 

@@ -36,8 +36,8 @@ export function watch(page) {
     if (response.status() >= 400 && !response.url().endsWith('/favicon.ico')) failures.push(`HTTP ${response.status()}: ${response.url()}`);
   });
   log.latest = () => log.events.findLast(event => event.kind === 'state')?.data;
-  log.wait = async (predicate, message) => {
-    await expect.poll(() => Boolean(predicate(log.latest())), { message }).toBe(true);
+  log.wait = async (predicate, message, options = {}) => {
+    await expect.poll(() => Boolean(predicate(log.latest())), { ...options, message }).toBe(true);
     return log.latest();
   };
   log.event = async (kind, after = 0, timeout = 90_000) => {
@@ -134,6 +134,21 @@ export async function loadGame(page, path, log) {
   log.ready = true;
 }
 
+export async function reloadGame(page, log) {
+  const firstNewConsole = log.console.length;
+  log.events.length = 0;
+  log.ready = false;
+  await page.reload();
+  await expect(page.locator('#canvas')).toBeVisible();
+  await expect.poll(() => log.console.slice(firstNewConsole)
+    .some(item => item.text.startsWith('Build configuration:')), { timeout: 60_000 }).toBe(true);
+  // Godot can report a hydrated title while the HTML loader still covers its
+  // controls. Only send pointer input after this new page releases the canvas.
+  await expect(page.locator('#status')).toBeHidden();
+  log.downloads = await page.evaluate(() => window.__arenicDownloads);
+  log.ready = true;
+}
+
 // Read browser-rendered pixels, never Godot state or a production test hook.
 // Screenshot decoding uses browser image/canvas APIs, with no extra dependency.
 export async function renderedPixels(page, points) {
@@ -190,16 +205,73 @@ export async function clickTitleButton(page, name) {
   await page.mouse.click(...state.center);
 }
 
-export async function clickLogical(page, state, point) {
+export async function clickLogical(page, state, point, options = {}) {
   const box = await page.locator('#canvas').boundingBox();
   expect(box).toBeTruthy();
   const [width, height] = state.logical;
   const scale = Math.min(box.width / width, box.height / height);
   await page.mouse.click(box.x + (box.width - width * scale) / 2 + point[0] * scale,
-    box.y + (box.height - height * scale) / 2 + point[1] * scale);
+    box.y + (box.height - height * scale) / 2 + point[1] * scale, options);
 }
 
-export async function enterProbeWorld(page, log, classIndex = 3) {
+export async function openControlsGuide(page, log) {
+  let state = await log.wait(value => value?.scene === 'world' && value.hud?.guide,
+    'The game exposes its real controls menu');
+  if (!state.hud.guide.visible) {
+    await page.keyboard.press('h');
+    state = await log.wait(value => value?.hud?.guide.visible
+      && value.controls.toggle.visible && value.controls.save_title.visible,
+    'H reveals the Overview and Save/Title actions');
+  }
+  return state;
+}
+
+export async function clickHudMenuAction(page, log, action) {
+  if (!['toggle', 'save_title'].includes(action)) throw new Error(`Unknown HUD menu action: ${action}`);
+  const state = await openControlsGuide(page, log);
+  expect(state.controls[action].disabled).toBe(false);
+  await clickLogical(page, state, state.controls[action].center);
+}
+
+// Prepare a canonical document before WASM boots; the real IndexedDB adapter,
+// title picker and codec still perform hydration. Only onboarding tests create
+// a fresh founder and wait through the authored reading/door timelines.
+export async function enterProbeWorld(page, log, classIndex = 3, options = {}) {
+  if (options.introduction === false) return enterNewProbeWorld(page, log, classIndex);
+  const name = options.fixture ?? CLASSES[classIndex][0];
+  const fixtureRoot = `${PROBE.replace(/\/$/, '')}/fixtures/`;
+  const response = await page.request.get(`${fixtureRoot}${name}.json`);
+  expect(response.ok(), `Canonical browser fixture ${name} exists`).toBe(true);
+  const raw = await response.text();
+  await page.goto(fixtureRoot);
+  await page.evaluate(raw => new Promise((resolve, reject) => {
+    const request = indexedDB.open('arenic-saves', 1);
+    request.onupgradeneeded = () => request.result.createObjectStore('slots');
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      const db = request.result;
+      const tx = db.transaction('slots', 'readwrite');
+      tx.objectStore('slots').put(raw, 0);
+      tx.oncomplete = () => { db.close(); resolve(); };
+      tx.onabort = () => { db.close(); reject(tx.error); };
+    };
+  }), raw);
+  await loadGame(page, PROBE, log);
+  let state = await log.wait(s => s?.scene === 'title' && s.saves?.ready && !s.saves.busy
+    && s.controls.continue.visible, 'The real save adapter hydrates the prepared run');
+  await clickLogical(page, state, state.controls.continue.center);
+  state = await log.wait(s => s?.picker?.visible && !s.picker.working, 'Continue opens the slot picker');
+  expect(state.picker.rows[0].choose.disabled).toBe(false);
+  await clickLogical(page, state, state.picker.rows[0].choose.center);
+  state = await log.wait(s => s?.scene === 'world' && s.introduction?.step === 6
+    && !s.motion_active, 'The shared codec restores an established guild');
+  expect(state.hero.class_id).toBe(CLASSES[classIndex][0]);
+  expect(state.hero.facing).toBe('n');
+  expect(state.zoomed).toBe(false);
+  return state;
+}
+
+async function enterNewProbeWorld(page, log, classIndex) {
   await loadGame(page, PROBE, log);
   let state = await log.wait(value => value?.scene === 'title' && value.saves?.ready && !value.controls.start.disabled,
     'Title enables Start after save storage hydration');
@@ -208,7 +280,8 @@ export async function enterProbeWorld(page, log, classIndex = 3) {
   await clickLogical(page, state, state.cards[classIndex].center);
   state = await log.wait(value => value?.selected_index === classIndex, 'Actual card selection');
   await clickLogical(page, state, state.controls.confirm.center);
-  return log.wait(value => value?.scene === 'world' && !value.motion_active, 'Actual confirmation opens world');
+  state = await log.wait(value => value?.scene === 'world' && !value.motion_active, 'Actual confirmation opens world');
+  return state;
 }
 
 export async function attachResults(testInfo, log, extra = {}) {
@@ -218,4 +291,26 @@ export async function attachResults(testInfo, log, extra = {}) {
     path,
     contentType: 'application/json',
   });
+}
+
+export async function completeIntroduction(page, log) {
+  // At Retina density, software rendering can need over 20 wall seconds for
+  // 2.75 seconds of the real reading clock. Keep exact state/timer assertions
+  // and a bounded allowance; the enclosing gameplay test still has its cap.
+  let state = await log.wait(value => value?.introduction, 'Prologue is mounted');
+  if (state.introduction.step === 0) {
+    state = await log.wait(value => value?.introduction?.elapsed >= 2, 'Opening quote can be read', { timeout: 60_000 });
+    await clickLogical(page, state, state.introduction.begin_center);
+    state = await log.wait(value => value?.introduction?.step === 1, 'Quote gives way to Guild House');
+  }
+  if (state.introduction.step === 1) {
+    await page.keyboard.press('Space');
+    state = await log.wait(value => value?.introduction?.step === 2, 'Space speaks to the Keeper');
+  }
+  for (let step = state.introduction.step; step <= 5; step++) {
+    state = await log.wait(value => value?.introduction?.step === step && value.introduction.elapsed >= 2.75, 'Dialogue beat is readable', { timeout: 60_000 });
+    await clickLogical(page, state, state.introduction.next_center);
+    await log.wait(value => value?.introduction?.step > step || value?.introduction?.opening, 'Dialogue advances');
+  }
+  return log.wait(value => value?.introduction?.step === 6 && !value.introduction.opening, 'All Guild House doors finish opening', { timeout: 60_000 });
 }

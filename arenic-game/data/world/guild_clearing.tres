@@ -1,0 +1,302 @@
+[gd_resource type="Resource" script_class="ArenicGuildClearingDefinition" format=3 uid="uid://b5fjmcpnv25yf"]
+
+[ext_resource type="Script" uid="uid://cvw8siaehoxfn" path="res://scripts/world/guild_clearing_definition.gd" id="1"]
+[ext_resource type="Script" uid="uid://c8d4uncpa57a4" path="res://scripts/world/clearing_tree.gd" id="2"]
+
+[sub_resource type="Resource" id="Tree0"]
+script = ExtResource("2")
+cell = Vector2(3, 27)
+
+[sub_resource type="Resource" id="Tree1"]
+script = ExtResource("2")
+cell = Vector2(5, 28)
+variant = 3
+facing = 1
+
+[sub_resource type="Resource" id="Tree2"]
+script = ExtResource("2")
+cell = Vector2(13, 28)
+variant = 1
+facing = 2
+
+[sub_resource type="Resource" id="Tree3"]
+script = ExtResource("2")
+cell = Vector2(16, 26.5)
+variant = 4
+facing = 3
+
+[sub_resource type="Resource" id="Tree4"]
+script = ExtResource("2")
+cell = Vector2(19, 28)
+variant = 2
+
+[sub_resource type="Resource" id="Tree5"]
+script = ExtResource("2")
+cell = Vector2(22, 27)
+facing = 2
+
+[sub_resource type="Resource" id="Tree6"]
+script = ExtResource("2")
+cell = Vector2(43, 28)
+variant = 3
+facing = 3
+
+[sub_resource type="Resource" id="Tree7"]
+script = ExtResource("2")
+cell = Vector2(46, 26)
+variant = 2
+
+[sub_resource type="Resource" id="Tree8"]
+script = ExtResource("2")
+cell = Vector2(49, 28)
+facing = 1
+
+[sub_resource type="Resource" id="Tree9"]
+script = ExtResource("2")
+cell = Vector2(52, 27)
+variant = 3
+facing = 2
+
+[sub_resource type="Resource" id="Tree10"]
+script = ExtResource("2")
+cell = Vector2(56, 28)
+variant = 1
+
+[sub_resource type="Resource" id="Tree11"]
+script = ExtResource("2")
+cell = Vector2(60, 26.5)
+variant = 4
+facing = 1
+
+[sub_resource type="Resource" id="Tree12"]
+script = ExtResource("2")
+cell = Vector2(63, 28)
+variant = 2
+facing = 2
+
+[sub_resource type="Resource" id="Tree13"]
+script = ExtResource("2")
+cell = Vector2(3, 23)
+facing = 3
+
+[sub_resource type="Resource" id="Tree14"]
+script = ExtResource("2")
+cell = Vector2(3.5, 20)
+variant = 4
+
+[sub_resource type="Resource" id="Tree15"]
+script = ExtResource("2")
+cell = Vector2(5, 18.5)
+variant = 2
+facing = 2
+
+[sub_resource type="Resource" id="Tree16"]
+script = ExtResource("2")
+cell = Vector2(61.5, 23)
+facing = 3
+
+[sub_resource type="Resource" id="Tree17"]
+script = ExtResource("2")
+cell = Vector2(59.5, 21)
+variant = 3
+
+[sub_resource type="Resource" id="Tree18"]
+script = ExtResource("2")
+cell = Vector2(63, 19)
+variant = 1
+facing = 1
+
+[sub_resource type="Resource" id="Tree19"]
+script = ExtResource("2")
+cell = Vector2(3, 11)
+variant = 4
+facing = 2
+
+[sub_resource type="Resource" id="Tree20"]
+script = ExtResource("2")
+cell = Vector2(5, 9.5)
+variant = 2
+
+[sub_resource type="Resource" id="Tree21"]
+script = ExtResource("2")
+cell = Vector2(3, 6.5)
+variant = 1
+facing = 1
+
+[sub_resource type="Resource" id="Tree22"]
+script = ExtResource("2")
+cell = Vector2(6, 4)
+variant = 4
+facing = 2
+
+[sub_resource type="Resource" id="Tree23"]
+script = ExtResource("2")
+cell = Vector2(3, 2.5)
+variant = 2
+facing = 3
+
+[sub_resource type="Resource" id="Tree24"]
+script = ExtResource("2")
+cell = Vector2(62.5, 11)
+
+[sub_resource type="Resource" id="Tree25"]
+script = ExtResource("2")
+cell = Vector2(63, 8.5)
+variant = 3
+facing = 2
+
+[sub_resource type="Resource" id="Tree26"]
+script = ExtResource("2")
+cell = Vector2(61, 3)
+variant = 1
+facing = 3
+
+[sub_resource type="Resource" id="Tree27"]
+script = ExtResource("2")
+cell = Vector2(63, 2)
+variant = 4
+
+[sub_resource type="Resource" id="Tree28"]
+script = ExtResource("2")
+cell = Vector2(10, 3)
+variant = 3
+facing = 1
+
+[sub_resource type="Resource" id="Tree29"]
+script = ExtResource("2")
+cell = Vector2(13, 4.5)
+variant = 1
+facing = 2
+
+[sub_resource type="Resource" id="Tree30"]
+script = ExtResource("2")
+cell = Vector2(17, 2.5)
+variant = 4
+
+[sub_resource type="Resource" id="Tree31"]
+script = ExtResource("2")
+cell = Vector2(20, 4)
+variant = 2
+facing = 1
+
+[sub_resource type="Resource" id="Tree32"]
+script = ExtResource("2")
+cell = Vector2(23, 2.5)
+facing = 2
+
+[sub_resource type="Resource" id="Tree33"]
+script = ExtResource("2")
+cell = Vector2(27, 3)
+variant = 3
+facing = 3
+
+[sub_resource type="Resource" id="Tree34"]
+script = ExtResource("2")
+cell = Vector2(39, 3)
+variant = 1
+
+[sub_resource type="Resource" id="Tree35"]
+script = ExtResource("2")
+cell = Vector2(43, 2.5)
+facing = 2
+
+[sub_resource type="Resource" id="Tree36"]
+script = ExtResource("2")
+cell = Vector2(46, 4)
+variant = 3
+facing = 3
+
+[sub_resource type="Resource" id="Tree37"]
+script = ExtResource("2")
+cell = Vector2(49, 2.5)
+variant = 1
+
+[sub_resource type="Resource" id="Tree38"]
+script = ExtResource("2")
+cell = Vector2(53, 3.5)
+variant = 4
+facing = 1
+
+[sub_resource type="Resource" id="Tree39"]
+script = ExtResource("2")
+cell = Vector2(56, 2.5)
+variant = 2
+facing = 2
+
+[sub_resource type="Resource" id="Tree40"]
+script = ExtResource("2")
+cell = Vector2(15, 24.5)
+
+[sub_resource type="Resource" id="Tree41"]
+script = ExtResource("2")
+cell = Vector2(17, 22)
+variant = 3
+facing = 1
+
+[sub_resource type="Resource" id="Tree42"]
+script = ExtResource("2")
+cell = Vector2(11, 26)
+variant = 2
+facing = 2
+
+[sub_resource type="Resource" id="Tree43"]
+script = ExtResource("2")
+cell = Vector2(9, 7)
+facing = 3
+
+[sub_resource type="Resource" id="Tree44"]
+script = ExtResource("2")
+cell = Vector2(14, 6)
+variant = 3
+
+[sub_resource type="Resource" id="Tree45"]
+script = ExtResource("2")
+cell = Vector2(17, 8)
+variant = 1
+facing = 2
+
+[sub_resource type="Resource" id="Tree46"]
+script = ExtResource("2")
+cell = Vector2(10, 11)
+variant = 4
+facing = 3
+
+[sub_resource type="Resource" id="Tree47"]
+script = ExtResource("2")
+cell = Vector2(54, 25)
+variant = 2
+
+[sub_resource type="Resource" id="Tree48"]
+script = ExtResource("2")
+cell = Vector2(57, 23)
+facing = 1
+
+[sub_resource type="Resource" id="Tree49"]
+script = ExtResource("2")
+cell = Vector2(50, 24)
+variant = 4
+facing = 2
+
+[sub_resource type="Resource" id="Tree50"]
+script = ExtResource("2")
+cell = Vector2(58, 10)
+variant = 2
+
+[sub_resource type="Resource" id="Tree51"]
+script = ExtResource("2")
+cell = Vector2(53, 9.5)
+facing = 1
+
+[sub_resource type="Resource" id="Tree52"]
+script = ExtResource("2")
+cell = Vector2(57, 4.5)
+variant = 3
+facing = 2
+
+[resource]
+script = ExtResource("1")
+trees = Array[ExtResource("2")]([SubResource("Tree0"), SubResource("Tree1"), SubResource("Tree2"), SubResource("Tree3"), SubResource("Tree4"), SubResource("Tree5"), SubResource("Tree6"), SubResource("Tree7"), SubResource("Tree8"), SubResource("Tree9"), SubResource("Tree10"), SubResource("Tree11"), SubResource("Tree12"), SubResource("Tree13"), SubResource("Tree14"), SubResource("Tree15"), SubResource("Tree16"), SubResource("Tree17"), SubResource("Tree18"), SubResource("Tree19"), SubResource("Tree20"), SubResource("Tree21"), SubResource("Tree22"), SubResource("Tree23"), SubResource("Tree24"), SubResource("Tree25"), SubResource("Tree26"), SubResource("Tree27"), SubResource("Tree28"), SubResource("Tree29"), SubResource("Tree30"), SubResource("Tree31"), SubResource("Tree32"), SubResource("Tree33"), SubResource("Tree34"), SubResource("Tree35"), SubResource("Tree36"), SubResource("Tree37"), SubResource("Tree38"), SubResource("Tree39"), SubResource("Tree40"), SubResource("Tree41"), SubResource("Tree42"), SubResource("Tree43"), SubResource("Tree44"), SubResource("Tree45"), SubResource("Tree46"), SubResource("Tree47"), SubResource("Tree48"), SubResource("Tree49"), SubResource("Tree50"), SubResource("Tree51"), SubResource("Tree52")])
+paths = Array[PackedVector2Array]([PackedVector2Array(1, 15, 10, 15.5, 18, 16, 26, 16, 33, 18, 41, 16, 53, 15, 64, 15), PackedVector2Array(33, 18, 33, 14, 31, 10, 33, 5, 33, 1), PackedVector2Array(7, 24, 10, 21, 13, 18, 16, 16), PackedVector2Array(56, 7, 52, 10, 50, 14), PackedVector2Array(12, 9, 17, 13, 21, 16), PackedVector2Array(12, 23, 15, 20, 16, 16), PackedVector2Array(23, 21, 24, 18, 28, 17.5, 33, 18, 37, 17.5, 41, 18, 42, 21)])
+wood_variants = PackedInt32Array(0, 3)
+wood_facings = PackedInt32Array(1, 2)
+mine_facings = PackedInt32Array(1, 3)

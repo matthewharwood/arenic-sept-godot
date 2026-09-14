@@ -36,6 +36,7 @@ func _run() -> void:
 	_master_was_muted = AudioServer.is_bus_mute(0)
 	_master_changed = true
 	AudioServer.set_bus_mute(0, true)
+	root.get_node("RunSetup").intro_step = 6 # Established-world presentation fixture.
 	var packed := load(SHELL_PATH) as PackedScene
 	if not _check(packed != null, "Actual game shell loads after music imports."):
 		return
@@ -43,6 +44,7 @@ func _run() -> void:
 	root.add_child(_shell)
 	_stage = _shell.stage
 	_music = _shell.music
+	_music.cycle_source = null
 	if not _check(_stage != null and _music != null, "Persistent shell owns the configured arena music director."):
 		return
 	_music.set_process(false) # Before the first frame: observe the shared zero start.

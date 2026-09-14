@@ -18,6 +18,8 @@ extends Resource
 @export var boss_combat_size: Vector2i = Vector2i(6, 6)
 ## Absolute damage needed to complete each cumulative phase layer.
 @export_range(1, 1000000, 1) var phase_damage: int = 20
-## The Guild House uses a sparring construct until it has an authored boss.
+## Art offset in grid tiles; never changes target occupancy or saved combat identity.
+@export var boss_visual_offset: Vector2 = Vector2.ZERO
+## Static Guild House scenery shares the target presentation slot.
 @export var training_target_frames: SpriteFrames
 @export var content_scene: PackedScene

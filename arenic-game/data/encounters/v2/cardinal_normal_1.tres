@@ -1,0 +1,394 @@
+[gd_resource type="Resource" script_class="ArenicMaskScore" format=3 uid="uid://bac72lblq8a72"]
+
+[ext_resource type="Script" uid="uid://dfjxft06e4mv0" path="res://scripts/encounters/v2/mask_score.gd" id="1"]
+[ext_resource type="Script" uid="uid://b2twn5nx7frla" path="res://scripts/encounters/v2/score_event.gd" id="2"]
+[ext_resource type="Script" uid="uid://41y4gle5oqxj" path="res://scripts/encounters/encounter_beat.gd" id="3"]
+
+[sub_resource type="Resource" id="Pose_0"]
+script = ExtResource("3")
+travel_ticks = 0
+lift_tiles = 0.0
+blast_radius_tiles = 0.0
+
+[sub_resource type="Resource" id="Pose_1"]
+script = ExtResource("3")
+at_tick = 1500
+facing = "e"
+travel_ticks = 0
+lift_tiles = 0.0
+blast_radius_tiles = 0.0
+
+[sub_resource type="Resource" id="Pose_2"]
+script = ExtResource("3")
+at_tick = 3300
+boss_origin_cell = Vector2i(30, 18)
+facing = "s"
+travel_ticks = 0
+lift_tiles = 0.0
+blast_radius_tiles = 0.0
+
+[sub_resource type="Resource" id="Pose_3"]
+script = ExtResource("3")
+at_tick = 5100
+facing = "w"
+travel_ticks = 0
+lift_tiles = 0.0
+blast_radius_tiles = 0.0
+
+[sub_resource type="Resource" id="Pose_4"]
+script = ExtResource("3")
+at_tick = 6780
+travel_ticks = 0
+lift_tiles = 0.0
+blast_radius_tiles = 0.0
+
+[sub_resource type="Resource" id="Event_0"]
+script = ExtResource("2")
+event_id = "cardinal.1.1"
+action_id = "sun_seal"
+display_name = "Sun Seal"
+cue_tick = 270
+at_tick = 390
+end_tick = 391
+masks = Array[Rect2i]([Rect2i(14, 6, 14, 19)])
+mask_elements = PackedStringArray("sun")
+tags = PackedStringArray("floor", "sun")
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_1"]
+script = ExtResource("2")
+event_id = "cardinal.1.2"
+action_id = "moon_seal"
+display_name = "Moon Seal"
+cue_tick = 570
+at_tick = 690
+end_tick = 691
+masks = Array[Rect2i]([Rect2i(38, 6, 14, 19)])
+mask_elements = PackedStringArray("moon")
+tags = PackedStringArray("floor", "moon")
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_2"]
+script = ExtResource("2")
+event_id = "cardinal.1.3"
+action_id = "split_hammer"
+display_name = "Split Hammer"
+cue_tick = 810
+at_tick = 930
+end_tick = 931
+masks = Array[Rect2i]([Rect2i(27, 18, 12, 6)])
+mask_elements = PackedStringArray()
+tags = PackedStringArray("cone")
+damage = 2
+incoming_direction = "south"
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_3"]
+script = ExtResource("2")
+event_id = "cardinal.1.4"
+action_id = "confession"
+display_name = "Confession"
+cue_tick = 1050
+at_tick = 1170
+end_tick = 1171
+masks = Array[Rect2i]([Rect2i(24, 5, 2, 21), Rect2i(40, 5, 2, 21)])
+mask_elements = PackedStringArray()
+tags = PackedStringArray("projectile", "expose")
+incoming_direction = "north"
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_4"]
+script = ExtResource("2")
+event_id = "cardinal.1.5"
+action_id = "eclipse"
+display_name = "Eclipse"
+cue_tick = 1230
+at_tick = 1350
+end_tick = 1351
+masks = Array[Rect2i]([Rect2i(14, 6, 14, 19), Rect2i(38, 6, 14, 19)])
+mask_elements = PackedStringArray("sun", "moon")
+tags = PackedStringArray("floor")
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_5"]
+script = ExtResource("2")
+event_id = "cardinal.1.6"
+action_id = "reconciliation"
+display_name = "Reconciliation"
+cue_tick = 1320
+at_tick = 1500
+end_tick = 1800
+mask_elements = PackedStringArray()
+tags = PackedStringArray()
+damage = 0
+kind = "window"
+attunement_bonus = "sun"
+boss_facing = "e"
+
+[sub_resource type="Resource" id="Event_6"]
+script = ExtResource("2")
+event_id = "cardinal.2.1"
+action_id = "sun_seal"
+display_name = "Sun Seal"
+cue_tick = 2070
+at_tick = 2190
+end_tick = 2191
+masks = Array[Rect2i]([Rect2i(38, 6, 14, 19)])
+mask_elements = PackedStringArray("sun")
+tags = PackedStringArray("floor", "sun")
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_7"]
+script = ExtResource("2")
+event_id = "cardinal.2.2"
+action_id = "moon_seal"
+display_name = "Moon Seal"
+cue_tick = 2370
+at_tick = 2490
+end_tick = 2491
+masks = Array[Rect2i]([Rect2i(14, 6, 14, 19)])
+mask_elements = PackedStringArray("moon")
+tags = PackedStringArray("floor", "moon")
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_8"]
+script = ExtResource("2")
+event_id = "cardinal.2.3"
+action_id = "split_hammer"
+display_name = "Split Hammer"
+cue_tick = 2610
+at_tick = 2730
+end_tick = 2731
+masks = Array[Rect2i]([Rect2i(27, 18, 12, 6)])
+mask_elements = PackedStringArray()
+tags = PackedStringArray("cone")
+damage = 2
+incoming_direction = "south"
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_9"]
+script = ExtResource("2")
+event_id = "cardinal.2.4"
+action_id = "confession"
+display_name = "Confession"
+cue_tick = 2850
+at_tick = 2970
+end_tick = 2971
+masks = Array[Rect2i]([Rect2i(40, 5, 2, 21), Rect2i(24, 5, 2, 21)])
+mask_elements = PackedStringArray()
+tags = PackedStringArray("projectile", "expose")
+incoming_direction = "north"
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_10"]
+script = ExtResource("2")
+event_id = "cardinal.2.5"
+action_id = "eclipse"
+display_name = "Eclipse"
+cue_tick = 3030
+at_tick = 3150
+end_tick = 3151
+masks = Array[Rect2i]([Rect2i(38, 6, 14, 19), Rect2i(14, 6, 14, 19)])
+mask_elements = PackedStringArray("sun", "moon")
+tags = PackedStringArray("floor")
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_11"]
+script = ExtResource("2")
+event_id = "cardinal.2.6"
+action_id = "reconciliation"
+display_name = "Reconciliation"
+cue_tick = 3120
+at_tick = 3300
+end_tick = 3600
+mask_elements = PackedStringArray()
+tags = PackedStringArray()
+damage = 0
+kind = "window"
+attunement_bonus = "moon"
+boss_origin = Vector2i(30, 18)
+boss_facing = "s"
+
+[sub_resource type="Resource" id="Event_12"]
+script = ExtResource("2")
+event_id = "cardinal.3.1"
+action_id = "confession"
+display_name = "Confession"
+cue_tick = 3870
+at_tick = 3990
+end_tick = 3991
+masks = Array[Rect2i]([Rect2i(24, 5, 2, 21), Rect2i(40, 5, 2, 21)])
+mask_elements = PackedStringArray()
+tags = PackedStringArray("projectile", "expose")
+incoming_direction = "north"
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_13"]
+script = ExtResource("2")
+event_id = "cardinal.3.2"
+action_id = "sun_seal"
+display_name = "Sun Seal"
+cue_tick = 4170
+at_tick = 4290
+end_tick = 4291
+masks = Array[Rect2i]([Rect2i(14, 6, 14, 19)])
+mask_elements = PackedStringArray("sun")
+tags = PackedStringArray("floor", "sun")
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_14"]
+script = ExtResource("2")
+event_id = "cardinal.3.3"
+action_id = "moon_seal"
+display_name = "Moon Seal"
+cue_tick = 4410
+at_tick = 4530
+end_tick = 4531
+masks = Array[Rect2i]([Rect2i(38, 6, 14, 19)])
+mask_elements = PackedStringArray("moon")
+tags = PackedStringArray("floor", "moon")
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_15"]
+script = ExtResource("2")
+event_id = "cardinal.3.4"
+action_id = "split_hammer"
+display_name = "Split Hammer"
+cue_tick = 4650
+at_tick = 4770
+end_tick = 4771
+masks = Array[Rect2i]([Rect2i(27, 7, 12, 6)])
+mask_elements = PackedStringArray()
+tags = PackedStringArray("cone")
+damage = 2
+incoming_direction = "north"
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_16"]
+script = ExtResource("2")
+event_id = "cardinal.3.5"
+action_id = "eclipse"
+display_name = "Eclipse"
+cue_tick = 4830
+at_tick = 4950
+end_tick = 4951
+masks = Array[Rect2i]([Rect2i(14, 6, 14, 19), Rect2i(38, 6, 14, 19)])
+mask_elements = PackedStringArray("sun", "moon")
+tags = PackedStringArray("floor")
+attunement_bonus = "moon"
+
+[sub_resource type="Resource" id="Event_17"]
+script = ExtResource("2")
+event_id = "cardinal.3.6"
+action_id = "reconciliation"
+display_name = "Reconciliation"
+cue_tick = 4920
+at_tick = 5100
+end_tick = 5400
+mask_elements = PackedStringArray()
+tags = PackedStringArray()
+damage = 0
+kind = "window"
+attunement_bonus = "moon"
+boss_facing = "w"
+
+[sub_resource type="Resource" id="Event_18"]
+script = ExtResource("2")
+event_id = "cardinal.4.1"
+action_id = "sun_seal"
+display_name = "Sun Seal"
+cue_tick = 5670
+at_tick = 5790
+end_tick = 5791
+masks = Array[Rect2i]([Rect2i(14, 6, 14, 19)])
+mask_elements = PackedStringArray("sun")
+tags = PackedStringArray("floor", "sun")
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_19"]
+script = ExtResource("2")
+event_id = "cardinal.4.2"
+action_id = "moon_seal"
+display_name = "Moon Seal"
+cue_tick = 5970
+at_tick = 6090
+end_tick = 6091
+masks = Array[Rect2i]([Rect2i(38, 6, 14, 19)])
+mask_elements = PackedStringArray("moon")
+tags = PackedStringArray("floor", "moon")
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_20"]
+script = ExtResource("2")
+event_id = "cardinal.4.3"
+action_id = "split_hammer"
+display_name = "Split Hammer"
+cue_tick = 6210
+at_tick = 6330
+end_tick = 6331
+masks = Array[Rect2i]([Rect2i(27, 18, 12, 6)])
+mask_elements = PackedStringArray()
+tags = PackedStringArray("cone")
+damage = 2
+incoming_direction = "south"
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_21"]
+script = ExtResource("2")
+event_id = "cardinal.4.4"
+action_id = "confession"
+display_name = "Confession"
+cue_tick = 6450
+at_tick = 6570
+end_tick = 6571
+masks = Array[Rect2i]([Rect2i(24, 5, 2, 21), Rect2i(40, 5, 2, 21)])
+mask_elements = PackedStringArray()
+tags = PackedStringArray("projectile", "expose")
+incoming_direction = "north"
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_22"]
+script = ExtResource("2")
+event_id = "cardinal.4.overlap"
+action_id = "sun_seal"
+display_name = "Sun Seal"
+cue_tick = 6450
+at_tick = 6570
+end_tick = 6571
+masks = Array[Rect2i]([Rect2i(14, 6, 14, 19)])
+mask_elements = PackedStringArray("sun")
+tags = PackedStringArray("floor", "sun")
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_23"]
+script = ExtResource("2")
+event_id = "cardinal.4.5"
+action_id = "eclipse"
+display_name = "Eclipse"
+cue_tick = 6630
+at_tick = 6750
+end_tick = 6751
+masks = Array[Rect2i]([Rect2i(14, 6, 14, 19), Rect2i(38, 6, 14, 19)])
+mask_elements = PackedStringArray("sun", "moon")
+tags = PackedStringArray("floor")
+attunement_bonus = "sun"
+
+[sub_resource type="Resource" id="Event_24"]
+script = ExtResource("2")
+event_id = "cardinal.4.6"
+action_id = "reconciliation"
+display_name = "Reconciliation"
+cue_tick = 6600
+at_tick = 6780
+end_tick = 7200
+mask_elements = PackedStringArray()
+tags = PackedStringArray()
+damage = 0
+kind = "window"
+attunement_bonus = "sun"
+
+[resource]
+script = ExtResource("1")
+events = Array[ExtResource("2")]([SubResource("Event_0"), SubResource("Event_1"), SubResource("Event_2"), SubResource("Event_3"), SubResource("Event_4"), SubResource("Event_5"), SubResource("Event_6"), SubResource("Event_7"), SubResource("Event_8"), SubResource("Event_9"), SubResource("Event_10"), SubResource("Event_11"), SubResource("Event_12"), SubResource("Event_13"), SubResource("Event_14"), SubResource("Event_15"), SubResource("Event_16"), SubResource("Event_17"), SubResource("Event_18"), SubResource("Event_19"), SubResource("Event_20"), SubResource("Event_21"), SubResource("Event_22"), SubResource("Event_23"), SubResource("Event_24")])
+arena_id = "sanctum"
+beats = Array[ExtResource("3")]([SubResource("Pose_0"), SubResource("Pose_1"), SubResource("Pose_2"), SubResource("Pose_3"), SubResource("Pose_4")])

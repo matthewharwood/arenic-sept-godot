@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/environment/guild_clearing/tavern/tavern.png" id="1"]
+
+[resource]
+animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("1")}],
+"loop": true,
+"name": &"idle_n",
+"speed": 1.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("1")}],
+"loop": true,
+"name": &"idle_e",
+"speed": 1.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("1")}],
+"loop": true,
+"name": &"idle_s",
+"speed": 1.0
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("1")}],
+"loop": true,
+"name": &"idle_w",
+"speed": 1.0
+}]
