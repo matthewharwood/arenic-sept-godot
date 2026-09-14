@@ -426,6 +426,12 @@ func cycle_ticks(arena_id: String) -> int:
 	return clock.cycle_ticks if clock != null else 0
 
 
+## Transient seek identity for presentation; ordinary fixed ticks do not change it.
+func cycle_seek_revision(arena_id: String) -> int:
+	var clock: ArenicCycleClock = _clocks.get(arena_id)
+	return clock.seek_revision if clock != null else 0
+
+
 ## `m:ss` of an arena's cycle, for the HUD read-out.
 func cycle_label(arena_id: String) -> String:
 	var clock: ArenicCycleClock = _clocks.get(arena_id)

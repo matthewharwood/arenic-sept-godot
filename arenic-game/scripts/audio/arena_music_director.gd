@@ -24,6 +24,7 @@ class Voice:
 var cycle_source: ArenicEncounterState
 var suspension_lookup: Callable
 var _cycle_ticks: Dictionary[StringName, int] = {}
+var _cycle_seeks: Dictionary[StringName, int] = {}
 
 var clocks: Dictionary[StringName, ArenicArenaMusicClock] = {}
 var voices_started: int = 0
@@ -273,11 +274,15 @@ func synchronize_cycles() -> void:
 		var clock: ArenicArenaMusicClock = clocks[id]
 		var phase: float = float(tick) / cycle_source.cycle_ticks(arena_id) * clock.duration_seconds
 		var running: bool = not cycle_source.is_paused(arena_id) and not (suspension_lookup.is_valid() and suspension_lookup.call())
-		var discontinuity: bool = tick < _cycle_ticks.get(id, tick) or absf(phase - clock.get_position()) > SYNC_TOLERANCE
+		var seek_revision: int = cycle_source.cycle_seek_revision(arena_id)
+		# A slow frame can contain many legitimate fixed ticks. Its elapsed phase
+		# is not a seek: restarting here repeatedly can starve queued Web audio.
+		var discontinuity: bool = tick < _cycle_ticks.get(id, tick) or seek_revision != _cycle_seeks.get(id, seek_revision)
 		var changed: bool = running != clock.running
 		clock.seek(phase)
 		clock.running = running
 		_cycle_ticks[id] = tick
+		_cycle_seeks[id] = seek_revision
 		if discontinuity or changed:
 			for voice: Voice in _voices:
 				if voice.arena_id == id:

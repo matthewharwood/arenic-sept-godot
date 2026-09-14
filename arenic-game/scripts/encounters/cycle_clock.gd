@@ -6,9 +6,9 @@ extends RefCounted
 ## stamped at and the tick it plays at. Float seconds cannot provide that: the
 ## error accumulated across a 7,200-tick loop drifts a recorded ghost off the
 ## boss pattern it was recorded against, and the drift compounds every cycle.
-## So the encounter counts ticks and never seconds. The music director keeps its
-## own float clock, because audio playback genuinely is continuous; the two are
-## nominally the same two minutes but no longer the same clock.
+## So the encounter counts ticks and never seconds. The music director projects
+## this integer position into continuous playback phase; audio never advances
+## the authoritative game clock.
 
 ## Pinned in project settings. One physics step is exactly one simulation tick.
 const TICKS_PER_SECOND: int = 60
@@ -16,6 +16,9 @@ const CYCLE_SECONDS: int = 120
 const CYCLE_TICKS: int = CYCLE_SECONDS * TICKS_PER_SECOND
 
 var tick: int = 0
+## Transient presentation invalidation: distinguish explicit seeks from slow frames.
+## Hydration rebuilds this counter; it is never part of recorded or saved rules.
+var seek_revision: int = 0
 var cycle_ticks: int = CYCLE_TICKS
 ## Only the arena that owns a modal or a countdown pauses. There is no global pause.
 var paused: bool = false
@@ -43,6 +46,7 @@ func step() -> bool:
 
 func seek(value: int) -> void:
 	tick = posmod(value, cycle_ticks)
+	seek_revision += 1
 
 
 ## Whole ticks from `from` forward to `to`, wrapping the cycle. Zero means the

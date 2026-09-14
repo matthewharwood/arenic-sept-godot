@@ -3,6 +3,14 @@ extends SceneTree
 var failures: int = 0
 var checks: int = 0
 
+class ObservedMusic:
+	extends ArenicArenaMusicDirector
+	var restarts: int = 0
+
+	func _restart_voice(voice: ArenicArenaMusicDirector.Voice) -> void:
+		restarts += 1
+		super._restart_voice(voice)
+
 func _initialize() -> void:
 	_run.call_deferred()
 
@@ -76,7 +84,46 @@ func _run() -> void:
 	check(shell.hero == second and second.selected, "Guild House keeps its own remembered selection")
 	var saved: Dictionary = ArenicSaveCodec.capture_run(setup, shell)
 	check(ArenicSaveCodec.validate(saved).is_empty(), "Scoped selection and cycle-derived music form a valid save")
+	_check_slow_music_frames(shell)
 	shell.free()
 	await preload("res://tests/support/audio_retirement.gd").wait_for_mixer(self)
 	print("Loop and selection checks: %d assertions, %d failures" % [checks, failures])
 	quit(1 if failures else 0)
+
+
+func _check_slow_music_frames(shell: Variant) -> void:
+	var observed := ObservedMusic.new()
+	root.add_child(observed)
+	observed.configure(shell.stage)
+	observed.cycle_source = shell.encounter
+	observed.set_process(false)
+	shell.encounter.set_paused("labyrinth", false)
+	shell.encounter.set_restart_pending("labyrinth", false)
+	shell.encounter.seek("labyrinth", 300)
+	observed.synchronize_cycles()
+	observed.set_focus(&"labyrinth", true)
+	observed._process(0.11)
+	var started: int = observed.restarts
+	check(started == 1, "A focused arena starts exactly one music decoder")
+	for frame: int in 4:
+		# Twelve genuine fixed ticks between rendered frames: five FPS, not a seek.
+		shell.encounter.tick(shell.combat, 12)
+		observed._process(0.2)
+	check(observed.restarts == started, "Slow rendered frames do not continually stop the arena music decoder")
+	var clock: ArenicArenaMusicClock = observed.clocks[&"labyrinth"]
+	check(is_equal_approx(clock.get_position(), float(shell.encounter.cycle_position("labyrinth")) / shell.encounter.cycle_ticks("labyrinth") * clock.duration_seconds), "Slow frames still derive exact music phase from the arena clock")
+	shell.encounter.seek("labyrinth", 1200)
+	observed.synchronize_cycles()
+	var sought: int = observed.restarts
+	check(sought == started + 1, "An explicit forward seek restarts the decoder immediately")
+	shell.encounter.seek("labyrinth", 0)
+	observed.synchronize_cycles()
+	check(observed.restarts == sought + 1 and clock.get_position() == 0.0, "A backward reset still restarts at the track opening")
+	shell.encounter.set_paused("labyrinth", true)
+	observed.synchronize_cycles()
+	check(not observed._voices[0].player.playing and not clock.running, "An arena pause still stops its decoder")
+	shell.encounter.set_paused("labyrinth", false)
+	observed.synchronize_cycles()
+	check(clock.running and observed.restarts == sought + 3, "The paused decoder resumes exactly once")
+	observed.free()
+	shell.music._listener.make_current()

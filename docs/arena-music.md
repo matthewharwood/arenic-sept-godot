@@ -77,3 +77,14 @@ python3 scripts/build-web.py --godot /path/to/godot --output .tmp/web
 Serve `.tmp/web/` over localhost or HTTPS; opening `index.html` as a file is insufficient. The build script creates an isolated copy, strips editor plugins and the development MCP autoload, exports it, and audits the resulting pack. The finished pack contains game/audio resources, without development tests or Toolkit runtime code.
 
 The loop/selection update adds `tests/audio/loop_selection_checks.gd` and native restart workers for empty-arena continuation. The browser save suite exercises a real legacy save, empty-arena input, recruitment, per-arena memory, actual decoder alignment after recording reset, countdown silence and decision reload. The independent mixer suites explicitly unbind the encounter while testing standalone seeks; gameplay and the new integration case stay bound.
+
+## Slow frames and explicit seeks
+
+The director tracks each arena clock's transient seek revision. An explicit seek,
+recording reset or natural wrap restarts the owning decoder; pause/resume changes
+still stop/start it. Ordinary forward fixed ticks only update the derived phase,
+even when a rendered frame spans more than 120 ms. They must not repeatedly stop
+queued Web playback. The separate one-second playhead drift check remains active.
+A five-FPS native regression distinguishes normal progress, forward/backward seeks
+and pause/resume. The revision counter is rebuilt on hydration and never enters
+save payloads, recording events or encounter content fingerprints.
