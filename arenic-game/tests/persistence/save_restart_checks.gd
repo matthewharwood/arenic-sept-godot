@@ -94,10 +94,11 @@ func _worker(directory: String, mode: String) -> bool:
 	var deadline: int = Time.get_ticks_msec() + 35000
 	while not FileAccess.file_exists(result_path) and Time.get_ticks_msec() < deadline:
 		if not OS.is_process_running(pid):
-			return false
+			break # The child may have published its result since the loop check.
 		await process_frame
 	if not FileAccess.file_exists(result_path):
-		OS.kill(pid)
+		if OS.is_process_running(pid):
+			OS.kill(pid)
 		return false
 	var result: Variant = JSON.parse_string(FileAccess.get_file_as_string(result_path))
 	if not result is Dictionary:
