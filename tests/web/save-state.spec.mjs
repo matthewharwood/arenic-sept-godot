@@ -1107,29 +1107,35 @@ test('Commit rewinds observed movement, keeps earnings, then counts 3–2–1 in
     const earned = state.combat.totals.guild_house;
     const banks = [state.gathering.wood_total, state.gathering.gold_total];
     const otherTick = state.arena_ticks.labyrinth;
+    const commitSequence = log.events.at(-1).sequence;
     await page.keyboard.press('1');
     const reverse = await log.wait(s => s?.restart?.phase === 'rewind' && s.restart.pending,
-      'Commit enters the visual reverse while its canonical clock holds zero');
+      'Commit enters the visual reverse while its canonical clock holds zero', { intervals: [25, 50, 100] });
     expect(reverse.recording.cycle).toBe(0);
-    await page.screenshot({ path: testInfo.outputPath('commit-rewind.png') });
-    state = await log.wait(s => s?.restart?.phase === 'countdown' && s.restart.countdown === 3);
-    expect(state.combat.totals.guild_house).toBe(earned);
-    expect([state.gathering.wood_total, state.gathering.gold_total]).toEqual(banks);
-    expect(state.arena_ticks.labyrinth).toBeGreaterThan(otherTick);
+    await log.wait(s => s?.restart?.phase === 'countdown',
+      'The visible countdown contains real keyboard input', { intervals: [25, 50, 100] });
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('1');
     await page.keyboard.press('r');
-    state = await log.wait(s => s?.restart?.phase === 'countdown' && s.restart.countdown === 2);
-    expect(state.recording.modal_open).toBe(false);
-    expect(state.recording.cycle).toBe(0);
-    expect(state.combat.totals.guild_house).toBe(earned);
-    await log.wait(s => s?.restart?.countdown === 1);
-    await page.screenshot({ path: testInfo.outputPath('restart-countdown.png') });
-    await log.wait(s => s?.restart?.pending === false && s.recording.cycle > 0);
-    const rewindTicks = log.events.filter(e => e.kind === 'state' && e.data.restart?.phase === 'rewind')
-      .map(e => e.data.restart.display_tick);
-    expect(rewindTicks.length).toBeGreaterThan(2);
+    state = await log.wait(s => s?.restart?.pending === false && s.recording.cycle > 0);
+    expect(state.recording.state).toBe('idle');
+    // Verify every observed state after the real commit. A screenshot can take
+    // longer than a countdown beat on software WebGL, so never block sampling
+    // or input behind capture, then wait for an already-finished beat.
+    const observed = log.events.filter(e => e.sequence > commitSequence && e.kind === 'state').map(e => e.data);
+    const countdown = observed.filter(s => s.restart?.phase === 'countdown');
+    expect([...new Set(countdown.map(s => s.restart.countdown))]).toEqual([3, 2, 1]);
+    for (const sample of countdown) {
+      expect(sample.recording.modal_open).toBe(false);
+      expect(sample.recording.cycle).toBe(0);
+      expect(sample.combat.totals.guild_house).toBe(earned);
+      expect([sample.gathering.wood_total, sample.gathering.gold_total]).toEqual(banks);
+      expect(sample.arena_ticks.labyrinth).toBeGreaterThan(otherTick);
+    }
+    const rewindTicks = observed.filter(s => s.restart?.phase === 'rewind').map(s => s.restart.display_tick);
+    expect(rewindTicks.length).toBeGreaterThan(1);
     expect(rewindTicks.at(-1)).toBeLessThan(rewindTicks[0]);
+    await page.screenshot({ path: testInfo.outputPath('restarted-recording.png') });
     expect(log.errors).toEqual([]);
   } finally { await attachResults(testInfo, log); }
 });
