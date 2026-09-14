@@ -64,8 +64,9 @@ readback also verifies all eight starter actor sets and their used effect tags.
 Two SFX cases exercise actual movement and blocked-step sounds, projectile
 cast/impact, held-channel playback and release cleanup. They read decoded SFX
 bus samples separately from music and enforce the bounded voice pool.
-The clean production test uses a passive browser audio tap and never bypasses
-autoplay. Gallery tests exercise every hero ability and boss appearance.
+The clean production test uses visible quote/dialogue pixels and real key presses
+to finish onboarding, then requires fresh audible output after its gate animation.
+It uses a passive browser audio tap and never bypasses autoplay. Gallery tests exercise every hero ability and boss appearance.
 
 Software-rendered CI is a correctness lane, not a frame-rate benchmark. Game
 tests have a five-minute bound, including full-density screenshot and browser

@@ -41,21 +41,35 @@ test('clean production: real pointer flow and browser output samples', async ({ 
       .every(pixel => pixel.slice(0, 3).every(channel => channel >= 215 && channel <= 250)),
     { message: 'Opening quote is rendered', timeout: 60_000 }).toBe(true);
     await page.screenshot({ path: testInfo.outputPath('clean-opening-quote.png') });
-    await page.waitForTimeout(2200);
-    await page.keyboard.press('Space');
-    await page.waitForTimeout(250);
-    await page.keyboard.press('Space');
-    for (let beat = 0; beat < 4; beat++) {
-      await page.waitForTimeout(3000);
+    const worldHudVisible = async () => (await renderedPixels(page, [[0.48, 0.02], [0.78, 0.02], [0.78, 0.99]]))
+      .every(pixel => pixel.slice(0, 3).every(channel => channel > 5 && channel < 100));
+    // The HUD is already visible behind dialogue. Its appearance proves only
+    // that the quote closed, not that the introduction released gameplay/audio.
+    await expect.poll(async () => {
       await page.keyboard.press('Space');
-    }
-    await page.waitForTimeout(1500);
-    // The audio context unlocks on the title click, so it cannot prove world
-    // readiness. Wait for the dark, nonblack HUD bands before sending game keys.
-    await expect.poll(async () => (await renderedPixels(page, [[0.48, 0.02], [0.78, 0.02], [0.78, 0.99]]))
-      .every(pixel => pixel.slice(0, 3).every(channel => channel > 5 && channel < 100)),
-    { message: 'Rendered world HUD is ready', timeout: 60_000 }).toBe(true);
+      return worldHudVisible();
+    }, { message: 'Opening quote closes through real input', intervals: [1000], timeout: 60_000 }).toBe(true);
+    // These blank footer interiors are paper only while the Keeper card is up.
+    // Observe the card arriving before waiting for it to leave, so the brief
+    // invitation step cannot be mistaken for a completed introduction.
+    const dialogueVisible = async () => (await renderedPixels(page, [[0.55, 0.77], [0.65, 0.77]]))
+      .every(pixel => pixel.slice(0, 3).every(channel => channel >= 215 && channel <= 250));
+    await expect.poll(async () => {
+      if (await dialogueVisible()) return true;
+      await page.keyboard.press('Space');
+      return false;
+    }, { message: 'Keeper dialogue opens through real input', intervals: [1000], timeout: 60_000 }).toBe(true);
+    await expect.poll(async () => {
+      if (!await dialogueVisible()) return true;
+      await page.keyboard.press('Space');
+      return false;
+    }, { message: 'Keeper finishes every reading beat and opens the doors', intervals: [1000], timeout: 90_000 }).toBe(true);
+    await expect.poll(worldHudVisible, { message: 'Rendered world HUD is ready', timeout: 60_000 }).toBe(true);
     await expect.poll(() => page.evaluate(() => window.__arenicAudioReadback().some(row => row.state === 'running' && row.samples > 0)), { timeout: 30_000 }).toBe(true);
+    // The final gate animation still holds the music after the card leaves.
+    // Fresh audible output proves it released before arena navigation is sent.
+    await page.evaluate(() => window.__arenicAudioReset());
+    await expect.poll(() => page.evaluate(() => window.__arenicAudioReadback().some(row => row.peak > 0.00001))).toBe(true);
     await page.keyboard.press('l');
     await page.evaluate(() => window.__arenicAudioReset());
     await expect.poll(() => page.evaluate(() => window.__arenicAudioReadback().some(row => row.peak > 0.00001))).toBe(true);
