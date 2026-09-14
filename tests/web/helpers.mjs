@@ -36,8 +36,8 @@ export function watch(page) {
     if (response.status() >= 400 && !response.url().endsWith('/favicon.ico')) failures.push(`HTTP ${response.status()}: ${response.url()}`);
   });
   log.latest = () => log.events.findLast(event => event.kind === 'state')?.data;
-  log.wait = async (predicate, message) => {
-    await expect.poll(() => Boolean(predicate(log.latest())), { message }).toBe(true);
+  log.wait = async (predicate, message, options = {}) => {
+    await expect.poll(() => Boolean(predicate(log.latest())), { ...options, message }).toBe(true);
     return log.latest();
   };
   log.event = async (kind, after = 0, timeout = 90_000) => {
@@ -254,9 +254,12 @@ export async function attachResults(testInfo, log, extra = {}) {
 }
 
 export async function completeIntroduction(page, log) {
+  // At Retina density, software rendering can need over 20 wall seconds for
+  // 2.75 seconds of the real reading clock. Keep exact state/timer assertions
+  // and a bounded allowance; the enclosing gameplay test still has its cap.
   let state = await log.wait(value => value?.introduction, 'Prologue is mounted');
   if (state.introduction.step === 0) {
-    state = await log.wait(value => value?.introduction?.elapsed >= 2, 'Opening quote can be read');
+    state = await log.wait(value => value?.introduction?.elapsed >= 2, 'Opening quote can be read', { timeout: 60_000 });
     await clickLogical(page, state, state.introduction.begin_center);
     state = await log.wait(value => value?.introduction?.step === 1, 'Quote gives way to Guild House');
   }
@@ -265,9 +268,9 @@ export async function completeIntroduction(page, log) {
     state = await log.wait(value => value?.introduction?.step === 2, 'Space speaks to the Keeper');
   }
   for (let step = state.introduction.step; step <= 5; step++) {
-    state = await log.wait(value => value?.introduction?.step === step && value.introduction.elapsed >= 2.75, 'Dialogue beat is readable');
+    state = await log.wait(value => value?.introduction?.step === step && value.introduction.elapsed >= 2.75, 'Dialogue beat is readable', { timeout: 60_000 });
     await clickLogical(page, state, state.introduction.next_center);
     await log.wait(value => value?.introduction?.step > step || value?.introduction?.opening, 'Dialogue advances');
   }
-  return log.wait(value => value?.introduction?.step === 6 && !value.introduction.opening, 'All Guild House doors finish opening');
+  return log.wait(value => value?.introduction?.step === 6 && !value.introduction.opening, 'All Guild House doors finish opening', { timeout: 60_000 });
 }

@@ -20,9 +20,9 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   retries: 0,
-  // Publish diagnostics immediately when a release gate fails; a green run
-  // still executes every test before deployment is permitted.
-  maxFailures: process.env.CI ? 1 : 0,
+  // Collect independent failures in one bounded run. Any failure still makes
+  // the gate red; every test must pass before deployment is permitted.
+  maxFailures: 0,
   forbidOnly: Boolean(process.env.CI),
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {

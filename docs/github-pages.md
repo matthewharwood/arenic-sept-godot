@@ -74,8 +74,11 @@ cleanup work. The clean production smoke test, audio and combat cases run at
 640 × 360 to avoid unrelated pixel work; the separate input and framebuffer cases
 still exercise 1280 × 720, Retina density and resizing. Loop waits observe advancing game time and retain
 a real-time deadline. Fortune completion follows actual simulation progress with
-a separate 180-second wall-clock bound. CI stops on its first failure and uploads diagnostics;
-every test must pass in a green release. The build job allows 60 minutes for the
+a separate 180-second wall-clock bound. Authored introduction reading and door
+waits allow up to 60 wall-clock seconds at high pixel density while requiring the
+actual timer/phase state; enclosing gameplay deadlines remain unchanged. CI
+collects independent failures across the suite and uploads diagnostics; every
+test must pass in a green release. The build job allows 60 minutes for the
 expanded gameplay, persistence, rewards and ownership suite; individual test
 deadlines remain bounded.
 
