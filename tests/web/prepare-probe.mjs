@@ -18,5 +18,6 @@ if (!project.includes('[autoload]')) throw new Error('Expected existing autoload
 project = project.replace('[autoload]', '[autoload]\n\nWebCIProbe="*res://__ci__/web_probe.gd"');
 await mkdir(path.join(destination, '__ci__'), { recursive: true });
 await cp(fileURLToPath(new URL('./probe.gd', import.meta.url)), path.join(destination, '__ci__/web_probe.gd'));
+await cp(fileURLToPath(new URL('./prepare-fixtures.gd', import.meta.url)), path.join(destination, '__ci__/prepare_fixtures.gd'));
 await writeFile(path.join(destination, 'project.godot'), project);
 console.log(JSON.stringify({ source, destination, probe: 'res://__ci__/web_probe.gd', productionModified: false }));

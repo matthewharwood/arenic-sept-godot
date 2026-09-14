@@ -42,6 +42,7 @@ func _run() -> void:
 	_check_countdown()
 	_check_banks_and_resets()
 	_check_dropoff_death()
+	_check_recorded_routes()
 	shell.free()
 	await process_frame
 	_check(await RETIRE_AUDIO.wait_for_mixer(self), "Stopped shell audio retires before native test exit.")
@@ -243,6 +244,44 @@ func _check_dropoff_death() -> void:
 	_check(members[1].cell != dropoff and _bag(1).phase == "idle", "Contact at the dropoff defeats the stationary worker and clears its full bag.")
 	_check(shell.gathering.wood_total == bank_before, "The worker cannot deposit on the same tick it was defeated.")
 	_check(_living_cells_unique(), "Dropoff contact and respawn leave the whole living roster separated.")
+
+
+## Exercise both complete work routes and a second loop without waiting for
+## real time. Use the real shell/conductor/gathering pipeline, not a mock clock.
+func _check_recorded_routes() -> void:
+	_reset_members()
+	var definition: ArenicGatheringDefinition = shell.gathering.definition
+	var starts: Array[Vector2i] = [definition.wood_sources[0] + Vector2i(2, 0), definition.gold_sources[1] - Vector2i(2, 0)]
+	var stops: Array[Vector2i] = [definition.wood_dropoff - Vector2i(2, 0), definition.gold_dropoff + Vector2i(2, 0)]
+	var before: Array[int] = [shell.gathering.wood_total, shell.gathering.gold_total]
+	for index: int in 2:
+		_place(index, starts[index])
+		var events: Array[ArenicTimelineEvent] = []
+		var cell: Vector2i = starts[index]
+		var tick: int = 300
+		for axis: int in 2:
+			while cell[axis] != stops[index][axis]:
+				var delta := Vector2i.ZERO
+				delta[axis] = signi(stops[index][axis] - cell[axis])
+				events.append(ArenicTimelineEvent.move(tick, delta))
+				cell += delta
+				tick += 10
+		var recording := ArenicRecording.create(starts[index], events)
+		members[index].recordings[GUILD] = recording
+		shell.encounter.fold_ghost(members[index], recording)
+	_complete_restart(GUILD)
+	_ticks(299)
+	_check(_bag(0).fill_ticks == 299 and _bag(1).fill_ticks == 299, "Both recorded routes retain partial bags on the penultimate fill tick.")
+	_ticks(1)
+	_check(_bag(0).fill_ticks == 300 and _bag(1).fill_ticks == 300, "Both recorded workers fill on exactly tick 300 before their first moves.")
+	_ticks(300)
+	_check(members[0].cell == stops[0] and members[1].cell == stops[1], "The real conductor executes every wood and gold route move.")
+	_check(shell.gathering.wood_total == before[0] + 10 and shell.gathering.gold_total == before[1] + 10, "Both complete recorded routes deposit exactly one load.")
+	shell.encounter.seek(GUILD, ArenicCycleClock.CYCLE_TICKS - 1)
+	_ticks(1)
+	_complete_restart(GUILD)
+	_ticks(600)
+	_check(shell.gathering.wood_total == before[0] + 20 and shell.gathering.gold_total == before[1] + 20, "Natural restart replays both routes and banks a second load without live input.")
 
 
 func _check(condition: bool, message: String) -> void:

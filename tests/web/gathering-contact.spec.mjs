@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { createHash } from 'node:crypto';
-import { watch, enterProbeWorld, clickLogical, clickHudMenuAction, attachResults } from './helpers.mjs';
+import { watch, enterProbeWorld, reloadGame, clickLogical, clickHudMenuAction, attachResults } from './helpers.mjs';
 
 test.use({ viewport: { width: 640, height: 360 }, deviceScaleFactor: 1 });
 test.describe.configure({ timeout: 120_000 });
@@ -107,76 +107,45 @@ async function deposit(log, kind, total) {
   return state;
 }
 
-test('founder gathers wood and gold, then its recorded route deposits on ghost replay', async ({ page }, testInfo) => {
-  // Real onboarding, three live loads and one replay can exceed two minutes
-  // under software WebGL. Keep every individual progress deadline unchanged.
-  test.setTimeout(180_000);
+test('a prepared founder visibly gathers, records a route and deposits on ghost replay', async ({ page }, testInfo) => {
   const log = watch(page);
   try {
-    await enterProbeWorld(page, log, 0);
+    await enterProbeWorld(page, log, 0, { fixture: 'hunter-gathering' });
     await page.keyboard.press('Tab');
     let state = await until(log, s => s?.zoomed && s.hero.selected && !s.motion_active,
-      'Tab focuses the real founder for gathering');
+      'Tab focuses the prepared founder through real input');
     expectOutdoorClearing(state);
     const route = gatheringRoute(state);
+    expect(state.hero.cell).toEqual(route.woodStart);
     expect(state.gathering).toMatchObject({ wood_total: 0, gold_total: 0 });
-
-    await walk(page, log, [state.hero.cell[0], route.woodStart[1]]);
-    await walk(page, log, route.woodStart);
+    await page.keyboard.press('r');
+    await until(log, s => s?.recording?.state === 'countdown', 'R starts the real recording countdown');
+    await until(log, s => s?.recording?.state === 'recording', 'Countdown begins a gathering take');
     state = await until(log, s => s?.gathering?.hero.phase === 'gathering'
       && s.gathering.hero.progress > 0 && s.gathering.hero.progress < 1,
-    'Standing in source range visibly advances the partial bag');
+    'Source work visibly advances the partial bag');
     expect(state.gathering.visual.visible).toBe(true);
     expect(state.gathering.visual.text).toMatch(/^Wood \d+\/10$/);
     await fullBag(log, 'wood');
     await page.screenshot({ path: testInfo.outputPath('wood-bag-full.png') });
-
-    // Approach the wrong bank along a row outside both drop-off radii.
-    await walk(page, log, [route.woodStart[0], route.safeY]);
-    await walk(page, log, [route.wrongBank[0], route.safeY]);
-    state = await walk(page, log, route.wrongBank);
-    const wrongBankTick = state.recording.cycle;
-    state = await until(log, s => s?.recording?.cycle >= wrongBankTick + 65,
-      'A complete unload interval passes at the wrong resource bank');
-    expect(state.gathering).toMatchObject({ wood_total: 0, gold_total: 0,
-      hero: { kind: 'wood', phase: 'full', unload_ticks: 0 } });
-    await walk(page, log, [route.wrongBank[0], route.safeY]);
-    await walk(page, log, [route.woodSouth[0], route.safeY]);
-    await walk(page, log, route.woodSouth);
-    await deposit(log, 'wood', 10);
-
-    await walk(page, log, [route.goldStart[0], route.woodSouth[1]]);
-    await walk(page, log, route.goldStart);
-    await fullBag(log, 'gold');
-    await walk(page, log, [route.goldStop[0], route.goldStart[1]]);
-    await walk(page, log, route.goldStop);
-    state = await deposit(log, 'gold', 10);
-    expect(state.gathering.wood_total).toBe(10);
-
-    await walk(page, log, [route.woodStart[0], route.goldStop[1]]);
-    await walk(page, log, route.woodStart);
-    await page.keyboard.press('r');
-    await until(log, s => s?.recording?.state === 'countdown', 'R starts the real recording countdown');
-    await until(log, s => s?.recording?.state === 'recording', 'Countdown begins a new gathering take');
-    await fullBag(log, 'wood');
     await walk(page, log, [route.woodStop[0], route.woodStart[1]]);
     await walk(page, log, route.woodStop);
-    state = await deposit(log, 'wood', 20);
+    state = await deposit(log, 'wood', 10);
     expect(state.recording.captured).toBe(route.woodStop.reduce((count, value, axis) =>
       count + Math.abs(value - route.woodStart[axis]), 0));
     await page.keyboard.press('r');
-    await until(log, s => s?.recording?.modal_open, 'R offers the actual recording decision');
-    await page.keyboard.press('1'); // The real first option is Commit.
+    await until(log, s => s?.recording?.modal_open, 'R offers the recording decision');
+    await page.keyboard.press('1');
     state = await until(log, s => s?.recording?.state === 'idle' && !s.recording.modal_open
       && s.recording.ghosts.some(ghost => ghost.identity === s.hero.identity),
     'Commit folds the founder and restarts the recorded route');
     const identity = state.hero.identity;
-    expect(state.gathering).toMatchObject({ wood_total: 20, gold_total: 10 });
     await until(log, s => s?.recording?.ghosts.some(ghost => ghost.identity === identity
       && ghost.cell.every((value, axis) => value === route.woodStart[axis])) && s.gathering.hero.phase === 'gathering',
     'The ghost gathers at its saved start without further movement input');
-    state = await until(log, s => s?.gathering?.wood_total === 30, 'Replayed movement deposits a second real wood load', 25_000);
-    expect(state.gathering.gold_total).toBe(10);
+    state = await until(log, s => s?.gathering?.wood_total === 20,
+      'Recorded input deposits another wood load', 45_000);
+    expect(state.gathering.gold_total).toBe(0);
     expect(state.gathering.site_readouts).toEqual([]);
     expect(state.recording.ghosts.find(ghost => ghost.identity === identity))
       .toMatchObject({ cell: route.woodStop, defeated: false });
@@ -266,13 +235,9 @@ async function loadFixture(page, log, fixture) {
       tx.onabort = () => { db.close(); reject(tx.error); };
     };
   }), JSON.stringify(fixture.document));
-  log.events.length = 0;
-  log.ready = false;
-  await page.reload();
+  await reloadGame(page, log);
   await until(log, s => s?.scene === 'title' && s.saves.ready && !s.saves.busy,
     'A fresh browser boot validates the complete fixture', 45_000);
-  log.downloads = await page.evaluate(() => window.__arenicDownloads);
-  log.ready = true;
   return continueSlot(page, log);
 }
 

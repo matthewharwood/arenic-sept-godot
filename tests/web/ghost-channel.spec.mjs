@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { createHash } from 'node:crypto';
-import { watch, enterProbeWorld, clickHudMenuAction, clickLogical, attachResults } from './helpers.mjs';
+import { watch, enterProbeWorld, reloadGame, clickHudMenuAction, clickLogical, attachResults } from './helpers.mjs';
 
 test.use({ viewport: { width: 640, height: 360 }, deviceScaleFactor: 1 });
 test.describe.configure({ timeout: 180_000 });
@@ -111,12 +111,8 @@ test('recorded Sacrifice survives Tab and key release until its own recorded mov
     await clickHudMenuAction(page, log, 'save_title');
     await log.wait(s => s?.scene === 'title' && s.saves.ready && !s.saves.busy);
     await channelGuildFixture(page);
-    log.events.length = 0;
-    log.ready = false;
-    await page.reload();
+    await reloadGame(page, log);
     let state = await log.wait(s => s?.scene === 'title' && s.saves.ready && !s.saves.busy);
-    log.downloads = await page.evaluate(() => window.__arenicDownloads);
-    log.ready = true;
     await clickLogical(page, state, state.controls.continue.center);
     state = await log.wait(s => s?.picker?.visible && !s.picker.working);
     await clickLogical(page, state, state.picker.rows[0].choose.center);
@@ -151,12 +147,8 @@ test('recorded Sacrifice survives Tab and key release until its own recorded mov
 
 
 async function reloadChannelWorld(page, log) {
-  log.events.length = 0;
-  log.ready = false;
-  await page.reload();
+  await reloadGame(page, log);
   let state = await log.wait(s => s?.scene === 'title' && s.saves.ready && !s.saves.busy);
-  log.downloads = await page.evaluate(() => window.__arenicDownloads);
-  log.ready = true;
   await clickLogical(page, state, state.controls.continue.center);
   state = await log.wait(s => s?.picker?.visible && !s.picker.working);
   await clickLogical(page, state, state.picker.rows[0].choose.center);

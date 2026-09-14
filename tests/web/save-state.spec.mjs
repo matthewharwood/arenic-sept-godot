@@ -1100,7 +1100,8 @@ test('Commit rewinds observed movement, keeps earnings, then counts 3–2–1 in
     await log.wait(s => s?.hero?.cell[0] === 29);
     await page.keyboard.press('ArrowLeft');
     await log.wait(s => s?.hero?.cell[0] === 28);
-    state = await log.wait(s => s?.recording?.cycle >= 900, 'Build a visible played history using actual physics');
+    state = await log.wait(s => s?.recording?.cycle >= 300,
+      'Observe a short rendered history; native rewind checks simulate full cycles');
     await page.keyboard.press('r');
     state = await log.wait(s => s?.recording?.modal_open);
     const earned = state.combat.totals.guild_house;

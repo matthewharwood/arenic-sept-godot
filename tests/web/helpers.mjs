@@ -134,6 +134,21 @@ export async function loadGame(page, path, log) {
   log.ready = true;
 }
 
+export async function reloadGame(page, log) {
+  const firstNewConsole = log.console.length;
+  log.events.length = 0;
+  log.ready = false;
+  await page.reload();
+  await expect(page.locator('#canvas')).toBeVisible();
+  await expect.poll(() => log.console.slice(firstNewConsole)
+    .some(item => item.text.startsWith('Build configuration:')), { timeout: 60_000 }).toBe(true);
+  // Godot can report a hydrated title while the HTML loader still covers its
+  // controls. Only send pointer input after this new page releases the canvas.
+  await expect(page.locator('#status')).toBeHidden();
+  log.downloads = await page.evaluate(() => window.__arenicDownloads);
+  log.ready = true;
+}
+
 // Read browser-rendered pixels, never Godot state or a production test hook.
 // Screenshot decoding uses browser image/canvas APIs, with no extra dependency.
 export async function renderedPixels(page, points) {
@@ -218,7 +233,45 @@ export async function clickHudMenuAction(page, log, action) {
   await clickLogical(page, state, state.controls[action].center);
 }
 
+// Prepare a canonical document before WASM boots; the real IndexedDB adapter,
+// title picker and codec still perform hydration. Only onboarding tests create
+// a fresh founder and wait through the authored reading/door timelines.
 export async function enterProbeWorld(page, log, classIndex = 3, options = {}) {
+  if (options.introduction === false) return enterNewProbeWorld(page, log, classIndex);
+  const name = options.fixture ?? CLASSES[classIndex][0];
+  const fixtureRoot = `${PROBE.replace(/\/$/, '')}/fixtures/`;
+  const response = await page.request.get(`${fixtureRoot}${name}.json`);
+  expect(response.ok(), `Canonical browser fixture ${name} exists`).toBe(true);
+  const raw = await response.text();
+  await page.goto(fixtureRoot);
+  await page.evaluate(raw => new Promise((resolve, reject) => {
+    const request = indexedDB.open('arenic-saves', 1);
+    request.onupgradeneeded = () => request.result.createObjectStore('slots');
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      const db = request.result;
+      const tx = db.transaction('slots', 'readwrite');
+      tx.objectStore('slots').put(raw, 0);
+      tx.oncomplete = () => { db.close(); resolve(); };
+      tx.onabort = () => { db.close(); reject(tx.error); };
+    };
+  }), raw);
+  await loadGame(page, PROBE, log);
+  let state = await log.wait(s => s?.scene === 'title' && s.saves?.ready && !s.saves.busy
+    && s.controls.continue.visible, 'The real save adapter hydrates the prepared run');
+  await clickLogical(page, state, state.controls.continue.center);
+  state = await log.wait(s => s?.picker?.visible && !s.picker.working, 'Continue opens the slot picker');
+  expect(state.picker.rows[0].choose.disabled).toBe(false);
+  await clickLogical(page, state, state.picker.rows[0].choose.center);
+  state = await log.wait(s => s?.scene === 'world' && s.introduction?.step === 6
+    && !s.motion_active, 'The shared codec restores an established guild');
+  expect(state.hero.class_id).toBe(CLASSES[classIndex][0]);
+  expect(state.hero.facing).toBe('n');
+  expect(state.zoomed).toBe(false);
+  return state;
+}
+
+async function enterNewProbeWorld(page, log, classIndex) {
   await loadGame(page, PROBE, log);
   let state = await log.wait(value => value?.scene === 'title' && value.saves?.ready && !value.controls.start.disabled,
     'Title enables Start after save storage hydration');
@@ -228,20 +281,7 @@ export async function enterProbeWorld(page, log, classIndex = 3, options = {}) {
   state = await log.wait(value => value?.selected_index === classIndex, 'Actual card selection');
   await clickLogical(page, state, state.controls.confirm.center);
   state = await log.wait(value => value?.scene === 'world' && !value.motion_active, 'Actual confirmation opens world');
-  if (options.introduction === false) return state;
-  await completeIntroduction(page, log);
-  // These existing gameplay checks begin at the established training position.
-  // Reach it through real controls after completing the actual introduction.
-  for (let i = 0; i < 3; i++) {
-    await page.keyboard.press('ArrowLeft');
-    await log.wait(value => value?.hero?.cell[0] === 32 - i, 'Walk away from the Keeper');
-  }
-  await page.keyboard.press('ArrowDown');
-  await log.wait(value => value?.hero?.cell[1] === 14);
-  await page.keyboard.press('ArrowUp');
-  await log.wait(value => value?.hero?.cell[1] === 15 && value.hero.facing === 'n');
-  await page.keyboard.press('p');
-  return log.wait(value => value?.introduction?.step === 6 && !value.zoomed && !value.motion_active, 'Prologue hands off to ordinary navigation');
+  return state;
 }
 
 export async function attachResults(testInfo, log, extra = {}) {
