@@ -25,9 +25,13 @@ jobs:
       contents: read
 
   build:
-    name: Build and test production site
+    name: Build and test production site (shard ${{ matrix.shard }}/4)
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     permissions:
       contents: read
     steps:
@@ -89,12 +93,12 @@ jobs:
         env:
           ARENIC_WEB_ROOT: .tmp/site-qa
           ARENIC_WEB_BASE_PATH: ${{ github.event.repository.name }}
-        run: npm run test:web 2>&1 | tee .tmp/pages-logs/browser-tests.log
+        run: npm run test:web -- --shard=${{ matrix.shard }}/4 2>&1 | tee .tmp/pages-logs/browser-tests.log
 
       # The QA directory contains privileged test instrumentation and is never
       # uploaded as a Pages artifact. Deployment receives only the clean site.
       - name: Upload production site for main deployment
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && matrix.shard == 1
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: .tmp/site
@@ -104,7 +108,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: pages-build-browser-failure-${{ github.run_attempt }}
+          name: pages-build-browser-failure-shard-${{ matrix.shard }}-${{ github.run_attempt }}
           path: |
             .tmp/pages-logs/
             .tmp/web-export-logs/

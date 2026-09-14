@@ -9,8 +9,10 @@ site works beneath a repository path.
 ## Release gate
 
 `.github/workflows/pages.yml` runs for pull requests and changes to `main`.
-It calls the reusable native validation workflow and independently builds and
-tests the website. Deployment requires both jobs to pass. PRs never deploy.
+It calls the reusable native validation workflow and builds/tests the website
+across four separate browser runners. Deployment requires both native lanes and
+all four browser shards to pass. PRs never deploy. Only shard 1 uploads the clean
+production artifact; deployment waits for the entire matrix.
 
 1. Install official Godot **4.7.2**, verified against pinned SHA-512 checksums.
 2. Run the Godot Doctor authored-data preflight before installing browser dependencies.
@@ -78,9 +80,12 @@ a separate 180-second wall-clock bound. Authored introduction reading and door
 waits allow up to 60 wall-clock seconds at high pixel density while requiring the
 actual timer/phase state; enclosing gameplay deadlines remain unchanged. CI
 collects independent failures across the suite and uploads diagnostics; every
-test must pass in a green release. The build job allows 60 minutes for the
-expanded gameplay, persistence, rewards and ownership suite; individual test
-deadlines remain bounded.
+test must pass in a green release. Individual tests are distributed using
+[Playwright sharding](https://playwright.dev/docs/test-sharding), with one browser
+worker per runner, no retries, and no cancellation of other shards after a
+failure. The GitHub reporter publishes failures as they happen; each failed
+shard retains its own logs, screenshots and traces. Each shard has a 60-minute
+job bound; individual test deadlines remain bounded.
 
 `tests/web/probe.gd` is added only to a disposable project copy. Its autoload,
 test shortcuts and readback are absent from production. The export also removes

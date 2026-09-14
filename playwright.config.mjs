@@ -17,14 +17,16 @@ export default defineConfig({
   testMatch: '**/*.spec.mjs',
   timeout: 120_000,
   expect: { timeout: 20_000 },
-  fullyParallel: false,
+  // Distribute individual independent cases across CI machines. Each machine
+  // still runs only one browser worker, avoiding software-renderer contention.
+  fullyParallel: true,
   workers: 1,
   retries: 0,
   // Collect independent failures in one bounded run. Any failure still makes
   // the gate red; every test must pass before deployment is permitted.
   maxFailures: 0,
   forbidOnly: Boolean(process.env.CI),
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [['list'], ...(process.env.CI ? [['github']] : []), ['html', { open: 'never' }]],
   use: {
     baseURL, viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1,
     trace: 'retain-on-failure', screenshot: 'only-on-failure', video: 'retain-on-failure',
