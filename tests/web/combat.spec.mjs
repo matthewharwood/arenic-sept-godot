@@ -47,6 +47,20 @@ async function waitGameSeconds(log, start, duration, message) {
   return waitCombat(log, value => value.combat.physics_seconds >= start + duration, message);
 }
 
+function expectImpactTiming(log, cast) {
+  const phases = log.events.filter(event => event.kind === 'combat_phase'
+    && event.data.ability === 'auto_shot' && event.data.cast_id === cast.id).map(event => event.data);
+  const charge = phases.find(event => event.phase === 'charge');
+  const impact = phases.find(event => event.phase === 'impact');
+  expect(charge, 'The actual cast-start notification was observed').toBeTruthy();
+  expect(impact, 'The actual damage-impact notification was observed').toBeTruthy();
+  const elapsed = impact.physics_seconds - charge.physics_seconds;
+  // Both notifications use the same fixed-step observer clock. The cast can
+  // advance in its acceptance tick; rendered snapshot cadence is irrelevant.
+  expect(elapsed).toBeGreaterThanOrEqual(cast.resolve_seconds - 1 / 60 - 1e-6);
+  expect(elapsed).toBeLessThanOrEqual(cast.resolve_seconds + 1 / 60 + 1e-6);
+}
+
 test('combat: Hunter real cast, cooldown and echo rejection, independent arena progress', async ({ page }, testInfo) => {
   const log = watch(page);
   try {
@@ -60,7 +74,6 @@ test('combat: Hunter real cast, cooldown and echo rejection, independent arena p
     expect(state.combat.active_fx_count).toBeGreaterThan(0);
     expect(state.combat.hero_animation_ready).toBe(true);
     const farShot = state.combat.active_cast;
-    const farStartedAt = state.combat.physics_seconds - state.combat.active_elapsed;
     expect(farShot.origin).toEqual([30, 15]);
     expect(farShot.target).toEqual([30, 22]);
     expect(farShot.release_seconds).toBeCloseTo(0.26, 6);
@@ -70,11 +83,7 @@ test('combat: Hunter real cast, cooldown and echo rejection, independent arena p
     state = await waitCombat(log, value => value.combat.totals.guild_house === 1
       && value.combat.bar.total === 1, 'The in-range shot applies one target/arena/HUD hit');
     expectOnlyGuildDamage(state, 1);
-    const farHit = log.events.find(event => event.sequence > beforeCast && event.kind === 'state'
-      && event.data?.combat?.totals.guild_house === 1).data;
-    const farHitSeconds = farHit.combat.physics_seconds - farStartedAt;
-    expect(farHitSeconds).toBeGreaterThanOrEqual(farShot.resolve_seconds - 1 / 60);
-    expect(farHitSeconds).toBeLessThan(farShot.resolve_seconds + 0.2);
+    expectImpactTiming(log, farShot);
     const flight = await seenCombat(log, beforeCast, value => value.combat.projectiles.some(effect =>
       effect.ability === 'auto_shot' && effect.visible && effect.age > effect.delay
       && effect.travelled_tiles > 0 && effect.travelled_tiles < effect.distance_tiles),
@@ -139,13 +148,7 @@ test('combat: Hunter real cast, cooldown and echo rejection, independent arena p
     state = await waitCombat(log, value => !value.combat.active && value.combat.totals.guild_house === 2,
       'The shorter flight resolves exactly one further hit');
     expectOnlyGuildDamage(state, 2);
-    const nearHit = log.events.find(event => event.sequence > beforeNearCast && event.kind === 'state'
-      && event.data?.combat?.totals.guild_house === 2).data;
-    const nearHitSeconds = nearHit.combat.physics_seconds - (nearState.combat.physics_seconds - nearState.combat.active_elapsed);
-    // The passive probe samples at 10 Hz. This envelope includes reporting
-    // latency but rejects the old fixed 0.75s impact for a one-tile shot.
-    expect(nearHitSeconds).toBeGreaterThanOrEqual(nearShot.resolve_seconds - 1 / 60);
-    expect(nearHitSeconds).toBeLessThan(nearShot.resolve_seconds + 0.2);
+    expectImpactTiming(log, nearShot);
     expect(log.errors).toEqual([]);
   } finally {
     await page.keyboard.up('Space').catch(() => {});

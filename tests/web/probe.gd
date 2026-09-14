@@ -8,6 +8,7 @@ var _sequence: int = 0
 var _busy: bool = false
 var _capture: AudioEffectCapture
 var _physics_seconds: float = 0.0
+var _observed_combat: ArenicCombatState
 var _combat_presenter_id: int = 0
 var _combat_assets: Dictionary = {}
 var _sfx_capture: AudioEffectCapture
@@ -278,12 +279,29 @@ func _recording_snapshot(shell: Variant) -> Dictionary:
 		"cycle":shell.encounter.cycle_position(shell.hero.arena_id)}
 
 
+func _observe_combat_phases(combat: ArenicCombatState) -> void:
+	if _observed_combat == combat:
+		return
+	if _observed_combat != null:
+		_observed_combat.ability_phase.disconnect(_on_combat_phase)
+	_observed_combat = combat
+	_observed_combat.ability_phase.connect(_on_combat_phase)
+
+
+func _on_combat_phase(caster_id: String, ability_id: String, phase: String, arena_id: String, _cell: Vector2, cast_id: int) -> void:
+	# Timestamp the model's actual notification, rather than its next rendered
+	# 10 Hz snapshot. Slow rendering must not masquerade as a late impact.
+	_emit("combat_phase", {"caster":caster_id, "ability":ability_id, "phase":phase,
+		"arena":arena_id, "cast_id":cast_id, "physics_seconds":_physics_seconds})
+
+
 # Read existing gameplay/presentation state only. Infinity is represented by null
 # plus is_channeling, keeping every report valid JSON without advancing a timer.
 func _combat_snapshot(shell: Variant) -> Dictionary:
 	var combat: ArenicCombatState = shell.combat
 	if combat == null or not is_instance_valid(shell.combat_presentation):
 		return {}
+	_observe_combat_phases(combat)
 	var totals: Dictionary = {}
 	var targets: Dictionary = {}
 	for arena: ArenicArenaDefinition in shell.stage.world.arenas:

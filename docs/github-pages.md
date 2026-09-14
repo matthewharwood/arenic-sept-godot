@@ -62,6 +62,8 @@ The three combat cases use the real title/class flow and controls: Hunter verifi
 cooldown/repeat rejection and independent arena totals; Cardinal verifies held
 channel damage and cancellation; Merchant moves into range and completes all
 20 Fortune ticks, checking the visible completed-phase foundation. Passive
+cast/impact signal timestamps verify Hunter flight timing within one simulation
+tick, independently of the rendered snapshot cadence. Passive
 readback also verifies all eight starter actor sets and their used effect tags.
 Two SFX cases exercise actual movement and blocked-step sounds, projectile
 cast/impact, held-channel playback and release cleanup. They read decoded SFX
@@ -74,7 +76,10 @@ Software-rendered CI is a correctness lane, not a frame-rate benchmark. Game
 tests have a five-minute bound, including full-density screenshot and browser
 cleanup work. The clean production smoke test, audio and combat cases run at
 640 × 360 to avoid unrelated pixel work; the separate input and framebuffer cases
-still exercise 1280 × 720, Retina density and resizing. Loop waits observe advancing game time and retain
+still exercise 1280 × 720, Retina density and resizing. These viewport cases
+complete onboarding at 640 × 360, then verify the actual requested framebuffer
+size before running their full-density projection, input and resize assertions.
+Loop waits observe advancing game time and retain
 a real-time deadline. Fortune completion follows actual simulation progress with
 a separate 180-second wall-clock bound. Authored introduction reading and door
 waits allow up to 60 wall-clock seconds at high pixel density while requiring the

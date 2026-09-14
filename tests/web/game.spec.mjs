@@ -215,11 +215,16 @@ async function openClassSelection(page, log) {
 
 for (const dimensions of [{ width: 1280, height: 720, dpr: 1 }, { width: 1280, height: 720, dpr: 2 }, { width: 1200, height: 900, dpr: 1 }]) {
   test(`viewport and pointer mapping ${dimensions.width}x${dimensions.height} DPR${dimensions.dpr}`, async ({ browser }, testInfo) => {
-    const context = await browser.newContext({ viewport: { width: dimensions.width, height: dimensions.height }, deviceScaleFactor: dimensions.dpr });
+    // Complete unrelated reading beats at the small correctness viewport, then
+    // exercise every projection, pointer and framebuffer check at full density.
+    const context = await browser.newContext({ viewport: { width: 640, height: 360 }, deviceScaleFactor: dimensions.dpr });
     const page = await context.newPage();
     const log = watch(page);
     try {
       await enterProbeWorld(page, log);
+      await page.setViewportSize({ width: dimensions.width, height: dimensions.height });
+      await log.wait(value => value?.window?.[0] === dimensions.width * dimensions.dpr
+        && value.window[1] === dimensions.height * dimensions.dpr, 'The actual framebuffer reaches the requested test density');
       await page.keyboard.press('p');
       let state = await log.wait(value => value?.zoomed && !value.motion_active);
       expect(state.logical).toEqual([1280, 720]);
