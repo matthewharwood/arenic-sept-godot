@@ -27,6 +27,8 @@ var _values := PackedByteArray()
 ## Dug cell index to the ticks of enemy overlap it has banked. Presence means
 ## dug; only broken ground is tracked, so the map stays small.
 var _dug: Dictionary[int, int] = {}
+## First digger of each broken tile; empty means legacy/unknown provenance.
+var _owners: Dictionary[int, String] = {}
 
 
 func configure(owner_arena: String) -> void:
@@ -40,6 +42,7 @@ func configure(owner_arena: String) -> void:
 func regenerate(cycle_index: int, bonus: int = 0) -> void:
 	cycle = cycle_index
 	_dug.clear()
+	_owners.clear()
 	_values.resize(CELLS)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = SEED_SALT ^ (hash(arena_id) * 0x9E3779B1) ^ (cycle_index * 0x85EBCA6B)
@@ -81,14 +84,15 @@ func dug_cells() -> PackedInt32Array:
 
 ## Breaks one tile and returns what it yielded. Ground already broken yields
 ## nothing — the cast still happened, it simply found nothing left to take.
-func dig(cell: Vector2i) -> int:
+func dig(cell: Vector2i, caster_id: String = "") -> int:
 	if not ArenicGridMath.tile_valid(cell) or _dug.has(index_of(cell)):
 		return 0
 	_dug[index_of(cell)] = 0
+	_owners[index_of(cell)] = caster_id
 	return value_at(cell)
 
 
-## Advances one tick of hazard. Returns `[enemy_id, amount]` pairs for the ground
+## Advances one tick of hazard. Returns `[enemy_id, amount, caster_id]` for ground
 ## that came due, so the caller applies damage through the ledger rather than the
 ## field reaching into it.
 func advance_hazards(combat: ArenicCombatState) -> Array:
@@ -104,7 +108,7 @@ func advance_hazards(combat: ArenicCombatState) -> Array:
 		var banked: int = int(_dug[index]) + 1
 		while banked >= HAZARD_TICKS:
 			banked -= HAZARD_TICKS
-			due.append([enemy, 1])
+			due.append([enemy, 1, _owners.get(index, "")])
 		_dug[index] = banked
 	return due
 

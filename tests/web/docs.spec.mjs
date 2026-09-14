@@ -33,12 +33,44 @@ test('landing, complete catalog, and mobile navigation use repository-relative l
   await expect(page.locator('main > a')).toHaveCount(8);
   await page.goto('docs/bosses/');
   await expect(page.locator('main > a')).toHaveCount(8);
+  await page.getByRole('navigation', { name: 'Character type' }).getByRole('link', { name: 'NPCs' }).click();
+  await expect(page.locator('main > a')).toHaveCount(1);
   await page.goto('docs/attacks.html');
   await expect(page.locator('main section')).toHaveCount(8);
   await expect(page.locator('main a')).toHaveCount(32);
   const hrefs = await page.locator('main a').evaluateAll(links => links.map(a => a.href));
   expect(new Set(hrefs).size).toBe(32);
   for (const href of hrefs) { const result = await page.request.get(href); expect(result.ok(), href).toBe(true); }
+  expect(errors).toEqual([]);
+});
+
+test('Keeper NPC booklet renders portrait and native motion, with spoilers closed by default', async ({ page }, testInfo) => {
+  const errors = errorsFor(page);
+  await page.goto('docs/npcs/');
+  await page.locator('main').getByRole('link', { name: /The Keeper/ }).click();
+  await expect(page.getByRole('heading', { name: 'The Keeper', exact: true })).toBeVisible();
+  await expect.poll(() => page.locator('#portrait').evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+  await expect(page.locator('.dialogue li')).toHaveCount(4);
+  await expect(page.locator('.dialogue')).toContainText('Choose Commit');
+  await expect(page.locator('#design-spoilers')).not.toHaveAttribute('open');
+  for (const state of ['idle', 'beckon']) {
+    await page.locator('#state').selectOption(state);
+    for (const direction of ['n', 'e', 's', 'w']) {
+      await page.locator('#direction').selectOption(direction);
+      await expect.poll(() => page.locator('#sprite').evaluate(canvas => {
+        const pixels = canvas.getContext('2d').getImageData(0, 0, 19, 19).data;
+        return Array.from(pixels).some((value, index) => index % 4 === 3 && value > 0);
+      })).toBe(true);
+    }
+  }
+  await expect(page.locator('#load-error')).toBeEmpty();
+  await page.screenshot({ path: testInfo.outputPath('keeper-booklet-desktop.png'), fullPage: true });
+  await page.getByText('Design spoilers · future identity', { exact: true }).click();
+  await expect(page.locator('#design-spoilers')).toHaveAttribute('open', '');
+  await expect(page.locator('#design-spoilers')).toContainText('hidden Architect');
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: testInfo.outputPath('keeper-booklet-mobile.png'), fullPage: true });
   expect(errors).toEqual([]);
 });
 

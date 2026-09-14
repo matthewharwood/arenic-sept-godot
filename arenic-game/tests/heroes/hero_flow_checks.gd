@@ -30,6 +30,7 @@ func _run() -> void:
 	setup = root.get_node("RunSetup")
 	for class_id in CLASSES:
 		setup.begin_new_game()
+		setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 		setup.choose_class(load("res://data/classes/" + class_id + ".tres"))
 		shell = packed_shell.instantiate()
 		root.add_child(shell)
@@ -89,7 +90,9 @@ func _run() -> void:
 	await physics_frame
 	check(shell.selected_index == 8 and shell.hero.cell == before_cancel, "Arena hotkey clears pending hero intent")
 	press(KEY_TAB)
-	check(shell.selected_index == 1 and shell.hero.selected, "Tab finds the hero from a different arena")
+	check(shell.selected_index == 8 and not shell.hero.selected, "Tab in an empty arena cannot select or control the remote hero")
+	shell.select_arena(1)
+	shell.select_hero()
 	var hero: ArenicHeroState = shell.hero
 	hero.identity_id = 812
 	hero.level = 7

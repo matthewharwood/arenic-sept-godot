@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "id": "keeper",
+  "kind": "npc",
+  "name": "The Keeper",
+  "role": "Apparent caretaker of the Guild House",
+  "description": "A pale, ageless presence who quietly teaches the Commander to leave an echo behind.",
+  "portrait": "assets/npcs/keeper/portrait.png",
+  "dialogue_portrait": "assets/npcs/keeper/dialogue-portrait.png",
+  "source": "assets/npcs/keeper/keeper.aseprite",
+  "runtime_definition": "arenic-game/data/npcs/keeper.tres",
+  "runtime_intro": "arenic-game/data/intro/guild_introduction.tres",
+  "canvas": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "sprite_preview": {
+    "sheet": "assets/npcs/keeper/previews/keeper.png",
+    "metadata": "assets/npcs/keeper/previews/keeper.json"
+  },
+  "visual_states": [
+    {
+      "id": "idle",
+      "name": "Idle",
+      "loop": true
+    },
+    {
+      "id": "beckon",
+      "name": "Beckon",
+      "loop": false
+    }
+  ],
+  "appearance": [
+    "Pale and ageless, with a still silhouette and a restrained, watchful expression.",
+    "An apparent caretaker: quiet gestures and patient attention rather than an overt display of power.",
+    "Use the portrait as the costume and silhouette reference. Keep the opening gestures quiet and economical."
+  ],
+  "opening": {
+    "target_seconds": 15,
+    "pacing": "Four brief lines with a 2.75-second minimum reading window each; the player controls further progress.",
+    "dialogue": [
+      {
+        "id": "remember",
+        "text": "A moment need not vanish. Press R. Three beats, then listen.",
+        "min_read_seconds": 2.75
+      },
+      {
+        "id": "record",
+        "text": "Move. Attack. The hall remembers what you do.",
+        "min_read_seconds": 2.75
+      },
+      {
+        "id": "replay",
+        "text": "Press R again. Choose Commit. Your echo carries on.",
+        "min_read_seconds": 2.75
+      },
+      {
+        "id": "pattern",
+        "text": "One life makes a rhythm. Many make a pattern. Go. The doors open.",
+        "min_read_seconds": 2.75
+      }
+    ]
+  },
+  "design_spoilers": [
+    "The Keeper is a god who does not understand their own true nature.",
+    "A future spider form belongs to the planned final boss reveal. It is not part of the opening portrait, sprite, or encounter.",
+    "The player remains the hidden Architect. The Keeper and the Commander-Architect are separate identities; opening dialogue reveals neither."
+  ],
+  "source_notes": [
+    "Based on the user's supplied PLOT narrative and subsequent Keeper character direction.",
+    "The plot is narrative reference, not authorization to rename existing arenas or replace current defeat and recording rules.",
+    "Philosophical quotations in the plot are thematic references; no quotation or attribution is inserted into the opening dialogue."
+  ],
+  "current_pose": "seated",
+  "current_world_sprite": {
+    "source": "assets/npcs/keeper/seated/keeper_seated.aseprite",
+    "runtime_resource": "arenic-game/assets/npcs/keeper/seated/keeper_seated.tres",
+    "canvas": [
+      38,
+      38
+    ],
+    "pivot": [
+      19,
+      19
+    ],
+    "facing": "south",
+    "preview": {
+      "sheet": "assets/npcs/keeper/seated/previews/keeper_seated.png",
+      "metadata": "assets/npcs/keeper/seated/validation.json",
+      "native": "assets/npcs/keeper/seated/previews/idle-s.png",
+      "motion": "assets/npcs/keeper/seated/previews/motion-review.html"
+    },
+    "animations": [
+      {
+        "id": "idle_s",
+        "loop": true,
+        "frames": [
+          1,
+          4
+        ]
+      },
+      {
+        "id": "beckon_s",
+        "loop": false,
+        "frames": [
+          5,
+          8
+        ]
+      }
+    ],
+    "source_note": "The top-level standing 19×19 source and four-facing studies remain preserved references for existing booklet/export consumers. Guild House runtime now uses this seated 38×38 source; the portrait and dialogue are unchanged."
+  }
+}

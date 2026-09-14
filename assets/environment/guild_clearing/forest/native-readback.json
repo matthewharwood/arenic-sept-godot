@@ -1,0 +1,264 @@
+{
+  "trees": {
+    "width": 76,
+    "height": 76,
+    "color_mode": "rgb",
+    "frames": 20,
+    "durations_ms": [
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000
+    ],
+    "layers": [
+      {
+        "name": "Grounded shadow",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      },
+      {
+        "name": "Roots, grass and soil",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      },
+      {
+        "name": "Structure silhouette",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      },
+      {
+        "name": "Material planes",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      },
+      {
+        "name": "Leaf, mineral and edge clusters",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      }
+    ],
+    "tags": [
+      {
+        "name": "oak_n",
+        "from": 1,
+        "to": 1,
+        "direction": "forward"
+      },
+      {
+        "name": "oak_e",
+        "from": 2,
+        "to": 2,
+        "direction": "forward"
+      },
+      {
+        "name": "oak_s",
+        "from": 3,
+        "to": 3,
+        "direction": "forward"
+      },
+      {
+        "name": "oak_w",
+        "from": 4,
+        "to": 4,
+        "direction": "forward"
+      },
+      {
+        "name": "birch_n",
+        "from": 5,
+        "to": 5,
+        "direction": "forward"
+      },
+      {
+        "name": "birch_e",
+        "from": 6,
+        "to": 6,
+        "direction": "forward"
+      },
+      {
+        "name": "birch_s",
+        "from": 7,
+        "to": 7,
+        "direction": "forward"
+      },
+      {
+        "name": "birch_w",
+        "from": 8,
+        "to": 8,
+        "direction": "forward"
+      },
+      {
+        "name": "pine_n",
+        "from": 9,
+        "to": 9,
+        "direction": "forward"
+      },
+      {
+        "name": "pine_e",
+        "from": 10,
+        "to": 10,
+        "direction": "forward"
+      },
+      {
+        "name": "pine_s",
+        "from": 11,
+        "to": 11,
+        "direction": "forward"
+      },
+      {
+        "name": "pine_w",
+        "from": 12,
+        "to": 12,
+        "direction": "forward"
+      },
+      {
+        "name": "crooked_n",
+        "from": 13,
+        "to": 13,
+        "direction": "forward"
+      },
+      {
+        "name": "crooked_e",
+        "from": 14,
+        "to": 14,
+        "direction": "forward"
+      },
+      {
+        "name": "crooked_s",
+        "from": 15,
+        "to": 15,
+        "direction": "forward"
+      },
+      {
+        "name": "crooked_w",
+        "from": 16,
+        "to": 16,
+        "direction": "forward"
+      },
+      {
+        "name": "fir_n",
+        "from": 17,
+        "to": 17,
+        "direction": "forward"
+      },
+      {
+        "name": "fir_e",
+        "from": 18,
+        "to": 18,
+        "direction": "forward"
+      },
+      {
+        "name": "fir_s",
+        "from": 19,
+        "to": 19,
+        "direction": "forward"
+      },
+      {
+        "name": "fir_w",
+        "from": 20,
+        "to": 20,
+        "direction": "forward"
+      }
+    ]
+  },
+  "mine": {
+    "width": 95,
+    "height": 95,
+    "color_mode": "rgb",
+    "frames": 4,
+    "durations_ms": [
+      1000,
+      1000,
+      1000,
+      1000
+    ],
+    "layers": [
+      {
+        "name": "Grounded shadow",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      },
+      {
+        "name": "Roots, grass and soil",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      },
+      {
+        "name": "Structure silhouette",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      },
+      {
+        "name": "Material planes",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      },
+      {
+        "name": "Leaf, mineral and edge clusters",
+        "visible": true,
+        "opacity": 255,
+        "is_group": false,
+        "parent": null
+      }
+    ],
+    "tags": [
+      {
+        "name": "mine_n",
+        "from": 1,
+        "to": 1,
+        "direction": "forward"
+      },
+      {
+        "name": "mine_e",
+        "from": 2,
+        "to": 2,
+        "direction": "forward"
+      },
+      {
+        "name": "mine_s",
+        "from": 3,
+        "to": 3,
+        "direction": "forward"
+      },
+      {
+        "name": "mine_w",
+        "from": 4,
+        "to": 4,
+        "direction": "forward"
+      }
+    ]
+  }
+}

@@ -50,6 +50,7 @@ func _run() -> void:
 		return
 	_saved_class = _run_setup.get("selected_class") as Resource
 	_run_setup.call("begin_new_game")
+	_run_setup.set("intro_step", 6) # This fixture tests established navigation.
 	var packed: PackedScene = load(SHELL_PATH) as PackedScene
 	if not _check(packed != null, "GameShell scene loads."):
 		return

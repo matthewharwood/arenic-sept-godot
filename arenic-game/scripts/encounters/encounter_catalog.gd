@@ -28,8 +28,10 @@ func validation_errors() -> PackedStringArray:
 	return errors
 
 
-func score_for(arena_id: String, difficulty: String) -> ArenicEncounterScore:
+func score_for(arena_id: String, difficulty: String, ruleset: String = ArenicActorEffects.LEGACY) -> ArenicEncounterScore:
 	for score: ArenicEncounterScore in scores:
+		if score is ArenicMaskScore and ruleset == ArenicActorEffects.LEGACY:
+			continue
 		if score != null and score.arena_id == arena_id and score.difficulty == difficulty:
 			return score
 	return null

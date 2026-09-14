@@ -26,6 +26,7 @@ func _run() -> void:
 	setup = root.get_node("RunSetup")
 	for class_id: String in CLASSES:
 		setup.begin_new_game()
+		setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 		setup.choose_class(load("res://data/classes/" + class_id + ".tres"))
 		shell = packed_shell.instantiate()
 		root.add_child(shell)
@@ -111,7 +112,13 @@ func _check_phases() -> void:
 	check(bar.completed_phases == 1 and bar.current_damage == 1, "The next phase layers over the completed bar")
 	check(shell.stage.get_arena(1).damage_phase == 1 and shell.stage.get_arena(1).has_node("Boss"), "Completed phase leaves the immortal boss present")
 	check(combat.damage_for_arena("labyrinth") == 0, "Other arenas remain untouched")
-	check(shell.combat_presentation.active_effect_count() <= 16, "Rapid hit presentation stays in the fixed effect pool")
+	# Disposable effects now have one bounded bucket per caster; model-owned
+	# channels/casts occupy separate slots and cannot evict another hero's hits.
+	var counts: Dictionary = {}
+	for effect: ArenicCombatPresentation.Effect in shell.combat_presentation._pool:
+		if effect.active:
+			counts[effect.caster_identity] = int(counts.get(effect.caster_identity, 0)) + 1
+	check(counts.values().all(func(count: int) -> bool: return count <= 16), "Rapid hits stay bounded to sixteen disposable effects per source")
 
 func press(code: Key) -> void:
 	key(code, true)

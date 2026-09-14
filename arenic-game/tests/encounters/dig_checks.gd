@@ -29,15 +29,20 @@ func _run() -> void:
 		push_error("Dig checks timed out")
 		quit(1))
 	_check_field()
+	_check_ground_attribution()
 	setup = root.get_node("RunSetup")
 	setup.begin_new_game()
+	setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 	setup.choose_class(load("res://data/classes/forager.tres"))
+	# Preserve this fixture’s released one-HP encounter contract.
+	setup.combat.encounter_effects.ruleset = ArenicActorEffects.LEGACY
 	shell = load(SHELL_PATH).instantiate()
 	root.add_child(shell)
 	await process_frame
 	shell.select_hero()
 	await physics_frame
 	await _check_casts_anywhere()
+	_check_chat_attribution()
 	await _check_yield_feeds_recruitment()
 	await _check_one_dig_per_tile()
 	await _check_hazard()
@@ -85,6 +90,69 @@ func _check_field() -> void:
 	check(field.value_at(Vector2i(10, 10)) >= ArenicDigField.MIN_VALUE + 4, "A bonus raises what every tile is worth")
 
 
+func _check_ground_attribution() -> void:
+	var world := ArenicWorldDefinition.new()
+	var arena := ArenicArenaDefinition.new()
+	arena.arena_id = GUILD
+	world.arenas.append(arena)
+	var combat := ArenicCombatState.new()
+	combat.configure(world)
+	combat.register_enemy(GUILD, "target", Rect2i(10, 10, 2, 1))
+	var encounter := ArenicEncounterState.new()
+	encounter.configure(world, ArenicEncounterCatalog.new(), combat)
+	var dig: ArenicDigField = encounter.dig_field(GUILD)
+	var rules: ArenicClassAbility = load("res://data/classes/forager_primary.tres")
+	encounter.apply_landing("dig", GUILD, Rect2i(10, 10, 1, 1), rules, "hero:1")
+	encounter.apply_landing("dig", GUILD, Rect2i(10, 10, 1, 1), rules, "hero:2")
+	encounter.apply_landing("dig", GUILD, Rect2i(11, 10, 1, 1), rules, "hero:2")
+	check(dig._owners[ArenicDigField.index_of(Vector2i(10, 10))] == "hero:1" and dig._owners[ArenicDigField.index_of(Vector2i(11, 10))] == "hero:2", "Each dug tile keeps its first successful digger; repeat digging cannot steal credit")
+	for index: int in dig._dug:
+		dig._dug[index] = ArenicDigField.HAZARD_TICKS - 1
+	var reports: Array = []
+	combat.damage_reported.connect(func(caster: String, ability: String, area: String, enemy: String, amount: int): reports.append([caster, ability, area, enemy, amount]))
+	encounter._advance_ground(GUILD, combat)
+	check(reports.size() == 2 and reports.has(["hero:1", "dig", GUILD, "target", 1]) and reports.has(["hero:2", "dig", GUILD, "target", 1]), "The conductor reports each due ground hit with its original digger and Dig ability")
+	dig.regenerate(1)
+	check(dig._owners.is_empty() and dig._dug.is_empty(), "New ground clears both old hazard debt and provenance")
+	reports.clear()
+	var flask: ArenicClassAbility = load("res://data/classes/alchemist_primary.tres").duplicate()
+	flask.tick_seconds = 1.0 / ArenicCycleClock.TICKS_PER_SECOND
+	encounter.apply_landing("acid_flask", GUILD, Rect2i(10, 10, 2, 1), flask, "hero:3")
+	encounter.apply_landing("acid_flask", GUILD, Rect2i(10, 10, 2, 1), flask, "hero:4")
+	encounter._advance_ground(GUILD, combat)
+	check(reports.size() == 2 and reports.has(["hero:3", "acid_flask", GUILD, "target", 1]) and reports.has(["hero:4", "acid_flask", GUILD, "target", 1]), "Overlapping pools retain independent throwers instead of borrowing the active hero")
+	encounter.acid_field(GUILD).clear()
+	reports.clear()
+	encounter.apply_landing("acid_flask", GUILD, Rect2i(10, 10, 2, 1), flask)
+	encounter._advance_ground(GUILD, combat)
+	check(reports == [["", "acid_flask", GUILD, "target", 1]], "A legacy pool preserves its known ability with explicitly unknown caster")
+
+
+func _check_chat_attribution() -> void:
+	var observed: Array[ArenicGameEvent] = []
+	var listener: Callable = func(event: ArenicGameEvent):
+		if event.event_type == &"raid.damage":
+			observed.append(event)
+	shell.events.subscribe(listener)
+	var original: ArenicClassDefinition = shell.hero.definition
+	# A different skill in slot one prevents a hardcoded primary-title lookup
+	# from accidentally passing this check.
+	shell.hero.definition = original.duplicate()
+	shell.hero.definition.skills = original.skills.duplicate()
+	shell.hero.definition.skills.insert(0, load("res://data/classes/hunter_primary.tres"))
+	var enemy: String = ArenicCombatState.boss_enemy_id(GUILD)
+	shell.combat.apply_hazard_damage(GUILD, enemy, 1, shell.hero.ally_id(), "dig")
+	check(observed.size() == 1 and observed[0].payload == {"arena_id": GUILD, "amount": 1, "hero_id": shell.hero.identity_id, "hero_name": shell.hero.display_name(), "ability_id": "dig", "ability_name": original.skills[0].title}, "One accepted damage event publishes exact hero identity and the matching attack title, not the first skill")
+	check(observed[0].severity == ArenicGameEvent.Severity.DEBUG and observed[0].importance == ArenicGameEvent.Importance.LOW, "Damage attribution keeps debug severity separate from low player importance")
+	shell.hero.definition = original
+	shell.combat.apply_hazard_damage(GUILD, enemy, 1, "", "acid_flask")
+	var flask: ArenicClassAbility = load("res://data/classes/alchemist_primary.tres")
+	check(observed.back().payload == {"arena_id": GUILD, "amount": 1, "hero_id": -1, "hero_name": "", "ability_id": "acid_flask", "ability_name": flask.title}, "Unknown throwers keep catalog attack names without attributing damage to the selected hero")
+	shell.combat.apply_hazard_damage(GUILD, enemy, 1)
+	check(observed.size() == 3 and observed.back().payload == {"arena_id": GUILD, "amount": 1, "hero_id": -1, "hero_name": "", "ability_id": "environment", "ability_name": "Environment"}, "Missing hazard provenance uses the explicit Environment fallback once")
+	shell.events.unsubscribe(listener)
+
+
 ## Dig needs no enemy and no adjacency — it breaks the ground underfoot.
 func _check_casts_anywhere() -> void:
 	var hero: ArenicHeroState = shell.hero
@@ -97,6 +165,7 @@ func _check_casts_anywhere() -> void:
 	check(shell.combat.try_cast(hero).is_empty(), "And casts there")
 	await physics_frame
 	check(shell.encounter.dig_field(GUILD).is_dug(Vector2i(4, 4)), "The tile underfoot is broken")
+	check(shell.encounter.dig_field(GUILD)._owners[ArenicDigField.index_of(Vector2i(4, 4))] == hero.ally_id(), "The shell forwards the actual landing caster into broken ground")
 	check(shell.encounter.dig_field(LABYRINTH) != null, "A boss arena has diggable ground too")
 
 
@@ -172,7 +241,10 @@ func _check_clears_on_cycle() -> void:
 ## The flask is a skill shot: it flies where you face and leaves a pool behind.
 func _check_flask() -> void:
 	setup.begin_new_game()
+	setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 	setup.choose_class(load("res://data/classes/alchemist.tres"))
+	# Preserve this fixture’s released one-HP encounter contract.
+	setup.combat.encounter_effects.ruleset = ArenicActorEffects.LEGACY
 	var fresh = load(SHELL_PATH).instantiate()
 	root.add_child(fresh)
 	await process_frame
@@ -204,6 +276,7 @@ func _check_flask() -> void:
 	var before: int = fresh.combat.damage_for_arena(GUILD)
 	fresh.combat.tick(rules.cast_seconds, hero)
 	check(acid.count() == 1, "It lands after its flight and leaves a pool")
+	check(acid._pools[0].caster_id == hero.ally_id(), "The live flask keeps its thrower after the cast has finished")
 	check(fresh.combat.damage_for_arena(GUILD) == before, "The impact itself deals no damage")
 	var pools: Dictionary = acid.overlay()
 	check(pools["cells"].size() == 9, "The pool covers nine tiles")
@@ -262,7 +335,10 @@ func _check_ground_sorts_under_sprites() -> void:
 ## path around your own ground.
 func _check_acid_burns_heroes() -> void:
 	setup.begin_new_game()
+	setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 	setup.choose_class(load("res://data/classes/alchemist.tres"))
+	# Preserve this fixture’s released one-HP encounter contract.
+	setup.combat.encounter_effects.ruleset = ArenicActorEffects.LEGACY
 	var fresh = load(SHELL_PATH).instantiate()
 	root.add_child(fresh)
 	await process_frame
@@ -321,7 +397,7 @@ func _check_acid_burns_heroes() -> void:
 static func _burn(combat: ArenicCombatState, arena_id: String, burn: Array) -> void:
 	var area: Rect2i = burn[0]
 	for enemy_id: String in combat.enemies_in(arena_id, area):
-		combat.apply_hazard_damage(arena_id, enemy_id, int(burn[1]))
+		combat.apply_hazard_damage(arena_id, enemy_id, int(burn[1]), str(burn[2]), "acid_flask")
 	combat.damage_allies_in(arena_id, area, int(burn[1]))
 
 

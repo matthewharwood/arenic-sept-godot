@@ -13,7 +13,8 @@ extends RefCounted
 const MOVE: StringName = &"move"
 const ABILITY: StringName = &"ability"
 const BOSS_JUMP: StringName = &"boss_jump"
-const ACTIONS: Array[StringName] = [MOVE, ABILITY, BOSS_JUMP]
+const BOSS_MASK: StringName = &"boss_mask"
+const ACTIONS: Array[StringName] = [MOVE, ABILITY, BOSS_JUMP, BOSS_MASK]
 
 var tick: int = 0
 var action_id: StringName = MOVE
@@ -22,6 +23,7 @@ var delta: Vector2i = Vector2i.ZERO
 ## Ability slot 1-4, mirroring the hotbar.
 var slot: int = 0
 ## Authored payload for a boss action. Stored staves reference the resource.
+var score_event: ArenicScoreEvent
 var beat: ArenicEncounterBeat
 
 var performer: String = ""
@@ -64,6 +66,7 @@ func stamped(owner_id: String, fold_order: int, staff_index: int) -> ArenicTimel
 	event.delta = delta
 	event.slot = slot
 	event.beat = beat
+	event.score_event = score_event
 	event.performer = owner_id
 	event.order = fold_order
 	event.index = staff_index

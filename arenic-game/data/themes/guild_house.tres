@@ -7,7 +7,7 @@ script = ExtResource("1_theme")
 theme_id = "coffee"
 arena_id = "guild_house"
 atmosphere_id = 1
-subtitle = "Warm hearth and rising embers"
+subtitle = "A woodland tavern and a working guild"
 palette = {
 "base_100": Vector3(0.24, 0.025, 329.4),
 "base_200": Vector3(0.197, 0.021, 330.1),
@@ -41,10 +41,10 @@ backdrop_drift = Vector2(0.008, 0.004)
 backdrop_coverage = 0.58
 backdrop_vignette = 0.30
 backdrop_speed = 0.40
-foreground_style = 4
+foreground_style = 8
 foreground_scale = 6.0
-foreground_drift = Vector2(0.000, 0.050)
-foreground_coverage = 0.50
+foreground_drift = Vector2(0.014, 0.006)
+foreground_coverage = 0.24
 foreground_vignette = 0.0
 foreground_speed = 0.50
 source_repository = "https://github.com/matthewharwood/arenic"

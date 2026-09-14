@@ -30,7 +30,55 @@ func _run() -> void:
 		var result: Variant = JSON.parse_string(FileAccess.get_file_as_string(directory.path_join("reader-result.json")))
 		check(result.get("continued_run_id", "") == result.get("written_run_id", "missing"), "Continue retains the unique game hash across processes")
 		check(result.get("payload_equal", false), "Complete declared state survives a native process restart")
+		check(result.get("projectile_continued", false), "Active Auto Shot resumes without replay and hits once at its frozen arrival")
+		check(result.get("hazard_sources_equal", false), "First post-restart hazard damage retains caster and attack")
+		check(result.get("dots_continued", false), "Staggered Cleanse stacks retain exact source, tick debt, and independent expiry after process restart")
+		check(result.get("gathering_continued", false), "Partial, full and half-unloaded bags resume exact deposits and 64-bit banks after process restart")
 		check(result.get("advanced", false), "Continued simulation advances after restoration")
+	if not failed:
+		check(await _worker(directory, "legacy-reader"), "A fresh reader migrates a real v1 file and resumes without the prologue")
+	if not failed:
+		check(await _worker(directory, "legacy-two-reader"), "A fresh reader migrates a real v2 file with honestly unknown hazard sources")
+	if not failed:
+		check(await _worker(directory, "legacy-three-reader"), "A fresh reader migrates a real v3 projectile using its original fixed arrival")
+	if not failed:
+		check(await _worker(directory, "legacy-four-reader"), "A fresh reader migrates a real v4 file without inventing retrospective Cleanse stacks")
+	if not failed:
+		check(await _worker(directory, "legacy-five-reader"), "A fresh reader migrates a real v5 file with its actual DOTs and empty new gathering state")
+	if not failed:
+		check(await _worker(directory, "legacy-six-reader"), "A fresh reader preserves all schema6 work without inventing a pending restart at tick zero")
+	if not failed:
+		check(await _worker(directory, "intro-writer"), "A fresh writer commits an intermediate prologue beat")
+	if not failed:
+		check(await _worker(directory, "intro-reader"), "A fresh reader resumes the exact prologue beat without replaying the quote")
+	if not failed:
+		check(await _worker(directory, "pending-writer"), "A fresh writer saves after the real canonical reset without reversing banked progress")
+	if not failed:
+		check(await _worker(directory, "pending-reader"), "A fresh reader holds exactly 180 countdown ticks at zero, then advances without a second reset while other arenas continue")
+	if not failed:
+		check(await _worker(directory, "death-writer"), "A fresh process saves automatic draft cancellation and the uninterrupted arena clock")
+	if not failed:
+		check(await _worker(directory, "death-reader"), "A fresh process restores the cleared draft at home and continues the source arena")
+	if not failed:
+		check(await _worker(directory, "scope-writer"), "A native writer saves a viewed empty arena and independent cycle phase")
+	if not failed:
+		check(await _worker(directory, "scope-reader"), "A fresh process restores local deselection, synchronized music and first-recruit selection")
+	if not failed:
+		check(await _worker(directory, "cardinal-writer"), "Cardinal fonts, direct bonus and Confession commit through SaveGames")
+	if not failed:
+		check(await _worker(directory, "cardinal-reader"), "Fresh native process restores Cardinal at the exact delayed-wound boundary")
+	if not failed:
+		check(await _worker(directory, "channels-writer"), "Native writer saves two simultaneous Cardinal channels")
+	if not failed:
+		check(await _worker(directory, "channels-reader"), "A fresh native process restores both beams and cancels them independently")
+	if not failed:
+		check(await _worker(directory, "abilities-writer"), "A native writer saves simultaneous Fortune, Auto Shot and Acid Flask casts")
+	if not failed:
+		check(await _worker(directory, "abilities-reader"), "Fresh native hydration restores all cast visuals and cancels only one Merchant")
+	if not failed:
+		check(await _worker(directory, "loot-writer"), "A native writer saves claimed equipment, an unopened reward and partial-cycle work")
+	if not failed:
+		check(await _worker(directory, "loot-reader"), "A fresh native process preserves fixed card outcomes, exactly-once inventory and future cycle damage")
 	print("Save restart checks: %d assertions, %s." % [checks, "FAILED" if failed else "passed"])
 	quit(1 if failed else 0)
 

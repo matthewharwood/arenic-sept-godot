@@ -41,7 +41,10 @@ func _run() -> void:
 	var packed := load(SHELL_PATH) as PackedScene
 	setup = root.get_node("RunSetup")
 	setup.begin_new_game()
+	setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 	setup.choose_class(load("res://data/classes/hunter.tres"))
+	# Preserve this fixture’s released one-HP encounter contract.
+	setup.combat.encounter_effects.ruleset = ArenicActorEffects.LEGACY
 	shell = packed.instantiate()
 	root.add_child(shell)
 	await process_frame
@@ -125,16 +128,27 @@ func _check_cycle_loops(sanctum_rest: Rect2i) -> void:
 	check(_footprint(LABYRINTH) == CENTRE, "Wrapping past two minutes returns the boss to the opening beat")
 	check(shell.encounter.cycle_position(LABYRINTH) < 60, "The cycle position wrapped rather than running past its duration")
 	check(_footprint(SANCTUM) == sanctum_rest, "An arena without a score never moves its boss")
+	check(not shell.encounter.is_restart_pending(LABYRINTH) and not shell.arena_rewind.is_active(LABYRINTH), "An empty boss arena wraps without a hold that could affect the hero at home")
+	# Populate the arena again: subsequent wraps retain the ordinary countdown.
+	_place_hero(LABYRINTH, Vector2i(65, 30))
 	# A span longer than the cycle resolves every lap it actually covered. The
 	# clock counts whole ticks, so a lap that elapsed is a lap that happened.
 	var resolved: int = shell.encounter.beats_resolved
 	shell.encounter.seek(LABYRINTH, 600)
-	shell.encounter.tick(shell.combat, 24000)
+	var remaining: int = 24000
+	while remaining > 0:
+		if shell.encounter.is_restart_pending(LABYRINTH):
+			_complete_restart(LABYRINTH)
+		var span: int = mini(remaining, shell.encounter.cycle_ticks(LABYRINTH) - shell.encounter.cycle_position(LABYRINTH))
+		shell.encounter.tick(shell.combat, span)
+		remaining -= span
 	# Ticks 600..24599: 15 beats left in the opening lap, 17 in each of two full
 	# laps, then 7 before the span ends at tick 2999 of the fourth.
 	check(shell.encounter.beats_resolved == resolved + 56, "Every landing in every elapsed lap resolves, none of them twice")
 	check(shell.encounter.cycle_position(LABYRINTH) == 3000, "Three full laps and forty seconds land the cycle on tick 3000")
-	check(_footprint(LABYRINTH) == STATION_TWO, "The ledger stands on the last landing actually played, not the one now due")
+	var stored: Rect2i = shell.combat._arenas[LABYRINTH].enemies[ArenicCombatState.boss_enemy_id(LABYRINTH)].footprint
+	check(stored == STATION_TWO, "The ledger stands on the last landing actually played, not the one now due")
+	check(_footprint(LABYRINTH) == Rect2i(54, 12, 6, 6), "Current collision derives the landing now due before the ledger resolves its beat")
 
 
 ## Replacing the stage must not restart a battle sequence, or it would drift
@@ -149,6 +163,23 @@ func _check_stage_swap_keeps_the_cycle() -> void:
 	check(absi(shell.encounter.cycle_position(LABYRINTH) - before) <= 30, "A stage swap keeps the arena's cycle position")
 	check(shell.encounter.beats_resolved == performed, "Reconfiguring the conductor resolves nothing")
 	check(_footprint(LABYRINTH) == Rect2i(54, 12, 6, 6), "The replaced stage places the boss on the beat the cycle stands on, not on beat zero")
+
+
+func _complete_restart(arena_id: String) -> void:
+	var automatic: bool = shell.is_physics_processing()
+	shell.set_physics_process(false)
+	check(shell.encounter.is_restart_pending(arena_id) and shell.arena_rewind.phase(arena_id) in ["rewind", "countdown"], "The natural loop enters a real cosmetic restart before another score tick")
+	var beats: int = shell.encounter.beats_resolved
+	var saw_countdown: bool = false
+	var held_zero: bool = true
+	for tick: int in 902:
+		if not shell.encounter.is_restart_pending(arena_id):
+			break
+		saw_countdown = saw_countdown or shell.arena_rewind.phase(arena_id) == "countdown"
+		shell._physics_process(1.0 / 60.0)
+		held_zero = held_zero and shell.encounter.cycle_position(arena_id) == 0
+	check(saw_countdown and held_zero and not shell.encounter.is_restart_pending(arena_id) and shell.encounter.beats_resolved == beats, "Rewind and countdown hold the score at zero and never resolve a landing")
+	shell.set_physics_process(automatic)
 
 
 func _place_hero(arena_id: String, cell: Vector2i) -> void:

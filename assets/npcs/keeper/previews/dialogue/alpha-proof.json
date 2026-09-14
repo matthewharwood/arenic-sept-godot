@@ -1,0 +1,21 @@
+{
+  "size": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "transparent_pixels": 570453,
+  "opaque_pixels": 1002411,
+  "partially_transparent_pixels": 0,
+  "visible_rgb_changed": 0,
+  "visible_pixels": 1002411,
+  "runtime_matches_master_png": true,
+  "master_png_sha256": "89ca68a7270da46e5ec8f4785791312b4e093ced24982f1eb6a43f07d0e30bc8",
+  "review_backgrounds": [
+    "dark violet",
+    "parchment",
+    "magenta"
+  ],
+  "cleanup_tool": "Aseprite 1.3.18.5 native Lua",
+  "stat_reader": "Pillow, read-only"
+}

@@ -8,6 +8,7 @@ const GRID_MARGIN := 32.0
 const GRID_GUTTER := 12.0
 const REFERENCE_SIZE := Vector2i(1280, 768)
 const TITLE_SCENE := "res://scenes/title/title_scene.tscn"
+const START_SHORTCUTS := "res://assets/icons/controls/start-shortcuts.svg"
 
 @export var catalog: ArenicClassCatalog
 ## Class confirmation stores RunSetup before opening this application scene.
@@ -48,6 +49,15 @@ func _ready() -> void:
 		card.pressed.connect(_select_class.bind(index))
 		card.focus_entered.connect(_select_class.bind(index))
 		_wire_card_focus(index)
+	_confirm.icon = load(START_SHORTCUTS) as Texture2D
+	_confirm.icon_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_confirm.add_theme_constant_override("h_separation", 14)
+	for state_name: String in ["normal", "hover", "pressed", "disabled"]:
+		var style := _confirm.get_theme_stylebox(state_name).duplicate() as StyleBox
+		style.content_margin_left = 12.0
+		style.content_margin_right = 12.0
+		_confirm.add_theme_stylebox_override(state_name, style)
+	_confirm.tooltip_text = "Start with the selected hero · Space or Enter / Return"
 	_confirm.pressed.connect(_confirm_class)
 	_back.pressed.connect(_return_to_title)
 	var last_card := _cards[catalog.classes.size() - 1]
@@ -60,6 +70,21 @@ func _ready() -> void:
 	resized.connect(_layout_grid)
 	_select_class(clampi(SaveGames.selection_index, 0, catalog.classes.size() - 1) if SaveGames.active_slot >= 0 else 0, false)
 	_layout_grid.call_deferred()
+
+
+## Accept confirms the current selection before a focused card consumes the key.
+## Back retains its own normal keyboard activation, and repeats cannot start twice.
+func _input(event: InputEvent) -> void:
+	if not event is InputEventKey or not event.pressed or event.echo:
+		return
+	if event.alt_pressed or event.ctrl_pressed or event.meta_pressed or event.shift_pressed:
+		return
+	if event.keycode not in [KEY_SPACE, KEY_ENTER, KEY_KP_ENTER]:
+		return
+	if _confirm.disabled or _back.has_focus() or catalog == null or _cards.is_empty():
+		return
+	get_viewport().set_input_as_handled()
+	_confirm_class()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -95,7 +120,8 @@ func _layout_grid() -> void:
 	var center := grid_rect(4, 0, 4, GRID_ROWS)
 	_place($Nameplate, Rect2(Vector2(center.position.x, size.y - GRID_MARGIN - 58.0), Vector2(center.size.x, 58.0)))
 	var confirm_area := grid_rect(10, 13, 2, 1)
-	_place(_confirm, Rect2(Vector2(confirm_area.position.x, size.y - GRID_MARGIN - 58.0), Vector2(confirm_area.size.x, 58.0)))
+	var confirm_width: float = maxf(confirm_area.size.x, _confirm.get_combined_minimum_size().x)
+	_place(_confirm, Rect2(Vector2(confirm_area.end.x - confirm_width, size.y - GRID_MARGIN - 58.0), Vector2(confirm_width, 58.0)))
 	_place(_status, Rect2(Vector2(grid_rect(8, 0, 4, 1).position.x, size.y - GRID_MARGIN - 98.0), Vector2(grid_rect(8, 0, 4, 1).size.x, 28.0)))
 	_place(_back, Rect2(Vector2(size.x - GRID_MARGIN - 104.0, GRID_MARGIN), Vector2(104.0, 40.0)))
 	var definition := catalog.classes[selected_index]

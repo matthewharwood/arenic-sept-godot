@@ -26,9 +26,11 @@ func _run() -> void:
 	capture = AudioEffectCapture.new()
 	capture.buffer_length = 0.25
 	AudioServer.add_bus_effect(0, capture)
+	root.get_node("RunSetup").intro_step = 6 # Established-world presentation fixture.
 	shell = load("res://scenes/game/game_shell.tscn").instantiate()
 	root.add_child(shell)
 	shell.music.set_process(false)
+	shell.music.cycle_source = null
 	await create_timer(0.85).timeout
 	results["hum"] = await _measure(1.0)
 	if results.hum.rms < 0.0001:

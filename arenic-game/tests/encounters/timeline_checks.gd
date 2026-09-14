@@ -18,6 +18,7 @@ func _run() -> void:
 	_check_order()
 	_check_idempotent_fold()
 	_check_unfold()
+	_check_unfold_consumed_tick()
 	_check_cursor()
 	_check_seek()
 	_check_partial_staff()
@@ -69,6 +70,20 @@ func _check_unfold() -> void:
 	# Breaking out and back in must not change who acts first within a tick.
 	timeline.fold(A, _staff([7]))
 	_check(_performers_at(timeline, 7) == [A, B], "A returning performer reclaims its original place in a contested tick.")
+
+
+func _check_unfold_consumed_tick() -> void:
+	var timeline := ArenicArenaTimeline.new()
+	timeline.fold(A, _staff([5, 8]))
+	timeline.fold(B, _staff([5, 9]))
+	timeline.fold(C, _staff([5, 10]))
+	_check(timeline.due(5).size() == 3, "A contested tick is handed to the conductor as one consumed batch.")
+	timeline.unfold(A, 5)
+	_check(timeline.due(5).is_empty(), "Unfolding during contact cannot make the other performers' consumed events due again.")
+	timeline.unfold(B, 5)
+	_check(timeline.due(6).is_empty(), "Multiple synchronous unfolds preserve the consumed boundary.")
+	var later: Array[ArenicTimelineEvent] = timeline.due(10)
+	_check(later.size() == 1 and later[0].performer == C and later[0].tick == 10, "The remaining performer's future event keeps its authored tick and resolves once.")
 
 
 ## The cursor walks each tick's events exactly once.

@@ -9,6 +9,7 @@ uniform vec4 primary : source_color;
 uniform vec4 secondary : source_color;
 uniform vec4 accent : source_color;
 uniform int identity = 0;
+uniform sampler2D guild_grass : source_color, filter_nearest, repeat_disable;
 uniform float atmosphere_time = 0.0;
 uniform float strength : hint_range(0.0, 1.0) = 1.0;
 #include "res://shaders/themes/arena_regions.gdshaderinc"
@@ -48,15 +49,10 @@ void fragment() {
 		inlay = max(band(max(maze.x, maze.y) - 48.0, 1.0), band(min(maze.x, maze.y) - 19.0, 1.0));
 		inlay *= 1.0 - smoothstep(65.0, 145.0, edge);
 		ornament = band(q.y + 0.23*q.x - 32.0, .7) * (1.0 - smoothstep(350.0, 510.0, abs(q.x))) * .35;
-	} else if (identity == 1) { // Coffee: staggered timber with a woven central rug.
-		seam = max(line_period(p.y, 19.0, 0.5), line_period(p.x + floor(p.y / 19.0) * 57.0, 152.0, 0.5));
-		color = mix(color, base_300.rgb, hash21(floor(vec2(p.x / 152.0, p.y / 19.0))) * 0.3);
-		color = mix(color, secondary.rgb, line_period(p.y + sin(p.x * 0.035) * 1.3, 7.0, 0.45) * 0.025);
-		vec2 rug = abs(q) / vec2(285.0, 152.0);
-		float r = max(rug.x, rug.y);
-		color = mix(color, secondary.rgb, (1.0 - step(1.0, r)) * 0.13);
-		inlay = band(r - 1.0, 0.007) + band(r - 0.93, 0.006);
-		ornament = max(band(length(q) - 114.0, .7)*.65, line_period(abs(q.x) + abs(q.y), 76.0, 0.6) * (1.0 - step(0.87, r)) * 0.16);
+	} else if (identity == 1) { // Native Aseprite grass; the Guild House is an outdoor clearing.
+		float tile_variant = mod(floor(cell.x / 5.0) + floor(cell.y / 4.0) * 3.0, 4.0);
+		vec2 grass_uv = (vec2(tile_variant * 19.0, 0.0) + px + 0.5) / vec2(76.0, 19.0);
+		color = texture(guild_grass, grass_uv).rgb;
 	} else if (identity == 2) { // Luxury: dark marble, gilded rose window and radial tracery.
 		seam = max(line_period(p.x, 76.0, 0.5), line_period(p.y, 76.0, 0.5));
 		float a = atan(q.y, q.x);
@@ -120,13 +116,13 @@ void fragment() {
 	color = mix(color, accent.rgb, ornament * 0.22);
 	// A narrow double frame stops at the four travel corridors.
 	bool gate = abs(q.x) < 38.0 || abs(q.y) < 28.5;
-	float frame = (band(edge - 8.0, .6) + band(edge - 12.0, .6)) * (gate ? 0.0 : 1.0);
+	float frame = (band(edge - 8.0, .6) + band(edge - 12.0, .6)) * (gate || identity == 1 ? 0.0 : 1.0);
 	if (overview_mix > 0.0 && regions_ready) {
 		frame *= 1.0 - overview_mix;
 	}
 	color = mix(color, primary.rgb, frame * .38);
 	// No antialiasing here: exactly one center pixel per native 19px cell.
-	float dot_pixel = (px.x == 9.0 && px.y == 9.0) ? 1.0 : 0.0;
+	float dot_pixel = (identity != 1 && px.x == 9.0 && px.y == 9.0) ? 1.0 : 0.0;
 	color = mix(color, mix(base_100.rgb, base_content.rgb, .40), dot_pixel);
 	float regional_mix = arena_region_mix(region_world_xz);
 	if (regional_mix > 0.0) {

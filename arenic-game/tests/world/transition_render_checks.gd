@@ -32,6 +32,7 @@ func _run() -> void:
 	root.add_child(_watchdog)
 	_watchdog.timeout.connect(func(): _finish(1, "Twenty-second rendering watchdog exceeded."))
 	_watchdog.start()
+	root.get_node("RunSetup").intro_step = 6 # Established-world presentation fixture.
 	var packed: PackedScene = load(SHELL_PATH) as PackedScene
 	if not _check(packed != null, "Actual game shell loads."):
 		return

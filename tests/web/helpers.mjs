@@ -190,16 +190,35 @@ export async function clickTitleButton(page, name) {
   await page.mouse.click(...state.center);
 }
 
-export async function clickLogical(page, state, point) {
+export async function clickLogical(page, state, point, options = {}) {
   const box = await page.locator('#canvas').boundingBox();
   expect(box).toBeTruthy();
   const [width, height] = state.logical;
   const scale = Math.min(box.width / width, box.height / height);
   await page.mouse.click(box.x + (box.width - width * scale) / 2 + point[0] * scale,
-    box.y + (box.height - height * scale) / 2 + point[1] * scale);
+    box.y + (box.height - height * scale) / 2 + point[1] * scale, options);
 }
 
-export async function enterProbeWorld(page, log, classIndex = 3) {
+export async function openControlsGuide(page, log) {
+  let state = await log.wait(value => value?.scene === 'world' && value.hud?.guide,
+    'The game exposes its real controls menu');
+  if (!state.hud.guide.visible) {
+    await page.keyboard.press('h');
+    state = await log.wait(value => value?.hud?.guide.visible
+      && value.controls.toggle.visible && value.controls.save_title.visible,
+    'H reveals the Overview and Save/Title actions');
+  }
+  return state;
+}
+
+export async function clickHudMenuAction(page, log, action) {
+  if (!['toggle', 'save_title'].includes(action)) throw new Error(`Unknown HUD menu action: ${action}`);
+  const state = await openControlsGuide(page, log);
+  expect(state.controls[action].disabled).toBe(false);
+  await clickLogical(page, state, state.controls[action].center);
+}
+
+export async function enterProbeWorld(page, log, classIndex = 3, options = {}) {
   await loadGame(page, PROBE, log);
   let state = await log.wait(value => value?.scene === 'title' && value.saves?.ready && !value.controls.start.disabled,
     'Title enables Start after save storage hydration');
@@ -208,7 +227,21 @@ export async function enterProbeWorld(page, log, classIndex = 3) {
   await clickLogical(page, state, state.cards[classIndex].center);
   state = await log.wait(value => value?.selected_index === classIndex, 'Actual card selection');
   await clickLogical(page, state, state.controls.confirm.center);
-  return log.wait(value => value?.scene === 'world' && !value.motion_active, 'Actual confirmation opens world');
+  state = await log.wait(value => value?.scene === 'world' && !value.motion_active, 'Actual confirmation opens world');
+  if (options.introduction === false) return state;
+  await completeIntroduction(page, log);
+  // These existing gameplay checks begin at the established training position.
+  // Reach it through real controls after completing the actual introduction.
+  for (let i = 0; i < 3; i++) {
+    await page.keyboard.press('ArrowLeft');
+    await log.wait(value => value?.hero?.cell[0] === 32 - i, 'Walk away from the Keeper');
+  }
+  await page.keyboard.press('ArrowDown');
+  await log.wait(value => value?.hero?.cell[1] === 14);
+  await page.keyboard.press('ArrowUp');
+  await log.wait(value => value?.hero?.cell[1] === 15 && value.hero.facing === 'n');
+  await page.keyboard.press('p');
+  return log.wait(value => value?.introduction?.step === 6 && !value.zoomed && !value.motion_active, 'Prologue hands off to ordinary navigation');
 }
 
 export async function attachResults(testInfo, log, extra = {}) {
@@ -218,4 +251,23 @@ export async function attachResults(testInfo, log, extra = {}) {
     path,
     contentType: 'application/json',
   });
+}
+
+export async function completeIntroduction(page, log) {
+  let state = await log.wait(value => value?.introduction, 'Prologue is mounted');
+  if (state.introduction.step === 0) {
+    state = await log.wait(value => value?.introduction?.elapsed >= 2, 'Opening quote can be read');
+    await clickLogical(page, state, state.introduction.begin_center);
+    state = await log.wait(value => value?.introduction?.step === 1, 'Quote gives way to Guild House');
+  }
+  if (state.introduction.step === 1) {
+    await page.keyboard.press('Space');
+    state = await log.wait(value => value?.introduction?.step === 2, 'Space speaks to the Keeper');
+  }
+  for (let step = state.introduction.step; step <= 5; step++) {
+    state = await log.wait(value => value?.introduction?.step === step && value.introduction.elapsed >= 2.75, 'Dialogue beat is readable');
+    await clickLogical(page, state, state.introduction.next_center);
+    await log.wait(value => value?.introduction?.step > step || value?.introduction?.opening, 'Dialogue advances');
+  }
+  return log.wait(value => value?.introduction?.step === 6 && !value.introduction.opening, 'All Guild House doors finish opening');
 }

@@ -16,6 +16,7 @@ class Pool:
 	var tick_ticks: int = 60
 	var debt: int = 0
 	var damage: int = 1
+	var caster_id: String = ""
 
 	func strength() -> float:
 		return clampf(float(ticks_left) / float(maxi(1, span)), 0.0, 1.0)
@@ -40,11 +41,12 @@ func count() -> int:
 ## Lays a pool. Re-throwing into the same ground adds a second pool rather than
 ## refreshing the first: two flasks burn twice as fast, which is the honest
 ## reading of two flasks.
-func spawn(area: Rect2i, rules: ArenicClassAbility) -> void:
+func spawn(area: Rect2i, rules: ArenicClassAbility, caster_id: String = "") -> void:
 	if rules == null or area.size.x <= 0 or area.size.y <= 0:
 		return
 	var pool := Pool.new()
 	pool.area = area
+	pool.caster_id = caster_id
 	pool.span = maxi(1, ArenicCycleClock.seconds_to_ticks(rules.duration_seconds))
 	pool.ticks_left = pool.span
 	pool.tick_ticks = maxi(1, ArenicCycleClock.seconds_to_ticks(rules.tick_seconds))
@@ -52,10 +54,9 @@ func spawn(area: Rect2i, rules: ArenicClassAbility) -> void:
 	_pools.append(pool)
 
 
-## Advances one tick and returns `[area, damage]` for every pool that came due.
-## The field says WHEN and WHERE, never who: acid does not care whose boots are
-## in it, so the caller applies each burn to everything standing there. Pools
-## that dry up this tick are removed.
+## Advances one tick and returns `[area, damage, caster_id]` for every due pool.
+## Provenance identifies the thrower, not a target: the caller still applies each
+## burn to everything standing there. Pools that dry up this tick are removed.
 func advance() -> Array:
 	var due: Array = []
 	if _pools.is_empty():
@@ -66,7 +67,7 @@ func advance() -> Array:
 		pool.debt += 1
 		while pool.debt >= pool.tick_ticks:
 			pool.debt -= pool.tick_ticks
-			due.append([pool.area, pool.damage])
+			due.append([pool.area, pool.damage, pool.caster_id])
 		if pool.ticks_left <= 0:
 			_pools.remove_at(index)
 	return due

@@ -1,0 +1,122 @@
+{
+  "source": "assets/npcs/keeper/keeper.aseprite",
+  "source_sha256": "1d18f4bc13d1f98132a23e444d3a07139f5139833c1a833530809cb1203b9450",
+  "generator": "assets/pipeline/export-prologue-art.py",
+  "aseprite_version": "Aseprite 1.3.18.5-arm64",
+  "canvas": [
+    19,
+    19
+  ],
+  "pivot": [
+    9,
+    9
+  ],
+  "native_scale": 1,
+  "atlas_columns": 8,
+  "required_sprite_filter": "NEAREST",
+  "saved_layer_visibility": true,
+  "sprite_frames": "res://assets/npcs/keeper/keeper_frames.tres",
+  "import_options": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "detect_3d/compress_to": "0",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/size_limit": "0"
+  },
+  "animations": {
+    "idle_n": {
+      "durations_ms": [
+        450,
+        150,
+        450,
+        150
+      ],
+      "loop": true
+    },
+    "idle_e": {
+      "durations_ms": [
+        450,
+        150,
+        450,
+        150
+      ],
+      "loop": true
+    },
+    "idle_s": {
+      "durations_ms": [
+        450,
+        150,
+        450,
+        150
+      ],
+      "loop": true
+    },
+    "idle_w": {
+      "durations_ms": [
+        450,
+        150,
+        450,
+        150
+      ],
+      "loop": true
+    },
+    "beckon_n": {
+      "durations_ms": [
+        180,
+        140,
+        140,
+        220,
+        140,
+        180,
+        160,
+        240
+      ],
+      "loop": false
+    },
+    "beckon_e": {
+      "durations_ms": [
+        180,
+        140,
+        140,
+        220,
+        140,
+        180,
+        160,
+        240
+      ],
+      "loop": false
+    },
+    "beckon_s": {
+      "durations_ms": [
+        180,
+        140,
+        140,
+        220,
+        140,
+        180,
+        160,
+        240
+      ],
+      "loop": false
+    },
+    "beckon_w": {
+      "durations_ms": [
+        180,
+        140,
+        140,
+        220,
+        140,
+        180,
+        160,
+        240
+      ],
+      "loop": false
+    }
+  },
+  "sha256": {
+    "png": "6e8799e4304057d3ce76abeb43bb3f78b4d37160a02132108b79ad8145e0138d",
+    "json": "7c5e216cc1296a29bfa2de6035eddcff176ea3efb61359d3eab8ff694178ab05",
+    "sprite_frames": "37ff5d140fef84c23b9c9947a16af2d5725abb99e84b8447a9d5c2f787ad2718"
+  }
+}

@@ -14,12 +14,12 @@ tests the website. Deployment requires both jobs to pass. PRs never deploy.
 
 1. Install official Godot **4.7.2**, verified against pinned SHA-512 checksums.
 2. Run the Godot Doctor authored-data preflight before installing browser dependencies.
-3. Run 32 headless and 5 software-rendered Godot checks; the headless lane also
+3. Run the explicitly classified headless and software-rendered Godot checks; the headless lane also
    runs Godot Doctor before its gameplay checks.
 4. Export a clean Web release and a separate, disposable instrumented release.
 5. Package the landing page and galleries; deduplicate existing preview images
    without changing their pixels or animation data.
-6. Run 43 Chromium browser tests under `/arenic-sept-godot/`, including save
+6. Run the complete Chromium browser suite under `/arenic-sept-godot/`, including save
    reloads, actual IndexedDB transactions, slot capacity, corruption, and quota/conflict recovery.
 7. Upload **only** the clean site and deploy it through GitHub Pages.
 8. Confirm the public build manifest matches the deployed commit, then exercise
@@ -74,7 +74,9 @@ cleanup work. The clean production smoke test, audio and combat cases run at
 still exercise 1280 × 720, Retina density and resizing. Loop waits observe advancing game time and retain
 a real-time deadline. Fortune completion follows actual simulation progress with
 a separate 180-second wall-clock bound. CI stops on its first failure and uploads diagnostics;
-every test must pass in a green release.
+every test must pass in a green release. The build job allows 60 minutes for the
+expanded gameplay, persistence, rewards and ownership suite; individual test
+deadlines remain bounded.
 
 `tests/web/probe.gd` is added only to a disposable project copy. Its autoload,
 test shortcuts and readback are absent from production. The export also removes

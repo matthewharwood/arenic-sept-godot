@@ -21,6 +21,8 @@ static func apply(run: Node, seed_value: int) -> PackedStringArray:
 		var hero: ArenicHeroState = run.recruit(classes[rng.randi_range(0, classes.size() - 1)])
 		hero.cell = Vector2i(int(data.starting_cell[0]) + index, int(data.starting_cell[1]))
 	run.prospected = int(data.prospected)
+	# This fixture represents an established guild, not a first-time tutorial.
+	run.intro_step = ArenicSaveCodec.INTRO_COMPLETE
 	return ArenicSaveCodec.validate(ArenicSaveCodec.capture_run(run))
 
 

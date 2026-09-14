@@ -20,6 +20,15 @@ explicit Doctor hook reuse their existing `validation_errors()` logic through
 world, boss, theme, music, and sound-profile data instead of creating a second,
 plugin-specific ruleset.
 
+Class abilities expose the same pure `enemy_dot_error()` contract used when
+combat accepts a cast. Enemy DOT duration is finite and between 0 and 120 seconds;
+zero disables it, while a positive duration requires Cleanse and must round to
+at least one 60 Hz tick. The interval stays between 0.05 and 10 seconds and damage
+between 1 and 100, including while disabled so later Inspector enablement is safe.
+Validation preserves authored seconds; accepted stacks freeze their rounded
+integer timing in the combat model. The class catalog includes the owning class
+and ability in any reported error.
+
 Generic default validation is deliberately off. It treats every exported object
 and string as mandatory, which is wrong for Arenic's reusable scene templates,
 runtime-assigned fields, optional ability sound phases, and Guild House's

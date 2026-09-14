@@ -41,11 +41,18 @@ func fold(performer: String, recording: ArenicRecording) -> void:
 func unfold(performer: String, at_tick: int) -> void:
 	if not _staves.has(performer):
 		return
+	# Contact defeat can unfold a performer after due() has already handed the
+	# entire current tick to the conductor. Rebuilding must not make that tick
+	# pending again for the survivors; an ordinary between-tick unfold still
+	# starts at at_tick, whose events have not been consumed yet.
+	var resume_tick: int = at_tick
+	if cursor > 0:
+		resume_tick = maxi(resume_tick, events[cursor - 1].tick + 1)
 	_staves.erase(performer)
 	# The fold order is kept. A performer that returns later reclaims its old
 	# place in the tick, so breaking out and back in cannot change resolution.
 	_rebuild()
-	seek_to(at_tick)
+	seek_to(resume_tick)
 
 
 func has(performer: String) -> bool:

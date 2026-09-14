@@ -1,0 +1,13 @@
+{
+  "authoring": "Native Aseprite Lua, deliberate clusters; no image generation",
+  "aseprite": "1.3.18.5-arm64",
+  "masters_before_export": {
+    "dirt_patches.aseprite": "96eb0534f469eb355fa7da780049ca3398c6e777feceededebd75785aad95ee1",
+    "grass_tiles.aseprite": "0ba7e2b54b9ef656280e2a95016ab325ffa398640a7e49772316d1a365f40453"
+  },
+  "export_preserves_masters": true,
+  "runtime_sha256": {
+    "dirt_patches.png": "c41a89d37518c0e807e9c8bb08c32bb56d541686e810c48725d7040cb83706fe",
+    "grass_tiles.png": "8028c5b86f044caee5f5010d3180cbdac52c1b391ccde90c2f5e8e3ecdd8d6bb"
+  }
+}

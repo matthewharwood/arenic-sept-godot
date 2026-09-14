@@ -30,6 +30,7 @@ func _run() -> void:
 		quit(1))
 	setup = root.get_node("RunSetup")
 	setup.begin_new_game()
+	setup.intro_step = 6 # Established gameplay fixture; prologue is tested separately.
 	setup.choose_class(load("res://data/classes/hunter.tres"))
 	shell = load(SHELL_PATH).instantiate()
 	root.add_child(shell)

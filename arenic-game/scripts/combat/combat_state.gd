@@ -6,6 +6,7 @@ extends RefCounted
 signal progress_changed(arena_id: String)
 signal ability_cast(caster_id: String, ability_id: String, arena_id: String, origin: Vector2i, target_cell: Vector2i, facing: String)
 signal damage_applied(arena_id: String, enemy_id: String, amount: int)
+signal damage_reported(caster_id: String, ability_id: String, arena_id: String, enemy_id: String, amount: int)
 ## Ordered simulation events; observers never infer a phase from a rendered frame.
 signal ability_phase(caster_id: String, ability_id: String, phase: String, arena_id: String, cell: Vector2, cast_id: int)
 ## An ability put something on the ground: broken tiles, a pool of acid. The
@@ -15,12 +16,17 @@ signal ability_phase(caster_id: String, ability_id: String, phase: String, arena
 signal ability_landed(caster_id: String, ability_id: String, arena_id: String, area: Rect2i, rules: ArenicClassAbility)
 ## A support actor reached zero health. Relocation and respawn belong to the shell.
 signal ally_defeated(arena_id: String, actor_id: String)
+## Contact provenance is transient. Every victim is already down before this
+## signal, and the ordinary defeat signal follows for the same victim.
+signal hero_contact_defeated(arena_id: String, actor_id: String, contact: Dictionary)
 
 const HERO_ALLY_PREFIX: String = "hero:"
 const BOSS_ENEMY_PREFIX: String = "boss:"
 const MAX_TICKS_PER_CALL: int = 64
-## Abilities whose `cast_seconds` is a FLIGHT: they resolve once at the end of
-## it rather than ticking for a duration.
+const MAX_ENEMY_DOTS: int = 6400
+const ENEMY_DOT_TICKS_PER_SECOND: int = 60
+const MAX_ENEMY_DOT_DURATION_TICKS: int = 7200
+## Thrown/delayed abilities resolve once at their frozen arrival time.
 const THROWN_KINDS: PackedStringArray = ["target", "ground", "flask"]
 const TIME_EPSILON: float = 0.000000001
 
@@ -45,16 +51,39 @@ class Cast:
 	var cast_id: int = 0
 	var released: bool = false
 	var release_seconds: float = 0.0
+	## Total accepted duration, frozen so data edits and restores cannot retime a shot.
+	var resolve_seconds: float = 0.0
 	var loot_bonus: float = 0.0
 
 	func remaining() -> float:
 		if ability.effect_kind == "channel" and ability.duration_seconds == 0.0:
 			return INF
-		var duration: float = ability.cast_seconds if ability.effect_kind in THROWN_KINDS else ability.duration_seconds
-		return maxf(0.0, duration - elapsed)
+		return maxf(0.0, resolve_seconds - elapsed)
 
 	func is_channel() -> bool:
 		return ability.effect_kind == "channel"
+
+## Each application owns its accepted rules and clock debt; it never refreshes
+## another stack or follows its caster to a different arena.
+class EnemyDot:
+	extends RefCounted
+	var caster_id: String = ""
+	var ability_id: String = ""
+	var arena: String = ""
+	var enemy_id: String = ""
+	var remaining_ticks: int = 0
+	var interval_ticks: int = 0
+	var tick_debt: int = 0
+	var damage: int = 1
+
+## Transient read-only encounter geometry, rebuilt on configure/restore.
+var encounter_effects := ArenicActorEffects.new()
+var direct_bonus_lookup: Callable = Callable()
+signal boss_wound(arena_id: String, actor_id: String, event_id: String, amount: int)
+
+var enemy_pose_lookup: Callable = Callable()
+## Transient encounter pause ownership, rebound on configure/restore.
+var arena_paused_lookup: Callable = Callable()
 
 var _world: ArenicWorldDefinition
 var _arenas: Dictionary = {}
@@ -63,11 +92,14 @@ var _casts: Dictionary[String, Cast] = {}
 var _cooldowns: Dictionary[String, float] = {}
 var _hero_arenas: Dictionary[String, String] = {}
 var _cast_serial: int = 0
+var _enemy_dots: Array[EnemyDot] = []
 
 
 func configure(world: ArenicWorldDefinition) -> void:
 	if world == null:
 		return
+	if encounter_effects.fingerprint.is_empty():
+		encounter_effects.fingerprint = ArenicContentIdentity.fingerprint(encounter_effects.ruleset)
 	_world = world
 	for arena: ArenicArenaDefinition in world.arenas:
 		if arena == null or arena.arena_id.is_empty():
@@ -146,7 +178,7 @@ func apply_blast(arena_id: String, center: Vector2, radius_tiles: float) -> Pack
 	# The whole landing resolves before anyone is told, so a listener that
 	# respawns or relocates an actor cannot change who else this blast struck.
 	for actor_id: String in defeated:
-		ally_defeated.emit(arena_id, actor_id)
+		_notify_defeat(arena_id, actor_id)
 	return defeated
 
 
@@ -169,7 +201,7 @@ func damage_allies_in(arena_id: String, area: Rect2i, amount: int) -> PackedStri
 	# The whole burn resolves before anyone is told, so a listener that respawns
 	# an actor cannot change who else was standing in it.
 	for actor_id: String in defeated:
-		ally_defeated.emit(arena_id, actor_id)
+		_notify_defeat(arena_id, actor_id)
 	return defeated
 
 
@@ -178,12 +210,42 @@ func ally_defeated_at(arena_id: String, actor_id: String) -> bool:
 	return not ally.is_empty() and int(ally["health"]) <= 0
 
 
+## Logical world-grid centers, including continuous coordinates across seams.
+func hero_contact_cell(hero: ArenicHeroState) -> Vector2i:
+	var index: int = _world.index_for_id(hero.arena_id) if _world != null else -1
+	if index < 0:
+		return hero.cell
+	var slot: Vector2i = _world.arenas[index].grid_slot
+	return Vector2i(slot.x * ArenicGridMath.GRID_WIDTH + hero.cell.x,
+		slot.y * ArenicGridMath.GRID_HEIGHT - hero.cell.y)
+
+
+## Apply the frozen batch before notifying observers: respawning the first
+## victim cannot change another contact, or let a defeated cast resolve.
+func defeat_hero_contacts(contacts: Array[Dictionary]) -> void:
+	var applied: Array[Dictionary] = []
+	for contact: Dictionary in contacts:
+		var ally: Dictionary = _arenas.get(contact.arena, {}).get("allies", {}).get(contact.actor, {})
+		if ally.is_empty() or int(ally.health) <= 0:
+			continue
+		ally.health = 0
+		applied.append(contact)
+	for contact: Dictionary in applied:
+		var cast: Cast = _casts.get(contact.actor)
+		if cast != null:
+			_finish(cast, "cancel")
+	for contact: Dictionary in applied:
+		hero_contact_defeated.emit(contact.arena, contact.actor, contact.duplicate())
+		_notify_defeat(contact.arena, contact.actor)
+
+
 ## Moves the hero's ledger entry to wherever the hero now stands and restores it.
 ## Respawning grants no cast, cooldown, damage, or phase change.
 func respawn_hero_ally(hero: ArenicHeroState) -> void:
 	if not _valid_hero(hero):
 		return
 	cancel_active(hero)
+	encounter_effects.cleanse(hero.ally_id())
 	_ensure_ally(hero)
 	var ally: Dictionary = _arenas[hero.arena_id]["allies"][hero.ally_id()]
 	ally["health"] = int(ally["max_health"])
@@ -217,16 +279,88 @@ func reset_caster(caster: ArenicHeroState) -> void:
 	_cooldowns.erase(_key(caster))
 
 
-## Damage with no caster behind it: broken ground under a boss, and fixtures
-## seeding a ledger state. It counts toward the arena exactly like a hit does,
-## because for phases and the damage bar it is the same damage.
-func apply_hazard_damage(arena_id: String, enemy_id: String, amount: int) -> void:
+## Ground damage retains the caster that created it, even after their cast ends.
+## Legacy ground and ledger fixtures can omit provenance. They still count
+## toward the arena exactly like a hit, without inventing a responsible hero.
+func apply_hazard_damage(arena_id: String, enemy_id: String, amount: int, caster_id: String = "", ability_id: String = "") -> void:
 	if not _arenas.has(arena_id) or not _arenas[arena_id]["enemies"].has(enemy_id) or amount <= 0:
 		return
 	_arenas[arena_id]["damage"] += amount
 	_arenas[arena_id]["enemies"][enemy_id]["damage"] += amount
 	damage_applied.emit(arena_id, enemy_id, amount)
+	damage_reported.emit(caster_id, ability_id, arena_id, enemy_id, amount)
 	progress_changed.emit(arena_id)
+
+
+## The encounter calls this once for each running arena's 60Hz step. Existing
+## DOTs remain attached to enemy identities during movement and airborne poses.
+## Commit this whole tick before observing it, so callbacks see a coherent save.
+func advance_enemy_dots(arena_id: String) -> void:
+	if not _arenas.has(arena_id) or _enemy_dots.is_empty():
+		return
+	var surviving: Array[EnemyDot] = []
+	var due: Array[EnemyDot] = []
+	for dot: EnemyDot in _enemy_dots:
+		if dot.arena == arena_id:
+			dot.remaining_ticks -= 1
+			dot.tick_debt += 1
+			if dot.tick_debt >= dot.interval_ticks:
+				dot.tick_debt -= dot.interval_ticks
+				if _arenas[arena_id]["enemies"].has(dot.enemy_id):
+					_arenas[arena_id]["damage"] += dot.damage
+					_arenas[arena_id]["enemies"][dot.enemy_id]["damage"] += dot.damage
+					due.append(dot)
+		if dot.remaining_ticks > 0:
+			surviving.append(dot)
+	_enemy_dots = surviving
+	for dot: EnemyDot in due:
+		damage_applied.emit(dot.arena, dot.enemy_id, dot.damage)
+		damage_reported.emit(dot.caster_id, dot.ability_id, dot.arena, dot.enemy_id, dot.damage)
+		progress_changed.emit(dot.arena)
+
+
+func clear_enemy_dots(arena_id: String) -> void:
+	var surviving: Array[EnemyDot] = []
+	for dot: EnemyDot in _enemy_dots:
+		if dot.arena != arena_id:
+			surviving.append(dot)
+	_enemy_dots = surviving
+
+
+## A bounded read-only HUD projection: one row per ability with its next expiry.
+## Different frozen rules may coexist after an Inspector edit or a restored save.
+func enemy_dot_effects(arena_id: String, enemy_id: String) -> Array[Dictionary]:
+	var grouped: Dictionary = {}
+	for dot: EnemyDot in _enemy_dots:
+		if dot.arena != arena_id or dot.enemy_id != enemy_id:
+			continue
+		if not grouped.has(dot.ability_id):
+			grouped[dot.ability_id] = {"ticks": dot.remaining_ticks, "stacks": 0, "damage": dot.damage, "interval": dot.interval_ticks, "uniform": true}
+		var row: Dictionary = grouped[dot.ability_id]
+		row.ticks = mini(row.ticks, dot.remaining_ticks)
+		row.stacks += 1
+		row.uniform = row.uniform and row.damage == dot.damage and row.interval == dot.interval_ticks
+	var result: Array[Dictionary] = []
+	var abilities: Array = grouped.keys()
+	abilities.sort()
+	for ability_id: String in abilities:
+		var row: Dictionary = grouped[ability_id]
+		var remaining: float = float(row.ticks) / ENEMY_DOT_TICKS_PER_SECOND
+		var rule: String = "%d damage every %.2fs per stack" % [row.damage, float(row.interval) / ENEMY_DOT_TICKS_PER_SECOND] if row.uniform else "Each stack keeps its accepted timing and damage"
+		result.append({"id": ability_id, "name": _enemy_dot_name(ability_id), "remaining_seconds": remaining,
+			"stacks": row.stacks, "beneficial": false,
+			"detail": "%d independent stack%s. %s. Next expires in %.2fs." % [row.stacks, "" if row.stacks == 1 else "s", rule, remaining]})
+	return result
+
+
+static func _enemy_dot_name(ability_id: String) -> String:
+	var catalog := load("res://data/classes/catalog.tres") as ArenicClassCatalog
+	if catalog != null:
+		for definition: ArenicClassDefinition in catalog.classes:
+			for ability: ArenicClassAbility in definition.skills:
+				if ability != null and ability.ability_id == ability_id:
+					return ability.title
+	return ability_id.capitalize()
 
 
 ## Every point of damage the run has dealt anywhere. Cumulative and monotonic:
@@ -247,7 +381,25 @@ func damage_for_enemy(arena_id: String, enemy_id: String) -> int:
 
 
 func enemy_footprint(arena_id: String, enemy_id: String) -> Rect2i:
+	if enemy_pose_lookup.is_valid():
+		var pose: Dictionary = enemy_pose_lookup.call(arena_id, enemy_id)
+		if not pose.is_empty():
+			return Rect2i() if pose.airborne else pose.footprint
 	return _arenas.get(arena_id, {}).get("enemies", {}).get(enemy_id, {}).get("footprint", Rect2i())
+
+
+## Visual attachment point for an existing identity, including its airborne
+## center/lift. This does not change ground hit eligibility or a cast's aim.
+func enemy_presentation_pose(arena_id: String, enemy_id: String) -> Dictionary:
+	var enemy: Dictionary = _arenas.get(arena_id, {}).get("enemies", {}).get(enemy_id, {})
+	if enemy.is_empty():
+		return {}
+	if enemy_pose_lookup.is_valid():
+		var pose: Dictionary = enemy_pose_lookup.call(arena_id, enemy_id)
+		if pose.has("center") and pose.has("lift"):
+			return {"center": pose.center, "lift": pose.lift, "footprint": pose.footprint, "facing": pose.get("facing", enemy.facing)}
+	var footprint: Rect2i = enemy.footprint
+	return {"center": Vector2(footprint.position) + Vector2(footprint.size - Vector2i.ONE) * 0.5, "lift": 0.0, "footprint": footprint}
 
 
 func is_occupied(arena_id: String, cell: Vector2i) -> bool:
@@ -258,7 +410,8 @@ func is_occupied(arena_id: String, cell: Vector2i) -> bool:
 func enemies_in(arena_id: String, area: Rect2i) -> PackedStringArray:
 	var found := PackedStringArray()
 	for id: String in _enemy_ids(arena_id):
-		if area.intersects(_arenas[arena_id]["enemies"][id]["footprint"]):
+		var footprint: Rect2i = enemy_footprint(arena_id, id)
+		if footprint.has_area() and area.intersects(footprint):
 			found.append(id)
 	return found
 
@@ -267,7 +420,7 @@ func enemies_in(arena_id: String, area: Rect2i) -> PackedStringArray:
 ## ground under two overlapping targets always damages the same one.
 func enemy_at(arena_id: String, cell: Vector2i) -> String:
 	for id: String in _enemy_ids(arena_id):
-		if _arenas[arena_id]["enemies"][id]["footprint"].has_point(cell):
+		if enemy_footprint(arena_id, id).has_point(cell):
 			return id
 	return ""
 
@@ -334,11 +487,12 @@ func active_cast_snapshot(caster: ArenicHeroState) -> Dictionary:
 		"arena_id": cast.owner.arena_id if follows else cast.arena,
 		"origin": cast.owner.cell if follows else cast.origin,
 		"target_cell": cast.owner.cell if follows else cast.target_cell,
+		"target_id": cast.target_id,
 		"facing": cast.owner.facing if follows else cast.facing,
 		"elapsed": cast.elapsed,
 		"remaining": cast.remaining(),
 		"is_channeling": cast.is_channel(),
-		"cast_seconds": cast.ability.cast_seconds,
+		"cast_seconds": cast.resolve_seconds,
 		"duration_seconds": cast.ability.duration_seconds,
 		"cast_id": cast.cast_id,
 		"released": cast.released,
@@ -347,19 +501,27 @@ func active_cast_snapshot(caster: ArenicHeroState) -> Dictionary:
 
 
 ## Read-only availability, suitable for HUD hints. It never spends a cooldown.
-func cast_unavailable_reason(hero: ArenicHeroState) -> String:
+func cast_unavailable_reason(hero: ArenicHeroState, compact: bool = false) -> String:
 	if not _valid_hero(hero):
-		return "Choose a hero in an arena first."
+		return "Select hero" if compact else "Choose a hero in an arena first."
+	if ally_defeated_at(hero.arena_id, hero.ally_id()):
+		return "Defeated" if compact else "This hero is defeated."
 	if _casts.has(_key(hero)):
-		return "Your ability is already active."
+		return "Active" if compact else "Your ability is already active."
 	if float(_cooldowns.get(_key(hero), 0.0)) > TIME_EPSILON:
-		return "Your ability is cooling down."
+		return "Cooldown" if compact else "Your ability is cooling down."
 	if hero.definition.skills.is_empty() or hero.definition.skills[0] == null:
-		return "This hero has no starter ability."
+		return "No ability" if compact else "This hero has no starter ability."
 	var ability: ArenicClassAbility = hero.definition.skills[0]
 	if not _valid_ability(ability):
-		return "This ability is not ready."
+		return "Not ready" if compact else "This ability is not ready."
+	if ability.enemy_dot_duration_seconds > 0.0:
+		var target_count: int = enemies_in(hero.arena_id, area_rect(hero.cell, ability.area_size)).size()
+		if target_count > MAX_ENEMY_DOTS - _enemy_dots.size():
+			return "DOT limit" if compact else "Too many enemy damage-over-time stacks are active. Wait for a stack to expire."
 	if ability.effect_kind in ["target", "ground", "channel"] and _nearest_enemy(hero.arena_id, hero.cell, ability).is_empty():
+		if compact:
+			return "Get behind" if ability.requires_backstab else "No target"
 		return "Move behind an adjacent enemy." if ability.requires_backstab else "No enemy is in range."
 	return ""
 
@@ -370,6 +532,21 @@ func try_cast(hero: ArenicHeroState) -> String:
 	if not unavailable.is_empty():
 		return unavailable
 	var ability: ArenicClassAbility = hero.definition.skills[0]
+	var cleanse_targets := PackedStringArray()
+	var accepted_dots: Array[EnemyDot] = []
+	if ability.effect_kind == "cleanse":
+		cleanse_targets = enemies_in(hero.arena_id, area_rect(hero.cell, ability.area_size))
+		if ability.enemy_dot_duration_seconds > 0.0:
+			for enemy_id: String in cleanse_targets:
+				var dot := EnemyDot.new()
+				dot.caster_id = hero.ally_id()
+				dot.ability_id = ability.ability_id
+				dot.arena = hero.arena_id
+				dot.enemy_id = enemy_id
+				dot.remaining_ticks = roundi(ability.enemy_dot_duration_seconds * ENEMY_DOT_TICKS_PER_SECOND)
+				dot.interval_ticks = roundi(ability.enemy_dot_tick_seconds * ENEMY_DOT_TICKS_PER_SECOND)
+				dot.damage = ability.enemy_dot_damage
+				accepted_dots.append(dot)
 	_ensure_ally(hero)
 	var target: String = ""
 	var target_cell: Vector2i = hero.cell
@@ -380,7 +557,7 @@ func try_cast(hero: ArenicHeroState) -> String:
 		target = _nearest_enemy(hero.arena_id, hero.cell, ability)
 		if target.is_empty():
 			return "Move behind an adjacent enemy." if ability.requires_backstab else "No enemy is in range."
-		target_cell = nearest_cell(hero.cell, _arenas[hero.arena_id]["enemies"][target]["footprint"])
+		target_cell = nearest_cell(hero.cell, enemy_footprint(hero.arena_id, target))
 		var direction: Vector2i = target_cell - hero.cell
 		if direction != Vector2i.ZERO:
 			hero.facing = ("n" if direction.y > 0 else "s") if absi(direction.y) >= absi(direction.x) else ("e" if direction.x > 0 else "w")
@@ -388,6 +565,8 @@ func try_cast(hero: ArenicHeroState) -> String:
 	_cooldowns[caster_id] = ability.cooldown_seconds
 	_cast_serial += 1
 	var cast_id: int = _cast_serial
+	# Reserve every accepted target before any observer can attempt another cast.
+	_enemy_dots.append_array(accepted_dots)
 	var cast: Cast = null
 	if ability.effect_kind not in ["cleanse", "dig"]:
 		cast = Cast.new()
@@ -399,7 +578,8 @@ func try_cast(hero: ArenicHeroState) -> String:
 		cast.target_id = target
 		cast.target_cell = target_cell
 		cast.cast_id = cast_id
-		cast.release_seconds = minf(ability.release_seconds, ability.cast_seconds) if ability.effect_kind in THROWN_KINDS else 0.0
+		cast.resolve_seconds = ability.resolve_seconds(cast.origin, target_cell) if ability.effect_kind in THROWN_KINDS else ability.duration_seconds
+		cast.release_seconds = minf(ability.release_seconds, cast.resolve_seconds) if ability.effect_kind in THROWN_KINDS else 0.0
 		_casts[caster_id] = cast
 	# Publish the cast before its hits, so effects can attach before hit feedback.
 	ability_cast.emit(caster_id, ability.ability_id, hero.arena_id, hero.cell, target_cell, hero.facing)
@@ -412,14 +592,14 @@ func try_cast(hero: ArenicHeroState) -> String:
 		ability_phase.emit(caster_id, ability.ability_id, "end", hero.arena_id, Vector2(hero.cell), cast_id)
 	elif ability.effect_kind == "cleanse":
 		ability_phase.emit(caster_id, ability.ability_id, "cast", hero.arena_id, Vector2(hero.cell), cast_id)
-		_cleanse(hero, ability, cast_id)
+		_cleanse(hero, ability, cast_id, cleanse_targets)
 		ability_phase.emit(caster_id, ability.ability_id, "end", hero.arena_id, Vector2(hero.cell), cast_id)
 	elif _casts.get(caster_id) == cast:
 		if cast.release_seconds > 0.0:
 			ability_phase.emit(caster_id, ability.ability_id, "charge", cast.arena, Vector2(cast.origin), cast_id)
 		else:
 			_release(cast)
-		if _casts.get(caster_id) == cast and ability.effect_kind in THROWN_KINDS and ability.cast_seconds == 0.0:
+		if _casts.get(caster_id) == cast and ability.effect_kind in THROWN_KINDS and cast.resolve_seconds == 0.0:
 			_resolve_cast(cast)
 	return ""
 
@@ -434,6 +614,8 @@ func tick(delta: float, present: ArenicHeroState = null) -> void:
 	if _valid_hero(present):
 		_ensure_ally(present)
 	for caster_id: String in _cooldowns.keys():
+		if _arena_paused(_hero_arenas.get(caster_id, "")):
+			continue
 		var left: float = maxf(0.0, float(_cooldowns[caster_id]) - delta)
 		if left <= 0.0:
 			_cooldowns.erase(caster_id)
@@ -441,8 +623,12 @@ func tick(delta: float, present: ArenicHeroState = null) -> void:
 			_cooldowns[caster_id] = left
 	for caster_id: String in casting_ids():
 		var cast: Cast = _casts.get(caster_id)
-		if cast != null:
+		if cast != null and not _arena_paused(cast.arena):
 			_advance(cast, delta)
+
+
+func _arena_paused(arena_id: String) -> bool:
+	return arena_paused_lookup.is_valid() and bool(arena_paused_lookup.call(arena_id))
 
 
 func _advance(cast: Cast, delta: float) -> void:
@@ -528,11 +714,13 @@ func _nearest_enemy(arena_id: String, cell: Vector2i, ability: ArenicClassAbilit
 	var best: int = ability.range_tiles + 1
 	for id: String in _enemy_ids(arena_id):
 		var enemy: Dictionary = _arenas[arena_id]["enemies"][id]
-		var footprint: Rect2i = enemy["footprint"]
+		var footprint: Rect2i = enemy_footprint(arena_id, id)
+		if not footprint.has_area():
+			continue
 		var distance: int = distance_to_footprint(cell, footprint)
 		if distance >= best or (ability.requires_adjacent and distance != 1):
 			continue
-		if ability.requires_backstab and not _behind(cell, footprint, enemy["facing"]):
+		if ability.requires_backstab and not _behind(cell, footprint, enemy_presentation_pose(arena_id, id).get("facing", enemy["facing"])):
 			continue
 		result = id
 		best = distance
@@ -550,7 +738,7 @@ static func _behind(cell: Vector2i, footprint: Rect2i, facing: String) -> bool:
 
 func _ground_hit(cast: Cast) -> void:
 	for id: String in _enemy_ids(cast.arena):
-		if _arenas[cast.arena]["enemies"][id]["footprint"].has_point(cast.target_cell):
+		if enemy_footprint(cast.arena, id).has_point(cast.target_cell):
 			_hit(cast, cast.arena, id, cast.ability.damage)
 
 
@@ -565,23 +753,27 @@ func _resolve_cast(cast: Cast) -> void:
 	else:
 		var enemy: Dictionary = _arenas[cast.arena]["enemies"][cast.target_id]
 		var owner: ArenicHeroState = cast.owner
-		var in_reach: bool = not cast.ability.requires_adjacent or (owner.arena_id == cast.arena and distance_to_footprint(owner.cell, enemy["footprint"]) == 1)
-		var behind: bool = not cast.ability.requires_backstab or _behind(owner.cell, enemy["footprint"], enemy["facing"])
-		if in_reach and behind:
+		var footprint: Rect2i = enemy_footprint(cast.arena, cast.target_id)
+		var on_target: bool = footprint.has_area() and (cast.ability.ability_id != "auto_shot" or footprint.has_point(cast.target_cell))
+		var in_reach: bool = not cast.ability.requires_adjacent or (owner.arena_id == cast.arena and distance_to_footprint(owner.cell, footprint) == 1)
+		var behind: bool = not cast.ability.requires_backstab or _behind(owner.cell, footprint, enemy_presentation_pose(cast.arena, cast.target_id).get("facing", enemy["facing"]))
+		if on_target and in_reach and behind:
 			_hit(cast, cast.arena, cast.target_id, cast.ability.damage)
 	_finish(cast, "end")
 
 
 func _channel_tick(cast: Cast) -> void:
 	var enemy: Dictionary = _arenas[cast.arena]["enemies"].get(cast.target_id, {})
-	if not enemy.is_empty() and distance_to_footprint(cast.owner.cell, enemy["footprint"]) <= cast.ability.range_tiles:
+	var footprint: Rect2i = enemy_footprint(cast.arena, cast.target_id)
+	if not enemy.is_empty() and footprint.has_area() and distance_to_footprint(cast.owner.cell, footprint) <= cast.ability.range_tiles:
 		_hit(cast, cast.arena, cast.target_id, cast.ability.damage)
 
 
 func _aura_tick(cast: Cast) -> void:
 	var hero: ArenicHeroState = cast.owner
 	for id: String in _enemy_ids(hero.arena_id):
-		if distance_to_footprint(hero.cell, _arenas[hero.arena_id]["enemies"][id]["footprint"]) <= cast.ability.radius_tiles:
+		var footprint: Rect2i = enemy_footprint(hero.arena_id, id)
+		if footprint.has_area() and distance_to_footprint(hero.cell, footprint) <= cast.ability.radius_tiles:
 			_hit(cast, hero.arena_id, id, cast.ability.damage)
 	var nearby: int = 0
 	for id: String in _arenas[hero.arena_id]["allies"]:
@@ -592,19 +784,20 @@ func _aura_tick(cast: Cast) -> void:
 	cast.loot_bonus = nearby * cast.ability.loot_bonus_per_ally
 
 
-func _cleanse(hero: ArenicHeroState, ability: ArenicClassAbility, cast_id: int) -> void:
+func _cleanse(hero: ArenicHeroState, ability: ArenicClassAbility, cast_id: int, targets: PackedStringArray) -> void:
 	var area: Rect2i = area_rect(hero.cell, ability.area_size)
-	for id: String in _enemy_ids(hero.arena_id):
-		if area.intersects(_arenas[hero.arena_id]["enemies"][id]["footprint"]):
-			# Cleanse is instant, so it has no stored cast to attribute through.
-			var instant := Cast.new()
-			instant.ability = ability
-			instant.owner = hero
-			instant.arena = hero.arena_id
-			instant.cast_id = cast_id
-			_hit(instant, hero.arena_id, id, ability.damage)
-	for ally: Dictionary in _arenas[hero.arena_id]["allies"].values():
-		if area.has_point(ally["cell"]):
+	for id: String in targets:
+		# Cleanse is instant, so it has no stored cast to attribute through.
+		var instant := Cast.new()
+		instant.ability = ability
+		instant.owner = hero
+		instant.arena = hero.arena_id
+		instant.cast_id = cast_id
+		_hit(instant, hero.arena_id, id, ability.damage)
+	for actor: String in ally_ids(hero.arena_id):
+		var ally: Dictionary = _arenas[hero.arena_id]["allies"][actor]
+		if area.has_point(ally["cell"]) and (encounter_effects.ruleset == ArenicActorEffects.LEGACY or int(ally.health) > 0):
+			encounter_effects.cleanse(actor)
 			var changed: bool = ally["health"] < ally["max_health"] or not ally["debuffs"].is_empty()
 			ally["health"] = mini(ally["max_health"], ally["health"] + 1)
 			ally["debuffs"] = PackedStringArray()
@@ -613,11 +806,14 @@ func _cleanse(hero: ArenicHeroState, ability: ArenicClassAbility, cast_id: int) 
 
 
 func _hit(cast: Cast, arena_id: String, enemy_id: String, amount: int) -> void:
+	if amount > 0 and cast.ability.ability_id in ["auto_shot", "bash", "backstab", "cleanse"] and direct_bonus_lookup.is_valid():
+		amount += int(direct_bonus_lookup.call(arena_id, enemy_id, cast.owner.ally_id()))
 	_arenas[arena_id]["damage"] += amount
 	_arenas[arena_id]["enemies"][enemy_id]["damage"] += amount
 	damage_applied.emit(arena_id, enemy_id, amount)
+	damage_reported.emit(cast.owner.ally_id(), cast.ability.ability_id, arena_id, enemy_id, amount)
 	progress_changed.emit(arena_id)
-	var footprint: Rect2i = _arenas[arena_id]["enemies"][enemy_id]["footprint"]
+	var footprint: Rect2i = enemy_footprint(arena_id, enemy_id)
 	var center: Vector2 = Vector2(footprint.position) + Vector2(footprint.size - Vector2i.ONE) * 0.5
 	ability_phase.emit(cast.owner.ally_id(), cast.ability.ability_id, "impact", arena_id, center, cast.cast_id)
 
@@ -644,7 +840,8 @@ func _ensure_ally(hero: ArenicHeroState) -> void:
 			carried = arena["allies"][ally_id]
 			arena["allies"].erase(ally_id)
 	if carried.is_empty():
-		register_ally(hero.arena_id, ally_id, hero.cell)
+		var vitality: int = 4 if encounter_effects.ruleset == ArenicActorEffects.RULESET else 1
+		register_ally(hero.arena_id, ally_id, hero.cell, vitality, vitality)
 	else:
 		carried["cell"] = hero.cell
 		_arenas[hero.arena_id]["allies"][ally_id] = carried
@@ -692,8 +889,10 @@ static func _valid_footprint(rect: Rect2i) -> bool:
 
 static func _valid_ability(ability: ArenicClassAbility) -> bool:
 	return not ability.ability_id.is_empty() and ability.effect_kind in ["target", "ground", "channel", "cleanse", "aura", "dig", "flask"] and ability.damage > 0 \
+		and ability.enemy_dot_error().is_empty() \
 		and is_finite(ability.cooldown_seconds) and ability.cooldown_seconds >= 0.0 and ability.range_tiles >= 0 \
 		and is_finite(ability.cast_seconds) and ability.cast_seconds >= 0.0 \
+		and is_finite(ability.projectile_speed_tiles_per_second) and (ability.projectile_speed_tiles_per_second == 0.0 or (ability.projectile_speed_tiles_per_second >= 0.1 and ability.projectile_speed_tiles_per_second <= 120.0 and ability.effect_kind == "target")) \
 		and is_finite(ability.release_seconds) and ability.release_seconds >= 0.0 \
 		and is_finite(ability.duration_seconds) and ability.duration_seconds >= 0.0 \
 		and is_finite(ability.tick_seconds) and ability.tick_seconds >= 0.05 \
@@ -701,3 +900,32 @@ static func _valid_ability(ability: ArenicClassAbility) -> bool:
 		and ability.area_size.x > 0 and ability.area_size.y > 0 \
 		and ability.area_size.x <= ArenicGridMath.GRID_WIDTH and ability.area_size.y <= ArenicGridMath.GRID_HEIGHT \
 		and is_finite(ability.loot_bonus_per_ally) and ability.loot_bonus_per_ally >= 0.0
+
+
+func ally_arena(actor: String) -> String:
+	for arena_id: String in _arenas:
+		if _arenas[arena_id].allies.has(actor):
+			return arena_id
+	return ""
+
+
+## Personal damage has one death/cast-cancellation boundary, shared by masks and
+## delayed Exposure. Crush passes current health, bypassing ordinary wounds.
+func wound_ally(arena_id: String, actor: String, amount: int, source: String) -> void:
+	var ally: Dictionary = _arenas.get(arena_id, {}).get("allies", {}).get(actor, {})
+	if ally.is_empty() or int(ally.health) <= 0 or amount <= 0:
+		return
+	var applied: int = mini(int(ally.health), amount)
+	ally.health = maxi(0, int(ally.health) - amount)
+	boss_wound.emit(arena_id, actor, source, applied)
+	if ally.health == 0:
+		_notify_defeat(arena_id, actor)
+
+
+func _notify_defeat(arena_id: String, actor: String) -> void:
+	if encounter_effects.ruleset == ArenicActorEffects.RULESET:
+		var cast: Cast = _casts.get(actor)
+		if cast != null:
+			_finish(cast, "cancel")
+		encounter_effects.cleanse(actor)
+	ally_defeated.emit(arena_id, actor)

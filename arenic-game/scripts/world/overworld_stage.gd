@@ -176,7 +176,7 @@ func _mount_hero(hero: ArenicHeroState) -> void:
 
 ## Draws every guild member where it stands. Only `selected_identity` wears the
 ## selection ring; the rest are present and visible but unmarked.
-func sync_heroes(identity_id: int, show_selection: bool, ghost_check: Callable = Callable()) -> void:
+func sync_heroes(identity_id: int, show_selection: bool, ghost_check: Callable = Callable(), defeated_check: Callable = Callable()) -> void:
 	selected_identity = identity_id
 	for identity: int in hero_views.keys():
 		var view: ArenicHeroView = hero_views[identity]
@@ -189,9 +189,11 @@ func sync_heroes(identity_id: int, show_selection: bool, ghost_check: Callable =
 		var content := arena.get_node("ContentSlot")
 		if view.get_parent() != content:
 			view.reparent(content, false)
-		view.sync(arena.definition, show_selection and identity == identity_id)
 		if ghost_check.is_valid():
 			view.set_ghost(bool(ghost_check.call(view.state)))
+		if defeated_check.is_valid():
+			view.set_defeated(bool(defeated_check.call(view.state)))
+		view.sync(arena.definition, show_selection and identity == identity_id)
 
 ## The run identity of a guild member under `point`, or -1. Later members win a
 ## shared tile, matching how they are drawn.

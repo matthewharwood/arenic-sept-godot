@@ -1,18 +1,16 @@
 [gd_resource type="Resource" script_class="ArenicClassAbility" format=3 uid="uid://ch8te7opdqd3y"]
 
 [ext_resource type="Script" uid="uid://dnsraq11at0lu" path="res://scripts/character_creation/class_ability.gd" id="1_7shmb"]
-
 [ext_resource type="Resource" path="res://data/audio/abilities/auto_shot.tres" id="2_audio"]
 
 [resource]
 script = ExtResource("1_7shmb")
-audio_profile = ExtResource("2_audio")
 title = "Auto Shot"
-description = "Shoot the nearest enemy within 8 tiles for 1 damage. The shot lands after 0.75 seconds; 2.5-second cooldown."
+audio_profile = ExtResource("2_audio")
+description = "Shoot the nearest enemy within 8 tiles for 1 damage. After a 0.26-second draw, the arrow travels at 16 tiles per second. Airborne targets or targets that leave the aim point are missed; 2.5-second cooldown."
 ability_id = "auto_shot"
-effect_kind = "target"
-range_tiles = 8
 cooldown_seconds = 2.5
+range_tiles = 8
 cast_seconds = 0.75
+projectile_speed_tiles_per_second = 16.0
 release_seconds = 0.26
-damage = 1

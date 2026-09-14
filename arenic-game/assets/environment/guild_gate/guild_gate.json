@@ -1,0 +1,379 @@
+{
+  "frames": [
+    {
+      "filename": "guild_gate 0.aseprite",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 800
+    },
+    {
+      "filename": "guild_gate 1.aseprite",
+      "frame": {
+        "x": 57,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 800
+    },
+    {
+      "filename": "guild_gate 2.aseprite",
+      "frame": {
+        "x": 114,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 3.aseprite",
+      "frame": {
+        "x": 171,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 4.aseprite",
+      "frame": {
+        "x": 228,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 5.aseprite",
+      "frame": {
+        "x": 285,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 6.aseprite",
+      "frame": {
+        "x": 342,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 7.aseprite",
+      "frame": {
+        "x": 399,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 8.aseprite",
+      "frame": {
+        "x": 0,
+        "y": 38,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 9.aseprite",
+      "frame": {
+        "x": 57,
+        "y": 38,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 10.aseprite",
+      "frame": {
+        "x": 114,
+        "y": 38,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 11.aseprite",
+      "frame": {
+        "x": 171,
+        "y": 38,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 140
+    },
+    {
+      "filename": "guild_gate 12.aseprite",
+      "frame": {
+        "x": 228,
+        "y": 38,
+        "w": 57,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 57,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 57,
+        "h": 38
+      },
+      "duration": 1000
+    }
+  ],
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "1.3.18.5-arm64",
+    "image": "guild_gate.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 456,
+      "h": 76
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "locked",
+        "from": 0,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff",
+        "data": "{\"loop\": true}"
+      },
+      {
+        "name": "opening",
+        "from": 2,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff",
+        "data": "{\"loop\": false}"
+      },
+      {
+        "name": "open",
+        "from": 12,
+        "to": 12,
+        "direction": "forward",
+        "color": "#000000ff",
+        "data": "{\"loop\": true}"
+      }
+    ],
+    "layers": [
+      {
+        "name": "Ground shadow",
+        "opacity": 255,
+        "blendMode": "normal"
+      },
+      {
+        "name": "Threshold stone",
+        "opacity": 255,
+        "blendMode": "normal"
+      },
+      {
+        "name": "Left gold leaf",
+        "opacity": 255,
+        "blendMode": "normal"
+      },
+      {
+        "name": "Right gold leaf",
+        "opacity": 255,
+        "blendMode": "normal"
+      },
+      {
+        "name": "Carved hinge posts",
+        "opacity": 255,
+        "blendMode": "normal"
+      },
+      {
+        "name": "Lock and clasp",
+        "opacity": 255,
+        "blendMode": "normal"
+      }
+    ],
+    "slices": [
+      {
+        "name": "frame",
+        "keys": [
+          {
+            "frame": 0,
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "w": 57,
+              "h": 38
+            },
+            "pivot": {
+              "x": 28,
+              "y": 28
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

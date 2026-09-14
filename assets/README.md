@@ -9,6 +9,22 @@ portraits and layered 114 × 114 overhead sprites, with idle/form studies and fo
 directional closeups. See the [boss pipeline](bosses/README.md) for the six-tile
 size contract, model provenance, appearance states and authorized Godot exports.
 
+The [NPC booklet](previews/npcs/index.html) adds The Keeper's portrait reference,
+native idle/beckon studies, and opening dialogue. Its [source guide](npcs/README.md)
+keeps future identity notes separate from the player-facing introduction.
+
+The [Guild clearing art booklet](environment/guild_clearing/README.md) brings
+together the outdoor grass and paths, five tree families, gold mine, central
+tavern and seated Keeper. It records native canvases, frame counts, palette
+sources, runtime exports and Inspector placement. The Keeper's portraits stay
+unchanged; his separate 38 × 38 seated sprite has an idle loop and a one-shot
+beckoning gesture.
+
+The shared [ghost-death effect](fx/ghost_death/README.md) includes an editable
+Aseprite master and [playback preview](fx/ghost_death/previews/index.html): a
+small bone-and-blood burst followed by translucent lingering smoke. Its runtime
+exports live under `arenic-game/assets/fx/ghost_death/`.
+
 | Hero | Base ability source IDs | Guide |
 | --- | --- | --- |
 | Hunter | `auto_shot`, `poison_shot`, `sniper`, `trap` | [Hunter](characters/hunter/README.md) |
@@ -24,7 +40,7 @@ size contract, model provenance, appearance states and authorized Godot exports.
 
 ## Native character contract
 
-Every idle and actor source has a transparent **19×19 canvas**, center pivot **(9,9)** and exact **N/E/S/W** rotations. Show the top of the crown/hood, shoulders and equipment; no visible front face, torso, standing boots or three-quarter perspective. Each character stays in one tile, with world travel separate from actor pixels.
+Every hero idle and actor source has a transparent **19×19 canvas**, center pivot **(9,9)** and exact **N/E/S/W** rotations. Show the top of the crown/hood, shoulders and equipment; no visible front face, torso, standing boots or three-quarter perspective. Each character stays in one tile, with world travel separate from actor pixels.
 
 - Idle: `characters/<hero>/<hero>.aseprite`, tags `idle_n/e/s/w`.
 - Actor: `characters/<hero>/abilities/<ability_id>/<hero>_<ability_id>.aseprite`, full action tags `<ability_id>_n/e/s/w` plus native phase/hold tags.
@@ -42,7 +58,7 @@ Use a **1280 × 720 logical art layout**. At 1× output scale with one arena fra
 
 The [Godot overworld](../docs/overworld.md) uses a native orthographic `Camera3D` and real 0.25-unit tiles. `GameShell` retains the 1280 × 720 logical layout with `CANVAS_ITEMS` / `KEEP` and fractional stretch, rendering at the actual window resolution. Sprites remain nearest-filtered. At 2× output, a focused hero occupies 38 × 38 physical pixels; fractional scales may give uneven physical pixel widths. `DisplayPolicy` owns desktop window sizing, including Retina density. See [display rendering](../docs/display-rendering.md); do not impose integer-only letterboxing on the runtime or multiply gameplay coordinates by device scale.
 
-Overview uses one-third of the arena camera scale, so its tiles are 6⅓ logical pixels and six-cell boss canvases are 38 × 38. The one-source-pixel guarantee applies to focused close view at 1× output. Eight arenas display their matching 114 × 114 boss sprites; Guild House has an animated training construct. All nine are immortal combat targets. Explicit gameplay footprints determine collision and range, independently of the artwork and decorative FX; see [starter combat](../docs/combat.md).
+Overview uses one-third of the arena camera scale, so its tiles are 6⅓ logical pixels and six-cell boss canvases are 38 × 38. The one-source-pixel guarantee applies to focused close view at 1× output. Eight arenas display their matching 114 × 114 boss sprites; Guild House presents its existing training target as a native 247 × 171 tavern within the outdoor clearing. All nine retain immortal combat-target identities. Explicit gameplay footprints determine collision and range, independently of the artwork and decorative FX; see [starter combat](../docs/combat.md).
 
 ## Rebuild and review
 

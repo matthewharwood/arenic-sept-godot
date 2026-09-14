@@ -37,6 +37,7 @@ func _run() -> void:
 	_watchdog.timeout.connect(func(): _finish(1, "Transition checks exceeded the five-second watchdog."))
 	_watchdog.start()
 	root.size = Vector2i(1280, 720)
+	root.get_node("RunSetup").intro_step = 6 # Established-world presentation fixture.
 	var packed := load(SHELL_PATH) as PackedScene
 	if not _check(packed != null, "Actual shell resource loads."):
 		return

@@ -6,4 +6,6 @@
 script = ExtResource("1_curve")
 first_roll_damage = 40
 growth = 1.6
+growth_rolls = 4
+late_cost_step = 48
 offers_per_roll = 3

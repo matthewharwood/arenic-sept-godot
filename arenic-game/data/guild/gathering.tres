@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ArenicGatheringDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/gathering/gathering_definition.gd" id="1_definition"]
+
+[resource]
+script = ExtResource("1_definition")
+wood_sources = Array[Vector2i]([Vector2i(12, 9), Vector2i(12, 23)])
+gold_sources = Array[Vector2i]([Vector2i(7, 24), Vector2i(56, 7)])
+wood_dropoff = Vector2i(23, 21)
+gold_dropoff = Vector2i(42, 21)
+radius_tiles = 2.0
+fill_seconds = 5.0
+capacity_units = 10
+unload_seconds = 1.0

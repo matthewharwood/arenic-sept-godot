@@ -1,0 +1,876 @@
+{
+  "arena_id": "labyrinth",
+  "boss_class": "hunter",
+  "difficulty": "normal",
+  "fixture_id": "hunter-full-arena",
+  "fixture_version": 1,
+  "godot_version": "4.7.2.stable.official.ed1daf0bf",
+  "hero_count": 40,
+  "initial_countdown_seconds": 3,
+  "initial_damage": 0,
+  "initial_restart_pending": true,
+  "payload_schema": 7,
+  "per_class": 5,
+  "save_sha256": "e1b5c6db5cf23e1d0c9edd8685b23e61301852ee018f761bcaf922c628e6dd0d",
+  "save_slot": 0,
+  "seed": 20260913,
+  "selected_heroes": 0,
+  "simulation": {
+    "codec_round_trip": true,
+    "damage": 2311,
+    "deaths": [],
+    "exact_replay": true,
+    "per_class": {
+      "alchemist": {
+        "casts": 91,
+        "damage": 250,
+        "prospected": 0
+      },
+      "bard": {
+        "casts": 114,
+        "damage": 654,
+        "prospected": 0
+      },
+      "cardinal": {
+        "casts": 321,
+        "damage": 174,
+        "prospected": 0
+      },
+      "forager": {
+        "casts": 374,
+        "damage": 74,
+        "prospected": 738
+      },
+      "hunter": {
+        "casts": 183,
+        "damage": 172,
+        "prospected": 0
+      },
+      "merchant": {
+        "casts": 30,
+        "damage": 250,
+        "prospected": 0
+      },
+      "thief": {
+        "casts": 515,
+        "damage": 471,
+        "prospected": 0
+      },
+      "warrior": {
+        "casts": 310,
+        "damage": 266,
+        "prospected": 0
+      }
+    },
+    "prospected": 738,
+    "survivors_before_reset": 40,
+    "ticks_executed": 7200
+  },
+  "source_sha256": {
+    "arenic-game/data/classes/alchemist.tres": "3dbb976c0ed94c313e583b81f374b55d80541884e4ed63dcd321316cd1c3609b",
+    "arenic-game/data/classes/alchemist_primary.tres": "43e4ca698025a7f2c2704db56bde99295ce3bbd612e56c3323b26cdae6593eaa",
+    "arenic-game/data/classes/bard.tres": "1c65bf93ca79e46e372f590655bf2d4226679b7f4073b9dca3156a361192732c",
+    "arenic-game/data/classes/bard_primary.tres": "a4a2676068f7216a7eef35b1819751783106ec76d5715b0061a99b666cf7a88e",
+    "arenic-game/data/classes/cardinal.tres": "610198fa6cec703d606b821f49d11c7e8d0e67adc01b4459dba66934adba3846",
+    "arenic-game/data/classes/cardinal_primary.tres": "4062eb9d0f7eca9512dea0855572f4e0564562e42545d764b62754f4aa32e02c",
+    "arenic-game/data/classes/forager.tres": "6a818ec9a584f43754dc2dd920458e6f6b5fd257bb5edcccf5d554eaf1c9e6cf",
+    "arenic-game/data/classes/forager_primary.tres": "8b123662bdabc0d8a14bca59e8aec6e360171cef4983887b5760464d0cef89d1",
+    "arenic-game/data/classes/hunter.tres": "e54e3da5a839787cbc64dd02341fd900daecc16042915751caeda20eafd05185",
+    "arenic-game/data/classes/hunter_primary.tres": "b26931b5496ea210c283a19a41f3044d1f0be9e7613a424125d9424257108005",
+    "arenic-game/data/classes/merchant.tres": "82841cae98bf32ae6f49cf76e29622e6a6847754df51cd3da00d931891eb79cc",
+    "arenic-game/data/classes/merchant_primary.tres": "9aa5509042008a7fcb2fe6de1dc86c15ff2e82e1fe805a71f17217de2fcee36c",
+    "arenic-game/data/classes/thief.tres": "b7a6eeff88620985de25dc92828fde4ad5e14add87e8796ccdc5d5a3ff0c8416",
+    "arenic-game/data/classes/thief_primary.tres": "38fc178fe35f06600d15a87c93854cfba7c3fb1938b70ea3078a4e68f84fb320",
+    "arenic-game/data/classes/warrior.tres": "f6c454fab45d90f77b50df63d6666cc513db8e4126e38719e7b6e4b7ae6921a8",
+    "arenic-game/data/classes/warrior_primary.tres": "b2b6b59d3ebdb7bb7f4634d005ef3c58846715573d93591ee7c4686a5d69b79c",
+    "arenic-game/data/encounters/labyrinth_normal.tres": "d01dafaf54a4b30f6c987b84f69e7df6202e5e72b6c181185d376ea57c6ea8bb",
+    "arenic-game/data/world/arenia.tres": "8b44720d75e78c3faf867ef5e86a4b9aec4611762d9181b60c5d6a297e3e9b0a",
+    "arenic-game/data/world/labyrinth.tres": "3b6a4f81fa9be31bf49978d9df82f0a38fbea10e6cf238b8e879d5aea4d1106f",
+    "arenic-game/scripts/character_creation/class_ability.gd": "76fef3b43b7d0c88d0f9492b52e1180383da333bddcbf76b0a0a21e0cb1553ec",
+    "arenic-game/scripts/character_creation/run_setup.gd": "2674ed29d6571c6996192be73a3a2ecaa043e24689e836ad422addb6d40bf9ff",
+    "arenic-game/scripts/combat/combat_state.gd": "a1d222abc70ca51246179a39aedd801478acdae0c1902b216a3c3860655afe49",
+    "arenic-game/scripts/encounters/acid_field.gd": "9b6b1d65321bacdae9939e1f943209abb0dc8773d1bf08f1992103e6756d0fa8",
+    "arenic-game/scripts/encounters/arena_timeline.gd": "e8a04e1b5043ef83dfdf913b871de1f0187140e724b1442066d3e77d59452769",
+    "arenic-game/scripts/encounters/cycle_clock.gd": "8fa6572d0cd95ac0b6526bf19a21979e5bab7bb04a9ac754e5ccb39d55796199",
+    "arenic-game/scripts/encounters/dig_field.gd": "120c6d34dfe8787b0ac2bbd4c457f83af351cefc0c3676d19b693bf8bffc1c08",
+    "arenic-game/scripts/encounters/encounter_beat.gd": "e81a6e84ec0b2b47508cb1b9efb6e93f40dc7132fdcc0e36ebd695b3560353d9",
+    "arenic-game/scripts/encounters/encounter_score.gd": "d14e3adafd013391dcab1d720f064297a760cf354a8186cb8bcbabbf4a3bba21",
+    "arenic-game/scripts/encounters/encounter_state.gd": "e0bd1ba7cd2566c39b359304e543aa148a58d4635fac30bad0b022ea3240f39e",
+    "arenic-game/scripts/encounters/recording.gd": "926fc163f67bfb76d1dc15a0c905ff52169ae784b6f507452617cf2141392f74",
+    "arenic-game/scripts/encounters/timeline_event.gd": "2480867443e709d670dcb2cf3f1331f21b0db23058a6dd83212282e7c0fc9382",
+    "arenic-game/scripts/heroes/hero_contact.gd": "2aa813f201cccb77d5d08082419b0f8c71fbccb7e051a065be361bf34e341f4f",
+    "arenic-game/scripts/heroes/hero_names.gd": "f9445bfecc60bfdb2ec78c2ef7b7499bae442b97e4ac161eba5dd5a30ba26c62",
+    "arenic-game/scripts/heroes/hero_state.gd": "ecf94984fac020e595e0d482680e31986a8dcaafb08a1d44ab3a5b4a46f94b90",
+    "arenic-game/scripts/persistence/save_codec.gd": "e9fae96dfc471a557b7f04e58c97066c17f9266279996e4372342a81e28aeecc",
+    "arenic-game/scripts/persistence/save_document.gd": "fe42d9c06aaeb3173c600e003cf8ed54a22e1d85f6936b7bf6f3e63ccdf6809e",
+    "arenic-game/scripts/persistence/save_migrations.gd": "4e1787f13bdd8c814ed456d7842c60765382da8b1d306ac2296a95aa3a53e446",
+    "arenic-game/scripts/world/arena_definition.gd": "4b42f33642ca1531f367fa36a0f29845837ce1ff145dafbed47d0df1d62c8058",
+    "arenic-game/scripts/world/grid_math.gd": "b119ded55aaee09e8b138c101fcd2afcd49f5dc7c2a1eb99e3e7fa72a7a0c049",
+    "scripts/fixtures/hunter_full_arena_v1.gd": "d120c956c2ba8bc5d3bfddd8e17159e9136de256fcc1cc799e172ae71a143b99"
+  },
+  "staffs": [
+    {
+      "ability": "auto_shot",
+      "casts": 35,
+      "class": "hunter",
+      "damage": 34,
+      "events": 650,
+      "first_tick": 0,
+      "identity": 0,
+      "last_cast_tick": 6891,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 614,
+      "name": "Dean",
+      "prospected": 0,
+      "start_cell": [
+        20,
+        5
+      ]
+    },
+    {
+      "ability": "auto_shot",
+      "casts": 35,
+      "class": "hunter",
+      "damage": 33,
+      "events": 656,
+      "first_tick": 1,
+      "identity": 1,
+      "last_cast_tick": 6892,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 620,
+      "name": "Dean",
+      "prospected": 0,
+      "start_cell": [
+        21,
+        5
+      ]
+    },
+    {
+      "ability": "auto_shot",
+      "casts": 35,
+      "class": "hunter",
+      "damage": 35,
+      "events": 640,
+      "first_tick": 2,
+      "identity": 2,
+      "last_cast_tick": 6923,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 604,
+      "name": "Dean",
+      "prospected": 0,
+      "start_cell": [
+        22,
+        5
+      ]
+    },
+    {
+      "ability": "auto_shot",
+      "casts": 39,
+      "class": "hunter",
+      "damage": 35,
+      "events": 692,
+      "first_tick": 3,
+      "identity": 3,
+      "last_cast_tick": 6954,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 652,
+      "name": "Dean",
+      "prospected": 0,
+      "start_cell": [
+        23,
+        5
+      ]
+    },
+    {
+      "ability": "auto_shot",
+      "casts": 39,
+      "class": "hunter",
+      "damage": 35,
+      "events": 680,
+      "first_tick": 1,
+      "identity": 4,
+      "last_cast_tick": 6901,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 640,
+      "name": "Dean",
+      "prospected": 0,
+      "start_cell": [
+        24,
+        5
+      ]
+    },
+    {
+      "ability": "heal",
+      "casts": 59,
+      "class": "cardinal",
+      "damage": 45,
+      "events": 632,
+      "first_tick": 5,
+      "identity": 5,
+      "last_cast_tick": 7088,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 572,
+      "name": "Pius",
+      "prospected": 0,
+      "start_cell": [
+        20,
+        10
+      ]
+    },
+    {
+      "ability": "heal",
+      "casts": 66,
+      "class": "cardinal",
+      "damage": 32,
+      "events": 706,
+      "first_tick": 0,
+      "identity": 6,
+      "last_cast_tick": 7083,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 639,
+      "name": "Pius",
+      "prospected": 0,
+      "start_cell": [
+        21,
+        10
+      ]
+    },
+    {
+      "ability": "heal",
+      "casts": 63,
+      "class": "cardinal",
+      "damage": 32,
+      "events": 665,
+      "first_tick": 1,
+      "identity": 7,
+      "last_cast_tick": 7084,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 601,
+      "name": "Pius",
+      "prospected": 0,
+      "start_cell": [
+        22,
+        10
+      ]
+    },
+    {
+      "ability": "heal",
+      "casts": 67,
+      "class": "cardinal",
+      "damage": 32,
+      "events": 662,
+      "first_tick": 2,
+      "identity": 8,
+      "last_cast_tick": 7091,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 594,
+      "name": "Pius",
+      "prospected": 0,
+      "start_cell": [
+        23,
+        10
+      ]
+    },
+    {
+      "ability": "heal",
+      "casts": 66,
+      "class": "cardinal",
+      "damage": 33,
+      "events": 619,
+      "first_tick": 3,
+      "identity": 9,
+      "last_cast_tick": 7086,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 552,
+      "name": "Pius",
+      "prospected": 0,
+      "start_cell": [
+        24,
+        10
+      ]
+    },
+    {
+      "ability": "bash",
+      "casts": 63,
+      "class": "warrior",
+      "damage": 52,
+      "events": 735,
+      "first_tick": 4,
+      "identity": 10,
+      "last_cast_tick": 7009,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 671,
+      "name": "King",
+      "prospected": 0,
+      "start_cell": [
+        20,
+        15
+      ]
+    },
+    {
+      "ability": "bash",
+      "casts": 66,
+      "class": "warrior",
+      "damage": 56,
+      "events": 751,
+      "first_tick": 5,
+      "identity": 11,
+      "last_cast_tick": 7052,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 684,
+      "name": "King",
+      "prospected": 0,
+      "start_cell": [
+        21,
+        15
+      ]
+    },
+    {
+      "ability": "bash",
+      "casts": 57,
+      "class": "warrior",
+      "damage": 48,
+      "events": 779,
+      "first_tick": 0,
+      "identity": 12,
+      "last_cast_tick": 6975,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 721,
+      "name": "King",
+      "prospected": 0,
+      "start_cell": [
+        22,
+        15
+      ]
+    },
+    {
+      "ability": "bash",
+      "casts": 62,
+      "class": "warrior",
+      "damage": 53,
+      "events": 778,
+      "first_tick": 1,
+      "identity": 13,
+      "last_cast_tick": 6964,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 715,
+      "name": "King",
+      "prospected": 0,
+      "start_cell": [
+        23,
+        15
+      ]
+    },
+    {
+      "ability": "bash",
+      "casts": 62,
+      "class": "warrior",
+      "damage": 57,
+      "events": 760,
+      "first_tick": 2,
+      "identity": 14,
+      "last_cast_tick": 7031,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 697,
+      "name": "King",
+      "prospected": 0,
+      "start_cell": [
+        24,
+        15
+      ]
+    },
+    {
+      "ability": "backstab",
+      "casts": 102,
+      "class": "thief",
+      "damage": 95,
+      "events": 810,
+      "first_tick": 3,
+      "identity": 15,
+      "last_cast_tick": 7014,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 707,
+      "name": "Ginger",
+      "prospected": 0,
+      "start_cell": [
+        20,
+        20
+      ]
+    },
+    {
+      "ability": "backstab",
+      "casts": 94,
+      "class": "thief",
+      "damage": 85,
+      "events": 843,
+      "first_tick": 4,
+      "identity": 16,
+      "last_cast_tick": 6997,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 748,
+      "name": "Ginger",
+      "prospected": 0,
+      "start_cell": [
+        21,
+        20
+      ]
+    },
+    {
+      "ability": "backstab",
+      "casts": 109,
+      "class": "thief",
+      "damage": 100,
+      "events": 815,
+      "first_tick": 5,
+      "identity": 17,
+      "last_cast_tick": 6998,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 705,
+      "name": "Ginger",
+      "prospected": 0,
+      "start_cell": [
+        22,
+        20
+      ]
+    },
+    {
+      "ability": "backstab",
+      "casts": 100,
+      "class": "thief",
+      "damage": 93,
+      "events": 850,
+      "first_tick": 0,
+      "identity": 18,
+      "last_cast_tick": 7017,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 749,
+      "name": "Ginger",
+      "prospected": 0,
+      "start_cell": [
+        23,
+        20
+      ]
+    },
+    {
+      "ability": "backstab",
+      "casts": 110,
+      "class": "thief",
+      "damage": 98,
+      "events": 850,
+      "first_tick": 1,
+      "identity": 19,
+      "last_cast_tick": 7012,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 739,
+      "name": "Ginger",
+      "prospected": 0,
+      "start_cell": [
+        24,
+        20
+      ]
+    },
+    {
+      "ability": "cleanse",
+      "casts": 23,
+      "class": "bard",
+      "damage": 132,
+      "events": 727,
+      "first_tick": 2,
+      "identity": 20,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 704,
+      "name": "Marcus",
+      "prospected": 0,
+      "start_cell": [
+        40,
+        5
+      ]
+    },
+    {
+      "ability": "cleanse",
+      "casts": 24,
+      "class": "bard",
+      "damage": 138,
+      "events": 720,
+      "first_tick": 3,
+      "identity": 21,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 696,
+      "name": "Marcus",
+      "prospected": 0,
+      "start_cell": [
+        41,
+        5
+      ]
+    },
+    {
+      "ability": "cleanse",
+      "casts": 26,
+      "class": "bard",
+      "damage": 150,
+      "events": 726,
+      "first_tick": 4,
+      "identity": 22,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 700,
+      "name": "Marcus",
+      "prospected": 0,
+      "start_cell": [
+        42,
+        5
+      ]
+    },
+    {
+      "ability": "cleanse",
+      "casts": 20,
+      "class": "bard",
+      "damage": 114,
+      "events": 690,
+      "first_tick": 5,
+      "identity": 23,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 670,
+      "name": "Marcus",
+      "prospected": 0,
+      "start_cell": [
+        43,
+        5
+      ]
+    },
+    {
+      "ability": "cleanse",
+      "casts": 21,
+      "class": "bard",
+      "damage": 120,
+      "events": 715,
+      "first_tick": 0,
+      "identity": 24,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 694,
+      "name": "Marcus",
+      "prospected": 0,
+      "start_cell": [
+        44,
+        5
+      ]
+    },
+    {
+      "ability": "fortune",
+      "casts": 6,
+      "class": "merchant",
+      "damage": 61,
+      "events": 711,
+      "first_tick": 1,
+      "identity": 25,
+      "last_cast_tick": 6004,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 704,
+      "name": "Calvin",
+      "prospected": 0,
+      "start_cell": [
+        40,
+        10
+      ]
+    },
+    {
+      "ability": "fortune",
+      "casts": 6,
+      "class": "merchant",
+      "damage": 51,
+      "events": 708,
+      "first_tick": 2,
+      "identity": 26,
+      "last_cast_tick": 6005,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 701,
+      "name": "Calvin",
+      "prospected": 0,
+      "start_cell": [
+        41,
+        10
+      ]
+    },
+    {
+      "ability": "fortune",
+      "casts": 6,
+      "class": "merchant",
+      "damage": 40,
+      "events": 723,
+      "first_tick": 3,
+      "identity": 27,
+      "last_cast_tick": 6006,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 716,
+      "name": "Calvin",
+      "prospected": 0,
+      "start_cell": [
+        42,
+        10
+      ]
+    },
+    {
+      "ability": "fortune",
+      "casts": 6,
+      "class": "merchant",
+      "damage": 44,
+      "events": 771,
+      "first_tick": 1,
+      "identity": 28,
+      "last_cast_tick": 6001,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 764,
+      "name": "Calvin",
+      "prospected": 0,
+      "start_cell": [
+        43,
+        10
+      ]
+    },
+    {
+      "ability": "fortune",
+      "casts": 6,
+      "class": "merchant",
+      "damage": 54,
+      "events": 778,
+      "first_tick": 2,
+      "identity": 29,
+      "last_cast_tick": 6002,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 771,
+      "name": "Calvin",
+      "prospected": 0,
+      "start_cell": [
+        44,
+        10
+      ]
+    },
+    {
+      "ability": "acid_flask",
+      "casts": 19,
+      "class": "alchemist",
+      "damage": 57,
+      "events": 714,
+      "first_tick": 0,
+      "identity": 30,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 695,
+      "name": "Giuseppe",
+      "prospected": 0,
+      "start_cell": [
+        40,
+        15
+      ]
+    },
+    {
+      "ability": "acid_flask",
+      "casts": 19,
+      "class": "alchemist",
+      "damage": 47,
+      "events": 806,
+      "first_tick": 1,
+      "identity": 31,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 787,
+      "name": "Giuseppe",
+      "prospected": 0,
+      "start_cell": [
+        41,
+        15
+      ]
+    },
+    {
+      "ability": "acid_flask",
+      "casts": 18,
+      "class": "alchemist",
+      "damage": 50,
+      "events": 766,
+      "first_tick": 2,
+      "identity": 32,
+      "last_cast_tick": 6989,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 747,
+      "name": "Giuseppe",
+      "prospected": 0,
+      "start_cell": [
+        42,
+        15
+      ]
+    },
+    {
+      "ability": "acid_flask",
+      "casts": 18,
+      "class": "alchemist",
+      "damage": 45,
+      "events": 771,
+      "first_tick": 3,
+      "identity": 33,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 753,
+      "name": "Giuseppe",
+      "prospected": 0,
+      "start_cell": [
+        43,
+        15
+      ]
+    },
+    {
+      "ability": "acid_flask",
+      "casts": 17,
+      "class": "alchemist",
+      "damage": 51,
+      "events": 701,
+      "first_tick": 4,
+      "identity": 34,
+      "last_cast_tick": 6979,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 683,
+      "name": "Giuseppe",
+      "prospected": 0,
+      "start_cell": [
+        44,
+        15
+      ]
+    },
+    {
+      "ability": "dig",
+      "casts": 76,
+      "class": "forager",
+      "damage": 10,
+      "events": 1152,
+      "first_tick": 2,
+      "identity": 35,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 1076,
+      "name": "Daisy",
+      "prospected": 150,
+      "start_cell": [
+        40,
+        20
+      ]
+    },
+    {
+      "ability": "dig",
+      "casts": 69,
+      "class": "forager",
+      "damage": 19,
+      "events": 1040,
+      "first_tick": 0,
+      "identity": 36,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 971,
+      "name": "Daisy",
+      "prospected": 134,
+      "start_cell": [
+        41,
+        20
+      ]
+    },
+    {
+      "ability": "dig",
+      "casts": 77,
+      "class": "forager",
+      "damage": 21,
+      "events": 1204,
+      "first_tick": 1,
+      "identity": 37,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 1127,
+      "name": "Daisy",
+      "prospected": 143,
+      "start_cell": [
+        42,
+        20
+      ]
+    },
+    {
+      "ability": "dig",
+      "casts": 76,
+      "class": "forager",
+      "damage": 14,
+      "events": 1158,
+      "first_tick": 2,
+      "identity": 38,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 1082,
+      "name": "Daisy",
+      "prospected": 154,
+      "start_cell": [
+        43,
+        20
+      ]
+    },
+    {
+      "ability": "dig",
+      "casts": 76,
+      "class": "forager",
+      "damage": 10,
+      "events": 1113,
+      "first_tick": 3,
+      "identity": 39,
+      "last_cast_tick": 7199,
+      "last_tick": 7199,
+      "level": 1,
+      "moves": 1037,
+      "name": "Daisy",
+      "prospected": 157,
+      "start_cell": [
+        44,
+        20
+      ]
+    }
+  ],
+  "ticks": 7200,
+  "ticks_per_second": 60,
+  "total_recorded_events": 31267
+}

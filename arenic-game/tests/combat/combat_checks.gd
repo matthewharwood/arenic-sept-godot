@@ -12,14 +12,20 @@ var _failures := PackedStringArray()
 func _initialize() -> void:
 	_check_data()
 	_check_targeting()
+	_check_projectile_speed()
 	_check_melee()
 	_check_dig()
 	_check_backstab()
 	_check_ground()
 	_check_channel()
+	_check_channel_presentation_pose()
 	_check_cleanse()
+	_check_cleanse_dots()
+	_check_cleanse_dot_stacking()
+	_check_cleanse_dot_capacity()
 	_check_fortune()
 	_check_progress_and_registration()
+	_check_damage_attribution()
 	_check_active_handoff()
 	_check_release_phases()
 	_check_fast_phases_and_misses()
@@ -81,12 +87,12 @@ func _check_targeting() -> void:
 	_expect(signals == [["auto_shot", "guild_house", Vector2i(30, 15), Vector2i(30, 22), "n"]], "Cast signal gives windup, footprint edge target and correct facing.")
 	_expect(casters == [h.ally_id()], "The cast signal names the caster, so a presenter animates the right hero.")
 	_expect(c.damage_for_arena("guild_house") == 0, "Projectile does not deal damage at launch.")
-	c.tick(0.74, h)
+	c.tick(0.6875, h)
 	_expect(c.damage_for_arena("guild_house") == 0, "Hunter hit waits for landing.")
 	c.tick(0.01, h)
-	_expect(c.damage_for_arena("guild_house") == 1 and c.active_remaining(h) == 0.0, "Hunter lands exactly at0.75 seconds.")
+	_expect(c.damage_for_arena("guild_house") == 1 and c.active_remaining(h) == 0.0, "Seven-tile Hunter shot lands after 0.26 seconds plus 7/16 seconds of flight.")
 	_expect(not c.try_cast(h).is_empty(), "Cooldown remains after a shot lands.")
-	c.tick(1.75, h)
+	c.tick(1.8025, h)
 	_expect(c.cooldown_remaining(h) == 0.0, "Hunter can shoot again at2.5 seconds.")
 	h.cell = Vector2i(30, 13)
 	_expect(not c.try_cast(h).is_empty() and c.cooldown_remaining(h) == 0.0, "Outside edge range rejects without spending cooldown.")
@@ -165,17 +171,23 @@ func _check_backstab() -> void:
 		_expect(c.try_cast(h).is_empty(), "Backstab accepts rear edge for facing " + facing)
 		c.tick(0.2, h)
 		_expect(c.damage_for_arena("guild_house") == 1, "Backstab hits once for facing " + facing)
-		c.tick(2.0, h)
+		c.tick(0.29, h)
+		_expect(not c.try_cast(h).is_empty(), "Backstab rejects a repeat before 0.5 seconds.")
+		c.tick(0.01, h)
+		_expect(is_zero_approx(c.cooldown_remaining(h)) and c.try_cast(h).is_empty(), "Backstab is ready exactly 0.5 seconds after cast start.")
+		c.tick(0.2, h)
+		_expect(c.damage_for_arena("guild_house") == 2, "The next Backstab still has its own 0.2-second windup.")
+		c.tick(0.3, h)
 		for cell: Vector2i in [positions[facing][1], positions[facing][2]]:
 			h.cell = cell
 			_expect(not c.try_cast(h).is_empty(), "Backstab rejects front/side for facing " + facing)
-		_expect(c.damage_for_arena("guild_house") == 1, "Rejected backstabs do not damage.")
+		_expect(c.damage_for_arena("guild_house") == 2, "Rejected backstabs do not damage.")
 		h.cell = positions[facing][0]
 		c.try_cast(h)
 		var opposite: String = {"n": "s", "s": "n", "e": "w", "w": "e"}[facing]
 		c.register_enemy("guild_house", "boss", BOSS, opposite)
 		c.tick(0.2, h)
-		_expect(c.damage_for_arena("guild_house") == 1, "Target turning during windup defeats the backstab.")
+		_expect(c.damage_for_arena("guild_house") == 2, "Target turning during windup defeats the backstab.")
 
 
 ## The flask is aimed, not targeted, and what it leaves behind does the work.
@@ -243,6 +255,32 @@ func _check_channel() -> void:
 	_expect(c.damage_for_arena("guild_house") == 133, "Bounded catchup preserves all pending hit debt.")
 
 
+func _check_channel_presentation_pose() -> void:
+	var fixture: Dictionary = _fixture("cardinal")
+	var combat: RefCounted = fixture.combat
+	var hero: ArenicHeroState = fixture.hero
+	combat.register_enemy("guild_house", "boss", BOSS)
+	combat.try_cast(hero)
+	var accepted: Dictionary = combat.active_cast_snapshot(hero)
+	_expect(accepted.target_id == "boss", "Channel handoff preserves the actual accepted target identity.")
+	var pose: Dictionary = combat.enemy_presentation_pose("guild_house", "boss")
+	_expect(pose.center == Vector2(32.5, 24.5) and pose.lift == 0.0, "An ordinary enemy attaches at its even-footprint center.")
+	pose.center = Vector2.ZERO
+	_expect(combat.enemy_presentation_pose("guild_house", "boss").center == Vector2(32.5, 24.5), "Presentation poses cannot mutate the enemy ledger.")
+	var moving: Dictionary = {"center": Vector2(37.5, 19.5), "lift": 4.0, "footprint": Rect2i(35, 17, 6, 6), "airborne": true}
+	combat.enemy_pose_lookup = func(_arena: String, _enemy: String) -> Dictionary: return moving
+	_expect(combat.enemy_presentation_pose("guild_house", "boss").center == moving.center and combat.enemy_presentation_pose("guild_house", "boss").lift == 4.0, "The same target follows its derived airborne center and lift.")
+	_expect(combat.enemy_footprint("guild_house", "boss").size == Vector2i.ZERO, "Visual attachment never makes an airborne boss hittable.")
+	combat.tick(1.0, hero)
+	_expect(combat.damage_for_arena("guild_house") == 0 and combat.is_channeling(hero), "The channel stays held through a jump without awarding an airborne tick.")
+	moving.airborne = false
+	moving.lift = 0.0
+	combat.tick(1.0, hero)
+	_expect(combat.damage_for_arena("guild_house") == 1 and combat.active_cast_snapshot(hero).target_id == "boss", "Landing resumes the existing channel tick on its original identity.")
+	_expect(combat.active_cast_snapshot(hero).target_cell == accepted.target_cell, "Derived beam motion leaves accepted cast geometry unchanged.")
+	_expect(combat.enemy_presentation_pose("guild_house", "missing").is_empty(), "Missing target identities never inherit another enemy's pose.")
+
+
 func _check_cleanse() -> void:
 	var f := _fixture("bard", Vector2i(10, 10))
 	var c: RefCounted = f.combat
@@ -278,6 +316,144 @@ func _check_cleanse() -> void:
 	for edge: Vector2i in [Vector2i.ZERO, Vector2i(65, 30)]:
 		var bounds: Rect2i = Combat.area_rect(edge, Vector2i(4, 4))
 		_expect(bounds.size == Vector2i(4, 4) and bounds.has_point(edge) and ArenicGridMath.tile_valid(bounds.position) and ArenicGridMath.tile_valid(bounds.end - Vector2i.ONE), "Cleanse retains exact4x4 size at arena borders.")
+
+
+func _check_cleanse_dots() -> void:
+	var fixture: Dictionary = _fixture("bard", Vector2i(10, 10))
+	var combat: RefCounted = fixture.combat
+	var hero: ArenicHeroState = fixture.hero
+	combat.register_enemy("guild_house", "large", Rect2i(11, 10, 6, 6))
+	combat.register_enemy("guild_house", "outside", Rect2i(13, 9, 1, 1))
+	combat.register_enemy("sanctum", "remote", Rect2i(11, 10, 1, 1))
+	var phases: Array = []
+	var casts: Array = []
+	var reports: Array = []
+	combat.ability_cast.connect(func(caster: String, ability: String, arena: String, _origin: Vector2i, _target: Vector2i, _facing: String): casts.append([caster, ability, arena]))
+	combat.ability_phase.connect(func(_caster: String, _ability: String, phase: String, _arena: String, _cell: Vector2, _serial: int): phases.append(phase))
+	combat.damage_reported.connect(func(caster: String, ability: String, arena: String, enemy: String, amount: int): reports.append([caster, ability, arena, enemy, amount]))
+	_expect(combat.try_cast(hero).is_empty(), "Cleanse accepts a large intersecting enemy.")
+	_expect(combat._enemy_dots.size() == 1 and combat.damage_for_arena("guild_house") == 1, "A footprint gets one initial hit and one DOT stack, regardless of intersecting cell count.")
+	_expect(combat._enemy_dots[0].remaining_ticks == 300 and combat._enemy_dots[0].interval_ticks == 60 and combat._enemy_dots[0].tick_debt == 0 and combat._enemy_dots[0].damage == 1, "Authored five-second Cleanse freezes 300 ticks and a 60-tick interval.")
+	var initial_phases: Array = phases.duplicate()
+	combat.tick(20.0, hero)
+	for _tick: int in range(60):
+		combat.advance_enemy_dots("sanctum")
+	_expect(combat._enemy_dots[0].remaining_ticks == 300 and combat.damage_for_arena("guild_house") == 1, "Combat delta and another arena's clock cannot advance an attached DOT.")
+	for _tick: int in range(59):
+		combat.advance_enemy_dots("guild_house")
+	_expect(combat.damage_for_enemy("guild_house", "large") == 1 and combat._enemy_dots[0].tick_debt == 59, "The first DOT hit waits for exactly one arena second.")
+	combat.advance_enemy_dots("guild_house")
+	_expect(combat.damage_for_enemy("guild_house", "large") == 2 and combat._enemy_dots[0].tick_debt == 0, "The sixtieth arena tick applies the first attached hit.")
+	for _tick: int in range(239):
+		combat.advance_enemy_dots("guild_house")
+	_expect(combat.damage_for_enemy("guild_house", "large") == 5 and combat._enemy_dots[0].remaining_ticks == 1, "A stack has four periodic hits immediately before its five-second endpoint.")
+	combat.advance_enemy_dots("guild_house")
+	_expect(combat.damage_for_enemy("guild_house", "large") == 6 and combat._enemy_dots.is_empty(), "The final due hit occurs at expiry, then the stack is removed.")
+	for _tick: int in range(60):
+		combat.advance_enemy_dots("guild_house")
+	_expect(combat.damage_for_enemy("guild_house", "large") == 6 and reports.size() == 6, "An expired stack cannot deal a sixth periodic hit.")
+	_expect(combat.damage_for_enemy("guild_house", "outside") == 0 and combat.damage_for_arena("sanctum") == 0, "DOT application never extends the area or crosses arena identity.")
+	_expect(casts.size() == 1 and phases == initial_phases, "Periodic damage emits no fresh cast, impact animation or cast sound phase.")
+	var attribution_matches: bool = true
+	for report: Array in reports:
+		attribution_matches = attribution_matches and report == [hero.ally_id(), "cleanse", "guild_house", "large", 1]
+	_expect(attribution_matches, "Every initial and periodic hit reports the original caster, ability and target.")
+	_expect(combat.enemy_dot_effects("guild_house", "large").is_empty(), "The readout disappears when the last real stack expires.")
+
+
+func _check_cleanse_dot_stacking() -> void:
+	var fixture: Dictionary = _fixture("bard", Vector2i(10, 10))
+	var combat: RefCounted = fixture.combat
+	var first: ArenicHeroState = fixture.hero
+	first.identity_id = 3
+	var second := ArenicHeroState.new()
+	second.identity_id = 9
+	second.definition = first.definition
+	second.cell = first.cell
+	var ability: ArenicClassAbility = first.definition.skills[0]
+	combat.register_enemy("guild_house", "boss", Rect2i(11, 10, 1, 1))
+	var reports: Array = []
+	combat.damage_reported.connect(func(caster: String, attack: String, arena: String, enemy: String, amount: int): reports.append([caster, attack, arena, enemy, amount]))
+	_expect(combat.try_cast(first).is_empty(), "The first Bard applies its own stack.")
+	for _tick: int in range(60):
+		combat.advance_enemy_dots("guild_house")
+	_expect(combat.try_cast(second).is_empty(), "A second Bard stacks Cleanse without resetting the first Bard's timer.")
+	_expect(combat._enemy_dots.size() == 2 and combat._enemy_dots[0].remaining_ticks == 240 and combat._enemy_dots[1].remaining_ticks == 300, "Staggered casts retain independent expiry ticks in acceptance order.")
+	var effects: Array[Dictionary] = combat.enemy_dot_effects("guild_house", "boss")
+	_expect(effects.size() == 1 and effects[0].id == "cleanse" and effects[0].name == "Cleanse" and effects[0].stacks == 2 and not effects[0].beneficial and effects[0].remaining_seconds == 4.0, "The derived row groups the actual ability and shows its next expiry.")
+	effects[0].stacks = 99
+	_expect(combat.enemy_dot_effects("guild_house", "boss")[0].stacks == 2, "HUD projection mutation cannot change real stack state.")
+	first.arena_id = "sanctum"
+	second.arena_id = "sanctum"
+	first.cell = Vector2i(1, 1)
+	second.cell = Vector2i(60, 29)
+	combat.register_enemy("guild_house", "boss", Rect2i(40, 20, 1, 1))
+	combat.enemy_pose_lookup = func(arena: String, _enemy: String) -> Dictionary:
+		return {"airborne": true, "footprint": Rect2i(40, 20, 1, 1)} if arena == "guild_house" else {}
+	ability.enemy_dot_duration_seconds = 1.0
+	ability.enemy_dot_tick_seconds = 0.1
+	ability.enemy_dot_damage = 7
+	_expect(not combat.enemy_footprint("guild_house", "boss").has_area(), "The moved target is genuinely airborne and cannot accept a fresh ground hit.")
+	for _tick: int in range(240):
+		combat.advance_enemy_dots("guild_house")
+	_expect(combat.damage_for_enemy("guild_house", "boss") == 11 and combat._enemy_dots.size() == 1 and combat._enemy_dots[0].caster_id == second.ally_id() and combat._enemy_dots[0].remaining_ticks == 60, "Movement, jumping and caster travel preserve both stacks; only the older stack expires.")
+	_expect(combat._enemy_dots[0].interval_ticks == 60 and combat._enemy_dots[0].damage == 1, "Editing the shared ability cannot change already accepted DOT timing or damage.")
+	for _tick: int in range(60):
+		combat.advance_enemy_dots("guild_house")
+	_expect(combat.damage_for_enemy("guild_house", "boss") == 12 and combat._enemy_dots.is_empty(), "Each caster contributes one immediate hit plus exactly five periodic hits.")
+	var first_hits: int = 0
+	var second_hits: int = 0
+	var valid_reports: bool = true
+	for report: Array in reports:
+		first_hits += 1 if report[0] == first.ally_id() else 0
+		second_hits += 1 if report[0] == second.ally_id() else 0
+		valid_reports = valid_reports and report.slice(1) == ["cleanse", "guild_house", "boss", 1]
+	_expect(first_hits == 6 and second_hits == 6 and valid_reports, "Stacked damage retains each remote caster's source attribution through expiry.")
+	combat.tick(4.0, first)
+	first.cell = Vector2i(10, 10)
+	combat.register_enemy("sanctum", "new", Rect2i(11, 10, 1, 1))
+	_expect(combat.try_cast(first).is_empty(), "A later cast accepts the edited Inspector settings.")
+	_expect(combat._enemy_dots[0].remaining_ticks == 60 and combat._enemy_dots[0].interval_ticks == 6 and combat._enemy_dots[0].damage == 7, "Only a new stack freezes the new one-second, ten-hertz, seven-damage rules.")
+	for _tick: int in range(60):
+		combat.advance_enemy_dots("sanctum")
+	_expect(combat.damage_for_enemy("sanctum", "new") == 71 and combat._enemy_dots.is_empty(), "Edited rules produce ten periodic hits plus the unchanged initial hit.")
+
+
+func _check_cleanse_dot_capacity() -> void:
+	var fixture: Dictionary = _fixture("bard", Vector2i(10, 10))
+	var combat: RefCounted = fixture.combat
+	var hero: ArenicHeroState = fixture.hero
+	combat.register_enemy("guild_house", "first", Rect2i(12, 10, 1, 1))
+	var all_accepted: bool = true
+	for _stack: int in range(Combat.MAX_ENEMY_DOTS - 1):
+		combat.reset_caster(hero)
+		all_accepted = combat.try_cast(hero).is_empty() and all_accepted
+	_expect(all_accepted and combat._enemy_dots.size() == Combat.MAX_ENEMY_DOTS - 1, "Real accepted casts can fill the bounded stack collection up to its last free entry.")
+	combat.register_enemy("guild_house", "second", Rect2i(9, 9, 1, 1))
+	combat.register_ally("guild_house", hero.ally_id(), hero.cell, 1, 3, PackedStringArray(["slow"]))
+	combat.reset_caster(hero)
+	var before_damage: int = combat.total_damage()
+	var before_serial: int = combat._cast_serial
+	_expect(combat.cast_unavailable_reason(hero, true) == "DOT limit" and not combat.try_cast(hero).is_empty(), "Two affected targets reject the whole cast when only one stack slot remains.")
+	var status: Dictionary = combat.ally_status("guild_house", hero.ally_id())
+	_expect(combat.total_damage() == before_damage and combat._cast_serial == before_serial and combat.cooldown_remaining(hero) == 0.0 and combat._enemy_dots.size() == Combat.MAX_ENEMY_DOTS - 1, "Capacity rejection spends no cooldown, initial damage, cast event or partial stack.")
+	_expect(status.health == 1 and status.debuffs == PackedStringArray(["slow"]), "Capacity rejection cannot partially heal or clear ally debuffs.")
+	hero.cell = Vector2i(11, 10)
+	var other := ArenicHeroState.new()
+	other.identity_id = 7
+	other.definition = hero.definition
+	other.cell = hero.cell
+	var nested_results: Array[String] = []
+	var weak_combat: WeakRef = weakref(combat)
+	combat.ability_cast.connect(func(_caster: String, _ability: String, _arena: String, _origin: Vector2i, _target: Vector2i, _facing: String): nested_results.append(weak_combat.get_ref().try_cast(other)))
+	_expect(combat.try_cast(hero).is_empty() and combat._enemy_dots.size() == Combat.MAX_ENEMY_DOTS, "One affected target fits the exact capacity boundary.")
+	_expect(nested_results.size() == 1 and not nested_results[0].is_empty(), "Accepted stacks reserve capacity before cast observers can request another cast.")
+	combat.reset_caster(hero)
+	_expect(not combat.try_cast(hero).is_empty(), "The next stack is rejected at the full global bound.")
+	combat.clear_enemy_dots("sanctum")
+	_expect(combat._enemy_dots.size() == Combat.MAX_ENEMY_DOTS, "Clearing another arena cannot remove this arena's stacks.")
+	combat.clear_enemy_dots("guild_house")
+	_expect(combat._enemy_dots.is_empty() and combat.total_damage() == Combat.MAX_ENEMY_DOTS, "Cycle clearing frees every matching stack while retaining earned damage.")
 
 
 func _check_fortune() -> void:
@@ -322,6 +498,32 @@ func _check_fortune() -> void:
 	c.try_cast(h)
 	c.tick(1000000.0, h)
 	_expect(c.damage_for_arena("guild_house") == 40, "Large delta clamps finite aura at its twenty-second lifetime.")
+
+
+func _check_damage_attribution() -> void:
+	var f := _fixture("hunter", Vector2i(29, 21))
+	var c: RefCounted = f.combat
+	var hunter: ArenicHeroState = f.hero
+	var warrior: ArenicHeroState = _fixture("warrior", Vector2i(29, 21)).hero
+	hunter.identity_id = 11
+	warrior.identity_id = 12
+	c.register_enemy("guild_house", "boss", BOSS)
+	var reports: Array = []
+	var legacy: Array = []
+	c.damage_reported.connect(func(caster: String, ability: String, arena: String, enemy: String, amount: int): reports.append([caster, ability, arena, enemy, amount]))
+	c.damage_applied.connect(func(arena: String, enemy: String, amount: int): legacy.append([arena, enemy, amount]))
+	_expect(c.try_cast(hunter).is_empty() and c.try_cast(warrior).is_empty(), "Two independent casters can attack the same target.")
+	c.tick(1.0)
+	_expect(reports.size() == 2 and reports.has([hunter.ally_id(), "auto_shot", "guild_house", "boss", 1]) and reports.has([warrior.ally_id(), "bash", "guild_house", "boss", 1]), "Each accepted direct hit reports its own caster and attack, independent of selection.")
+	_expect(legacy.size() == 2 and c.total_damage() == 2, "Attribution leaves the existing three-argument damage signal and totals unchanged.")
+	c.apply_hazard_damage("guild_house", "boss", 3, hunter.ally_id(), "acid_flask")
+	_expect(reports.back() == [hunter.ally_id(), "acid_flask", "guild_house", "boss", 3] and legacy.size() == 3, "An accepted hazard preserves supplied provenance once alongside its presentation signal.")
+	c.apply_hazard_damage("guild_house", "boss", 1)
+	_expect(reports.back() == ["", "", "guild_house", "boss", 1], "A legacy or fixture hazard stays explicitly unattributed.")
+	c.apply_hazard_damage("unknown", "boss", 1, hunter.ally_id(), "dig")
+	c.apply_hazard_damage("guild_house", "missing", 1, hunter.ally_id(), "dig")
+	c.apply_hazard_damage("guild_house", "boss", 0, hunter.ally_id(), "dig")
+	_expect(reports.size() == 4 and legacy.size() == 4 and c.total_damage() == 6, "Rejected hazard damage publishes no report and changes no ledger.")
 
 
 func _check_progress_and_registration() -> void:
@@ -370,7 +572,7 @@ func _check_invalid_inputs() -> void:
 	c.try_cast(h)
 	for delta: float in [-1.0, INF, -INF, NAN]:
 		c.tick(delta, h)
-		_expect(c.damage_for_arena("guild_house") == 0 and c.cooldown_remaining(h) == 2.5 and c.active_remaining(h) == 0.75, "Invalid time cannot change an accepted cast.")
+		_expect(c.damage_for_arena("guild_house") == 0 and c.cooldown_remaining(h) == 2.5 and is_equal_approx(c.active_remaining(h), 0.6975), "Invalid time cannot change an accepted cast.")
 	c.tick(2.5, h)
 	h.definition.skills[0].cooldown_seconds = NAN
 	_expect(not c.try_cast(h).is_empty(), "Invalid authored timing is rejected explicitly.")
@@ -389,7 +591,7 @@ func _check_active_handoff() -> void:
 	c.configure(f.world)
 	c.register_enemy("guild_house", "boss", BOSS)
 	_expect(c.active_cast_snapshot(h) == before, "Reconfiguration preserves authoritative projectile timing and geometry.")
-	_expect(before.ability_id == "auto_shot" and before.arena_id == "guild_house" and before.origin == Vector2i(30, 15) and before.target_cell == Vector2i(30, 22) and before.facing == "n" and is_equal_approx(before.remaining, 0.45), "Projectile handoff identifies exact in-flight state.")
+	_expect(before.ability_id == "auto_shot" and before.arena_id == "guild_house" and before.origin == Vector2i(30, 15) and before.target_cell == Vector2i(30, 22) and before.facing == "n" and is_equal_approx(before.remaining, 0.3975), "Projectile handoff identifies exact in-flight state.")
 	before.origin = Vector2i.ZERO
 	_expect(c.active_cast_snapshot(h).origin == Vector2i(30, 15), "Presenter snapshot cannot mutate authoritative origin.")
 	c.tick(0.45, h)
@@ -473,6 +675,7 @@ func _check_fast_phases_and_misses() -> void:
 	var c: RefCounted = f.combat
 	var h: ArenicHeroState = f.hero
 	var events: Array = _phase_log(c)
+	h.definition.skills[0].projectile_speed_tiles_per_second = 0.0
 	h.definition.skills[0].cast_seconds = 0.01
 	c.register_enemy("guild_house", "boss", BOSS)
 	c.try_cast(h)
@@ -483,6 +686,7 @@ func _check_fast_phases_and_misses() -> void:
 	c = f.combat
 	h = f.hero
 	events = _phase_log(c)
+	h.definition.skills[0].projectile_speed_tiles_per_second = 0.0
 	h.definition.skills[0].cast_seconds = 0.0
 	c.register_enemy("guild_house", "boss", BOSS)
 	c.try_cast(h)
@@ -567,3 +771,35 @@ func _check_support_phases() -> void:
 	c.tick(4.0, h)
 	c.try_cast(h)
 	_expect(_phase_names(events).slice(3) == ["cast", "end"] and events[-1].cast_id == 2, "A fully healthy, clean, empty area has no phantom impact; accepted cast IDs still advance.")
+
+
+func _check_projectile_speed() -> void:
+	for delta: Vector2i in [Vector2i(1, 0), Vector2i(8, 0), Vector2i(8, 8)]:
+		var f: Dictionary = _fixture("hunter", Vector2i(20, 10))
+		var c: ArenicCombatState = f.combat
+		var h: ArenicHeroState = f.hero
+		c.register_enemy("guild_house", "target", Rect2i(h.cell + delta, Vector2i.ONE))
+		_expect(c.try_cast(h).is_empty(), "Constant-speed shot accepts axial and diagonal range: %s" % delta)
+		var snapshot: Dictionary = c.active_cast_snapshot(h)
+		var flight: float = float(snapshot.cast_seconds) - float(snapshot.release_seconds)
+		_expect(is_equal_approx(Vector2(delta).length() / flight, 16.0), "Near, far and diagonal arrows share 16 tiles/second.")
+		c.tick(float(snapshot.cast_seconds) - 0.001)
+		_expect(c.total_damage() == 0, "Arrow cannot hit before distance-based arrival.")
+		c.tick(0.001)
+		_expect(c.total_damage() == 1 and c.casting_ids().is_empty(), "Arrow hits exactly once at distance-based arrival.")
+	var f: Dictionary = _fixture("hunter")
+	var c: ArenicCombatState = f.combat
+	var h: ArenicHeroState = f.hero
+	c.register_enemy("guild_house", "target", BOSS)
+	c.try_cast(h)
+	var accepted: float = c.active_remaining(h)
+	h.definition.skills[0].projectile_speed_tiles_per_second = 32.0
+	_expect(is_equal_approx(c.active_remaining(h), accepted), "A data edit does not retime an accepted arrow.")
+	c.register_enemy("guild_house", "target", Rect2i(40, 22, 6, 6))
+	var events: Array = _phase_log(c)
+	c.tick(accepted)
+	_expect(c.total_damage() == 0 and not _phase_names(events).has("impact"), "An arrow misses a target that left its aim cell, without impact feedback.")
+	c.reset_caster(h)
+	for speed: float in [-1.0, 0.001, 121.0, INF, NAN]:
+		h.definition.skills[0].projectile_speed_tiles_per_second = speed
+		_expect(not c.try_cast(h).is_empty(), "Malformed projectile speed is rejected before accepting a cast.")

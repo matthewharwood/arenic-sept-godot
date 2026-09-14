@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { watch, installAudioMeter, loadGame, renderedPixels, clickTitleButton, clickLogical, enterProbeWorld, attachResults, GAME, PROBE, CLASSES, ARENAS } from './helpers.mjs';
+import { watch, installAudioMeter, loadGame, renderedPixels, clickTitleButton, clickLogical, clickHudMenuAction, enterProbeWorld, completeIntroduction, attachResults, GAME, PROBE, CLASSES, ARENAS } from './helpers.mjs';
 
 // Software WebGL in CI can take seconds per frame. These are bounded correctness
 // checks; native-density rendering remains covered independently of mixer timing.
@@ -35,13 +35,27 @@ test('clean production: real pointer flow and browser output samples', async ({ 
     const cell = (width - 64 - 11 * 12) / 12;
     const confirmX = 32 + 10 * (cell + 12) + (2 * cell + 12) / 2;
     await page.mouse.click(box.x + confirmX * scale, box.y + (height - 61) * scale);
+    // Shipping prologue is driven only through visible pixels and real keys.
+    // Authored reading intervals deliberately reject rapid input.
+    await expect.poll(async () => (await renderedPixels(page, marginPoints))
+      .every(pixel => pixel.slice(0, 3).every(channel => channel >= 215 && channel <= 250)),
+    { message: 'Opening quote is rendered', timeout: 60_000 }).toBe(true);
+    await page.screenshot({ path: testInfo.outputPath('clean-opening-quote.png') });
+    await page.waitForTimeout(2200);
+    await page.keyboard.press('Space');
+    await page.waitForTimeout(250);
+    await page.keyboard.press('Space');
+    for (let beat = 0; beat < 4; beat++) {
+      await page.waitForTimeout(3000);
+      await page.keyboard.press('Space');
+    }
+    await page.waitForTimeout(1500);
     // The audio context unlocks on the title click, so it cannot prove world
     // readiness. Wait for the dark, nonblack HUD bands before sending game keys.
     await expect.poll(async () => (await renderedPixels(page, [[0.48, 0.02], [0.78, 0.02], [0.78, 0.99]]))
       .every(pixel => pixel.slice(0, 3).every(channel => channel > 5 && channel < 100)),
     { message: 'Rendered world HUD is ready', timeout: 60_000 }).toBe(true);
     await expect.poll(() => page.evaluate(() => window.__arenicAudioReadback().some(row => row.state === 'running' && row.samples > 0)), { timeout: 30_000 }).toBe(true);
-    await page.keyboard.press('p');
     await page.keyboard.press('l');
     await page.evaluate(() => window.__arenicAudioReset());
     await expect.poll(() => page.evaluate(() => window.__arenicAudioReadback().some(row => row.peak > 0.00001))).toBe(true);
@@ -70,9 +84,15 @@ test('actual cards, selected hero, movement, arena hotkeys and bracket navigatio
     state = await log.wait(value => value?.selected_index === 3);
     await clickLogical(page, state, state.controls.confirm.center);
     state = await log.wait(value => value?.scene === 'world' && !value.motion_active);
-    expect(state.hero).toMatchObject({ class_id: 'warrior', arena: 'guild_house', cell: [30, 15] });
+    expect(state.hero).toMatchObject({ class_id: 'warrior', arena: 'guild_house', cell: [33, 15] });
     expect(state.arena).toBe('guild_house');
-    expect(state.zoomed).toBe(false);
+    expect(state.zoomed).toBe(true);
+    expect(state.introduction).toMatchObject({ step: 0, quote_visible: true });
+    await completeIntroduction(page, log);
+    for (let i = 0; i < 3; i++) {
+      await page.keyboard.press('ArrowLeft');
+      await log.wait(value => value?.hero?.cell[0] === 32 - i);
+    }
     await page.keyboard.press('Tab');
     state = await log.wait(value => value?.zoomed && value.hero.selected && !value.motion_active);
     await page.keyboard.press('ArrowRight');
@@ -95,13 +115,89 @@ test('actual cards, selected hero, movement, arena hotkeys and bracket navigatio
     await page.keyboard.press('p');
     state = await log.wait(value => value?.zoomed === false && !value.motion_active);
     expect(state.span).toEqual([49.5, 23.25]);
-    await clickLogical(page, state, state.controls.toggle.center);
+    await clickHudMenuAction(page, log, 'toggle');
     await log.wait(value => value?.zoomed && !value.motion_active);
     await page.keyboard.press('Escape');
     await log.wait(value => value?.zoomed === false && !value.motion_active);
     expect(log.errors).toEqual([]);
   } finally { await attachResults(testInfo, log); }
 });
+
+for (const choice of [
+  { key: 'Space', method: 'pointer', index: 6, checkRepeat: true },
+  { key: 'Enter', method: 'pointer', index: 5 },
+  { key: 'Space', method: 'arrow navigation', index: 2 },
+  { key: 'Enter', method: 'arrow navigation', index: 3 },
+]) {
+  test(`class confirmation: ${choice.key} confirms the card selected by ${choice.method}`, async ({ page }, testInfo) => {
+    await page.setViewportSize({ width: 640, height: 360 });
+    const log = watch(page);
+    try {
+      await loadGame(page, PROBE, log);
+      let state = await openClassSelection(page, log);
+      const clickedIndex = choice.method === 'pointer' ? choice.index : choice.index - 2;
+      await clickLogical(page, state, state.cards[clickedIndex].center);
+      state = await log.wait(value => value?.scene === 'classes' && value.selected_index === clickedIndex
+        && value.cards[clickedIndex].focused, 'The pointer-selected class card owns keyboard focus');
+      if (choice.method === 'arrow navigation') {
+        await page.keyboard.press('ArrowDown');
+        state = await log.wait(value => value?.scene === 'classes' && value.selected_index === choice.index
+          && value.cards[choice.index].focused, 'ArrowDown selects and focuses the next class card');
+      }
+      expect(state.character).toBe(CLASSES[choice.index][1]);
+      expect(state.controls.confirm.disabled).toBe(false);
+      await page.keyboard.down(choice.key);
+      state = await log.wait(value => value?.scene === 'world' && value.introduction?.quote_visible,
+        `${choice.key} on the focused card opens the selected hero's quote`);
+      expect(state.hero).toMatchObject({ class_id: CLASSES[choice.index][0], arena: 'guild_house', cell: [33, 15] });
+      expect(state.introduction).toMatchObject({ step: 0, quote_visible: true });
+      if (choice.checkRepeat) {
+        // A second keydown without keyup is a real browser repeat. Wait until
+        // the quote could advance, so its reading guard cannot mask an echo bug.
+        state = await log.wait(value => value?.introduction?.elapsed >= 2.1,
+          'The opening quote has finished its minimum reading interval');
+        const beforeRepeat = state.introduction.elapsed;
+        await page.keyboard.down(choice.key);
+        state = await log.wait(value => value?.introduction?.elapsed > beforeRepeat + 0.2,
+          'The quote continues ticking after a held confirmation key repeats');
+        expect(state.introduction).toMatchObject({ step: 0, quote_visible: true });
+      }
+      await page.keyboard.up(choice.key);
+      expect(log.errors).toEqual([]);
+    } finally {
+      await page.keyboard.up(choice.key).catch(() => {});
+      await attachResults(testInfo, log);
+    }
+  });
+}
+
+test('class selection: focused Back retains normal Space and Enter activation', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 640, height: 360 });
+  const log = watch(page);
+  try {
+    await loadGame(page, PROBE, log);
+    for (const key of ['Space', 'Enter']) {
+      let state = await openClassSelection(page, log);
+      await clickLogical(page, state, state.cards[0].center);
+      await log.wait(value => value?.scene === 'classes' && value.cards[0].focused,
+        'The first card owns focus before navigating back');
+      await page.keyboard.press('Shift+Tab');
+      state = await log.wait(value => value?.scene === 'classes' && value.controls.back.focused,
+        'Shift-Tab gives the actual Back button focus');
+      expect(state.controls.confirm.disabled).toBe(false);
+      await page.keyboard.press(key);
+      await log.wait(value => value?.scene === 'title', `${key} activates focused Back instead of confirming a class`);
+    }
+    expect(log.errors).toEqual([]);
+  } finally { await attachResults(testInfo, log); }
+});
+
+async function openClassSelection(page, log) {
+  const title = await log.wait(value => value?.scene === 'title' && value.saves?.ready && !value.controls.start.disabled,
+    'Title enables Start after save storage hydration');
+  await clickLogical(page, title, title.controls.start.center);
+  return log.wait(value => value?.scene === 'classes', 'Title Start opens class selection');
+}
 
 for (const dimensions of [{ width: 1280, height: 720, dpr: 1 }, { width: 1280, height: 720, dpr: 2 }, { width: 1200, height: 900, dpr: 1 }]) {
   test(`viewport and pointer mapping ${dimensions.width}x${dimensions.height} DPR${dimensions.dpr}`, async ({ browser }, testInfo) => {
@@ -126,11 +222,11 @@ for (const dimensions of [{ width: 1280, height: 720, dpr: 1 }, { width: 1280, h
       expect(Math.abs(image.framebuffer[0] - Math.round(1280 * fit))).toBeLessThanOrEqual(2);
       expect(Math.abs(image.framebuffer[1] - Math.round(720 * fit))).toBeLessThanOrEqual(2);
       expect(image.nonblack_samples).toBe(9);
-      await clickLogical(page, state, state.controls.toggle.center);
+      await clickHudMenuAction(page, log, 'toggle');
       await log.wait(value => value?.zoomed === false && !value.motion_active);
       await page.setViewportSize({ width: 1440, height: 900 });
       state = await log.wait(value => value?.window[0] >= 1440 * dimensions.dpr - 1);
-      await clickLogical(page, state, state.controls.toggle.center);
+      await clickHudMenuAction(page, log, 'toggle');
       await log.wait(value => value?.zoomed && !value.motion_active);
       await page.screenshot({ path: testInfo.outputPath('viewport.png') });
       expect(log.errors).toEqual([]);

@@ -84,6 +84,7 @@ func _run() -> void:
 		_finish(false, "RunSetup autoload missing; run with --path pointing to arenic-game.")
 		return
 	setup.call("begin_new_game")
+	setup.set("intro_step", 6) # Benchmark established gameplay, without the prologue.
 	# The production Display autoload skips --script runs; this probe owns its size.
 	root.size = _render_size
 	var packed: PackedScene = load(SHELL_PATH) as PackedScene

@@ -14,6 +14,9 @@ extends Control
 
 signal chosen(choice: String, context: Dictionary)
 
+const COMMIT_DEATH: String = "commit_death"
+const RETURN_HOME: String = "return_home"
+
 const CANCEL: String = "cancel"
 const START_RECORDING: String = "start_recording"
 const REPLAY_PREVIOUS: String = "replay_previous"
@@ -39,6 +42,7 @@ var _panel: Panel
 var _title: Label
 var _detail: Label
 var _buttons: Array[Button] = []
+var _labels: PackedStringArray = PackedStringArray()
 var _choices: PackedStringArray = PackedStringArray()
 var _focused: int = 0
 var _open: bool = false
@@ -75,6 +79,7 @@ func open(owner_arena: String, visual_theme: ArenicArenaTheme, title: String, de
 	arena_id = owner_arena
 	_context = context.duplicate(true)
 	_choices = PackedStringArray()
+	_labels = PackedStringArray()
 	for index: int in _buttons.size():
 		var button: Button = _buttons[index]
 		if index < options.size():
@@ -82,8 +87,10 @@ func open(owner_arena: String, visual_theme: ArenicArenaTheme, title: String, de
 			button.text = "%d  %s" % [index + 1, str(option[0])]
 			button.visible = true
 			_choices.append(str(option[1]))
+			_labels.append(str(option[0]))
 		else:
 			button.visible = false
+	mouse_filter = Control.MOUSE_FILTER_STOP if is_death_choice() else Control.MOUSE_FILTER_IGNORE
 	_title.text = title
 	_detail.text = detail
 	_focused = clampi(default_index, 0, _choices.size() - 1)
@@ -91,6 +98,7 @@ func open(owner_arena: String, visual_theme: ArenicArenaTheme, title: String, de
 	_latched = true
 	_apply_theme(visual_theme)
 	_layout()
+	queue_redraw()
 	show()
 	return true
 
@@ -191,6 +199,17 @@ func _label(node_name: String, font: Font, font_size: int) -> Label:
 
 ## A modal belongs to the arena that opened it, so it wears that arena's colours.
 func _apply_theme(visual_theme: ArenicArenaTheme) -> void:
+	_detail.visible = not is_death_choice()
+	_panel_style.set_corner_radius_all(16 if is_death_choice() else 0)
+	_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER if is_death_choice() else HORIZONTAL_ALIGNMENT_LEFT
+	for button: Button in _buttons:
+		button.add_theme_font_override("font", DISPLAY_FONT if is_death_choice() else BODY_FONT)
+		button.add_theme_font_size_override("font_size", 20 if is_death_choice() else 12)
+	_title.add_theme_font_size_override("font_size", 110 if is_death_choice() else 21)
+	if is_death_choice():
+		ArenicDeathDecisionView.apply_theme(self)
+		_apply_focus()
+		return
 	_content = ArenicHudTokens.color("content", visual_theme)
 	_accent = visual_theme.color("primary") if visual_theme != null else _content
 	var surface: Color = visual_theme.color("base_300") if visual_theme != null else Color(0.06, 0.07, 0.1)
@@ -199,12 +218,17 @@ func _apply_theme(visual_theme: ArenicArenaTheme) -> void:
 	_title.add_theme_color_override("font_color", _content)
 	_detail.add_theme_color_override("font_color", Color(_content, 0.74))
 	for style: StyleBoxFlat in _button_styles:
+		style.set_corner_radius_all(0)
+		style.set_border_width_all(1)
 		style.bg_color = Color(_content, 0.06)
 		style.border_color = Color(_content, 0.34)
 	_apply_focus()
 
 
 func _apply_focus() -> void:
+	if is_death_choice():
+		ArenicDeathDecisionView.apply_focus(self)
+		return
 	for index: int in _buttons.size():
 		var style: StyleBoxFlat = _button_styles[index]
 		var focused: bool = index == _focused
@@ -220,6 +244,9 @@ func _notification(what: int) -> void:
 
 func _layout() -> void:
 	if _panel == null:
+		return
+	if is_death_choice():
+		ArenicDeathDecisionView.layout(self)
 		return
 	var origin := Vector2(roundf((size.x - PANEL_SIZE.x) * 0.5), roundf((size.y - PANEL_SIZE.y) * 0.5))
 	_panel.position = origin
@@ -237,3 +264,12 @@ func _layout() -> void:
 			continue
 		_buttons[index].position = Vector2(20.0 + float(index) * (width + gap), PANEL_SIZE.y - BUTTON_HEIGHT - 20.0)
 		_buttons[index].size = Vector2(width, BUTTON_HEIGHT)
+
+
+func is_death_choice() -> bool:
+	return _choices == PackedStringArray([COMMIT_DEATH, RETURN_HOME])
+
+
+func _draw() -> void:
+	if _open and is_death_choice():
+		draw_rect(Rect2(Vector2.ZERO, size), ArenicHudTokens.color("selected_content"))

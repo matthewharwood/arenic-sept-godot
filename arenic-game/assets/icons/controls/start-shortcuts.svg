@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="82" height="24" viewBox="0 0 82 24">
+  <title>Spacebar or Return</title>
+  <g fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="miter">
+    <path d="M1 1H47V23H1Z M55 1H81V23H55Z"/>
+    <path d="M13 9V14H35V9 M73 7V14H62 M66 10L62 14L66 18"/>
+  </g>
+</svg>

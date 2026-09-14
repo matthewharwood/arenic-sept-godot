@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ArenicIntroductionDefinition" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/intro/introduction_definition.gd" id="1"]
+[ext_resource type="Resource" path="res://data/npcs/keeper.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/intro/dialogue_beat.gd" id="3"]
+[ext_resource type="SpriteFrames" path="res://assets/environment/guild_gate/guild_gate_frames.tres" id="4"]
+
+[sub_resource type="Resource" id="Beat1"]
+script = ExtResource("3")
+text = "A moment need not vanish. Press R. Three beats, then listen."
+min_read_seconds = 2.75
+
+[sub_resource type="Resource" id="Beat2"]
+script = ExtResource("3")
+text = "Move. Attack. The hall remembers what you do."
+min_read_seconds = 2.75
+
+[sub_resource type="Resource" id="Beat3"]
+script = ExtResource("3")
+text = "Press R again. Choose Commit. Your echo carries on."
+min_read_seconds = 2.75
+
+[sub_resource type="Resource" id="Beat4"]
+script = ExtResource("3")
+text = "One life makes a rhythm. Many make a pattern. Go. The doors open."
+min_read_seconds = 2.75
+
+[resource]
+script = ExtResource("1")
+npc = ExtResource("2")
+quote = "In all chaos, there is a cosmos,\nin all disorder a secret order."
+quote_author = "Carl Jung"
+quote_seconds = 2.0
+dialogue = Array[ExtResource("3")]([SubResource("Beat1"), SubResource("Beat2"), SubResource("Beat3"), SubResource("Beat4")])
+gate_frames = ExtResource("4")
+unlock_seconds = 1.4

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="68" height="24" viewBox="0 0 68 24">
+  <title>Spacebar</title>
+  <path d="M1 1H67V23H1Z" fill="black"/>
+  <g fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="miter">
+    <path d="M2 19.5H66" opacity="0.18"/>
+    <path d="M21 8V13H47V8"/>
+  </g>
+</svg>

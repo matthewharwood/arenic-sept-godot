@@ -41,7 +41,13 @@ func _check_resources() -> bool:
 		var base: Vector3 = theme.palette["base_100"]
 		if not _check(base.is_equal_approx(BASES[index]), "Canonical source base color is preserved: " + theme.theme_id):
 			return false
-		if not _check(Vector2i(theme.backdrop_style, theme.foreground_style) == VOICES[index], "Both source atmosphere voices are assigned: " + theme.theme_id):
+		# The requested outdoor clearing intentionally replaces Guild House's
+		# upstream indoor embers with restrained grain. Other source voices and
+		# every source palette token retain their original provenance contract.
+		var expected_voice: Vector2i = Vector2i(7, 8) if ARENAS[index] == "guild_house" else VOICES[index]
+		if not _check(Vector2i(theme.backdrop_style, theme.foreground_style) == expected_voice, "Authored atmosphere matches the approved clearing override or original source voice: " + theme.theme_id):
+			return false
+		if ARENAS[index] == "guild_house" and not _check(is_equal_approx(theme.foreground_coverage, 0.24) and theme.foreground_drift == Vector2(0.014, 0.006), "The outdoor clearing uses low-coverage drifting grain instead of indoor embers."):
 			return false
 		var selector_radius: float = 4.0 if index == 2 else (0.0 if index == 8 else 8.0)
 		if not _check(theme.border == 1.0 and theme.depth == 1.0 and theme.radius_selector == selector_radius and theme.radius_field == selector_radius and theme.radius_box == selector_radius * 2.0, "Source structural tokens remain native logical pixels."):

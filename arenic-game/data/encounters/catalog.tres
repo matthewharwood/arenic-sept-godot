@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://scripts/encounters/encounter_score.gd" id="2_score"]
 [ext_resource type="Resource" path="res://data/encounters/labyrinth_normal.tres" id="Score_labyrinth_normal"]
 
+[ext_resource type="Resource" path="res://data/encounters/v2/cardinal_normal_1.tres" id="Cardinal"]
+
 [resource]
 script = ExtResource("1_catalog")
-scores = Array[ExtResource("2_score")]([ExtResource("Score_labyrinth_normal")])
+scores = Array[ExtResource("2_score")]([ExtResource("Score_labyrinth_normal"), ExtResource("Cardinal")])

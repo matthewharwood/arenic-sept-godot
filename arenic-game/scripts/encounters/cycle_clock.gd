@@ -19,6 +19,9 @@ var tick: int = 0
 var cycle_ticks: int = CYCLE_TICKS
 ## Only the arena that owns a modal or a countdown pauses. There is no global pause.
 var paused: bool = false
+## A completed authoritative reset awaits its cosmetic rewind/countdown.
+## Independent of modal/recording pause ownership; saved without visual history.
+var restart_pending: bool = false
 
 
 func configure(length: int, start: int = 0) -> void:
@@ -29,7 +32,7 @@ func configure(length: int, start: int = 0) -> void:
 ## Advances exactly one tick. Returns true when the cycle wrapped, which is the
 ## moment playback rewinds and every performer snaps back to its start tile.
 func step() -> bool:
-	if paused:
+	if paused or restart_pending:
 		return false
 	tick += 1
 	if tick < cycle_ticks:

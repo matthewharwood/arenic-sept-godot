@@ -19,14 +19,15 @@ import time
 
 REPOSITORY = Path(__file__).resolve().parents[2]
 HEADLESS = (
+    "events/event_bus_checks", "ui/activity_feed_checks", "intro/introduction_checks",
     "persistence/save_codec_checks", "persistence/native_store_checks", "persistence/save_service_checks", "persistence/save_restart_checks",
-    "world/grid_checks", "world/camera_checks", "world/flow_checks",
-    "heroes/hero_checks", "heroes/hero_flow_checks", "heroes/guild_checks", "heroes/recruitment_checks", "heroes/arena_selection_checks", "bosses/catalog_checks",
+    "world/grid_checks", "world/camera_checks", "world/flow_checks", "world/guild_clearing_checks",
+    "loot/loot_checks", "loot/reward_flow_checks", "heroes/hero_checks", "heroes/hero_flow_checks", "heroes/guild_checks", "heroes/recruitment_checks", "heroes/arena_selection_checks", "heroes/class_ability_checks", "gathering/gathering_checks", "gathering/guild_work_flow_checks", "heroes/hero_contact_checks", "bosses/catalog_checks",
     "themes/theme_checks", "themes/region_checks", "world/transition_checks",
-    "audio/clock_checks", "audio/music_checks", "audio/sfx_checks", "audio/title_music_checks",
+    "audio/clock_checks", "audio/music_checks", "audio/loop_selection_checks", "audio/sfx_checks", "audio/title_music_checks",
     "combat/combat_checks", "combat/flow_checks", "combat/presentation_checks", "ui/damage_bar_checks",
-    "ui/hero_vitals_checks", "ui/world_hud_checks", "ui/modal_checks",
-    "encounters/timeline_checks", "encounters/dig_checks", "encounters/score_checks", "encounters/recording_flow_checks", "encounters/encounter_flow_checks",
+    "ui/arena_restart_overlay_checks", "ui/hero_vitals_checks", "ui/world_hud_checks", "ui/modal_checks", "ui/overworld_menu_checks", "ui/interaction_marker_checks",
+    "encounters/cardinal_checks", "encounters/death_choice_checks", "encounters/rewind_checks", "encounters/timeline_checks", "encounters/dig_checks", "encounters/score_checks", "encounters/recording_flow_checks", "encounters/encounter_flow_checks",
 )
 RENDERER = (
     "world/arena_tiles_checks", "themes/presentation_checks", "themes/overworld_checks",

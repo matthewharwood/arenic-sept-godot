@@ -39,13 +39,14 @@ func _run() -> void:
 		return
 	if not _check_policy():
 		return
+	root.get_node("RunSetup").intro_step = 6 # Established-world presentation fixture.
 	var packed := load(SHELL_PATH) as PackedScene
 	if not _check(packed != null, "Actual game shell loads."):
 		return
 	_shell = packed.instantiate()
 	root.add_child(_shell)
 	_rig = _shell.stage.camera_rig
-	_toggle = _shell.hud.get_node("BottomStrip/OverviewToggle") as Button
+	_toggle = _shell.hud.get_node("ControlsLayer/ControlsGuide/OverviewToggle") as Button
 	_toggle.pressed.connect(func(): _gui_presses += 1)
 	for case_index: int in range(SIZES.size()):
 		root.size = SIZES[case_index]
@@ -146,6 +147,9 @@ func _check_layout_and_projection(window_size: Vector2i) -> bool:
 
 
 func _check_gui_input() -> bool:
+	_set_guide_open(true)
+	if not _check(_toggle.is_visible_in_tree(), "H opens the Controls panel before its navigation button receives pointer input."):
+		return false
 	var logical: Vector2 = _toggle.get_global_rect().get_center()
 	var before: int = _gui_presses
 	var zoomed_before: bool = _shell.zoomed
@@ -154,9 +158,23 @@ func _check_gui_input() -> bool:
 		return false
 	# push_input(false) accepts viewport pixels, not global desktop coordinates.
 	# Window/OS letterbox offsets are handled outside this viewport-local boundary.
+	_set_guide_open(true)
 	var native_pixel: Vector2 = root.get_final_transform() * logical
 	_click(native_pixel, false)
+	_set_guide_open(false)
 	return _check(_gui_presses == before + 2 and _shell.zoomed == zoomed_before, "Stretched viewport pixels convert back to the same logical HUD target exactly once.")
+
+
+func _set_guide_open(open: bool) -> void:
+	var guide := _shell.hud.get_node("ControlsLayer/ControlsGuide") as Control
+	if guide.visible == open:
+		return
+	for pressed: bool in [true, false]:
+		var event := InputEventKey.new()
+		event.physical_keycode = KEY_H
+		event.keycode = KEY_H
+		event.pressed = pressed
+		root.push_input(event, true)
 
 
 func _click(position: Vector2, local_coordinates: bool) -> void:
